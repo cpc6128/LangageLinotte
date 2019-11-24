@@ -21,7 +21,7 @@ import org.linotte.greffons.externe.Greffon;
 import org.linotte.greffons.outils.ObjetLinotteFactory;
 
 import com.hexidec.ekit.EkitCore;
-import com.hexidec.ekit.EkitCorePatch;
+import com.hexidec.ekitpatch.EkitCorePatch;
 
 /**
  * 
