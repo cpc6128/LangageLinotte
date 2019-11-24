@@ -1,0 +1,3791 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammaire compatible="Meta-Linotte 0.2" version="1.7" langue="français" auteur="Ronan Mounès" creation="février 2006" modification="Decembre 2011" >
+	<!-- Version release date : September 01, 2006                           -->
+	<!-- Author : Mounès Ronan ronan.mounes@amstrad.eu                       -->
+	<!--                                                                     -->
+	<!--     http://langagelinotte.free.fr                                   -->
+	<!--                                                                     -->
+	<!-- This code is released under the GNU GPL license, version 2 or       -->
+	<!-- later, for educational and non-commercial purposes only.            -->
+	<!-- If any part of the code is to be included in a commercial           -->
+	<!-- software, please contact us first for a clearance at                -->
+	<!--   ronan.mounes@amstrad.eu                                           -->
+	<!--                                                                     -->
+	<!--   This notice must remain intact in all copies of this code.        -->
+	<!--   This code is distributed WITHOUT ANY WARRANTY OF ANY KIND.        -->
+	<!--   The GNU GPL license can be found at :                             -->
+	<!--           http://www.gnu.org/copyleft/gpl.html                      -->
+	<livre>
+		<!-- Le nom du livre -->
+		<groupe nom="livre" obligatoire="oui">
+			<choix>
+					<ligne tab="0">
+						<marqueur type="livre">
+							<!--<article/> Ne fonctionne pas !-->
+							<token obligatoire="oui" style="livre">livre</token>
+							<token obligatoire="oui" style="livre">:</token>
+							<valeur type="resteligne" obligatoire="oui"/>
+						</marqueur>
+						<etat souffleur="non" nom="creation livre"/>
+					</ligne>
+					<ligne tab="0">
+						<marqueur type="livre">
+							<!-- Syntaxe Linotte 0.7.5 -->
+							<valeur style="livre" obligatoire="oui" type="jusquautoken">:</valeur>
+						</marqueur>
+						<etat souffleur="non" nom="creation livre"/>
+					</ligne>
+					<ligne tab="0">
+						<marqueur type="livre">
+							<token obligatoire="oui" style="livre">¶</token>
+						</marqueur>
+						<etat souffleur="non" nom="creation livre"/>
+						<marqueur/>
+						<etat souffleur="non" nom="creation paragraphe"/>
+					</ligne>
+			</choix>
+		</groupe>
+		<groupe nom="référence" obligatoire="non">
+			<ligne tab="1">
+				<groupe nom="entree">
+					<article/>						
+					<token obligatoire="oui">bibliothèque</token>
+					<token obligatoire="oui">:</token>
+					<etat souffleur="non" nom="rien"/>
+				</groupe>
+			</ligne>
+			<groupe nom="les livres">
+				<choix nom="choix des livres" multiple="oui">
+					<ligne  tab="1" nom="definition d'une référence à un livre">
+						<article/>
+						<valeur type="jusquautoken">référence</valeur>
+						<valeur type="resteligne" obligatoire="oui"/>
+						<etat souffleur="non" nom="import livre" />
+					</ligne>
+				</choix>
+			</groupe>
+		</groupe>
+		<groupe nom="tests unitaires" obligatoire="non">
+			<ligne tab="1">
+				<groupe nom="entree">
+					<article/>						
+					<token obligatoire="oui">tests</token>
+					<token obligatoire="oui">:</token>
+					<etat souffleur="non" nom="rien"/>
+				</groupe>
+			</ligne>
+			<groupe nom="les testes">
+				<choix nom="choix des tests" multiple="oui">
+					<ligne tab="2" nom="test unitaire">
+						<token obligatoire="oui">&lt;</token>
+						<valeur type="resteligne" obligatoire="oui"/>
+						<etat souffleur="non" nom="test unitaire out" />
+					</ligne>
+					<ligne tab="2" nom="test unitaire">
+						<token obligatoire="oui">&gt;</token>
+						<valeur type="resteligne" obligatoire="oui"/>
+						<etat souffleur="non" nom="test unitaire in" />
+					</ligne>
+				</choix>
+			</groupe>
+		</groupe>
+		<etat souffleur="non" nom="test unitaire"/>
+		<!-- Les definitions des espèces -->
+		<etat souffleur="non" nom="creation espèce" param="debut" optimisation="non"/>
+		<groupe nom="les espèces" obligatoire="non">
+			<ligne tab="1">
+				<groupe nom="entree">
+					<article/>
+					<token obligatoire="oui">espèces</token>
+					<token obligatoire="oui">:</token>
+					<etat souffleur="non" nom="etat_creation_des_especes" optimisation="non"/>
+				</groupe>
+			</ligne>
+			<groupe nom="les espèces">
+				<choix nom="choix des definitions des espèces" multiple="oui">
+					<ligne tab="2" nom="definition d'une espèce">
+						<!-- creation d'une espèce  -->
+						<token obligatoire="oui">l'</token>
+						<token obligatoire="oui">espèce</token>
+						<groupe nom="valeur1" obligatoire="oui">
+							<choix>
+								<groupe nom="valeur2" obligatoire="oui">
+									<acteur type="jusquautoken" obligatoire="oui" annotation="héritage" style="livre">hérite</acteur>
+									<token obligatoire="oui" annotation="héritage">de</token>
+									<article/>
+									<acteur type="jusquautoken" completion="heritage" style="livre" obligatoire="oui">et</acteur>
+									<token obligatoire="oui">contient</token>
+								</groupe>
+								<acteur type="jusquautoken" surligne="non" style="livre" annotation="prototype">contient</acteur>
+							</choix>
+						</groupe>
+						<choix multiple="oui">
+							<groupe nom="valeur" obligatoire="non">
+								<article/>
+								<acteur type="jusquautoken" annotation="atributespece">,</acteur>
+							</groupe>
+						</choix>
+						<article/>
+						<acteur type="resteligne" annotation="atributespece" obligatoire="oui"/>
+						<etat souffleur="non" nom="creation espèce" param="creation"/>
+					</ligne>
+					<ligne tab="2" nom="definition d'une espèce">
+						<!-- creation d'une espèce  -->
+						<token obligatoire="oui">l'</token>
+						<token obligatoire="oui">espèce</token>
+						<groupe nom="valeur1" obligatoire="oui">
+							<choix>
+								<groupe nom="valeur2" obligatoire="oui">
+									<acteur type="jusquautoken" surligne="non" obligatoire="oui" style="livre" annotation="prototype">hérite</acteur>
+									<token obligatoire="oui" annotation="héritage">de</token>
+									<article/>
+									<acteur type="resteligne" completion="heritage" style="livre" obligatoire="oui"/>
+								</groupe>
+							</choix>
+						</groupe>
+						<etat souffleur="non" nom="creation espèce" param="creation"/>
+					</ligne>
+					<ligne tab="1" nom="definition des méthodes fonctionnelles d'un espèce">
+						<!-- creation d'une espèce  -->
+						<token obligatoire="oui">l'</token>
+						<token obligatoire="oui">espèce</token>
+						<acteur type="jusquautoken" style="livre" >propose</acteur>
+						<choix multiple="oui">
+							<groupe nom="valeur" obligatoire="non">
+								<article/>
+								<acteur type="jusquautoken" surligne="non" >,</acteur>
+							</groupe>
+						</choix>
+						<acteur type="resteligne" surligne="non" obligatoire="oui"/>
+						<etat souffleur="non" nom="attacher méthode" param="creation"/>
+					</ligne>
+					<ligne tab="2"  nom="acteur type nombre">
+						<!-- creation d'un nombre  -->
+						<article/>
+						<acteur type="jusquautoken" annotation="nomacteur" surligne="non" >est</acteur>
+						<token obligatoire="non">un</token>
+						<token obligatoire="oui">nombre</token>
+						<groupe nom="valeur1" obligatoire="non">
+							<choix>
+								<token obligatoire="non" annotation="vide">vide</token>
+								<groupe nom="valeur2" obligatoire="non">
+									<token obligatoire="oui">valant</token>
+									<acteur type="resteligne" format="nombre" obligatoire="oui"/>
+								</groupe>
+							</choix>
+						</groupe>
+						<etat souffleur="non" nom="creation acteur" param="nombre"/>
+					</ligne>
+					<ligne tab="2"  nom="acteur type drapeau">
+						<!-- creation d'un drapeau  -->
+						<article/>
+						<acteur type="jusquautoken" annotation="nomacteur" surligne="non">est</acteur>
+						<token obligatoire="non">un</token>
+						<token obligatoire="oui">drapeau</token>
+						<groupe nom="valeur1" obligatoire="non">
+							<choix>
+								<token obligatoire="non" annotation="vide">vide</token>
+								<groupe nom="valeur2" obligatoire="non">
+									<token obligatoire="oui">valant</token>
+									<acteur type="resteligne" format="nombre" obligatoire="oui"/>
+								</groupe>
+							</choix>
+						</groupe>
+						<etat souffleur="non" nom="creation acteur" param="nombre"/>
+					</ligne>
+					<ligne tab="2" nom="acteur type texte">
+						<!-- creation d'un texte  -->
+						<article/>
+						<acteur type="jusquautoken" annotation="nomacteur" surligne="non" >est</acteur>
+						<token obligatoire="non">un</token>
+						<token obligatoire="oui">texte</token>
+						<groupe nom="valeur" obligatoire="non">
+							<choix nom="vide ou pas">
+								<token obligatoire="non" annotation="vide">vide</token>
+								<groupe nom="valeur" obligatoire="non">
+									<token obligatoire="oui">valant</token>
+									<acteur type="resteligne" format="texte" obligatoire="oui"/>
+								</groupe>
+							</choix>
+						</groupe>
+						<etat souffleur="non" nom="creation acteur" param="texte"/>
+					</ligne>
+					<ligne tab="2" nom="acteur héritage">
+						<!-- creation d'un texte  -->
+						<article/>
+						<acteur type="jusquautoken" obligatoire="oui" annotation="prototype" style="livre">hérite</acteur>
+						<token obligatoire="oui">de</token>
+						<article/>
+						<acteur type="resteligne" completion="heritage" style="livre"  format="texte" obligatoire="oui"/>
+						<etat souffleur="non" nom="creation espèce" param="héritage"/>
+					</ligne>
+					<ligne tab="2" nom="acteur type dynamique">
+						<!-- creation d'un nombre  -->
+						<article/>
+						<acteur type="jusquautoken" annotation="nomacteur" surligne="non"  obligatoire="oui" >&lt;-</acteur>
+						<acteur type="resteligne"  obligatoire="oui"/>
+						<etat souffleur="non" nom="creation acteur" param="dynamique"/>
+					</ligne>
+				</choix>
+			</groupe>
+		</groupe>
+		<etat souffleur="non" nom="creation espèce" param="fin" optimisation="non"/>
+		<!-- Les definitions des grands rôles -->
+		<groupe nom="les grands rôles" obligatoire="non">
+			<ligne tab="1">
+				<groupe nom="entree">
+					<article/>
+					<token obligatoire="oui">grands</token>
+					<token obligatoire="oui">rôles</token>
+					<token obligatoire="oui">:</token>
+					<etat souffleur="non" nom="etat_creation_des_grands_roles"/>
+				</groupe>
+			</ligne>
+			<groupe nom="les grands rôles">
+				<choix nom="choix des definitions des espèces" multiple="oui">
+					<ligne tab="2" nom="definition d'un acteur espèce">
+						<!-- creation d'une acteur espèce  -->
+						<article/>
+						<acteur type="jusquautoken" surligne="non" annotation="instanceprototype">est</acteur>
+						<token obligatoire="non">un</token>
+						<acteur type="jusquautoken" annotation="nomacteur" completion="prototype" style="livre" >,</acteur>
+						<choix multiple="oui">
+							<groupe nom="valeur type 1" obligatoire="non">
+								<token obligatoire="oui">il</token>
+								<token obligatoire="oui">a</token>
+								<acteur type="mot"/>
+								<acteur type="jusquautoken" completion="nomatribut" >,</acteur>
+							</groupe>
+							<groupe nom="valeur type 2" obligatoire="non">
+								<article/>
+								<acteur type="jusquautoken" completion="nomatribut" >vaut</acteur>
+								<article/>
+								<acteur type="jusquautoken">,</acteur>
+							</groupe>
+						</choix>
+						<groupe obligatoire="oui">
+							<choix>
+								<groupe nom="valeur type 1" obligatoire="oui">
+									<token obligatoire="oui">il</token>
+									<token obligatoire="oui">a</token>
+									<acteur type="mot"/>
+									<acteur completion="nomatribut" type="resteligne"/>
+								</groupe>
+								<groupe nom="valeur type 2" obligatoire="oui">
+									<article/>
+									<acteur type="jusquautoken" completion="nomatribut" >vaut</acteur>
+									<article/>
+									<acteur type="resteligne"/>
+								</groupe>
+							</choix>
+						</groupe>
+						<etat souffleur="non" nom="creation espèce" param="instantiation"/>
+					</ligne>
+					<ligne tab="2" nom="acteur type nombre">
+						<!-- creation d'un nombre  -->
+						<article/>
+						<acteur type="jusquautoken" surligne="non" annotation="nomacteur">est</acteur>
+						<token obligatoire="non">un</token>
+						<token obligatoire="oui">nombre</token>
+						<groupe nom="valeur1" obligatoire="non">
+							<choix>
+								<token obligatoire="non" annotation="vide">vide</token>
+								<groupe nom="valeur2" obligatoire="non">
+									<token obligatoire="oui">valant</token>
+									<valeur type="resteligne" format="nombre" obligatoire="oui"/>
+								</groupe>
+								<groupe nom="valeur3" obligatoire="non">
+									<token obligatoire="oui" annotation="fichier">depuis</token>
+									<acteur type="resteligne" format="texte" obligatoire="oui"/>
+								</groupe>
+							</choix>
+						</groupe>
+						<etat souffleur="non" nom="creation acteur" param="nombre"/>
+					</ligne>
+					<ligne tab="2" nom="acteur type drapeau">
+						<!-- creation d'un drapeau -->
+						<article/>
+						<acteur type="jusquautoken" surligne="non" annotation="nomacteur">est</acteur>
+						<token obligatoire="non">un</token>
+						<token obligatoire="oui">drapeau</token>
+						<groupe nom="valeur1" obligatoire="non">
+							<choix>
+								<token obligatoire="non" annotation="vide">vide</token>
+								<groupe nom="valeur2" obligatoire="non">
+									<token obligatoire="oui">valant</token>
+									<acteur type="resteligne" format="nombre" obligatoire="oui"/>
+								</groupe>
+								<groupe nom="valeur3" obligatoire="non">
+									<token obligatoire="oui" annotation="fichier">depuis</token>
+									<acteur type="resteligne" format="texte" obligatoire="oui"/>
+								</groupe>
+							</choix>
+						</groupe>
+						<etat souffleur="non" nom="creation acteur" param="nombre"/>
+					</ligne>
+					<ligne tab="2" nom="acteur type texte">
+						<!-- creation d'un texte  -->
+						<article/>
+						<acteur type="jusquautoken" surligne="non" annotation="nomacteur">est</acteur>
+						<token obligatoire="non">un</token>
+						<token obligatoire="oui">texte</token>
+						<groupe nom="valeur" obligatoire="non">
+							<choix nom="vide ou pas">
+								<token obligatoire="non" annotation="vide">vide</token>
+								<groupe nom="valeur" obligatoire="non">
+									<token obligatoire="oui">valant</token>
+									<acteur type="resteligne" format="texte" obligatoire="oui"/>
+								</groupe>
+								<groupe nom="valeur2" obligatoire="non">
+									<token obligatoire="oui" annotation="fichier">depuis</token>
+									<acteur type="resteligne" format="texte" obligatoire="oui"/>
+								</groupe>
+							</choix>
+						</groupe>
+						<etat souffleur="non" nom="creation acteur" param="texte"/>
+					</ligne>
+					<ligne tab="2" nom="acteur type casier de texte">
+						<!-- creation d'un casier de texte  -->
+						<article/>
+						<acteur type="jusquautoken" surligne="non" annotation="nomacteur">est</acteur>
+						<token obligatoire="non">un</token>
+						<token obligatoire="oui">casier</token>
+						<token obligatoire="oui">de</token>
+						<token obligatoire="oui">texte</token>
+						<groupe nom="valeur1" obligatoire="non">
+							<choix>
+								<token obligatoire="non" annotation="vide">vide</token>
+								<groupe nom="valeur2" obligatoire="oui">
+									<token obligatoire="oui">valant</token>
+									<choix multiple="oui">
+										<groupe nom="valeur" obligatoire="non">
+											<acteur type="jusquautoken">,</acteur>
+										</groupe>
+									</choix>
+									<acteur type="resteligne" obligatoire="oui"/>
+								</groupe>
+								<groupe nom="valeur3" obligatoire="non">
+									<token obligatoire="oui" annotation="fichier">depuis</token>
+									<acteur type="resteligne" format="texte" obligatoire="oui"/>
+								</groupe>
+							</choix>
+						</groupe>
+						<etat souffleur="non" nom="creation acteur" param="casier de texte"/>
+					</ligne>
+					<!-- depuis 0.3.1 -->
+					<ligne tab="2" nom="acteur type casier de casier">
+						<!-- creation d'un casier de casier  -->
+						<article/>
+						<acteur type="jusquautoken" surligne="non" annotation="nomacteur">est</acteur>
+						<token obligatoire="non">un</token>
+						<token obligatoire="oui">casier</token>
+						<token obligatoire="oui">de</token>
+						<token obligatoire="oui">casier</token>
+						<groupe nom="valeur1" obligatoire="non">
+							<choix>
+								<token obligatoire="non" annotation="vide">vide</token>
+								<groupe nom="valeur2" obligatoire="oui">
+									<token obligatoire="oui">valant</token>
+									<choix multiple="oui">
+										<groupe nom="acteur" obligatoire="non">
+											<acteur type="jusquautoken">,</acteur>
+										</groupe>
+									</choix>
+									<acteur type="resteligne" obligatoire="oui"/>
+								</groupe>
+								<groupe nom="valeur2" obligatoire="non">
+									<token obligatoire="oui" annotation="fichier">depuis</token>
+									<acteur type="resteligne" format="texte" obligatoire="oui"/>
+								</groupe>
+							</choix>
+						</groupe>
+						<etat souffleur="non" nom="creation acteur" param="casier de casier"/>
+					</ligne>
+					<ligne tab="2" nom="acteur type casier de nombre">
+						<!-- creation d'un casier de nombre -->
+						<article/>
+						<acteur type="jusquautoken" surligne="non" annotation="nomacteur">est</acteur>
+						<token obligatoire="non">un</token>
+						<token obligatoire="oui">casier</token>
+						<token obligatoire="oui">de</token>
+						<token obligatoire="oui">nombre</token>
+						<groupe nom="valeur1" obligatoire="non">
+							<choix>
+								<token obligatoire="non" annotation="vide">vide</token>
+								<groupe nom="valeur2" obligatoire="oui">
+									<token obligatoire="oui">valant</token>
+									<choix multiple="oui">
+										<groupe nom="valeur" obligatoire="non">
+											<acteur type="jusquautoken">,</acteur>
+										</groupe>
+									</choix>
+									<acteur type="resteligne" obligatoire="oui"/>
+								</groupe>
+								<groupe nom="valeur2" obligatoire="non">
+									<token obligatoire="oui" annotation="fichier">depuis</token>
+									<acteur type="resteligne" format="texte" obligatoire="oui"/>
+								</groupe>
+							</choix>
+						</groupe>
+						<etat souffleur="non" nom="creation acteur" param="casier de nombre"/>
+					</ligne>
+					<ligne tab="2" nom="acteur type casier de drapeaux">
+						<!-- creation d'un casier de nombre -->
+						<article/>
+						<acteur type="jusquautoken" surligne="non" annotation="nomacteur">est</acteur>
+						<token obligatoire="non">un</token>
+						<token obligatoire="oui">casier</token>
+						<token obligatoire="oui">de</token>
+						<token obligatoire="oui">drapeau</token>
+						<groupe nom="valeur1" obligatoire="non">
+							<choix>
+								<token obligatoire="non" annotation="vide">vide</token>
+								<groupe nom="valeur2" obligatoire="oui">
+									<token obligatoire="oui">valant</token>
+									<choix multiple="oui">
+										<groupe nom="valeur" obligatoire="non">
+											<acteur type="jusquautoken">,</acteur>
+										</groupe>
+									</choix>
+									<acteur type="resteligne" obligatoire="oui"/>
+								</groupe>
+								<groupe nom="valeur2" obligatoire="non">
+									<token obligatoire="oui" annotation="fichier">depuis</token>
+									<acteur type="resteligne" format="texte" obligatoire="oui"/>
+								</groupe>
+							</choix>
+						</groupe>
+						<etat souffleur="non" nom="creation acteur" param="casier de nombre"/>
+					</ligne>
+					<!-- Problème de priorité -->
+					<ligne tab="2" nom="acteur type casier d'espèce">
+						<!-- creation d'un casier de nombre -->
+						<article/>
+						<acteur type="jusquautoken" surligne="non" annotation="nomacteur">est</acteur>
+						<token obligatoire="non">un</token>
+						<token obligatoire="oui">casier</token>
+						<token obligatoire="oui">de</token>
+						<acteur obligatoire="oui" type="jusquautoken" annotation="fichier" style="livre" >depuis</acteur>
+						<acteur type="resteligne" format="texte" obligatoire="oui"/>
+						<etat souffleur="non" nom="creation acteur" param="casier d'espèce"/>
+					</ligne>
+					<!-- depuis 0.3.1 -->
+					<ligne tab="2" nom="acteur type casier d'espèce">
+						<!-- creation d'un casier de nombre -->
+						<article/>
+						<acteur type="jusquautoken" surligne="non" annotation="nomacteur">est</acteur>
+						<token obligatoire="non">un</token>
+						<token obligatoire="oui">casier</token>
+						<token obligatoire="oui">de</token>
+						<groupe nom="espece" obligatoire="oui">
+							<choix>
+								<groupe nom="valeur1" obligatoire="non">
+									<choix>
+										<acteur type="jusquautoken" annotation="vide">vide</acteur>
+										<groupe nom="valeur2" obligatoire="oui">
+											<acteur type="jusquautoken" style="livre" >valant</acteur>
+											<choix multiple="oui">
+												<groupe nom="valeur" obligatoire="non">
+													<acteur type="jusquautoken">,</acteur>
+												</groupe>
+											</choix>
+											<acteur type="resteligne" obligatoire="oui"/>
+										</groupe>
+									</choix>
+								</groupe>
+								<acteur type="resteligne" style="livre" obligatoire="oui"/>
+							</choix>
+						</groupe>
+						<etat souffleur="non" nom="creation acteur" param="casier d'espèce"/>
+					</ligne>
+					<!-- Problème de priorité -->
+					<ligne tab="2" nom="definition d'un acteur espèce">
+						<!-- creation d'une acteur espèce  -->
+						<article/>
+						<acteur type="jusquautoken" surligne="non" annotation="instanceprototype">est</acteur>
+						<token obligatoire="non">un</token>
+						<acteur obligatoire="oui" type="jusquautoken" annotation="fichier" style="livre" >depuis</acteur>
+						<acteur annotation="nomacteur" type="resteligne" format="texte" obligatoire="oui"/>
+						<etat souffleur="non" nom="creation espèce" param="instantiation"/>
+					</ligne>
+					<ligne tab="2" nom="definition d'un acteur espèce simple">
+						<!-- creation d'une acteur espèce  -->
+						<article/>
+						<acteur type="jusquautoken" surligne="non" annotation="instanceprototype" >est</acteur>
+						<token obligatoire="non">un</token>
+						<acteur type="resteligne" annotation="nomacteur" completion="prototype" style="livre" />
+						<etat souffleur="non" nom="creation espèce" param="instantiation"/>
+					</ligne>
+					<ligne tab="2" nom="acteur type dynamique">
+						<!-- creation d'un nombre  -->
+						<article/>
+						<acteur type="jusquautoken" surligne="non"  annotation="nomacteur" obligatoire="oui" >&lt;-</acteur>
+						<acteur type="resteligne"  obligatoire="oui"/>
+						<etat souffleur="non" nom="creation acteur" param="dynamique"/>
+					</ligne>
+				</choix>
+			</groupe>
+		</groupe>
+		<etat souffleur="non" nom="fin importation"/>	
+		<choix multiple="oui">
+				<groupe nom="le corps" obligatoire="non">
+					<!-- Les paragraphes -->
+					<groupe nom="paragraphe" obligatoire="oui">
+						<groupe nom="groupe2" obligatoire="oui">
+						<choix>
+							<groupe nom="entree" >
+								<ligne tab="0" espace="1">
+									<marqueur>
+										<token obligatoire="oui" style="système">paragraphe</token>
+										<token obligatoire="oui" style="système">:</token>
+										<article/>
+										<valeur type="resteligne" obligatoire="oui"/>
+									</marqueur>
+									<etat souffleur="non" nom="creation paragraphe"/>
+								</ligne>
+							</groupe>
+							<groupe nom="entree" >
+								<ligne tab="0" espace="1">
+									<!-- Syntaxe Linotte 0.7.5 -->
+									<marqueur>
+										<article/>
+										<valeur style="système" obligatoire="oui" type="jusquautoken">:</valeur>
+									</marqueur>
+								<etat souffleur="non" nom="creation paragraphe"/>
+								</ligne>
+							</groupe>
+						</choix>
+						</groupe>
+							<!-- Les definitions des rôles -->
+							<groupe nom="les rôles" obligatoire="non">
+								<ligne tab="1">
+									<groupe nom="entree">
+										<article/>
+										<token obligatoire="oui" style="structure" >rôles</token>
+										<token obligatoire="oui" style="structure" >:</token>
+										<etat souffleur="non" nom="creation rôle"/>
+									</groupe>
+								</ligne>
+								<groupe nom="les actions">
+									<choix nom="choix des definitions des rôles" multiple="oui">
+										<ligne tab="2" nom="definition d'une fonction lambda">
+											<!-- creation d'une fonction lambda  -->
+											<article/>
+											<acteur type="jusquautoken" surligne="non" annotation="nomacteurfonction">est</acteur>
+											<token obligatoire="non">une</token>
+											<token obligatoire="oui">lambda</token>											
+											<choix multiple="oui">
+												<groupe nom="valeur" obligatoire="non">
+													<acteur type="jusquautoken">|</acteur>
+												</groupe>
+											</choix>
+											<acteur type="jusquautoken">valant</acteur>
+											<acteur type="resteligne" format="nombre" obligatoire="oui"/>
+											<etat souffleur="non" nom="creation fonction lambda" />
+										</ligne>
+										<ligne tab="2" nom="definition d'un acteur espèce B">
+											<!-- creation d'une acteur espèce  -->
+											<article/>
+											<acteur type="jusquautoken" surligne="non" annotation="instanceprototype" >est</acteur>
+											<token obligatoire="non">un</token>
+											<acteur type="jusquautoken" style="livre" annotation="nomacteurfonction" completion="prototype">,</acteur>
+											<choix multiple="oui">
+												<groupe nom="valeur type 1" obligatoire="non">
+													<token obligatoire="oui">il</token>
+													<token obligatoire="oui">a</token>
+													<acteur type="mot"/>
+													<acteur type="jusquautoken" completion="nomatribut">,</acteur>
+												</groupe>
+												<groupe nom="valeur type 2" obligatoire="non">
+													<article/>
+													<acteur type="jusquautoken" completion="nomatribut">vaut</acteur>
+													<article/>
+													<acteur type="jusquautoken">,</acteur>
+												</groupe>
+											</choix>
+											<groupe obligatoire="oui">
+												<choix>
+													<groupe nom="valeur type 2" obligatoire="oui">
+														<token obligatoire="oui">il</token>
+														<token obligatoire="oui">a</token>
+														<acteur type="mot"/>
+														<acteur completion="nomatribut" type="resteligne"/>
+													</groupe>
+													<groupe nom="valeur type 1" obligatoire="oui">
+														<article/>
+														<acteur completion="nomatribut" type="jusquautoken">vaut</acteur>
+														<article/>
+														<acteur type="resteligne"/>
+													</groupe>
+												</choix>
+											</groupe>
+											<etat souffleur="non" nom="creation espèce" param="instantiation"/>
+										</ligne>
+										<ligne tab="2" nom="acteur type nombre">
+											<!-- creation d'un nombre  -->
+											<article/>
+											<acteur type="jusquautoken" surligne="non" annotation="nomacteurfonction">est</acteur>
+											<token obligatoire="non">un</token>
+											<token obligatoire="oui">nombre</token>
+											<groupe nom="valeur1" obligatoire="non">
+												<choix>
+													<token obligatoire="non" annotation="vide">vide</token>
+													<groupe nom="valeur2" obligatoire="non">
+														<token obligatoire="oui">&lt;-</token>
+														<acteur type="resteligne" format="nombre" obligatoire="oui"/>
+													</groupe>
+												</choix>
+												<groupe nom="valeur3" obligatoire="non">
+													<token obligatoire="oui" annotation="fichier">depuis</token>
+													<acteur type="resteligne" format="texte" obligatoire="oui"/>
+												</groupe>
+											</groupe>
+											<etat souffleur="non" nom="creation acteur" param="nombre"/>
+										</ligne>
+										<ligne tab="2" nom="acteur type drapeau">
+											<!-- creation d'un drapeau  -->
+											<article/>
+											<acteur type="jusquautoken" surligne="non" annotation="nomacteurfonction">est</acteur>
+											<token obligatoire="non">un</token>
+											<token obligatoire="oui">drapeau</token>
+											<groupe nom="valeur1" obligatoire="non">
+												<choix>
+													<token obligatoire="non" annotation="vide">vide</token>
+													<groupe nom="valeur2" obligatoire="non">
+														<token obligatoire="oui">valant</token>
+														<acteur type="resteligne" format="nombre" obligatoire="oui"/>
+													</groupe>
+												</choix>
+												<groupe nom="valeur3" obligatoire="non">
+													<token obligatoire="oui" annotation="fichier">depuis</token>
+													<acteur type="resteligne" format="texte" obligatoire="oui"/>
+												</groupe>
+											</groupe>
+											<etat souffleur="non" nom="creation acteur" param="nombre"/>
+										</ligne>
+										<ligne tab="2" nom="acteur type texte">
+											<!-- creation d'un texte  -->
+											<!-- test 1.2.3 -->
+											<article/>
+											<acteur type="jusquautoken" surligne="non" annotation="nomacteurfonction">est</acteur>
+											<token obligatoire="non">un</token>
+											<token obligatoire="oui">texte</token>
+											<groupe nom="valeur" obligatoire="non">
+												<choix nom="vide ou pas">
+													<token obligatoire="non" annotation="vide">vide</token>
+													<groupe nom="valeur" obligatoire="non">
+														<token obligatoire="oui">valant</token>
+														<acteur type="resteligne" format="texte" obligatoire="oui"/>
+													</groupe>
+													<groupe nom="valeur2" obligatoire="non">
+														<token obligatoire="oui" annotation="fichier">depuis</token>
+														<acteur type="resteligne" format="texte" obligatoire="oui"/>
+													</groupe>
+												</choix>
+											</groupe>
+											<etat souffleur="non" nom="creation acteur" param="texte"/>
+										</ligne>
+										<ligne tab="2" nom="acteur type casier de texte">
+											<!-- creation d'un casier de texte  -->
+											<article/>
+											<acteur type="jusquautoken" surligne="non" annotation="nomacteurfonction">est</acteur>
+											<token obligatoire="non">un</token>
+											<token obligatoire="oui">casier</token>
+											<token obligatoire="oui">de</token>
+											<token obligatoire="oui">texte</token>
+											<groupe nom="valeur1" obligatoire="non">
+												<choix>
+													<token obligatoire="non" annotation="vide">vide</token>
+													<groupe nom="valeur2" obligatoire="oui">
+														<token obligatoire="oui">valant</token>
+														<choix multiple="oui">
+															<groupe nom="valeur" obligatoire="non">
+																<acteur type="jusquautoken">,</acteur>
+															</groupe>
+														</choix>
+														<acteur type="resteligne" obligatoire="oui"/>
+													</groupe>
+													<groupe nom="valeur3" obligatoire="non">
+														<token obligatoire="oui" annotation="fichier">depuis</token>
+														<acteur type="resteligne" format="texte" obligatoire="oui"/>
+													</groupe>
+												</choix>
+											</groupe>
+											<etat souffleur="non" nom="creation acteur" param="casier de texte"/>
+										</ligne>
+										<ligne tab="2" nom="acteur type casier de nombre">
+											<!-- creation d'un casier de nombre -->
+											<article/>
+											<acteur type="jusquautoken" surligne="non" annotation="nomacteurfonction">est</acteur>
+											<token obligatoire="non">un</token>
+											<token obligatoire="oui">casier</token>
+											<token obligatoire="oui">de</token>
+											<token obligatoire="oui">nombre</token>
+											<groupe nom="valeur1" obligatoire="non">
+												<choix>
+													<token obligatoire="non" annotation="vide">vide</token>
+													<groupe nom="valeur2" obligatoire="oui">
+														<token obligatoire="oui">valant</token>
+														<choix multiple="oui">
+															<groupe nom="valeur" obligatoire="non">
+																<acteur type="jusquautoken">,</acteur>
+															</groupe>
+														</choix>
+														<acteur type="resteligne" obligatoire="oui"/>
+													</groupe>
+													<groupe nom="valeur" obligatoire="non">
+														<token obligatoire="oui" annotation="fichier">depuis</token>
+														<acteur type="resteligne" format="texte" obligatoire="oui"/>
+													</groupe>
+												</choix>
+											</groupe>
+											<etat souffleur="non" nom="creation acteur" param="casier de nombre"/>
+										</ligne>
+										<ligne tab="2" nom="acteur type casier de drapeau">
+											<!-- creation d'un casier de nombre -->
+											<article/>
+											<acteur type="jusquautoken" surligne="non" annotation="nomacteurfonction">est</acteur>
+											<token obligatoire="non">un</token>
+											<token obligatoire="oui">casier</token>
+											<token obligatoire="oui">de</token>
+											<token obligatoire="oui">drapeau</token>
+											<groupe nom="valeur1" obligatoire="non">
+												<choix>
+													<token obligatoire="non" annotation="vide">vide</token>
+													<groupe nom="valeur2" obligatoire="oui">
+														<token obligatoire="oui">valant</token>
+														<choix multiple="oui">
+															<groupe nom="valeur" obligatoire="non">
+																<acteur type="jusquautoken">,</acteur>
+															</groupe>
+														</choix>
+														<acteur type="resteligne" obligatoire="oui"/>
+													</groupe>
+													<groupe nom="valeur" obligatoire="non">
+														<token obligatoire="oui" annotation="fichier">depuis</token>
+														<acteur type="resteligne" format="texte" obligatoire="oui"/>
+													</groupe>
+												</choix>
+											</groupe>
+											<etat souffleur="non" nom="creation acteur" param="casier de nombre"/>
+										</ligne>
+										<!-- depuis 0.3.1 -->
+										<ligne tab="2" nom="acteur type casier de casier">
+											<!-- creation d'un casier de casier  -->
+											<article/>
+											<acteur type="jusquautoken" surligne="non" annotation="nomacteurfonction">est</acteur>
+											<token obligatoire="non">un</token>
+											<token obligatoire="oui">casier</token>
+											<token obligatoire="oui">de</token>
+											<token obligatoire="oui">casier</token>
+											<groupe nom="valeur1" obligatoire="non">
+												<choix>
+													<token obligatoire="non" annotation="vide">vide</token>
+													<groupe nom="valeur2" obligatoire="oui">
+														<token obligatoire="oui">valant</token>
+														<choix multiple="oui">
+															<groupe nom="acteur" obligatoire="non">
+																<acteur type="jusquautoken">,</acteur>
+															</groupe>
+														</choix>
+														<acteur type="resteligne" obligatoire="oui"/>
+													</groupe>
+													<groupe nom="valeur2" obligatoire="non">
+														<token obligatoire="oui" annotation="fichier">depuis</token>
+														<acteur type="resteligne" format="texte" obligatoire="oui"/>
+													</groupe>
+												</choix>
+											</groupe>
+											<etat souffleur="non" nom="creation acteur" param="casier de casier"/>
+										</ligne>
+										<!-- Problème de priorité -->
+										<ligne tab="2" nom="acteur type casier d'espèce">
+											<!-- creation d'un casier de nombre -->
+											<article/>
+											<acteur type="jusquautoken" surligne="non" annotation="nomacteurfonction">est</acteur>
+											<token obligatoire="non">un</token>
+											<token obligatoire="oui">casier</token>
+											<token obligatoire="oui">de</token>
+											<acteur obligatoire="oui" type="jusquautoken" style="livre" annotation="fichier">depuis</acteur>
+											<acteur type="resteligne" format="texte" obligatoire="oui"/>
+											<etat souffleur="non" nom="creation acteur" param="casier d'espèce"/>
+										</ligne>
+										<!-- depuis 0.3.1 -->
+										<ligne tab="2" nom="acteur type casier d'espèce">
+											<!-- creation d'un casier de nombre -->
+											<article/>
+											<acteur type="jusquautoken" surligne="non" annotation="nomacteurfonction">est</acteur>
+											<token obligatoire="non">un</token>
+											<token obligatoire="oui">casier</token>
+											<token obligatoire="oui">de</token>
+											<groupe nom="espece" obligatoire="oui">
+												<choix>
+													<groupe nom="valeur1" obligatoire="non">
+														<choix>
+															<acteur type="jusquautoken" annotation="vide">vide</acteur>
+															<groupe nom="valeur2" obligatoire="oui">
+																<acteur type="jusquautoken" style="livre" >valant</acteur>
+																<choix multiple="oui">
+																	<groupe nom="valeur" obligatoire="non">
+																		<acteur type="jusquautoken">,</acteur>
+																	</groupe>
+																</choix>
+																<acteur type="resteligne" obligatoire="oui"/>
+															</groupe>
+														</choix>
+													</groupe>
+													<acteur type="resteligne" obligatoire="oui"/>
+												</choix>
+											</groupe>
+											<etat souffleur="non" nom="creation acteur" param="casier d'espèce"/>
+										</ligne>
+										<!-- Problème de priorité -->
+										<ligne tab="2" nom="definition d'un acteur espèce">
+											<!-- creation d'une acteur espèce  -->
+											<article/>
+											<acteur type="jusquautoken" surligne="non" annotation="instanceprototype">est</acteur>
+											<token obligatoire="non">un</token>
+											<acteur obligatoire="oui" type="jusquautoken" style="livre" annotation="fichier">depuis</acteur>
+											<acteur type="resteligne" format="texte" obligatoire="oui"/>
+											<etat souffleur="non" nom="creation espèce" param="instantiation"/>
+										</ligne>
+										<ligne tab="2" nom="definition d'un acteur espèce simple">
+											<!-- creation d'une acteur espèce  -->
+											<article/>
+											<acteur type="jusquautoken" surligne="non" annotation="instanceprototype">est</acteur>
+											<token obligatoire="non">un</token>
+											<acteur type="resteligne" annotation="nomacteurfonction" completion="prototype" style="livre" />
+											<etat souffleur="non" nom="creation espèce" param="instantiation"/>
+										</ligne>
+										<ligne tab="2" nom="acteur type dynamique">
+											<!-- creation d'un nombre  -->
+											<article/>
+											<acteur type="jusquautoken" surligne="non" annotation="nomacteurfonction" obligatoire="oui" >&lt;-</acteur>
+											<acteur type="resteligne"  obligatoire="oui"/>
+											<etat souffleur="non" nom="creation acteur" param="dynamique"/>
+										</ligne>
+									</choix>
+								</groupe>
+							</groupe>
+							<!-- Les souffleurs -->
+							<groupe nom="les souffleurs" obligatoire="non">
+								<ligne tab="1" >
+									<groupe nom="entree">
+										<article/>
+										<token obligatoire="oui" style="structure" >souffleurs</token>
+										<token obligatoire="oui" style="structure" >:</token>
+										<etat souffleur="non" nom="souffleurs"/>
+									</groupe>
+								</ligne>
+								<souffleur valeur="oui"/>
+								<groupe nom="les souffleurs">
+									<choix nom="la liste des souffleurs" multiple="oui">
+										<!-- test si nom est vide alors tu vas vers -->
+										<groupe nom="souffleur" discriminant="vide">
+											<choix>
+												<p:build>
+													<ligne tab="2">
+														<token obligatoire="oui">dès</token>
+														<token obligatoire="oui">que</token>
+														<article/>
+														<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+														<token obligatoire="oui">vide</token>
+														<token obligatoire="oui">,</token>
+														<etat nom="condition" param="si vide"/>
+														<p:copynode target="node_base"/>
+													</ligne>
+												</p:build>
+											</choix>
+										</groupe>
+										<!-- test si nom est non vide alors tu vas vers -->
+										<groupe nom="souffleur" discriminant="vide">
+											<choix>
+												<p:build>
+													<ligne tab="2">
+														<token obligatoire="oui">dès</token>
+														<token obligatoire="oui">que</token>
+														<article/>
+														<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+														<token obligatoire="oui">non</token>
+														<token obligatoire="oui">vide</token>
+														<token obligatoire="oui">,</token>
+														<etat nom="condition" param="si non vide"/>
+														<p:copynode target="node_base"/>
+													</ligne>
+												</p:build>
+											</choix>
+										</groupe>
+										<!-- test si nom est plus grand que nom2 alors tu vas vers -->
+										<groupe nom="souffleur" discriminant="plus">
+											<choix>
+												<p:build>
+													<ligne tab="2">
+														<token obligatoire="oui">dès</token>
+														<token obligatoire="oui">que</token>
+														<article/>
+														<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+														<token obligatoire="oui">plus</token>
+														<token obligatoire="oui">grand</token>
+														<token obligatoire="oui">que</token>
+														<article/>
+														<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+														<etat nom="condition" param="est plus grand que"/>
+														<p:copynode target="node_base"/>
+													</ligne>
+												</p:build>
+											</choix>
+										</groupe>
+										<!-- test si nom est moins grand que nom2 alors tu vas vers -->
+										<groupe nom="souffleur" discriminant="moins">
+											<choix>
+												<p:build>
+													<ligne tab="2">
+														<token obligatoire="oui">dès</token>
+														<token obligatoire="oui">que</token>
+														<article/>
+														<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+														<token obligatoire="oui">moins</token>
+														<token obligatoire="oui">grand</token>
+														<token obligatoire="oui">que</token>
+														<article/>
+														<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+														<etat nom="condition" param="est moins grand que"/>
+														<p:copynode target="node_base"/>
+													</ligne>
+												</p:build>
+											</choix>
+										</groupe>
+										<!-- test si nom est plus petit que nom2 alors tu vas vers -->
+										<groupe nom="souffleur" discriminant="">
+											<choix>
+												<p:build>
+													<ligne tab="2">
+														<token obligatoire="oui">dès</token>
+														<token obligatoire="oui">que</token>
+														<article/>
+														<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+														<token obligatoire="oui">plus</token>
+														<token obligatoire="oui">petit</token>
+														<token obligatoire="oui">que</token>
+														<article/>
+														<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+														<etat nom="condition" param="est plus petit que"/>
+														<p:copynode target="node_base"/>
+													</ligne>
+												</p:build>
+											</choix>
+										</groupe>
+										<!-- test si nom est plus petit ou égal à nom2 alors tu vas vers -->
+										<groupe nom="souffleur" discriminant="">
+											<choix>
+												<p:build>
+													<ligne tab="2">
+														<token obligatoire="oui">dès</token>
+														<token obligatoire="oui">que</token>
+														<article/>
+														<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+														<token obligatoire="oui">plus</token>
+														<token obligatoire="oui">petit</token>
+														<token obligatoire="oui">ou</token>
+														<token obligatoire="oui">égal</token>
+														<token obligatoire="oui">à</token>
+														<article/>
+														<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+														<etat nom="condition" param="est plus petit ou égal à"/>
+														<p:copynode target="node_base"/>
+													</ligne>
+												</p:build>
+											</choix>
+										</groupe>
+										<!-- test si nom est plus grand ou égal à nom2 alors tu vas vers -->
+										<groupe nom="souffleur" discriminant="">
+											<choix>
+												<p:build>
+													<ligne tab="2">
+														<token obligatoire="oui">dès</token>
+														<token obligatoire="oui">que</token>
+														<article/>
+														<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+														<token obligatoire="oui">plus</token>
+														<token obligatoire="oui">grand</token>
+														<token obligatoire="oui">ou</token>
+														<token obligatoire="oui">égal</token>
+														<token obligatoire="oui">à</token>
+														<article/>
+														<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+														<etat nom="condition" param="est plus grand ou égal à"/>
+														<p:copynode target="node_base"/>
+													</ligne>
+												</p:build>
+											</choix>
+										</groupe>
+										<!-- test si nom est moins petit que nom2 alors tu vas vers -->
+										<groupe nom="souffleur" discriminant="moins">
+											<choix>
+												<p:build>
+													<ligne tab="2">
+														<token obligatoire="oui">dès</token>
+														<token obligatoire="oui">que</token>
+														<article/>
+														<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+														<token obligatoire="oui">moins</token>
+														<token obligatoire="oui">petit</token>
+														<token obligatoire="oui">que</token>
+														<article/>
+														<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+														<etat nom="condition" param="est moins petit que"/>
+														<p:copynode target="node_base"/>
+													</ligne>
+												</p:build>
+											</choix>
+										</groupe>
+										<!-- test si nom est égal à nom2 alors tu vas vers -->
+										<groupe nom="souffleur" discriminant="égal">
+											<choix>
+												<p:build>
+													<ligne tab="2">
+														<token obligatoire="oui">dès</token>
+														<token obligatoire="oui">que</token>
+														<article/>
+														<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+														<token obligatoire="oui">égal</token>
+														<token obligatoire="oui">à</token>
+														<article/>
+														<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+														<etat nom="condition" param="est égal à"/>
+														<p:copynode target="node_base"/>
+													</ligne>
+												</p:build>
+											</choix>
+										</groupe>
+										<!-- test si nom est différent de nom2 alors tu vas vers -->
+										<!-- Ajout 0.3.4 -->
+										<groupe nom="souffleur" discriminant="différent">
+											<choix>
+												<p:build>
+													<ligne tab="2">
+														<token obligatoire="oui">dès</token>
+														<token obligatoire="oui">que</token>
+														<article/>
+														<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+														<token obligatoire="oui">différent</token>
+														<token obligatoire="oui">de</token>
+														<article/>
+														<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+														<etat nom="condition" param="est différent de"/>
+														<p:copynode target="node_base"/>
+													</ligne>
+												</p:build>
+											</choix>
+										</groupe>
+										<!-- test si nom contient nom2 alors tu vas vers -->
+										<groupe nom="souffleur" discriminant="contient">
+											<choix>
+												<p:build>
+													<ligne tab="2">
+														<token obligatoire="oui">dès</token>
+														<token obligatoire="oui">que</token>
+														<article/>
+														<acteur type="jusquautoken" obligatoire="oui">contient</acteur>
+														<article/>
+														<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+														<etat nom="condition" param="contient"/>
+														<p:copynode target="node_base"/>
+													</ligne>
+												</p:build>
+											</choix>
+										</groupe>
+										<!-- test si nom est en collision avec A2 tu vas vers -->
+										<groupe nom="souffleur" discriminant="collision">
+											<choix>
+												<p:build>
+													<ligne tab="2">
+														<token obligatoire="oui">dès</token>
+														<token obligatoire="oui">que</token>
+														<article/>
+														<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+														<token obligatoire="oui">en</token>
+														<token obligatoire="oui">collision</token>
+														<token obligatoire="oui">avec</token>
+														<article/>
+														<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+														<etat nom="condition" param="collision"/>
+														<p:copynode target="node_base"/>
+													</ligne>
+												</p:build>
+											</choix>
+										</groupe>
+										<!-- test si nom est égal à nom2 alors tu vas vers -->
+										<!-- Drapeau -->
+										<groupe nom="souffleur" discriminant="égal">
+											<choix>
+												<p:build>
+													<ligne tab="2">
+														<token obligatoire="oui">dès</token>
+														<token obligatoire="oui">que</token>
+														<article/>
+														<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+														<article/>
+														<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+														<etat nom="condition" param="est égal à"/>
+														<p:copynode target="node_base"/>
+													</ligne>
+												</p:build>
+											</choix>
+										</groupe>										
+										<groupe nom="souffleur" discriminant="dès">
+											<choix>
+												<p:build>
+													<ligne tab="2">
+														<token obligatoire="oui">dès</token>
+														<token obligatoire="oui">que</token>
+														<article/>
+														<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+														<etat nom="condition" param="est égal à vrai"/>
+														<p:copynode target="node_base"/>
+													</ligne>
+												</p:build>
+											</choix>
+										</groupe>
+									</choix>
+								</groupe>
+								<souffleur valeur="non"/>
+							</groupe>
+						<!-- Les actions -->
+						<groupe nom="les actions" obligatoire="non">
+								<ligne tab="1">
+									<groupe nom="entree">
+										<article/>
+										<token obligatoire="oui" style="structure" >actions</token>
+										<token obligatoire="oui" style="structure" >:</token>
+										<etat souffleur="non" nom="actions_xxx"/>
+									</groupe>
+								</ligne>
+							<!-- Les actions -->
+							<groupe nom="les verbes">
+								<choix nom="la liste des verbes" multiple="oui">
+									<pointderetour>
+										<choix nom="liste des verbes" multiple="oui">
+											<!-- ***************** -->
+											<!-- * Erreur        * -->
+											<!-- ***************** -->
+											<groupe nom="boucle" discriminant="essaie">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui" annotation="tant">essaie</token>
+															<token obligatoire="oui">,</token>
+															<etat souffleur="non" nom="essayer"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<groupe nom="boucle" discriminant="essaies">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui" annotation="tant">tu</token>
+															<token obligatoire="oui">essaies</token>
+															<token obligatoire="oui">,</token>
+															<etat souffleur="non" nom="essayer"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- ***************** -->
+											<!-- * Boucle        * -->
+											<!-- ***************** -->
+											<groupe nom="boucle" discriminant="pour">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">pour</token>
+															<token obligatoire="oui" annotation="joker">chaque</token>
+															<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+															<etat souffleur="non" nom="boucle"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<groupe nom="boucle_de" discriminant="à">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">de</token>
+															<acteur type="jusquautoken" obligatoire="oui">à</acteur>
+															<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+															<etat souffleur="non" nom="boucle"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<groupe nom="boucle_suite" discriminant="pour">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">pour</token>
+															<acteur type="jusquautoken" obligatoire="oui">de</acteur>
+															<acteur type="jusquautoken" obligatoire="oui">à</acteur>
+															<acteur type="jusquautoken" obligatoire="oui">suivant</acteur>
+															<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+															<etat souffleur="non" nom="boucle"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<groupe nom="boucle_for" discriminant="pour">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">pour</token>
+															<acteur type="jusquautoken" obligatoire="oui">de</acteur>
+															<acteur type="jusquautoken" obligatoire="oui">à</acteur>
+															<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+															<etat souffleur="non" nom="boucle"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- ***************** -->
+											<!-- * Boucle tant que -->
+											<!-- ***************** -->
+											<!-- test si nom est en collision avec A2 tu vas vers -->
+											<groupe nom="test" discriminant="collision">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui" annotation="tant">tant</token>
+															<token obligatoire="oui">que</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">en</token>
+															<token obligatoire="oui">collision</token>
+															<token obligatoire="oui">avec</token>
+															<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+															<etat nom="boucle" param="collision"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est vide alors tu vas vers -->
+											<groupe nom="test" discriminant="vide">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui" annotation="tant">tant</token>
+															<token obligatoire="oui">que</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">vide</token>
+															<token obligatoire="oui">,</token>
+															<etat nom="boucle" param="si vide"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est non vide alors tu vas vers -->
+											<groupe nom="test" discriminant="vide" discriminant2="non">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui" annotation="tant">tant</token>
+															<token obligatoire="oui">que</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">non</token>
+															<token obligatoire="oui">vide</token>
+															<token obligatoire="oui">,</token>
+															<etat nom="boucle" param="si non vide"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est plus grand que nom2 alors tu vas vers -->
+											<groupe nom="test" discriminant="plus" discriminant2="grand">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui" annotation="tant">tant</token>
+															<token obligatoire="oui">que</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">plus</token>
+															<token obligatoire="oui">grand</token>
+															<token obligatoire="oui">que</token>
+															<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+															<etat nom="boucle" param="est plus grand que"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est plus grand ou égal à nom2 alors tu vas vers -->
+											<groupe nom="test" discriminant="plus" discriminant2="grand">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui" annotation="tant">tant</token>
+															<token obligatoire="oui">que</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">plus</token>
+															<token obligatoire="oui">grand</token>
+															<token obligatoire="oui">ou</token>
+															<token obligatoire="oui">égal</token>
+															<token obligatoire="oui">à</token>
+															<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+															<etat nom="boucle" param="est plus grand ou égal à"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est plus petit ou égal à nom2 alors tu vas vers -->
+											<groupe nom="test" discriminant="plus" discriminant2="petit">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui" annotation="tant">tant</token>
+															<token obligatoire="oui">que</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">plus</token>
+															<token obligatoire="oui">petit</token>
+															<token obligatoire="oui">ou</token>
+															<token obligatoire="oui">égal</token>
+															<token obligatoire="oui">à</token>
+															<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+															<etat nom="boucle" param="est plus petit ou égal à"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est moins grand que nom2 alors tu vas vers -->
+											<groupe nom="test" discriminant="moins" discriminant2="grand">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui" annotation="tant">tant</token>
+															<token obligatoire="oui">que</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">moins</token>
+															<token obligatoire="oui">grand</token>
+															<token obligatoire="oui">que</token>
+															<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+															<etat nom="boucle" param="est moins grand que"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est plus petit que nom2 alors tu vas vers -->
+											<groupe nom="test" discriminant="plus" discriminant2="petit">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui" annotation="tant">tant</token>
+															<token obligatoire="oui">que</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">plus</token>
+															<token obligatoire="oui">petit</token>
+															<token obligatoire="oui">que</token>
+															<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+															<etat nom="boucle" param="est plus petit que"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est moins petit que nom2 alors tu vas vers -->
+											<groupe nom="test" discriminant="moins" discriminant2="petit">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui" annotation="tant">tant</token>
+															<token obligatoire="oui">que</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">moins</token>
+															<token obligatoire="oui">petit</token>
+															<token obligatoire="oui">que</token>
+															<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+															<etat nom="boucle" param="est moins petit que"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est égal à nom2 alors tu vas vers -->
+											<groupe nom="test" discriminant="égal">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui" annotation="tant">tant</token>
+															<token obligatoire="oui">que</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">égal</token>
+															<token obligatoire="oui">à</token>
+															<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+															<etat nom="boucle" param="est égal à"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est différent de nom2 alors tu vas vers -->
+											<groupe nom="test" discriminant="différent">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui" annotation="tant">tant</token>
+															<token obligatoire="oui">que</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">différent</token>
+															<token obligatoire="oui">de</token>
+															<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+															<etat nom="boucle" param="est différent de"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom contient nom2 alors tu vas vers -->
+											<groupe nom="test" discriminant="contient">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui" annotation="tant">tant</token>
+															<token obligatoire="oui">que</token>
+															<acteur type="jusquautoken" obligatoire="oui">contient</acteur>
+															<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+															<etat nom="boucle" param="contient"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est vrai alors tu vas vers -->
+											<!-- drapeau -->
+											<!-- BUG : mettre en dernier !!! -->
+											<groupe nom="test" discriminant="est" discriminant2="tant">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui" annotation="tant">tant</token>
+															<token obligatoire="oui">que</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+															<etat nom="boucle" param="est égal à"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<groupe nom="test" discriminant="tant">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui" annotation="tant">tant</token>
+															<token obligatoire="oui">que</token>
+															<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+															<etat nom="boucle" param="est égal à vrai"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- ***************** -->
+											<!-- * Condition     * -->
+											<!-- ***************** -->
+											<!-- test si nom est en collision avec A2 tu vas vers -->
+											<groupe nom="test" discriminant="collision">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">si</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">en</token>
+															<token obligatoire="oui">collision</token>
+															<token obligatoire="oui">avec</token>
+															<acteur type="jusquautoken" obligatoire="oui">alors</acteur>
+															<etat nom="condition" param="collision"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est vide alors tu vas vers -->
+											<groupe nom="test" discriminant="vide">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">si</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">vide</token>
+															<token obligatoire="oui">alors</token>
+															<etat nom="condition" param="si vide"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est non vide alors tu vas vers -->
+											<groupe nom="test" discriminant="vide" discriminant2="non">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">si</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">non</token>
+															<token obligatoire="oui">vide</token>
+															<token obligatoire="oui">alors</token>
+															<etat nom="condition" param="si non vide"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est plus grand que nom2 alors tu vas vers -->
+											<groupe nom="test" discriminant="plus" discriminant2="grand">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">si</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">plus</token>
+															<token obligatoire="oui">grand</token>
+															<token obligatoire="oui">que</token>
+															<acteur type="jusquautoken" obligatoire="oui">alors</acteur>
+															<etat nom="condition" param="est plus grand que"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est plus grand et égal à nom2 alors tu vas vers -->
+											<groupe nom="test" discriminant="plus" discriminant2="grand">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">si</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">plus</token>
+															<token obligatoire="oui">grand</token>
+															<token obligatoire="oui">ou</token>
+															<token obligatoire="oui">égal</token>
+															<token obligatoire="oui">à</token>
+															<acteur type="jusquautoken" obligatoire="oui">alors</acteur>
+															<etat nom="condition" param="est plus grand ou égal à"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est plus petit et égal à nom2 alors tu vas vers -->
+											<groupe nom="test" discriminant="plus" discriminant2="petit">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">si</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">plus</token>
+															<token obligatoire="oui">petit</token>
+															<token obligatoire="oui">ou</token>
+															<token obligatoire="oui">égal</token>
+															<token obligatoire="oui">à</token>
+															<acteur type="jusquautoken" obligatoire="oui">alors</acteur>
+															<etat nom="condition" param="est plus petit ou égal à"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est moins grand que nom2 alors tu vas vers -->
+											<groupe nom="test" discriminant="moins" discriminant2="grand">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">si</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">moins</token>
+															<token obligatoire="oui">grand</token>
+															<token obligatoire="oui">que</token>
+															<acteur type="jusquautoken" obligatoire="oui">alors</acteur>
+															<etat nom="condition" param="est moins grand que"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est plus petit que nom2 alors tu vas vers -->
+											<groupe nom="test" discriminant="plus" discriminant2="petit">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">si</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">plus</token>
+															<token obligatoire="oui">petit</token>
+															<token obligatoire="oui">que</token>
+															<acteur type="jusquautoken" obligatoire="oui">alors</acteur>
+															<etat nom="condition" param="est plus petit que"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est moins petit que nom2 alors tu vas vers -->
+											<groupe nom="test" discriminant="moins" discriminant2="petit">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">si</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">moins</token>
+															<token obligatoire="oui">petit</token>
+															<token obligatoire="oui">que</token>
+															<acteur type="jusquautoken" obligatoire="oui">alors</acteur>
+															<etat nom="condition" param="est moins petit que"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est égal à nom2 alors tu vas vers -->
+											<groupe nom="test" discriminant="égal">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">si</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">égal</token>
+															<token obligatoire="oui">à</token>
+															<acteur type="jusquautoken" obligatoire="oui">alors</acteur>
+															<etat nom="condition" param="est égal à"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est différent de nom2 alors tu vas vers -->
+											<groupe nom="test" discriminant="différent">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">si</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">différent</token>
+															<token obligatoire="oui">de</token>
+															<acteur type="jusquautoken" obligatoire="oui">alors</acteur>
+															<etat nom="condition" param="est différent de"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom contient nom2 alors tu vas vers -->
+											<groupe nom="test" discriminant="contient">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">si</token>
+															<acteur type="jusquautoken" obligatoire="oui">contient</acteur>
+															<acteur type="jusquautoken" obligatoire="oui">alors</acteur>
+															<etat nom="condition" param="contient"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est égal à nom2 alors tu vas vers -->
+											<!-- drapeau -->
+											<groupe nom="test" discriminant="est">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">si</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<acteur type="jusquautoken" obligatoire="oui">alors</acteur>
+															<etat nom="condition" param="est égal à"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<groupe nom="test" discriminant="alors">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">si</token>
+															<acteur type="jusquautoken" obligatoire="oui">alors</acteur>
+															<etat nom="condition" param="est égal à vrai"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- ********************* -->
+											<!-- * Condition Sinon   * -->
+											<!-- ********************* -->
+											<!-- test si nom est en collision avec A2 tu vas vers -->
+											<groupe nom="test" discriminant="collision" discriminant2="sinon">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">sinon</token>
+															<token obligatoire="non">,</token>
+															<token obligatoire="oui">si</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">en</token>
+															<token obligatoire="oui">collision</token>
+															<token obligatoire="oui">avec</token>
+															<acteur type="jusquautoken" obligatoire="oui">alors</acteur>
+															<etat nom="sinon" param="collision"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est vide alors tu vas vers -->
+											<groupe nom="test" discriminant="vide" discriminant2="sinon">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">sinon</token>
+															<token obligatoire="non">,</token>
+															<token obligatoire="oui">si</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">vide</token>
+															<token obligatoire="oui">alors</token>
+															<etat nom="sinon" param="si vide"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est non vide alors tu vas vers -->
+											<groupe nom="test" discriminant="vide" discriminant2="sinon">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">sinon</token>
+															<token obligatoire="non">,</token>
+															<token obligatoire="oui">si</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">non</token>
+															<token obligatoire="oui">vide</token>
+															<token obligatoire="oui">alors</token>
+															<etat nom="sinon" param="si non vide"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est plus grand que nom2 alors tu vas vers -->
+											<groupe nom="test" discriminant="grand" discriminant2="sinon">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">sinon</token>
+															<token obligatoire="non">,</token>
+															<token obligatoire="oui">si</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">plus</token>
+															<token obligatoire="oui">grand</token>
+															<token obligatoire="oui">que</token>
+															<acteur type="jusquautoken" obligatoire="oui">alors</acteur>
+															<etat nom="sinon" param="est plus grand que"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est plus grand et égal à nom2 alors tu vas vers -->
+											<groupe nom="test" discriminant="grand" discriminant2="sinon">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">sinon</token>
+															<token obligatoire="non">,</token>
+															<token obligatoire="oui">si</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">plus</token>
+															<token obligatoire="oui">grand</token>
+															<token obligatoire="oui">ou</token>
+															<token obligatoire="oui">égal</token>
+															<token obligatoire="oui">à</token>
+															<acteur type="jusquautoken" obligatoire="oui">alors</acteur>
+															<etat nom="sinon" param="est plus grand ou égal à"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est plus petit et égal à nom2 alors tu vas vers -->
+											<groupe nom="test" discriminant="petit" discriminant2="sinon">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">sinon</token>
+															<token obligatoire="non">,</token>
+															<token obligatoire="oui">si</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">plus</token>
+															<token obligatoire="oui">petit</token>
+															<token obligatoire="oui">ou</token>
+															<token obligatoire="oui">égal</token>
+															<token obligatoire="oui">à</token>
+															<acteur type="jusquautoken" obligatoire="oui">alors</acteur>
+															<etat nom="sinon" param="est plus petit ou égal à"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est moins grand que nom2 alors tu vas vers -->
+											<groupe nom="test" discriminant="grand" discriminant2="sinon">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">sinon</token>
+															<token obligatoire="non">,</token>
+															<token obligatoire="oui">si</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">moins</token>
+															<token obligatoire="oui">grand</token>
+															<token obligatoire="oui">que</token>
+															<acteur type="jusquautoken" obligatoire="oui">alors</acteur>
+															<etat nom="sinon" param="est moins grand que"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est plus petit que nom2 alors tu vas vers -->
+											<groupe nom="test" discriminant="petit" discriminant2="sinon">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">sinon</token>
+															<token obligatoire="non">,</token>
+															<token obligatoire="oui">si</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">plus</token>
+															<token obligatoire="oui">petit</token>
+															<token obligatoire="oui">que</token>
+															<acteur type="jusquautoken" obligatoire="oui">alors</acteur>
+															<etat nom="sinon" param="est plus petit que"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est moins petit que nom2 alors tu vas vers -->
+											<groupe nom="test" discriminant="petit" discriminant2="sinon">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">sinon</token>
+															<token obligatoire="non">,</token>
+															<token obligatoire="oui">si</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">moins</token>
+															<token obligatoire="oui">petit</token>
+															<token obligatoire="oui">que</token>
+															<acteur type="jusquautoken" obligatoire="oui">alors</acteur>
+															<etat nom="sinon" param="est moins petit que"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est égal à nom2 alors tu vas vers -->
+											<groupe nom="test" discriminant="égal" discriminant2="sinon">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">sinon</token>
+															<token obligatoire="non">,</token>
+															<token obligatoire="oui">si</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">égal</token>
+															<token obligatoire="oui">à</token>
+															<acteur type="jusquautoken" obligatoire="oui">alors</acteur>
+															<etat nom="sinon" param="est égal à"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est différent de nom2 alors tu vas vers -->
+											<groupe nom="test" discriminant="différent" discriminant2="sinon">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">sinon</token>
+															<token obligatoire="non">,</token>
+															<token obligatoire="oui">si</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<token obligatoire="oui">différent</token>
+															<token obligatoire="oui">de</token>
+															<acteur type="jusquautoken" obligatoire="oui">alors</acteur>
+															<etat nom="sinon" param="est différent de"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom contient nom2 alors tu vas vers -->
+											<groupe nom="test" discriminant="contient" discriminant2="sinon">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">sinon</token>
+															<token obligatoire="non">,</token>
+															<token obligatoire="oui">si</token>
+															<acteur type="jusquautoken" obligatoire="oui">contient</acteur>
+															<acteur type="jusquautoken" obligatoire="oui">alors</acteur>
+															<etat nom="sinon" param="contient"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom est égal à nom2 alors tu vas vers -->
+											<!-- drapeau -->
+											<groupe nom="test" discriminant="est" discriminant2="sinon">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">sinon</token>
+															<token obligatoire="non">,</token>
+															<token obligatoire="oui">si</token>
+															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
+															<acteur type="jusquautoken" obligatoire="oui">alors</acteur>
+															<etat nom="sinon" param="est égal à"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<groupe nom="test" discriminant="sinon" >
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui">sinon</token>
+															<token obligatoire="non">,</token>
+															<token obligatoire="oui">si</token>
+															<acteur type="jusquautoken" obligatoire="oui">alors</acteur>
+															<etat nom="sinon" param="est égal à vrai"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- sinon, action -->
+											<groupe nom="test" discriminant="sinon">
+												<choix>
+													<p:build>
+														<ligne tab="2">
+															<token obligatoire="oui" annotation="sinon_simple">sinon</token>
+															<token obligatoire="non">,</token>
+															<etat nom="sinon" param="est égal à"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- ***************** -->
+											<!-- * Les verbes    * -->
+											<!-- ***************** -->
+											<!-- Verbe afficher -->
+											<groupe nom="afficher">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<acteur type="jusquautoken" obligatoire="oui">!</acteur>
+														<etat nom="verbe afficher"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<groupe nom="afficher" discriminant="affiche">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">affiches</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe afficher"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">affiche</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe afficher"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<groupe nom="demander" discriminant="demande">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">demandes</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe demander"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">demande</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe demander"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe questionner -->
+											<groupe nom="questionner" discriminant="questionne">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">questionnes</token>
+														<acteur type="jusquautoken" obligatoire="oui">sur</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe questionner"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">questionne</token>
+														<acteur type="jusquautoken" obligatoire="oui">sur</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe questionner"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Tu vides les touches -->
+											<groupe nom="vider les touches" discriminant="vide">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">vides</token>
+														<token obligatoire="non">les</token>
+														<token obligatoire="oui">touches</token>
+														<etat nom="verbe vider les touches"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">vide</token>
+														<token obligatoire="non">les</token>
+														<token obligatoire="oui">touches</token>
+														<etat nom="verbe vider les touches"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe vider -->
+											<groupe nom="vider" discriminant="vide">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">vides</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe vider"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">vide</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe vider"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe mélanger -->
+											<groupe nom="mélanger" discriminant="mélange">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">mélanges</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe mélanger"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">mélange</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe mélanger"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe inverser -->
+											<!-- Depuis 0.3.1 -->
+											<groupe nom="inverser" discriminant="inverse">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">inverses</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe inverser"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">inverse</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe inverser"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe trier -->
+											<groupe nom="trier" discriminant="trie">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">tries</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe trier"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">trie</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe trier"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe aller -->
+											<groupe nom="aller" discriminant="vers">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">vas</token>
+														<token obligatoire="oui">vers</token>
+														<article/>																												
+														<valeur type="resteligne" obligatoire="oui" style="paragraphe"/>
+														<etat nom="verbe aller" souffleur="non" />
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">va</token>
+														<token obligatoire="oui">vers</token>
+														<article/>
+														<valeur type="resteligne" obligatoire="oui" style="paragraphe"/>
+														<etat nom="verbe aller" souffleur="non" />
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe Appeler -->
+											<groupe nom="appeler" discriminant="appelle">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">appelles</token>
+														<article/>																												
+														<choix>
+															<groupe nom="valeur" obligatoire="non">
+																<valeur type="jusquautoken" style="paragraphe">avec</valeur>
+																<choix multiple="oui">
+																	<groupe nom="valeur" obligatoire="non">
+																		<acteur type="jusquautoken">,</acteur>
+																	</groupe>
+																</choix>
+																<acteur type="resteligne" obligatoire="oui"/>
+															</groupe>
+															<valeur type="resteligne" obligatoire="oui" style="paragraphe"/>
+														</choix>
+														<etat nom="verbe appeler" souffleur="non" />
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">appelle</token>
+														<article/>
+														<choix>
+															<groupe nom="valeur" obligatoire="non">
+																<valeur type="jusquautoken" style="paragraphe">avec</valeur>
+																<choix multiple="oui">
+																	<groupe nom="valeur" obligatoire="non">
+																		<acteur type="jusquautoken">,</acteur>
+																	</groupe>
+																</choix>
+																<acteur type="resteligne" obligatoire="oui"/>
+															</groupe>
+															<valeur type="resteligne" obligatoire="oui" style="paragraphe"/>
+														</choix>
+														<etat nom="verbe appeler" souffleur="non" />
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe Observer -->
+											<groupe nom="observer" discriminant="observe">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">observes</token>
+														<article/>																												
+														<valeur type="resteligne" obligatoire="oui" style="paragraphe"/>
+														<etat nom="verbe observer" souffleur="non" />
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">observe</token>
+														<article/>
+														<valeur type="resteligne" obligatoire="oui" style="paragraphe"/>
+														<etat nom="verbe observer" souffleur="non" />
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe Parcourir de -->
+											<groupe nom="parcourir de" discriminant="parcours">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">parcours</token>
+														<article/>
+														<valeur type="jusquautoken" obligatoire="oui">de</valeur>
+														<article/>
+														<choix>
+															<groupe nom="valeur" obligatoire="non">
+																<valeur type="jusquautoken">avec</valeur>
+																<choix multiple="oui">
+																	<groupe nom="valeur" obligatoire="non">
+																		<acteur type="jusquautoken">,</acteur>
+																	</groupe>
+																</choix>
+																<acteur type="resteligne" obligatoire="oui"/>
+															</groupe>
+														<valeur type="resteligne" obligatoire="oui"/>
+														</choix>
+														<etat nom="verbe parcourir de"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">parcours</token>
+														<article/>
+														<valeur type="jusquautoken" obligatoire="oui">de</valeur>
+														<article/>
+														<choix>
+															<groupe nom="valeur" obligatoire="non">
+																<valeur type="jusquautoken">avec</valeur>
+																<choix multiple="oui">
+																	<groupe nom="valeur" obligatoire="non">
+																		<acteur type="jusquautoken">,</acteur>
+																	</groupe>
+																</choix>
+																<acteur type="resteligne" obligatoire="oui"/>
+															</groupe>
+														<valeur type="resteligne" obligatoire="oui"/>
+														</choix>
+														<etat nom="verbe parcourir de"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe Parcourir -->
+											<groupe nom="parcourir" discriminant="parcours">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">parcours</token>
+														<article/>
+														<choix>
+															<groupe nom="valeur" obligatoire="non">
+																<valeur type="jusquautoken" style="paragraphe">avec</valeur>
+																<choix multiple="oui">
+																	<groupe nom="valeur" obligatoire="non">
+																		<acteur type="jusquautoken">,</acteur>
+																	</groupe>
+																</choix>
+																<acteur type="resteligne" obligatoire="oui"/>
+															</groupe>
+															<valeur type="resteligne" obligatoire="oui" style="paragraphe"/>
+														</choix>
+														<etat nom="verbe parcourir"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">parcours</token>
+														<article/>
+														<choix>
+															<groupe nom="valeur" obligatoire="non">
+																<valeur type="jusquautoken" style="paragraphe">avec</valeur>
+																<choix multiple="oui">
+																	<groupe nom="valeur" obligatoire="non">
+																		<acteur type="jusquautoken">,</acteur>
+																	</groupe>
+																</choix>
+																<acteur type="resteligne" obligatoire="oui" />
+															</groupe>
+															<valeur type="resteligne" obligatoire="oui" style="paragraphe"/>
+														</choix>
+														<etat nom="verbe parcourir"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe copier -->
+											<groupe nom="copier" discriminant="copie">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">copies</token>
+														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe copier"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">copie</token>
+														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe copier"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe convertir -->
+											<groupe nom="convertir" discriminant="convertis">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">convertis</token>
+														<acteur type="jusquautoken" obligatoire="oui">en</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe convertir"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">convertis</token>
+														<acteur type="jusquautoken" obligatoire="oui">en</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe convertir"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe concaténer -->
+											<!-- Depuis 0.3.3.2 -->
+											<groupe nom="concaténer" discriminant="concatène">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">concatène</token>
+														<groupe nom="valeur2" obligatoire="oui">
+															<choix multiple="oui">
+																<groupe nom="valeur" obligatoire="non">
+																	<acteur type="jusquautoken">,</acteur>
+																</groupe>
+															</choix>
+															<groupe nom="demo" obligatoire="oui">
+																<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
+																<acteur type="resteligne" obligatoire="oui"/>
+															</groupe>
+														</groupe>
+														<etat nom="verbe concaténer"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">concatènes</token>
+														<groupe nom="valeur2" obligatoire="oui">
+															<choix multiple="oui">
+																<groupe nom="valeur" obligatoire="non">
+																	<acteur type="jusquautoken">,</acteur>
+																</groupe>
+															</choix>
+															<groupe nom="demo" obligatoire="oui">
+																<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
+																<acteur type="resteligne" obligatoire="oui"/>
+															</groupe>
+														</groupe>
+														<etat nom="verbe concaténer"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe chercher -->
+											<!-- Depuis 0.3.1 -->
+											<groupe nom="chercher" discriminant="cherche">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">cherches</token>
+														<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+														<token obligatoire="oui">la</token>
+														<token obligatoire="oui">position</token>
+														<token obligatoire="oui">de</token>
+														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe chercher"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">cherche</token>
+														<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+														<token obligatoire="oui">la</token>
+														<token obligatoire="oui">position</token>
+														<token obligatoire="oui">de</token>
+														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe chercher"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe extraire -->
+											<!-- Depuis 0.3.1 -->
+											<groupe nom="extraire" discriminant="extrais">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">extrais</token>
+														<token obligatoire="oui">de</token>
+														<acteur type="jusquautoken" obligatoire="oui">à</acteur>
+														<token obligatoire="oui">partir</token>
+														<token obligatoire="oui">de</token>
+														<acteur type="jusquautoken" obligatoire="oui">à</acteur>
+														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe extraire"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">extrais</token>
+														<token obligatoire="oui">de</token>
+														<acteur type="jusquautoken" obligatoire="oui">à</acteur>
+														<token obligatoire="oui">partir</token>
+														<token obligatoire="oui">de</token>
+														<acteur type="jusquautoken" obligatoire="oui">à</acteur>
+														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe extraire"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe ajouter tableau -->
+											<!-- Depuis 0.3.1 -->
+											<groupe nom="insérer" discriminant="insère">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">insères</token>
+														<acteur type="jusquautoken" obligatoire="oui">à</acteur>
+														<token obligatoire="oui">partir</token>
+														<token obligatoire="oui">de</token>
+														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe insérer"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">insère</token>
+														<acteur type="jusquautoken" obligatoire="oui">à</acteur>
+														<token obligatoire="oui">partir</token>
+														<token obligatoire="oui">de</token>
+														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe insérer"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe fusionner -->
+											<groupe nom="fusionner" discriminant="fusionne">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">fusionnes</token>
+														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe fusionner"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">fusionne</token>
+														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe fusionner"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe mesurer -->
+											<groupe nom="mesurer" discriminant="mesure">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">mesures</token>
+														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe mesurer"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">mesure</token>
+														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe mesurer"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe ajouter -->
+											<groupe nom="ajouter" discriminant="ajoute">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">ajoutes</token>
+														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe ajouter"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">ajoute</token>
+														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe ajouter"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe soustraire -->
+											<groupe nom="soustraire" discriminant="soustrais">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">soustrais</token>
+														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe soustraire"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">soustrais</token>
+														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe soustraire"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe multiplier -->
+											<groupe nom="multiplier" discriminant="multiplie">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">multiplies</token>
+														<acteur type="jusquautoken" obligatoire="oui">par</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe multiplier"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">multiplie</token>
+														<acteur type="jusquautoken" obligatoire="oui">par</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe multiplier"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe faire -->
+											<groupe nom="faire" discriminant="fais">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">fais</token>
+														<article/>														
+														<token obligatoire="oui">café</token>
+														<etat nom="verbe faire"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">fais</token>
+														<article/>														
+														<token obligatoire="oui">café</token>
+														<etat nom="verbe faire"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe revenir -->
+											<groupe nom="revenir" discriminant="reviens">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">reviens</token>
+														<etat souffleur="non" nom="verbe revenir"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">reviens</token>
+														<etat souffleur="non" nom="verbe revenir"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe attendre milliseconde -->
+											<groupe nom="retourner" discriminant="retourne">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">retournes</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe retourner"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">retourne</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe retourner"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe arrêter-->
+											<!-- Depuis 0.3.1 -->
+											<groupe nom="arrêter" discriminant="termine">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">termines</token>
+														<etat souffleur="non" nom="verbe arrêter"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">termine</token>
+														<etat souffleur="non" nom="verbe arrêter"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe attendre seconde -->
+											<groupe nom="attendre seconde" discriminant="attend">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">attends</token>
+														<groupe obligatoire="oui">
+															<choix>
+																<acteur type="jusquautoken" obligatoire="oui">secondes</acteur>
+																<acteur type="jusquautoken" obligatoire="oui">seconde</acteur>
+															</choix>
+														</groupe>
+														<etat nom="verbe attendre seconde"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">attends</token>
+														<groupe obligatoire="oui">
+															<choix>
+																<acteur type="jusquautoken" obligatoire="oui">secondes</acteur>
+																<acteur type="jusquautoken" obligatoire="oui">seconde</acteur>
+															</choix>
+														</groupe>
+														<etat nom="verbe attendre seconde"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe attendre milliseconde -->
+											<groupe nom="attendre milliseconde" discriminant="attend">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">attends</token>
+														<groupe obligatoire="oui">
+															<choix>
+																<acteur type="jusquautoken" obligatoire="oui">millisecondes</acteur>
+																<acteur type="jusquautoken" obligatoire="oui">milliseconde</acteur>
+															</choix>
+														</groupe>
+														<etat nom="verbe attendre milliseconde"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">attends</token>
+														<groupe obligatoire="oui">
+															<choix>
+																<acteur type="jusquautoken" obligatoire="oui">millisecondes</acteur>
+																<acteur type="jusquautoken" obligatoire="oui">milliseconde</acteur>
+															</choix>
+														</groupe>
+														<etat nom="verbe attendre milliseconde"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe attendre milliseconde -->
+											<groupe nom="stimuler" discriminant="stimule">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">stimules</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe stimuler"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">stimule</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe stimuler"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Explorer-->
+											<groupe nom="explorer" discriminant="explore">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">explores</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe explorer"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">explore</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe explorer"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- ***************** -->
+											<!-- * Mathématiques * -->
+											<!-- ***************** -->
+											<!-- Verbe diviser -->
+											<groupe nom="diviser" discriminant="divise">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">divises</token>
+														<acteur type="jusquautoken" obligatoire="oui">par</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe diviser"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">divise</token>
+														<acteur type="jusquautoken" obligatoire="oui">par</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe diviser"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Début mathématiques simplifiées-->
+											<groupe nom="math ==" discriminant="vaut">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<acteur type="jusquautoken" obligatoire="oui">vaut</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe valoir"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Temporaire, tant que le = est utilisé -->
+											<groupe nom="math ==" discriminant="=">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<acteur type="jusquautoken" obligatoire="oui">=</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe valoir"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Fin mathématiques simplifiées-->
+											<!-- ***************** -->
+											<!-- * Audio         * -->
+											<!-- ***************** -->
+											<!-- Jouer une note-->
+											<groupe nom="jouer son" discriminant="joue">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">joues</token>
+														<token obligatoire="non">le</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe jouer"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">joue</token>
+														<token obligatoire="non">le</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe jouer"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- ***************** -->
+											<!-- * Graphisme   * -->
+											<!-- ***************** -->
+											<!-- Montrer-->
+											<groupe nom="montrer" discriminant="montre">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">montres</token>
+														<article/>														
+														<token obligatoire="oui">toile</token>
+														<etat nom="verbe montrer"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">montre</token>
+														<article/>														
+														<token obligatoire="oui">toile</token>
+														<etat nom="verbe montrer"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Projeter-->
+											<groupe nom="projeter" discriminant="projette">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">projettes</token>
+														<article/>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe projeter"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">projette</token>
+														<article/>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe projeter"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Tu effaces la toile -->
+											<groupe nom="effacer tablette" discriminant="efface">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">effaces</token>
+														<article/>														
+														<token obligatoire="oui">toile</token>
+														<etat nom="verbe effacer la tablette"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">efface</token>
+														<article/>														
+														<token obligatoire="oui">toile</token>
+														<etat nom="verbe effacer la tablette"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Tu effaces le tableau -->
+											<groupe nom="effacer tableau" discriminant="efface">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">effaces</token>
+														<article/>														
+														<token obligatoire="oui">tableau</token>
+														<etat nom="verbe effacer le tableau"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">efface</token>
+														<article/>														
+														<token obligatoire="oui">tableau</token>
+														<etat nom="verbe effacer le tableau"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Effacer-->
+											<groupe nom="effacer" discriminant="efface">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">effaces</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe effacer"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">efface</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe effacer"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Tu déplaces A vers la gauche de 5 -->
+											<groupe nom="deplacer gauche" discriminant="déplace">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">déplaces</token>
+														<acteur type="jusquautoken" obligatoire="oui">vers</acteur>
+														<token obligatoire="oui">la</token>
+														<token obligatoire="oui">gauche</token>
+														<token obligatoire="oui">de</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe déplacer vers gauche"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">déplace</token>
+														<acteur type="jusquautoken" obligatoire="oui">vers</acteur>
+														<token obligatoire="oui">la</token>
+														<token obligatoire="oui">gauche</token>
+														<token obligatoire="oui">de</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe déplacer vers gauche"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Tu déplaces A vers la droite de 5 -->
+											<groupe nom="deplacer droite" discriminant="déplace">
+												<choix>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">déplaces</token>
+														<acteur type="jusquautoken" obligatoire="oui">vers</acteur>
+														<token obligatoire="oui">la</token>
+														<token obligatoire="oui">droite</token>
+														<token obligatoire="oui">de</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe déplacer vers droite"/>
+													</ligne>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">déplace</token>
+														<acteur type="jusquautoken" obligatoire="oui">vers</acteur>
+														<token obligatoire="oui">la</token>
+														<token obligatoire="oui">droite</token>
+														<token obligatoire="oui">de</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe déplacer vers droite"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Tu déplaces A vers le haut de 5 -->
+											<groupe nom="deplacer haut" discriminant="déplace">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">déplaces</token>
+														<acteur type="jusquautoken" obligatoire="oui">vers</acteur>
+														<token obligatoire="oui">le</token>
+														<token obligatoire="oui">haut</token>
+														<token obligatoire="oui">de</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe déplacer vers haut"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">déplace</token>
+														<acteur type="jusquautoken" obligatoire="oui">vers</acteur>
+														<token obligatoire="oui">le</token>
+														<token obligatoire="oui">haut</token>
+														<token obligatoire="oui">de</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe déplacer vers haut"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Tu déplaces A vers le haut de 5 -->
+											<groupe nom="deplacer base" discriminant="déplace">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">déplaces</token>
+														<acteur type="jusquautoken" obligatoire="oui">vers</acteur>
+														<token obligatoire="oui">le</token>
+														<token obligatoire="oui">bas</token>
+														<token obligatoire="oui">de</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe déplacer vers bas"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">déplace</token>
+														<acteur type="jusquautoken" obligatoire="oui">vers</acteur>
+														<token obligatoire="oui">le</token>
+														<token obligatoire="oui">bas</token>
+														<token obligatoire="oui">de</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe déplacer vers bas"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Tu déplaces A vers 50 et 42 -->
+											<groupe nom="deplacer vers" discriminant="déplace">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">déplaces</token>
+														<acteur type="jusquautoken" obligatoire="oui">vers</acteur>
+														<acteur type="jusquautoken" obligatoire="oui">et</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe déplacer vers"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">déplace</token>
+														<acteur type="jusquautoken" obligatoire="oui">vers</acteur>
+														<acteur type="jusquautoken" obligatoire="oui">et</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe déplacer vers"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Tu déplaces A de 5 et -6 -->
+											<groupe nom="deplacer" discriminant="déplace">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">déplaces</token>
+														<acteur type="jusquautoken" obligatoire="oui">de</acteur>
+														<acteur type="jusquautoken" obligatoire="oui">et</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe déplacer de"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">déplace</token>
+														<acteur type="jusquautoken" obligatoire="oui">de</acteur>
+														<acteur type="jusquautoken" obligatoire="oui">et</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe déplacer de"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Tu piques A à 5 et -6 -->
+											<groupe nom="piquer" discriminant="pique">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">piques</token>
+														<acteur type="jusquautoken" obligatoire="oui">à</acteur>
+														<acteur type="jusquautoken" obligatoire="oui">et</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe piquer"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">pique</token>
+														<acteur type="jusquautoken" obligatoire="oui">à</acteur>
+														<acteur type="jusquautoken" obligatoire="oui">et</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe piquer"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Tu temporises -->
+											<groupe nom="temporise" discriminant="temporise">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">temporises</token>
+														<etat nom="verbe temporiser"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">temporise</token>
+														<etat nom="verbe temporiser"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Tu temporises -->
+											<groupe nom="temporise n secondes" discriminant="temporise">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">temporises</token>
+														<acteur type="jusquautoken" obligatoire="oui">secondes</acteur>
+														<etat nom="verbe temporiser"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">temporise</token>
+														<acteur type="jusquautoken" obligatoire="oui">secondes</acteur>
+														<etat nom="verbe temporiser"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Tu photographies la toile -->
+											<groupe nom="photographier" discriminant="photographie">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">photographies</token>
+														<token obligatoire="oui">dans</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe photographier"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">photographie</token>
+														<token obligatoire="oui">dans</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe photographier"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Création d'un acteur texte -->
+											<groupe nom="creation d'un acteur texte" discriminant="cré">
+												<choix>
+													<ligne tab="2" nom="acteur type texte">
+														<!-- creation d'un texte  -->
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">crées</token>
+														<acteur type="jusquautoken">un</acteur>
+														<token obligatoire="oui" annotation="creation">acteur</token>
+														<token obligatoire="oui" annotation="livre">texte</token>
+														<etat nom="creation acteur" param="texte"/>
+													</ligne>
+													<ligne tab="2" nom="acteur type texte">
+														<!-- creation d'un texte  -->
+														<token obligatoire="oui">crée</token>
+														<acteur type="jusquautoken">un</acteur>
+														<token obligatoire="oui" annotation="creation">acteur</token>
+														<token obligatoire="oui" annotation="livre">texte</token>
+														<etat nom="creation acteur" param="texte"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Création d'un acteur nombre -->
+											<groupe nom="creation d'un acteur nombre" discriminant="cré">
+												<choix>
+													<ligne tab="2" nom="acteur type nombre">
+														<!-- creation d'un nombre  -->
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">crées</token>
+														<acteur type="jusquautoken">un</acteur>
+														<token obligatoire="oui" annotation="creation">acteur</token>
+														<token obligatoire="oui" annotation="livre">nombre</token>
+														<etat nom="creation acteur" param="nombre"/>
+													</ligne>
+													<ligne tab="2" nom="acteur type nombre">
+														<!-- creation d'un nombre  -->
+														<token obligatoire="oui">crée</token>
+														<acteur type="jusquautoken">un</acteur>
+														<token obligatoire="oui" annotation="creation">acteur</token>
+														<token obligatoire="oui" annotation="livre">nombre</token>
+														<etat nom="creation acteur" param="nombre"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Création d'un acteur drapeau -->
+											<groupe nom="creation d'un acteur drapeau" discriminant="cré">
+												<choix>
+													<ligne tab="2" nom="acteur type drapeau">
+														<!-- creation d'un nombre  -->
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">crées</token>
+														<acteur type="jusquautoken">un</acteur>
+														<token obligatoire="oui" annotation="creation">acteur</token>
+														<token obligatoire="oui" annotation="livre">drapeau</token>
+														<etat nom="creation acteur" param="nombre"/>
+													</ligne>
+													<ligne tab="2" nom="acteur type drapeau">
+														<!-- creation d'un nombre  -->
+														<token obligatoire="oui">crée</token>
+														<acteur type="jusquautoken">un</acteur>
+														<token obligatoire="oui" annotation="creation">acteur</token>
+														<token obligatoire="oui" annotation="livre">drapeau</token>
+														<etat nom="creation acteur" param="nombre"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Création d'un acteur espèce -->
+											<groupe nom="creation d'un acteur espèce" discriminant="cré">
+												<choix>
+													<ligne tab="2" nom="acteur type espèce">
+														<!-- creation d'un espèce  -->
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui" annotation="livre">crées</token>
+														<acteur type="jusquautoken">un</acteur>
+														<token obligatoire="oui" annotation="creation">acteur</token>
+														<valeur type="resteligne" obligatoire="oui"/>
+														<etat nom="creation espèce" param="instantiation"/>
+													</ligne>
+													<ligne tab="2" nom="acteur type espèce">
+														<!-- creation d'un espèce  -->
+														<token obligatoire="oui" annotation="livre">crée</token>
+														<acteur type="jusquautoken">un</acteur>
+														<token obligatoire="oui" annotation="creation">acteur</token>
+														<valeur type="resteligne" obligatoire="oui"/>
+														<etat nom="creation espèce" param="instantiation"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Création d'un acteur casier de texte -->
+											<groupe nom="creation d'un acteur casier de texte" discriminant="cré">
+												<choix>
+													<ligne tab="2" nom="acteur type casier de texte">
+														<!-- creation d'un casier de texte  -->
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">crées</token>
+														<acteur type="jusquautoken">un</acteur>
+														<token obligatoire="oui" annotation="creation">casier</token>
+														<token obligatoire="oui">de</token>
+														<token obligatoire="oui" annotation="livre">texte</token>
+														<etat nom="creation acteur" param="casier de texte"/>
+													</ligne>
+													<ligne tab="2" nom="acteur type texte">
+														<!-- creation d'un texte  -->
+														<token obligatoire="oui">crée</token>
+														<acteur type="jusquautoken">un</acteur>
+														<token obligatoire="oui" annotation="creation">casier</token>
+														<token obligatoire="oui">de</token>
+														<token obligatoire="oui" annotation="livre">texte</token>
+														<etat nom="creation acteur" param="casier de texte"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Création d'un acteur nombre -->
+											<groupe nom="creation d'un acteur nombre" discriminant="cré">
+												<choix>
+													<ligne tab="2" nom="acteur type nombre">
+														<!-- creation d'un nombre  -->
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">crées</token>
+														<acteur type="jusquautoken">un</acteur>
+														<token obligatoire="oui" annotation="creation">casier</token>
+														<token obligatoire="oui">de</token>
+														<token obligatoire="oui" annotation="livre">nombre</token>
+														<etat nom="creation acteur" param="casier de nombre"/>
+													</ligne>
+													<ligne tab="2" nom="acteur type nombre">
+														<!-- creation d'un nombre  -->
+														<token obligatoire="oui">crée</token>
+														<acteur type="jusquautoken">un</acteur>
+														<token obligatoire="oui" annotation="creation">casier</token>
+														<token obligatoire="oui">de</token>
+														<token obligatoire="oui" annotation="livre">nombre</token>
+														<etat nom="creation acteur" param="casier de nombre"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Création d'un acteur nombre -->
+											<groupe nom="creation d'un acteur nombre" discriminant="cré">
+												<choix>
+													<ligne tab="2" nom="acteur type nombre">
+														<!-- creation d'un nombre  -->
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">crées</token>
+														<acteur type="jusquautoken">un</acteur>
+														<token obligatoire="oui" annotation="creation">casier</token>
+														<token obligatoire="oui">de</token>
+														<token obligatoire="oui" annotation="livre">casier</token>
+														<etat nom="creation acteur" param="casier de casier"/>
+													</ligne>
+													<ligne  tab="2" nom="acteur type nombre">
+														<!-- creation d'un nombre  -->
+														<token obligatoire="oui">crée</token>
+														<acteur type="jusquautoken">un</acteur>
+														<token obligatoire="oui" annotation="creation">casier</token>
+														<token obligatoire="oui">de</token>
+														<token obligatoire="oui" annotation="livre">casier</token>
+														<etat nom="creation acteur" param="casier de casier"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<groupe nom="creation d'un casier espèce" discriminant="cré">
+												<choix>
+													<ligne tab="2" nom="casier type espèce">
+														<!-- creation d'un espèce  -->
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">crées</token>
+														<acteur type="jusquautoken">un</acteur>
+														<token obligatoire="oui" annotation="creation">casier</token>
+														<token obligatoire="oui" annotation="livre">de</token>
+														<valeur type="resteligne" obligatoire="oui"/>
+														<etat nom="creation acteur" param="casier d'espèce"/>
+													</ligne>
+													<ligne tab="2" nom="casier type espèce">
+														<!-- creation d'un espèce  -->
+														<token obligatoire="oui">crée</token>
+														<acteur type="jusquautoken">un</acteur>
+														<token obligatoire="oui" annotation="creation">casier</token>
+														<token obligatoire="oui" annotation="livre">de</token>
+														<valeur type="resteligne" obligatoire="oui"/>
+														<etat nom="creation acteur" param="casier d'espèce"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- sous-paragraphe § -->
+											<groupe nom="§" discriminant="lis" >
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui" style="sousparagraphe" >tu</token>
+														<token obligatoire="oui" style="sousparagraphe" >lis</token>
+														<sousparagraphe etat="ouverture"/>
+														<etat nom="§ début"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui" style="sousparagraphe" >lis</token>
+														<sousparagraphe etat="ouverture"/>
+														<etat nom="§ début"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe Ôter De -->
+											<groupe nom="oter" discriminant="ôte">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">ôtes</token>
+														<acteur type="jusquautoken" obligatoire="oui">de</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe ôter"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">ôte</token>
+														<acteur type="jusquautoken" obligatoire="oui">de</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe ôter"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Depuis 0.5.6 -->
+											<groupe nom="modifier" discriminant="modifie">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">modifies</token>
+														<acteur type="jusquautoken" obligatoire="oui">par</acteur>
+														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
+														<acteur type="jusquautoken" obligatoire="oui">de</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe modifier"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">modifie</token>
+														<acteur type="jusquautoken" obligatoire="oui">par</acteur>
+														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
+														<acteur type="jusquautoken" obligatoire="oui">de</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe modifier"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<groupe nom="rafraîchir" discriminant="rafraîchis">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">rafraîchis</token>
+														<etat nom="verbe rafraîchir"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">rafraîchis</token>
+														<etat nom="verbe rafraîchir"/>
+													</ligne>
+												</choix>
+											</groupe>											
+											<!-- Verbe Avancer De -->
+											<groupe nom="avancer" discriminant="avance">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">avances</token>
+														<acteur type="jusquautoken" obligatoire="oui">de</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe avancer de"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">avance</token>
+														<acteur type="jusquautoken" obligatoire="oui">de</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe avancer de"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe Recule De -->
+											<groupe nom="reculer" discriminant="recule">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">recules</token>
+														<acteur type="jusquautoken" obligatoire="oui">de</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe reculer de"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">recule</token>
+														<acteur type="jusquautoken" obligatoire="oui">de</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe reculer de"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe Tourner gauche -->
+											<groupe nom="tourner gauche" discriminant="tourne">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">tournes</token>
+														<token obligatoire="non">à</token>
+														<token obligatoire="oui">gauche</token>
+														<acteur type="jusquautoken" obligatoire="oui">de</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe tourner à gauche"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tourne</token>
+														<token obligatoire="non">à</token>
+														<token obligatoire="oui">gauche</token>
+														<acteur type="jusquautoken" obligatoire="oui">de</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe tourner à gauche"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe Tourner droite -->
+											<groupe nom="tourner droite" discriminant="tourne">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">tournes</token>
+														<token obligatoire="non">à</token>
+														<token obligatoire="oui">droite</token>
+														<acteur type="jusquautoken" obligatoire="oui">de</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe tourner à droite"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tourne</token>
+														<token obligatoire="non">à</token>
+														<token obligatoire="oui">droite</token>
+														<acteur type="jusquautoken" obligatoire="oui">de</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe tourner à droite"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe Ouvrir Tube -->
+											<groupe nom="ouvrir" discriminant="ouvre">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">ouvres</token>
+														<acteur type="jusquautoken" obligatoire="oui">avec</acteur>
+														<acteur type="jusquautoken" obligatoire="oui">depuis</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="ouvrir tube"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">ouvre</token>
+														<acteur type="jusquautoken" obligatoire="oui">avec</acteur>
+														<acteur type="jusquautoken" obligatoire="oui">depuis</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="ouvrir tube"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<groupe nom="fermer tube" discriminant="ferme">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">fermes</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="fermer tube"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">ferme</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="fermer tube"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<groupe nom="charger tube" discriminant="charge">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">charges</token>
+														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
+														<acteur type="jusquautoken" obligatoire="oui">avec</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="charger tube"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">charge</token>
+														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
+														<acteur type="jusquautoken" obligatoire="oui">avec</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="charger tube"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<groupe nom="charger tube" discriminant="charge">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">charges</token>
+														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="charger tube"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">charge</token>
+														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="charger tube"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<groupe nom="décharger tube" discriminant="décharge">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">décharges</token>
+														<acteur type="jusquautoken" obligatoire="oui">depuis</acteur>
+														<acteur type="jusquautoken" obligatoire="oui">avec</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="décharger tube"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">décharge</token>
+														<acteur type="jusquautoken" obligatoire="oui">depuis</acteur>
+														<acteur type="jusquautoken" obligatoire="oui">avec</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="décharger tube"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<groupe nom="décharger tube" discriminant="décharge">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">décharges</token>
+														<acteur type="jusquautoken" obligatoire="oui">depuis</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="décharger tube"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">décharge</token>
+														<acteur type="jusquautoken" obligatoire="oui">depuis</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="décharger tube"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<groupe nom="configurer tube" discriminant="configure">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">configures</token>
+														<acteur type="jusquautoken" obligatoire="oui">avec</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="configurer tube"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">configure</token>
+														<acteur type="jusquautoken" obligatoire="oui">avec</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="configurer tube"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<groupe nom="§" discriminant="ferme" >
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui" style="sousparagraphe" >tu</token>
+														<token obligatoire="oui" style="sousparagraphe" >fermes</token>
+														<sousparagraphe etat="fermeture"/>
+														<etat nom="§ fin"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui" style="sousparagraphe" >ferme</token>
+														<etat nom="§ fin"/>
+														<sousparagraphe etat="fermeture"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Tu évalues la toile -->
+											<groupe nom="évaluer" discriminant="value">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">évalues</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe évaluer"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">évalue</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe évaluer"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Verbe demander -->
+											<groupe nom="demander">
+												<choix>
+													<ligne tab="2">
+														<acteur type="jusquautoken" obligatoire="oui">?</acteur>
+														<etat nom="verbe demander"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Pause -->
+											<groupe nom="pause" discriminant="débogue">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui" style="système" >tu</token>
+														<token obligatoire="oui" style="système" >débogues</token>
+														<etat nom="pause"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui" style="système" >débogue</token>
+														<etat nom="pause"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Faire réagir -->
+											<groupe nom="Faire réagir" discriminant="réagir">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">fais</token>
+														<token obligatoire="oui">réagir</token>
+														<acteur type="jusquautoken" obligatoire="oui">à</acteur>
+														<acteur type="jusquautoken" obligatoire="oui">pour</acteur>
+														<valeur type="resteligne" obligatoire="oui" style="paragraphe"/>
+														<etat nom="verbe faire réagir"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">Fais</token>
+														<token obligatoire="oui">réagir</token>
+														<acteur type="jusquautoken" obligatoire="oui">à</acteur>
+														<acteur type="jusquautoken" obligatoire="oui">pour</acteur>
+														<valeur type="resteligne" obligatoire="oui" style="paragraphe"/>
+														<etat nom="verbe faire réagir"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Plus Faire réagir -->
+											<groupe nom="Faire réagir" discriminant="réagir">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">ne</token>
+														<token obligatoire="oui">fais</token>
+														<token obligatoire="oui">plus</token>
+														<token obligatoire="oui">réagir</token>
+														<acteur type="jusquautoken" obligatoire="oui">à</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe ne plus faire réagir"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">Ne</token>
+														<token obligatoire="oui">fais</token>
+														<token obligatoire="oui">plus</token>
+														<token obligatoire="oui">réagir</token>
+														<acteur type="jusquautoken" obligatoire="oui">à</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe ne plus faire réagir"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<!-- Peindre -->
+											<groupe nom="Peindre" discriminant="pein">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">peins</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe peindre"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">Peins</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe peindre"/>
+													</ligne>
+												</choix>
+											</groupe>																			
+											<!-- Supprimer un acteur -->
+											<groupe nom="Annihiler" discriminant="annihile">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">annihiles</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe annihiler"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">annihile</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe annihiler"/>
+													</ligne>
+												</choix>
+											</groupe>																			
+											<!-- Attacher une caractèristique -->
+											<groupe nom="Attacher" discriminant="attache">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">attaches</token>
+														<acteur type="jusquautoken" obligatoire="oui">à</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe attacher"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">attache</token>
+														<acteur type="jusquautoken" obligatoire="oui">à</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe attacher"/>
+													</ligne>
+												</choix>
+											</groupe>																			
+											<!-- Attacher une caractèristique -->
+											<groupe nom="Evoquer" discriminant="voque">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">évoques</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe évoquer"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">évoque</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe évoquer"/>
+													</ligne>
+												</choix>
+											</groupe>																			
+											<!-- Incrémenter -->
+											<groupe nom="Incrémenter" discriminant="incrémente">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">incrémentes</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe incrémenter"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">incrémente</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe incrémenter"/>
+													</ligne>
+												</choix>
+											</groupe>																			
+											<!-- Décrémenter -->
+											<groupe nom="Décrémenter" discriminant="décrémente">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">décrémentes</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe décrémenter"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">décrémente</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe décrémenter"/>
+													</ligne>
+												</choix>
+											</groupe>																			
+											<!-- Provoquer -->
+											<groupe nom="Décrémenter" discriminant="prov">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">provoques</token>
+														<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe stopper"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">provoque</token>
+														<acteur type="jusquautoken" obligatoire="oui">,</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe stopper"/>
+													</ligne>
+												</choix>
+											</groupe>																			
+											<!-- Recharger -->
+											<groupe nom="Recharger" discriminant="recharge">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">tu</token>
+														<token obligatoire="oui">recharges</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe recharger"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">recharge</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe recharger"/>
+													</ligne>
+												</choix>
+											</groupe>																			
+											<!-- Tilde -->
+											<groupe nom="tilde" discriminant="~">
+												<choix>
+													 <ligne tab="2" id="node_base">
+														<token obligatoire="oui">~</token>
+														<valeur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe tilde"/>
+													</ligne>
+												</choix>
+											</groupe>																			
+											<!-- Evoquer -->
+											<groupe nom="Evoquer" discriminant="_">
+												<choix>
+													 <ligne tab="2" id="node_base">
+													 	<token obligatoire="oui">_</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe évoquer"/>
+													</ligne>
+												</choix>
+											</groupe>																			
+ 											<!-- Interrompre boucle -->
+											<groupe nom="Interrompre" discriminant="inte">
+												<choix>
+													 <ligne tab="2" id="node_base">
+													 	<token obligatoire="oui">tu</token>
+													 	<token obligatoire="oui">interromps</token>
+													 	<token obligatoire="oui">boucle</token>
+														<etat nom="verbe interrompre"/>
+													</ligne>
+													 <ligne tab="2" id="node_base">
+													 	<token obligatoire="oui">interromps</token>
+													 	<token obligatoire="non">boucle</token>
+														<etat nom="verbe interrompre"/>
+													</ligne>
+												</choix>
+											</groupe>																			
+  										<!-- Fin des verbes -->
+										</choix>
+									</pointderetour>
+								</choix>
+							</groupe>
+						</groupe>
+					</groupe>
+				</groupe>
+		</choix>
+		<fin/>
+	</livre>
+</grammaire>
+

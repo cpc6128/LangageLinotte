@@ -1,0 +1,831 @@
+Historique des versions :
+-------------------------
+
+*01/06/18 - Linotte 2.8
+ -[ ] Evolution : Possiblité de ne plus utiliser le verbe Lire
+ -[ ] Evolution : Casier, ajout fonctions anonymes ( ex : moncasier.taille() )
+ -Evolution  : Ajout de l'exemple TapTempo.liv
+ -Correction : Améliorations anomalies syntaxiques ("x de (liste{1})" devient "x de liste{1}" et aussi "affiche (liste.taille()) > 2" devient "affiche liste.taille() > 2")
+ 
+*20/02/18 - Linotte 2.7.6
+ -Evolution  : Mise à jour de Jetty et Jython
+
+*03/01/18 - Linotte 2.7.5
+ -Correction : bogues autour de la programmation visuelle.
+ 
+*15/11/17 - Linotte 2.7.3
+ -Evolution  : Possibilité de zoomer avec la molette un programme visuel
+
+*10/11/17 - Linotte 2.7.2
+ -Evolution  : Ajout des exemples Horloge.liv et Robot.liv
+ -Correction : Bogue lors de l'utilisation des souffleurs et des conditions
+ -Correction : Bogue lors de l'utilisation des casiers et des fichiers.
+
+*14/11/17 - Linotte 2.7.1
+- Evolution : Amélioration de la programmation visuelle. Ajout du crayon.
+- Evolution : Ajout des fonctions supprimerligne() et retourneselection() sur les tables (modification de l'exemple Demonstration_IHM.liv)
+- Evolution : Ajout d'attributs sur la classe Panneau pour pouvoir gérer les titres et bordures
+- Evolution : Ajout du raccourci CTRL+F pour la fonction Rechercher
+- Evolution : Ajout du menu "Copier le tableau" lors du clic droit sur le tableau
+
+*12/09/16 - Linotte 2.7
+ -Evolution  : Ajout d'une syntaxe simplifiée pour l'addition et la soustraction  : a += 12 (voir l'exemple simplification_syntaxique.liv)
+ -Correction : Début travaux sur la compatibilité avec java 9
+ -Correction : Suppression du greffon 3D et des greffons en langage Ruby.
+
+*01/07/16 - Linotte 2.6.4
+ -Evolution  : Ajout de l'événement "touche" aux boîtes et champs (voir l'exemple boiteatexte.liv) 
+ -Evolution  : Possibilité de créer des espèces avec des caractéristiques casiers
+ -Correction : Affichage inversé suivant le thème lors de l'utilisatation des popups
+ 
+*22/12/15 - Linotte 2.6.3
+ -Correction : correction de divers bogues
+ 
+*05/12/15 - Linotte 2.6.2
+ -Evolution  : Ajout du composant BoiteRiche qui permet de créer du contenu HTML : boitetexteriche.liv
+ -Evolution  : Ajout des méthodes fonctionnelles au rôle TEXTE : méthodes_fonctionnelles_texte.liv
+ -Evolution  : Création des greffons en Linotte : voir l'exemple chronomètre.liv dans le répertoire greffons de l'Atelier, ainsi que l'exemple greffonLinotte.liv.
+ -Correction : Amélioration de l'affichage des erreurs lors de l'utilisation des doublures
+
+*05/11/15 - Linotte 2.6.1
+ -Evolution  : Fenêtre de dialogue, ajout d'une option pour que la touche [Entrée] valide ou pas la saisie
+ -Evolution  : On peut utiliser le verbe Prendre au lieu de Valoir : "valeur prend 3" au lieu de "valeur vaut 3" 
+ -Evolution  : Amélioration de l'affichage du code source d'un livre dans le webonotte
+ -Evolution  : Possibilité d'écrire des greffons en Ruby : Ruby Graphique.liv et Demo Ruby.liv
+ -Correction : Linotte ne plante plus si on ferme la fenêtre de dialogue en passant par l'explorateur. 
+ -Correction : Depuis un explorateur de fichiers, on peut cliquer sur un livre visuel
+
+*07/10/15 - Linotte 2.6
+ -Evolution  : Programmation visuelle : ajout des fonctions et une meilleur gestion du glisser-coller des timbres
+ -Correction : erreur de routage lors d'enchainement de conditions et de sinons.
+ 
+*11/09/15 - Linotte 2.5.1
+ -Correction : On ne peut desactiver un bouton (composant Formulaire)
+ -Correction : Programmation visuelle : correction de bogues
+
+*04/09/15 - Linotte 2.5
+ -Evolution  : Ajout de la programmation visuelle avec les blocs (ou timbres, comme vous voulez !)
+
+*23/07/15 - Linotte 2.4.2
+ -Correction : modifications des icônes dans l'atelier
+
+*17/07/15 - Linotte 2.4.1
+ -Evolution  : Le verbe 'demander' n'affiche plus une pop-up mais interroge l'utilisateur directement dans le tableau
+ -Evolution  : Possibilité d'exporter son livre en HTML
+ -Evolution  : Possibilité d'exporter son livre en RTF (Rich Text Format)
+ -Evolution  : Suppression de l'applet
+ -Evolution  : Ajout d'un sélecteur de langages au lancement de l'atelier
+ -Evolution  : Ajout des icones circles icons http://www.elegantthemes.com/ 
+
+*21/06/15 - Linotte 2.4
+ -Evolution  : Ajout du bouton Documentarium
+ -Evolution  : Ajout du langage de programmation : Lyre (apprendre l'algorithmique en français)
+ -Evolution  : Ajout du langage de programmation : Linnet (apprendre l'algorithmique en anglais)
+ -Evolution  : Ajout du bouton Langage dans l'Atelier permettant de changer de langage de programmation
+ -Evolution  : Ajout d'exemples d'utilisation du conduit dans le répertoire : l_fichiers
+ -Evolution  : Ajout des gestionnaires de placement : voir l'exemple placement_grille.liv
+ -Correction : L'espèce Scribe ne fonctionne plus lors du deuxième lancement
+
+*03/01/15 - Linotte 2.3
+ -Evolution  : Ajout de joker', joker'' et joker''' : voir l'exemple jokers_en_folie.liv
+ -Evolution  : L'utilisation de la virgule n'est plus obligatoire lors des conditions et boucles : si 1<3 affiche "c'est vrai !"
+ -Evolution  : Ajout du greffon Juke-box pour lire des fichiers MP3 : mp3.liv
+ -Evolution  : Multiplication des chaînes : affiche "Je suis fou !" * 4
+ -Evolution  : Possibilité de déplacer la caméra 3D : voir l'exemple cube3d.liv
+ -Evolution  : Doublures en entrée : voir l'exemple doublures_en_entree.liv
+ -Evolution  : Simplications syntaxiques dans la section "les rôles" : simplification_syntaxique.liv	
+ -Evolution  : On peut écrire : "tableau est un casier valant 1,2" : le rôle n'est plus obligatoire, exemple simplification_syntaxique.liv	
+ -Evolution  : Mot clé "début" n'est plus obligatoire s'il n'y a pas de déclaration d'acteur : voir l'exemple calculatrice.liv
+ -Evolution  : Simplification de l'interpolation ${valeur} devient {valeur} : voir l'exemple calculatrice.liv ou simplification_syntaxique.liv	
+ -Evolution  : Passage de paramètres simplifié : voir l'exemple calculatrice.liv
+ -Evolution  : Amélioration du Webonotte : possibilité d'afficher la toile en tant qu'image Web (pythagore.wliv ou http://localhost:7777/b_tutoriels/k_web/pythagore.wliv).
+ -Correction : Amélioration de la précision des calcules mathématiques et affichage des nombres : affiche 3 * 1.0
+
+*12/08/14 - Linotte 2.2.4
+ -Correction : Régression sur l'importation des livres
+
+*10/08/14 - Linotte 2.2.3
+ -Evolution  : Webonotte, on peut lire les exemples ainsi : http://localhost:7777/b_tutoriels/a_debutant/poeme.liv?wbt_html=true
+ -Evolution  : Ajout de la fonction mathématique atan2
+ -Evolution  : Modification du panneau projet, thème flat
+ -Evolution  : Possibilité de changer la taille de la police de l'atelier avec la combinaison contrôle+molette de la souris
+ -Correction : Webonotte ne charge pas correctement les livres, amélioration de la notice
+ -Correction : Affichage tronqué du crayon lors d'un redimensionnement de la toile
+ -Correction : Bogue lié au mot clé "sinon" seul sur une ligne
+
+*07/07/14 - Linotte 2.2.2
+ -Evolution  : Ajout du bouton [Lire au ralenti !] dans l'Atelier
+ -Evolution  : Inspecteur, meilleur affichage des acteurs et des fonctions
+ -Evolution  : Ajout des exemples : 2048.liv, asteroid.liv, asteroid_simple.liv et cassebrique100.liv
+ -Correction (156) :  Impossible d'utiliser le joker avec les casiers lors d'une boucle et l'utilisation du verbe parcourir
+ -Correction : Ajout d'un indicateur dans le sommaire s'il y a un acteur inconnu : mise à jour automatique
+ -Correction : La lecture des livres en mode syntaxe 1X ne fonctionnait plus
+
+*01/06/14 - Linotte 2.2.1
+ -Evolution  : Mise en valeur de la fonction courante dans le sommaire
+ -Evolution  (154) : Ajout d'un indicateur dans le sommaire pour indiquer une erreur syntaxique
+ -Correction (155) : Les favoris ne fonctionnent plus
+ -Correction : correction du verbe rechercher (décalage de position)
+
+*04/04/14 - Linotte 2.2
+ -Evolution  (112) : Mettre en valeur les blocs dans l'atelier
+ -Evolution  : Le verbe proposer n'est plus obligatoire (starwar.liv)
+ -Evolution  (107) : Ajout de l'exemple multitoile.liv
+ -Evolution  (107) : Ajout du multi-toile
+ -Evolution  (153) : Ajout de l'espèce graphique Mozaïque
+ -Evolution  (153) : Ajout de l'exemple : mozaïque.liv
+ -Evolution  (120) : Optimisation de la coloration syntaxique
+ -Evolution  : Création du projet Andronotte (Linotte sur Android)
+ -Evolution  : Suppression de l'espèce Patron
+ -Evolution  : Nouveaux icônes bleus
+ -Correction (138) : Décalage dans la numérotation des lignes
+ -Correction (136) : Supprimer les attributs "x" et "y" de l'espèce Menucaseàcocher. 
+ -Correction (140) : Supprimer les attributs "premier" et "dernier" de l'espèce Mégalithe. 
+ 
+*25/11/13 - Linotte 2.1.5
+ -Evolution  (151) : Possibilité de ne pas mettre le verbe évoquer lors d'appel de fonctions,  il est appelé directement si une phrase ne contient pas de verbe.
+ -Correction (143) : Attribut "orientation" du composant Indicateur non reconnu si on le valorise à "verticale"
+ -Correction (145) : Symbole "..." incorrectement interprété dans certains cas
+ -Correction (150) : Le chargement dynamique des variables ne fonctionnait plus en utilisant la forme <<acteur>>
+ -Correction (149) : Il manque un message d'erreur lorsque l'interprète ne parvient pas à charger une image.	 
+ -Correction (148) : Correction du message : "Vérification syntaxique : la déclaration des acteurs doit être effectuée en début de fonction ou de paragraphe"	 
+
+*31/08/13 - Linotte 2.1.4
+ -Correction (142) : Composant Sélecteur, la méthode fonctionnelle chargervaleurs ne fonctionne pas avec un casier de nombres
+ -Correction (135) : Ajout de la méthode fonctionnelle "sélectionner" au composant Sélecteur
+ -Correction (132) : Dans certains cas, la coloration syntaxique ne fonctionne pas
+ -Correction (128) : Bogue avec les méthodes fonctionnelles et prototypes
+ -Correction (126) : Double traitement lors d'un clic sur le composant Liste
+ -Correction (127) : Problème d'initialisation de la valeur par défaut d'un composant Liste
+ -Correction (118) : "affiche calcul(a) = 12" n'est pas interprétée correctement
+
+*26/07/13 - Linotte 2.1.3
+ -Correction (116) : Message d'erreur atelier lors annulation de l'action enregistrer sous
+ -Correction (115) : Bogue cumul conditions et/ou
+ -Correction (117) : Changement lors de l'affichage des attributs
+ -Correction (114) : Les méthodes fonctionnelles ne fonctionnent pas lorsqu'on les déclare avec une majuscule dans le bloc Espèces
+
+*09/07/13 - Linotte 2.1.2
+ -Correction : Bogue lié au clonage des espèces : echiquier.liv ne fonctionnait plus
+
+*03/07/13 - Linotte 2.1.1
+ -Evolution : Il est possible d'écrire comme condition : "A = B" au lieu "A == B"
+ -Evolution (98): Ajout de la commande tilde : ~angle radian ou ~angle degré 
+ -Evolution : Ajout de l'exemple pedagogiques/fonction_bessel.liv 	
+ -Evolution : Ajout de l'exemple pedagogiques/fleur.liv
+ -Evolution : Possibilité de désactiver un composant IHM en utilisant la fonction composant.désactiver(vrai)
+ -Evolution (83) : Possibilité de changer l'icône de certains composants IHM
+ -Evolution (84) : Ajout du composant IHM MenuCaseàCocher
+ -Evolution (81) : Possibilité d'ajouter un sous-menu à un menu
+ -Evolution (79) : Ajout du verbe interrompre boucle et de l'exemple : interrompre.liv
+ -Evolution (78) : Ajout de l'historique des derniers livres utilisés dans l'Atelier
+ -Evolution : On peut écrire "pour 10, affiche joker" au lieu de "pour chaque 10, affiche joker"
+ -Evolution (72) : Autoriser le retour chariot après la virgule, l'esperluette et quelques autres symboles 
+ -Evolution (88) : Linotte fonctionne sur raspberry et java 8
+ -Evolution (91) : Possibilité d'additionner deux casiers ainsi : c3 vaut c1 + c2 ou même c3 vaut c1 + 2
+ -Correction (87): On peut ne peut pas mettre de répertoire dans le chemin d'accès au bibliothèque
+ -Correction (86): Le message "La syntaxe de la doublure est incorrecte" s'affiche de temps en temps
+ -Correction (82): Problème de rafraichissent de la toile
+ -Correction (77): Afficher un grand nombre 
+ -Correction (76): Bogue dans l’instanciation des prototypes 
+ -Correction (74): a vaut 3(5) ne produit pas d'erreur 
+ -Correction (73): java.lang.NullPointerException = #(y@b)=y+(2+h(2))*l 
+ -Correction (75): Le verbe annihiler ne fonctionne plus avec les espèces graphiques : fuite mémoire 
+
+*18/04/13 - Linotte 2.1
+ -Evolution : Affichage du numéro de la ligne qui a produit l'erreur dans l'Atelier
+ -Evolution : La fonction clonage peut s'écrire clone(acteur) : affiche clone(a) au lieu de : affiche #a
+ -Evolution : Ajout de l'exemple : j_expert/echiquier.liv  
+ -Evolution : Ajout du mot clé "greffons" au début d'un livre pour indiquer la dépendance aux greffons (SQL.liv)
+ -Evolution : Ajout du verbe recharger
+ -Evolution : Ajout d'une base de données intégrée (HSQLDB) et de l'exemple /exemples/tutoriels/d_greffons/SQL.liv et SQL_DAO.liv 	
+ -Evolution : Ajout de la possibilité de mettre une texture sur les espèces graphiques suivantes : cercle, chemin, crayon, ligne, mégalithe, point, polygone, rectangle
+ -Evolution : Controle + Page Bas, affiche le cahier précédent 
+ -Evolution : Controle + Page Haut, affiche le cahier suivant 
+ -Evolution : Controle + M, permet d'agrandir ou réduire le cahier
+ -Evolution : Ajout du composant graphique sousformulaire
+ -Evolution : Ajout de l'acteur particulier "|" pour effectuer un retour à la ligne : affiche "Sur une ligne." + | + "Sur une autre ligne."
+ -Evolution : Ajout de la méthode "clignoter" au formulaire
+ -Evolution : Ajout du greffon Horodatage (exemple horodatage.liv)
+ -Evolution : Définition des prototypes syntaxiquement (exemple starwar.liv)
+ -Evolution : Complétion des espèces et affichage de méthodes fonctionnelles dans l'Atelier
+ -Evolution : Vérification et contrôle des acteurs par l'Atelier
+ -Correction : diff (!=) et égal(==) fonctionnent avec deux espèces
+ -Correction : Problème du double affichage du programme dans la barre des tâches.
+ -Correction : Meilleur gestion de la mémoire
+
+*02/02/13 - Linotte 2.0.4
+ -Correction : Une variable locale reste locale à son contexte
+ -Correction : "pour chaque {}, affiche joker" fonctionne correctement
+ -Evolution : Amélioration de la complétion
+ 
+*08/01/13 - Linotte 2.0.3
+ -Correction : Bogue lors de l'utilisation de l'inférence et les espèces: affiche "${heure}" + "."
+ -Correction : Le verbe Temporiser ne marche pas avec une valeur inférieur à une seconde
+ -Correction : Il est possible d'arrêter des appels récursifs (correction temporaire)
+
+*03/01/13 - Linotte 2.0.2
+ -Correction : Problème de clignotement de la toile avec la Pipette
+ -Correction : Bogue lors de l'utilisation de l'inférence : affiche "${heure}" + "."
+ -Correction : Le verbe Temporiser semble ne pas marcher dans certains cas
+ -Correction : Exemple Fibonacci ne fonctione pas correctement avec un nombre n très grand 
+ -Correction : Possibilité d'avoir des infobulles sur la boitetexte
+ -Evolution : Ajout de l'évènement contrôle-entrée sur la boitetexte
+
+*25/11/12 - Linotte 2.0.1
+ -Correction : Les greffons peuvent retourner des espèces
+
+*14/11/12 - Linotte 2.0
+ -Evolution : Ajout de la commande tilde ~trace 1 ou ~trace 0 pour activer ou désactiver les traces
+ -Evolution : Ajout du verbe provoquer : provoque une erreur
+ -Evolution : Syntaxe 2.0 : ajout du verbe nommer permettant de donner un nom au livre courant
+ -Evolution : Ajout du verbe montrer : "montre toile", affiche la toile et recherche le focus
+ -Evolution : Ajout du composant graphique scrolleur : exemple scrolleur.liv
+ -Evolution : Ajout de la boite à espèces
+ -Evolution : Ajout des propriétés rx et ry à la toile : ajout de l'exemple bureau.liv
+ -Evolution : Meilleurs affichage des greffons Java dans le menu Prototype
+ -Evolution : Ajout du composant graphique barre : exemple barre.liv
+ -Evolution : Nouveaux formats des commentaires
+ -Evolution : Casiers anonymes
+ -Evolution : Possibilité de mettre une image sur le fond d'un formulaire (exemple BasicTime.liv)
+ -Evolution : Ajout des fonctions chargecasiernombres et chargecasiertextes au Conduit
+ -Evolution : Possibilité d'être compatible avec la syntaxe 1.X avec l'option Outils/Options/Compatibilité Linotte 1X activée
+ -Evolution : Ajout du manageur de style (le couteau Suisse de l'Atelier ...)
+ -Evolution : Ajout de la fonctionnalité "Navigation dans le livre"
+ -Evolution : Possibilité d'exporter son livre en image au format PNG
+ -Evolution : Ajout de l'option -1 en ligne de commande pour forcer l'utilisation de la syntaxe 1.X
+ -Evolution : Nouvelle syntaxe 2.0
+ -Correction : La fermeture d'un formulaire appelle qu'une fois l'évènement "clic souris".
+ -Correction : Amélioration de l'import de livre
+
+*15/06/12 - Linotte 1.7.1
+ -Correction : meilleur affichage des erreurs Python
+
+*02/06/12 - Linotte 1.7
+ -Evolution : Ajout du manageur de greffons
+ -Evolution : Ajout des tests de livre automatisés : modification de l'exemple b_confirme/fibonacci.liv
+ -Evolution (29): ajout de l'exemple /exemples/tutoriels/h_interfaces_utilisateur/Demonstration_IHM.liv
+ -Evolution (29): Amélioration des composants : boiteTexte, bouton, champ, formulaire, label, liste, sélecteur, slider, sousmenu
+ -Evolution (29): Ajout des composants : onglet, xtableau,boutonRadio, CaseàCocher, RadioBouton, GroupeRadioBouton, xImage, Panneau, Popup, Table
+ -Evolution (59): Ajout du composant xtoile et ajout de l'exemple xtoile.liv
+ -Evolution (24): Ajout des favoris dans l'Atelier
+ -Evolution (54): Le conduit peut maintenant afficher le chemin du fichier ouvert, lire un fichier ligne par ligne
+ -Evolution (49): Ajout de l'exemple collision_drag_and_drop_avec_annulation.liv
+ -Evolution (61): Drag n Drop : ajout de l'événement "début glisser-déposer"
+ -Evolution (34): On peut écrire pa vaut -b 
+ -Evolution (56,33) : Syntaxe, on peut maintenant écrire : si (a==1) et (b==2) et (c==2) et si <<txt>>{pb}=="0" alors lis
+ -Evolution (65): Possibilité d'écrire des greffons en Python : PyAbaque.liv et Pythone Graphique.liv
+ -Evolution (65): Possibilité d'écrire des greffons en Ruby : Ruby Graphique.liv et Demo Ruby.liv
+ -Correction (69): Problème de case avec les noms de paragraphes et fonctions
+ -Correction (54): getAttribute dans un greffo fonctionne
+ -Correction (37): Erreur de l'Atelier dès que l'on ferme la fenetre du verbe Demander
+ -Correction (36,58,64): Les exemples suivants ne fonctionnaient plus : polygone.liv, ppl.liv, syracuse récursif.liv
+ -Correction (60): Ne plus faire réagir fonctionne avec les greffons Composant 
+ -Correction (62): Erreur possible avec le verbe questionner si le type est incorrecte
+ -Correction (50): une méthode fonctionnelle sans le verbe "retourner" arrête le livre
+ -Correction (35): Appelle <<note>>, si le paragraphe appelé n’existe pas, l’on obtient le message "Doo... "
+ -Correction (71): Le retour suite à l'utilisation de l'import d'un livre fonctionne (bibliotheque.liv)
+
+*23/01/12 - Linotte 1.6
+ -Evolution : Ajout de l'opérateur ternaire (voir l'exemple operateur ternaire.liv) : Affiche ter (note<10,"refusé", "admis")
+ -Evolution : Ajout des expressions lambda (voir les exemples lambda.liv et fibonacci_lambda.liv)
+ -Evolution : Nouvelle interface Alizé de l'Atelier avec l'Espace de Travail
+
+*03/01/12 - Linotte 1.5
+ -Evolution : Ajout de l'inférence de types pour les nombres et textes : a <- "valeur" équivaut a :: texte <- "valeur"
+ -Evolution : Ajout de l'interpolation des acteurs : si l'acteur 'nom' vaut "Bill", l'exécution de 'Affiche "Je suis ${nom}"' affiche : "Je suis Bill"
+ -Evolution : Ajout des exemples 3D : clone3d.liv, cube3d.liv, tasseDeThe3d.liv
+ -Evolution : Ajout des objets graphiques 3D : monde3D, Boite3D, Cone3D, Cube3D, Lumiere3D, Sphere3D, Texte3D, Chargeur3D
+ -Evolution : le composant Bouton peut être associé à une touche (exemple piano.liv)
+ -Evolution : Les greffons peuvent retourner des casiers de textes.
+ -Evolution : Ajout de l'exemple piano.liv 
+ -Evolution : ajout de l'exemple impression_toile.liv
+ -Evolution : Ajout du gestionnaire de greffons
+ -Correction : Meilleur affichage des messages d'erreurs syntaxiques
+ -Correction : Amélioration de la précision de l'affichage des objets graphiques (merci Zamirh)
+ -Correction : Mis à jour du lien vers le nouveau forum
+ -Correction : on peut écrire a::texte ou a :: texte
+ -Correction : impossible d'arrêter un livre avec un boucle : tant que vrai , temporise
+ -Correction : on peut écrire des casiers de casiers
+ -Correction : la lecture et écriture des acteurs en fichier est en UTF8
+ 
+*12/09/11 - Linotte 1.4
+ -Evolution : Amélioration de l'écriture des greffons
+ -Evolution : La toile peut être transparente (avec le greffon Tweak)
+ -Evolution : Ajout du lanceur.exe et lanceur.conf
+ -Evolution : Le verbe Appeler peut appeler un paragraphe dynamiquement (cf ParagrapheDynamique.liv)
+ -Evolution : Ajout du greffon PressePapier presse-papier.liv
+ -Evolution : Possibilité d'utiliser le point-virgule pour mettre plusieurs commandes sur une ligne.
+ -Evolution : Ajout de l'exemple Astronotte.liv (+ un lien sous Windows dans le menu démarrer)
+ -Evolution : Amélioration du moteur pour mieux supporter la charge
+ -Evolution : Affiche de la toile passe de 25ms à 15ms
+ -Evolution : Ajout de l'exemple SleepSort.liv
+ -Correction : Compatibilité avec le jdk 1.7 et suppression de la fonctionnalité d'accès au base de données (à réécrire sous la forme d'un greffon)
+ -Correction : Le bouton Stop n'est plus bloqué par le verbe Attendre
+ -Correction : Execution des évènements de sortie dès que l'on quitte la toile
+ -Correction : Bogue de l'utilisation du joker avec le verbe appeler dans une boucle 
+ -Correction : jinotte.jar ne peut modifier le fichier de paramètres
+ -Correction : jinotte.jar plus léger
+ -Correction : Verbe "appeler" en fin de livre : http://langagelinotte.free.fr/punbb/viewtopic.php?id=450
+ -Correction : Ajout du thème Linotty (merci momo112)
+ -Correction : Bogue remonté par momo112 : http://langagelinotte.free.fr/punbb/viewtopic.php?id=442
+
+*02/05/11 - Linotte 1.3
+ -Evolution : Ajout de l'exemple asciinotte.liv
+ -Evolution : Ajout de l'exemple presse-papier.liv
+ -Evolution : Ajout du greffon PressePapier.
+ -Evolution : Ajout de la fonction ASCII et CHR
+ -Evolution : Ajout de la fonction mathématique hasard : affiche hasard (10)
+ -Evolution : Possibilité de modifier la précision arithmétique (~précision 10)
+ -Evolution : ajout de l'exemple precision_arithmetique.liv
+ -Evolution : "<acteur> est un <rôle>" peut être remplacé par "<acteur> :: <rôle>"
+ -Evolution : ajout de la recherche dans l'Atelier
+ -Evolution : Il faut utiliser les doubles-chevons pour charger dynamiquement les acteurs : <<nom_acteur>> ou lien de <nom_acteur>
+ -Evolution : affichage des numéros de ligne dans l'Atelier
+ -Evolution : ajout de la notion de synonymes, elle permet de personnaliser le langage (cf l'exemple synonymes.liv)
+ -Evolution : ajout des opérations mathématiques : !=, ==, <=, >=, <, >, on peut écrire : si a<=b alors "ok"
+ -Evolution : ajout de l'option "Bonifier le cahier"
+ -Evolution : ajout du l'exemple liNotPad.liv (exemple pour utiliser les méthodes fonctionnelles avec le Conduit)
+ -Evolution : ajout du greffon Conduit (exemple pour utiliser les méthodes fonctionnelles avec les greffons)
+ -Evolution : ajout de l'exemple majordome.liv (exemple pour utiliser les méthodes fonctionnelles avec les greffons)
+ -Evolution : ajout du greffon Majordome (exemple pour utiliser les méthodes fonctionnelles avec les greffons)
+ -Evolution : ajout de l'événement "clic droit souris"
+ -Evolution : Ajout du bouton "activer le bouton de trace" dans l'onglet Audit
+ -Evolution : Ajout du thème d'icônes Extra-Elementary (merci momo12)
+ -Evolution : Ajout du composant BoutonMenu (voir le livre menu.liv)
+ -Evolution : Ajout de l'exemple : starwar.liv
+ -Evolution : Ajout de l'exemple : chronometre.liv
+ -Evolution : Ajout du verbe attacher
+ -Evolution : Ajout du verbe évoquer
+ -Evolution : Ajout du verbe décrémenter
+ -Evolution : Ajout du verbe incrémenter
+ -Evolution : Optimisation d'environ 30% du moteur d'exécution
+ -Evolution : Ajout des acteurs locaux à sous-paragraphe
+ -Evolution : Ajout de l'exemple acteur_local_sous_paragraphe.liv
+ -Correction : Correction du verbe Insérer
+
+
+*22/11/10 - Linotte 1.2.4
+ -Evolution : Ajout de l'espèce Praxinoscope
+ -Evolution : Ajout de l'exemple praxinoscope.liv
+ -Evolution : Ajout du verbe piquer avec le crayon
+ -Evolution : Ajout de l'exemple mandelbrot.liv
+ -Evolution : Ajout du didacticiel
+ -Evolution : Ajout de l'onglet Audit
+ -Evolution : Ecran d'accueil de momo12
+ -Evolution : Nouvelle version de Suissbox.liv
+ -Evolution : Ajout du Télétype
+ -Evolution : Ajout de sauvegarde des acteurs dans un cookie avec l'applet
+ -Correction : Amélioration de la gestion du clique sur la Toile (merci Zamirh)
+
+*24/08/10 - Linotte 1.2.3
+ -Correction : Erreur lors de l'arrêt d'un livre (merci momo12, nicolas42)
+
+*23/08/10 - Linotte 1.2.2
+ -Evolution : Ajout d'un connecteur SQL (exemple sql.liv)
+ -Evolution : Ajout de la complétion dans le cahier (Contrôle + Espace)
+ -Evolution : Ajout du Webonotte (serveur HTTP)
+ -Correction : Correction du curseur "fou" dans le composant Boite à texte (merci momo12)
+ 
+*17/07/10 - Linotte 1.2.1
+ -Evolution : Nouveau moteur Alizé V1
+ -Evolution : Amélioration du débogage (verbe déboguer)
+ -Evolution : Ajout du menu "exporter au format PDF"
+ -Evolution : Ajout de l'exemple vagues.liv
+ -Evolution : Ajout de l'exemple Noteradio.liv
+ -Evolution : Ajout de l'exemple decomposition_facteurs_premiers.liv
+ -Evolution : Ajout de l'exemple horloge_digitale_douce.liv
+ -Evolution : Ajout de l'exemple horloge_digitale.liv
+ -Evolution : Ajout de l'exemple syracuse_recursif.liv
+ -Evolution : Ajout de l'exemple syracuse.liv
+ -Evolution : Ajout de l'exemple labyrinthe.liv
+ -Evolution : Ajout de l'exemple cercle.liv
+ -Evolution : Ajout de l'exemple TeaTime.liv
+ -Evolution : Ajout de l'exemple BasicTimer.liv
+ -Evolution : Ajout de l'exemple moyenne.liv
+ -Evolution : Ajout de l'exemple (Paint pour Linotte) ppl.liv
+ -Evolution : Ajout des boutons Undo, Redo, Copier, Coller dans la popup du cahier
+ -Correction : On peut cacher un formulaire (visible à non)
+ -Correction : Focus activé pour valider dés que l'on demande un nombre
+ -Correction : Bogue utilisation d'un fichier avec un nombre (remonté par momo12)
+
+*20/04/10 - Linotte 1.2
+ -Evolution : Ajout du bouton pour publier en ligne son livre
+ -Evolution : Ajout des fonctions : sup, inf, égal, diff (voir l'exemple conditions_drapeaux.liv)
+ -Evolution : Ajout des thèmes dans l'Atelier : Tango et Crystal
+ -Evolution : Ajout du rôle drapeau (ajout de l'exemple drapeaux.liv)
+ -Evolution : Ajout de l'exemple unicode.liv
+ -Evolution : Ajout de la fonction µ : convertis un code unicode en hexa en caractère affichable
+
+*25/03/10 - Linotte 1.1
+ -Evolution : Ajout de l'option pour formater le code
+ -Evolution : Ajout du jeu Cave
+ -Evolution : Ajout de la syntaxe simplifiée des espèces: 'x de toile' devient 'x@toile'
+ -Evolution : L'opération de clonage supporte les parenthèses
+ -Evolution : Il est possible de mémoriser les livres ouverts dans l'Atelier
+ -Correction : Pas de message d'erreur si le paragraphe n'existe pas avec le verbe 'Parcourir avec'
+ -Correction : Meilleur affichage des formules mathématiques dans l'Atelier
+
+*18/02/10 - Linotte 1.0
+ -Evolution : Ajout de la fonction mathématique 'exp'. 
+ -Evolution : Nouvelle syntaxe pour définir un paragraphe. 
+ -Evolution : Nouvelle syntaxe pour définir un livre. 
+ -Evolution : Ajout de l'exemple 'suissbox.liv'. 
+ -Evolution : Ajout des onglets dans l'Atelier. 
+ -Correction : Optimisation si pas d'évènement. 
+
+*01/11/09 - Linotte 0.7.4
+ -Evolution : Ajout de l'exemple carte.liv 
+ -Evolution : Ajout de l'exemple indicateur.liv 
+ -Evolution : Ajout du composant Swing 'indicateur'
+ -Evolution : La fermeture de la fenêtre de dialogue (verbes demander et afficher) arrête le livre
+ -Correction : Les caractéristiques s'affichent dans l'ordre logique dans l'inspecteur 
+
+*05/10/09 - Linotte 0.7.3
+ -Evolution : Ajout du sous-menu Boucle dans le verbier 
+ -Evolution : Ajout de l'exemple liste.liv 
+ -Evolution : Ajout du composant Swing 'liste'
+ -Evolution : Ajout de l'opération mathématique 'entier' 
+ -Evolution : Ajout de l'opération mathématique 'décimal' 
+ -Evolution : Modification du comportemant de l'opération mathématique 'arrondi' 
+ -Evolution : Ajout de l'exemple selecteur.liv 
+ -Evolution : Ajout de l'exemple decorateur.liv 
+ -Evolution : Modification du verbe explorer , ajout de coloriser
+ -Evolution : Ajout de l'exemple boucle_FOR.liv 
+ -Evolution : Ajout de la boucle FOR : "pour N de 1 à 3, affiche N" 
+ -Evolution : Ajout de la boucle FOR avec le pas : "pour N de 1 à 3 suivant n + 1, affiche N" 
+ -Evolution : Ajout des conditions : "plus grand que ou égal" et "moins grand que ou égal"  
+ -Evolution : Ajout du composant Swing 'sélecteur'
+ -Correction : Bogue d'affichage des composants Swing 
+ -Correction : la condition était inversée : "moins grand que"  
+
+*01/10/09 - Linotte 0.7.2
+ -Evolution : Ajout de l'exemple slider.liv 
+ -Evolution : Ajout du composant Swing 'slider' 
+ -Evolution : Ajout de l'exemple menu.liv 
+ -Evolution : Ajout du composant Swing 'menu' 
+ -Evolution : Ajout du composant Swing 'sousmenu' 
+ -Evolution : Ajout de l'exemple boiteatexte.liv 
+ -Evolution : Ajout du composant Swing 'boite' 
+ -Evolution : Ajout de l'exemple tournicoti.liv 
+ -Evolution : Ajout de l'exemple test_qi.liv 
+ -Evolution : Ajout de l'exemple peintre.liv 
+ -Evolution : Ajout du composant Swing 'champ' 
+ -Evolution : Ajout du composant Swing 'bouton' 
+ -Evolution : Ajout du composant Swing 'étiquette' 
+ -Evolution : Ajout du composant Swing 'formulaire' 
+ -Evolution : Ajout des plugins 'composants' 
+ -Evolution : Drag'n'drop d'un livre vers l'Atelier mais seulement pour Windows :(
+
+*10/09/09 - Linotte 0.7.1
+ -Evolution : Ajout de l'exemple idil.liv et du fichier idil : scène1.xml
+ -Evolution : Ajout du verbe 'Peindre' (un format IDIL : Injection, Déclaration d'Interface Linotte)
+ -Evolution : Ajout du verbe 'Ne pas faire réagir'
+
+*01/09/09 - Linotte 0.7
+ -Evolution : Gestion des erreurs, ajout du verbe Essayer
+ -Evolution : Lecture des fichiers MP3. 
+ -Evolution : Compatible avec le java 6 minimum
+ -Evolution : Ajout des exemples : fibonacci_recursif_fonction.liv et fonction_mathematiques.liv
+ -Evolution : Ajout de la notion de fonction mathématiques
+ -Evolution : Ajout de la fenêtre remerciement
+ -Correction : Amélioration de la gestion des évènements.
+
+*15/07/09 - Linotte 0.6.7
+ -Evolution : Ajout du livre collision_drag_and_drop.liv
+ -Evolution : Ajout du livre evenements.liv
+ -Evolution : Ajout de l'événement 'glisser-déposer'
+ -Evolution : Ajout de l'événement 'double clic souris'
+ -Evolution : Ajout de l'événement 'clic souris'
+ -Evolution : Ajout de l'événement 'souris sortante'
+ -Evolution : Ajout de l'événement 'souris entrante'
+ -Evolution : Ajout du verbe Faire réagir
+ -Correction : Linotte attend le chargement des images : http://code.google.com/p/langagelinotte/issues/detail?id=11
+ -Correction : Erreur si le son est occupé sous Linux : http://code.google.com/p/langagelinotte/issues/detail?id=13
+ -Correction : Erreur de clonage des tableaux : http://code.google.com/p/langagelinotte/issues/detail?id=12
+
+*01/07/09 - Linotte 0.6.5
+ -Evolution : Ajout du tube 'pont' (connexion TCP/IP entre deux programmes Linotte) : pont_client.liv et pont_serveur.liv
+ -Evolution : Ajout de l'exemple megalithe.liv
+ -Evolution : Ajout de l'espèce 'mégalithe'
+ -Evolution : Ajout de l'espèce graphique chemin
+ -Evolution : Ajout du verbe 'déboguer'
+ -Evolution : Ajout de l'exemple : jeudelavie.liv (merci $imon)
+ -Evolution : Ajout du produits cartésiens de acteurs : affiche "Bonjour" & "Au revoir !"
+ -Evolution : Linotte fonctionne en UTF-8
+ -Correction : divers bogues 
+
+*20/04/09 - Linotte 0.6.4
+ -Evolution : Ajout des opérations binaires : rotation à droite et rotation à gauche (rd et rg)
+ -Evolution : Ajout de tangente, arc tangete, arc cosine, arc sinus (merci $imon)
+ -Correction : cos, sin, tan fonctionnent en degré. 
+
+*11/04/09 - Linotte 0.6.3
+ -Optimisation
+ -Evolution : Ajout du lien vers les greffons
+ -Correction : Correction des bogues du Linotthon 0.6.3
+ -Evolution : Ajout de l'espèce graphique polygone (ajout de l'exemple polygone.liv)
+ -Evolution : Dans la section Rôles, l'affectation d'une valeur peut être en fonction d'autres acteurs. (cf cassebrique.liv)
+ -Evolution : Ajout du pointeur invisible
+ -Evolution : Ajout de l'exemple : cassebrique.liv
+ -Evolution : Le verbe 'avancer de' fonctionne avec toutes les espèces qui ont la caractéristique 'angle' 
+ -Evolution : Le verbe 'reculer de' fonctionne avec toutes les espèces qui ont la caractéristique 'angle' 
+ -Evolution : Retour de l'applet...
+ 
+*11/03/09 - Linotte 0.6.2
+ -Evolution : Le verbe Appeler peut prendre des doublures ( évolution de $imon) cf course.liv
+ -Evolution : Le verbe Appeler peut appeler plusieurs fois le même paragraphe ( évolution de $imon)
+ -Correction : Linotte fonctionne sur Mac OS X  : compatibilité JAVA 1.5  
+ -Correction : Erreurs dans les mini-formules remontées par Pat : http://langagelinotte.free.fr/punbb/viewtopic.php?pid=954  
+ -Evolution : Ajout du tube : pile (tube_pile.liv)
+ -Evolution : Ajout du tube : répertoire (tube_repertoire.liv)
+ -Correction : Fautes d'orthographe remontées par $imon  
+ -Optimisation (environ 50%)
+
+*23/02/09 - Linotte 0.6.1
+ -Evolution : Ajout de l'exemple : course.liv
+ -Evolution : Ajout des opérations logiques : et, ou, xou, non
+ -Correction : Fautes d'orthographe remontées par Dod et $imon
+ -Correction : Le coin haut-gauche de la toile correspond (enfin) à la position 0,0
+ -Evolution : Ajout de l'exemple : magie.liv
+ -Evolution : Ajout de l'exemple : tableau_couleurs.liv
+ -Evolution : On peut définir manuellement une couleur : couleur vaut "230 126 48"  au lieu de couleur vaut "abricot"
+ -Evolution : Les commentaires Linotte utilisent le format : ("Voici mon commentaire") 
+ -Evolution : Les minis-fonctions fonctionnent avec les parenthèses 
+ -Evolution : Ajout du clonage d'acteur, exemple : ajoute #valeur dans liste  
+ -Evolution : Ajout du sous-menu "Espèces" 
+ -Evolution : Ajout du sous-menu "Mathématiques" 
+ -Evolution : Mini fonctions fonctionnent avec les cosinus, sinus, etc. 
+ -Evolution : Suppression des verbes "calculer"
+ -Evolution : Ajout du verbe "évaluer" : tu évalues "1+2+a*3"
+ -Evolution : Possibilité de mettre une commande linotte sur plusieurs lignes avec les points de suspension
+ -Evolution : Ajout du greffon bouton
+ -Evolution : Ajout du greffon "graphique" patron
+ -Evolution : Ajout du verbe ouvrir tube
+ -Evolution : Ajout du verbe fermer tube
+ -Evolution : Ajout du verbe charger tube
+ -Evolution : Ajout du verbe décharger tube
+ -Evolution : Ajout du verbe configurer tube
+ -Evolution : Ajout du greffon "tube" fichier
+ -Evolution : Module pour la gestion des greffons
+ -Evolution : Ajout de l'exemple flocon_van_koch_parallele.liv
+ -Evolution : Ajout de l'exemple traitements_parallele.liv
+ -Evolution : Ajout du verbe Observer (notion de traitements parallèles)
+ -Evolution : Ajout du verbe Appeler (notion de traitements parallèles)
+
+*08/12/08 - Linotte 0.6.0
+ -Evolution : Ajout du livre : ver.liv 
+ -Evolution : Ajout du sous-menu "couleurs" 
+ -Evolution : Ajout du sous-menu "conditions" (Merci Pat) 
+ -Evolution : Ajout de l'exemple fougere.liv 
+ -Evolution : Ajout de l'exemple flocon_van_koch.liv 
+ -Evolution : Ajout de l'exemple formes.liv
+ -Evolution : Ajout du verbe "reculer de" 
+ -Evolution : Ajout du verbe "tourner à gauche" 
+ -Evolution : Ajout du verbe "tourner à droite" 
+ -Evolution : Ajout du verbe "avancer de" 
+ -Evolution : Ajout de l'espèce graphique "parchemin" 
+ -Evolution : Ajout de l'espèce graphique "crayon" 
+ -Evolution : Ajout du son OGG en bêta. 
+ -Evolution : Ajout du verbe "questionner" (voir l'exemple bienvenue.liv). 
+ -Evolution : Ajout des minis fonctions mathématiques (voir l'exemple bienvenue.liv). 
+ -Evolution : La récursivité fonctionne : ajout de fibonacci_recursif.liv 
+ -Evolution : Ajout du verbe Rafraîchir et de la caractéristique "tampon" à la toile (gravite.liv)
+ -Evolution : Ajout de la boucle "tant que"
+ -Evolution : Ajout des acteurs locaux (voir l'exemple acteur_local.liv)
+ -Evolution : Ajout du fichier de préférences
+ -Evolution : Ajout de l'exemple patron.liv
+ -Evolution : Ajout du verbe modifier
+ -Evolution : Ajout de l'espèce graphique "patron" (format SVG)
+ -Correction : Bogue sur les acteurs dans plusieurs listes (Ajout du verbe "Ôter de")
+
+*05/09/08 - Linotte 0.5.5
+ -Evolution : Le verbe afficher fonctionne maintenant avec les casiers et les espèces
+ -Evolution : Ajout des doublures, voir l'exemple doublure.liv et bibliotheque.liv
+ -Correction : correction de beaucoup de bogues...
+
+*28/28/08 - Linotte 0.5.4
+ -Evolution : Ajout du verbe ôter
+ -Evolution : Import des livres, ajout des exemples bibliotheque.liv et bibliotheque2.liv
+ -Evolution : Ajout de l'inspecteur
+
+*18/08/08 - Linotte 0.5.3
+ -Evolution : Ajout du verbe parcourir
+ -Evolution : Ajout des sous-paragraphes
+ -Evolution : Amélioration de l'affichage des couleurs dans l'Atelier
+ -Evolution : Chargement des images et fichiers depuis le web si le chemin commence par http://
+ -Evolution : Ajout du verbe explorer pour lancer : internet, courrier, fichier, impression, édition
+ -Evolution : Ajout de la caractéristique "pointeur" à la toile : main, flèche, texte
+
+*01/07/08 - Linotte 0.5.2
+ -Evolution : '=' n'existe plus, il faut utiliser 'vaut'
+ -Evolution : 'A est B' dans les espèces n'existe plus, il faut utiliser 'vaut'
+ -Evolution : Ajout de l'exemple scribes.liv
+ -Evolution : Ajout de l'exemple poeme2.liv
+ -Correction : "Attends" et non pas "attend"
+ -Correction : Bug d'affichage des scribes
+
+*01/07/08 - Linotte 0.5.1
+ -Evolution : Ajout de l'installateur pour MS Windows
+ -Evolution : Ajout du sinon dans les conditions "sinon, " ou "sinon, si "
+ -Evolution : Ajout du verbe convertir
+ -Evolution : Le sommaire
+ -Evolution : Ajout de l'espèce graphique "Scribe"
+ -Evolution : Chemin relatif en fonction du livre et non à l'exécutable Linotte
+ -Evolution : Taille des espèces images (zoom ou unzoom)
+ -Evolution : Rotation des espèces graphiques
+ -Evolution : Ajout de l'héritage des espèces
+ -Evolution : Amélioration de l'affiche
+ -Correction : Bogue remonté par $imon sur les acteurs dynamiques : http://langagelinotte.free.fr/punbb/viewtopic.php?id=69 
+ -Correction : Amélioration du moulinage (8 fois plus rapide)
+ -Correction : Amélioration de la gestion des touches
+ 
+*01/06/08 - Linotte 0.5
+ -Evolution : Pré-lecture des livres pour améliorer la rapidité.
+ -Evolution : Ajout du verbe "temporiser n secondes"
+ -Evolution : Ajout de la caractéristique "plein" aux rectangles et cercles
+ -Evolution : Détection des mises à jour
+ -Evolution : Ajout des <> pour utiliser dynamiquement des acteurs.
+ -Evolution : Ajout de l'exemple Logi.2
+ -Evolution : Ajout de la popup sur le tableau pour l'effacer
+ -Evolution : Ajout de la popup sur le cahier pour activer/désactiver la couleur
+ -Correction : Problème affichage de la bonne ligne en cas d'erreur.
+ -Correction : Régression. On ne pouvait plus lancer linotte en ligne de commande sans l'option -x
+ -Correction : Impossible d'utiliser la condition "collision" avec les graffitis.
+
+*01/05/08 - Linotte 0.4.1
+ -Evolution : Ajout des acteurs systèmes ecranh et ecranv : taille horizontale et verticale de l'écran 
+ -Evolution : utilisation des pointeurs multiples pour les casiers de casiers : a = b { 1,2 }
+ -Evolution : Ajout du répertoire "livres" et du jeu Profix
+ -Evolution : Ajout de l'option -s à jinotte pour avoir un icône dans systray (fonctionne mal).
+ -Evolution : On peut utiliser la toile depuis la ligne de commande avec Jinotte avec l'option -x
+              ex : java -jar jinotte.jar -x exemples/c_multimedia/pendu.liv 
+              ex : jinotte -x exemples/c_multimedia/pendu.liv
+ -Evolution : Possibilité d'afficher le nom d'acteur en utilisant les crochets : [acteur]
+ -Evolution : Gestion des collisions, ajout de l'exemple collision.liv
+ -Evolution : Ajout du verbe : tu crées "c" un casier de texte
+ -Evolution : Ajout du verbe : tu crées "c" un casier de nombre
+ -Evolution : Ajout du verbe : tu crées "c" un casier de "espece"
+ -Evolution : Ajout du verbe : tu crées "a" un acteur texte
+ -Evolution : Ajout du verbe : tu crées "a" un acteur nombre
+ -Evolution : Ajout du verbe : tu crées "a" un acteur "espece"
+ -Evolution : Ajout du casier système : création. Il contient le dernier acteur créé 
+ -Evolution : Ajout du casier système : couleurs. Il contient la liste des couleurs disponibles
+ -Evolution : Ajout des nouvelles couleurs (http://fr.wikipedia.org/wiki/Liste_de_couleurs)
+ -Evolution : Ajout de l'exemple pendu.liv
+ -Evolution : Ajout de l'espèce graphique : le rectangle avec x,y,largeur, hauteur
+ -Evolution : Ajout du verbe : effacer le tableau
+ -Evolution : Ajout de la caractéristique "audessus" à la toile
+ -Evolution : Ajout de la caractéristique "bordure" à la toile
+ -Evolution : Possibilité de redimensionner la toile.
+ -Evolution : Ajout du verbe : photographier dans
+ -Evolution : On peut cacher la toile. Le verbe projeter la réaffiche.
+ -Evolution : Plus d'obligation d'utiliser le verbe projeter pour avoir un acteur visible.
+ -Correction : Imbrication des boucles fonctionne
+ -Correction : On peut affecter une valeur dans un casier avec les pointeurs.
+ 
+*26/03/08 - Linotte 0.4.0
+ -Evolution : Ajout de l'exemple : lesmois.liv
+ -Evolution : Ajout de l'exemple : crazy_pong.liv
+ -Evolution : Le verbe "jouer" peut jouer des sons wav. 
+ -Evolution : Ajout pour les espèces graphiques de l'attribut "position" (ordre d'affichage)
+ -Evolution : Ajout du verbe Temporiser
+ -Evolution : Ajout du verbe Vider les touches
+ -Evolution : Ajout de l'acteur système : touche
+ -Evolution : Ajout de l'espèce graphique : le cercle
+ -Evolution : Ajout de l'espèce graphique : la ligne
+ -Evolution : Ajout de l'espèce graphique : le point
+ -Evolution : Ajout du verbe Effacer A
+ -Evolution : Ajout du verbe Effacer la toile
+ -Evolution : Ajout du verbe Deplacer vers le bas de A
+ -Evolution : Ajout du verbe Deplacer vers le haut de A
+ -Evolution : Ajout du verbe Deplacer vers la droite de A
+ -Evolution : Ajout du verbe Deplacer vers la gauche de A
+ -Evolution : Ajout du verbe Deplacer de A et B
+ -Evolution : Ajout de l'exemple : presentation.liv 
+ -Evolution : Ajout de l'exemple : tux_vole.liv
+ -Evolution : Ajout de l'exemple : tux_en_balade.liv
+ -Evolution : Ajout des acteurs : sourisx et sourisy
+ -Evolution : Ajout de l'espèce graphique : la toile
+ -Evolution : Ajout du casier système : polices. Il contient la liste des polices disponibles
+ -Evolution : Ajout du verbe Deplacer vers
+ -Evolution : Ajout du verbe Projeter
+ -Evolution : Ajout de l'espèce graphique : graffiti
+ -Evolution : Ajout de la fenêtre : la toile
+ -Evolution : Affichage du menu Verbier amélioré
+ -Evolution : Ajout de opérations simplifiés (cos,sin,mod,abs,log,logn,racine,etc.)
+ -Evolution : Ajout des opérations simpmlifiés +,-,/,*
+ -Evolution : Ajout de l'affectation simplifiée =
+ -Evolution : Ajout des pointeurs pour les casiers
+ -Evolution : Utilisation du terme d'affectation VALANT au lieu d'AVEC
+ -Correction : On peut utiliser les articles dans l'appel d'un attribut ex : image de la toile.
+ -Correction : Le bouton Stop n'affiche plus de message d'erreur
+ -Correction : Bug avec l'utilisation des casiers d'espèces et le "joker"
+ -Correction : Bug sur l'analyse des phrases courtes 
+ -Correction : Possibilité d'utiliser des articles dans la section "les rôles"
+ -Correction : Optimisation de l'interprète (gain : + de 50%). 
+ -Correction : les fichiers sont encodés en ISO-8859-1
+
+*15/10/07 - Linotte 0.3.4.2
+ -Correction : Erreur lors de l'utilisation du verbe "chercher" avec un tableau
+
+*08/10/07 - Linotte 0.3.4.1
+ -Correction : Impossible de créer la même espèce deux fois avec des attributs différents
+
+*05/10/07 - Linotte 0.3.4
+ -Evolution : Possibilité de copier un nombre dans un texte (conversion automatique)
+ -Correction : les espèces ne sont pas rechargés de la mémoire entre les paragraphes
+ -Evolution : amélioration de l'interface 
+ -Evolution : possibilité d'agrandir la fenêtre
+ -Evolution : Possibilité de créer des acteurs persistants "espèces". 
+ -Evolution : Possibilité de créer des acteurs persistants "casier d'espèces". 
+ -Evolution : Dans le menu Verbier : ajout du squelette d'un livre et paragraphe
+ -Evolution : L'option "ne pas afficher la fenêtre des messages" est inactive par défaut
+ -Evolution : Ajout des exemples dans le répertoire 'exemples'.
+ -Evolution : Ajout de l'exemple : agenda.liv
+ -Evolution : Ajout de la condition : "si acteur1 est différent(e) de acteur2"
+ -Evolution : On peut écrire indifféremment "un" ou "une"
+ -Evolution : Ajout de nouveaux icônes Tango
+ -Correction : On peut supprimer des espèces des casiers
+ -Correction : On peut concaténer des attributs d'espèces
+ -Correction : bug des majuscules avec les attributs d'espèces
+ -Evolution : Ajout popup pour la traduction  
+  
+*27/07/07 - Linotte 0.3.3.2
+ -Ajout du verbe concaténer
+ -Correction de la gestion des majuscules/minuscules dans les noms des paragraphes
+
+*20/07/07 - Linotte 0.3.3.1
+ -Ajout de la boucle De...A inversée
+ -Possibilité de ne pas afficher la fenêtre des messages
+ 
+*17/07/07 - Linotte 0.3.3 
+ -Suppression de l'applet
+ -Ajout de la couleur dans l'éditeur
+ -Ajout de la boucle De... A...
+ -Ajout du menu VERBE
+ -Ajout de la gestion des fichiers
+ -Ajout des verbes avec la forme impérative
+ -Ajout du son ( verbe jouer )
+ -Correction du problème du "l" apostrophe
+ -Correction bug du verbe ajouter
+ -Correction bug du verbe mélanger
+ -Ajout de la sauvegarde des fichiers
+ -Ajout des icônes Tango
+
+*10/01/07 - Linotte 0.3.2 
+ - Ajout des souffleurs
+ - Ajout du joker
+ - Meilleur affichage des erreurs
+ - Modification de certains messages d'erreur
+ - Les acteurs anonymes "nombres" ne sont plus entourés des guillemets.
+
+*19/10/06 - Linotte 0.3.1 édition 4
+ - Ajout du verbe terminer
+ - Ajout des casiers de casiers
+ - Ajout des casiers d'espèces
+
+*27/09/06 - Linotte 0.3.1 édition 3
+ - Optimisation, 90% plus rapide !!
+
+*20/09/06 - Linotte 0.3.1 édition 2
+ - Optimisation
+
+*19/09/06 - Linotte 0.3.1
+ - Spécification Linotte 0.3.1
+
+*01/09/06 - Linotte 0.3
+ - Spécification Linotte 0.3
+ - Reécriture complète de Linotte ( bye bye les optimisations... )
+
+*01/02/06 - Linotte alpha f.ast! 
+ - Optimisation (78% en si écriture sur disque, 89% sans écriture sur disque)
+ - Ajout de l'option : affichage du temps d'exécution ( seulement en mode console )
+ - Correction de l'affichage de la ligne d'erreur.
+ - Correction de l'affichage d'une fenêtre lorsque l'on quittait l'applet
+ - ajout option -l:classe utilisation d'un autre connecteur de librairie
+ - ajout option -i:classe utilisation d'une autre IHM
+
+*08/12/05 - Linotte alpha e 
+ - Spécification Linotte 0.2
+ - Ajout Lire un livre sur disque
+ - Ajout du bouton "Pouce !"
+ - Ajout des raccourcies ( Alt+V ou Alt+C )
+ - Undo dans l'applet activé
+ 
+*15/12/05 - Linotte alpha d
+ - Ajout de l'applet
+ - La grammaire des conditions se trouve dans le fichier grammaire_fr.properties
+ 
+*08/11/05 - Linotte alpha c
+ - Ajout de la lecture d'un paragraphe d'un livre extérieur,
+ - Amélioration du code ( plus lent mais plus simple à évoluer !)
+ - Syntaxe décrite dans un fichier texte.
+ 
+*26/10/05 - Linotte alpha b
+ - Les entiers sont des BigDecimals,
+ - Ajout du fichier ALIRE.TXT.
+ 
+*25/10/05 - Linotte alpha a
+ - Première version en ligne :
+ http://forum.framasoft.org/viewtopic.php?f=11&t=11455&p=79562&hilit=linotte#p79562

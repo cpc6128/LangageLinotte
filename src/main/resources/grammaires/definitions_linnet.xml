@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammaire compatible="Meta-Linotte 0.2" version="2.3" langue="français" auteur="Ronan Mounès" creation="février 2006" modification="Octobre 2014" >
+	<!-- Version release date : September 01, 2006                           -->
+	<!-- Author : Mounès Ronan ronan.mounes@amstrad.eu                       -->
+	<!--                                                                     -->
+	<!--     http://langagelinotte.free.fr                                   -->
+	<!--                                                                     -->
+	<!-- This code is released under the GNU GPL license, version 2 or       -->
+	<!-- later, for educational and non-commercial purposes only.            -->
+	<!-- If any part of the code is to be included in a commercial           -->
+	<!-- software, please contact us first for a clearance at                -->
+	<!--   ronan.mounes@amstrad.eu                                           -->
+	<!--                                                                     -->
+	<!--   This notice must remain intact in all copies of this code.        -->
+	<!--   This code is distributed WITHOUT ANY WARRANTY OF ANY KIND.        -->
+	<!--   The GNU GPL license can be found at :                             -->
+	<!--           http://www.gnu.org/copyleft/gpl.html                      -->
+	<definition>
+		<parametre nom="chaine">
+			<token position="separateur">"</token>
+		</parametre>
+		<parametre nom="articles">
+		</parametre>
+		<parametre nom="separateur">
+			<token valeur=":"/>
+			<token valeur=","/>
+			<token valeur="!"/>
+			<token valeur="?"/>
+			<token valeur="'"/>
+			<token valeur="+"/>
+			<token valeur="&amp;"/>
+			<!-- <token valeur="-" /> -->
+			<token valeur="*"/>
+			<token valeur="="/>
+			<token valeur="§"/>
+			<token valeur="@"/>
+			<token valeur="µ"/>
+			<token valeur="%"/>
+			<token valeur="&lt;"/>
+			<token valeur="&gt;"/>
+			<token valeur="~"/>
+		</parametre>
+		<parametre nom="synonymes">
+			<mot>
+				<cible>&lt;-</cible>
+				<cible>:=</cible>
+			</mot>
+		</parametre>
+		<parametre nom="couleurs">
+		</parametre>
+		<parametre nom="acteurs">
+			<acteur id="JOKER">joker</acteur>
+			<acteur id="ANNEE">year</acteur>
+			<acteur id="HEURE">hour</acteur>
+			<acteur id="MOIS">month</acteur>
+			<acteur id="JOUR">day</acteur>
+			<acteur id="MINUTE">minute</acteur>
+			<acteur id="SECONDE">seconde</acteur>
+			<acteur id="VERSION">version</acteur>
+			<acteur id="AUTEUR">autor</acteur>
+			<acteur id="SPEC">specification</acteur>
+			<acteur id="POLICES">fonts</acteur>
+			<acteur id="SOURIS_X">mousex</acteur>
+			<acteur id="SOURIS_Y">mousey</acteur>
+			<acteur id="TOUCHE">key</acteur>
+			<acteur id="COULEURS">colors</acteur>
+			<acteur id="CREATION">new</acteur>
+			<acteur id="ECRANH">screenh</acteur>
+			<acteur id="ECRANV">screenv</acteur>
+			<acteur id="LIVRE">livre</acteur>
+			<acteur id="VRAI">true</acteur>
+			<acteur id="FAUX">false</acteur>
+			<acteur id="DO">'do'</acteur>
+			<acteur id="RE">'re'</acteur>
+			<acteur id="MI">'mi'</acteur>
+			<acteur id="FA">'fa'</acteur>
+			<acteur id="SOL">'sol'</acteur>
+			<acteur id="LA">'la'</acteur>
+			<acteur id="SI">'si'</acteur>
+			<acteur id="PI">pi</acteur>
+			<acteur id="E">euler</acteur>
+			<acteur id="RETOUR_CHARIOT">|</acteur>
+		</parametre>
+		<parametre nom="erreurs">
+			<message id="0">Erreur</message>
+			<message id="2">Opération algébrique impossible</message>
+			<message id="3">La position est incorrecte, vérifiez la taille de l'acteur</message>
+			<message id="4">La valeur est incorrecte ( peut-être avez-vous oublié les guillemets ? ) </message>
+			<message id="5">Impossible d'initialiser la lecture du livre, vérifiez-la structure du livre.</message>
+			<message id="6">La structure du bloc est incorrecte</message>
+			<message id="7">L'acteur est un acteur particulier</message>
+			<message id="8">L'acteur existe déjà</message>
+			<message id="9">L'espèce n'existe pas</message>
+			<message id="10">Casier incompatible avec ce type</message>
+			<message id="11">L'acteur est inconnu de la fonction et du livre</message>
+			<message id="12">L'acteur existe déjà avec rôle différent</message>
+			<message id="14">L'espèce existe déjà</message>
+			<message id="15">L'acteur n'est pas dans le casier</message>
+			<message id="16">La valeur est incorrecte</message>
+			<message id="17">Le nombre est incorrect</message>
+			<message id="18">Verbe 'go to' interdit avec une boucle, utilisez le verbe 'call'</message>
+			<message id="19">Impossible de revenir</message>
+			<message id="20">'Else' interdit</message>
+			<message id="21">Impossible de modifier un acteur chargé depuis Internet</message>
+			<message id="22">La syntaxe de la doublure est incorrecte</message>
+			<message id="23">Le rôle est incompatible avec la doublure</message>
+			<message id="24">Un acteur local ne peut être créé que dans une fonction</message>
+			<message id="25">Interdit de continuer sur une fonction !</message>
+			<message id="26">Impossible d'affecter le texte</message>
+			<message id="27">La caractéristique est inconnue</message>
+			<message id="28">Vérification syntaxique</message>
+			<message id="29">Linnet ne permet pas de déclarer les doublures ainsi</message>
+			<message id="49">La cafetière n'est pas branchée</message>
+			<message id="50">La sémantique de la phrase contenant le verbe 'print' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="51">La sémantique de la phrase contenant le verbe 'go to' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="52">La sémantique de la phrase contenant le verbe 'copy' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="53">La sémantique de la phrase contenant le verbe 'demander' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="55">La sémantique de la phrase contenant le verbe 'lenght' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="56">La sémantique de la phrase contenant le verbe 'clean' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="58">La sémantique de la phrase contenant le verbe 'insert' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="59">La sémantique de la phrase contenant le verbe 'soustraire' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="61">La sémantique de la phrase contenant le verbe 'shuffle' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="62">La sémantique de la phrase contenant le verbe 'multiplier' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="63">La sémantique de la phrase contenant le verbe 'sort' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="64">La sémantique de la phrase contenant le verbe 'diviser' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="76">La sémantique de la phrase contenant le verbe 'sleep' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="77">La sémantique de la phrase contenant le verbe 'reverse' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="78">La sémantique de la phrase contenant le verbe 'extract' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="79">La sémantique de la phrase contenant le verbe 'insérer' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="80">La sémantique de la phrase contenant le verbe 'find' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="81">La sémantique de la phrase contenant le verbe 'play' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="83">La sémantique de la phrase contenant le verbe 'effacer' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="84">La sémantique de la phrase contenant le verbe 'move' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="85">La sémantique de la phrase contenant le verbe 'show' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="86">La sémantique de la phrase contenant le verbe 'shoot' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="87">La sémantique de la phrase contenant le verbe 'temporize' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="88">La sémantique de la phrase contenant le verbe 'notify' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="89">La sémantique de la phrase contenant le verbe 'convert' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="90">La sémantique de la phrase contenant le verbe 'explorer' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="91">La sémantique de la phrase contenant le verbe 'valoir' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="92">La sémantique de la phrase contenant le verbe 'remove' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="93">La sémantique de la phrase contenant le verbe 'call' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="94">La sémantique de la phrase contenant le verbe 'modifier' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="95">La sémantique de la phrase contenant le verbe 'input' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="96">La sémantique de la phrase contenant le verbe 'créer' est incorrecte</message>
+			<message id="97">La sémantique de la phrase contenant le verbe 'move' est incorrecte</message>
+			<message id="98">La sémantique de la phrase contenant le verbe 'turnleft' est incorrecte</message>
+			<message id="99">La sémantique de la phrase contenant le verbe 'turnright' est incorrecte</message>
+			<message id="200">La sémantique de la phrase contenant le verbe 'reculer' est incorrecte</message>
+			<message id="201">La sémantique de la phrase contenant le verbe 'launch' est incorrecte</message>
+			<message id="202">La sémantique de la phrase contenant le verbe 'wait' est incorrecte</message>
+			<message id="203">La sémantique de la phrase contenant le verbe 'ouvrir' est incorrecte</message>
+			<message id="204">La sémantique de la phrase contenant le verbe 'fermer' est incorrecte</message>
+			<message id="205">La sémantique de la phrase contenant le verbe 'charger' est incorrecte</message>
+			<message id="206">La sémantique de la phrase contenant le verbe 'décharger' est incorrecte</message>
+			<message id="207">La sémantique de la phrase contenant le verbe 'configurer' est incorrecte</message>
+			<message id="208">La sémantique de la phrase contenant le verbe 'eval' est incorrecte</message>
+			<message id="209">La sémantique du greffon est incorrecte</message>
+			<message id="210">La sémantique de la phrase contenant le verbe 'merge' est incorrecte</message>
+			<message id="211">La sémantique de la phrase contenant le verbe 'on' est incorrecte</message>
+			<message id="212">La sémantique de la phrase contenant le verbe 'on' est incorrecte</message>
+			<message id="213">La sémantique de la phrase contenant le verbe 'return' est incorrecte</message>
+			<message id="214">L'utilisation du verbe return est incorrecte</message>
+			<message id="215">Une fonction doit terminer par le verbe 'return'</message>
+			<message id="216">Impossible de charger la scène</message>
+			<message id="217">La sémantique de la phrase contenant le verbe 'plot' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="218">La sémantique de la phrase contenant le verbe 'assign' est incorrecte</message>
+			<message id="219">La sémantique de la phrase contenant le verbe 'exec' est incorrecte</message>
+			<message id="220">La sémantique de la phrase contenant le verbe 'increment' est incorrecte</message>
+			<message id="221">La sémantique de la phrase contenant le verbe 'decrement' est incorrecte</message>
+			<message id="222">La sémantique de la phrase contenant le verbe 'throw' est incorrecte</message>
+			<message id="223">Le numéro de l'erreur doit être supérieur à 10100</message>
+			<message id="224">La sémantique de la phrase contenant le verbe 'recharger' est incorrecte</message>
+			<message id="300">Cet acteur n'est pas une espèce</message>
+			<message id="301">La méthode fonctionnelle est inconnue</message>
+			<message id="302">Le nombre de paramètres est incorrect</message>
+			<message id="303">Il n'est pas encore possible de retourner des objets autres que les types TEXTE ou NOMBRE !</message>
+			<message id="100">La sémantique de la condition est incorrecte</message>
+			<message id="101">Les conditions fonctionnent avec des rôles identiques</message>
+			<message id="102">La sémantique de la boucle est incorrecte</message>
+			<message id="103">Impossible de sauvegarder le fichier</message>
+			<message id="104">Le fichier n'est pas compatible avec le rôle de l'acteur</message>
+			<message id="105">La lecture du fichier est impossible, vérifiez son existence</message>
+			<message id="106">Action impossible en mode console</message>
+			<message id="107">Cette action ne fonctionne pas sur votre système d'exploitation</message>
+			<message id="108">Impossible de lire le livre</message>
+			<message id="109">Ce livre est déjà présent dans la bibliothèque</message>
+			<message id="110">Impossible d'appeler en même temps deux fois la même fonction</message>
+			<message id="111">Erreur dans le greffon</message>
+			<message id="112">Erreur dans le connecteur SQL</message>
+			<message id="113">Interdit d'utiliser les cookies hors de l'applet</message>
+			<message id="114">Problème avec la structure du livre (suis-je bien dans une fonction ?)</message>
+			<message id="10000">Erreur syntaxique, impossible d'analyser la phrase à partir de</message>
+			<message id="10002">Impossible d'analyser syntaxiquement la ligne</message>
+			<message id="10003">Impossible de lire le livre, vérifiez sa syntaxe </message>
+			<message id="10005">fonction inconnue, vérifiez son existence</message>
+		</parametre>
+		<parametre nom="aide">
+			<!-- <aide present="" imperatif="? = ?" aide="Transférer (et évaluer) la valeur de l'acteur dans un autre" >Valoir</aide> -->
+			<aide present="" imperatif="print ?" aide="Afficher la valeur de l'acteur" >Print</aide>
+			<aide present="" imperatif="call ?" aide="Aller vers une fonction et mémoriser le point de départ" >Call</aide>
+			<aide present="" imperatif="call ? with ?" aide="Aller vers une fonction et mémoriser le point de départ" >Call with</aide>
+			<aide present="" imperatif="launch ?" aide="Exécuter une fonction en tâche de fond" >Launch</aide>
+			<aide present="" imperatif="launch ? with ?" aide="Exécuter une fonction en tâche de fond" >Launch with</aide>
+			<aide present="" imperatif="wait ?" aide="Attendre la fin d'une fonction exécutée en tâche de fond" >Wait</aide>
+			<aide present="" imperatif="copy ? in ?" aide="Transférer la valeur de l'acteur dans un autre" >Copy</aide>
+			<aide present="" imperatif="convert ? in ?" aide="Convertir et transférer la valeur d'un acteur" >Convert</aide>
+			<aide present="" imperatif="input ?" aide="Demander à un utilisateur une valeur" >Input</aide>
+			<aide present="" imperatif="input ? with ?" aide="Afficher un message et demander à un utilisateur une valeur" >Input with</aide>
+			<aide present="" imperatif="lenght ? in ?" aide="Calculer la taille de la valeur" >Lenght</aide>
+			<aide present="" imperatif="clean ?" aide="Vider la valeur de l'acteur" >Clean board</aide>
+			<!-- <aide present="" imperatif="clearkeyboard" aide="Vider le tampon des touches" >Clearkeyboard</aide> -->
+			<aide present="" imperatif="insert ? in ?" aide="Ajouter un acteur dans un casier ou additionner deux acteurs" >Insert</aide>
+			<aide present="" imperatif="merge ? in ?" aide="Fusionne une espèce graphique dans un mégalithe" >Merge</aide>
+			<aide present="" imperatif="return" aide="Retourner à la dernière ligne mémorisée" >Return</aide>
+			<aide present="" imperatif="exit" aide="Arrêter l'exécution du livre" >Exit</aide>
+			<aide present="" imperatif="shuffle ?" aide="Réarranger aléatoirement une chaîne, casier ou un nombre" >Shuffle</aide>
+			<aide present="" imperatif="return ?" aide="Lors d'un appel à une fonction, retourne le résultat" >Return X</aide>
+			<aide present="" imperatif="sort ?" aide="Trier dans l'ordre alphabétique un casier" >Sort</aide>
+			<aide present="" imperatif="sleep ?" aide="Suspendre la lecture du livre pendant n millisecondes" >Sleep (milliseconde)</aide>
+			<aide present="" imperatif="reverse ?" aide="Inverser la valeur de l'acteur" >Reverse</aide>
+			<!-- <aide present="" imperatif="extract ? from ? to ? in ?" aide="Extraire d'un acteur" >Extract</aide> -->
+			<!-- <aide present="" imperatif="insert ? at ? in ?" aide="Insérer la valeur d'un acteur" >Insert</aide> -->
+			<!-- <aide present="" imperatif="find ? , ? in ?" aide="Rechercher la position d'un acteur" >Find ??</aide> -->
+			<!-- <aide non="" present="" imperatif="play ?" aide="Jouer les notes ('Do', 'Re', etc.) ou le fichier son (wav,ogg)" >Play</aide> -->
+			<!-- <aide non="" present="" imperatif="move ? by ? , ?" aide="Déplacer de x et y pixels une espèce graphique" >Move by ?</aide>
+			<aide non="" present="" imperatif="plot ? to ? , ?" aide="Trace un point avec le crayon aux coordonnées données" >Plot ?</aide>
+			<aide non="" present="" imperatif="move ? to ? et ?" aide="Déplacer vers les coordonnées une espèce graphique" >Move to ?</aide>
+			<aide non="" present="" imperatif="move ? left of ?" aide="Déplacer vers la gauche de n pixels une espèce graphique" >Move left ?</aide>
+			<aide non="" present="" imperatif="move ? right of ?" aide="Déplacer vers la droite de n pixels une espèce graphique" >Move right ?</aide>
+			<aide non="" present="" imperatif="move ? up of ?" aide="Déplacer vers le haut de n pixels une espèce graphique" >Move up</aide>
+			<aide non="" present="" imperatif="move ? down ?" aide="Déplacer vers le bas de n pixels une espèce graphique" >Move down</aide>
+			<aide non="" present="" imperatif="clsg ?" aide="Supprimer de la toile une espèce graphique" >Clsg</aide> -->
+			<aide present="" imperatif="eval ?" aide="Évaluer une formule mathématique" >Eval</aide>
+			<!-- <aide non="" present="" imperatif="refresh" aide="En mode tampon manuel, forcer la réactualisation la toile" >Refresh</aide>
+			<aide non="" present="" imperatif="show ?" aide="Afficher sur la toile une espèce graphique" >Show</aide>
+			<aide non="" present="" imperatif="notify ?" aide="Réveiller un scribe" >Notify</aide> -->
+			<!-- <aide present="" imperatif="explore ?" aide="Communiquer avec le système (envoyer mail, ouvrir un fichier, etc.)" >Explorer</aide> -->
+			<!-- <aide non="" present="" imperatif="clsg" aide="Supprimer tous les espèces graphiques de la toile" >Clsg</aide> -->
+			<aide present="" imperatif="clean" aide="Effacer le tableau de l'atelier" >Clean</aide>
+			<!-- <aide non="" present="" imperatif="photographie dans ?" aide="Enregistrer la toile dans un fichier au format PNG" >Photographier</aide>
+			<aide non="" present="" imperatif="temporize" aide="Bloquer et attendre un événement sur la toile (souris, clavier)" >Temporize</aide>
+			<aide non="" present="" imperatif="temporize ?" aide="Bloquer et attendre un événement sur la toile (souris, clavier) pendant n secondes" >Temporize (secondes)</aide> -->
+			<aide present="" imperatif="remove ?, ?" aide="Supprimer un acteur d'un casier" >Remove</aide>
+			<!-- <aide non="" present="" imperatif="move ? de ?" aide="Avancer un acteur graphique de n pixels en fonction de son angle" >Move de ?</aide>
+			<aide non="" present="" imperatif="back ? to ?" aide="Reculer un acteur graphique de n pixels en fonction de son angle" >Back to ?</aide>
+			<aide non="" present="" imperatif="tourne à gauche ? de ?" aide="Rotation à gauche d'un acteur graphique de n degrés" >Tourner à gauche</aide>
+			<aide non="" present="" imperatif="tourne à droite ? de ?" aide="Rotation à droite d'un acteur graphique de n degrés" >Tourner à droite</aide>
+			<aide non="" present="" imperatif="modifie ? par ? dans ? de ?" aide="Modifier les propriétés d'un greffon graphique" >Modifier</aide>
+			<aide non="" present="" imperatif="lis" aide="Ouverture d'un bloc" >Lire</aide>
+			<aide non="" present="" imperatif="ferme" aide="Fermeture un bloc" >Fermer</aide> -->
+			<aide present="" imperatif="debug" aide="Lance le débogueur" >Debug</aide>
+			<!-- <aide present="" imperatif="ferme ?" aide="Fermer un tube (greffon)" >Fermer (tube)</aide> -->
+			<!-- <aide non="" present="" imperatif="ouvre ? avec ? depuis ?" aide="Ouvrir un tube (greffon)" >Ouvrir (tube)</aide>
+			<aide non="" present="" imperatif="charge ? dans ?" aide="Charger un tube (greffon)" >Charger (tube)</aide>
+			<aide non="" present="" imperatif="charge ? dans ? avec ?" aide="Charger un tube avec des paramètres (greffon)" >Charger avec (tube)</aide>
+			<aide non="" present="" imperatif="configure ? avec ?" aide="Configurer un tube (greffon)" >Configurer (tube)</aide>
+			<aide non="" present="" imperatif="décharge ? depuis ?" aide="Décharger un tube (greffon)" >Décharger (tube)</aide>
+			<aide non="" present="" imperatif="décharge ? depuis ? avec ?" aide="Décharger un tube avec des paramètres (greffon)" >Décharger avec (tube)</aide>
+			<aide non="" present="" imperatif="fais réagir ? à ? pour ?" aide="Ajoute un évènement à une espèce graphique" >Faire réagir</aide>
+			<aide non="" present="" imperatif="ne fais plus réagir ? à ?" aide="Supprime un évènement à une espèce graphique" >Ne plus faire réagir</aide>
+			<aide non="" present="" imperatif="peins ?" aide="Peindre une scène IDIL sur la toile" >Peindre</aide> -->
+			<aide present="" imperatif="assign ?" aide="Attache une nouvelle caractèristique ou fonction à une espèce" >Assign</aide>
+			<!-- <aide non="" present="" imperatif="évoque ?" aide="Execution une fonction sans prendre en compte le résultat" >Evoquer</aide> -->
+			<aide present="" imperatif="increment ?" aide="Ajouter un à un nombre" >Increment</aide>
+			<aide present="" imperatif="decrement ?" aide="Déduire un d'un nombre" >Decrement</aide>
+			<!-- <aide non="" present="" imperatif="nomme ?" aide="Donner un nom au livre courant" >Nommer</aide>
+			<aide non="" present="" imperatif="montre toile" aide="Affiche la toile" >Montrer</aide> -->
+			<aide present="" imperatif="throw ?, ?" aide="Provoque l'arrêt du programme avec un numéro d'erreur et un message" >Throw</aide>
+			<!-- <aide present="" imperatif="recharge ?" aide="Recharge un acteur depuis un fichier" >Recharger</aide> -->
+			<aide present="" imperatif="break" aide="Interrompre une boucle" >Break</aide>
+			<aide icone="oui" present="" imperatif="/*:ligne:Spécification : :version::ligne:Auteur : :auteur::ligne:*/:ligne::ligne:import:ligne::ligne:prototypes:ligne::ligne:global:ligne::ligne:main ::ligne::ligne::tab:begin:ligne::tab::tab:" aide="Insérer dans le cahier le squelette complet d'un livre" >+Livre</aide>
+			<aide icone="oui" present="" imperatif=":ligne:Function ::ligne::tab:begin:ligne::tab::tab:" aide="Insérer dans le cahier le squelette d'une fonction" >-Fonction</aide>
+			<aide icone="oui" present="" imperatif="{:ligne::tab:}" aide="Insérer dans le cahier le squelette d'un bloc" >-Bloc</aide>
+			<aide icone="oui" present="" imperatif="try {:ligne::tab:}" aide="Insérer dans le cahier le squelette d'une bloc de gestion d'erreurs" >-Gestion d'erreurs</aide>
+			<condition texte="if ? > ?" >Plus grand que</condition>
+			<condition texte="if ? &lt; ?" >Plus petit que</condition>
+			<condition texte="if ? est en collision avec ?" >En collision avec</condition>
+			<condition texte="if ? = ?" >Égal à</condition>
+			<condition texte="if ? is (true/false)" >Est (vrai/faux)</condition>
+			<condition texte="if ? != ?" >Différent de</condition>
+			<condition texte="if ? contient ?" >Contient</condition>
+			<condition texte="if ? >= ?" >Plus grand ou égal à</condition>
+			<condition texte="if ? &lt;= ?" >Plus petit ou égal à</condition>
+			<condition texte="else ?" >Else</condition>
+			<condition math="square ?" >Carré d'un nombre</condition>
+			<condition math="cos ?" >Cosinus</condition>
+			<condition math="sin ?" >Sinus</condition>
+			<condition math="exp ?" >Fonction exponentielle</condition>
+			<condition math="log ?" >Logarithme décimal</condition>
+			<condition math="logn ?" >Logarithme naturel</condition>
+			<condition math="abs ?" >Valeur absolue</condition>
+			<condition math="sqr ?" >Racine carrée</condition>
+			<condition math="round ?" >Arrondi</condition>
+			<condition math="cube ?" >Cube d'un nombre</condition>
+			<condition math="not ?" >Non</condition>
+			<condition math="? pow ?" >Puissance</condition>
+			<condition math="? mod ?" >Modulo</condition>
+			<condition math="? and ?" >Et</condition>
+			<condition math="? or ?" >Ou</condition>
+			<condition math="? xou ?" >Xou</condition>
+			<condition math="? gt ?" >Sup</condition>
+			<condition math="? lt ?" >Inf</condition>
+			<condition math="? eq ?" >Egal</condition>
+			<condition math="? nq ?" >Diff</condition>
+			<condition math="tan ?" >Tangente</condition>
+			<condition math="acos ?" >Arc cosinus</condition>
+			<condition math="asin ?" >Arc sin</condition>
+			<condition math="atan ?" >Arc tangente</condition>
+			<condition math="atan2 ?" >Arc tangente 2</condition>
+			<condition math="chr ?" >Ascii en caractère</condition>
+			<condition math="ascii ?" >Caractère en ascii</condition>
+			<condition math="random ?" >Hasard</condition>
+			<condition math="ter (?,?,?)" >Opérateur ternaire</condition>
+			<condition math="? rd ?" >Rotation binaire à gauche</condition>
+			<condition math="? rg ?" >Rotation binaire à droite</condition>
+			<condition math="floor ?" >Partie entière d'un nombre</condition>
+			<condition math="decimal ?" >Partie décimale d'un nombre</condition>
+			<condition boucle="for ? " >Pour chaque ...</condition>
+			<condition boucle="for ? to ? " >De...à</condition>
+			<condition boucle="for ?, ? to ? " >Pour...de...à...sans pas</condition>
+			<condition boucle="for ?, ? to ? step ? " >Pour...de...à...avec un pas</condition>
+		</parametre>
+		<parametre nom="especesgraphique">
+			<espece id="point">point</espece>
+			<espece id="ligne">ligne</espece>
+			<espece id="cercle">cercle</espece>
+			<espece id="graffiti">graffiti</espece>
+			<espece id="graphique">graphique</espece>
+			<espece id="toile">toile</espece>
+			<espece id="rectangle">rectangle</espece>
+			<espece id="scribe">scribe</espece>
+			<!--espece id="patron">patron</espece>-->
+			<espece id="crayon">crayon</espece>
+			<espece id="parchemin">parchemin</espece>
+			<espece id="mégalithe">mégalithe</espece>
+			<espece id="polygone">polygone</espece>
+			<espece id="chemin">chemin</espece>
+			<espece id="praxinoscope">praxinoscope</espece>
+		</parametre>
+	</definition>
+</grammaire>

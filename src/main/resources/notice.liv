@@ -1,0 +1,214 @@
+principale :
+	wbt_repertoire est un texte
+	wbt_port est un texte
+	début
+		Demande wbt_repertoire
+		Demande wbt_port
+		"
+<!doctype html public '-//w3c//dtd xhtml 1.0 transitional//en' 'http://www.w3.org/tr/xhtml1/dtd/xhtml1-transitional.dtd'>		
+<html>
+<head>
+<meta charset=utf-8>
+<link rel='shortcut icon' href='http://langagelinotte.free.fr/favicon.ico' type='image/x-icon' />
+<title>Notice du Webonotte " + version + "</title>
+<style>
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	background-color: #fff;
+	color: #000;
+	font-size: 0.9em;
+	font-family: sans-serif,helvetica;
+	padding: 0;
+	margin: 0 auto;
+	margin-left: auto;
+	margin-right: auto;	
+	width: 80%;
+}
+:link {
+	color: #c00;
+}
+:visited {
+	color: #c00;
+}
+a:hover {
+	color: #f50;
+}
+.marge {
+	margin-left: 2em;
+}
+.marge2 {
+	margin-left: 4em;
+}
+.linotte {
+	color: blue;
+}
+.token {
+	color: red;
+}
+
+table {
+width: 100%;
+border-top: 3px solid #bcbcbc;
+border-collapse: collapse;
+display: table;
+border-spacing: 2px;
+border-color: gray;
+}
+
+tbody tr:nth-child(even){background-color:#f8f8f8}
+tbody tr:nth-child(odd){background-color:#c6d4e0}
+
+</style>
+</head>
+<body>
+
+<div class=container>
+<h1 style='margin-top: 20px;'><span style='text-shadow: 0.1em 0.1em 0.2em grey;'>Webonotte</span> " + version + " : notice d'utilisation</h1>
+<div style='float:right;position:absolute;top:10px;right: 10%;'>
+<a href='http://langagelinotte.free.fr'><img src=data:image/png;base64,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 border=0 /></a>
+</div>
+<br>
+
+<div style='background-color:#ebebe4;border:3px solid #DC322F;margin-top: 0px;margin-bottom: 30px;'>
+<center><font color=red><h4>Pour lire sur les différents systèmes d'exploitation (MS Windows, Linux, Apple) les caractères accentués, 
+Linotte travaille avec des fichiers encodés au format <a href=http://fr.wikipedia.org/wiki/UTF-8>UTF-8</a>.
+Il est conseillé d'éditer vos fichiers avec l'Atelier de programmation Linotte ou avec un éditeur comme <a href=http://fr.wikipedia.org/wiki/Notepad%2B%2B >NotePad++</a> et 
+sélectionner dans le menu Encodage : UTF-8 (sans BOM).</h4></font></center>
+</div>
+
+<table width=100% border=1>
+<tr>
+<td><h3>Livre simple sans HTML</h3></td>
+<td><h3>Livre avec HTML</h3></td>
+</tr>
+
+<tr>
+<td valign=top>
+Exemple :<br/><br/>
+<div style='background-color:#E6E6E6;width:90%;margin:auto;'><code style='font-size: smaller;'>
+Page simple :<br/>
+<span class=marge>début<br/></span>
+<span class=marge2>affiche " + µ"0022" + "Bonjour !" + µ"0022" + "</span><br/>
+</code></div>
+<br/>
+Deposez ce livre sous le nom <i>bonjour.liv</i> dans le <a href=" + µ"0022" + "#root" + µ"0022" + ">repertoire racine du serveur</a>, 
+et executez dans un navigateur Internet l'adresse WEB suivante:<br/>
+<code><a href=http://localhost:" + wbt_port + "/bonjour.liv?wbt_html=true >http://localhost:" + wbt_port + "/bonjour.liv<b>?wbt_html=true</b></a></code>
+</td>
+
+<td valign=top>
+Exemple :<br/><br/>
+<div style='background-color:#E6E6E6;width:90%;margin:auto;'><code style='font-size: smaller;'>
+Boucle en ligne :<br/>
+<span class=marge>début</span><br/>
+<span class=marge2>affiche " + µ"0022" + "&lt;html>&lt;head>&lt;title>" + µ"0022" + "</span><br/>
+<span class=marge2>affiche " + µ"0022" + "Boucle en ligne !" + µ"0022" + "</span><br/>
+<span class=marge2>affiche " + µ"0022" + "&lt;/title>&lt;/head>&lt;body>" + µ"0022" + "</span><br/>
+<span class=marge2>pour 10, affiche " + µ"0022" + "Je boucle " + µ"0022" + " + joker + " + µ"0022" + " fois !&lt;br>" + µ"0022" + "</span><br/>
+<span class=marge2>affiche " + µ"0022" + "&lt;/body>&lt;/html>" + µ"0022" + "</span><br/>
+  	</code></div><br/>
+Deposez ce livre sous le nom <i>compteur.liv</i> dans le <a href=" + µ"0022" + "#root" + µ"0022" + ">repertoire racine du serveur</a>, 
+et executez dans un navigateur Internet l'adresse WEB suivante:<br/>
+<code><a href=http://localhost:" + wbt_port + "/compteur.liv>http://localhost:" + wbt_port + "/compteur.liv</a></code>
+</td>
+</tr>
+
+<tr>
+<td><h3>Livre interactif</h3></td>
+<td><h3>WebLivre</h3></td>
+</tr>
+<tr>
+<td valign=top>
+Exemple :<br/><br/>
+<div style='background-color:#E6E6E6;width:90%;margin:auto;'><code style='font-size: smaller;'>
+Page HTML simple avec parametres :<br/>
+<span class=marge>a est un nombre </span><br/>
+<span class=marge>b est un nombre </span><br/>
+<span class=marge>début<br/></span>
+<span class=marge2>Demande a</span><br/>
+<span class=marge2>Demande b</span><br/>
+<span class=marge2>Affiche " + µ"0022" + µ"0026" + "lt;html>"+ µ"0026" + "lt;body>" + µ"0022" + "</span><br/>
+<span class=marge2>Affiche " + µ"0022" + "Le resultat de l'addition est " + µ"0022" + " + (a + b)</span><br/>
+<span class=marge2>Affiche " + µ"0022" + µ"0026" + "lt;/body>"+ µ"0026" + "lt;/html>" + µ"0022" + "<br/>
+</code></div><br/>
+Deposez ce livre sous le nom <i>addition.liv</i> dans le <a href=" + µ"0022" + "#root" + µ"0022" + ">repertoire racine du serveur</a>, 
+et executez dans un navigateur Internet l'adresse WEB suivante:<br/>
+<code><a href=http://localhost:" + wbt_port + "/addition.liv?a=3" + µ"0026" + "b=5>http://localhost:" + wbt_port + "/addition.liv?a=3" + µ"0026" + "b=5</a></code>
+</td>
+
+<td valign=top>
+Exemple :<br/><br/>
+<div style='background-color:#E6E6E6;width:90%;margin:auto;'><code style='font-size: smaller;'>
+<span class=linotte><span class=token>&lt;%</span><br/>
+action est un texte<br/>
+n est un nombre<br/>
+durée est un nombre<br/>
+<span class=token>%></span><br/></span>
+&lt;html><br/>
+&lt;head>&lt;title>Suite de Syracuse en ligne&lt;/title>&lt;/head><br/>
+&lt;body><br/>
+&lt;h1>Suite de Syracuse :&lt;/h1><br/>
+<span class=linotte><span class=token>&lt;%</span> <br/>
+demande action<br/> 
+si action = " + µ"0022" + "resultat" + µ"0022" + " lis<br/> 
+<span class=marge>      demande n </span><br/>
+<span class=marge>      tant que n > 1 lis</span><br/>
+<span class=marge2>        durée vaut durée + 1</span><br/>
+<span class=marge2>        si (n mod 2) = 0, n vaut n / 2</span><br/>
+<span class=marge2>        sinon n vaut n * 3 + 1</span><br/>
+<span class=marge>ferme        </span><br/>
+<span class=token>%><br/></span></span>
+    La durée du vol est égale à <span class=linotte><span class=token>&lt;%</span>affiche durée<span class=token>%></span><br/></span>
+    &lt;form action=" + µ"0022" + "syracuse.wliv" + µ"0022" + " method=" + µ"0022" + "post" + µ"0022" + "><br/>
+      &lt;input type=" + µ"0022" + "submit" + µ"0022" + " value=" + µ"0022" + "Recommencer" + µ"0022" + " /><br/>
+    &lt;/form>    <br/>
+<span class=linotte><span class=token>&lt;%</span> <br/>
+   ferme <br/>
+   sinon lis <br/>
+<span class=token>%></span> <br/></span>
+    &lt;form action=" + µ"0022" + "syracuse.wliv" + µ"0022" + " method=" + µ"0022" + "post" + µ"0022" + "><br/>
+      &lt;input type=" + µ"0022" + "hidden" + µ"0022" + " name=" + µ"0022" + "action" + µ"0022" + " value=" + µ"0022" + "resultat" + µ"0022" + " /><br/>
+      Nombre de départ : &lt;input type=" + µ"0022" + "texte" + µ"0022" + " name=" + µ"0022" + "n" + µ"0022" + "  /><br/>
+      &lt;input type=" + µ"0022" + "submit" + µ"0022" + " value=" + µ"0022" + "Calculer la durée" + µ"0022" + " /><br/>
+    &lt;/form><br/>
+<span class=linotte><span class=token>&lt;%</span><br/>
+   ferme <br/>
+<span class=token>%></span><br/></span>
+&lt;/body><br/>
+&lt;/html><br/>
+
+</code></div><br/>
+
+Deposez ce <i>weblivre</i> sous le nom <i>syracuse.wliv</i> dans le <a href=" + µ"0022" + "#root" + µ"0022" + ">repertoire racine du serveur</a>, 
+et executez dans un navigateur Internet l'adresse WEB suivante:<br/>
+<code><a href=http://localhost:" + wbt_port + "/syracuse.wliv>http://localhost:" + wbt_port + "/syracuse.wliv</a></code>
+
+</td>
+
+</table>
+<h3>Informations techniques :</h3>
+<ul>
+<li>
+<a name=" + µ"0022" + "root" + µ"0022" + ">Repertoire racine du serveur HTTP : <code>" + wbt_repertoire + "</code></a>
+</li>
+<li>
+Heure du serveur  : " + heure + " h " + minute + " m " + seconde + " s
+</li>
+<li>
+Version du langage  : " + version + "
+</li>
+</ul>
+<h3>Configuration du serveur Webonotte :</h3>
+<ul>
+<li>Pour changer de port d'ecoute, renseignez la ligne WEBONOTTE_PORT dans le fichier atelier.cgf (ex <code>WEBONOTTE_PORT=80</code>)</li>
+<li>Pour changer le repertoire racine, renseignez la ligne WEBONOTTE_DIR dans le fichier atelier.cgf (ex sur Linux : <code>WEBONOTTE_DIR=/www</code> ou sur Windows <code>WEBONOTTE_DIR=c\:\\www</code>)</li>
+<li>Pour desactiver le baudeau du bas, renseignez la ligne WEBONOTTE_FOOTER_HIDDEN dans le fichier atelier.cgf (ex <code>WEBONOTTE_FOOTER_HIDDEN=true</code> )</li>
+</ul>
+
+</div>
+</body>
+</html>" !
