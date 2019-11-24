@@ -116,7 +116,7 @@ public class BlocFinSimpleUI implements BlocFinUI {
 				);
 			}
 
-			// Attache après :
+			// Attache apres :
 			if (!(moi.blocDebut instanceof Condition) && (moi.timbreSuivant != null)) {
 				Polygon triangle = new Polygon(
 						new int[] { //
@@ -153,7 +153,7 @@ public class BlocFinSimpleUI implements BlocFinUI {
 
 	}
 
-	// Méthodes privées :
+	// Methodes privees :
 	// ******************
 
 	private int trouvePositionYHaut(Timbre timbre, BlocFin fin, int profondeur) {
