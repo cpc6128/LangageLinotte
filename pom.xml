@@ -81,7 +81,7 @@
                 <configuration>
                     <compilerArgs>
                         <arg>--add-exports</arg>
-                        <arg>java.desktop/sun.swing=org.linotte</arg>
+                        <arg>java.desktop/sun.swing=ALL-UNNAMED</arg>
                     </compilerArgs>
 
                 </configuration>

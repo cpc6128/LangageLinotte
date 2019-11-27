@@ -36,7 +36,7 @@ public abstract class ITransparence {
 		String version = System.getProperty("java.specification.version");
 		// Le code ne s'exécute qu'avec une JVM plus récente que 1.6
 		if (version.equals("1.6")) {
-			setTransparence(new TransparenceJava6());
+			//setTransparence(new TransparenceJava6());
 		} else {
 			//System.out.println("7!");
 			// C'est une JVM plus récente, enfin, je l'espère !
