@@ -56,23 +56,8 @@ public class ThemeManager {
 	private ThemeManager() {
 		try {
 			theme.add(new ThemeLoaderFromJar("themes/Extra-Elementary.zip"));
-			theme.add(new ThemeLoaderFromJar("themes/Flat-Theme.zip"));
 		} catch (Exception e) {
-			// Ne rien faire
-		}
-		try {
-			theme.add(new ThemeLoaderFromJar("themes/BigTango.zip"));
-		} catch (Exception e) {
-			// Ne rien faire
-		}
-		try {
-			theme.add(new ThemeLoaderFromJar("themes/Tango.zip"));
-		} catch (Exception e) {
-			// Ne rien faire
-		}
-		try {
-			theme.add(new ThemeLoaderFromJar("themes/Crystal.zip"));
-		} catch (Exception e) {
+			e.printStackTrace();
 			// Ne rien faire
 		}
 		try {
