@@ -53,18 +53,6 @@
             <artifactId>jlayer</artifactId>
             <version>1.0.1</version>
         </dependency>
-        <dependency>
-            <groupId>com.hexidec.ekit</groupId>
-            <artifactId>ekit</artifactId>
-            <version>1.7b</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/lib/ekit.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>org.python</groupId>
-            <artifactId>jython-slim</artifactId>
-            <version>2.7.2b2</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -95,9 +83,30 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>org.linotte.frame.Atelier</mainClass>
+                        </manifest>
+                    </archive>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
+                    <appendAssemblyId>false</appendAssemblyId>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <mainClass>org.linotte.frame.Atelier</mainClass>
                 </configuration>
             </plugin>
         </plugins>

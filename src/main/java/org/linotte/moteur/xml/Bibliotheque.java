@@ -34,7 +34,6 @@ import org.linotte.greffons.impl.Webonotte;
 import org.linotte.greffons.impl.swing.Atelier;
 import org.linotte.greffons.impl.swing.Barre;
 import org.linotte.greffons.impl.swing.BoiteTexte;
-import org.linotte.greffons.impl.swing.BoiteTexteRiche;
 import org.linotte.greffons.impl.swing.Bouton;
 import org.linotte.greffons.impl.swing.BoutonRadio;
 import org.linotte.greffons.impl.swing.CaseACocher;
@@ -437,17 +436,6 @@ public final class Bibliotheque {
 			attributs.put("visible", new Attribut(TEXTE, "oui"));
 			attributs.put("infobulle", new Attribut(TEXTE, ""));
 			LinotteFacade.creationPrototype(attributs, new BoiteTexte(), "boite");
-		}
-		{
-			Map<String, Attribut> attributs = new HashMap<String, Attribut>();
-			attributs.put("x", new Attribut(NOMBRE, "0"));
-			attributs.put("y", new Attribut(NOMBRE, "0"));
-			attributs.put("hauteur", new Attribut(NOMBRE, "200"));
-			attributs.put("largeur", new Attribut(NOMBRE, "200"));
-			attributs.put("texte", new Attribut(TEXTE, ""));
-			attributs.put("visible", new Attribut(TEXTE, "oui"));
-			attributs.put("infobulle", new Attribut(TEXTE, ""));
-			LinotteFacade.creationPrototype(attributs, new BoiteTexteRiche(), "boiteriche");
 		}
 		{
 			Map<String, Attribut> attributs = new HashMap<String, Attribut>();

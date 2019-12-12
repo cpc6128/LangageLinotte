@@ -12,7 +12,6 @@ import org.linotte.frame.gui.SplashWindow;
 import org.linotte.greffons.api.FabriqueGreffon;
 import org.linotte.greffons.api.Greffon;
 import org.linotte.greffons.java.JavaFactory;
-import org.linotte.greffons.python.PythonFactory;
 import org.linotte.moteur.outils.Preference;
 import org.linotte.moteur.outils.Ressources;
 import org.linotte.moteur.xml.Version;
@@ -36,8 +35,8 @@ public class GreffonsChargeur {
 
 	static {
 		try {
-			SplashWindow.setProgressValue("Greffon : initialisation de JPython");
-			fabriques.put("python", new PythonFactory());
+			//SplashWindow.setProgressValue("Greffon : initialisation de JPython");
+			//fabriques.put("python", new PythonFactory());
 
 			// Prendre en compte les .class dans les repertoires greffons
 			File repertoireUtilisateur = new File(Preference.getIntance().getHome() + File.separator
