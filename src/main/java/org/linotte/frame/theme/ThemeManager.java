@@ -95,7 +95,7 @@ public class ThemeManager {
 			} catch (Exception e) {
 				// Le thème ne veut pas se charger, on va prendre celui par défaut
 				e.printStackTrace();
-				Preference.getIntance().setProperty(THEME_PREFERENCE, null);
+				Preference.getIntance().setProperty(THEME_PREFERENCE, "");
 				try {
 					instance.chargerTheme();
 				} catch (Exception e1) {
