@@ -1,0 +1,35 @@
+SUPPLEMENT DE DOCUMENTATION CONCERNANT LA VERSION 0.0.1
+1)	Possibilité de créer un variable avec un nom « composé », exemple :
+-	Def compteur
+-	Début_=0
+Avec cette instruction la variable Début_compteur est crée, de même que par l’instruction :
+-	Def Debut
+-	_compteur=0
+2)	Création d’une liste :
+-	En spécifiant en même temps ses éléments, soit :
+-	 Archive={    cette instruction entraîne la création d’une liste vide nommée archive,
+-	Archive={123;456;9}  Crée la liste archive contenant les nombres 123, 456,9 (une remarque : l’accolade fermante « } » peut être omise.
+3)	Changement des propriétés des « objets graphiques » :
+-	Par défaut le nom des propriétés sont vsColor pour désigner la couleur, vsDim pour la taille, vsOpaq pour la transparence, vsVue pour la visibilité, enfin vsAngle pour l’angle.
+-	Remarque concernant la propriété transparence plus exactement l’opacité, ainsi l’intruction : vsOpaq_carré=0 rend le dessin nommé carré 100% transparent (invisible), à l’inverse vsOpaq_carré=100 rend le dessin totalement visible sans aucune transparence…
+-	Remarque par rapport à la propriété visible (vsVue) qui fonctionne comme suit : vsVue_carré=1 rend le dessin « carré » visible, à l’inverse vsVue_carré=0 ou vsVue_carré=    rend le « carré » invisible.
+
+4)	Possibilité de changer le nom des propriétés graphiques :
+Il est donc possible de modifier les noms des propriétés vsColor, vsDim, etc.… avec l’instruction :
+-	VsKprops={«couleur;«taille;«opacité;«visibilité;«angle   
+Maitenant l’instruction couleur_carré=rouge par exemple change la couleur du carré (en lieu est place de vsColor_carré=rouge)
+-	Une remarque importante, pour le moment toutes les propriétés doivent être spécifiées, le nom de la propriété doit commencer par un guillemet et immédiatement suivi du nom, puis immédiatement séparée d’un point-virgule (sauf pour la dernière).
+5)	Remplissage d’un  dessin avec une couleur  avec l’instruction suivante :
+-	Fill_carré=vert,
+-	Il est aussi possible de modifier les propriétés, soit vsColor_fill_carré=bleu, pour changer la couleur du remplissage.
+6)	Modification des propriétés de la « tortue » :
+-	Avec par exemple, l’instruction  vsColor_vsLo=rouge, vsVue_vsLo=1, etc…. la tortue est donc désignée par la « variable » vsLo.
+-	Si les noms des propriétés ont été changées, ceux-ci s’applique à la tortue.
+-	Pour les propriétés de nature numérique, exemple vsOpaq_vsLo=70 la variable correspondante est crée.
+7)	Gestion de l’affichage :
+-	 l’instruction Cls rends invisible tous les éléments présents sur la zone d’affichage sans les détruire,
+-	Clt  efface et détruit tous les éléments affichés dans la zone réservée aux textes,
+-	Clg rends invisible les « dessins » affichés.
+
+Pour les évolutions à venir dans SuissBox, ici :http://suissbox.eklablog.com/
+

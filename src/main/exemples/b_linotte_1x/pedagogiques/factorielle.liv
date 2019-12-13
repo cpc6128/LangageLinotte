@@ -1,0 +1,13 @@
+Factorielle :
+
+Algorithme :
+	Rôles :
+		a :: nombre
+		i :: nombre
+		résultat :: nombre <- 1
+	Actions :
+		("précision arithmétique infinie")
+		~ précision 0
+		a ?
+		pour i de a à 1, résultat vaut résultat * i
+		résultat !

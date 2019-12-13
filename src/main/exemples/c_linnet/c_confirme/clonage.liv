@@ -1,0 +1,12 @@
+nombre :: number
+liste :: number []
+liste avec clone :: number []
+for 3 {
+	nombre = nombre + 1
+	insert clone(nombre) in liste avec clone
+	insert nombre in liste
+}
+print "Liste avec les clones :"
+print liste avec clone
+print "Liste sans les clones :"
+print liste

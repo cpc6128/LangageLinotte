@@ -1,0 +1,11 @@
+/*http://99-bottles-of-beer.net*/
+for 99 to 1 {
+	print "{bouteille(joker,1)}, {bouteille(joker,0)}."
+	print "En prendre une, la faire passer, {bouteille(joker-1,1)}." & ""
+}
+print "{bouteille(0,1)}, {bouteille(0,0)}."
+print "Allez au magasin et achetez encore {bouteille(99,1)}."
+
+bouteille : n, suffix
+	return ter(n=0,"il n'y a plus de bouteille",ter(n=1,"1 bouteille","{n} bouteilles")) +
+			" de bière" + ter(suffix=1," sur le mur","")

@@ -1,0 +1,7 @@
+/* Linotte 2.3
+Les doublures en entrée d'un livre (dans la première fonction du livre) déclenchent une fenêtre 
+(ou pop-up) qui demande à l'utilisateur de saisir les valeurs
+(comme le ferait le verbe Demander).
+*/
+addition : a, b
+	affiche "le résultat est " + (a + b)

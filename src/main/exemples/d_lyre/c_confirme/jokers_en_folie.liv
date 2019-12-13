@@ -1,0 +1,8 @@
+/*
+joker récupère la valeur de la boucle courant.
+mais on peut également utiliser joker', joker'' et joker'''
+qui vont récupérer les boucles parentes successives !
+*/
+pour "Linotte" {
+	pour 5 affiche (joker+1) * joker'
+}

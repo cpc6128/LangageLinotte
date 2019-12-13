@@ -1,0 +1,6 @@
+parcours affichage avec "Nicolas" , 1976
+parcours affichage avec "Bruno" , 1977
+
+affichage : nom, an
+	affiche "{nom} est né en {an}"
+	retourne

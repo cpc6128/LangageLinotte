@@ -1,0 +1,8 @@
+Python Demonstration graphique:
+("Retrouvez les sources de ce greffon écrit en langage Python dans le répertoire /greffons/PyDemo.py")
+
+Principal :
+	Rôles :
+		graphic :: pydemo, texte vaut "Vive Python et Linotte"
+	Actions :
+		projette graphic

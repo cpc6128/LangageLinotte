@@ -1,0 +1,1071 @@
+Astronotte :
+("THE Best Shoot'em up est écrit en Linotte !")
+("version : 1.4")
+("auteur : cpc6128")
+	espèces :
+		l'espèce arcade hérite de entité
+	grands rôles :
+		version_astronotte :: texte <- "1.4"
+		chemin :: texte <- ""
+		moteur :: arcade
+		cache :: casier de graphique vide
+		("Pour limiter le nombre de missiles :")
+		missiles :: casier de graphique vide
+		bricks :: casier de graphique vide
+		taille_h :: nombre <- 800
+		taille_v :: nombre <- 700
+		pattern_h :: nombre <- 500
+		pattern_v :: nombre <- 500
+		vaisseau :: praxinoscope, image0 vaut chemin + "space.png",  image1 vaut chemin + "space1.png", image2 vaut chemin + "space2.png", position vaut 3,  x vaut 133, y vaut 577
+		("Animation :")
+		pas :: nombre <- 1
+		délai :: nombre <- 40
+		("Personnage")
+		max missibles :: nombre <- 6
+		max énergie :: nombre <- 600
+		énergie :: rectangle,  x vaut 100, y vaut 30, largeur vaut 600, hauteur vaut 30, couleur vaut "vert turquoise", plein vaut "oui", transparence vaut 50, position vaut 10
+		scoreg :: graffiti, couleur vaut "tangerine", x vaut 15, y vaut 660 , texte vaut "0", taille vaut 10, position vaut 3
+		titre :: graffiti, couleur vaut "pêche",texte vaut livre + " " + version_astronotte + " par cpc6128", taille vaut 7, position vaut 3,  x vaut 540, y vaut 660
+		titrepower :: graffiti, couleur vaut "argent",texte vaut "Power", taille vaut 3, position vaut 3,  x vaut 110, y vaut 50, position vaut 9
+		raquette :: rectangle,  x vaut 750, y vaut 30, largeur vaut 10, hauteur vaut 70, couleur vaut "menthe à l'eau", plein vaut "oui", transparence vaut 50, position vaut 10, visible vaut "non"
+		raquette2 :: rectangle,  x vaut 30, y vaut 30, largeur vaut 10, hauteur vaut 70, couleur vaut "rouge", plein vaut "oui", transparence vaut 50, position vaut 10, visible vaut "non"
+		palet :: cercle,  x vaut 600, y vaut 300, rayon vaut 10, couleur vaut "vert", taille vaut 1, plein vaut "oui", position vaut 10, visible vaut "non"
+		feu :: rectangle, largeur vaut 65, hauteur vaut 65, couleur vaut "écarlate", plein vaut "oui", transparence vaut 50, position vaut 2
+		score :: nombre <- 0
+		niveau :: nombre <- 1
+		("palet")
+		directionx :: nombre valant 1
+		directiony :: nombre valant 1
+		vitesse :: nombre valant 2
+		fin_mur :: nombre valant 745
+		pas_palet :: nombre valant 2
+		action_raquette :: drapeau <- vrai
+		délai feu :: nombre <- 0
+		("Pour le chargement rapide des images (dans le cas de l'applet):")
+		xbullet :: graphique, image vaut chemin + "bullet.gif", visible vaut "oui", transparence vaut 0
+		xasteroid :: graphique, image vaut chemin + "asteroid.gif", visible vaut "oui", transparence vaut 0
+		xbarrage :: graphique, image vaut chemin + "ligne.gif", visible vaut "oui", transparence vaut 0
+		xpower :: graphique, image vaut chemin + "power.png", visible vaut "oui", transparence vaut 0
+		xplanet :: graphique, image vaut chemin + "planet.gif", visible vaut "oui", transparence vaut 0
+		xmonstre :: graphique, image vaut chemin + "monstre.png", visible vaut "oui", transparence vaut 0
+		xbomberman :: graphique, image vaut chemin + "bomberman.gif", visible vaut "oui", transparence vaut 0
+		xexplosion :: graphique, image vaut chemin + "explosion.gif", visible vaut "oui", transparence vaut 0
+		xmur :: graphique, image vaut chemin + "mur.gif", visible vaut "oui", transparence vaut 0
+		("presse est un pressepapier")
+
+Décor :
+	Rôles :
+		§fond :: graphique, image vaut chemin + "patternbig.png", x vaut 0, y vaut 0, position vaut 0
+		§curseur :: graphique, image vaut chemin + "etoile.gif", position vaut 4
+		§screen :: toile, largeur vaut taille_h, hauteur vaut taille_v, pointeur vaut "sans"
+		§t :: texte
+	Actions :
+		efface la toile
+		projette screen & vaisseau & curseur & énergie & scoreg & raquette & palet & raquette2 & feu & titre & titrepower
+		attache init à moteur
+		attache start à moteur
+		("pour optimiser le chargement avec l'applet")
+		projette xbullet & xasteroid & xbarrage & xpower & xplanet & xmonstre & xbomberman & xexplosion
+		attends 1 seconde
+		annihile xbullet & xasteroid & xbarrage & xpower & xplanet & xmonstre & xbomberman & xexplosion
+		évoque moteur.init(fond)
+		évoque moteur.start()
+		appelle initialisation niveau
+		appelle affichage dégât
+		appelle mouvement
+		appelle animation vaisseau
+		tant que vrai, lis
+			temporise
+			déplace curseur vers sourisx + 15 et sourisy
+			t vaut touche
+			si t == "clique" alors appelle tirer avec x@vaisseau, y@vaisseau
+			si t == "t" alors appelle tirer avec x@vaisseau, y@vaisseau
+			("si t == "c" alors évoque presse.copiertoile()")
+			si sourisy < (taille_v - 50) alors	y@raquette vaut sourisy
+			x@feu vaut x@vaisseau
+			y@feu vaut y@vaisseau
+		ferme
+
+Animation vaisseau :
+	Actions :
+		Tant que vrai, lis
+			Pour chaque 3, lis
+				Attends 500 millisecondes
+				trame@vaisseau = joker
+			Ferme
+		Ferme
+
+Mouvement  :
+	Actions :
+		tant que vrai, lis
+			attends 5 millisecondes
+			si (x@vaisseau) < sourisx alors lis
+				si (x@vaisseau) < (taille_h -100) alors tu déplaces vaisseau vers la droite de 4 + ((sourisx  - (x@vaisseau))  / 50)
+			ferme
+			si (x@vaisseau) > sourisx alors tu déplaces vaisseau vers la gauche de 4 + (((x@vaisseau)  - sourisx)  / 100)
+		ferme
+
+Init :
+	Rôles :
+		*moi :: arcade
+		*pattern :: graphique
+		§a & b & position :: nombre <- 0
+	Actions :
+		tant que a < (taille_v) , lis
+			ajoute #pattern dans cache
+			y@(cache{position}) vaut a
+			projette cache{position}
+			a vaut a + pattern_h
+			incrémente position
+		ferme
+		ajoute pattern dans cache
+		y@pattern vaut a
+		projette pattern
+		retourne vrai
+
+Start :
+	Rôles :
+		*moi :: arcade
+	Actions :
+		appelle défilement
+		retourne vrai
+
+Défilement :
+	Rôles :
+		§ t :: nombre
+	Actions :
+		mesure cache dans t
+		tant que vrai, lis
+			pour chaque cache, lis
+				tant que (y@joker) > taille_v , lis
+					("on doit descendre le bloc")
+					Parcours décaler avec t,joker
+				ferme
+				y@joker vaut y@joker + pas
+			ferme
+			attends délai milliseconde
+		ferme
+
+Décaler :
+	Rôles :
+		*boucle :: nombre
+		*g :: graphique
+	Actions :
+		pour chaque boucle, lis
+			y@g vaut y@g - pattern_v
+		ferme
+		reviens
+
+Tirer :
+	Rôles :
+		*x :: nombre
+		*y :: nombre
+		§d :: nombre <- 20
+		§t :: nombre
+		§bullet :: graphique, image vaut chemin + "bullet.gif", position vaut 2,  x vaut d+ x, y vaut y, transparence vaut 0
+		§bullet2 :: graphique, image vaut chemin + "bullet.gif", position vaut 2,  x vaut d + x + 20, y vaut y, transparence vaut 0
+	Actions :
+		mesure missiles dans t
+		si t < (max missibles*2) alors lis
+			ajoute bullet dans missiles
+			ajoute bullet2 dans missiles
+			projette bullet & bullet2
+			tant que (y@bullet) > -20 , lis
+				y@bullet vaut y@bullet - 5
+				y@bullet2 vaut y@bullet2 - 5
+				si (transparence@bullet) < 100 alors lis
+					transparence@bullet vaut transparence@bullet + 2
+					transparence@bullet2 vaut transparence@bullet2 + 2
+				ferme
+				attends délai / 4 milliseconde
+				("Arkanoid :")
+				si bricks est non vide alors lis
+					parcours vérifier bricks avec bullet
+					parcours vérifier bricks avec bullet2
+				ferme
+			ferme
+			Ôte bullet de missiles
+			Ôte bullet2 de missiles
+			efface bullet
+			annihile bullet
+			efface bullet2
+			annihile bullet2
+		ferme
+		reviens
+
+Asteroid :
+	Rôles :
+		§asteroid :: graphique, image vaut chemin + "asteroid.gif", position vaut 2,  x vaut hasard(taille_h), y vaut -50
+		§pas :: nombre <- hasard (10) - 5
+		§vitesse :: nombre <- hasard (10)
+	Actions :
+		projette asteroid
+		tant que (y@asteroid) < (taille_v + 30) , lis
+			y@asteroid vaut y@asteroid + 5 + vitesse
+			tourne à droite asteroid de pas
+			si asteroid est en collision avec vaisseau alors parcours perdu avec 3
+			pour chaque missiles, lis
+				si (visible@joker) == "oui" alors lis
+					si joker est en collision avec asteroid alors lis
+						appelle boom avec x@joker, y@joker
+						efface joker
+					ferme
+				ferme
+			ferme
+			attends délai / 2 milliseconde
+		ferme
+		efface asteroid
+		annihile asteroid
+		parcours score avec 10
+		reviens
+
+Barrage :
+	Rôles :
+		*p :: nombre
+		§barrage :: graphique, image vaut chemin + "ligne.gif", position vaut 2,  x vaut p, y vaut -20
+	Actions :
+		projette barrage
+		tant que (y@barrage) < (taille_v + 30) , lis
+			y@barrage vaut y@barrage + 2.5
+			si barrage est en collision avec vaisseau alors parcours perdu avec 30
+			attends délai / 2 milliseconde
+		ferme
+		efface barrage
+		annihile barrage
+		parcours score avec 40
+		reviens
+
+Créer canal :
+	Rôles :
+		*largeur :: nombre
+		*aléatoire :: nombre
+		pos_canal :: nombre
+		§sens :: nombre <- hasard (2)
+	Actions :
+		pour chaque 20, lis
+			appelle canal avec largeur , aléatoire
+			attends délai * 5 milliseconde
+			si aléatoire alors lis
+				si sens == 1 alors lis
+					si pos_canal <= (taille_h - 520) alors pos_canal  vaut pos_canal  + 20
+					sinon, sens vaut hasard (2)
+				ferme
+				si sens == 0 alors lis
+					si pos_canal >= -310  alors pos_canal  vaut pos_canal  - 20
+					sinon, sens vaut hasard (2)
+				ferme
+			ferme
+		ferme
+		reviens
+
+Canal :
+	Rôles :
+		*largeur :: nombre
+		*aléatoire :: drapeau
+		vitesse_canal :: nombre
+		pos_canal :: nombre
+		§canal :: rectangle,  x vaut 0, y vaut -50, largeur vaut largeur + pos_canal, hauteur vaut 10, couleur vaut "sable", plein vaut "oui", transparence vaut 80, position vaut 3
+		§canal2 :: rectangle,  x vaut taille_h - largeur + pos_canal, y vaut -50, largeur vaut largeur - pos_canal, hauteur vaut 10, couleur vaut "sable", plein vaut "oui", transparence vaut 80, position vaut 3
+	Actions :
+		projette canal & canal2
+		tant que (y@canal) < (taille_v + 30) , lis
+			y@canal vaut y@canal + vitesse_canal
+			y@canal2 vaut y@canal2 + vitesse_canal
+			si canal est en collision avec vaisseau alors parcours perdu avec 2
+			si canal2 est en collision avec vaisseau alors parcours perdu avec 2
+			attends délai / 6 milliseconde
+		ferme
+		efface canal
+		annihile canal
+		efface canal2
+		annihile canal2
+		parcours score avec 10
+		reviens
+
+Power :
+	Rôles :
+		§power :: graphique, image vaut chemin + "power.png", position vaut 2,  x vaut hasard(taille_h - 100) + 50, y vaut -50
+	Actions :
+		projette power
+		tant que (y@power) < (taille_v + 30) , lis
+			y@power vaut y@power + 2
+			si power est en collision avec vaisseau alors lis
+				efface power
+				annihile power
+				appelle énergie
+				reviens
+			ferme
+			attends délai / 2 milliseconde
+		ferme
+		reviens
+
+Planet :
+	Rôles :
+		§planet :: graphique, image vaut chemin + "planet.gif", position vaut 2,  x vaut 500, y vaut -600, transparence vaut 80
+	Actions :
+		projette planet
+		tant que (y@planet) < (taille_v + 600) , lis
+			y@planet vaut y@planet + 1
+			attends délai * 2 milliseconde
+		ferme
+		reviens
+
+Mur :
+	Rôles :
+		§mur :: graphique, image vaut chemin + "brick.gif", position vaut 5,  transparence vaut 0
+		§ i & j & p :: nombre <- 0
+	Actions :
+		vide bricks
+		pour i de 0 à 17 , lis
+			pour j de 0 à 5 , lis
+				ajoute #mur dans bricks
+				déplace bricks{p} vers 40 + i * 40 et 80 + j * 20
+				projette bricks{p}
+				incrémente p
+			ferme
+		ferme
+		pour i de 0 à 100, lis
+			pour chaque bricks, transparence@joker vaut i
+			attends 1 millisecondes
+		ferme
+		reviens
+
+Monstre 1 :
+	Rôles :
+		§monstre :: graphique, image vaut chemin + "monstre.png", position vaut 2,  x vaut hasard(taille_h), y vaut -50
+		§vitesse :: nombre <- hasard (3)
+		§delta :: nombre <- hasard (100)
+	Actions :
+		projette monstre
+		tant que (y@monstre) < (taille_v + 30) , lis
+			y@monstre vaut y@monstre + 8 + vitesse
+			x@monstre vaut x@monstre + ( cos ((y@monstre) + delta) * 10)
+			si monstre est en collision avec vaisseau alors parcours perdu avec 5
+			pour chaque missiles, lis
+				si (visible@joker) == "oui" alors lis
+					si joker est en collision avec monstre alors lis
+						appelle boom avec x@joker, y@joker
+						efface joker
+						efface monstre
+						annihile monstre
+						parcours score avec 50
+						reviens
+					ferme
+				ferme
+			ferme
+			attends délai / 2 milliseconde
+		ferme
+		efface monstre
+		annihile monstre
+		parcours score avec -10
+		reviens
+
+Vérifier bricks :
+	Rôles :
+		*m :: graphique
+	Actions :
+		pour chaque bricks, lis
+			si (visible@m) == "oui" alors lis
+				si (visible@joker) == "oui" alors lis
+					si m est en collision avec joker alors lis
+						("Une erreur peut arriver si deux briques sont supprimées en même temps")
+						essaie, lis
+							appelle boom avec x@m, y@m
+							transparence@joker vaut transparence@joker - 34
+							si (transparence@joker) < 0 alors lis
+								efface joker
+								ôte joker de bricks
+							ferme
+							efface m
+							parcours score avec 10
+							reviens
+						ferme
+					ferme
+				ferme
+			ferme
+		ferme
+		reviens
+
+Bomberman :
+	Rôles :
+		§bomberman :: graphique, image vaut chemin + "bomberman.gif", position vaut 2,  x vaut hasard(taille_h), y vaut -50
+		§vitesse :: nombre <- hasard (3)
+	Actions :
+		projette bomberman
+		tant que (y@bomberman) < (taille_v + 30) , lis
+			y@bomberman vaut y@bomberman + 8 + vitesse
+			si (x@vaisseau + 15) < (x@bomberman) alors x@bomberman vaut x@bomberman - 6
+			si (x@vaisseau + 15) > (x@bomberman) alors x@bomberman vaut x@bomberman + 6
+			si bomberman est en collision avec vaisseau alors parcours perdu avec 5
+			pour chaque missiles, lis
+				si (visible@joker) == "oui" alors lis
+					si joker est en collision avec bomberman alors lis
+						appelle boom avec x@joker, y@joker
+						efface joker
+						efface bomberman
+						efface bomberman
+						annihile bomberman
+						parcours score avec 70
+						reviens
+					ferme
+				ferme
+			ferme
+			attends délai / 2 milliseconde
+		ferme
+		efface bomberman
+		annihile bomberman
+		parcours score avec -10
+		reviens
+
+Chasseur :
+	Rôles :
+		*flag :: drapeau
+		§chasseur :: graphique, image vaut chemin + "chasseur.png", position vaut 5,  x vaut -100, y vaut 577
+		§tmp :: nombre <- 1
+	Actions :
+		projette chasseur
+		tant que flag, lis
+			si (x@vaisseau + 15) < (x@chasseur) alors x@chasseur vaut x@chasseur - 10
+			si (x@vaisseau + 15) > (x@chasseur) alors x@chasseur vaut x@chasseur + 10
+			attends délai / 4 milliseconde
+			si (tmp mod 100) == 0 alors appelle tirer obut  avec x@chasseur, y@chasseur
+			incrémente tmp
+		ferme
+		efface chasseur
+		annihile chasseur
+		reviens
+
+Tirer obut :
+	Rôles :
+		*x :: nombre
+		*y :: nombre
+		§d :: nombre <- 10
+		§t :: nombre
+		§bullet :: graphique, image vaut chemin + "obut.png", position vaut 2,  x vaut d+ x, y vaut y, transparence vaut 100
+	Actions :
+		projette bullet
+		tant que (y@bullet) > -20 , lis
+			y@bullet vaut y@bullet - 5
+			attends délai / 4 milliseconde
+			si bullet est en collision avec vaisseau alors lis
+				appelle boom avec x@bullet, y@bullet
+				parcours perdu avec 40
+				efface bullet
+				annihile bullet
+				reviens
+			ferme
+		ferme
+		efface bullet
+		annihile bullet
+		reviens
+
+Clignotement :
+	Rôles :
+		*message :: texte
+		§boucle :: nombre <- 0
+		§info :: graffiti, couleur vaut "nacarat",  x vaut 100 , y vaut 110 , texte vaut message, taille vaut 10, position vaut 2
+	Actions :
+		projette info
+		tant que boucle < 700, lis
+			boucle vaut boucle + 10
+			transparence de info vaut abs (cos boucle)  * 100
+			Attends 100 millisecondes
+		ferme
+		efface info
+		annihile info
+		reviens
+
+Boom :
+	Rôles :
+		*x :: nombre
+		*y :: nombre
+		§explosion :: graphique, image vaut chemin + "explosion.gif", position vaut 2,  x vaut x, y vaut y
+	Actions :
+		projette explosion
+		de 100 à 0, lis
+			transparence@explosion vaut joker
+			angle@explosion vaut angle@explosion + 1
+			attends 1 millisecondes
+		ferme
+		efface explosion
+		annihile explosion
+		reviens
+
+Perdu :
+	Rôles :
+		*point :: nombre
+	Actions :
+		largeur@énergie vaut largeur@énergie - point
+		délai feu vaut 100
+		si (largeur@énergie) < 0 alors lis
+			parcours fin
+		ferme
+		reviens
+
+énergie :
+	Actions :
+		largeur@énergie vaut max énergie
+		reviens
+
+Fin :
+	Rôles :
+		§info :: graffiti, couleur vaut "nacarat",  x vaut 350 , y vaut 350 , texte vaut "Game Over", taille vaut 10, position vaut 2
+	Actions :
+		efface vaisseau
+		projette info
+		attends 5 secondes
+		termine
+
+Score :
+	Rôles :
+		*s :: nombre
+	Actions :
+		score vaut score + s
+		texte@scoreg vaut score
+		reviens
+
+Moteur palet :
+	("Moteur du jeu crasy_pong.liv, le retour !")
+	Actions :
+		tant que action_raquette, lis
+			y@raquette2 vaut y@palet - 20
+			tu attends 5 millisecondes
+			("Gestion du palet")
+			si directiony est égale à 1 alors tu déplaces le palet vers le haut de vitesse
+			sinon, si directiony est égale à -1 alors tu déplaces le palet vers le bas de vitesse
+			si directionx est égale à 1 alors tu déplaces le palet vers la gauche de pas_palet
+			sinon, si directionx est égale à -1 alors tu déplaces le palet vers la droite de pas_palet
+			("Gestion de la direction du palet")
+			si y de palet est plus petit que 20 alors directiony vaut directiony * -1
+			si y de palet est plus grand que 550 alors directiony vaut directiony * -1
+			si x de palet est plus petit que 55 alors directionx vaut directionx * -1
+			si x de palet est plus grand que fin_mur alors lis
+				directionx vaut directionx * -1
+				x de palet vaut fin_mur
+				si palet est en collision avec raquette alors lis
+					parcours score avec 100
+				ferme
+				sinon, parcours perdu avec 60
+			ferme
+		ferme
+
+Affichage dégât :
+	Actions :
+		tant que vrai, lis
+			attends 10 millisecondes
+			si délai feu > 0 alors lis
+				visible@feu vaut "oui"
+				couleur@raquette vaut "rouge"
+				transparence@feu vaut hasard(100)
+				délai feu vaut délai feu - 10
+			ferme
+			sinon, lis
+				visible@feu vaut "non"
+				couleur@raquette vaut "menthe à l'eau"
+			ferme
+		ferme
+		Reviens
+
+Initialisation niveau :
+	Actions :
+		visible@raquette vaut "non"
+		visible@raquette2 vaut "non"
+		visible@palet vaut "non"
+		parcours niveau 1
+		parcours niveau 2
+		parcours niveau 3
+		parcours niveau 4
+		parcours niveau 5
+		parcours niveau 6
+		parcours niveau 7
+		parcours niveau 8
+		parcours niveau 9
+		parcours niveau 10
+		parcours niveau THE END
+		reviens
+
+Niveau 1 :
+	Actions :
+		appelle clignotement avec "Niveau 1 : la ceinture d'astéroïdes"
+		attends 3 seconde
+		pour chaque 10, lis
+			attends 2 secondes
+			appelle asteroid
+		ferme
+		attends 2 secondes
+		appelle monstre 1
+		attends 2 secondes
+		appelle monstre 1
+		attends 2 secondes
+		pour chaque 10, lis
+			attends 2 secondes
+			appelle asteroid
+			attends 100 millisecondes
+			appelle asteroid
+		ferme
+		attends 5 secondes
+		pour chaque 10, lis
+			attends 1 secondes
+			appelle asteroid
+			attends 100 millisecondes
+			appelle asteroid
+			attends 100 millisecondes
+			appelle asteroid
+		ferme
+		attends 5 secondes
+		pour chaque 30, lis
+			attends 1 secondes
+			appelle asteroid
+			attends 100 millisecondes
+			appelle monstre 1
+			attends 100 millisecondes
+			appelle monstre 1
+		ferme
+		attends 3 seconde
+		incrémente niveau
+		attends 10 secondes
+		reviens
+
+Niveau 2 :
+	Actions :
+		appelle clignotement avec "Niveau 2 : la défense s'organise"
+		attends 3 seconde
+		appelle monstre 1
+		attends 2 secondes
+		appelle monstre 1
+		attends 2 secondes
+		pour chaque 10, lis
+			attends 2 secondes
+			appelle monstre 1
+			attends 100 millisecondes
+			appelle monstre 1
+			attends 100 millisecondes
+			appelle asteroid
+		ferme
+		attends 5 secondes
+		pour chaque 10, lis
+			attends 1 secondes
+			appelle asteroid
+			appelle monstre 1
+			attends 100 millisecondes
+			appelle monstre 1
+			attends 100 millisecondes
+			appelle monstre 1
+		ferme
+		appelle power
+		attends 8 secondes
+		pour chaque 30, lis
+			attends 1 secondes
+			appelle asteroid
+			attends 100 millisecondes
+			appelle asteroid
+			attends 100 millisecondes
+			appelle monstre 1
+			attends 100 millisecondes
+			appelle monstre 1
+			attends 100 millisecondes
+			appelle monstre 1
+		ferme
+		incrémente niveau
+		attends 10 secondes
+		reviens
+
+Niveau 3 :
+	Actions :
+		appelle clignotement avec "Niveau 3 : les kamikazes"
+		attends 5 secondes
+		pour chaque 30, lis
+			attends .5 secondes
+			appelle  monstre 1
+			attends 100 millisecondes
+			appelle  monstre 1
+			attends 100 millisecondes
+			appelle monstre 1
+			attends 100 millisecondes
+			appelle monstre 1
+			attends 100 millisecondes
+			appelle monstre 1
+		ferme
+		pour chaque 30, lis
+			attends 1 secondes
+			appelle  monstre 1
+			attends 100 millisecondes
+			appelle  monstre 1
+			attends 100 millisecondes
+			appelle bomberman
+		ferme
+		pour chaque 30, lis
+			attends 1 secondes
+			appelle  monstre 1
+			attends 100 millisecondes
+			appelle  monstre 1
+			attends 100 millisecondes
+			appelle bomberman
+			attends 500 millisecondes
+			appelle bomberman
+		ferme
+		appelle power
+		pour chaque 30, lis
+			attends 1 secondes
+			appelle  monstre 1
+			attends 100 millisecondes
+			appelle  monstre 1
+			attends 100 millisecondes
+			appelle bomberman
+			attends 500 millisecondes
+			appelle bomberman
+			attends 100 millisecondes
+			appelle asteroid
+			attends 100 millisecondes
+			appelle asteroid
+		ferme
+		incrémente niveau
+		attends 10 secondes
+		reviens
+
+Niveau 4 :
+	Actions :
+		appelle clignotement avec "Niveau 4 : Le défis !"
+		attends 5 secondes
+		visible@raquette vaut "oui"
+		visible@raquette2 vaut "oui"
+		visible@palet vaut "oui"
+		action_raquette vaut vrai
+		appelle planet
+		appelle moteur palet
+		attends 20 secondes
+		pour chaque 10, lis
+			attends 2 secondes
+			appelle asteroid
+		ferme
+		attends 2 secondes
+		pour chaque 10, lis
+			attends 2 secondes
+			appelle asteroid
+			attends 500 millisecondes
+			appelle asteroid
+		ferme
+		attends 5 secondes
+		pour chaque 10, lis
+			attends 1 secondes
+			appelle asteroid
+			attends 500 millisecondes
+			appelle asteroid
+			attends 500 millisecondes
+			appelle asteroid
+		ferme
+		appelle power
+		attends 5 secondes
+		pour chaque 30, lis
+			attends 1 secondes
+			appelle asteroid
+			attends 500 millisecondes
+			appelle monstre 1
+			attends 500 millisecondes
+			appelle monstre 1
+		ferme
+
+		("Fin du niveau 4")
+		visible@raquette vaut "non"
+		visible@raquette2 vaut "non"
+		visible@palet vaut "non"
+		action_raquette vaut faux
+		attends 10 secondes
+		reviens
+
+Niveau 5 :
+	Actions :
+		appelle clignotement avec "Niveau 5 : Le barrage"
+		appelle power
+		pour chaque 2, lis
+			appelle asteroid
+			appelle barrage avec -50
+			attends 1 secondes
+			appelle asteroid
+			attends 1 secondes
+			appelle asteroid
+			attends 1 secondes
+			appelle asteroid
+			appelle barrage avec 410
+			attends 1 secondes
+			appelle asteroid
+			attends 1 secondes
+			appelle asteroid
+			attends 1 secondes
+			appelle asteroid
+			appelle barrage avec -50
+			attends 1 secondes
+			appelle asteroid
+			attends 1 secondes
+			appelle asteroid
+			attends 1 secondes
+			appelle asteroid
+			appelle barrage avec 410
+			attends 2 secondes
+		ferme
+		pour chaque 3, lis
+			appelle asteroid
+			appelle asteroid
+			appelle monstre 1
+			appelle barrage avec -50
+			attends 2 secondes
+			appelle asteroid
+			appelle asteroid
+			appelle monstre 1
+			appelle barrage avec 410
+			attends 2 secondes
+			appelle asteroid
+			appelle asteroid
+			appelle monstre 1
+			appelle barrage avec -50
+			attends 2 secondes
+			appelle asteroid
+			appelle asteroid
+			appelle monstre 1
+			appelle bomberman
+			appelle barrage avec 410
+			attends 2 secondes
+		ferme
+		pour chaque 4, lis
+			appelle asteroid
+			appelle asteroid
+			appelle monstre 1
+			appelle monstre 1
+			appelle bomberman
+			appelle barrage avec -50
+			attends 2 secondes
+			appelle asteroid
+			appelle asteroid
+			appelle monstre 1
+			appelle monstre 1
+			appelle bomberman
+			appelle barrage avec 410
+			attends 2 secondes
+			appelle asteroid
+			appelle asteroid
+			appelle monstre 1
+			appelle monstre 1
+			appelle bomberman
+			appelle barrage avec -50
+			attends 2 secondes
+			appelle asteroid
+			appelle asteroid
+			appelle monstre 1
+			appelle bomberman
+			appelle barrage avec 410
+			appelle monstre 1
+			appelle bomberman
+			attends 2 secondes
+		ferme
+		pour chaque 2, lis
+			appelle barrage avec -50
+			appelle asteroid
+			appelle monstre 1
+			appelle monstre 1
+			appelle monstre 1
+			appelle monstre 1
+			appelle bomberman
+			attends 2 secondes
+			appelle barrage avec 150
+			appelle asteroid
+			appelle monstre 1
+			appelle monstre 1
+			appelle monstre 1
+			appelle monstre 1
+			appelle bomberman
+			attends 2 secondes
+			appelle barrage avec 350
+			appelle asteroid
+			appelle monstre 1
+			appelle monstre 1
+			appelle monstre 1
+			appelle monstre 1
+			appelle bomberman
+			attends 2 secondes
+			appelle barrage avec 550
+			appelle asteroid
+			appelle monstre 1
+			appelle monstre 1
+			appelle monstre 1
+			appelle monstre 1
+			appelle bomberman
+			attends 2 secondes
+		ferme
+		attends 10 secondes
+		reviens
+
+Niveau 6 :
+	Actions :
+		appelle clignotement avec "Niveau 6 : Le mur d'or"
+		appelle power
+		attends 8 secondes
+		appelle planet
+		appelle mur
+		attends 0.1 seconde
+		tant que bricks est non vide, lis
+			attends 800 millisecondes
+			appelle asteroid
+			appelle monstre 1
+			appelle monstre 1
+			appelle asteroid
+		ferme
+		appelle power
+		attends 10 secondes
+		Reviens
+
+Niveau 7 :
+		§espace :: nombre <- 10
+		pos_canal :: nombre <- 0
+		vitesse_canal :: nombre <- 2.5
+	Actions :
+		appelle clignotement avec "Niveau 7 : L'hyper-canal"
+		appelle power
+		attends 5 secondes
+		parcours créer canal avec espace, faux
+		parcours créer canal avec espace, faux
+		parcours créer canal avec espace, faux
+		pour chaque 6, lis
+			espace vaut espace + 50
+			vitesse_canal vaut vitesse_canal + 0.7
+			parcours créer canal avec espace, faux
+		ferme
+		pour chaque 20, lis
+			espace vaut espace + .5
+			vitesse_canal vaut vitesse_canal + 0.2
+			appelle monstre 1
+			parcours créer canal avec espace, vrai
+		ferme
+		pour chaque 20, lis
+			vitesse_canal vaut vitesse_canal + 0.2
+			espace vaut espace + .5
+			appelle monstre 1
+			appelle monstre 1
+			parcours créer canal avec espace, vrai
+		ferme
+		attends 10 secondes
+		Reviens
+
+Niveau 8 :
+		§delta :: nombre <- 300
+		§flag :: drapeau <- vrai
+	Actions :
+		appelle clignotement avec "Niveau 8 : Le chasseur de prime"
+		appelle power
+		("On monte le vaiseau :")
+		pour chaque delta, lis
+			déplace vaisseau vers le haut de 1
+			attends 10 milliseconde
+		ferme
+		attends 5 secondes
+		appelle chasseur avec flag
+		pour chaque 20, lis
+			attends 2 secondes
+			appelle asteroid
+		ferme
+		pour chaque 20, lis
+			attends 2 secondes
+			appelle asteroid
+			appelle bomberman
+		ferme
+		pour chaque 20, lis
+			attends .5 seconde
+			appelle asteroid
+			attends .5 seconde
+			appelle asteroid
+			attends .5 seconde
+			appelle asteroid
+		ferme
+		pour chaque 20, lis
+			attends 2 secondes
+			appelle asteroid
+			appelle monstre 1
+		ferme
+		flag vaut faux
+		("On descent le vaiseau :")
+		pour chaque delta, lis
+			déplace vaisseau vers le bas de 1
+			attends 10 milliseconde
+		ferme
+		attends 10 secondes
+		Reviens
+
+Niveau 9 :
+	Actions :
+		appelle clignotement avec "Niveau 9 : La détermination"
+		appelle power
+		attends 3 seconde
+		pour chaque 10, lis
+			attends 2 secondes
+			appelle asteroid
+		ferme
+		attends 2 secondes
+		appelle monstre 1
+		attends 2 secondes
+		appelle monstre 1
+		attends 2 secondes
+		pour chaque 10, lis
+			attends 2 secondes
+			appelle asteroid
+			attends 100 millisecondes
+			appelle asteroid
+		ferme
+		attends 5 secondes
+		pour chaque 40, lis
+			attends 100 millisecondes
+			appelle asteroid
+			attends 100 millisecondes
+			appelle monstre 1
+			appelle monstre 1
+			attends 100 millisecondes
+			appelle monstre 1
+			appelle monstre 1
+		ferme
+		attends 3 seconde
+		incrémente niveau
+		attends 10 secondes
+		Reviens
+
+Niveau 10 :
+	Actions :
+		appelle clignotement avec "Niveau 10 : l'apocalypse finale"
+		appelle power
+		attends 5 secondes
+		visible@raquette vaut "oui"
+		visible@raquette2 vaut "oui"
+		visible@palet vaut "oui"
+		action_raquette vaut vrai
+		appelle planet
+		appelle moteur palet
+		pour chaque 40, lis
+			appelle asteroid
+			attends 250 millisecondes
+			appelle asteroid
+			attends 250 millisecondes
+			appelle asteroid
+		ferme
+		attends 5 secondes
+		pour chaque 60, lis
+			attends 250 millisecondes
+			appelle asteroid
+			attends 250 millisecondes
+			appelle monstre 1
+			attends 250 millisecondes
+			appelle bomberman
+		ferme
+
+		("Fin du niveau 6")
+		attends 10 secondes
+		visible@raquette vaut "non"
+		visible@raquette2 vaut "non"
+		visible@palet vaut "non"
+		action_raquette vaut faux
+		reviens
+
+Niveau THE END :
+	Actions :
+		appelle clignotement avec "Bravo, vous avez réussi à passer la barrière ! "
+		pour chaque taille_v, lis
+			déplace vaisseau vers le haut de 1
+			attends 10 milliseconde
+		ferme
+		reviens

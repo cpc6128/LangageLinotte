@@ -1,0 +1,11 @@
+n :: nombre
+b := 1
+"Boucle FOR simple :" !
+pour n, 1 à 20 affiche n
+"Boucle FOR avec un pas simple" !
+pour n, 1 à 20 pas n + 2 affiche n
+"Boucle FOR avec un pas variable" !
+pour n, 1 à 20 pas n + b {
+	affiche n
+	b = b + 1
+}

@@ -1,0 +1,32 @@
+globale
+	Information est un graffiti, x prend 170, y prend 220, couleur prend "or", texte prend "Utilise la touche Entrée pour changer de scribe !"
+	Message A est un graffiti, x prend 200, y prend 320, couleur prend "rouge", texte prend "A :"
+	Réponse A est un scribe, x prend 230, y prend 320, couleur prend "noir", texte prend "", taille prend 4, taquet prend 20
+	Message B est un graffiti, x prend 200, y prend 350, couleur prend "rouge", texte prend "B :"
+	Réponse B est un scribe, x prend 230, y prend 350, couleur prend "noir", texte prend "", taille prend 4, taquet prend 20
+	Message C est un graffiti, x prend 200, y prend 380, couleur prend "rouge", texte prend "C :"
+	Réponse C est un scribe, x prend 230, y prend 380, couleur prend "noir", texte prend "", taille prend 4, angle prend 40, taquet prend 20
+	Mur est une toile, couleur prend "gris"
+
+principale :
+	début
+		Efface toile
+		Projette mur
+		Projette information
+		Projette message A
+		Projette réponse A
+		Projette message B
+		Projette réponse B
+		Projette message C
+		Projette réponse C
+		Va vers boucle
+
+boucle :
+	début
+		Stimule réponse A
+		Temporise
+		Stimule réponse B
+		Temporise
+		Stimule réponse C
+		Temporise
+		Va vers boucle

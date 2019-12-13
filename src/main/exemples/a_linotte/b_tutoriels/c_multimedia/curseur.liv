@@ -1,0 +1,19 @@
+principale :
+	pos est un graffiti,  x prend 167, y prend 161, taille prend 5
+	l1 est un ligne, x1 prend 2, x2 prend 585, y1 prend 0, y2 prend 0
+	l2 est un ligne, x1 prend 0, x2 prend 0, y1 prend 0, y2 prend 600
+	début
+		projette pos
+		projette l1
+		projette l2
+		tant que vrai lis
+			temporise
+			vide touche
+			texte @ pos prend sourisx + ", " + sourisy
+			y1 @ l1 prend sourisy
+			y2 @ l1 prend sourisy
+			x1 @ l2 prend sourisx
+			x2 @ l2 prend sourisx
+			couleur @ l1 prend sourisy mod 250 + " " + sourisx mod 250 + " " +  sourisx mod 250
+			couleur @ l2 prend sourisx mod 250 + " " + sourisy mod 250 + " " +  sourisy mod 250
+		ferme

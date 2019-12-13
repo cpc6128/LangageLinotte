@@ -1,0 +1,13 @@
+/*Calculer la moyenne d'une liste de nombres*/
+valeur :: nombre
+max :: nombre
+n :: nombre
+demande max , "Combien de nombres voulez-vous entrer ?"
+pour n, 1 à max parcours demander avec n
+valeur / max !
+
+demander : numéro
+	val :: nombre
+	demande val , "Nombre n°" + numéro
+	valeur = valeur + val
+	retourne

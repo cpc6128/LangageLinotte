@@ -1,0 +1,17 @@
+Boucle FOR :
+("Spécification 0.7.3")
+Principal :
+	Rôles :
+		n :: nombre
+		b :: nombre <- 1
+	Actions :
+		"Boucle FOR simple :" !
+		Pour n de 1 à 20, affiche n
+		"Boucle FOR avec un pas simple" !
+		Pour n de 1 à 20 suivant n + 2 , affiche n
+		"Boucle FOR avec un pas variable" !
+		Pour n de 1 à 20 suivant n + b , lis
+			affiche n
+			b vaut b + 1
+		Ferme
+		Termine

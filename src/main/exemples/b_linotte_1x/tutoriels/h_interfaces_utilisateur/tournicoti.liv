@@ -1,0 +1,35 @@
+Tournicoti :
+("Spécification : 0.7.2")
+    grands rôles :
+        form :: formulaire, titre vaut "J'ai mal à la tête !", largeur vaut 400, hauteur vaut 260
+        b1 :: bouton, texte vaut "A gauche", x vaut 30, y vaut 60
+        b2 :: bouton, texte vaut "A droite", x vaut 130, y vaut 60
+        l1 :: étiquette, texte vaut "Dans quel sens veux-tu que Tux tourne ?", x vaut 30, y vaut 30
+        d :: graphique, image vaut "../c_multimedia/images/tux_graduate.png",  x vaut 100, y vaut 100, taille vaut 20
+		sens est un nombre valant 0
+		
+Principal :
+	Actions :
+        Ajoute b1 & b2 & l1 dans form
+		efface la toile
+		projette d
+        Fais réagir b1 à "clic souris" pour à droite
+        Fais réagir b2 à "clic souris" pour à gauche
+		tant que vrai, lis
+			tourne à droite d de sens	
+			attends 0.01 seconde
+		ferme
+
+à droite :
+	Rôles :
+		*b :: bouton
+	Actions :
+		sens vaut -1
+		Reviens
+
+à gauche :
+	Rôles :
+		*b :: bouton
+	Actions :
+		sens vaut 1
+		Reviens

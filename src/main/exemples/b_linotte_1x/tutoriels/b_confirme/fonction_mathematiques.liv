@@ -1,0 +1,26 @@
+Fonction mathématiques :
+("Spécification : 0.7.0")
+("Auteur : ronan")
+	Tests :
+		< "Quelles sont les valeurs des nombres A et B :"
+		> 3
+		> 4
+		< "Le résultat est 7"
+
+Principal :
+	Rôles :
+		a :: nombre
+		b :: nombre
+	Actions :
+		"Quelles sont les valeurs des nombres A et B :" !
+		a & b ?
+		"Le résultat est " + addition ( a, b ) !
+		Termine
+
+Addition :
+	Rôles :
+		*v1 :: nombre
+		*v2 :: nombre
+	Actions :
+		Retourne v1 + v2
+

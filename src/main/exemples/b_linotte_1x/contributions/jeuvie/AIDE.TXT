@@ -1,0 +1,22 @@
+﻿Le jeu de la vie permet, à partir de règles simples, de créer une diversité semblable à la vie elle-meme
+
+les règles sont:
+_ un bloc ne peut avoir que 2 positions: vivant ( 1 )   ou mort ( 0 )
+_ losque un bloc vivant n'est en contact qu'avec 0 ou 1 bloc vivant, alors il meurt d'isolement
+_ losque un bloc vivant est en contact avec 4 ou plus blocs vivants, alors il meurt d'étouffement
+_ losque un bloc mort est en contact avec exactement 3 blocs vivants, alors il devient vivant
+
+un bloc vivant est représenté pas un carré foncé, et un bloc mort est représenté par un carré clair.
+les carrés très clairs sont les blocs qui sont en train de mourir.
+
+POUR COMMENCER OU ARRETER UNE SIMULATION , APPUYEZ SUR "ENTREE"
+lorsque la simulation est en attente,
+     vous pouvez changer la couleur d'un bloc en cliquant dessus
+     vous pouvez faire mourir toutes les cellules en appuyant sur "bas"
+     vous pouvez refaire vivre toutes les cellules en appuyant sur "haut"
+     vous pouvez inverser la position de chaque cellule en appuyant sur "!" ou "gauche"
+     vous pouvez utiliser une position aléatoire en appuyant sur ":" ou "droite"
+     vous pouvez aussi remettre le compteur de générations à 0 en appuyant sur "0"
+
+
+essayez avec des formes variées et regardez ce que donne la simulation !

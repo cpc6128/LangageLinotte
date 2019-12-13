@@ -1,0 +1,4 @@
+a := vrai
+b := faux
+affiche ternaire(a,2,3)
+affiche ternaire(b,2,3)

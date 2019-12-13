@@ -1,0 +1,15 @@
+// Calculatrice simple :
+// + - ajoute ou soustrait 1
+// * / multiplie ou divise par 2
+
+programme := "+", "+", "*", "-", "/"
+accumulateur := 0
+pour programme parcours machine avec accumulateur, joker
+affiche "Le programme a calculé la valeur {accumulateur}"
+
+machine : sortie, commande
+	si commande = "+" incrémente sortie
+	sinon si commande = "-" décrémente sortie
+	sinon si commande = "*", sortie = sortie * 2
+	sinon si commande = "/", sortie = sortie / 2
+	retourne

@@ -1,0 +1,5 @@
+/*Petit timer pour infuser parfaitement son thé*/
+Timer :
+	début
+		attends 180 secondes
+		"Votre thé est à votre goût, Sir !" !

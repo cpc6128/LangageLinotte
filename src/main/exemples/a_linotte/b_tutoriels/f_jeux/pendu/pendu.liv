@@ -1,0 +1,145 @@
+globale
+	/*mots est un casier de textes depuis  "http://langagelinotte.free.fr/linotte/applet/dictionnaire.txt"*/
+	mots est un casier de textes depuis  "dictionnaire.txt"
+	pied tour 1 est un ligne, x1 prend 457, y1 prend 340, x2 prend 516, y2 prend 340, couleur prend "noir"
+	pied tour 2 est un ligne, x1 prend 566, y1 prend 340, x2 prend 516, y2 prend 340, couleur prend "noir"
+	tour est un ligne, x1 prend 518, y1 prend 340, x2 prend 518, y2 prend 151, couleur prend "feuille-morte"
+	barre est un ligne, x1 prend 441, y1 prend 151, x2 prend 518, y2 prend 151, couleur prend "feuille-morte"
+	barre 2 est un ligne, x1 prend 495, y1 prend 151, x2 prend 517, y2 prend 165, couleur prend "feuille-morte"
+	corde est un ligne, x1 prend 440, y1 prend 151, x2 prend 440, y2 prend 170, couleur prend "gris"
+	fond est une toile, couleur prend "blanc"
+	tête est un cercle , x prend 440, y prend 178, rayon prend 5, taille prend 10, couleur prend "chair", position prend 2
+	corps est un ligne, x1 prend 440, y1 prend 188, x2 prend 440, y2 prend 260, taille prend 4, couleur prend "bleu france", position prend 1
+	bras 1 est un ligne, x1 prend 440, y1 prend 203, x2 prend 414, y2 prend 223, taille prend 3, couleur prend "chair", position prend 0
+	bras 2 est un ligne, x1 prend 440, y1 prend 203, x2 prend 466, y2 prend 223, taille prend 3, couleur prend "chair", position prend 0
+	jambe 1 est un ligne, x1 prend 420, y1 prend 293, x2 prend 440, y2 prend 260, taille prend 3, couleur prend "bleu nuit", position prend 0
+	jambe 2 est un ligne, x1 prend 460, y1 prend 293, x2 prend 440, y2 prend 260, taille prend 3, couleur prend "bleu nuit", position prend 0
+	titre est un graffiti, texte prend "Il faut sauver le pendu !",  x prend 112, y prend 63, taille prend 10, couleur prend "noir"
+	titre score est un graffiti, texte prend "Score : 0", x prend 56, y prend 181 , taille prend 20, couleur prend "vert"
+	jeu est un graffiti, x prend 56, y prend 340 , taille prend 20, couleur prend "gris"
+	message est un graffiti, texte prend "Trouve une lettre",  x prend 146, y prend 500 , taille prend 20, couleur prend "rouge"
+	score est un nombre valant 0
+	avancement est un nombre valant 0
+	mot à trouver est un casier de texte
+	mot à remplacer est un casier de texte
+	reste est un nombre valant 0
+	position est un nombre valant -1
+	action est un texte
+	trouve est un nombre valant 0
+
+principale :
+	début
+		efface toile
+		projette fond
+		projette pied tour 1
+		projette pied tour 2
+		projette titre
+		projette titre score
+		projette jeu
+		projette message
+		va vers début
+
+début :
+	taille est un nombre
+	choix est un texte
+	début
+		efface tour
+		efface barre
+		efface barre 2
+		efface corde
+		efface tête
+		efface corps
+		efface bras 1
+		efface bras 2
+		efface jambe 1
+		efface jambe 2
+		avancement prend 0
+		mesure mots dans taille
+		vide texte de jeu
+		vide mot à trouver
+		vide mot à remplacer
+		mélange taille
+		choix prend mots {taille}
+		mesure choix dans reste
+		pour chaque choix, ajoute joker dans mot à trouver
+		mesure mot à trouver dans taille
+		vide texte de jeu
+		pour chaque taille, ajoute "-"	dans mot à remplacer
+		va vers attente lettre
+
+attente lettre :
+	début
+		position prend -1
+		trouve prend 0
+		texte de message prend "Trouve une lettre"
+		vide texte de jeu
+		pour chaque mot à remplacer, ajoute joker dans texte de jeu
+		temporise
+		action prend touche
+		si action == "", va vers attente lettre
+		pour chaque mot à trouver, parcours vérification
+		si trouve == 0, va vers perdu
+		si reste == 0, va vers gagné
+		va vers attente lettre
+
+vérification :
+	début
+		position prend position + 1
+		si action != joker, reviens
+		joker prend "##"
+		mot à remplacer { position } prend action
+		texte de message prend "Bravo !"
+		attends 1 seconde
+		trouve prend 1
+		reste prend reste - 1
+		reviens
+
+perdu :
+	début
+		avancement prend avancement + 1
+		si avancement == 1, projette tour
+		si avancement == 2, projette barre
+		si avancement == 3, projette barre 2
+		si avancement == 4, projette corde
+		si avancement == 5, projette tête
+		si avancement == 6, projette corps
+		si avancement == 7, projette bras 1
+		si avancement == 8, projette bras 2
+		si avancement == 9, projette jambe 1
+		si avancement == 10, projette jambe 2
+		si avancement ==10, va vers fin partie
+		texte de message prend "Faux !"
+		attends 1 seconde
+		va vers attente lettre
+
+gagné :
+	début
+		vide texte de jeu
+		pour chaque mot à remplacer, ajoute joker dans texte de jeu
+		score prend score + 1
+		concatène "Score : " , score dans texte de titre score
+		texte de message prend "Tu l'as sauvé !"
+		attends 3 seconde
+		va vers début
+
+fin partie :
+	début
+		texte de message prend "Tu as perdu !"
+		y2 de corde prend 200
+		pour chaque 20, parcours snif
+		couleur de tête prend "rouge sang"
+		couleur de bras 1 prend "rouge sang"
+		couleur de bras 2 prend "rouge sang"
+		attends 1 seconde
+		termine
+
+snif :
+	début
+		déplace tête vers le bas de 1
+		déplace corps vers le bas de 1
+		déplace bras 1 vers le bas de 1
+		déplace bras 2 vers le bas de 1
+		déplace jambe 1 vers le bas de 1
+		déplace jambe 2 vers le bas de 1
+		attends 20 millisecondes
+		reviens

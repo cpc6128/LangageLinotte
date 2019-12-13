@@ -1,0 +1,151 @@
+Livre : Le pendu
+
+Grands rôles : 
+	mots est un casier de texte depuis  "http://langagelinotte.free.fr/linotte/applet/dictionnaire.txt"
+	pied tour 1 est une ligne, x1 vaut 457, y1 vaut 340, x2 vaut 516, y2 vaut 340, couleur vaut "noir"
+	pied tour 2 est une ligne, x1 vaut 566, y1 vaut 340, x2 vaut 516, y2 vaut 340, couleur vaut "noir"
+	tour est une ligne, x1 vaut 518, y1 vaut 340, x2 vaut 518, y2 vaut 151, couleur vaut "feuille-morte"
+	barre est une ligne, x1 vaut 441, y1 vaut 151, x2 vaut 518, y2 vaut 151, couleur vaut "feuille-morte"
+	barre 2 est une ligne, x1 vaut 495, y1 vaut 151, x2 vaut 517, y2 vaut 165, couleur vaut "feuille-morte"
+	corde est une ligne, x1 vaut 440, y1 vaut 151, x2 vaut 440, y2 vaut 170, couleur vaut "gris"
+	fond est une toile, couleur vaut "blanc"
+	tête est un cercle , x vaut 440, y vaut 178, rayon vaut 5, taille vaut 10, couleur vaut "chair", position vaut 2
+	corps est un ligne, x1 vaut 440, y1 vaut 188, x2 vaut 440, y2 vaut 260, taille vaut 4, couleur vaut "bleu france", position vaut 1
+	bras 1 est un ligne, x1 vaut 440, y1 vaut 203, x2 vaut 414, y2 vaut 223, taille vaut 3, couleur vaut "chair", position vaut 0
+	bras 2 est un ligne, x1 vaut 440, y1 vaut 203, x2 vaut 466, y2 vaut 223, taille vaut 3, couleur vaut "chair", position vaut 0
+	jambe 1 est un ligne, x1 vaut 420, y1 vaut 293, x2 vaut 440, y2 vaut 260, taille vaut 3, couleur vaut "bleu nuit", position vaut 0
+	jambe 2 est un ligne, x1 vaut 460, y1 vaut 293, x2 vaut 440, y2 vaut 260, taille vaut 3, couleur vaut "bleu nuit", position vaut 0
+	titre est un graffiti, texte vaut "Il faut sauver le pendu !",  x vaut 112, y vaut 63, taille vaut 10, couleur vaut "noir"
+	titre score est un graffiti, texte vaut "Score : 0", x vaut 56, y vaut 181 , taille vaut 20, couleur vaut "vert"
+	jeu est un graffiti, x vaut 56, y vaut 340 , taille vaut 20, couleur vaut "gris"
+	message est un graffiti, texte vaut "Trouve une lettre",  x vaut 146, y vaut 500 , taille vaut 20, couleur vaut "rouge"
+	score est un nombre valant 0
+	avancement est un nombre valant 0
+	mot à trouver est un casier de texte vide
+	mot à remplacer est un casier de texte vide
+	reste est un nombre valant 0
+
+Paragraphe : Décor
+	Actions :
+		efface la toile
+		projette fond
+		projette pied tour 1
+		projette pied tour 2
+		projette titre
+		projette titre score
+		projette jeu
+		projette message
+		va vers début
+
+Paragraphe : début
+	Rôles :
+		taille est un nombre
+		choix est un texte vide
+	Actions :
+		efface tour
+		efface barre
+		efface barre 2
+		efface corde
+		efface tête
+		efface corps
+		efface bras 1
+		efface bras 2
+		efface jambe 1
+		efface jambe 2
+		avancement vaut 0
+		mesure mots dans taille
+		vide texte de jeu
+		vide mot à trouver 
+		vide mot à remplacer
+		mélange taille
+		choix vaut mots {taille}
+		mesure choix dans reste
+		pour chaque choix, ajoute joker dans mot à trouver
+		mesure mot à trouver dans taille
+		vide texte de jeu
+		pour chaque taille, ajoute "-"	dans mot à remplacer
+		va vers attente lettre
+		
+Paragraphe : attente lettre
+	Rôles :
+		action est un texte vide
+		trouve est un nombre valant 0
+		position est un nombre valant -1
+	Actions :
+		texte de message vaut "Trouve une lettre"
+		vide texte de jeu
+		pour chaque mot à remplacer, ajoute joker dans texte de jeu
+		temporise
+		action vaut touche
+		si action est vide alors va vers attente lettre
+		pour chaque mot à trouver, parcours vérification
+		si trouve est égale à 0 alors va vers perdu
+		si reste est égale à 0 alors va vers gagné
+		va vers attente lettre
+
+Paragraphe : vérification
+	Rôles :
+		action est un texte
+		trouve est un nombre
+		position est un nombre
+	Actions :
+		position vaut position + 1
+		si action est différent de joker alors reviens
+		joker vaut "##"
+		mot à remplacer { position } vaut action
+		texte de message vaut "Bravo !"
+		attends 1 seconde
+		trouve vaut 1		
+		reste vaut reste - 1
+		reviens
+
+Paragraphe : Perdu
+	Actions :
+		avancement vaut avancement + 1
+		si avancement est égale à 1 alors projette tour
+		si avancement est égale à 2 alors projette barre
+		si avancement est égale à 3 alors projette barre 2
+		si avancement est égale à 4 alors projette corde
+		si avancement est égale à 5 alors projette tête
+		si avancement est égale à 6 alors projette corps
+		si avancement est égale à 7 alors projette bras 1
+		si avancement est égale à 8 alors projette bras 2
+		si avancement est égale à 9 alors projette jambe 1
+		si avancement est égale à 10 alors projette jambe 2
+		si avancement est égale à 10 alors va vers fin partie
+		texte de message vaut "Faux !"
+		attends 1 seconde
+		va vers attente lettre 
+
+Paragraphe : gagné
+	Actions :
+		vide texte de jeu
+		pour chaque mot à remplacer, ajoute joker dans texte de jeu
+		score vaut score + 1
+		concatène "Score : " , score dans texte de titre score		
+		texte de message vaut "Tu l'as sauvé !"
+		attends 1 seconde
+		va vers début
+		
+Paragraphe : fin partie
+	Actions :
+		texte de message vaut "Tu as perdu !"
+		y2 de corde vaut 200
+		pour chaque 20, parcours snif
+		couleur de tête vaut "rouge sang"
+		couleur de bras 1 vaut "rouge sang"
+		couleur de bras 2 vaut "rouge sang"
+		attends 1 seconde
+		termine
+
+Paragraphe : snif
+	Actions :		
+		déplace tête vers le bas de 1
+		déplace corps vers le bas de 1
+		déplace bras 1 vers le bas de 1
+		déplace bras 2 vers le bas de 1
+		déplace jambe 1 vers le bas de 1
+		déplace jambe 2 vers le bas de 1
+		attends 20 millisecondes
+		reviens
+

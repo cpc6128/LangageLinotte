@@ -1,0 +1,12 @@
+import
+livre1 link bibliotheque2.liv
+
+global
+message := "Nous sommes dans le livre : "
+nom :: string
+message = message + livre
+print message
+print "Quel est ton nom ?"
+input nom
+call bonjour of livre1 with nom
+print "Nous sommes de retour !"

@@ -1,0 +1,17 @@
+x :: number
+a :: number
+b :: number
+input a , "Quelle est la valeur de a ?"
+input b , "Quelle est la valeur de b ?"
+if a = 0 {
+	if b = 0 {
+		print "R est la solution"
+	}
+	else {
+		print "Je ne sais que dire !"
+	}
+}
+else {
+	x = b / a
+	print x
+}

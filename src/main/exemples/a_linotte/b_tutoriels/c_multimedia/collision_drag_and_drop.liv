@@ -1,0 +1,33 @@
+globale
+	Centre est un cercle,  x prend 311, y prend 285, couleur prend "rouge", plein prend "oui", rayon prend 50
+	Palet est un rectangle,  largeur prend 40, hauteur prend 20, couleur prend "noir", plein prend "oui"
+	Salle est une toile, couleur prend "blanc"
+principal :
+	début
+		Efface toile
+		Projette salle & centre & palet
+		Fais réagir palet & centre à "glisser-déposer" pour changement
+		Fais réagir palet à "début glisser-déposer" pour début changement palet
+		Fais réagir centre à "début glisser-déposer" pour début changement centre
+		Tant que vrai lis
+			/*boucle infinie*/
+			Temporise
+			Vide touches
+		Ferme
+
+changement :
+	début
+		Si palet est en collision avec centre, couleur@centre prend "jaune"
+		Sinon couleur@centre prend "rouge"
+		couleur@palet prend "noir"
+		Reviens
+
+Début Changement Palet :
+	début
+		couleur@palet prend "vert"
+		Reviens
+
+Début Changement Centre :
+	début
+		couleur@centre prend "vert"
+		Reviens

@@ -1,0 +1,135 @@
+Asciinotte :
+	Espèces :
+		lettre :: texte
+		l'espèce box hérite de rectangle et contient lettre
+	Grands rôles :
+		info :: graffiti,  x vaut 233, y vaut 540, couleur vaut "bleu turquin"
+		infoc :: graffiti, x vaut 170, y vaut 562, couleur vaut "rouge", texte vaut ""
+		couleur off :: texte <- "noir"
+		couleur on :: texte <- "menthe à l'eau"
+		toile :: toile
+		police :: texte
+		lettres :: casier de graffiti vide
+		form est un formulaire, titre vaut "Le sélecteur de polices", largeur vaut 200, hauteur vaut 100
+		s1 est un sélecteur, valeurs vaut "", x vaut 20, y vaut 50
+		l1 est une étiquette, texte vaut "Choisissez la police:", x vaut 20, y vaut 20
+		presse est un pressepapier
+		aide est un parchemin, texte vaut "Asciinotte 1.0
+
+		Survolez un caractère pour dévoiler sa valeur ASCII :
+		- Un clic gauche sur le caractère copie la lettre dans le presse-papier.
+		- Un clic droit sur le caractère copie la valeur ASCII dans le presse-papier.
+
+		- Utilisez le sélecteur pour changer de police d'affichage.", x vaut 50, y vaut 350, largeur vaut 500, taille vaut 2, couleur vaut "capucine"
+
+Principal :
+	Rôles :
+		k & i :: nombre
+		§ tmp :: texte vide
+	Actions :
+		efface la toile
+		pour k de 0 à 10, lis
+			pour i de 0 à 24, lis
+				si (i  + k*25) <= 255 alors lis
+					§g :: graffiti
+					§r :: box
+					fais réagir r à "souris entrante" pour afficher ascii
+					fais réagir r à "souris sortante" pour assombrir
+					fais réagir r à "clic souris" pour copier la lettre
+					fais réagir r à "clic droit souris" pour copier ascii
+					y@g vaut 20 + (k * 30)
+					x@g vaut 25 + (i * 22)
+					taille@g vaut 12
+					texte@g vaut chr (i  + k*25)
+					position@g vaut 2
+					couleur@g vaut "argile"
+					ajoute g dans lettres
+					y@r vaut 5 + k * 30
+					x@r vaut  25 + i * 22
+					hauteur@r vaut 21
+					largeur@r vaut 21
+					couleur@r vaut couleur off
+					plein@r vaut "oui"
+					position@r vaut 1
+					lettre@r vaut chr (i  + k*25)
+					projette r & g
+				ferme
+			ferme
+		ferme
+		projette info & infoc & aide & toile
+		ajoute s1& l1 dans form
+		fais réagir s1 à "clic souris" pour changer la police
+		fais réagir form à "clic souris" pour fermer la fenêtre
+		couleur@toile vaut "noir"
+
+		("Construction de la liste des polices :")
+		pour chaque polices, lis
+			tmp vaut tmp + joker + "|"
+		ferme
+		valeurs@s1 vaut tmp
+
+		("Boucle infinie")
+		tant que vrai, lis
+			temporise
+		ferme
+
+Afficher ascii :
+	Rôles :
+		* b est une box
+	Actions :
+		texte@info vaut lettre@b + ", valeur ascii : " + ascii (lettre@b)
+		couleur@b vaut couleur on
+		transparence@b vaut 100
+		reviens
+
+Assombrir :
+	Rôles :
+		* b est une box
+	Actions :
+		attends .2 seconde
+		de 100 à 0, lis
+			transparence@b vaut joker
+			attends 10 millisecondes
+		ferme
+		reviens
+
+Changer la police :
+	Rôles :
+		*s est une sélecteur
+	Actions :
+		police vaut valeur@s
+		pour chaque lettres, lis
+			police@joker vaut police
+		ferme
+		Reviens
+
+Fermer la fenêtre :
+	Rôles :
+		*f est une formulaire
+	Actions :
+		Termine
+
+Copier la lettre :
+	Rôles :
+		*f est une box
+		§texte est un texte
+	Actions :
+		évoque presse.copierhtml("<font face='" + police + "'>" + lettre@f + "</font>")
+		texte vaut "Le caractère '" + lettre@f + "' est copié dans le presse-papier !"
+		texte@infoc vaut texte
+		attends 5 secondes
+		si (texte@infoc) == texte alors vide texte@infoc
+		reviens
+
+Copier ascii :
+	Rôles :
+		*f est une box
+		§texte est un texte
+	Actions :
+		évoque presse.copier(ascii(lettre@f))
+		texte vaut "Le numéro ASCII '" + ascii(lettre@f) + "' est copié dans le presse-papier !"
+		texte@infoc vaut texte
+		attends 5 secondes
+		si (texte@infoc) == texte alors vide texte@infoc
+		reviens
+

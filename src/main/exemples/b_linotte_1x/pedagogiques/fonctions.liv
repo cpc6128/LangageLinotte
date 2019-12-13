@@ -1,0 +1,23 @@
+Fonction mathématiques :
+("f(x)=x/(x-3)")
+
+question :
+    Rôles :	
+		x :: nombre vide
+    Actions :
+		x ?
+		x vaut f (x)
+		x !
+
+f :
+    Rôles :
+		*x :: nombre
+    Actions :
+		si x == 3 alors lis
+			"Impossible de calculer cette fontion" !
+			Termine
+		ferme
+		Sinon, lis
+			x vaut x/(x-3 )
+			retourne x
+		ferme

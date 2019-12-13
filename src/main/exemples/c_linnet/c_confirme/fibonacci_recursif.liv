@@ -1,0 +1,14 @@
+n :: number
+"Entrez un nombre :" !
+n ?
+call fibo with n
+n !
+
+fibo : n
+	traitement := n - 1
+	traitement2 := n - 2
+	if n < 2 return
+	call fibo with traitement
+	call fibo with traitement2
+	n = traitement + traitement2
+	return

@@ -1,0 +1,12 @@
+Capitale de la France :
+
+	Principal :
+	Rôles :
+		capitale :: texte vide
+	Actions :
+		tant que capitale != "Paris", lis  
+			affiche "Quelle est la capitale de la France ?"
+			demande capitale
+		ferme 
+		affiche "Bravo, tu es trop fort !"
+  	termine

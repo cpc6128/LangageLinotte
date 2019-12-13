@@ -1,0 +1,10 @@
+Pythagore :
+Principal :
+	Rôles :
+		AB :: nombre vide
+		BC :: nombre vide
+	Actions :
+		AB ?
+		BC ?
+		affiche "Le carré de l'hypoténuse vaut : " + (carré AB + carré BC)
+		termine

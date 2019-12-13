@@ -1,0 +1,14 @@
+"Entrez un nombre :" !
+n :: nombre
+n ?
+parcours fibo avec n
+n !
+
+fibo : n
+	traitement := n - 1
+	traitement2 := n - 2
+	si n < 2 retourne
+	parcours fibo avec traitement
+	parcours fibo avec traitement2
+	n = traitement + traitement2
+	retourne

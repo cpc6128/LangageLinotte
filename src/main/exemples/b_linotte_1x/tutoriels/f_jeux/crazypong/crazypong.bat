@@ -1,0 +1,1 @@
+..\..\..\..\jinotte.exe -x crazy_pong.liv

@@ -1,0 +1,7 @@
+Artiste :
+("Spécification : 0.7.1")
+
+Principal :
+	Actions :
+		Efface la toile
+		Peins "scene1.xml"	

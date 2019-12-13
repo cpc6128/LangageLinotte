@@ -1,0 +1,30 @@
+/*
+Version originale : http://linuxfr.org/users/mzf/journaux/un-tap-tempo-en-ligne-de-commande
+Comptatible à partir de Linotte 2.7.7
+*/
+principale :
+	horloge est un horodatage // greffon permettant de récupérer le temps
+	tempo valant 0 // équivaut à "tempo est un nombre valant 0"
+	entrée valant "" // variable utilisée pour stocker les touches
+	entrées est un casier de nombres // tableau qui contiendra les délais entre les tempos
+	tant que vrai 
+		tempo prend horloge.maintenant()
+		demande entrée
+		si entrée = "q"
+			affiche "Au revoir !"
+			termine
+		ferme
+		sinon 
+			ajoute horloge.maintenant() - tempo dans entrées
+			si entrées.taille() > 2 
+				affiche "Tempo : " + calculerbpm(entrées) + " bpm"
+			ferme
+			sinon affiche "Appuyer encore sur la touche entrée pour lancer le calcul du tempo…"
+		ferme
+	ferme
+
+calculerbpm : liste // paramètre liste, contient la liste des tempos
+	retour valant 0
+	si liste.taille() > 5 ôte liste{0} de liste // On supprime le premier élément
+	pour liste, retour += joker // Somme des valeurs de la liste
+	retourne arrondi(60000*liste.taille()/retour)

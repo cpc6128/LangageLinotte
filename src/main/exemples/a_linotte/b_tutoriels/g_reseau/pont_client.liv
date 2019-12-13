@@ -1,0 +1,11 @@
+connexion :
+	connexion est un pont, adresse prend "localhost"
+	message est un texte valant "Bonjour !"
+	début
+		Ouvre connexion avec "" depuis ""
+		état de connexion !
+		Charge message dans connexion
+		Décharge message depuis connexion
+		"Voici la réponse du serveur :" !
+		Affiche message
+		Ferme connexion

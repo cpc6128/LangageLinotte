@@ -1,0 +1,17 @@
+globale
+	form est un formulaire, titre prend "J'ai mal à la tête !", largeur prend 300, hauteur prend 300
+	d est un graphique, image prend "../c_multimedia/images/tux_graduate.png",  x prend 100, y prend 100, taille prend 20
+	xtoile est un xtoile, x prend 0, y prend 0
+	toile est une toile, couleur prend "noir",hauteur prend 300 , largeur prend 400
+	scrolleur est un scrolleur, largeur prend 200, hauteur prend 200, x prend 10, y prend 10
+	
+principale :
+	début
+		ajoute scrolleur dans form
+		ajoute xtoile dans scrolleur 
+		efface toile
+		projette d
+		tant que vrai lis
+			tourne à droite d de 1
+			attends 0.01 seconde
+		ferme

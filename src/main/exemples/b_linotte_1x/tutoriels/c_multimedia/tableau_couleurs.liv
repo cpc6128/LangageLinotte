@@ -1,0 +1,44 @@
+Tableau de couleurs :
+("Spécification 0.6.1")
+
+Grands Rôles :
+		r :: nombre
+		v :: nombre
+		taille :: nombre
+		MAX :: nombre <- 50
+		p :: point, taille vaut 1, taille vaut 10
+		points :: casier de point vide
+
+Principal :
+	Rôles :
+		temp :: texte
+	Actions :
+		Efface la toile
+		Projette p
+		De 0 à MAX, lis
+			r vaut joker
+			De 0 à MAX, lis
+				v vaut joker
+				Parcours afficher avec #p
+			Ferme			
+		Ferme
+		Mesure points dans taille
+		taille vaut taille - 1
+		De 0 à taille, lis
+			temp vaut couleur @ (points{joker})
+			couleur @ (points{joker}) vaut couleur @ (points{taille - joker}) 
+			couleur @ (points{taille - joker})  vaut temp
+			Attends 2 millisecondes
+		Ferme
+		Termine
+
+Afficher :
+	Rôles :
+		*p :: point
+	Actions :
+		ajoute p dans points
+		x @ p vaut (r * 10) + 30
+		y @ p vaut (v * 10) + 30
+		couleur @ p vaut (r*5) + " " + (v*5) + " " + (255-(v*5))
+		Reviens	
+

@@ -1,0 +1,33 @@
+Impression de la toile :
+
+Principal :
+	Rôles :
+		§ texte :: parchemin, x vaut 10, y vaut 200, taille vaut 10, texte vaut "Hello,
+on peut maintenant imprimer
+la toile sur l'imprimante !
+Sympa ?"
+		§ cercle est un cercle, taille vaut 1, couleur vaut "rouge", x vaut 200, y vaut 200, rayon vaut 200
+		§ i :: nombre <- 0
+	Actions :
+		~greffon 1 imprimeur 0.1 "http://abaque.googlecode.com/files/Imprimeur.zgl"
+		efface toile
+		projette texte & cercle
+		pour i de 30 à 200 suivant i + 10, parcours création carré avec i
+		va vers imprimer
+
+Création carré :
+	Rôles :
+		§t :: rectangle
+		*i :: nombre
+	Actions :
+		largeur@t & hauteur@t vaut 20
+		x@t & y@t vaut 50 + i
+		projette t
+		reviens
+
+Imprimer :
+	Rôles :
+		§ imprimeur :: imprimeur
+	Actions :
+		affiche imprimeur.imprimertoile()
+		Termine

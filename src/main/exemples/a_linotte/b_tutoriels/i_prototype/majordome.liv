@@ -1,0 +1,8 @@
+// Le code de ce greffon, écrit en langage Java, est localisé dans le répertoire "greffons" de l'Atelier.
+// C'est le fichier Majordome.java
+// Les méthodes fonctionnelles utilisables depuis le langage Linotte doivent être annotées par @Slot
+
+démonstration :
+	messager est un majordome
+	début
+		affiche messager.présentation("Jules")

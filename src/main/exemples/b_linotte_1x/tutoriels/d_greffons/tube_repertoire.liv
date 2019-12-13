@@ -1,0 +1,23 @@
+Le registre :
+("Spécification : 0.6.2")
+
+Grands rôles :
+	Dictionnaire :: répertoire
+
+Principal :
+	Rôles :
+		âge :: nombre <- 15
+	Actions :
+		Charge "Bertrand dupont" dans dictionnaire avec "utilisateur1"
+		Charge âge dans dictionnaire avec "utilisateur1_age"
+		Va vers suite
+
+Suite :
+	Rôles :
+		nb :: nombre vide
+		texte :: texte vide
+	Actions :	
+		Décharge nb depuis dictionnaire avec "utilisateur1_age"
+		nb !
+		Décharge texte depuis dictionnaire avec "utilisateur1"
+		texte !

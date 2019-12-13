@@ -1,0 +1,15 @@
+/*Auteur : $imon*/
+n :: nombre
+demande n
+n = abs( arrondi( n ))  //pour s'assurer qu'il s'agit bien d'un entier positif
+parcours syracuse avec n
+affiche "la durée du vol est " + n
+//exit
+
+syracuse : x
+	si (arrondi(x / 2)) = (x / 2), x = x / 2
+	sinon x = 3 * x + 1
+	si x > 1 parcours syracuse avec x
+	sinon x = 0
+	x = x + 1
+	retourne

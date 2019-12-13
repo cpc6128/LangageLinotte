@@ -1,0 +1,30 @@
+globale
+	form est un formulaire, titre prend "Menu du jour...", largeur prend 400, hauteur prend 260
+	m1 est un menu, texte prend "Outils"
+	b1 est un menubouton, texte prend "Blanc"
+	sm1 est un sousmenu, texte prend "Démarrer"
+	l1 est un étiquette, texte prend "", x prend 30, y prend 100
+
+principale :
+	début
+		/*On ajoute les menus principaux*/
+		Ajoute m1 & l1 & b1 dans form		
+		/*On ajoute les sous-menus*/
+		Ajoute sm1 dans m1
+		Fais réagir sm1 à "clic souris" pour message
+		Fais réagir b1 à "clic souris" pour messagebouton
+		tant que vrai lis
+			temporise
+		ferme
+
+message :
+	*m est un sousmenu
+	début
+		texte @ l1 prend "Le sous-menu fonctionne !"
+		Reviens
+
+Messagebouton :
+	*m est un menubouton
+	début
+		texte @ l1 prend "Le bouton fonctionne !"
+		Reviens

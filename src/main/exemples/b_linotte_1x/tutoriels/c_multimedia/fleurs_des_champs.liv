@@ -1,0 +1,45 @@
+Les couleurs :
+
+Grands rôles :
+		champs :: toile, couleur vaut "jaune mimosa"
+		fleurs :: casier de point vide
+		nom :: graffiti,  x vaut 114, y vaut 539, couleur vaut "noir", texte vaut "Déplace la souris sur les fleurs !", position vaut 1, taille vaut 10
+		pointeur :: point, couleur vaut "blanc"
+
+Principal :
+	Actions :
+		efface la toile
+		projette champs
+		projette nom
+		pour chaque couleurs, parcours planter
+		projette pointeur
+		va vers action
+
+Planter :
+	Rôles :
+		xx :: nombre <- 600
+		yy :: nombre <- 600
+	Actions :
+		crée joker un acteur point
+		mélange xx
+		mélange yy
+		déplace création vers xx et yy
+		couleur @ création vaut joker
+		taille @ création vaut 10
+		projette création
+		ajoute création dans fleurs
+		reviens
+
+Action :
+	Rôles :
+		position :: nombre <- 0
+	Actions :
+		temporise
+		déplace pointeur vers sourisx et sourisy
+		pour chaque fleurs, parcours analyse
+		va vers action
+
+Analyse :
+	Actions :
+		si pointeur est en collision avec joker alors texte @ nom vaut [joker]
+		reviens

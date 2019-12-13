@@ -1,0 +1,14 @@
+/*Calculer la moyenne d'une liste de nombres*/
+valeur :: number
+max :: number
+n :: number
+input max , "Combien de nombres voulez-vous entrer ?"
+for n, 1 to max call demander with n
+valeur / max !
+//exit
+
+demander : numéro
+	val :: number
+	input val , "Nombre n°" + numéro
+	valeur = valeur + val
+	return

@@ -1,0 +1,63 @@
+/*Auteur : Dadodudou*/
+numéros := -1 , -1 , -1 , -1
+coul := 0 , 0 , 0 , 0
+numéros2 := "1" , "2" , "3", "4" , "5" , "6" , "7" , "8" , "9" , "10" , "valet" , "dame" , "roi"
+coul2 := "trèfle" , "carreau" , "coeur" , "pique"
+i :: number
+x :: number
+co :: number
+
+try explore "ouvrir aide.txt"
+else print "Impossible de trouver le fichier aide.txt"
+for i, 0 to 3 {
+	while (numéros[i]) = -1 call Numéro with i
+	while (coul[i]) = 0 call Couleur with i
+}
+call Calculs
+print "La dernière carte est..."
+sleep 3000
+if x = 11 print "la " + numéros2[x] + " de " + co
+else print "le " + numéros2[x] + " de " + co
+//exit
+
+Numéro : a
+	b :: string
+	c :: number
+	j :: number
+	c = a+1
+	print "numéro de la carte " + c + " ?"
+	input b
+	for j, 0 to 12 {
+		if b = (numéros2[j]), numéros[a] = j
+	}
+	return
+
+Couleur : a
+	b :: string
+	c :: number
+	j :: number
+	c = a+1
+	print "couleur de la carte " + c + " ?"
+	input b
+	for j, 0 to 3 {
+		if b = (coul2[j]), coul[a] = 0.2*(j+1)
+	}
+	if a = 0, co = b
+	return
+
+Calculs :
+	j :: number
+	k :: number
+	l :: number
+	supp := 0
+	j = numéros[1] + coul[1]
+	k = numéros[2] + coul[2]
+	l = numéros[3] + coul[3]
+	if j > k, supp = supp + 3
+	if j > l, supp = supp + 2
+	if k > l, supp = supp + 2
+	if supp = 7, supp = 6
+	if supp = 0, supp = 1
+	x = numéros[0] + supp
+	if x > 12, x = x-13
+	return

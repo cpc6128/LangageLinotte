@@ -1,0 +1,60 @@
+La grande course de voitures :
+("Spécification : 0.6.1")
+
+Espèces : 
+	vitesse est un nombre
+	modèle est un texte
+	l'espèce voiture hérite de rectangle et contient une vitesse, un modèle
+
+Grands rôles : 
+	v1 est une voiture, modèle vaut "Renault", x vaut 50, y vaut 35, plein vaut "oui",...
+ 		couleur vaut "rouge", hauteur vaut 7, largeur vaut 15
+	v2 est une voiture, modèle vaut "Peugeot", x vaut 50, y vaut 65, plein vaut "oui",...
+		couleur vaut "vert", hauteur vaut 7, largeur vaut 15
+	v3 est une voiture, modèle vaut "BMW", x vaut 50, y vaut 95, plein vaut "oui",...
+		couleur vaut "bleu", hauteur vaut 7, largeur vaut 15
+	piste est un toile, couleur vaut "blanc"
+	arrivée est un ligne, couleur vaut "noir", transparence vaut 80, x1 vaut 560,...
+		x2 vaut 560, y1 vaut 30, y2 vaut 120
+	max est un nombre valant 5
+	tempo est un nombre valant 20
+	limite est un nombre valant  545
+	classement est un casier de voiture vide
+	résultat1 est un graffiti, x vaut 210, y vaut 175
+	résultat2 est un graffiti, x vaut 210, y vaut 200
+	résultat3 est un graffiti, x vaut 210, y vaut 225
+
+Paragraphe : en piste !
+	Actions :
+		efface la toile
+		projette piste & arrivée
+		appelle course avec v1
+		appelle course avec v2
+		appelle course avec v3
+		observe course
+		texte de résultat1 vaut "la voiture " + modèle de (classement{0}) + ...
+			" est la première !"
+		texte de résultat2 vaut "la voiture " + modèle de (classement{1}) + ...
+			" est la deuxième !"
+		texte de résultat3 vaut "la voiture " + modèle de (classement{2}) + ...
+			" est la dernière !"
+		couleur de résultat1 vaut couleur de (classement{0})
+		couleur de résultat2 vaut couleur de (classement{1})
+		couleur de résultat3 vaut couleur de (classement{2})
+		projette résultat1 & résultat2 & résultat3
+		temporise
+		termine
+
+Paragraphe : course
+	Rôles :
+		*vehicule est une voiture
+	Actions :
+		projette vehicule
+		tant que x de vehicule est plus petit que limite, lis
+			vitesse de vehicule vaut max
+			mélange vitesse de vehicule
+			déplace vehicule vers la droite de vitesse de vehicule
+			attends tempo millisecondes
+		ferme
+		ajoute vehicule dans classement
+		reviens		

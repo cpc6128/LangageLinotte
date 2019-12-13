@@ -1,0 +1,30 @@
+Cube3D Demo :
+	grands rôles :
+		form :: formulaire, titre vaut "Cube 3D", largeur vaut 800, hauteur vaut 800
+		monde :: monde3D, x vaut 0, y vaut 0,largeur vaut 800, hauteur vaut 800
+		forme ::cube3D, rayon vaut 0.5, transparence vaut .5
+		sphere :: sphere3D, rayon vaut 0.3, couleur vaut "rouge", transparence vaut 0.7, texture vaut "earthTexture.jpg"
+		message :: texte3D, texte vaut "Vive la 3D avec le langage Linotte !", taille vaut -1, couleur vaut "sable", police vaut "Arial"
+		tempo :: nombre <- 0
+
+Principal :
+	Actions :
+		ajoute monde dans form
+		ajoute forme & sphere & message dans monde
+		fais réagir form à "clic souris" pour fermer la fenêtre
+		tant que vrai, lis
+			évoque forme.rotationx(0.04)
+			évoque forme.rotationy(0.03)
+			évoque forme.rotationz(0.01)
+			évoque message.translation(0,0,-0.01)
+			évoque sphere.translation(0,cos(tempo)/100,0)
+			évoque sphere.rotationy(-0.02)
+			incrémente tempo
+			attends 0.03 seconde
+		ferme
+
+Fermer la fenêtre :
+	Rôles :
+		*f est une formulaire
+	Actions :
+		termine

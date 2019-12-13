@@ -1,0 +1,129 @@
+Horloge Digitale :
+
+("http://langagelinotte.free.fr/punbb/viewtopic.php?id=311")
+ 
+ Grands rôles :
+		lumière douce :: texte <- "oscuro"
+		lumière clair :: texte <- "menthe à l'eau"
+		décallage :: nombre <- -95
+		élément v :: polygone, couleur vaut lumière douce, plein vaut "oui", x vaut 0, y vaut 0, ...
+			dx1 vaut 10 ,dy1 vaut -10, dx2 vaut 20 ,dy2 vaut 0, ...
+			dx3 vaut 20 ,dy3 vaut 40, dx4 vaut 10 ,dy4 vaut 50, ...
+			dx5 vaut 0 ,dy5 vaut 40
+		élément h :: polygone, couleur vaut lumière douce, plein vaut "oui", x vaut 0, y vaut 0, ...
+			dx1 vaut 10 ,dy1 vaut -10, dx2 vaut 38 ,dy2 vaut -10, ...
+			dx3 vaut 48 ,dy3 vaut 0, dx4 vaut 38 ,dy4 vaut 10, ...
+			dx5 vaut 10 ,dy5 vaut 10
+		chiffre1 :: casier de polygone vide
+		chiffre2 :: casier de polygone vide
+		chiffre3 :: casier de polygone vide
+		chiffre4 :: casier de polygone vide
+		chiffre5 :: casier de polygone vide
+		chiffre6 :: casier de polygone vide
+		rond1 :: cercle, couleur vaut lumière douce,  x vaut 285 + décallage, y vaut 230, rayon vaut 20, plein vaut "oui"
+		rond2 :: cercle, couleur vaut lumière douce,  x vaut 285 + décallage, y vaut 290, rayon vaut 20, plein vaut "oui"
+		rond3 :: cercle, couleur vaut lumière douce,  x vaut 506 + décallage, y vaut 230, rayon vaut 20, plein vaut "oui"
+		rond4 :: cercle, couleur vaut lumière douce,  x vaut 506 + décallage, y vaut 290, rayon vaut 20, plein vaut "oui"
+		vitre :: toile, couleur vaut "noir" (", bordure vaut "non", hauteur vaut 500")
+		patron0 :: casier de nombre <- 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1
+		patron1 :: casier de nombre <- 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1
+		patron2 :: casier de nombre <- 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0
+		patron3 :: casier de nombre <- 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1
+		patron4 :: casier de nombre <- 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1
+		patron5 :: casier de nombre <- 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1
+		patron6 :: casier de nombre <- 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1
+		patron7 :: casier de nombre <- 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1
+		patron8 :: casier de nombre <- 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+		patron9 :: casier de nombre <- 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1
+		nombres :: casier de casier <- patron0, patron1, patron2, ...
+			patron3, patron4, patron5, patron6, patron7, patron8, patron9
+
+Principal :
+	Rôles :
+		position 1 :: nombre <- 0 + décallage
+		position 2 :: nombre <- 80 + décallage
+		position 3 :: nombre <- 220 + décallage
+		position 4 :: nombre <- 300 + décallage
+		position 5 :: nombre <- 440 + décallage
+		position 6 :: nombre <- 520 + décallage
+		h & m & s :: nombre
+	Actions :
+		efface la toile
+		projette vitre
+		projette rond1 & rond2 & rond3 & rond4
+		parcours init avec position 1, chiffre1
+		parcours init avec position 2, chiffre2
+		parcours init avec position 3, chiffre3
+		parcours init avec position 4, chiffre4
+		parcours init avec position 5, chiffre5
+		parcours init avec position 6, chiffre6
+		tant que vrai, lis
+			h vaut heure
+			m vaut minute
+			s vaut seconde
+			parcours analyse avec h, chiffre1, chiffre2
+			parcours analyse avec m, chiffre3, chiffre4
+			parcours analyse avec s, chiffre5, chiffre6
+			si (s mod 2) == 0 alors lis
+				couleur@rond1 & couleur@rond2 & couleur@rond3 & couleur@rond4 vaut lumière clair
+			ferme
+			sinon, lis
+				couleur@rond1 & couleur@rond2 & couleur@rond3 & couleur@rond4 vaut lumière douce
+			ferme
+			attends 1 seconde
+		ferme
+		termine
+
+Init :
+	Rôles :
+		* d :: nombre
+		* c :: casier de polygone
+	Actions :
+		parcours affiche avec #élément h, 111 + d, 139, c
+		parcours affiche avec #élément h, 111 + d, 261, c
+		parcours affiche avec #élément h, 111 + d, 383, c
+		parcours affiche avec #élément v, 100 + d, 150, c
+		parcours affiche avec #élément v, 100 + d, 210, c
+		parcours affiche avec #élément v, 100 + d, 272, c
+		parcours affiche avec #élément v, 100 + d, 332, c
+		parcours affiche avec #élément v, 150 + d, 150, c
+		parcours affiche avec #élément v, 150 + d, 210, c
+		parcours affiche avec #élément v, 150 + d, 272, c
+		parcours affiche avec #élément v, 150 + d, 332, c
+		Reviens
+
+Analyse :
+	Rôles :
+		* n :: nombre
+		* c1 :: casier de polygone
+		* c2 :: casier de polygone
+	Actions :
+		parcours colorise avec nombres{entier(n/10)}, c1
+		parcours colorise avec nombres{décimal(n/10)*10}, c2
+		Reviens
+
+Affiche :
+	Rôles :
+		*temporaire :: polygone
+		*x :: nombre
+		*y :: nombre
+		*casier :: casier de polygone
+	Actions :
+		x@temporaire vaut x
+		y@temporaire vaut y
+		projette temporaire
+		ajoute temporaire dans casier
+		reviens
+
+Colorise :
+	Rôles :
+		* modèle :: casier de nombre
+		* chiffre :: casier de polygone
+		§ position :: nombre <- 0
+	Actions :
+		pour chaque modèle, lis
+			si joker == 1 alors couleur@(chiffre{position}) vaut lumière clair
+			sinon, couleur@(chiffre{position}) vaut lumière douce
+			position vaut position + 1
+		ferme
+		reviens

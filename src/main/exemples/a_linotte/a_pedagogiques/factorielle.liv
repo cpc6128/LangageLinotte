@@ -1,0 +1,10 @@
+principale :
+	a est un nombre
+	i est un nombre
+	résultat est un nombre valant 1
+	début
+		/*précision arithmétique infinie*/
+		~ précision 0
+		a ?
+		pour i de a à 1, résultat prend résultat * i
+		résultat !

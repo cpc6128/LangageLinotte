@@ -1,0 +1,1567 @@
+Livre : SuissBox vp.0.0.2 09-10-2010
+("Spécification 1.2.4")
+("calculette programmable")
+("Auteur : pat")
+	Grands rôles :
+		vsPt est un point, couleur="bleu",taille=5
+		vsLigne_vsLo_0 est un ligne, visible vaut "oui", transparence vaut 100, taille vaut 1, couleur vaut "noir", x1 vaut 0, y1 vaut 0, x2 vaut 0, y2 vaut 0, position vaut 1, angle vaut 360
+		vsTxtbtn est un graffiti, couleur vaut "bleu", texte vaut "SuissBox vp.0.0.2 Auteur : pat" , transparence vaut 100, visible vaut "oui", x vaut ecranh*0.8+3, y vaut 20
+		vsLiglect  est un graffiti, couleur vaut "rouge", x vaut  ecranh*0.8+3, y vaut 45,texte vaut "Ligne en cours :"
+		vsDéfaut  & vsOpération & vsCode & vsMeng & vsMend & vsExc & vsCext & vsCg & vsCd & vsVar & vsClic & vsNomlox & vsNomloy & vsNomlo & vsNbobj est un texte vide
+		vsEx0 & vsEx1 & vsEx2 est un texte vide
+		vsNomlist  & vsNomtab & vsNomtp & vsLnomtxt & vsLnomcoord & vsNomst  & vsSprg est un casier de texte vide
+		vsProps est un casier de texte valant "couleur","taille","transparence","visible","angle","couleur"
+		vsVallist & vsSave est un casier de casier vide
+		vsAct & vsEval & vsCltype & vsLig & vsFin & vsFinex & vsLigin & vsNbin & vsDefact & vsExec & vsLgtp est un nombre valant 0
+		vsEcrang est une toile,couleur="champagne", x=0,y=0, largeur=ecranh,hauteur=ecranv,image="L:\langage linotte\Mes livres\voltige.jpeg",bordure="non",tampon="non",pleinécran vaut "oui"
+		vsProg est un casier de texte depuis "prog.txt"
+		vsInit est un casier de texte depuis "Go.txt"
+		vsPext est un casier de texte depuis "modules.txt"
+		vsSaut est un casier de nombre valant -1
+		vsPoség & vsNb & vsLgc & vsPosacc & vsPosv & vsLgini & vsLgmod est un nombre vide
+		vsDébutp & vsDebug & vsValbug est un nombre valant 0
+		vsAnglet est un nombre valant 360
+		vsValtp  est un casier de nombre vide
+		vsKprops est un casier de texte valant "vsColor","vsDim","vsOpaq","vsVue","vsAngle","vsRvb"
+		vsNomvar est un casier de texte valant "vsFinex"
+		vsValvar est un casier de nombre valant 0
+		vsValst & vsInsert est un casier de texte vide
+		vsNomobjg est un casier de texte valant "vsLo"
+		vsNomssobjg est un casier de texte valant "vsLigne_vsLo_0"
+		vsImag est un graphique, visible vaut "oui", image vaut "tyrannosaurus-rex-icon.png", transparence vaut 100, x vaut 0.95*ecranh, y vaut 20, position vaut 0
+
+Paragraphe : init affiche
+	Rôles :
+		vsNomtxt est un texte vide
+	Actions :
+		De 0 à 29 ,lis
+			Concatène "vsTxt"+joker dans vsNomtxt
+			Crée vsNomtxt un acteur graffiti
+			visible de <<vsNomtxt>>="oui"
+		ferme
+		Va vers instruction
+
+Paragraphe : instruction
+	Actions :
+		Efface le tableau
+		Efface la toile
+		Ajoute "vsKprops" dans vsNomlist
+		Projette  vsTxtbtn & vsLiglect & vsImag
+		Mesure vsInit dans vsLgini
+		Mesure vsPext dans vsLgmod
+		Questionne vsExc sur "Entrer le programme à exécuter, en commençant chaque ligne par le caracère ¤, sinon laisser vide pour exécuter le contenu de prog.txt"
+		Ajoute vsInit dans vsSprg
+		Si vsExc est non vide alors Parcours Extrprg
+		sinon,	Ajoute #vsProg dans vsSprg
+		Mesure vsSprg dans vsNb
+		Ajoute vsPext dans vsSprg
+		Appelle Souris
+		Appelle  DeroulTrih
+		Appelle DeroulTrib
+		Appelle Clic fin
+		Parcours execution
+
+Paragraphe : Extrprg
+	Rôles :
+		vsLg est un nombre
+	Actions :
+		vsPosv=1
+		Mesure vsExc dans vsLg
+		Extrais de vsExc à partir de vsPosv+1 à vsLg dans vsExc
+		Tant que vsPosv est différent de 0, lis
+			Cherche vsPosv, la position de "¤" dans vsExc
+			Mesure vsExc dans vsLg
+			Si vsPosv est égal à 0 alors 	Ajoute #vsExc dans vsSprg
+			sinon, lis
+				Extrais de vsExc à partir de 1 à vsPosv-1 dans vsEx0
+				Ajoute #vsEx0 dans vsSprg
+				Extrais de vsExc à partir de vsPosv+1 à vsLg dans vsExc
+			ferme
+		ferme
+		Reviens
+
+Paragraphe : execution
+	Rôles :
+	Actions :
+		Si vsLig est plus grand que vsNb-1 alors lis
+			vsCltype=0
+			tant que 1 est différent de 2, lis
+				Attends 60 secondes
+			ferme
+		("	Parcours vidage")
+			Termine
+		ferme
+		Si vsLig est plus petit ou égal à vsLgini alors 	Concatène "Ligne en cours : ", vsLig-vsLgini dans 	texte de vsliglect
+		sinon, Si vsLig est plus grand que vsNb alors 	Concatène "Ligne en cours : ","+",vsLig dans 	texte de vsliglect
+		sinon, 	Concatène "Ligne en cours : ",vsLig-vsLgini dans 	texte de vsliglect
+		vsCode=vsSprg{vsLig}
+		vsAct=0
+		Mesure vsCode dans vsLgc
+		Parcours affectation zéro
+		Si vsFin est égal à 0 alors lis
+			vsLigin=vsLig
+			vsNbin=vsNb
+			vsLig=vsNb+1
+			Mesure vsSprg dans vsNb
+		ferme
+		sinon, Si vsFinex est égal à 1 alors Lis
+			vsFinex=0
+			vsLig=vsLigin
+			vsNb=vsNbin
+		ferme
+		vsFin=0
+		Si vsExec est égal à 2 alors lis
+			vsLig=vsLig-1
+			vide vsSprg
+			vsSprg=#vsInsert
+			vide vsInsert
+			vsExec=0
+		ferme
+		sinon,Si vsExec est égal à 1 alors  vsExec=2
+		Si vsValbug est plus grand que 1 alors lis
+			vsValbug=0
+			Si vsDebug est différent de 0 alors lis
+			("Ôte vsSprg{vsLig} de vsSprg")
+				vide vsSprg
+				vsSprg=#vsInsert
+				vide vsInsert
+			ferme
+		ferme
+		Va vers execution
+		Reviens
+
+Paragraphe : affectation zéro
+	Rôles :
+	Actions :
+("test si affectation")
+		Si vsLgc est plus grand que 2 alors lis
+			Extrais de vsCode à partir de 1 à 3 dans vsExc
+			Si vsExc est égal à "Si " alors lis
+				Va vers Si
+				Reviens
+			ferme
+		ferme
+		Parcours Prepa
+		Va vers Debug
+		Reviens
+
+Paragraphe : Defact
+	Rôles :
+		vsLgcd est un nombre
+		vsQtxt est un texte vide
+	Actions :
+		Si vsCd est non vide alors lis
+			Si vsCd {0} est égal à "!" alors lis
+				Mesure vsCd dans vsLgcd
+				Extrais de vsCd à partir de 2 à vsLgcd dans vsCd
+				Questionne vsQtxt sur <<vsCd>>
+				vsCd=vsQtxt
+			ferme
+			sinon, lis
+				Mesure vsCd dans vsLgcd
+				Si vsLgcd est plus grand que 3 alors lis
+					Extrais de vsCd à partir de 1 à 4 dans vsCext
+					Si vsCext est égal à "Mid " alors lis
+						Parcours Mid
+						Parcours Crtxt
+						vsLig=vsLig+1
+						vsFin=1
+						vsDefact=1
+						Reviens
+					ferme
+					sinon, Si vsCext est égal à "Len " alors lis
+						Parcours Len
+						Parcours Crnum
+						vsLig=vsLig+1
+						vsFin=1
+						vsDefact=1
+						reviens
+					ferme
+					sinon, lis
+						Extrais de vsCd à partir de 1 à 3 dans vsCext
+						Si vsCext est égal à "In " alors lis
+							Parcours In
+							Parcours Crnum
+							vsLig=vsLig+1
+							vsFin=1
+							vsDefact=1
+							reviens
+						ferme
+					ferme
+				ferme
+			ferme
+		ferme
+		vsCext=vsCd
+		vsExc="1*"+vsCd
+		Essaie, lis
+			vide vsEval
+			Parcours Eval
+			Parcours Rechvar
+			vsValvar {vsPosv-1}=vsEval
+			<<vsCg>>=vsEval
+		ferme
+		sinon, lis
+			Parcours  RechVt
+			Essaie, lis
+				Évalue vsCext
+			ferme
+			vsValst {vsPosv-1}=vsCext
+			<<vsCg>>=vsCext
+		ferme
+		vsLig=vsLig+1
+		vsFin=1
+		vsDefact=1
+		Reviens
+
+Paragraphe : Crnum
+	Rôles :
+	Actions :
+		vide vsEval
+		vsExc=vsCd
+		Parcours Eval
+		Parcours Rechvar
+		vsValvar {vsPosv-1}=#vsEval
+		<<vsCg>>=vsEval
+		Reviens
+
+Paragraphe : Crtxt
+	Rôles :
+	Actions :
+		Parcours  RechVt
+		vsValst {vsPosv-1}=#vsCd
+		<<vsCg>>=vsCd
+		Reviens
+
+Paragraphe : Rechvar
+	Rôles :
+	Actions :
+		Cherche vsPosv, la position de vsVar dans vsNomvar
+		Si vsPosv est égal à 0 alors Lis
+			Ajoute #vsCg dans vsNomvar
+			Ajoute 0 dans vsValvar
+			Mesure vsValvar dans vsPosv
+			Crée vsCg un acteur nombre
+			vide <<vsCg>>
+		ferme
+		Reviens
+
+Paragraphe : RechVt
+	Rôles :
+	Actions :
+		Cherche vsPosv, la position de vsVar dans vsNomst
+		Si vsPosv est égal à 0 alors Lis
+			Ajoute #vsCg dans vsNomst
+			Ajoute " " dans vsValst
+			Mesure vsValst dans vsPosv
+			Crée vsCg un acteur texte
+			vide <<vsCg>>
+		ferme
+		Reviens
+
+Paragraphe : Affiche
+	Rôles :
+		vsLgt & vsNum & vsDébut est un nombre valant 0
+		vsNomtxt & vsTxt & vsExt est un texte vide
+	Actions :
+		Si vsCode{0} est égal à "!" alors Lis
+			Extrais de vsCode à partir de 2 à vsLgc dans vsCd
+			Essaie, lis
+				Ajoute <<vsCd>> dans vsLnomtxt
+			ferme
+			sinon,lis
+				Convertis <<vsCd>> en vsTxt
+				Ajoute #vsTxt dans vsLnomtxt
+			ferme
+			Mesure vsLnomtxt dans vsLgt
+			Si vsLgt est plus grand que 30 alors lis
+				vsDébut=vsLgt-30
+				vsDébutp=vsDébut
+			ferme
+			De vsDébut à vsLgt-1 ,lis
+				vsNum=joker-vsDébut
+				Concatène "vsTxt",vsNum dans vsNomtxt
+				texte de <<vsNomtxt>>=vsLnomtxt {joker}
+				x de <<vsNomtxt>>=ecranh*0.8+5
+				y de <<vsNomtxt>>=90+(joker-vsDébut)*25
+				visible de <<vsNomtxt>>="oui"
+				Rafraîchis
+			ferme
+			vsLig=vsLig+1
+			vsFin=1
+			Reviens
+		Ferme
+		sinon, Si vsPoség est différent de 0 alors lis
+			Parcours With Var
+			vsVar=vsCg
+			Parcours Affect Tab
+			Si vsDefact est égal à 1 alors lis
+				vsLig=vsLig-1
+			ferme
+			Va vers Propriétés
+		ferme
+		sinon,Va vers Suppr
+
+Paragraphe : Clear
+	Rôles :
+	Actions :
+		Mesure vsCode dans vsLgc
+		Si vsLgc est égale à 3 alors lis
+			Si vsCode est égal à "Cls" alors lis
+				Efface la toile
+				vsLig=vsLig+1
+				vsFin=1
+				Reviens
+			ferme
+			sinon, Si vsCode est égal à "Clt" alors lis
+				vsCltype=1
+				Parcours Clt
+				vide vsLnomtxt
+				vsLig=vsLig+1
+				vsFin=1
+				Reviens
+			ferme
+			sinon,Si vsCode est égal à "Clg" alors lis
+				vsCltype=1
+				Parcours Clg
+				vsLig=vsLig+1
+				vsFin=1
+				Reviens
+			ferme
+		ferme
+		Va vers Wait
+
+Paragraphe : Clt
+	Rôles :
+		vsNomtxt est un texte
+	Actions :
+		De 0 à 29 ,lis
+			Concatène "vsTxt",joker dans vsNomtxt
+			Si vsCltype est différent de 0 alors Efface <<vsNomtxt>>
+			sinon, annihile <<vsNomtxt>>
+		ferme
+		vsCltype=0
+		Reviens
+
+Paragraphe : Clg
+	Rôles :
+		vsLg est un nombre
+	Actions :
+		Mesure vsNomssobjg dans vsLg
+		Si vsLg est différent de 0 alors lis
+			De 0 à vsLg-1,lis
+				Si vsCltype est différent de 0 alors Efface  <<vsNomssobjg {joker}>>
+				sinon,annihile <<vsNomssobjg {joker}>>
+			ferme
+		ferme
+		vsCltype=0
+		Reviens
+
+Paragraphe : Mid
+	Rôles :
+		vsTest & vsNin & vsEv1 est un nombre vide
+		vsNex est un texte vide
+	Actions :
+		Mesure vsCd dans vsLgc
+		Si vsLgc est plus grand que 3 alors lis
+			Extrais de vsCd à partir de 1 à 4 dans vsEx0
+			Si vsEx0 est égal à "Mid " alors lis
+				Extrais de vsCd à partir de 5 à vsLgc dans vsEx0
+				Cherche vsPosv, la position de ";" dans vsEx0
+				Extrais de vsEx0 à partir de 1 à vsPosv-1 dans vsNex
+				Mesure vsNex dans vsLgc
+				Si vsNex{0} est égal à "'" alors lis
+					Extrais de vsNex à partir de 2 à vsLgc dans vsNex
+					vsNex=<<vsNex>>
+				ferme
+				sinon, Extrais de vsNex à partir de 1 à vsLgc dans vsNex
+				Mesure vsEx0 dans vsLgc
+				Extrais de vsEx0 à partir de vsPosv+1 à vsLgc dans vsEx0
+				Cherche vsPosv, la position de ";" dans vsEx0
+				Extrais de vsEx0 à partir de 1 à vsPosv-1 dans vsEx1
+				Si vsEx1 est non vide alors lis
+					Si vsEx1{0} est égal à "'" alors lis
+						Extrais de vsEx1 à partir de 2 à vsPosv-1 dans vsEx1
+						vsEx1=<<vsEx1>>
+					ferme
+				ferme
+				vsExc=vsEx1
+				Parcours Eval
+				vsEv1=vsEval
+				Si vsEval est plus petit que 1 alors vsEv1=1
+				Mesure vsEx0 dans vsLgc
+				Extrais de vsEx0 à partir de vsPosv+1 à vsLgc dans vsExc
+				Si vsExc est non vide alors lis
+					Si vsExc{0} est égal à "'" alors lis
+						Mesure vsExc dans vsLgc
+						Extrais de vsExc à partir de 2 à vsLgc dans vsExc
+						vsExc=<<vsExc>>
+					ferme
+				ferme
+				Parcours Eval
+				Mesure <<vsNex>> dans vsLgc
+				Si vsEval est égal à 0 alors 	Mesure <<vsNex>> dans vsEval
+				sinon, Si vsEval est plus grand que vsLgc alors vsEval=vsLgc
+				Extrais de <<vsNex>> à partir de vsEv1 à vsEval dans vsCd
+			ferme
+			vsFin=1
+			Reviens
+		ferme
+		Va vers Wait
+
+Paragraphe : Len
+	Rôles :
+	Actions :
+		Mesure vsCd dans vsLgc
+		Si vsLgc est plus grand que 3 alors lis
+			Extrais de vsCd à partir de 1 à 4 dans vsExc
+			Si vsExc est égal à "Len " alors lis
+				Extrais de vsCd à partir de 5 à vsLgc dans vsExc
+				Mesure vsExc dans vsLgc
+				Si vsExc{0} est égal à "'" alors lis
+					Extrais de vsExc à partir de 2 à vsLgc dans vsExc
+					vsExc=<<vsExc>>
+				ferme
+				sinon, Extrais de vsExc à partir de 1 à vsLgc dans vsExc
+				vsExc=<<vsExc>>
+				Mesure vsExc dans vsLgc
+				Convertis vsLgc en vsCd
+				vsFin=1
+			ferme
+		ferme
+		Reviens
+
+Paragraphe : IN
+	Rôles :
+		vsPos & vsPos1 est un nombre vide
+	Actions :
+		Mesure vsCd dans vsLgc
+		Si vsLgc est plus grand que 2 alors lis
+			Extrais de vsCd à partir de 1 à 3 dans vsExc
+			Si vsExc est égal à "In " alors lis
+				Extrais de vsCd à partir de 4 à vsLgc dans vsExc
+				Cherche vsPosv, la position de ";" dans vsExc
+				Extrais de vsExc à partir de 1 à vsPosv-1 dans vsCext
+				Si vsCext{0} est égal à "'" alors lis
+					Mesure vsCext dans vsLgc
+					Extrais de vsCext à partir de 2 à vsLgc dans vsCext
+					vsCext=<<vsCext>>
+				ferme
+				vsCext=<<vsCext>>
+				Mesure vsExc dans vsLgc
+				Extrais de vsExc à partir de vsPosv+1 à vsLgc dans vsEx0
+				Inverse vsEx0
+				Mesure vsEx0 dans vsLgc
+				Cherche vsPos, la position de ";" dans vsEx0
+				Extrais de vsEx0 à partir de 1 à vsPos-1 dans vsExc
+				Si vsExc{vsPos-2} est égal à "'" alors lis
+					Extrais de vsExc à partir de 1 à vsPos-2 dans vsExc
+					vsExc=<<vsExc>>
+				ferme
+				Parcours Eval
+				Si vsEval est plus petit ou égal à 1 alors vsEval=1
+				sinon, lis
+					vsExc=vsCext
+					Mesure vsCext dans vsLgc
+					Extrais de vsCext à partir de vsEval à vsLgc dans vsCext
+				ferme
+				Inverse vsEx0
+				Cherche vsPos, la position de ";" dans vsEx0
+				Extrais de vsEx0 à partir de 1 à vsPos-1 dans vsEx0
+				Si vsEx0{0} est égal à µ"0022" alors lis
+					Extrais de vsEx0 à partir de 2 à vsPos-1 dans vsEx0
+				ferme
+				sinon, lis
+					Si vsEx0{0} est égal à "'" alors lis
+						Extrais de vsEx0 à partir de 2 à vsPos-1 dans vsEx0
+						vsEx0=<<vsEx0>>
+					ferme
+					vsEx0=<<vsEx0>>
+				ferme
+				Cherche vsEval, la position de vsEx0 dans vsCext
+				Convertis vsEval en vsCd
+				vsFin=1
+			ferme
+		ferme
+		Reviens
+
+Paragraphe : Suppr
+	Rôles :
+		vsPos est un nombre valant 0
+		vsExt est un texte vide
+	Actions :
+		Si vsLgc est plus grand que 3 alors lis
+			Extrais de vsCode à partir de 1 à 4 dans vsExc
+			Si vsExc est égal à "Del " alors lis
+				Extrais de vsCode à partir de 5 à vsLgc dans vsExc
+				Cherche vsPosv, la position de ";" dans vsExc
+				Tant que vsPosv est plus grand que 0, lis
+					vsExt=vsExc
+					Extrais de vsExc à partir de 1 à vsPosv-1 dans vsExc
+					Parcours VidVar
+					Mesure vsExt dans vsLgc
+					Extrais de vsExt à partir de vsPosv+1 à vsLgc dans vsExc
+					Cherche vsPosv, la position de ";" dans vsExc
+				ferme
+				Si vsPosv est égal à 0 alors lis
+					Mesure vsExc dans vsLgc
+					Parcours VidVar
+				ferme
+				vsLig=vsLig+1
+				vsFin=1
+				Reviens
+			ferme
+		ferme
+		Va vers Mov
+
+Paragraphe : VidVar
+	Rôles :
+		vsPos est un nombre valant 0
+	Actions :
+		Si vsExc{0} est égal à "'" alors lis
+			Mesure vsExc dans vsLgc
+			Extrais de vsExc à partir de 2 à vsLgc dans vsExc
+			vsExc=<<vsExc>>
+		ferme
+		Cherche vsPos, la position de vsExc dans vsNomvar
+		Si vsPos est différent de 0 alors lis
+			Ôte vsNomvar{vsPos-1} de vsNomvar
+			Ôte vsValvar{vsPos-1} de vsValvar
+			Annihile <<vsExc>>
+		ferme
+		Reviens
+
+Paragraphe : Label
+	Rôles :
+	Actions :
+		Si vsCode{0} est égal à "#" alors lis
+			vsLig=vsLig+1
+			vsFin=1
+			Reviens
+		ferme
+		sinon, Va vers Exec
+
+Paragraphe : Goto
+	Rôles :
+		vsLbl est un texte
+		vsPoslbl & vsPos est un nombre valant 0
+	Actions :
+		Si vsCode{0} est égal à ">" alors lis
+			Si vsCode {1} est égal à "<" alors lis
+				Ajoute #vsLig+1 dans vsSaut
+				vsNbsaut=vsNbsaut+1
+				vsPos=1
+			ferme
+			Extrais de vsCode à partir de 2+vsPos à vsLgc dans vsExc
+			Concatène "#",vsExc  dans vsLbl
+			Cherche vsPoslbl, la position de vsLbl dans vsSprg
+			Si vsPoslbl est différent de 0 alors lis
+				vsLig=vsPoslbl
+			ferme
+			vsFin=1
+			Reviens
+		ferme
+		Va vers Retour
+
+Paragraphe : Retour
+	Rôles :
+	Actions :
+		Si vsCode{0} est égal à "<" alors lis
+			vsLig=vsSaut{vsNbsaut}
+			Ôte vsSaut{vsNbsaut} de vsSaut
+			vsFin=1
+			Reviens
+		ferme
+		Va vers Finsi
+
+Paragraphe : Si
+	Rôles :
+	Actions :
+		Extrais de vsCode à partir de 1 à 2 dans vsExc
+		Si  vsExc est égal à "Si" alors lis
+			Va vers Evaluer
+		ferme
+
+Paragraphe : Finsi
+	Rôles :
+	Actions :
+		Si vsCode{0} est égal à "]" alors lis
+			Si vsLig est plus petit que vsNb-1 alors lis
+				vsLig=vsLig+1
+				vsFin=1
+				Reviens
+			ferme
+			Si vsLig est égal à vsNb-1 alors lis
+				vsFin=1
+				("Parcours vidage")
+				tant que 1 est différent de 2, lis
+					Attends 60 secondes
+				ferme
+			ferme
+		ferme
+		Va vers Sinon
+
+Paragraphe : Sioui
+	Rôles :
+	Actions :
+		Si vsCond est égal à "vrai" alors lis
+			Si vsCode{0} est égal à "[" alors Va vers Rechsinon
+			vsLig=vsLig+1
+			vsCode=vsSprg{vsLig}
+			vsFin=1
+			Reviens
+		ferme
+		sinon, Va vers Rech "[" ou "]"
+
+Paragraphe : Rechsinon
+	Rôles :
+	Actions :
+		Si vsCode{0} est différent de "]" alors lis
+			vsLig=vsLig+1
+			vsCode=vsSprg{vsLig}
+			Va vers  Rechsinon
+		ferme
+		sinon, lis
+			vsFin=1
+			Reviens
+		ferme
+
+Paragraphe : Rech "[" ou "]"
+	Rôles :
+		vsCondit est un nombre valant 1
+	Actions :
+		vsCode=vsSprg{vsLig}
+		Si vsCode{0} est égale à "[" alors vsCondit=0
+		Si vsCode{0} est égale à "]" alors vsCondit=0
+		Si vsCondit est égal à 1 alors lis
+			vsLig=vsLig+1
+			vsCode=vsSprg{vsLig}
+			vsCondit=1
+			Va vers Rech "[" ou "]"
+		ferme
+		sinon, lis
+			vsLig=vsLig+1
+			vsCode=vsSprg{vsLig}
+			vsFin=1
+			Reviens
+		ferme
+
+Paragraphe : Sinon
+	Rôles :
+	Actions :
+		Si vsCode{0} est égal à "[" alors Va vers Sioui
+		sinon,Va vers Logo
+
+Paragraphe : Logo
+	Rôles :
+		vsPos est un nombre
+	Actions :
+		Si vsLgc est plus grand que 1 alors lis
+			Extrais de vsCode à partir de 1 à 2 dans vsCg
+		ferme
+		Si vsCg est égal à "Up" alors lis
+			vsUpt=1
+			vsLogot=0
+			vsFin=1
+		ferme
+		Va vers Lo
+
+Paragraphe : Lo
+	Rôles :
+	Actions :
+		Si vsCg est égal à "Lo" alors lis
+			vsLogot=1
+			Ajoute #vsPosxt dans <<vsNomlox>>
+			Ajoute #vsPosyt dans <<vsNomloy>>
+			vsUpt=0
+			vsLig=vsLig+1
+			vsFin=1
+			Reviens
+		ferme
+		sinon, Va vers Av
+
+Paragraphe : Av
+	Rôles :
+	Actions :
+		Si vsCg est égal à "Av" alors lis
+			vsSig=1
+			Va vers Sig
+		ferme
+		sinon, Va vers Rc
+
+Paragraphe : Rc
+	Rôles :
+	Actions :
+		Si vsCg est égal à "Rc" alors lis
+			vsSig=-1
+			Va vers Sig
+		ferme
+		sinon, Va vers Td
+
+Paragraphe : Sig
+	Rôles :
+		vsPos & vsCondi & vsLgcd & vsMod est un nombre vide
+		vsExt est un texte vide
+	Actions :
+		Si vsSig est différent de 0 alors lis
+			Extrais de vsCode à partir de 4 à vsLgc dans vsCd
+			Cherche vsPos, la position de ";" dans vsCd
+			Si vsPos est différent de 0 alors lis
+				Extrais de vsCd à partir de 1 à vsPos-1 dans vsExc
+				Parcours Eval
+				vsPosxt=vsEval
+				Mesure vsCd dans vsLgcd
+				Extrais de vsCd à partir de vsPos+1 à vsLgcd dans vsExc
+				Parcours Eval
+				vsPosyt=vsEval
+			ferme
+			sinon, lis
+				vsExc=vsCd
+				Parcours Eval
+				vsDist=vsSig*vsEval
+				vsPos=cos (vsAnglet)
+				vsPosxt=vsPosxt+vsDist*vsPos
+				vsPos=sin (vsAnglet)
+				vsPosyt=vsPosyt+vsDist*vsPos
+			ferme
+			vsSig=0
+			Concatène "vsCoordx_"+vsDéfaut dans vsNomlox
+			Concatène "vsCoordy_"+vsDéfaut dans vsNomloy
+			Cherche vsPosv, la position de vsDéfaut dans vsNomobjg
+			Si vsPosv est égal à 0 alors lis
+				Concatène "vsNb_"+vsDéfaut dans vsNomlo
+				Ajoute #vsDéfaut dans vsNomobjg
+				Crée vsNomlo un acteur nombre
+				Crée vsNomlox un casier de nombre
+				Crée vsNomloy un casier de nombre
+				<<vsNomlo>>=0
+				Ajoute #vsNomlox dans vsLnomcoord
+				Ajoute #vsNomloy dans vsLnomcoord
+				vsNumlo=0
+			ferme
+			Mesure <<vsNomlox>> dans vsNbpt
+			Si vsLogot est égal à 1 alors vsCondi=1
+			Si vsUpt est égal à 0 alors vsCondi=vsCondi+1
+			Si vsCondi est égal à 2 alors lis
+				vsUpt=1
+				Ajoute #vsPosxt dans <<vsNomlox>>
+				Ajoute #vsPosyt dans <<vsNomloy>>
+				vsNbpt=vsNbpt+1
+				Si vsNbpt est différent de 0 alors lis
+					vsMod=vsNbpt mod 2
+					Si vsMod est égal à 0 alors lis
+						Parcours  Rechssobjg
+						Parcours Lignes
+					ferme
+				ferme
+			ferme
+			sinon, lis
+				Si vsCondi est égal à 1 alors lis
+					Si vsNbpt est plus grand que 1 alors lis
+						vsPos= <<#vsNomlox>> {vsNbpt-1}
+						Ajoute #vsPos dans <<vsNomlox>>
+						vsPos=<<#vsNomloy>> {vsNbpt-1}
+						Ajoute #vsPos dans <<vsNomloy>>
+						vsNbpt=vsNbpt+1
+					ferme
+					Ajoute #vsPosxt dans <<vsNomlox>>
+					Ajoute #vsPosyt dans <<vsNomloy>>
+					vsNbpt=vsNbpt+1
+					Si vsNbpt est plus grand que 0 alors lis
+						Si vsNbpt mod 2 est égal à 0 alors lis
+							Parcours  Rechssobjg
+							Parcours Lignes
+						ferme
+					ferme
+				ferme
+			ferme
+			vsLig=vsLig+1
+			vsFin=1
+			Reviens
+		ferme
+		Va vers Td
+
+Paragraphe : Td
+	Rôles :
+	Actions :
+		Si vsCg est égal à "Td" alors vsSig=1
+		sinon, Si vsCg est égal à "Tg" alors vsSig=-1
+		Si vsSig est différent de 0 alors lis
+			Extrais de vsCode à partir de 4 à vsLgc dans vsCd
+			Convertis vsCd en vsEval
+			vsDist=vsEval
+			vsAnglet=vsAnglet+vsDist*vsSig
+			Si vsAnglet est plus petit que 0 alors lis
+				vsAnglet=abs(360+vsAnglet)
+			ferme
+			vsAnglet=vsAnglet mod 360
+			vsFin=1
+		ferme
+		vsLig=vsLig+1
+		Reviens
+
+Paragraphe : Souris
+	Rôles :
+	Actions :
+		Temporise
+		x de vsPt=sourisx
+		y de vsPt=sourisy
+		Projette vsPt
+		Rafraîchis
+	("	vsClic=touche
+		Si vsPt est en collision avec vsImag alors lis
+			Si vsClic est égal à "clique" alors Parcours lance
+		ferme
+		Va vers Souris")
+		Parcours Souris
+
+Paragraphe : Evaluer
+	Rôles :
+	Actions :
+		vsLsi=1
+		Extrais de vsCode à partir de 3 à vsLgc dans vsExc
+		Cherche vsPossig , la position de "<<>>" dans vsExc
+		Si vsPossig est différent de 0 alors lis
+			vsLsi=2
+			vsAct=6
+			Va vers Evaluer condition
+		ferme
+		sinon,Cherche vsPossig , la position de "<<=" dans vsExc
+		Si vsPossig est différent de 0 alors lis
+			vsLsi=2
+			vsAct=5
+			Va vers Evaluer condition
+		ferme
+		sinon,Cherche vsPossig , la position de ">>=" dans vsExc
+		Si vsPossig est différent de 0 alors lis
+			vsLsi=2
+			vsAct=4
+			Va vers Evaluer condition
+		ferme
+		sinon, Cherche vsPossig , la position de "=" dans vsExc
+		Si vsPossig est différent de 0 alors lis
+			vsAct=1
+			Va vers Evaluer condition
+		ferme
+		sinon,Cherche vsPossig , la position de "<" dans vsExc
+		Si vsPossig est différent de 0 alors lis
+			vsAct=3
+			Va vers Evaluer condition
+		ferme
+		sinon,Cherche vsPossig , la position de ">" dans vsExc
+		vsAct=2
+		Va vers Evaluer condition
+
+Paragraphe : Evaluer condition
+	Rôles :
+		vsMende & vsMenge & vsLgexc & vsOp est un nombre vide
+		vsSmeng & vsSmend est un texte vide
+	Actions :
+		Mesure vsExc dans vsLgexc
+		Extrais de vsExc à partir de 1 à (vsPossig-1) dans vsMeng
+		Extrais de vsExc à partir de  (vsPossig+vsLsi) à vsLgexc dans vsMend
+		vsSmeng=vsMeng
+		vsSmend=vsMend
+		Essaie, lis
+			vsMend="1*"+vsMend+"+0"
+			vsMeng="1*"+vsMeng+"+0"
+			Évalue vsMeng
+			Convertis vsMeng en vsEval
+			Convertis vsEval en vsMeng
+			Évalue vsMend
+			Convertis vsMend en vsMende
+			Convertis vsMeng en vsMenge
+			Si vsAct est égal à 1 alors Lis
+				Si vsMenge est égal à vsMende alors vsCond="vrai"
+				sinon, vsCond="faux"
+			ferme
+			sinon,Si vsAct est égal à 2 alors Lis
+				Si vsMenge est plus grand que vsMende alors vsCond="vrai"
+				sinon, vsCond="faux"
+			ferme
+			sinon,Si vsAct est égal à 3 alors Lis
+				Si vsMenge est plus petit que vsMende alors vsCond="vrai"
+				sinon, vsCond="faux"
+			ferme
+			sinon,Si vsAct est égal à 4 alors Lis
+				Si vsMenge est plus grand ou égal à vsMende alors vsCond="vrai"
+				sinon, vsCond="faux"
+			ferme
+			sinon,Si vsAct est égal à 5 alors Lis
+				Si vsMenge est plus petit ou égal à vsMende alors vsCond="vrai"
+				sinon, vsCond="faux"
+			ferme
+			sinon,Si vsAct est égal à 6 alors Lis
+				Si vsMenge est différent de vsMende alors vsCond="vrai"
+				sinon, vsCond="faux"
+			ferme
+		ferme
+		sinon, lis
+			vsMeng=vsSmeng
+			vsMend=vsSmend
+			Si vsAct est égal à 1 alors Lis
+				Si <<vsMeng>> est égal à <<vsMend>> alors vsCond="vrai"
+				sinon, vsCond="faux"
+			ferme
+			sinon, Si vsAct est égal à 6 alors Lis
+				Si <<vsMeng>> est différent de <<vsMend>> alors vsCond="vrai"
+				sinon, vsCond="faux"
+			ferme
+		ferme
+		Va vers Sioui
+
+Paragraphe : Defaut Var
+	Actions :
+		Si vsLgc est plus petit que 5 alors Va vers Goto
+		Extrais de vsCode à partir de 1 à 4 dans vsExc
+		Si  vsExc est égal à "Def " alors Lis
+			Extrais de vsCode à partir de 5 à vsLgc dans vsExc
+			vsDéfaut=vsExc
+			vsLig=vsLig+1
+			vsFin=1
+			Reviens
+		Ferme
+		sinon,Va vers Goto
+
+Paragraphe : With Var
+	Actions :
+		Si vsCg{0} est égal à "_" alors lis
+			Concatène vsDéfaut, vsCg dans vsCg
+		ferme
+		Si vsCode{vsPoség-2} est égal à "_" alors Lis
+			Concatène vsCg, vsDéfaut dans vsCg
+		Ferme
+		Reviens
+
+Paragraphe : Debug
+	Rôles :
+		vsPosn est un nombre valant 0
+	Actions :
+		Cherche vsPosn, la position de "~" dans vsCode
+		Si vsPosn est différent de 0 alors lis
+			Extrais de vsCode à partir de 1 à vsPosn-1 dans vsExc
+			Parcours Eval
+			vsValbug=vsEval
+			vsDebug=vsValbug mod 2
+			Si vsDebug est différent de 0 alors lis
+				Mesure vsCode dans vsLgc
+				Extrais de vsCode à partir de vsPosn+1 à vsLgc dans vsCode
+				Mesure vsCode dans vsLgc
+				Si vsEval est plus grand que 1 alors vsInsert=#vsSprg
+				Parcours Prepa
+				Va vers Label
+			ferme
+			sinon, Si vsEval est égal à 0 alors lis
+				vsLig=vsLig+1
+				vsFin=1
+				Reviens
+			ferme
+		ferme
+		Va vers Label
+
+Paragraphe : Prepa
+	Rôles :
+	Actions :
+		Cherche vsPoség, la position de "=" dans vsCode
+		Si vsPoség est différent de 0  alors Lis
+			Extrais de vsCode à partir de 1 à vsPoség-1 dans vsCg
+			Extrais de vsCode à partir de vsPoség+1 à vsLgc dans vsCd
+		ferme
+		Reviens
+
+Paragraphe : Auto dim liste
+	Rôles :
+		vsIndex est un nombre
+	Actions :
+		Parcours Rechlist
+		Extrais de vsCg à partir de vsPosacc+1 à vsPoség-2 dans vsExc
+		Parcours Eval
+		vsindex=vsEval
+		Mesure <<vsVar>> dans vsPosacc
+		tant que vsPosacc-1 est plus petit que vsIndex , lis
+			Ajoute 0 dans <<vsVar>>
+			vsPosacc=vsPosacc+1
+		ferme
+		Évalue vsCd
+		Convertis vsCd en vsEval
+		vsVallist{vsPosv-2,vsIndex}=vsEval
+		vsLig=vsLig+1
+		vsFin=1
+		Reviens
+
+Paragraphe : Rechlist
+	Rôles :
+	Actions :
+		Cherche vsPosv, la position de vsVar dans vsNomlist
+		Si vsPosv est égal à 0 alors Lis
+			vsDefact=1
+			Ajoute #vsVar dans vsNomlist
+			Mesure vsNomlist dans vsPosv
+			Crée vsVar un casier de nombre
+			Vide <<vsVar>>
+			("Ajoute 0 dans <<vsVar>>")
+			Ajoute <<vsVar>> dans vsVallist
+		ferme
+		Reviens
+
+Paragraphe : Dim Tab
+	Rôles :
+		vsPos1 & vsPos2 & vsNbcol & vsNblig & vsNumlig est un nombre valant 0
+		vsNomlig & vsExc2 & vsExc1 est un texte vide
+	Actions :
+		vsExc1=""
+		Si vsLgc est plus grand que 3 alors Extrais de vsCode à partir de 1 à 4 dans vsExc1
+		Si vsExc1 est égal à "Dim " alors lis
+			Cherche vsPos1, la position de ";" dans vsCode
+			Extrais de vsCode à partir de 5 à vsPos1-1 dans vsVar
+			Crée vsVar un casier de casier
+			vide <<vsVar>>
+			Ajoute #vsVar dans vsNomtab
+			Extrais de vsCode à partir de vsPos1+1 à vsLgc dans vsExc1
+			Cherche vsPos2, la position de ";" dans vsExc1
+			Extrais de vsExc1 à partir de 1 à vsPos2-1 dans vsExc2
+			vsExc=vsExc2
+			Parcours Eval
+			vsNblig=vsEval
+			Mesure vsExc1 dans vsEval
+			Extrais de vsExc1 à partir de vsPos2+1 à vsEval dans vsExc1
+			Parcours Eval
+			vsNbcol=vsEval
+			Concatène "vsLig_",vsVar,"_ 0" dans vsNomlig
+			Crée vsNomlig un casier de nombre
+			vide <<vsNomlig>>
+			Ajoute <<vsNomlig>> dans <<vsVar>>
+			tant que vsNumlig est plus petit que vsNbcol, lis
+				Ajoute 0 dans <<vsNomlig>>
+				vsNumlig=vsNumlig+1
+			ferme
+			vsNumlig=1
+			Concatène "vsLig_",vsVar,"_ 0" dans vsExc1
+			tant que vsNumlig est plus petit que vsNblig, lis
+				Concatène "vsLig_",vsVar,"_ ", vsNumlig dans vsNomlig
+				Crée vsNomlig un casier de nombre
+				Vide <<vsNomlig>>
+				<<vsNomlig>>=<<#vsExc1>>
+				Ajoute <<#vsNomlig>> dans <<vsVar>>
+				vsNumlig=vsNumlig+1
+			ferme
+			vsLig=vsLig+1
+			vsFin=1
+			Reviens
+		ferme
+		sinon,Va vers Defaut Var
+
+Paragraphe : RechTab
+	Rôles :
+	Actions :
+		Cherche vsPosv, la position de vsVar dans vsNomtab
+		Si vsPosv est plus grand que 0 alors lis
+			vsExc=vsCd
+			Parcours Eval
+			<<vsCg>>=vsEval
+			vsLig=vsLig+1
+			vsFin=1
+			Reviens
+		ferme
+		sinon, Va vers Auto dim liste
+
+Paragraphe : Affect Tab
+	Rôles :
+	Actions :
+		Cherche vsPosacc, la position de "{" dans vsCg
+		Si vsPosacc est plus grand que 0 alors Lis
+			Extrais de vsCg à partir de 1 à vsPosacc-1 dans vsVar
+			Va vers  RechTab
+		ferme
+		sinon,Va vers Créer liste
+
+Paragraphe : Créer liste
+	Rôles :
+	Actions :
+		Si vsCd est non vide alors lis
+			Si vsCd{0} est égal à "{" alors lis
+				Parcours Rechlist
+				Va vers Alimlist
+			Ferme
+		ferme
+		Parcours Defact
+		("Parcours  Rechvar
+		Parcours vsValvar zero")
+		Reviens
+
+Paragraphe : Restor On
+	Rôles :
+		vsRest & vsNomres est un texte vide
+		vsNbvar & vsPos est un nombre vide
+	Actions :
+		Si vsLgc est plus grand que 6 alors lis
+			Extrais de vsCode à partir de 1 à 7 dans vsExc
+			Si vsExc est égale à "Restor " alors lis
+				Extrais de vsCode à partir de 8 à vsLgc dans vsExc
+				Concatène vsExc, "_nomvar" dans vsNomres
+				Mesure <<vsNomres>> dans vsNbvar
+				vsNomtp=<<vsNomres>>
+				Concatène vsExc, "_valvar" dans vsNomres
+				vsValtp=<<vsNomres>>
+				pour chaque vsNbvar, lis
+					vsVar=vsNomtp {joker}
+					Cherche vsPos, la position de vsVar dans vsNomvar
+					Si vsPos est plus grand que 0 alors lis
+						Essaie, lis
+							<<vsVar>>=vsValtp {vsPos-1}
+							vsValvar{vsPos-1}=vsValtp {vsPos-1}
+						ferme
+					ferme
+				ferme
+				vsLig=vsLig+1
+				vsFin=1
+				Reviens
+			ferme
+		ferme
+		Va vers Dim Tab
+
+Paragraphe : Save Restor
+	Rôles :
+		vsNom est un texte vide
+	Actions :
+		Si vsLgc est plus grand que 4 alors lis
+			Extrais de vsCode à partir de 1 à 5 dans vsExc
+			Si vsExc est égale à "Save " alors lis
+				Extrais de vsCode à partir de 6 à vsLgc dans vsExc
+				Concatène vsExc,"_nomvar" dans vsNom
+				Crée vsNom un casier de texte
+				<<vsNom>>=#vsNomvar
+				Ajoute <<vsNom>>  dans vsSave
+				Concatène vsExc,"_valvar" dans vsNom
+				Crée vsNom un casier de nombre
+				<<vsNom>>=#vsValvar
+				Ajoute  <<vsNom>> dans vsSave
+				vsLig=vsLig+1
+				vsFin=1
+				Reviens
+			ferme
+		ferme
+		Va vers Restor On
+
+Paragraphe : Lignes
+	Rôles :
+	Actions :
+		x1 de <<vsNomlo>>=<<#vsNomlox>> {vsNbpt-2}
+		y1 de <<vsNomlo>>=<<#vsNomloy>> {vsNbpt-2}
+		x2 de <<vsNomlo>>=#vsPosxt
+		y2 de <<vsNomlo>>=#vsPosyt
+		Rafraîchis
+		Reviens
+
+Paragraphe : Rechssobjg
+	Rôles :
+		vsNomsslo est un texte vide
+	Actions :
+		Si vsNbpt est différent de 1 alors lis
+			vsNumlo=vsNbpt/2-1
+		ferme
+		Concatène "vsLigne_"+vsDéfaut+"_"+vsNumlo dans vsNomlo
+		Concatène "vsNb_",vsDéfaut dans vsNbobj
+		Si vsNumlo est plus petit ou égal à <<vsNbobj>> alors lis
+			Crée vsNomlo un acteur ligne
+			Ajoute #vsNomlo dans vsNomssobjg
+			<<vsNbobj>>=<<vsNbobj>>+1
+			<<vsNomlo>>=#vsLigne_vsLo_0
+		ferme
+		Reviens
+
+Paragraphe : Propriétés
+	Rôles :
+		vsPos & vsPosn & vsLgcg & vsNumsslo  est un nombre vide
+		vsNomsslo & vsExt & vsProp & vsExtcd & vsNfill & vsTp est un texte vide
+	Actions :
+		Cherche vsPos, la position de "_" dans vsCg
+		Si vsPos est plus grand que 0 alors lis
+			Mesure vsCg dans vsLgcg
+			Extrais de vsCg à partir de vsPos+1 à vsLgcg dans vsNomlo
+			Cherche vsPosn, la position de "{" dans vsNomlo
+			Si vsPosn est différent de 0 alors lis
+				Extrais de vsNomlo à partir de 1 à vsPosn-1 dans vsNomlo
+				Cherche vsPosn, la position de "{" dans vsCg
+				Extrais de vsCg à partir de 1 à vsPosn-1 dans vsCg
+			ferme
+			Cherche vsPosn, la position de vsNomlo dans vsNomobjg
+			Si vsPosn est égale à 0 alors lis
+			ferme
+			sinon,lis
+				Extrais de vsCg à partir de 1 à vsPos-1 dans vsProp
+				Si vsProp est égal à "fill" alors Va vers Fill
+				Cherche vsPos, la position de vsProp dans vsKprops
+				Si vsPos est différent de 0 alors lis
+					Si  vsProp est égal à vsKprops{5} alors lis
+						Concatène <<vsCg>>{0}," ",<<vsCg>>{1}," ",<<vsCg>>{2} dans vsCd
+					ferme
+					Concatène "vsNb_",vsNomlo dans vsNbobj
+					tant que <<vsNbobj>> est plus grand que vsNumsslo, lis
+						Concatène "vsLigne_",vsNomlo,"_",vsNumsslo dans vsNomsslo
+						Concatène vsProps{vsPos-1}," de ",vsNomsslo dans vsExt
+						Si vsProps{vsPos-1} est égal à "visible" alors lis
+							Si vsCd est vide alors vsCd="non"
+							sinon,Si vsCd est égal à "0" alors vsCd="non"
+							sinon,Si vsCd est égal à "1" alors vsCd="oui"
+						ferme
+						vsTp=vsCd
+						Si vsProps{vsPos-1} est égal à "transparence" alors lis
+							vsExc=vsCd
+							Parcours Eval
+							vsEval=100-vsEval
+							Convertis vsEval en vsCd
+						ferme
+						Essaie, lis
+							<<vsExt>>=vsCd
+						Ferme
+						Sinon, lis
+							vsExc=vsCd
+							Parcours Eval
+							<<vsExt>>=vsEval
+						ferme
+						vsNumsslo=vsNumsslo+1
+						vsCd=vsTp
+					ferme
+					Rafraîchis
+				ferme
+			ferme
+		ferme
+		Si vsDefact est égal à 1 alors lis
+			vsDefact=0
+			vsLig=vsLig+1
+		ferme
+		Reviens
+
+Paragraphe : Mov
+	Rôles :
+		vsPosn est un nombre vide
+	Actions :
+		Mesure vsCode dans vsLgc
+		Si vsLgc est plus grand que 3 alors lis
+			Extrais de vsCode à partir de 1 à 4 dans vsExc
+			Si vsExc est égal à "Mov " alors lis
+				Extrais de vsCode à partir de 5 à vsLgc dans vsCode
+				Cherche vsPosn, la position de ";" dans vsCode
+				Extrais de vsCode à partir de 1 à vsPosn-1 dans vsNomlo
+				Si vsNomlo{0} est égal à  µ"0022" alors lis
+					Extrais de vsNomlo à partir de 2 à vsPosn-1 dans vsNomlo
+				ferme
+				sinon, Si vsNomlo{0} est égal à "'" alors lis
+					Extrais de vsNomlo à partir de 2 à vsPosn-2 dans vsNomlo
+					vsNomlo=<<vsNomlo>>
+				ferme
+				Mesure vsCode dans vsLgc
+				Extrais de vsCode à partir de vsPosn+1 à vsLgc dans vsCode
+				Cherche vsPosn, la position de ";" dans vsCode
+				Extrais de vsCode à partir de 1 à vsPosn-1 dans vsExc
+				Si vsExc{0} est égal à "'" alors lis
+					Extrais de vsExc à partir de 2 à vsPosn-1 dans vsExc
+					vsExc=<<vsExc>>
+				ferme
+				Si vsExc est non vide alors lis
+					vsNomloy="x"
+					Concatène "vsCoordx_",vsNomlo dans vsNomlox
+					Parcours Chcoords
+					Parcours Coords
+				ferme
+				Mesure vsCode dans vsLgc
+				Extrais de vsCode à partir de vsPosn+1 à vsLgc dans vsCode
+				Cherche vsPosn, la position de ";" dans vsCode
+				Extrais de vsCode à partir de vsPosn+1 à vsLgc dans vsExc
+				Si vsExc{0} est égal à "'" alors lis
+					Extrais de vsExc à partir de 2 à vsLgc-vsPosn dans vsExc
+					vsExc=<<vsExc>>
+				ferme
+				Si vsExc est non vide alors lis
+					vsNomloy="y"
+					Concatène "vsCoordy_",vsNomlo dans vsNomlox
+					Parcours Chcoords
+					Parcours Coords
+				ferme
+				vsExc="vsLigne_"+"fill_"+vsNomlo+"_0"
+				Cherche vsPosn, la position de vsExc dans vsNomssobjg
+				Si vsPosn est différent de 0 alors lis
+					Concatène "vsCoordx_",vsNomlo dans vsNomlox
+					Concatène "vsCoordy_",vsNomlo dans vsNomloy
+					Parcours Chfill
+				ferme
+				Rafraîchis
+				vsLig=vsLig+1
+				vsFin=1
+				Reviens
+			ferme
+		ferme
+		Va vers Clear
+
+Paragraphe : Chcoords
+	Rôles :
+		vsNum & vsLg est un nombre valant 0
+		vsNco & vsExt  est un texte vide
+	Actions :
+		vsExt=vsExc
+		Mesure <<vsNomlox>> dans vsLg
+		tant que vsNum est plus petit que vsLg, lis
+			Concatène vsNomlox,"{",vsNum,"}" dans vsNco
+			Concatène vsNco,"+(", vsExt,")" dans vsExc
+			Parcours Eval
+			<<#vsNco>>=#vsEval
+			vsNum=vsNum+1
+		ferme
+		vsExc=vsExt
+		Reviens
+
+Paragraphe : Coords
+	Rôles :
+		vsPosn  & vsNumsslo & vsNum & vsLg est un nombre valant 0
+		vsNomsslo & vsExt  est un texte vide
+	Actions :
+		Mesure <<vsNomlox>> dans vsLg
+		tant que vsLg/2 est plus grand que vsNumsslo, lis
+			Concatène "vsLigne_",vsNomlo,"_",vsNumsslo dans vsNomsslo
+			Concatène vsNomloy,"1"," de ",vsNomsslo dans vsExt
+			<<vsExt>>=<<#vsNomlox>> {vsNum}
+			vsNum=vsNum+1
+			Concatène vsNomloy,"2"," de ",vsNomsslo dans vsExt
+			<<vsExt>>=<<#vsNomlox>> {vsNum}
+			vsNum=vsNum+1
+			vsNumsslo=vsNumsslo+1
+		ferme
+		Reviens
+
+Paragraphe : Chfill
+	Rôles :
+		vsExt & vsExt2 est un texte vide
+		vsNum &  vsDnum & vsPos est un nombre valant 0
+	Actions :
+		x de <<vsExc>>=<<vsNomlox>> {0}
+		y de <<vsExc>>=<<vsNomloy>> {0}
+		dx1 de <<vsExc>>= <<vsNomlox>>{1}-<<vsNomlox>> {0}
+		dy1 de <<vsExc>>= <<vsNomloy>>{1}-<<vsNomloy>> {0}
+		vsDnum=1
+		Mesure <<vsNomlox>> dans vsPos
+		Pour vsNum de 3 à vsPos-1 suivant vsNum+2,lis
+			vsDnum=vsDnum+1
+			Concatène "dx", vsDnum," de ",vsExc dans vsExt
+			Concatène "dy",vsDnum," de ",vsExc dans vsExt2
+			<<vsExt>>=<<vsNomlox>> {vsNum-2}-<<vsNomlox>> {0}
+			<<vsExt2>>=<<vsNomloy>> {vsNum-2}-<<vsNomloy>> {0}
+		ferme
+		Reviens
+
+Paragraphe : Wait
+	Rôles :
+	Actions :
+		Mesure vsCode dans vsLgc
+		Si vsLgc est plus grand que 3 alors lis
+			Extrais de vsCode à partir de 1 à 4 dans vsExc
+			Si vsExc est égal à "Wait" alors lis
+				Extrais de vsCode à partir de 5 à vsLgc dans vsExc
+				Parcours Eval
+				Si vsEval est égal à 0 alors lis
+					Temporise
+					Vide les touches
+					vsLig=vsLig+1
+					Reviens
+				ferme
+				sinon,Attends vsEval secondes
+				vsLig=vsLig+1
+				vsFin=1
+				Reviens
+			ferme
+		ferme
+		Va vers Save Restor
+
+Paragraphe : Fill
+	Rôles :
+		vsExt & vsExt2 est un texte vide
+		vsNum &  vsDnum & vsPos est un nombre valant 0
+	Actions :
+		Cherche vsPos, la position de vsCg dans vsNomobjg
+		Si vsPos est égal à 0 alors lis
+			Ajoute #vsCg dans vsNomobjg
+			vsExt="vsLigne_"+vsCg+"_0"
+			vsExc="vsLigne_"+vsCg+"_0"
+			Concatène "vsNb_",vsCg dans vsNbobj
+			Crée vsNbobj un acteur nombre
+			<<vsNbobj>>=1
+			Crée vsExt un acteur polygone
+			Ajoute #vsExt dans vsNomssobjg
+			transparence de <<vsExt>> =100
+			taille de <<vsExt>>=1
+			couleur de <<vsExt>>=vsCd
+			visible de <<vsExt>>="oui"
+			vsExc=vsExt
+			Concatène "vsCoordx_"+vsNomlo dans vsNomlox
+			Concatène "vsCoordy_"+vsNomlo dans vsNomloy
+			Parcours Chfill
+		ferme
+		plein de <<vsExc>>="oui"
+		Si vsCd est vide alors visible de <<vsExc>>="non"
+		sinon, lis
+			couleur de <<vsExc>>=vsCd
+			visible de <<vsExc>>="oui"
+			Projette <<vsExc>>
+			Rafraîchis
+		ferme
+		vsLig=vsLig+1
+		vsFin=1
+		Reviens
+
+Paragraphe : vidage
+	Rôles :
+		vsLg est un nombre vide
+	Actions :
+		Parcours Clg
+		Parcours Clt
+		Mesure vsLnomcoord dans vsLg
+		Si vsLg est différent de 0 alors lis
+			De 0 à vsLg-1,lis
+				annihile <<vsLnomcoord {joker}>>
+			ferme
+		ferme
+		Reviens
+
+Paragraphe : Alimlist
+	Rôles :
+		vsPosvi est un nombre vide
+	Actions :
+		Mesure vsCd dans vsLgc
+		Extrais de vsCd à partir de 2 à vsLgc dans vsCd
+		Cherche vsPosv, la position de ";" dans vsCd
+		Si vsCg est égal à "vsKprops" alors vide <<vsCg>>
+		Tant que vsPosv est plus grand que 0, lis
+			Extrais de vsCd à partir de 1 à vsPosv-1 dans vsExc
+			Si vsCg est égal à "vsKprops" alors Parcours  AliKprops
+			sinon,lis
+				Parcours Eval
+				Ajoute #vsEval dans <<vsCg>>
+			ferme
+			Mesure vsCd dans vsLgc
+			Extrais de vsCd à partir de vsPosv+1 à vsLgc dans vsCd
+			Cherche vsPosv, la position de ";" dans vsCd
+		ferme
+		Mesure vsCd dans vsLgc
+		Extrais de vsCd à partir de 1 à vsLgc dans vsExc
+		Essaie, lis
+			Si vsCg est égal à "vsKprops" alors vsEval=0/0
+			Parcours Eval
+		ferme
+		sinon, lis
+			Cherche vsPosv, la position de "}" dans vsExc
+			Si vsPosv est plus grand que 0 alors lis
+				Mesure vsExc dans vsLgc
+				Extrais de vsExc à partir de 1 à vsPosv-1 dans vsExc
+			ferme
+		ferme
+		Si vsCg est égal à "vsKprops" alors Parcours  AliKprops
+		sinon,lis
+			Parcours Eval
+			Ajoute #vsEval dans <<vsCg>>
+		ferme
+		vsLig=vsLig+1
+		vsFin=1
+		Reviens
+
+Paragraphe : AliKprops
+	Rôles :
+	Actions :
+		Mesure vsExc dans vsLgc
+		Extrais de vsExc à partir de 2 à vsLgc dans vsExc
+		Ajoute #vsExc dans vsKprops
+		Reviens
+
+Paragraphe : Eval
+	Rôles :
+	Actions :
+		Concatène vsExc,"+0" dans vsExc
+		Évalue vsExc
+		Convertis vsExc en vsEval
+		Reviens
+
+Paragraphe : Exec
+	Rôles :
+		vsCact est un casier de texte vide
+	Actions :
+		Mesure vsCode dans vsLgc
+		Si vsLgc est plus grand que 3 alors lis
+			Extrais de vsCode à partir de 1 à 4 dans vsExc
+			Si vsExc est égal à "Act " alors lis
+				Extrais de vsCode à partir de 5 à vsLgc dans vsExc
+				Si vsExc{0} est égal à µ"0022" alors lis
+					Extrais de vsCode à partir de 6 à vsLgc dans vsExc
+				ferme
+				sinon, lis
+					Extrais de vsCode à partir de 5 à vsLgc dans vsExc
+					Si vsExc{0} est égal à "'" alors lis
+						Mesure vsExc dans vsLgc
+						Extrais de vsExc à partir de 2 à vsLgc dans vsExc
+						vsExc=<<vsExc>>
+					ferme
+					vsExc=<<vsExc>>
+				ferme
+				Ajoute #vsExc dans vsCact
+				vsInsert=#vsSprg
+				Insère #vsCact{0} à partir de vsLig+2 dans vsSprg
+				vsExec=1
+				vsLig=vsLig+1
+				vsFin=1
+				Reviens
+			ferme
+		ferme
+		Va vers Affiche
+
+Paragraphe : DeroulTrih
+	Rôles :
+	Actions :
+		Mesure vsLnomtxt dans vsLgtp
+		Si vsLgtp est plus grand que 30 alors lis
+			Si vsPt est en collision avec vsLigne_fill_Trih_0 alors lis
+				Si vsDébutp est plus grand que 0 alors lis
+					vsDébutp=vsDébutp-1
+					Appelle  DeroulZtp
+				ferme
+			ferme
+		ferme
+		Attends 125 millisecondes
+		Parcours  DeroulTrih
+
+Paragraphe : DeroulTrib
+	Rôles :
+	Actions :
+		Mesure vsLnomtxt dans vsLgtp
+		Si vsLgtp est plus grand que 30 alors lis
+			Si vsPt est en collision avec vsLigne_fill_Trib_0 alors lis
+				Si vsDébutp est plus petit que vsLgtp-30 alors lis
+					vsDébutp=vsDébutp+1
+					Appelle  DeroulZtp
+				ferme
+			ferme
+		ferme
+		Attends 125 millisecondes
+		Va vers DeroulTrib
+
+Paragraphe : DeroulZtp
+	Rôles :
+		vsNump est un nombre valant 0
+		vsNomtxt  est un texte vide
+	Actions :
+		De vsDébutp à vsDébutp+30-1 ,lis
+			vsNump=joker-vsDébutp
+			Concatène "vsTxt",vsNump dans vsNomtxt
+			texte de <<vsNomtxt>>=vsLnomtxt {joker}
+			x de <<vsNomtxt>>=ecranh*0.8+5
+			y de <<vsNomtxt>>=90+(joker-vsDébutp)*25
+			visible de <<vsNomtxt>>="oui"
+			Rafraîchis
+		ferme
+
+Paragraphe : Clic fin
+	Rôles :
+	Actions :
+		fais réagir vsImag à "clic souris" pour Fin
+
+Paragraphe : Fin
+	Rôles :
+	Actions :
+		Termine
+

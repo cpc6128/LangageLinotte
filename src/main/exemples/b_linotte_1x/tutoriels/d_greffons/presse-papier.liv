@@ -1,0 +1,21 @@
+Presse Papier :
+
+Démonstration :
+	Rôles :
+		presse :: pressepapier
+		information :: texte <- "Texte copié depuis le langage Linotte !"
+		entrée :: texte
+	Actions :
+		affiche "Vous avez dans votre presse-papier le texte suivant : " + presse.coller()
+		affiche "Je vais maintenant modifier le presse-papier !"
+		évoque presse.copier(information)
+		affiche "Vérifiez votre presse-papier maintenant !"
+		demande entrée
+		affiche "je vais maintenant copier du HTML dans le presse-papier"
+		évoque presse.copierhtml("<html>Bonjour, vous utilisez la version <b>" + version + "</b> de <i>l'Atelier Linotte</i></html>")
+		affiche "Vérifiez dans un éditeur plus évolué (Word ou Open)!"
+		demande entrée
+		affiche "Maintenant, je vais stocker la toile dans le presse-papier (la toile doit contenir un dessin !)"
+		évoque presse.copiertoile()
+		affiche "Vérifiez votre presse-papier maintenant avec un logiciel manipulant les images (Gimp par exemple)!"
+

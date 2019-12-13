@@ -1,0 +1,13 @@
+bibliothèque
+livre1 référence bibliotheque2.liv
+
+principale :
+	message est un texte valant "Nous sommes dans le livre : "
+	nom est un texte
+	début
+		Concatène message, livre dans message
+		Affiche message
+		Affiche "Quel est ton nom ?"
+		Demande nom
+		Parcours bonjour de livre1 avec nom
+		Affiche "Nous sommes de retour !"

@@ -1,0 +1,40 @@
+Chronomètre  :
+("Spécification : 1.3")
+	Espèces :
+		l'espèce chronomètre hérite de entité
+
+Principal :
+	Rôles :
+		temps :: chronomètre
+		_seconde & _minute & _heure :: nombre
+		reponse :: texte
+	Actions :
+		attache _seconde à temps
+		attache _minute à temps
+		attache _heure à temps
+		attache stop à temps
+		attache start à temps
+		("Chronomètre :")
+		évoque  temps.start()
+		questionne reponse  sur "Quel est ton prénom ?"
+		"Le temps écoulé, " + reponse + ", est de " + temps.stop() + " secondes." !
+		termine
+
+Start :
+	Rôles :
+		*moi :: chronomètre
+	Actions :
+		_seconde@moi vaut seconde
+		_minute@moi vaut minute
+		_heure@moi vaut heure
+		retourne 0
+
+stop :
+	Rôles :
+		*moi :: chronomètre
+		§tmp_seconde :: nombre <- seconde
+		§tmp_minute :: nombre <- minute
+		§tmp_heure :: nombre <- heure
+	Actions :
+		retourne tmp_heure * 3600 + tmp_minute * 60 + tmp_seconde - (_heure@moi * 3600 + _minute@moi * 60 + _seconde@moi)
+

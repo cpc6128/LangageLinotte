@@ -1,0 +1,16 @@
+Nombre Fibonacci en recursif :
+
+Principal :
+ 	Rôles :
+		n :: nombre
+	Actions :
+		"Entrez un nombre :" !
+    n ?
+		fibo(n) !
+	    
+Fibo :
+	Rôles :
+		*n :: nombre
+	Actions :
+		si n < 2 alors retourne n
+		retourne fibo(n-1) + fibo(n-2)

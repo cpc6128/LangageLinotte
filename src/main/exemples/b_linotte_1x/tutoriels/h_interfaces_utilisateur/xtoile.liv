@@ -1,0 +1,36 @@
+Toile dans un formulaire :
+("Spécification : 0.7.2")
+    grands rôles :
+        form :: formulaire, titre vaut "J'ai mal à la tête !", largeur vaut 800, hauteur vaut 800
+        b1 :: bouton, texte vaut "A gauche", x vaut 10, y vaut 60
+        b2 :: bouton, texte vaut "A droite   ", x vaut 10, y vaut 100
+        l1 :: étiquette, texte vaut "Dans quel sens veux-tu que Tux tourne ?", x vaut 10, y vaut 30
+        d :: graphique, image vaut "../c_multimedia/images/tux_graduate.png",  x vaut 100, y vaut 100, taille vaut 20
+		xtoile :: xtoile, x vaut 90, y vaut 80
+		sens est un nombre valant 0
+		toile :: toile, la couleur vaut "noir",hauteur vaut 300 , largeur vaut 400
+Principal :
+	Actions :
+        Ajoute xtoile & b1 & b2 & l1 dans form
+		efface toile
+		projette d
+        Fais réagir b1 à "clic souris" pour à droite
+        Fais réagir b2 à "clic souris" pour à gauche
+		tant que vrai, lis
+			tourne à droite d de sens	
+			attends 0.01 seconde
+		ferme
+
+à droite :
+	Rôles :
+		*b :: bouton
+	Actions :
+		sens vaut -1
+		Reviens
+
+à gauche :
+	Rôles :
+		*b :: bouton
+	Actions :
+		sens vaut 1
+		Reviens

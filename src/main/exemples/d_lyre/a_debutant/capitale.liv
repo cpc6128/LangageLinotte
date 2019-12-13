@@ -1,0 +1,6 @@
+capitale :: texte
+tant que capitale != "Paris" {
+	affiche "Quelle est la capitale de la France ?"
+	demande capitale
+}
+affiche "Bravo, tu es trop fort !"

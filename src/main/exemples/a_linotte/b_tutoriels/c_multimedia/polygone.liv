@@ -1,0 +1,35 @@
+globale
+	vaisseau est un polygone, couleur prend "rouge", plein prend "oui", x prend 100, y prend 100, dx1 prend 10 ,dy1 prend 30, dx2 prend 0 ,dy2 prend 20, dx3 prend -10 ,dy3 prend 30
+	flotte est un casier de polygone valant vaisseau, #vaisseau, #vaisseau
+
+principale :
+	t est un nombre 
+	début
+		efface toile
+		pour chaque flotte lis
+			t prend t + 20
+			projette joker
+			déplace joker de t et t
+			angle@joker prend 360
+			mélange angle@joker
+		ferme
+		tant que vrai lis
+			pour chaque flotte lis
+				tourne à gauche joker de 1
+				parcours test avec joker
+			ferme
+			attends 10 millisecondes
+		ferme
+
+test :
+	*v est un polygone
+	test est un nombre
+	début
+		pour chaque flotte lis
+			si v != joker lis
+				si v est en collision avec joker, test prend 1
+			ferme
+		ferme
+		si test == 1, couleur@v prend "jaune"
+		sinon couleur@v prend "rouge"
+		reviens

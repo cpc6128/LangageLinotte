@@ -1,0 +1,20 @@
+globale
+	valeur est un nombre
+
+principale :
+	début
+		affiche "En quelle année fut inventé le langage Linotte ?"
+		demande valeur
+		Va vers vérification
+
+vérification :
+	réponse est un nombre valant 2005
+	début
+		si valeur = réponse va vers réponse bonne
+		sinon si valeur > réponse affiche "Non non... c'est avant !"
+		sinon affiche "Il est plus jeune ! "
+		va vers principale
+
+réponse bonne :
+	début
+		affiche "Bravo, tu es trés fort ! "

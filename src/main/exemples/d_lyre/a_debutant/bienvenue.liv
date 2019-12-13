@@ -1,0 +1,41 @@
+/*
+Cliquez sur le bouton LIRE pour exécuter ce programme très simple.
+
+En Lyre, pour créer une variable, il y a deux formes :
+	variable :: texte // on veut creer sans donner de valeur, le type est obligatoire
+	variabla := "moi !"  // on veut creer la variable avec une valeur, le type est inutile !
+
+Pour un casier, c'est aussi simple :
+  tableau :: texte []
+  tableau := "moi", "toi", "vous"
+
+Pour créer des fonctions avec des paramètres, il faut utiliser cette unique syntaxe :
+   mafonction : param1, param2
+		print param1
+		print param2
+
+*/
+prénom :: texte
+âge & boucle :: nombre
+affiche "Bonjour ! Quel est ton prénom ?"
+demande prénom
+affiche "Bravo " + prénom + ", tu viens de lire ton premier livre Linotte !"		
+// exemple d'utilisation d'une condition :
+affiche "Quel âge as-tu ?"
+demande âge
+si âge <= 18 {
+	affiche "Tu es bien jeune avec tes " + âge + " années !"
+	affiche "Mais, tu iras loin dans la programmation !"
+}
+sinon {
+	affiche "Tu fais bien plus jeune que tes " + âge + " années !"
+	affiche "Avec Linotte, la programmation ne sera plus un secret pour toi !"
+}
+attends 2000
+// exemple d'une boucle :
+affiche "En tout cas, moi, je sais compter jusqu'à dix !"
+pour boucle, 1 à 10  {
+	affiche boucle
+}
+pour "moi" affiche joker
+affiche "à bientôt !"

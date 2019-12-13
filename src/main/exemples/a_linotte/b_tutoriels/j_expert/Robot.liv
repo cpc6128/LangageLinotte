@@ -1,0 +1,16 @@
+greffons robot
+
+principale :
+	robot est un robot
+	i est un nombre
+	début
+		Pour i de 0 à 20  lis
+			robot.bougesouris(300+(20*i), 400)
+		Ferme
+		Pour i de 0 à 20  lis
+			robot.bougesouris(700-(20*i), 400+(20*i))
+		Ferme
+		Pour i de 0 à 20  lis
+			robot.bougesouris(300+(20*i), 800)
+		Ferme
+		robot.sourisclic()

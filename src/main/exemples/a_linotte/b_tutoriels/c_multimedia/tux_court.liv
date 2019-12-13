@@ -1,0 +1,28 @@
+globale
+	tux est un graphique, image prend "images/tux_graduate.png"
+	ciel est une toile, couleur prend "bleu", pointeur prend "flèche", image prend "images/dn_house2.png"
+
+principale :
+	début
+		efface toile
+		projette ciel
+		projette tux
+		va vers boucle
+
+boucle :
+	taille est un nombre
+	souffleurs
+		/*On lui fixe des limites !*/
+		dès que (x @ tux) > 470 , x @ tux prend 470
+		dès que (y @ tux) > 430 , y @ tux prend 430
+		dès que (x @ tux) < 5 , x @ tux prend 5
+		dès que (y @ tux) < 290 , y @ tux prend 290
+	début
+		déplace tux vers sourisx et sourisy
+		taille prend y de tux - 290
+		si taille < 0, taille prend 0
+		taille prend taille / 4
+		taille@tux prend taille
+		temporise
+		vide touches
+		va vers boucle

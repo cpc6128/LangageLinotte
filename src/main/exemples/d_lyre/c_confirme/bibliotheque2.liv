@@ -1,0 +1,5 @@
+affiche "Lancez bibliotheque.liv !"
+
+bonjour : prénom
+	affiche "Bonjour à toi ${prénom}, tu es maintenant dans ${livre}"
+	retourne

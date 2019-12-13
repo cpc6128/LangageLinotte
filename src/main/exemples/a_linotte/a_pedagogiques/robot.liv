@@ -1,0 +1,33 @@
+// Notice : http://programmons.forumofficiel.fr/t1097-robonotte-decouvrir-la-programmation
+Robonotte :
+	robonotte est un labyrinthe, largeur vaut 5, longueur vaut 6
+                  // 1, c'est un mur
+                  // 3, c'est la clef
+                  // 4, c'est la porte
+	plan est un casier de nombres valant 1,1,1,1,1,1,
+                                        1,0,0,0,0,4,
+                                        1,0,0,1,1,1,
+                                        1,0,0,0,3,1,
+                                        1,1,1,1,1,1
+	début
+		projette robonotte
+     // Construction du labyrinthe
+		robonotte.affiche(plan)
+		robonotte.poserobot(2,3)
+		robonotte.bas()
+		robonotte.bas()
+		robonotte.droite()
+		robonotte.droite()
+		robonotte.droite()
+		robonotte.prend()
+		robonotte.haut()
+		robonotte.gauche()
+		robonotte.gauche()
+		robonotte.haut()
+		robonotte.droite()
+		robonotte.haut()
+		robonotte.droite()
+		robonotte.droite()
+		robonotte.droite()
+		robonotte.ouvre()
+		robonotte.quitte()

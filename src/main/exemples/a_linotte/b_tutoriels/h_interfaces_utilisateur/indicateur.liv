@@ -1,0 +1,23 @@
+globale
+	form est un formulaire, titre prend "L'indicateur", largeur prend 300, hauteur prend 260
+	indicateurh est un indicateur, x prend 20, y prend 20, valeur prend 0, largeur prend 200, hauteur prend 20
+	indicateurv est un indicateur, x prend 70, y prend 50, valeur prend 0, largeur prend 20, hauteur prend 200, orientation prend "vertical"
+	indicateur est un indicateur, x prend 20, y prend 20, valeur prend 0, largeur prend 200, hauteur prend 20
+
+Formulaire :
+	début
+		Ajoute indicateurh & indicateurv  dans form
+		Appelle boucle
+		Tant que vrai lis
+			Temporise
+		Ferme
+
+Boucle :
+	valeur est un nombre
+	début
+		Pour valeur de 0 à 100  lis
+			Attends 200 millisecondes
+			valeur @ indicateurh prend valeur
+			valeur @ indicateurv prend 100 - valeur
+		Ferme
+		Termine

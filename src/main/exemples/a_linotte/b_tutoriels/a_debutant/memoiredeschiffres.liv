@@ -1,0 +1,37 @@
+globale
+	score est un nombre valant 0
+	nombre1 est un nombre
+	nombre2 est un nombre
+	nombre3 est un nombre
+	réponse1 est un nombre
+	réponse2 est un nombre
+	réponse3 est un nombre
+
+principale :
+	début
+		"Je vais afficher 3 nombres et tu vas devoir les retrouver !" !
+		"Voici les nombres : " !
+		nombre1 prend hasard (500)
+		nombre2 prend hasard (500)
+		nombre3 prend hasard (500)
+		nombre1 !
+		nombre2 !
+		nombre3 !
+		"Je vais attendre 5 secondes" !
+		attends 5 secondes
+		efface tableau
+		"Premier nombre ?" !
+		réponse1 ?
+		réponse2 ?
+		réponse3 ?
+		si réponse1 != nombre1 va vers réponse fausse
+		si réponse2 != nombre2 va vers réponse fausse
+		si réponse3 != nombre3 va vers réponse fausse
+		score prend score + 1
+		"Bravo !" !
+		va vers principale
+
+réponse fausse :
+	début
+		"La réponse est fausse. Le jeu se termine, ton score est de ${score}" !
+		"Je pense que tu peux mieux faire..." !

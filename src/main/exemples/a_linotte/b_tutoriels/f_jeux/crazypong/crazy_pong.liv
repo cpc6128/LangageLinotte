@@ -1,0 +1,115 @@
+globale
+	raquette est un ligne,  x1 prend 41, y1 prend 238, x2 prend 41, y2 prend 278, taille prend 15, couleur prend "rouge"
+	plateau est une toile, couleur prend "noir"
+	palet  est un cercle,  x prend 325, y prend 530, rayon prend 5, couleur prend "vert", taille prend 5
+	mur1 est un ligne, couleur prend "blanc", x1 prend 5, y1 prend 10, x2 prend 590, y2 prend 10
+	mur2 est un ligne, couleur prend "blanc", x1 prend 590, y1 prend 10,  x2 prend 590, y2 prend 555
+	mur3 est un ligne, couleur prend "blanc", x1 prend 5, y1 prend 555, x2 prend 590, y2 prend 555
+	directionx est un nombre valant 1
+	directiony est un nombre valant 1
+	pas est un nombre valant 0.04
+	pas_vitesse est un nombre valant 0.0001
+	fin_mur est un nombre valant 585
+	vitesse est un nombre valant 1
+
+principale :
+	début
+		efface toile
+		mélange y de palet
+		y de palet prend y de palet + 30
+		projette plateau
+		projette raquette
+		projette palet
+		projette mur1
+		projette mur2
+		projette mur3
+		va vers action
+
+action :
+	début
+		attends 5 millisecondes
+		vitesse prend vitesse + pas_vitesse
+		/*On avance le mur*/
+		fin_mur prend fin_mur - pas
+		x1 de mur2 prend x1 de mur2 - pas
+		x2 de mur2 prend x2 de mur2 - pas
+		x2 de mur1 prend x2 de mur1 - pas
+		x2 de mur3 prend x2 de mur3 - pas
+		va vers analyse
+
+analyse :
+	y est un nombre
+	y_min est un nombre
+	y_max est un nombre
+		/*Gestion de la raquette*/
+	début
+		y prend sourisy - 30
+		si y > 503, y prend 503
+		si y < 20, y prend 20
+		si (y1 de raquette) > y, déplace raquette vers le haut de 2
+		si (y1 de raquette) < y, déplace raquette vers le bas de 2
+
+		/*Gestion du palet*/
+		si directiony == 1, déplace palet vers le haut de vitesse
+		si directiony == -1, déplace palet vers le bas de vitesse
+		si directionx == 1, déplace palet vers la gauche de 1
+		si directionx == -1, déplace palet vers la droite de 1
+
+		/*Gestion de la direction du palet*/
+		si (y de palet) < 20, directiony prend directiony * -1
+		si (y de palet) > 550, directiony prend directiony * -1
+		si (x de palet) < 55, directionx prend directionx * -1
+		si (x de palet) > fin_mur, directionx prend directionx * -1
+		si (x de palet) > fin_mur, x de palet prend fin_mur
+		si (x de palet) > 55, va vers action
+
+		/*Perdu ?*/
+		y_min prend y1 de raquette - 15
+		si (y de palet) < y_min, va vers perdu
+		y_max prend y2 de raquette + 15
+		si (y de palet) > y_max, va vers perdu
+
+		/*Gagné ?*/
+		si (x1 de mur2) < 100, va vers gagné
+		va vers action
+
+perdu :
+	message est un graffiti, texte prend "Perdu ! Encore un partie ?",  x prend 150, y prend 315, taille prend 10, couleur prend "bleu"
+	début
+		projette message
+		couleur de plateau prend "rouge"
+		attends 0.1 secondes
+		couleur de plateau prend "noir"
+		attends 0.1 secondes
+		couleur de plateau prend "rouge"
+		attends 0.1 secondes
+		couleur de plateau prend "noir"
+		vide touches
+		va vers boucle
+
+gagné :
+	message est un graffiti, texte prend "Gagné ! Encore un partie ?",  x prend 150, y prend 315, taille prend 10, couleur prend "bleu"
+	début
+		projette message
+		vide touches
+		va vers boucle
+
+boucle :
+	début
+		temporise
+		si touche == "clique", va vers initialisation
+		va vers boucle
+
+initialisation :
+	début
+		x de palet prend 325
+		y de palet prend 530
+		x1 de mur2 prend 596
+		x2 de mur2 prend 596
+		x2 de mur1 prend 596
+		x2 de mur3 prend 596
+		directionx prend 1
+		directiony prend 1
+		fin_mur prend 585
+		vitesse prend 1
+		va vers principale

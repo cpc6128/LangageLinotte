@@ -1,0 +1,25 @@
+Programmation en LOGO avec Linotte :
+("Spécification : 0.6.0")
+
+Principal :
+	Rôles :
+		tortue :: crayon, couleur vaut "bleu", x vaut 400, y vaut 100, taille vaut 1
+		tortue2 :: crayon, couleur vaut "rouge", x vaut 300, y vaut 200, taille vaut 1
+	Actions :
+		efface la toile
+
+		("Carré")
+		("av 200 td 90 av 200 td 90 av 200 td 90 av 200 td 90")
+		projette tortue
+		pour chaque 4, lis
+			avance tortue de 200
+			tourne à droite tortue de 90
+		ferme
+
+		("Hexagone")
+		("repete 6[av 80 td 60]")
+		projette tortue2
+		pour chaque 6, lis
+			avance tortue2 de 80
+			tourne à droite tortue2 de 60
+		ferme

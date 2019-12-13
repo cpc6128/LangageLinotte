@@ -1,0 +1,1 @@
+..\..\..\..\jinotte.exe -x pendu.liv

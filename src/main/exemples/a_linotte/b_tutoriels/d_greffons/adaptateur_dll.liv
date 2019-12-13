@@ -1,0 +1,22 @@
+/*
+ATTENTION !! Cet exemple ne fonctionne plus avec les versions récentes de Windows :-(
+Exemple d'utilisateur du greffon Adaptateur 0.1
+Ce greffon permet d'appeler depuis le langage Linotte des fontions d'une DLL sous Windows
+*/
+greffons adaptateur
+
+principale :
+	dll est un adaptateur
+	types est un casier de textes valant "entier", "texte","texte", "entier"
+	paramètres est un casier de textes valant "0",  "Mon message !","Titre fenetre", "38"
+	début
+		// Chargement automatique du greffon :
+		// ~greffon 1 adaptateur 0.1 "http://abaque.googlecode.com/files/Adaptateur.zgl"        		// Les paramètres de la méthode "appellerdll" du greffon Adaptateur sont :
+		// - nom de la DLL (texte)
+		// - nom de la fonction à appeler (texte)
+		// - type du retour (texte)
+		// - tableau des types des paramètres (casier de textes)		
+		// - tableau des paramètres (casier de textes)
+		//
+		// Les types possibles sont : texte, entier, décimal
+		affiche "retour : " + dll.appelerdll("User32.dll", "MessageBoxA", "entier", types , paramètres)

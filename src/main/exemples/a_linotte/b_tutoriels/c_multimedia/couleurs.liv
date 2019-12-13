@@ -1,0 +1,15 @@
+globale
+	tableau est un rectangle, x prend 250, y prend 250, largeur prend 100, hauteur prend 50, taille prend 30
+	couleur est un graffiti,  x prend 235, y prend 375, taille prend 5
+	mur est une toile, couleur prend "blanc"
+
+principale :
+	début
+		efface toile
+		projette tableau
+		projette couleur
+		pour chaque couleurs lis
+			couleur@tableau prend joker
+			texte@couleur prend joker
+			attends 0.3 seconde
+		ferme

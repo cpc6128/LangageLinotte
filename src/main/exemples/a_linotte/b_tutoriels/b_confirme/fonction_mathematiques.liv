@@ -1,0 +1,19 @@
+tests
+	< "Quelles sont les valeurs des nombres A et B :"
+	> 3
+	> 4
+	< "Le résultat est 7"
+
+principal :
+	a est un nombre
+	b est un nombre
+	début
+		"Quelles sont les valeurs des nombres A et B :" !
+		a & b ?
+		"Le résultat est " + addition( a, b ) !
+
+addition :
+	*v1 est un nombre
+	*v2 est un nombre
+	début
+		retourne v1 + v2

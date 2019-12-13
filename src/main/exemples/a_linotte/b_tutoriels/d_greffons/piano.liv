@@ -1,0 +1,192 @@
+/*Plus d'informations ici :
+  http://langagelinotte.free.fr/wiki/index.php?title=Metronome*/
+greffons métronome
+
+globale
+	form est un formulaire, titre prend "Le piano", largeur prend 400, hauteur prend 450
+	l1 est un étiquette, texte prend "Choisissez l'instrument :", x prend 20, y prend 20
+	s1 est un sélecteur, valeurs prend "", x prend 20, y prend 40
+	l2 est un étiquette, texte prend "Vélocité:", x prend 20, y prend 80
+	slider est un slider, x prend 20, y prend 100, minimum prend 0, maximum prend 127, valeur prend 64
+	l3 est un étiquette, texte prend valeur@slider, x prend 250, y prend 105
+	l4 est un étiquette, texte prend "Pression :", x prend 20, y prend 140
+	slider2 est un slider, x prend 20, y prend 160, minimum prend 0, maximum prend 127, valeur prend 64
+	l5 est un étiquette, texte prend valeur@slider2, x prend 250, y prend 165
+	l6 est un étiquette, texte prend "Réverbération :", x prend 20, y prend 200
+	slider3 est un slider, x prend 20, y prend 220, minimum prend 0, maximum prend 127, valeur prend 64
+	l7 est un étiquette, texte prend valeur@slider3, x prend 250, y prend 225
+	l8 est un étiquette, texte prend "Canal :", x prend 20, y prend 260
+	slider4 est un slider, x prend 20, y prend 280, minimum prend 0, maximum prend 10
+	l9 est un étiquette, texte prend valeur@slider4, x prend 250, y prend 285
+	l10 est un étiquette, texte prend "Pitch bend :", x prend 20, y prend 320
+	slider5 est un slider, x prend 20, y prend 340, minimum prend 0, maximum prend 16383, valeur prend 8192
+	l11 est un étiquette, texte prend valeur@slider5, x prend 250, y prend 345
+	l12 est un étiquette, texte prend "Durée en millisecondes:", x prend 20, y prend 380
+	slider6 est un slider, x prend 20, y prend 400, minimum prend 1, maximum prend 10000, valeur prend 1000
+	l13 est un étiquette, texte prend valeur@slider6, x prend 250, y prend 405
+	do est un bouton, texte prend "DO (d)", x prend 330, y prend 20, touche prend "d"
+	ré est un bouton, texte prend "RE (f)", x prend 330, y prend 60, touche prend "f"
+	mi est un bouton, texte prend "MI (g)", x prend 330, y prend 100, touche prend "g"
+	fa est un bouton, texte prend "FA (h)", x prend 330, y prend 140, touche prend "h"
+	sol est un bouton, texte prend "SOL (j)", x prend 330, y prend 180, touche prend "j"
+	la2 est un bouton, texte prend "LA (k)", x prend 330, y prend 220, touche prend "k"
+	si est un bouton, texte prend "SI (l)", x prend 330, y prend 260, touche prend "l"
+	do2 est un bouton, texte prend "DO (m)", x prend 330, y prend 300, touche prend "m"
+
+principale :
+	tmp est un texte
+	nb est un nombre
+	piano est un métronome
+	début
+		ajoute s1 & l1 & do & ré & mi & fa & sol & la2 & si & do2 dans form
+		ajoute slider & l2 & l3 dans form
+		ajoute slider2 & l4 & l5 dans form
+		ajoute slider3 & l6 & l7 dans form
+		ajoute slider4 & l8 & l9 dans form
+		ajoute slider5 & l10 & l11 dans form
+		ajoute slider6 & l12 & l13 dans form
+		fais réagir s1 à "clic souris" pour changer instrument
+		fais réagir slider à "clic souris" pour changer velocity
+		fais réagir slider2 à "clic souris" pour changer pressure
+		fais réagir slider3 à "clic souris" pour changer reverb
+		fais réagir slider4 à "clic souris" pour changer canal
+		fais réagir slider5 à "clic souris" pour changer bend
+		fais réagir slider6 à "clic souris" pour changer durée
+		fais réagir do à "clic souris" pour DO
+		fais réagir ré à "clic souris" pour RE
+		fais réagir mi à "clic souris" pour MI
+		fais réagir fa à "clic souris" pour FA
+		fais réagir sol à "clic souris" pour SOL
+		fais réagir la2 à "clic souris" pour LA2
+		fais réagir si à "clic souris" pour SI
+		fais réagir do2 à "clic souris" pour DO2
+		fais réagir form à "clic souris" pour fermer la fenêtre
+		/*Construction de la liste des instruments :*/
+		pour chaque piano.instruments() lis
+			tmp prend tmp + joker + "|"
+		ferme
+		valeurs@s1 prend tmp
+		maximum@slider4 prend piano.nombrechannels()
+		valeur@slider4 prend 0
+		/*Boucle infinie*/
+		tant que vrai lis 
+			temporise
+			vide touches
+		ferme
+
+fermer la fenêtre :
+	*f est un formulaire
+	piano est un métronome
+	début
+		piano.fermer()
+		Termine
+
+changer instrument :
+	*s est un sélecteur
+	piano est un métronome
+	début
+		piano.instrument(valeur@s)
+		Reviens
+
+changer velocity :
+	*s est un slider
+	piano est un métronome
+	début
+		texte@l3 prend valeur@s
+		piano.velocity(valeur@s)
+		Reviens
+
+changer pressure :
+	*s est un slider
+	piano est un métronome
+	début
+		texte@l5 prend valeur@s
+		piano.pressure(valeur@s)
+		reviens
+
+changer reverb :
+	*s est un slider
+	piano est un métronome
+	début
+		texte@l7 prend valeur@s
+		piano.reverb(valeur@s)
+		reviens
+
+changer canal :
+	*s est un slider
+	piano est un métronome
+	début
+		texte@l9 prend valeur@s
+		piano.canal(valeur@s)
+		reviens
+
+changer bend :
+	*s est un slider
+	piano est un métronome
+	début
+		texte@l11 prend valeur@s
+		piano.bend(valeur@s)
+		reviens
+
+changer durée :
+	*s est un slider
+	piano est un métronome
+	début
+		texte@l13 prend valeur@s
+		reviens
+
+DO :
+	*s est un bouton
+	piano est un métronome
+	début
+		piano.joue(60,valeur@slider6)
+		reviens
+
+RE :
+	*s est un bouton
+	piano est un métronome
+	début
+		piano.joue(62,valeur@slider6)
+		reviens
+
+MI :
+	*s est un bouton
+	piano est un métronome
+	début
+		piano.joue(64,valeur@slider6)
+		reviens
+
+FA :
+	*s est un bouton
+	piano est un métronome
+	début
+		piano.joue(65,valeur@slider6)
+		reviens
+
+SOL :
+	*s est un bouton
+	piano est un métronome
+	début
+		évoque piano.joue(67,valeur@slider6)
+		reviens
+
+LA2 :
+	*s est un bouton
+	piano est un métronome
+	début
+		évoque piano.joue(69,valeur@slider6)
+		reviens
+
+SI :
+	*s est un bouton
+	piano est un métronome
+	début
+		évoque piano.joue(71,valeur@slider6)
+		reviens
+
+DO2 :
+	*s est un bouton
+	piano est un métronome
+	début
+		évoque piano.joue(72,valeur@slider6)
+		reviens

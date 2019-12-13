@@ -1,0 +1,6 @@
+/*f(x)=x/(x-3)*/
+f : x
+	if x = 3 {
+		throw 20001, "Impossible de calculer la fonction avec la valeur " + x
+	}
+	else return x/(x-3 )

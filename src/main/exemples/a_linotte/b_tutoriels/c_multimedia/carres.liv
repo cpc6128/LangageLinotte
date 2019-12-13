@@ -1,0 +1,18 @@
+globale
+	nb est un nombre valant 0
+principale :
+	début
+		efface toile
+		pour chaque 30, parcours création carré
+
+création carré :
+	t est un rectangle
+	début
+		largeur@t prend 20
+		hauteur@t prend 20
+		nb prend nb + 10
+		x@t prend 50 + nb
+		y@t prend 50 + nb
+		couleur@t prend "noir"
+		projette t
+		reviens

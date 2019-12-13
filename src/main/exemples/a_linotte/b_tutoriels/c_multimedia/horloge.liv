@@ -1,0 +1,16 @@
+principale :
+	horloge est un graffiti, x prend 5, y prend 20, texte prend "L'horloge digitale", couleur prend "rose"
+	toile est une toile, couleur prend "noir", hauteur prend 30 , largeur prend 270, x prend 50, y prend 50, audessus prend "oui", bordure prend "non"
+	début
+		copie ecranh dans x @ toile
+		copie ecranv dans y @ toile
+		soustrais 300 dans x @ toile
+		soustrais 80 dans y @ toile
+		efface toile
+		projette toile
+		projette horloge
+		attends 1 seconde
+		tant que vrai lis
+			texte@horloge prend "Il est ${heure} heures, ${minute} minutes et ${seconde} secondes"
+			attends 1 seconde
+		ferme

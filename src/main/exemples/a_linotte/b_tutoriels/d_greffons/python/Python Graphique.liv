@@ -1,0 +1,5 @@
+/*Retrouvez les sources de ce greffon écrit en langage Python dans le répertoire /greffons/PyDemo.py*/
+principale :
+	graphic est un pydemo, texte prend "Vive Python et Linotte"
+	début
+		projette graphic

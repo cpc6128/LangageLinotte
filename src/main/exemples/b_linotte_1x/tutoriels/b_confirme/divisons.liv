@@ -1,0 +1,27 @@
+Divisons simplement :
+    Principal :
+        Rôles :
+            n1 :: nombre vide
+            n2 :: nombre vide
+            n3 :: nombre vide
+        Actions :
+            parcours divise avec 10, 2, n1
+		        affiche n1
+            parcours divise avec 45, 5, n2
+		        affiche n2
+            parcours divise avec 13, 0, n3
+		        affiche n3
+            termine
+            
+    Divise :
+        Rôles :
+            *a :: nombre
+            *b :: nombre
+            *c :: nombre
+        Actions :
+            Si b == 0 alors lis
+                Affiche "Impossible de diviser ${a} par zéro ! "
+                Termine
+            Ferme
+            Sinon, c vaut a / b
+            Reviens

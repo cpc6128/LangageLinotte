@@ -1,0 +1,15 @@
+globale
+	total est un nombre valant 2
+	liste est un casier de nombre
+
+principale :
+	début
+		pour chaque total parcours suite
+		pour chaque liste affiche joker
+
+suite :
+	numéro est un nombre
+	début
+		demande numéro
+		ajoute numéro dans Liste
+		reviens

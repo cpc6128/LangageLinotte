@@ -1,0 +1,13 @@
+principale :
+	Connecteur est un fichier
+	Prénom est un texte valant "Ronan"
+	Prénom2 est un texte valant "Magali"
+	Nom est un texte valant "Dupond"
+	Nom2 est un texte valant "Durand"
+	début
+		ouvre connecteur avec "écrasement" depuis "c:/temp/test_tube.txt"
+		charge prénom dans connecteur
+		charge nom dans connecteur
+		charge prénom2 dans connecteur
+		charge nom2 dans connecteur
+		ferme connecteur

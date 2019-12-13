@@ -1,0 +1,82 @@
+<%
+
+// Initialisation des valeurs (toujours au début d'un weblivre)
+
+A & B & C est un nombre
+outils est un webonotte
+message erreur est un texte
+message 1 valant "La valeur de l'hypothénuse ne peut être plus petite !"
+message 2 valant "Aucune valeur à calculer !"
+toile est une toile, couleur vaut "blanc", largeur vaut 300, hauteur vaut 200
+tortue est un crayon, couleur vaut "noir", x vaut 30, y vaut 30, taille vaut 2, pointe vaut "non"
+couleur A & couleur B & couleur C valant "noir"
+GA est un graffiti, texte vaut "A", x vaut 0, y vaut 80
+GB est un graffiti, texte vaut "B", x vaut 130, y vaut 160
+GC est un graffiti, texte vaut "C", x vaut 130, y vaut 60
+
+	// Récupération des valeurs depuis le navigateur :
+	demande A & B & C
+	
+	// Vérification des valeurs et calcul de la valeur demandée
+	si (A != 0) et (B != 0), lis
+		C vaut racine (carré A + carré B )
+		couleur C vaut "rouge"
+	ferme
+	sinon si (A != 0) et (C != 0), lis
+		si C < A, message erreur vaut message 1
+		sinon lis
+			B vaut racine (carré C - carré A )
+			couleur B vaut "rouge"
+		ferme
+	ferme
+	sinon si (B != 0) et (C != 0), lis
+		si C < B, message erreur vaut message 1
+		sinon lis
+			A vaut racine (carré C - carré B )
+			couleur A vaut "rouge"
+		ferme
+	ferme
+	sinon message erreur vaut message 2
+
+	// on dessine notre triangle :
+    projette toile & tortue & GA & GB & GC
+	couleur de tortue vaut couleur A
+    déplace tortue vers le bas de 100
+	couleur de tortue vaut couleur B
+    déplace tortue vers la droite de 200
+	couleur de tortue vaut couleur C
+    déplace tortue vers 30 et 30
+%>
+<html>
+<head><title>Pythagore By Linotte</title></head>
+<body>
+
+<h3>CALCUL DE PYTHAGORE EN LIGNE</h3>
+<font color="red"><%message erreur !%></font>
+<form action="pythagore.wliv" method="post">
+Valeur de A : <input type="texte" name="A" value="<%A !%>"/><br>
+Valeur de B : <input type="texte" name="B" value="<%B !%>"/><br>
+Valeur de C : <input type="texte" name="C" value="<%C !%>"/><br>
+<input type="submit" value="Calculer" />
+<input type="button" value="Recommencer" onclick="viderFormulaire(this.form);" />
+</form> 
+
+<img src='<%affiche "data:image/png;base64," + outils.toileenbase64() %>' >
+
+<script>
+function viderFormulaire(formulaire) {    
+  var elements = formulaire.elements; 
+  for(i=0; i<formulaire.length; i++) {     
+	field_type = formulaire[i].type.toLowerCase();
+	switch(field_type) {	
+		case "text": 
+			formulaire[i].value = ""; 
+		default: 
+			break;
+	}
+    }
+}
+</script>
+
+</body>
+</html>

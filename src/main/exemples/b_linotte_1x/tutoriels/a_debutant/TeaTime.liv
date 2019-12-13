@@ -1,0 +1,7 @@
+Tea Time :
+  ("Petit timer pour infuser parfaitement son thé !")
+  Timer :
+  Actions :
+    Attends 180 secondes
+    "Votre thé est à votre goût, Sir !" !
+    Termine

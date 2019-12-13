@@ -1,0 +1,21 @@
+// S'affiche, en bas, dans le volet de gauche de votre atelier !
+
+globale
+	atelier est un atelier
+	clip est une clipnotte, titre prend "Clipnotte de démonstration"
+	b1 est un bouton, texte prend "Cliquez moi", x prend 80, y prend 20
+
+principale :
+	début
+		ajoute clip dans atelier
+		ajoute b1 dans clip
+		fais réagir b1 à "clic souris" pour magique
+		// pour que le clipnotte ne s'arrête jamais :
+		tant que vrai, attends 60 secondes
+
+magique :
+	*b1 est un bouton
+	popup est un popup
+	début
+		popup.message("Bravo !")
+		reviens

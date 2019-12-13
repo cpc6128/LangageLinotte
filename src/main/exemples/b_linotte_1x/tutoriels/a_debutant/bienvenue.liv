@@ -1,0 +1,16 @@
+Bienvenue :
+("Cliquez sur le bouton LIRE pour essayer ce livre !")
+("Et trouvez d'autres exemples simples dans le répertoire exemples/tutoriels ")
+
+Tests :
+< *
+> "Nicolas"
+< "Bravo Nicolas, tu viens de lire ton premier livre Linotte !"
+
+Principal :
+	Rôles :
+		Prénom :: texte
+	Actions :
+		Affiche "Bonjour ! Quel est ton prénom ?"
+		Demande prénom
+		Affiche "Bravo " + prénom + ", tu viens de lire ton premier livre Linotte !"

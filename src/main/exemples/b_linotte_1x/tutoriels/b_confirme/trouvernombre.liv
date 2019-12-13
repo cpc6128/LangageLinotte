@@ -1,0 +1,29 @@
+Trouver un nombre :
+("Spécification Linotte 0.3.4.1")
+
+grands rôles :
+		Secret :: nombre <- hasard(500)
+		Boucle :: nombre <- 0
+
+Principal :
+	actions :
+    Affiche "Tu dois trouver un nombre entre 0 et 500."
+		Va vers la question
+
+Question :
+	rôles :
+		Réponse :: nombre		
+  actions :
+		boucle vaut boucle + 1
+		Affiche "Propose un nombre"
+		Demande réponse
+		Si réponse > secret alors lis
+			"Ce nombre est trop grand !" !
+			va vers la question		
+		Ferme
+		Sinon, si réponse < secret alors lis 
+			"Ce nombre est trop petit !" !
+			va vers la question		
+		Ferme
+		Affiche "Félicitation, c'était ${secret} et tu as réussi en ${boucle} coups !" 		
+		Termine

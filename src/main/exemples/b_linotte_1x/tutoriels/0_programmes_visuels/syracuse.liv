@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_51" class="java.beans.XMLDecoder">
+ <object class="java.util.ArrayList">
+  <void method="add">
+   <object class="org.linotte.frame.cahier.timbre.entite.Commentaire" id="Commentaire0">
+    <void class="org.linotte.frame.cahier.timbre.entite.Textuel" method="getField">
+     <string>texte</string>
+     <void method="set">
+      <object idref="Commentaire0"/>
+      <string>La suite de syracuse. Appuyez sur Lire pour exécuter l&apos;algorithme.</string>
+     </void>
+    </void>
+    <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+     <string>x</string>
+     <void method="set">
+      <object idref="Commentaire0"/>
+      <int>61</int>
+     </void>
+    </void>
+    <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+     <string>y</string>
+     <void method="set">
+      <object idref="Commentaire0"/>
+      <int>81</int>
+     </void>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="org.linotte.frame.cahier.timbre.entite.Verbe" id="Verbe0">
+    <void class="org.linotte.frame.cahier.timbre.entite.Verbe" method="getField">
+     <string>parametres</string>
+     <void method="set">
+      <object idref="Verbe0"/>
+      <array class="org.linotte.frame.cahier.timbre.entite.Acteur" length="1">
+       <void index="0">
+        <object class="org.linotte.frame.cahier.timbre.entite.Acteur" id="Acteur0">
+         <void class="org.linotte.frame.cahier.timbre.entite.Acteur" method="getField">
+          <string>role</string>
+          <void method="set">
+           <object idref="Acteur0"/>
+           <object class="java.lang.Enum" id="Role0" method="valueOf">
+            <class>org.linotte.frame.cahier.timbre.entite.e.Role</class>
+            <string>NOMBRE</string>
+           </object>
+          </void>
+         </void>
+         <void class="org.linotte.frame.cahier.timbre.entite.Textuel" method="getField">
+          <string>texte</string>
+          <void method="set">
+           <object idref="Acteur0"/>
+           <string>e</string>
+          </void>
+         </void>
+         <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+          <string>x</string>
+          <void method="set">
+           <object idref="Acteur0"/>
+           <int>216</int>
+          </void>
+         </void>
+         <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+          <string>y</string>
+          <void method="set">
+           <object idref="Acteur0"/>
+           <int>194</int>
+          </void>
+         </void>
+         <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+          <string>timbreSuivant</string>
+          <void method="set">
+           <object idref="Acteur0"/>
+           <object idref="Verbe0"/>
+          </void>
+         </void>
+        </object>
+       </void>
+      </array>
+     </void>
+    </void>
+    <void class="org.linotte.frame.cahier.timbre.entite.Verbe" method="getField">
+     <string>nbParametres</string>
+     <void method="set">
+      <object idref="Verbe0"/>
+      <int>1</int>
+     </void>
+    </void>
+    <void class="org.linotte.frame.cahier.timbre.entite.Textuel" method="getField">
+     <string>texte</string>
+     <void method="set">
+      <object idref="Verbe0"/>
+      <string>Demander</string>
+     </void>
+    </void>
+    <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+     <string>x</string>
+     <void method="set">
+      <object idref="Verbe0"/>
+      <int>316</int>
+     </void>
+    </void>
+    <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+     <string>y</string>
+     <void method="set">
+      <object idref="Verbe0"/>
+      <int>194</int>
+     </void>
+    </void>
+    <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+     <string>parfum</string>
+     <void method="set">
+      <object idref="Verbe0"/>
+      <object class="java.lang.Enum" method="valueOf">
+       <class>org.linotte.frame.cahier.timbre.entite.e.Parfum</class>
+       <string>DEMANDER</string>
+      </object>
+     </void>
+    </void>
+    <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+     <string>timbreSuivant</string>
+     <void method="set">
+      <object idref="Verbe0"/>
+      <object class="org.linotte.frame.cahier.timbre.entite.TantQue" id="TantQue0">
+       <void class="org.linotte.frame.cahier.timbre.entite.TantQue" method="getField">
+        <string>formule</string>
+        <void method="set">
+         <object idref="TantQue0"/>
+         <object class="org.linotte.frame.cahier.timbre.entite.Acteur" id="Acteur1">
+          <void class="org.linotte.frame.cahier.timbre.entite.Acteur" method="getField">
+           <string>role</string>
+           <void method="set">
+            <object idref="Acteur1"/>
+            <object class="java.lang.Enum" id="Role1" method="valueOf">
+             <class>org.linotte.frame.cahier.timbre.entite.e.Role</class>
+             <string>FORMULE</string>
+            </object>
+           </void>
+          </void>
+          <void class="org.linotte.frame.cahier.timbre.entite.Acteur" method="getField">
+           <string>valeur</string>
+           <void method="set">
+            <object idref="Acteur1"/>
+            <string>e != 1</string>
+           </void>
+          </void>
+         </object>
+        </void>
+       </void>
+       <void class="org.linotte.frame.cahier.timbre.entite.BlocDebut" method="getField">
+        <string>blocfin</string>
+        <void method="set">
+         <object idref="TantQue0"/>
+         <object class="org.linotte.frame.cahier.timbre.entite.BlocFin" id="BlocFin0">
+          <void class="org.linotte.frame.cahier.timbre.entite.BlocFin" method="getField">
+           <string>blocDebut</string>
+           <void method="set">
+            <object idref="BlocFin0"/>
+            <object idref="TantQue0"/>
+           </void>
+          </void>
+          <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+           <string>x</string>
+           <void method="set">
+            <object idref="BlocFin0"/>
+            <int>871</int>
+           </void>
+          </void>
+          <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+           <string>y</string>
+           <void method="set">
+            <object idref="BlocFin0"/>
+            <int>194</int>
+           </void>
+          </void>
+          <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+           <string>timbreSuivant</string>
+           <void method="set">
+            <object idref="BlocFin0"/>
+            <object class="org.linotte.frame.cahier.timbre.entite.Verbe" id="Verbe1">
+             <void class="org.linotte.frame.cahier.timbre.entite.Verbe" method="getField">
+              <string>parametres</string>
+              <void method="set">
+               <object idref="Verbe1"/>
+               <array class="org.linotte.frame.cahier.timbre.entite.Acteur" length="1">
+                <void index="0">
+                 <object class="org.linotte.frame.cahier.timbre.entite.Acteur" id="Acteur2">
+                  <void class="org.linotte.frame.cahier.timbre.entite.Acteur" method="getField">
+                   <string>role</string>
+                   <void method="set">
+                    <object idref="Acteur2"/>
+                    <object idref="Role0"/>
+                   </void>
+                  </void>
+                  <void class="org.linotte.frame.cahier.timbre.entite.Textuel" method="getField">
+                   <string>texte</string>
+                   <void method="set">
+                    <object idref="Acteur2"/>
+                    <string>durée</string>
+                   </void>
+                  </void>
+                  <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+                   <string>x</string>
+                   <void method="set">
+                    <object idref="Acteur2"/>
+                    <int>116</int>
+                   </void>
+                  </void>
+                  <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+                   <string>y</string>
+                   <void method="set">
+                    <object idref="Acteur2"/>
+                    <int>194</int>
+                   </void>
+                  </void>
+                  <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+                   <string>timbreSuivant</string>
+                   <void method="set">
+                    <object idref="Acteur2"/>
+                    <object idref="Acteur0"/>
+                   </void>
+                  </void>
+                 </object>
+                </void>
+               </array>
+              </void>
+             </void>
+             <void class="org.linotte.frame.cahier.timbre.entite.Verbe" method="getField">
+              <string>nbParametres</string>
+              <void method="set">
+               <object idref="Verbe1"/>
+               <int>1</int>
+              </void>
+             </void>
+             <void class="org.linotte.frame.cahier.timbre.entite.Textuel" method="getField">
+              <string>texte</string>
+              <void method="set">
+               <object idref="Verbe1"/>
+               <string>Affiche</string>
+              </void>
+             </void>
+             <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+              <string>x</string>
+              <void method="set">
+               <object idref="Verbe1"/>
+               <int>896</int>
+              </void>
+             </void>
+             <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+              <string>y</string>
+              <void method="set">
+               <object idref="Verbe1"/>
+               <int>194</int>
+              </void>
+             </void>
+             <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+              <string>parfum</string>
+              <void method="set">
+               <object idref="Verbe1"/>
+               <object class="java.lang.Enum" method="valueOf">
+                <class>org.linotte.frame.cahier.timbre.entite.e.Parfum</class>
+                <string>AFFICHER</string>
+               </object>
+              </void>
+             </void>
+            </object>
+           </void>
+          </void>
+         </object>
+        </void>
+       </void>
+       <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+        <string>x</string>
+        <void method="set">
+         <object idref="TantQue0"/>
+         <int>416</int>
+        </void>
+       </void>
+       <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+        <string>y</string>
+        <void method="set">
+         <object idref="TantQue0"/>
+         <int>194</int>
+        </void>
+       </void>
+       <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+        <string>timbreSuivant</string>
+        <void method="set">
+         <object idref="TantQue0"/>
+         <object class="org.linotte.frame.cahier.timbre.entite.Verbe" id="Verbe2">
+          <void class="org.linotte.frame.cahier.timbre.entite.Verbe" method="getField">
+           <string>parametres</string>
+           <void method="set">
+            <object idref="Verbe2"/>
+            <array class="org.linotte.frame.cahier.timbre.entite.Acteur" length="2">
+             <void index="0">
+              <object idref="Acteur2"/>
+             </void>
+             <void index="1">
+              <object class="org.linotte.frame.cahier.timbre.entite.Acteur" id="Acteur3">
+               <void class="org.linotte.frame.cahier.timbre.entite.Acteur" method="getField">
+                <string>role</string>
+                <void method="set">
+                 <object idref="Acteur3"/>
+                 <object idref="Role1"/>
+                </void>
+               </void>
+               <void class="org.linotte.frame.cahier.timbre.entite.Acteur" method="getField">
+                <string>valeur</string>
+                <void method="set">
+                 <object idref="Acteur3"/>
+                 <string>durée + 1</string>
+                </void>
+               </void>
+              </object>
+             </void>
+            </array>
+           </void>
+          </void>
+          <void class="org.linotte.frame.cahier.timbre.entite.Verbe" method="getField">
+           <string>nbParametres</string>
+           <void method="set">
+            <object idref="Verbe2"/>
+            <int>2</int>
+           </void>
+          </void>
+          <void class="org.linotte.frame.cahier.timbre.entite.Textuel" method="getField">
+           <string>texte</string>
+           <void method="set">
+            <object idref="Verbe2"/>
+            <string>Prendre</string>
+           </void>
+          </void>
+          <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+           <string>x</string>
+           <void method="set">
+            <object idref="Verbe2"/>
+            <int>516</int>
+           </void>
+          </void>
+          <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+           <string>y</string>
+           <void method="set">
+            <object idref="Verbe2"/>
+            <int>194</int>
+           </void>
+          </void>
+          <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+           <string>parfum</string>
+           <void method="set">
+            <object idref="Verbe2"/>
+            <object class="java.lang.Enum" id="Parfum0" method="valueOf">
+             <class>org.linotte.frame.cahier.timbre.entite.e.Parfum</class>
+             <string>VALOIR</string>
+            </object>
+           </void>
+          </void>
+          <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+           <string>timbreSuivant</string>
+           <void method="set">
+            <object idref="Verbe2"/>
+            <object class="org.linotte.frame.cahier.timbre.entite.Condition" id="Condition0">
+             <void class="org.linotte.frame.cahier.timbre.entite.Condition" method="getField">
+              <string>timbreSuivantSecondaire</string>
+              <void method="set">
+               <object idref="Condition0"/>
+               <object class="org.linotte.frame.cahier.timbre.entite.Verbe" id="Verbe3">
+                <void class="org.linotte.frame.cahier.timbre.entite.Verbe" method="getField">
+                 <string>parametres</string>
+                 <void method="set">
+                  <object idref="Verbe3"/>
+                  <array class="org.linotte.frame.cahier.timbre.entite.Acteur" length="2">
+                   <void index="0">
+                    <object idref="Acteur0"/>
+                   </void>
+                   <void index="1">
+                    <object class="org.linotte.frame.cahier.timbre.entite.Acteur" id="Acteur4">
+                     <void class="org.linotte.frame.cahier.timbre.entite.Acteur" method="getField">
+                      <string>role</string>
+                      <void method="set">
+                       <object idref="Acteur4"/>
+                       <object idref="Role1"/>
+                      </void>
+                     </void>
+                     <void class="org.linotte.frame.cahier.timbre.entite.Acteur" method="getField">
+                      <string>valeur</string>
+                      <void method="set">
+                       <object idref="Acteur4"/>
+                       <string>e * 3 + 1</string>
+                      </void>
+                     </void>
+                    </object>
+                   </void>
+                  </array>
+                 </void>
+                </void>
+                <void class="org.linotte.frame.cahier.timbre.entite.Verbe" method="getField">
+                 <string>nbParametres</string>
+                 <void method="set">
+                  <object idref="Verbe3"/>
+                  <int>2</int>
+                 </void>
+                </void>
+                <void class="org.linotte.frame.cahier.timbre.entite.Textuel" method="getField">
+                 <string>texte</string>
+                 <void method="set">
+                  <object idref="Verbe3"/>
+                  <string>Prendre</string>
+                 </void>
+                </void>
+                <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+                 <string>x</string>
+                 <void method="set">
+                  <object idref="Verbe3"/>
+                  <int>716</int>
+                 </void>
+                </void>
+                <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+                 <string>y</string>
+                 <void method="set">
+                  <object idref="Verbe3"/>
+                  <int>284</int>
+                 </void>
+                </void>
+                <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+                 <string>parfum</string>
+                 <void method="set">
+                  <object idref="Verbe3"/>
+                  <object idref="Parfum0"/>
+                 </void>
+                </void>
+                <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+                 <string>timbreSuivant</string>
+                 <void method="set">
+                  <object idref="Verbe3"/>
+                  <object class="org.linotte.frame.cahier.timbre.entite.BlocFin" id="BlocFin1">
+                   <void class="org.linotte.frame.cahier.timbre.entite.BlocFin" method="getField">
+                    <string>blocDebut</string>
+                    <void method="set">
+                     <object idref="BlocFin1"/>
+                     <object idref="Condition0"/>
+                    </void>
+                   </void>
+                   <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+                    <string>x</string>
+                    <void method="set">
+                     <object idref="BlocFin1"/>
+                     <int>816</int>
+                    </void>
+                   </void>
+                   <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+                    <string>y</string>
+                    <void method="set">
+                     <object idref="BlocFin1"/>
+                     <int>194</int>
+                    </void>
+                   </void>
+                   <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+                    <string>timbreSuivant</string>
+                    <void method="set">
+                     <object idref="BlocFin1"/>
+                     <object idref="BlocFin0"/>
+                    </void>
+                   </void>
+                  </object>
+                 </void>
+                </void>
+               </object>
+              </void>
+             </void>
+             <void class="org.linotte.frame.cahier.timbre.entite.Condition" method="getField">
+              <string>formule</string>
+              <void method="set">
+               <object idref="Condition0"/>
+               <object class="org.linotte.frame.cahier.timbre.entite.Acteur" id="Acteur5">
+                <void class="org.linotte.frame.cahier.timbre.entite.Acteur" method="getField">
+                 <string>role</string>
+                 <void method="set">
+                  <object idref="Acteur5"/>
+                  <object idref="Role1"/>
+                 </void>
+                </void>
+                <void class="org.linotte.frame.cahier.timbre.entite.Acteur" method="getField">
+                 <string>valeur</string>
+                 <void method="set">
+                  <object idref="Acteur5"/>
+                  <string>(e mod 2) = 0</string>
+                 </void>
+                </void>
+               </object>
+              </void>
+             </void>
+             <void class="org.linotte.frame.cahier.timbre.entite.BlocDebut" method="getField">
+              <string>blocfin</string>
+              <void method="set">
+               <object idref="Condition0"/>
+               <object idref="BlocFin1"/>
+              </void>
+             </void>
+             <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+              <string>x</string>
+              <void method="set">
+               <object idref="Condition0"/>
+               <int>616</int>
+              </void>
+             </void>
+             <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+              <string>y</string>
+              <void method="set">
+               <object idref="Condition0"/>
+               <int>194</int>
+              </void>
+             </void>
+             <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+              <string>timbreSuivant</string>
+              <void method="set">
+               <object idref="Condition0"/>
+               <object class="org.linotte.frame.cahier.timbre.entite.Verbe" id="Verbe4">
+                <void class="org.linotte.frame.cahier.timbre.entite.Verbe" method="getField">
+                 <string>parametres</string>
+                 <void method="set">
+                  <object idref="Verbe4"/>
+                  <array class="org.linotte.frame.cahier.timbre.entite.Acteur" length="2">
+                   <void index="0">
+                    <object idref="Acteur0"/>
+                   </void>
+                   <void index="1">
+                    <object class="org.linotte.frame.cahier.timbre.entite.Acteur" id="Acteur6">
+                     <void class="org.linotte.frame.cahier.timbre.entite.Acteur" method="getField">
+                      <string>role</string>
+                      <void method="set">
+                       <object idref="Acteur6"/>
+                       <object idref="Role1"/>
+                      </void>
+                     </void>
+                     <void class="org.linotte.frame.cahier.timbre.entite.Acteur" method="getField">
+                      <string>valeur</string>
+                      <void method="set">
+                       <object idref="Acteur6"/>
+                       <string>e / 2</string>
+                      </void>
+                     </void>
+                    </object>
+                   </void>
+                  </array>
+                 </void>
+                </void>
+                <void class="org.linotte.frame.cahier.timbre.entite.Verbe" method="getField">
+                 <string>nbParametres</string>
+                 <void method="set">
+                  <object idref="Verbe4"/>
+                  <int>2</int>
+                 </void>
+                </void>
+                <void class="org.linotte.frame.cahier.timbre.entite.Textuel" method="getField">
+                 <string>texte</string>
+                 <void method="set">
+                  <object idref="Verbe4"/>
+                  <string>Prendre</string>
+                 </void>
+                </void>
+                <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+                 <string>x</string>
+                 <void method="set">
+                  <object idref="Verbe4"/>
+                  <int>716</int>
+                 </void>
+                </void>
+                <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+                 <string>y</string>
+                 <void method="set">
+                  <object idref="Verbe4"/>
+                  <int>104</int>
+                 </void>
+                </void>
+                <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+                 <string>parfum</string>
+                 <void method="set">
+                  <object idref="Verbe4"/>
+                  <object idref="Parfum0"/>
+                 </void>
+                </void>
+                <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+                 <string>timbreSuivant</string>
+                 <void method="set">
+                  <object idref="Verbe4"/>
+                  <object idref="BlocFin1"/>
+                 </void>
+                </void>
+               </object>
+              </void>
+             </void>
+            </object>
+           </void>
+          </void>
+         </object>
+        </void>
+       </void>
+      </object>
+     </void>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object idref="Verbe1"/>
+  </void>
+  <void method="add">
+   <object idref="Verbe3"/>
+  </void>
+  <void method="add">
+   <object idref="Verbe4"/>
+  </void>
+  <void method="add">
+   <object idref="BlocFin1"/>
+  </void>
+  <void method="add">
+   <object idref="Condition0"/>
+  </void>
+  <void method="add">
+   <object idref="Verbe2"/>
+  </void>
+  <void method="add">
+   <object idref="BlocFin0"/>
+  </void>
+  <void method="add">
+   <object idref="TantQue0"/>
+  </void>
+  <void method="add">
+   <object idref="Acteur0"/>
+  </void>
+  <void method="add">
+   <object idref="Acteur2"/>
+  </void>
+  <void method="add">
+   <object class="org.linotte.frame.cahier.timbre.entite.Debut" id="Debut0">
+    <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+     <string>position</string>
+     <void method="set">
+      <object idref="Debut0"/>
+      <int>1</int>
+     </void>
+    </void>
+    <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+     <string>x</string>
+     <void method="set">
+      <object idref="Debut0"/>
+      <int>61</int>
+     </void>
+    </void>
+    <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+     <string>y</string>
+     <void method="set">
+      <object idref="Debut0"/>
+      <int>194</int>
+     </void>
+    </void>
+    <void class="org.linotte.frame.cahier.timbre.entite.Timbre" method="getField">
+     <string>timbreSuivant</string>
+     <void method="set">
+      <object idref="Debut0"/>
+      <object idref="Acteur2"/>
+     </void>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

@@ -1,0 +1,9 @@
+principale :
+		_ Bonjour !
+		_ Le tiret bas permet d'afficher du texte simplement
+		_ et sans que celui-ci soit interprété.
+		_ voici un exemple :
+		_ version
+		affiche version
+		_ Vous n'avez pas oublié l'autre forme ?
+		version !

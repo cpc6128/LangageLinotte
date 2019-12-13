@@ -1,0 +1,28 @@
+globale
+	form est un formulaire, titre prend "Le décorateur", largeur prend 400, hauteur prend 260
+	b1 est un bouton, texte prend "Metal", x prend 5, y prend 60
+	b2 est un bouton, texte prend "Motif", x prend 70, y prend 60
+	b3 est un bouton, texte prend "Nimbus", x prend 130, y prend 60
+	b4 est un bouton, texte prend "Windows", x prend 210, y prend 60
+	b5 est un bouton, texte prend "Gtk", x prend 300, y prend 60
+	l1 est un étiquette, texte prend "Choisisez votre thème", x prend 5, y prend 30
+
+formulaire :
+	début
+		Ajoute l1 & b1 & b2 & b3 & b4 & b5 dans form
+		Fais réagir b1 & b2 & b3 & b4 & b5 à "clic souris" pour changer le thème
+		Tant que vrai lis
+			temporise
+			vide touches
+		Ferme
+		Termine
+
+Changer le thème :
+	*b est un bouton
+	début
+		Si (texte @ b) == "Metal", Explore "coloriser javax.swing.plaf.metal.MetalLookAndFeel"
+		Sinon si (texte @ b) == "Motif", Explore "coloriser com.sun.java.swing.plaf.motif.MotifLookAndFeel"
+		Sinon si (texte @ b) == "Nimbus", Explore "coloriser com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel"
+		Sinon si (texte @ b) == "Windows", Explore "coloriser com.sun.java.swing.plaf.windows.WindowsLookAndFeel"
+		Sinon si (texte @ b) == "Gtk", Explore "coloriser com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
+		reviens

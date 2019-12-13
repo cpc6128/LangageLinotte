@@ -1,0 +1,20 @@
+/*Le tilde 'précision' permet de modifier la précision arithmétique de l'Atelier Linotte
+Attention, la valeur de la précision impacte énormement les performances de l'Atelier Linotte*/
+	efface
+	"Précision par défaut :" !
+	affiche pi * 2
+	"Précision à 2 nombres : " !
+	~précision 2
+	affiche pi * 2
+	"Précision à 5 nombres : " !
+	~précision 5
+	affiche pi * 2
+	"Précision à 40 nombres : " !
+	~précision 40
+	affiche pi * 2
+	"Précision infinie : " !
+	~précision 0
+	affiche pi * 2
+	"Retour à la valeur par défaut :" !
+	~précision 34
+	affiche pi * 2

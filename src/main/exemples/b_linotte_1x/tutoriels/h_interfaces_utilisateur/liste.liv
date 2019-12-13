@@ -1,0 +1,31 @@
+Liste :
+("Spécification : 0.7.3")
+    grands rôles :
+        form :: formulaire, titre vaut "La liste", largeur vaut 200, hauteur vaut 200
+        s1 :: liste, valeurs vaut "sinople|rose balais|bleu cyan|rouille|rouge ponceau", x vaut 20, y vaut 40
+        l1 :: étiquette, texte vaut "Choisissez la couleur :", x vaut 20, y vaut 5
+		toile :: toile, couleur vaut "blanc"
+      
+Formulaire :
+    Actions :
+	    Projette la toile
+        Ajoute l1 & s1 dans form
+        Fais réagir s1 à "clic souris" pour changer la couleur
+        Fais réagir form à "clic souris" pour fermer la fenêtre
+        Tant que vrai, lis
+			temporise
+		Ferme
+        Termine
+
+Changer la couleur :
+	Rôles :
+		*s :: liste
+	Actions :
+		Couleur @ toile vaut valeur de s
+		Reviens
+
+Fermer la fenêtre :
+	Rôles :
+		*f :: formulaire
+	Actions :
+		Termine

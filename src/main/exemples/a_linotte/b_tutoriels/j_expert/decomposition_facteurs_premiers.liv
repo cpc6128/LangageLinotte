@@ -1,0 +1,29 @@
+Algorithme :
+	n est un nombre
+	diviseur est un nombre
+	nbfacteurs est un nombre valant 0
+	a est un nombre
+	puissance est un nombre
+	resultat est un texte
+	flag premier est un drapeau valant faux
+	début
+		demande n
+		a prend n
+		resultat prend n + " = "
+		pour diviseur de 2 à entier (n/2)  lis
+			puissance prend 0
+			tant que a mod diviseur == 0 lis
+				/*a est premier*/
+				flag premier prend vrai
+				puissance prend puissance + 1
+				a prend a / diviseur
+			ferme
+			si flag premier lis
+				nbfacteurs prend nbfacteurs + 1
+				si nbfacteurs > 1, resultat prend resultat + " * "
+				resultat prend resultat + diviseur + "^" + puissance
+				puissance prend 1
+				flag premier prend faux
+			ferme
+		ferme
+		affiche resultat

@@ -1,0 +1,31 @@
+Tux court :
+("Spécification Linotte 0.4.0")
+	Grands rôles :
+		tux :: graphique, image vaut "images/tux_graduate.png"
+		ciel :: toile, couleur vaut "bleu", pointeur vaut "flèche", image vaut "images/dn_house2.png"
+
+Décor :
+	Actions :
+		efface la toile
+		projette ciel
+		projette tux
+		va vers la boucle
+
+Boucle :
+	Rôles :
+		taille :: nombre
+	Souffleurs :
+		("On lui fixe des limites !")
+		dès que (x @ tux) > 470 , x @ tux vaut 470
+		dès que (y @ tux) > 430 , y @ tux vaut 430
+		dès que (x @ tux) < 5 , x @ tux vaut 5
+		dès que (y @ tux) < 290 , y @ tux vaut 290
+	Actions :
+		déplace tux vers sourisx et sourisy
+		taille vaut y de tux - 290
+		si taille < 0 alors taille vaut 0
+		taille vaut taille / 4
+		taille@tux vaut taille
+		temporise
+		va vers la boucle
+

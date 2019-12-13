@@ -1,0 +1,109 @@
+livre : GRAVITE
+
+("Spécification : Linotte 0.6.0")
+("Auteur : AUBENEAU Simon")
+	les espèces :
+		droite est un nombre
+		gauche est un nombre
+		bas est un nombre
+		haut est un nombre
+		l'espèce point plus hérite de point et contient droite , gauche , bas , haut
+	les grands rôles :
+		BALLES est un nombre valant 100
+		VITESSE est un nombre valant 100
+		casier_ est un casier de point plus
+		nbr_point est un nombre vide
+		fond est un toile, tampon vaut "non", couleur vaut "beurre"
+		plus est un point plus , taille vaut 10 , gauche vaut 0 , bas vaut 0 , droite vaut 0 , haut vaut 0
+		lignesol est une ligne , x1 vaut 0 , x2 vaut 1000 , y1 vaut 500 , y2 vaut 500
+		compteur est un nombre vide
+		point-actuel est un nombre
+		graffiti est un graffiti , x vaut 100 , y vaut 100 , couleur vaut "zinzolin"
+
+paragraphe : Boucle
+	rôles :
+		alea est un nombre
+		phrase est un texte
+		valeur est un nombre
+	actions :
+		efface la toile
+		projette lignesol
+		projette graffiti
+		copie 0 dans compteur
+		vide casier_
+		nbr_point vaut -1
+		projette graffiti
+        ("boucle infinie :")
+		tant que 1 est différent de 2, lis
+			copie 40 dans alea
+			mélange alea
+			ajoute 1 dans compteur
+			si nbr_point est plus grand que 100 alors alea vaut 0
+			si nbr_point est plus petit que BALLES alors lis
+				si compteur est plus grand que alea alors vide compteur
+				si compteur est égal à 0 alors lis
+			        (" création dynamique d'acteurs point+ ")
+					ajoute 1 dans nbr_point
+					concatène "P" , nbr_point dans phrase
+					Crée phrase un acteur point plus
+					ajoute <<phrase>> dans casier_
+					alea vaut 350
+					mélange alea
+					ajoute 150 dans alea
+					copie alea dans x de création
+			
+			        (" caractéristiques des points ")
+					copie 30 dans y de création
+					projette création
+					copie 10 dans taille de création
+					copie 0 dans gauche de création
+					copie 0 dans droite de création
+					copie 0 dans bas de création
+					copie 0 dans haut de création
+			
+			        (" pour la couleur ")
+					alea vaut 7
+					mélange alea
+					si alea est égal à 0 alors copie "rouge" dans couleur de création
+					sinon, si alea est égal à 1 alors copie "vert" dans couleur de création
+					sinon, si alea est égal à 2 alors copie "bleu" dans couleur de création
+					sinon, si alea est égal à 3 alors copie "blanc" dans couleur de création
+					sinon, si alea est égal à 4 alors copie "noir" dans couleur de création
+					sinon, si alea est égal à 5 alors copie "violet" dans couleur de création
+					sinon, si alea est égal à 6 alors copie "bordeaux" dans couleur de création
+				ferme
+			ferme
+			valeur vaut BALLES - nbr_point
+			valeur vaut valeur / VITESSE
+			si valeur est plus petit que 10 alors copie 10 dans valeur
+			tu rafraîchis
+			attends valeur millisecondes
+			pour chaque casier_ , lis
+				valeur vaut 0
+		        (" affichage ")
+				concatène nbr_point , " billes" dans texte de graffiti
+		
+		        (" la bille tombe ")
+				ajoute 2 dans bas de joker
+		        
+		        (" résistance de l'air ")
+				si haut de joker est plus grand que bas de joker alors ajoute 1 dans bas de joker
+		        
+		        (" annulation des forces contraires ")
+				si bas de joker est plus petit que haut de joker alors copie bas de joker dans valeur
+				sinon , si haut de joker est plus petit que bas de joker alors copie haut de joker dans valeur
+				sinon , copie haut de joker dans valeur
+				bas de joker vaut bas de joker - valeur
+				haut de joker vaut haut de joker - valeur
+		
+		        (" déplacement ")
+				tu déplaces joker vers le haut de haut de joker
+				tu déplaces joker vers le bas de bas de joker
+		
+		        (" rebond sur le sol ")
+				si y de joker est plus grand que y1 de lignesol alors haut de joker vaut bas de joker + haut de joker
+				si y de joker est plus grand que y1 de lignesol alors vide bas de joker
+				si y de joker est plus grand que y1 de lignesol alors copie y1 de lignesol dans y de joker
+			ferme
+		ferme
+

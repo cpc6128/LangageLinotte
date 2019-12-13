@@ -1,0 +1,182 @@
+/*
+Client graphique d'un salon de discution virtuel
+Vous pouvez créer votre propre serveur avec tutoriels/j_expert/TCPServeur.liv
+*/
+
+bibliothèque
+	commun référence TCPCommun.liv
+globale
+	client est un tcpclient
+	configuration est un configuration, domaine prend "tcpclient"
+	form est un formulaire, titre prend "Messager Linotte", largeur prend 800, hauteur prend 500
+	// boite de dialogue
+	info est un étiquette, texte prend "Votre identifiant : ", x prend 5, y prend 10
+	login est un champ, x prend 150, y prend 5, texte prend ""
+	boite_titre est un étiquette, texte prend "Votre message : ", x prend 5, y prend 40, visible prend "non"//
+	boite est un boite,x prend 5, y prend 60, largeur prend 620, hauteur prend 160, visible prend "non", infobulle prend "[Contrôle]+[Entrée] pour envoyer le message"
+	b1 est un bouton, texte prend "<html><b><font color=red>Envoyer le message</font></b></html>", x prend 480, y prend 230, visible prend "non"//
+	// Console pour les messages d'erreurs
+	tableau est un xtableau, x prend 5, y prend 280, largeur prend 785, hauteur prend 140
+	// info serveur
+	e_ip est un étiquette, texte prend "Serveur : ", x prend 5, y prend 455
+	c_ip est un champ, x prend 80, y prend 450, texte prend "langagelinotte.no-ip.org"
+	e_port est un étiquette, texte prend "Port : ", x prend 280, y prend 455
+	c_port est un champ, x prend 330, y prend 450, texte prend "7778", taille prend 5
+	connecter est un bouton, texte prend "<html><b><font color=red>Connecter</font></b></html>", x prend 410, y prend 450
+	deconnecter est un bouton, texte prend "Déconnecter", x prend 410, y prend 450, visible prend "non"
+	// Listes des messagers
+	amis est un étiquette, texte prend "Listes des messagers : ", x prend 650, y prend 10, visible prend "non"
+	scrolleur est un scrolleur, largeur prend 140, hauteur prend 240, x prend 650, y prend 30, visible prend "non"
+	liste est un liste, valeurs prend "", x prend 20, y prend 40, visible prend "non"
+
+démarrage :
+		ajoute amis & boite & boite_titre & b1 & tableau & info & login & e_ip & c_ip & e_port & c_port & connecter & deconnecter & scrolleur dans form
+		ajoute liste dans scrolleur
+		form.changementdimension(faux)
+		fais réagir boite à "clic souris" pour envoyer message
+		fais réagir b1 à "clic souris" pour envoyer message
+		fais réagir connecter à "clic souris" pour connexion
+		fais réagir deconnecter à "clic souris" pour déconnexion
+		fais réagir form à  "clic souris" pour quitter
+		texte@login prend client.nommachine()
+		// chargement des données sauvegardées :
+		si configuration.vérifier("login") lis
+			texte@login prend configuration.récupérer("login")
+			texte@c_ip prend configuration.récupérer("serveur")
+			texte@c_port prend configuration.récupérer("port")
+		ferme
+		appelle liste amis
+		tant que vrai temporise
+
+attendre message :
+	message est un packet // packet reçu
+	début
+		tant que vrai lis
+			essaie lis
+				// On attend un message du serveur :
+				message prend client.recevoir()
+				// Commande PING
+				si (commande@message) = "ping" parcours pong
+				// Commande VERSION
+				sinon si (commande@message) = "version" affiche "version du serveur : " + message@message
+				// Commande LISTE AMIS
+				sinon si (commande@message) = "liste amis", valeurs@liste prend message@message
+				// Autres commandes, on affiche le message ...
+				sinon lis
+					affiche nom@message + "(" + horodatage@message + ") > " + message@message
+					form.clignoter()
+				ferme
+			ferme
+			sinon lis
+				affiche "Connexion perdue avec le serveur"
+				parcours changer affichage avec "oui", "non"
+				visible@connecter prend "oui"
+				visible@deconnecter prend "non"
+				reviens
+			ferme
+		ferme
+
+envoyer message :
+	message est un packet // packet à envoyer
+	début
+		message@message prend texte@boite
+		commande@message prend "parler"
+		nom@message prend texte@login
+		parcours horodater de commun avec message
+		// Envoi du packet au serveur
+		client.envoyer(message)
+		texte@boite prend ""
+		reviens
+
+connexion :
+	port est un nombre
+	début
+		configuration.stocker("serveur",texte@c_ip)
+		configuration.stocker("port",texte@c_port)
+		configuration.stocker("login",texte@login)
+		essaie lis
+			visible@connecter prend "non"
+			convertis texte@c_port en port
+			client.connexion(texte@c_ip, port)
+			//affiche "nous sommes connecté au serveur ..."
+			parcours version
+			parcours historique
+			appelle attendre message
+			parcours changer affichage avec "non", "oui"
+			visible@deconnecter prend "oui"
+		ferme
+		sinon lis
+			affiche "impossible de se connecter ..."
+			visible@connecter prend "oui"
+			visible@deconnecter prend "non"
+		ferme
+		reviens
+
+quitter :
+	message est un packet // packet à envoyer
+	début
+		nom@message prend texte@login
+		commande@message prend "quitter"
+		affiche "nous quittons le serveur ..."
+		essaie client.envoyer(message)
+		termine
+
+déconnexion :
+	message est un packet // packet à envoyer
+	début
+		nom@message prend texte@login
+		commande@message prend "quitter"
+		affiche "nous quittons le serveur ..."
+		client.envoyer(message)
+		parcours changer affichage avec "oui", "non"
+		visible@connecter prend "oui"
+		visible@deconnecter prend "non"
+		reviens
+
+changer affichage : état 1 , état 2
+		visible@e_ip prend état 1
+		visible@c_ip prend état 1
+		visible@e_port prend état 1
+		visible@c_port prend état 1
+		visible@boite prend état 2
+		visible@boite_titre prend état 2
+		visible@b1 prend état 2
+		visible@scrolleur prend état 2
+		visible@amis prend état 2
+		visible@liste prend état 2
+		reviens
+
+liste amis :
+	message est un packet // packet à envoyer
+	début
+		commande@message prend "liste amis"
+		tant que vrai lis
+			nom@message prend texte@login
+			essaie client.envoyer(message)
+			sinon	valeurs@liste prend ""
+			attends 3 seconde
+		ferme
+
+version :
+	message est un packet // packet à envoyer
+	début
+		commande@message prend "version"
+		nom@message prend texte@login
+		essaie client.envoyer(message)
+		reviens
+
+historique :
+	message est un packet // packet à envoyer
+	début
+		commande@message prend "historique"
+		nom@message prend texte@login
+		essaie client.envoyer(message)
+		reviens
+
+pong :
+	message est un packet // packet à envoyer
+	début
+		commande@message prend "pong"
+		nom@message prend texte@login
+		essaie client.envoyer(message)
+		reviens

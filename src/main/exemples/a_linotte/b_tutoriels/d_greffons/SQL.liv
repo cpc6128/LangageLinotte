@@ -1,0 +1,54 @@
+greffons sql
+
+/*
+Exemple pour se connecter sur à la base de données intégrée à l'Atelier Linotte
+*/ 
+
+globale
+	sql_create est un texte valant "CREATE TABLE famille (nom VARCHAR(100), prenom VARCHAR(100))"
+	sql_insert est un texte valant "INSERT INTO famille (nom, prenom) VALUES (?, ?)"
+	sql_select est un texte valant "SELECT nom, prenom FROM famille"
+	pilote <- "org.hsqldb.jdbcDriver"
+	url <- "jdbc:hsqldb:file:c:/temp/baseAtelier"
+	utilisateur <- "sa"
+	motdepasse <- ""
+
+principale :
+	connecteur est un sql
+	nom & prénom est un texte
+	début
+		efface tableau
+		essaie lis
+			// Connexion à la base de données :
+			connecteur.open(pilote,url,utilisateur,motdepasse)
+			// *****************************
+			
+			// Création de la table FAMILLE :
+			essaie connecteur.execute(sql_create,{})
+			sinon affiche "La table 'FAMILLE' existe déjà."
+			// *****************************
+			
+			// Insertion de nouvelles valeurs
+			questionne nom sur "Votre nom ?"
+			questionne prénom sur "Votre prénom ?"
+			connecteur.execute(sql_insert, {nom, prénom})
+			// *****************************
+			
+			// Vérification du contenu de la table
+			connecteur.select(sql_select)
+			affiche "Elements présents dans la table FAMILLE :"
+			tant que connecteur.hasnext() lis
+				retour est un casier de texte
+				retour prend connecteur.next()
+				affiche "Prénom : " + retour{1}+ ", nom : " + retour{0}
+			ferme
+			// *****************************
+		ferme
+		sinon lis
+			// Gestion des erreurs
+			"Numéro de l'erreur : " + numéro_erreur !
+			"Message de l'erreur : " + message_erreur !
+		ferme
+		// Il faut toujours fermer une connexion à une base de données
+		connecteur.execute("SHUTDOWN", {})
+		connecteur.close()

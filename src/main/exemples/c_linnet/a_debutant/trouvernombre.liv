@@ -1,0 +1,17 @@
+secret := random(500)
+boucle := 0
+réponse := 0
+réponse2 := "0"
+print "Tu dois trouver un nombre entre 0 et 500."
+while réponse != secret {
+	boucle = boucle + 1
+	print "Propose un nombre"
+	input réponse
+	if réponse > secret {
+		"Ce nombre est trop grand !" !
+	}
+	else if réponse < secret {
+		"Ce nombre est trop petit !" !
+	}
+}
+print "Félicitation, c'était ${secret} et tu as réussi en ${boucle} coups !"

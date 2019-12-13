@@ -1,0 +1,22 @@
+globale
+	form est un formulaire, titre prend "Le Slider", largeur prend 300, hauteur prend 260
+	slider est un slider, x prend 20, y prend 20, minimum prend -20, maximum prend 200, valeur prend 20
+	toile est une toile, couleur prend "blanc"
+	tux est un graphique, image prend "../c_multimedia/images/tux_graduate.png",  x prend 50, y prend 50, transparence prend 90, taille prend 20
+
+formulaire :
+	début
+		Projette toile
+		Projette tux
+		Ajoute slider dans form
+		Fais réagir slider à "clic souris" pour changer le zoom
+		Tant que vrai lis
+			temporise
+			vide touches
+		Ferme
+
+changer le zoom :
+	*slider est un slider
+	début
+		taille @ tux prend valeur @ slider
+		Reviens

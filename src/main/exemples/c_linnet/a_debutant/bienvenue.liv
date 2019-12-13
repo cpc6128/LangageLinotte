@@ -1,0 +1,44 @@
+/*
+Cliquez sur le bouton LIRE pour exécuter ce programme très simple.
+
+En Linnet, pour créer une variable, il y a deux formes :
+	variable :: string // on veut creer sans donner de valeur, le type est obligatoire
+	variabla := "moi !"  // on veut creer la variable avec une valeur, le type est inutile !
+
+Pour un casier, c'est aussi simple :
+  tableau :: string []
+	tableau := "moi", "toi", "vous"
+
+La section Rôle n'existe plus, les variables peuvent être créées n'importent où.
+
+Pour créer des fonctions avec des paramètres, il faut utiliser cette unique syntaxe :
+   mafonction : param1, param2
+		print param1
+		print param2
+
+*/
+// Les variables doivent être déclarées avant le mot clé "begin" :
+prénom :: string
+âge & boucle :: number
+print "Bonjour ! Quel est ton prénom ?"
+input prénom
+print "Bravo " + prénom + ", tu viens de lire ton premier livre Linotte !"		
+// exemple d'utilisation d'une condition :
+print "Quel âge as-tu ?"
+input âge
+if âge <= 18 {
+	print "Tu es bien jeune avec tes " + âge + " années !"
+	print "Mais, tu iras loin dans la programmation !"
+}
+else {
+	print "Tu fais bien plus jeune que tes " + âge + " années !"
+	print "Avec Linotte, la programmation ne sera plus un secret pour toi !"
+}
+sleep 2000
+// exemple d'une boucle :
+print "En tout cas, moi, je sais compter jusqu'à dix !"
+for boucle, 1 to 10  {
+	print boucle
+}
+for "moi" print joker
+print "à bientôt !"

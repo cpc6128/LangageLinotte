@@ -1,0 +1,38 @@
+espèces
+	copie_x & copie_y est un nombre
+	espèce rectangledng hérite de rectangle et contient copie_x , copie_y
+globale
+	centre est un cercle,  x prend 311, y prend 285, couleur prend "rouge", plein prend "oui", rayon prend 50
+	boule est un rectangledng,  largeur prend 40, hauteur prend 20, couleur prend "noir", plein prend "oui"
+	fond est une toile, couleur prend "blanc"
+
+principale :
+	début
+		/*Mémoriser la position initiale :*/
+		évoque boule.fixer()
+		projette fond & centre & boule
+		fais réagir boule à "glisser-déposer" pour changement
+		/*Boucle infinie*/
+		Tant que vrai lis
+			temporise
+			vide touche
+		Ferme
+
+changement :
+	*moi est un rectangledng
+	début
+		si moi est en collision avec centre, évoque moi.fixer()
+		sinon évoque moi.rétablir()
+		reviens
+
+fixer de rectangledng :
+	début
+		copie_x@moi prend x@moi
+		copie_y@moi prend y@moi
+		retourne vrai
+
+rétablir de rectangledng :
+	début
+		x@moi prend copie_x@moi
+		y@moi prend copie_y@moi
+		retourne vrai

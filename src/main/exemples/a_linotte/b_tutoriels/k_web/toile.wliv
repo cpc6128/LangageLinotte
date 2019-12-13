@@ -1,0 +1,118 @@
+<%
+outils est un webonotte
+toile est une toile, couleur vaut "bleu outremer"
+tortue est un crayon, couleur vaut "vert mousse", x vaut 580, y vaut 400, taille vaut 2, angle vaut 180, pointe vaut "oui"
+%>
+<html>
+<head><title>Test d'affichage de la toile</title></head>
+<body>
+<%
+    projette toile
+    pour 200, parcours magique
+%>
+<img src='<%affiche "data:image/png;base64," + outils.toileenbase64() %>' >
+<hr/>
+<%
+    efface toile
+    couleur de toile vaut "gris"
+    largeur de  toile vaut 500
+    hauteur de  toile vaut 500
+    parcours flocon_van_koch
+%>
+<img src='<%affiche "data:image/png;base64," + outils.toileenbase64() %>' >
+
+<%
+    efface toile
+    couleur de toile vaut "noir"
+    largeur de  toile vaut 600
+    hauteur de  toile vaut 590
+	projette tortue
+	parcours fougère avec 700, tortue
+	pointe @ tortue vaut "non"
+%>
+<img src='<%affiche "data:image/png;base64," + outils.toileenbase64() %>' >
+
+<%
+magique :
+t est un rectangle, largeur vaut 20, hauteur vaut 20
+    début
+    x de t vaut hasard(600)
+    y de t vaut hasard(600)
+    couleur de t vaut couleurs{hasard(100)}
+    projette t
+    reviens
+    
+flocon_van_koch :
+c1 est un crayon, couleur vaut "bleu", x vaut 350, y vaut 230, taille vaut 5, angle vaut 90
+c2 est un crayon, couleur vaut "vert", x vaut 350, y vaut 230, taille vaut 4, angle vaut 90
+c3 est un crayon, couleur vaut "rouge", x vaut 350, y vaut 230, taille vaut 3, angle vaut 90
+c4 est un crayon, couleur vaut "noir", x vaut 350, y vaut 230, taille vaut 1, angle vaut 90
+    début
+        efface toile        
+        parcours commencer avec c1, 1
+        parcours commencer avec c2, 2
+        parcours commencer avec c3, 3
+        parcours commencer avec c4, 6
+        reviens
+
+commencer :
+    *tortue est un crayon
+    *pas est un nombre
+    début
+        projette tortue
+        parcours flocon avec tortue, 200, pas
+        pointe @ tortue vaut "non"
+        reviens
+
+flocon :
+    *tortue est un crayon
+    *longueur est un nombre
+    *pas est un nombre
+    début
+        pour chaque 3, lis
+            parcours ligne avec tortue, longueur , pas
+            tourne à droite tortue de 120
+        ferme
+        reviens
+
+ligne :
+    *tortue est un crayon
+    *longueur est un nombre
+    *pas est un nombre
+    début
+        si pas == 0, avance tortue de longueur
+        sinon lis
+            parcours ligne avec tortue, longueur / 3, pas - 1
+            tourne à gauche tortue de 60
+            parcours ligne avec tortue, longueur / 3, pas - 1
+            tourne à droite tortue de 120
+            parcours ligne avec tortue, longueur / 3, pas - 1
+            tourne à gauche tortue de 60
+            parcours ligne avec tortue, longueur / 3, pas - 1
+        ferme
+        reviens    
+    
+fougère :
+	*taille est un nombre
+	*tortue est un crayon
+	début
+		si taille > 5, lis
+			couleur@tortue vaut "215 " + entier(0.18 * (angle@tortue) +187) + " 88"
+			avance tortue de taille / 20
+			tourne à gauche tortue de 80
+			parcours fougère avec taille * 0.3, tortue
+			tourne à droite tortue de 82
+			avance tortue de taille / 20
+			tourne à droite tortue de 80
+			parcours fougère avec taille * 0.3, tortue
+			tourne à gauche tortue de 78
+			parcours fougère avec taille * 0.9, tortue
+			tourne à gauche tortue de 2
+			recule tortue de taille / 20
+			tourne à gauche tortue de 2
+			recule tortue de taille / 20
+		ferme
+		reviens
+%> 
+</body>
+</html> 

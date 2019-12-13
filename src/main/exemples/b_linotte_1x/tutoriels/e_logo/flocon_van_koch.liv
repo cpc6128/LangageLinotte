@@ -1,0 +1,58 @@
+Flocon de Van Koch :
+("Spécification : 0.6.0")
+("http://xlogo.tuxfamily.org/fr/examples-fr.html")
+
+Grands rôles :
+	c1 :: crayon, couleur vaut "bleu", x vaut 350, y vaut 230, taille vaut 5, angle vaut 90
+	c2 :: crayon, couleur vaut "vert", x vaut 350, y vaut 230, taille vaut 4, angle vaut 90
+	c3 :: crayon, couleur vaut "rouge", x vaut 350, y vaut 230, taille vaut 3, angle vaut 90
+	c4 :: crayon, couleur vaut "noir", x vaut 350, y vaut 230, taille vaut 1, angle vaut 90
+
+Principal :
+Actions :
+	efface la toile
+	parcours commencer avec c1, 1
+	parcours commencer avec c2, 2
+	parcours commencer avec c3, 3
+	parcours commencer avec c4, 6
+	termine	
+
+Commencer :
+Rôles :
+	*tortue :: crayon
+	*pas :: nombre
+Actions :
+	projette tortue
+	parcours flocon avec tortue, 200, pas
+	pointe @ tortue vaut "non"
+	reviens
+
+Flocon :
+Rôles :
+	*tortue :: crayon
+	*longueur :: nombre
+	*pas :: nombre
+Actions : 
+	pour chaque 3, lis
+		parcours ligne avec tortue, longueur , pas
+		tourne à droite tortue de 120
+	ferme
+	reviens
+   
+Ligne :
+Rôles :
+	*tortue :: crayon
+	*longueur :: nombre
+	*pas :: nombre
+Actions :
+	si pas == 0 alors avance tortue de longueur
+	sinon, lis
+		parcours ligne avec tortue, longueur / 3, pas - 1
+		tourne à gauche tortue de 60
+		parcours ligne avec tortue, longueur / 3, pas - 1
+		tourne à droite tortue de 120
+		parcours ligne avec tortue, longueur / 3, pas - 1
+		tourne à gauche tortue de 60
+		parcours ligne avec tortue, longueur / 3, pas - 1
+	ferme
+	reviens

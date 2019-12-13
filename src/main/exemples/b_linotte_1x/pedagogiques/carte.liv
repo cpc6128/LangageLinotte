@@ -1,0 +1,80 @@
+Tour de cartes :
+("Spécification : 0.7.4")
+("Auteur : Dadodudou")
+
+    grands rôles :
+        numéros :: casier de nombre valant -1 , -1 , -1 , -1
+        coul :: casier de nombre valant 0 , 0 , 0 , 0
+        numéros2 :: casier de texte valant "1" , "2" , "3", "4" , "5" , "6" , "7" , "8" , "9" , "10" , "valet" , "dame" , "roi"
+        coul2 :: casier de texte valant "trèfle" , "carreau" , "coeur" , "pique"
+        i :: nombre
+        x :: nombre
+        co :: texte
+
+    Cheminement :
+		Essaie, lis
+	        explore "ouvrir aide.txt"
+		Ferme
+		Sinon, lis
+			Affiche "Impossible de trouver le fichier aide.txt"
+	    Ferme
+        pour i de 0 à 3, lis
+            tant que numéros{i} est égal à -1, parcours Numéro avec i
+            tant que coul{i} est égal à 0, parcours Couleur avec i
+            ferme
+        parcours Calculs
+        affiche "La dernière carte est..."
+        attends 3 secondes
+        si x est égal à 11 alors affiche "la " + numéros2{x} + " de " + co
+        sinon, affiche "le " + numéros2{x} + " de " + co
+        termine
+
+    Numéro :
+        rôles :
+            *a :: nombre
+            b :: texte
+            c :: nombre
+            j :: nombre
+        actions :
+            c vaut a+1
+            affiche "numéro de la carte " + c + " ?"
+            demande b
+            pour j de 0 à 12, lis
+                si b == (numéros2{j}) alors numéros{a} vaut j
+                ferme
+            reviens
+
+    Couleur :
+        rôles :
+            *a :: nombre
+            b :: texte
+            c :: nombre
+            j :: nombre
+        actions :
+            c vaut a+1
+            affiche "couleur de la carte " + c + " ?"
+            demande b
+            pour j de 0 à 3, lis
+                si b == (coul2{j}) alors coul{a} vaut 0.2*(j+1)
+                ferme
+            si a == 0 alors co vaut b
+            reviens
+
+    Calculs :
+        rôles :
+            j :: nombre
+            k :: nombre
+            l :: nombre
+            supp :: nombre <- 0
+        actions :
+            j vaut numéros{1} + coul{1}
+            k vaut numéros{2} + coul{2}
+            l vaut numéros{3} + coul{3}
+            si j > k alors supp vaut supp + 3
+            si j > l alors supp vaut supp + 2
+            si k > l alors supp vaut supp + 2
+            si supp == 7 alors supp vaut 6
+            si supp == 0 alors supp vaut 1
+            x vaut numéros{0} + supp
+            si x > 12 alors x vaut x-13
+            reviens

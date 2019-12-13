@@ -1,0 +1,31 @@
+Sélecteur :
+("Spécification : 0.7.3")
+    grands rôles :
+        form :: formulaire, titre vaut "Le sélecteur", largeur vaut 200, hauteur vaut 100
+        s1 :: sélecteur, valeurs vaut "sinople|rose balais|bleu cyan", x vaut 20, y vaut 50
+        l1:: étiquette, texte vaut "Choisissez la couleur :", x vaut 20, y vaut 20
+		toile :: toile, couleur vaut "blanc"
+      
+Formulaire :
+    Actions :
+	    Projette la toile
+        Ajoute s1 & l1 dans form
+        Fais réagir s1 à "clic souris" pour changer la couleur
+        Fais réagir form à "clic souris" pour fermer la fenêtre
+        Tant que vrai, lis
+			temporise
+		Ferme
+
+
+Changer la couleur :
+	Rôles :
+		*s :: sélecteur
+	Actions :
+		Couleur @ toile vaut valeur @ s
+		Reviens
+
+Fermer la fenêtre :
+	Rôles :
+		*f :: formulaire
+	Actions :
+		Termine

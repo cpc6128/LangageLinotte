@@ -1,0 +1,2685 @@
+PROFIX :
+("Spécification Linotte 0.4.0")
+(" N'OUBLIEZ PAS DE SELECTIONNER "EDITION">>"AFFICHER LE MESSAGE" ")
+	Grands rôles : 
+		CHARGEMENT <- 1
+		TOILE_ORIGINE est une toile , couleur vaut "noir"
+		phrase :: texte
+		boucle <- 1
+		variable :: nombre
+		VICTOIRE <- 200000
+		DEFAITE <- -150000
+		J1NA <- 25000
+		J1NA2 <- 25000
+		J1NP <- 25
+		J1NP2 <- 25
+		J1NS <- 200
+		J1NS2 <- 200
+		J1NE <- 5
+		J1NT :: nombre
+		J2NA <- 50000
+		J2N% <- 25
+		J2NS <- 200
+		J2NT :: nombre
+		J3NA <- 50000
+		J3N% <- 25
+		J3NS <- 200
+		J3NT :: nombre
+		J4NA <- 50000
+		J4N% <- 25
+		J4NS <- 200
+		J4NT :: nombre
+		NOM :: texte
+		PRET <- 0
+		ASSURANCE_EAU <- 0
+		ASSURANCE_VOL <- 0
+		ASSURANCE_FEU <- 0
+		ASSURANCE_COUT_EAU <- 100
+		ASSURANCE_COUT_VOL <- 100
+		ASSURANCE_COUT_FEU <- 100
+		ASSURANCE_EAU_REPARATION <- 0
+		ASSURANCE_VOL_REPARATION <- 0
+		ASSURANCE_FEU_REPARATION <- 0
+		PROBLEME_PRODUCTION <- 0
+		PROBLEME_GREVE <- 0
+		PROBLEME_PETROLE <- 0
+		SUITE_ACTION_PLACE <- 0
+		SUITE_ACTION_NOM <- 0
+		ACTION_NOMBRE <- 0
+		ACTION_01 <- 200
+		ACTION_02 <- 200
+		ACTION_03 <- 200
+		ACTION_04 <- 200
+		ACTION_05 <- 200
+		ACTION_06 <- 200
+		ACTION_07 <- 200
+		ACTION_08 <- 200
+		ACTION_09 <- 200
+		ACTION_10 <- 200
+		ACTION_11 <- 200
+		ACTION_12 <- 200
+		ACTION_13 <- 200
+		ACTION_14 <- 200
+		ACTION_15 <- 200
+		ACTION_16 <- 200
+		ACTION_17 <- 200
+		ACTION_18 <- 200
+		ACTION_19 <- 200
+		ACTION_20 <- 200
+		ACTION_21 <- 200
+		ACTION_22 <- 200
+		ACTION_23 <- 200
+		ACTION_24 <- 200
+		ACTION_25 <- 200
+		PRESIDENT_ELECTIONS <- 0
+		PRESIDENT_ACTUEL <- 0
+		COUT_TRANSPORT <- 1.15
+		COUT_SALARIES <- 400
+		PRIX_MAX <- 65
+		PRIX_MIN <- 45
+		PRIXNUL <- 0
+		PRIXDEMANDE <- 0
+		INFO :: nombre
+		ECHANGE1 :: nombre
+		ECHANGE2 :: nombre
+		ECHANGE3 :: nombre
+		ECHANGE4 :: nombre
+		ECHANGE5 :: nombre
+		STRATEGIE2 <- 2
+		STRATEGIE3 <- 3
+		STRATEGIE4 <- 3
+		OK_ACHAT <- 1
+		OK_TRANSPORT <- 0
+		OK_VENTE <- 0
+		OK_OK <- 0
+		EFFACE <- 0
+
+	(" voici maintenant les acteurs graphiques ")
+	(" intervenant lors du chargement ")
+		TEXTE#CHARGEMENT est un graffiti , couleur vaut "blanc" , x vaut 150 , y vaut 250 , taille vaut 30 , texte vaut "Chargement . . ."
+		CADRE#CHARGEMENT est une ligne , couleur vaut "blanc" , x1 vaut 200 , y1 vaut 300 , x2 vaut 323 , y2 vaut 300 , taille vaut 10
+		LIGNE#CHARGEMENT est une ligne , couleur vaut "bleu" , x1 vaut 200 , y1 vaut 300 , x2 vaut 200 , y2 vaut 300 , taille vaut 10
+	(" intervenant lors des paragraphes "A" ")
+		AFF_0 est une toile , couleur vaut "or"
+		AFF_1 est une ligne , x1 vaut 90 , y1 vaut 69 , x2 vaut 500, y2 vaut 69 , taille vaut 40 , couleur vaut "bleu"
+		AFF_2 est une ligne , x1 vaut 450 , y1 vaut 149 , x2 vaut 530, y2 vaut 149 , taille vaut 80 , couleur vaut "rouge"
+		AFF_3 est une ligne , x1 vaut 450 , y1 vaut 249 , x2 vaut 530, y2 vaut 249 , taille vaut 80 , couleur vaut "rouge"
+		AFF_4 est une ligne , x1 vaut 450 , y1 vaut 349 , x2 vaut 530, y2 vaut 349 , taille vaut 80 , couleur vaut "rouge"
+		AFF_5 est une ligne , x1 vaut 450 , y1 vaut 449 , x2 vaut 530, y2 vaut 449 , taille vaut 80 , couleur vaut "vert"
+		AFF_6 est une ligne , x1 vaut 45 , y1 vaut 544 , x2 vaut 550, y2 vaut 544 , taille vaut 70 , couleur vaut "jaune"
+		AFF_7 est une ligne , x1 vaut 30 , y1 vaut 469 , x2 vaut 370, y2 vaut 469 , taille vaut 40 , couleur vaut "vert"
+		AFF_8 est une ligne , x1 vaut 100 , y1 vaut 200 , x2 vaut 295, y2 vaut 200 , taille vaut 180 , couleur vaut "jaune"
+		TXT_1 est un graffiti , x vaut 200 , y vaut 85 , police vaut "comic sans ms" , taille vaut 20 , texte vaut "Nom" , couleur vaut "blanc"
+		TXT_2 est un graffiti , x vaut 440, y vaut 160 , police vaut "microsoft sans serif" , taille vaut 10 , texte vaut "ACHAT" , couleur vaut "noir"
+		TXT_3 est un graffiti , x vaut 415, y vaut 260 , police vaut "microsoft sans serif" , taille vaut 10 , texte vaut "TRANSPORT" , couleur vaut "noir"
+		TXT_4 est un graffiti , x vaut 440, y vaut 360 , police vaut "microsoft sans serif" , taille vaut 10 , texte vaut "VENTE" , couleur vaut "noir"
+		TXT_5 est un graffiti , x vaut 450, y vaut 465 , police vaut "microsoft sans serif" , taille vaut 20 , texte vaut "O. K." , couleur vaut "noir"
+		TXT_6 est un graffiti , x vaut 19, y vaut 533 , couleur vaut "noir"
+		TXT_7 est un graffiti , x vaut 19, y vaut 480 , police vaut "microsoft sans serif" , taille vaut 10 , couleur vaut "noir" , texte vaut "Acheter de nouveaux entrepôts"
+		TXT_A est un graffiti ,  x vaut 35, y vaut 140 , police vaut "microsoft sans serif" , taille vaut 10 , couleur vaut "noir" , texte vaut "Argent : "
+		TXT_B est un graffiti , x vaut 35, y vaut 180 , police vaut "microsoft sans serif" , taille vaut 10 , couleur vaut "noir" , texte vaut "Réputation : "
+		TXT_C est un graffiti , x vaut 35, y vaut 220 , police vaut "microsoft sans serif" , taille vaut 10 , couleur vaut "noir" , texte vaut "Stock : "
+		TXT_D est un graffiti , x vaut 35, y vaut 260 , police vaut "microsoft sans serif" , taille vaut 10 , couleur vaut "noir" , texte vaut "Entrepôts : "
+		TXT_E est un graffiti , x vaut 35, y vaut 335 , police vaut "microsoft sans serif" , taille vaut 10 , couleur vaut "noir" , texte vaut "> Banque"
+		TXT_F est un graffiti , x vaut 35, y vaut 365 , police vaut "microsoft sans serif" , taille vaut 10 , couleur vaut "noir" , texte vaut "> Assurance"
+		TXT_G est un graffiti , x vaut 35, y vaut 395 , police vaut "microsoft sans serif" , taille vaut 10 , couleur vaut "noir" , texte vaut "> Bourse"
+		TXT_H est un graffiti , x vaut 35, y vaut 425 , police vaut "microsoft sans serif" , taille vaut 10 , couleur vaut "noir" , texte vaut "> Journal"
+	(" intervenant lors des paragraphes "B.BK" ")
+		BK#TOILE est une toile , couleur vaut "or"
+		BK#RECTANGLE#TITRE est une ligne , x1 vaut 90 , y1 vaut 69 , x2 vaut 500, y2 vaut 69 , taille vaut 40 , couleur vaut "bleu"
+		BK#RECTANGLE#M est une ligne , x1 vaut 50, y1 vaut 350, x2 vaut 75, y2 vaut 350, taille vaut 50, couleur vaut "vert"
+		BK#RECTANGLE#PRET est une ligne , x1 vaut 150, y1 vaut 350, x2 vaut 375, y2 vaut 350, taille vaut 50, couleur vaut "gris"
+		BK#RECTANGLE#P est une ligne , x1 vaut 450, y1 vaut 350 , x2 vaut 475 , y2 vaut 350, taille vaut 50, couleur vaut "rouge"
+		BK#RECTANGLE#RETOUR est une ligne , x1 vaut 525, y1 vaut 500 , x2 vaut 550 , y2 vaut 500, taille vaut 50, couleur vaut "bleu"
+		BK#TEXTE#TITRE est un graffiti , x vaut 200 , y vaut 85 , police vaut "arial black" , taille vaut 20 , texte vaut "BANQUE" , couleur vaut "blanc"
+		BK#TEXTE#M est un graffiti ,  x vaut 42, y vaut 375 , taille vaut 100 , texte vaut "-" , couleur vaut "gris"
+		BK#TEXTE#PRET est un graffiti , x vaut 200, y vaut 365 , taille vaut 15 , couleur vaut "jaune"
+		BK#TEXTE#P est un graffiti ,   x vaut 442, y vaut 372 , police vaut "arial black" , taille vaut 45 , texte vaut "+" , couleur vaut "gris"
+		BK#TEXTE#RETOUR est un graffiti , x vaut 510, y vaut 517 , taille vaut 15 , texte vaut "O.K." , couleur vaut "blanc"
+		BK#TEXTE#ARGENT est un graffiti , x vaut 30, y vaut 517 , taille vaut 10 , texte vaut " " , couleur vaut "noir"
+	(" intervenant lors des paragraphes "B.AS" ")
+		AS#TOILE est une toile , couleur vaut "or"
+		AS#RECTANGLE#TITRE est une ligne , x1 vaut 90 , y1 vaut 69 , x2 vaut 500, y2 vaut 69 , taille vaut 40 , couleur vaut "bleu"
+		AS#RECTANGLE#EAU est une ligne , x1 vaut 50, y1 vaut 200, x2 vaut 65, y2 vaut 200, taille vaut 40, couleur vaut "noir"
+		AS#RECTANGLE#VOL est une ligne , x1 vaut 50, y1 vaut 300, x2 vaut 65, y2 vaut 300, taille vaut 40, couleur vaut "noir"
+		AS#RECTANGLE#FEU est une ligne , x1 vaut 50, y1 vaut 400 , x2 vaut 65 , y2 vaut 400, taille vaut 40, couleur vaut "noir"
+		AS#RECTANGLE#RETOUR est une ligne , x1 vaut 525, y1 vaut 500 , x2 vaut 550 , y2 vaut 500, taille vaut 50, couleur vaut "bleu"
+		AS#TEXTE#TITRE est un graffiti , x vaut 180 , y vaut 85 , police vaut "arial black" , taille vaut 20 , texte vaut "Assurances" , couleur vaut "blanc"
+		AS#TEXTE#EAU est un graffiti , x vaut 100 , y vaut 215 , police vaut "arial" , taille vaut 15 , texte vaut "Assurance inondation" , couleur vaut "noir"
+		AS#TEXTE#VOL est un graffiti , x vaut 100, y vaut 315 , police vaut "arial" , taille vaut 15 , texte vaut "Assurance cambriolage"  , couleur vaut "noir"
+		AS#TEXTE#FEU est un graffiti ,   x vaut 100, y vaut 415 , police vaut "arial" , taille vaut 15 , texte vaut "Assurance incendie" , couleur vaut "noir"
+		AS#TEXTE#RETOUR est un graffiti , x vaut 510, y vaut 517 , taille vaut 15 , texte vaut "O.K." , couleur vaut "blanc"
+		AS#TEXTE#ARGENT est un graffiti , x vaut 30, y vaut 517 , taille vaut 10 , texte vaut " " , couleur vaut "noir"
+		AS#TEXTE#COUT est un graffiti , x vaut 440, y vaut 150 , taille vaut 10 , texte vaut "coût :" , couleur vaut "noir"
+		AS#TEXTE#COUT_EAU est un graffiti , x vaut 440, y vaut 215 , taille vaut 10 , couleur vaut "noir"
+		AS#TEXTE#COUT_VOL est un graffiti , x vaut 440, y vaut 315 , taille vaut 10 , couleur vaut "noir"
+		AS#TEXTE#COUT_FEU est un graffiti , x vaut 440, y vaut 415 , taille vaut 10 , couleur vaut "noir"
+		BO#TOILE est une toile , couleur vaut "noir"
+	(" intervenant lors des paragraphes "B.BO" ")
+		BO#LIGNE#X est une ligne , x1 vaut 50 , y1 vaut 150 , x2 vaut 50 , y2 vaut 550 , couleur vaut "rouge"
+		BO#LIGNE#Y est une ligne , x1 vaut 50 , y1 vaut 550 , x2 vaut 500 , y2 vaut 550 , couleur vaut "rouge"
+		BO#LIGNE#GAUCHE est une ligne , x1 vaut 140, y1 vaut 100 , x2 vaut 140 , y2 vaut 135 , couleur vaut "noir" , taille vaut 4
+		BO#LIGNE#DROITE est une ligne , x1 vaut 340, y1 vaut 100 , x2 vaut 340 , y2 vaut 135 , couleur vaut "noir" , taille vaut 4
+		BO#RECTANGLE#TITRE est une ligne , x1 vaut 90 , y1 vaut 69 , x2 vaut 500, y2 vaut 69 , taille vaut 40 , couleur vaut "bleu"
+		BO#RECTANGLE#ACTION est une ligne , x1 vaut 90 , y1 vaut 120 , x2 vaut 390 , y2 vaut 120 , taille vaut 25 , couleur vaut "bleu"
+		BO#RECTANGLE#RETOUR est une ligne , x1 vaut 525, y1 vaut 520 , x2 vaut 550 , y2 vaut 520, taille vaut 50, couleur vaut "bleu"
+		BO#TEXTE#TITRE est un graffiti , x vaut 180 , y vaut 85 , police vaut "arial black" , taille vaut 20 , texte vaut "La Bourse" , couleur vaut "blanc"
+		BO#TEXTE#M est un graffiti , x vaut 100 , y vaut 130 , police vaut "arial" , taille vaut 20 , texte vaut "-" , couleur vaut "blanc"
+		BO#TEXTE#ACTION est un graffiti , x vaut 215 , y vaut 130 , police vaut "arial" , taille vaut 10 , texte vaut "0" , couleur vaut "blanc"
+		BO#TEXTE#P est un graffiti , x vaut 360, y vaut 135 , police vaut "arial" , taille vaut 20 , texte vaut "+" , couleur vaut "blanc"
+		BO#TEXTE#ARGENT est un graffiti , x vaut 415 , y vaut 130 , police vaut "arial narrow" , taille vaut 10 , texte vaut "+" , couleur vaut "blanc"
+		BO#TEXTE#RETOUR est un graffiti , x vaut 510, y vaut 537 , taille vaut 15 , texte vaut "O.K." , couleur vaut "blanc"
+		BO#POINT#01 est un point , taille vaut 5 , couleur vaut "rouge" , x vaut 60
+		BO#POINT#02 est un point , taille vaut 5 , couleur vaut "rouge" , x vaut 78
+		BO#POINT#03 est un point , taille vaut 5 , couleur vaut "rouge" , x vaut 96
+		BO#POINT#04 est un point , taille vaut 5 , couleur vaut "rouge" , x vaut 114
+		BO#POINT#05 est un point , taille vaut 5 , couleur vaut "rouge" , x vaut 132
+		BO#POINT#06 est un point , taille vaut 5 , couleur vaut "rouge" , x vaut 150
+		BO#POINT#07 est un point , taille vaut 5 , couleur vaut "rouge" , x vaut 168
+		BO#POINT#08 est un point , taille vaut 5 , couleur vaut "rouge" , x vaut 186
+		BO#POINT#09 est un point , taille vaut 5 , couleur vaut "rouge" , x vaut 204
+		BO#POINT#10 est un point , taille vaut 5 , couleur vaut "rouge" , x vaut 222
+		BO#POINT#11 est un point , taille vaut 5 , couleur vaut "rouge" , x vaut 240
+		BO#POINT#12 est un point , taille vaut 5 , couleur vaut "rouge" , x vaut 258
+		BO#POINT#13 est un point , taille vaut 5 , couleur vaut "rouge" , x vaut 276
+		BO#POINT#14 est un point , taille vaut 5 , couleur vaut "rouge" , x vaut 294
+		BO#POINT#15 est un point , taille vaut 5 , couleur vaut "rouge" , x vaut 312
+		BO#POINT#16 est un point , taille vaut 5 , couleur vaut "rouge" , x vaut 330
+		BO#POINT#17 est un point , taille vaut 5 , couleur vaut "rouge" , x vaut 348
+		BO#POINT#18 est un point , taille vaut 5 , couleur vaut "rouge" , x vaut 366
+		BO#POINT#19 est un point , taille vaut 5 , couleur vaut "rouge" , x vaut 384
+		BO#POINT#20 est un point , taille vaut 5 , couleur vaut "rouge" , x vaut 402
+		BO#POINT#21 est un point , taille vaut 5 , couleur vaut "rouge" , x vaut 420
+		BO#POINT#22 est un point , taille vaut 5 , couleur vaut "rouge" , x vaut 438
+		BO#POINT#23 est un point , taille vaut 5 , couleur vaut "rouge" , x vaut 456
+		BO#POINT#24 est un point , taille vaut 5 , couleur vaut "rouge" , x vaut 474
+		BO#POINT#25 est un point , taille vaut 5 , couleur vaut "rouge" , x vaut 492
+	(" intervenant lors des paragraphes "B.JO" ")
+		JO#TOILE est une toile , couleur vaut "bleu"
+		JO#PAGE est une ligne , x1 vaut 280 , y1 vaut 240 , x2 vaut 280 , y2 vaut 320 , couleur vaut "blanc" , taille vaut 400
+		JO#TITRE est un graffiti ,  x vaut 120, y vaut 100 , couleur vaut "noir" , taille vaut 25 , texte vaut "MONJOURNAL" , police vaut "arial black"
+		JO#LIGNE est une ligne , x1 vaut 82 , y1 vaut 120 , x2 vaut 478, y2 vaut 120 , couleur vaut "noir" , taille vaut 4
+		JO#1 est un graffiti , x vaut 90 , y vaut 210 , couleur vaut "noir" , taille vaut 9 , texte vaut "Une nouvelle entreprise a"
+		JO#2 est un graffiti , x vaut 90 , y vaut 250 , couleur vaut "noir" , taille vaut 9 , texte vaut "été crée ce mois-ci! Nous"
+		JO#3 est un graffiti , x vaut 90 , y vaut 290 , couleur vaut "noir" , taille vaut 9 , texte vaut "lui souhaitons évidemment"
+		JO#4 est un graffiti , x vaut 90 , y vaut 330 , couleur vaut "noir" , taille vaut 9 , texte vaut "BONNE CHANCE face aux"
+		JO#5 est un graffiti , x vaut 90 , y vaut 370 , couleur vaut "noir" , taille vaut 9 , texte vaut "cruelles lois du marché..."
+		JO#OK#1 est une ligne , x1 vaut 400 , y1 vaut 519 , x2 vaut 400, y2 vaut 483, taille vaut 2, couleur vaut "noir"
+		JO#OK#2 est une ligne , x1 vaut 400, y1 vaut 483 , x2 vaut 479, y2 vaut 483, taille vaut 2, couleur vaut "noir"
+		JO#OK#3 est un graffiti , x vaut 412, y vaut 516, taille vaut 15 , texte vaut "O.K." , couleur vaut "noir"
+	(" intervenant lors des paragraphes "B.EN" ")
+		EN#TOILE est une toile , couleur vaut "or"
+		EN#RECTANGLE#TITRE est une ligne , x1 vaut 90 , y1 vaut 69 , x2 vaut 500, y2 vaut 69 , taille vaut 40 , couleur vaut "blanc"
+		EN#RECTANGLE#M est une ligne , x1 vaut 50, y1 vaut 350, x2 vaut 75, y2 vaut 350, taille vaut 50, couleur vaut "blanc"
+		EN#RECTANGLE#PRET est une ligne , x1 vaut 150, y1 vaut 350, x2 vaut 375, y2 vaut 350, taille vaut 50, couleur vaut "blanc"
+		EN#RECTANGLE#P est une ligne , x1 vaut 450, y1 vaut 350 , x2 vaut 475 , y2 vaut 350, taille vaut 50, couleur vaut "blanc"
+		EN#RECTANGLE#RETOUR est une ligne , x1 vaut 525, y1 vaut 500 , x2 vaut 550 , y2 vaut 500, taille vaut 50, couleur vaut "blanc"
+		EN#TEXTE#TITRE est un graffiti , x vaut 175 , y vaut 85 , police vaut "arial black" , taille vaut 20 , texte vaut "ENTREPOTS" , couleur vaut "orange"
+		EN#TEXTE#M est un graffiti ,  x vaut 42, y vaut 375 , taille vaut 100 , texte vaut "-" , couleur vaut "orange"
+		EN#TEXTE#ENTREPOTS est un graffiti , x vaut 200, y vaut 365 , taille vaut 15 , couleur vaut "orange"
+		EN#TEXTE#P est un graffiti ,   x vaut 442, y vaut 372 , police vaut "arial black" , taille vaut 45 , texte vaut "+" , couleur vaut "orange"
+		EN#TEXTE#RETOUR est un graffiti , x vaut 510, y vaut 517 , taille vaut 15 , texte vaut "O.K." , couleur vaut "noir"
+		EN#TEXTE#ARGENT est un graffiti , x vaut 30, y vaut 517 , taille vaut 10 , texte vaut " " , couleur vaut "noir"
+		EN#TEXTE#QUANTITE est un graffiti , x vaut 30, y vaut 467 , taille vaut 10 , texte vaut " " , couleur vaut "noir"
+	(" intervenant lors des paragraphes "C" ")
+		C#1 est un graffiti , x vaut 20 , y vaut 200 , police vaut "microsoft sans serif" , taille vaut 8 , texte vaut "PROPOSITION"
+		C#2 est un graffiti , x vaut 20 , y vaut 250 , police vaut "microsoft sans serif" , taille vaut 8 , texte vaut "A combien montez-vous l'enchère ?"
+		C#3 est un graffiti , x vaut 20 , y vaut 300 , police vaut "microsoft sans serif" , taille vaut 8 , texte vaut "PROPOSITION DE J2"
+		C#4 est un graffiti , x vaut 20 , y vaut 350 , police vaut "microsoft sans serif" , taille vaut 8 , texte vaut "PROPOSITION DE J3"
+		C#5 est un graffiti , x vaut 20 , y vaut 400 , police vaut "microsoft sans serif" , taille vaut 8 , texte vaut "PROPOSITION DE J4"
+		C#6 est un graffiti , x vaut 20 , y vaut 475 , police vaut "microsoft sans serif" , taille vaut 8 , texte vaut "GAGNANT"
+		C#CADRE#OK est une ligne , x1 vaut 525, y1 vaut 500 , x2 vaut 550 , y2 vaut 500, taille vaut 50, couleur vaut "bleu"
+		C#TEXTE#OK est un graffiti , x vaut 510, y vaut 517 , taille vaut 15 , texte vaut "O.K." , couleur vaut "blanc"
+		C#ARGENT est un graffiti , x vaut 20 , y vaut 150 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "ARGENT"
+		C#STOCK est un graffiti , x vaut 220 , y vaut 150 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "STOCK"
+		C#REPUTATION est un graffiti , x vaut 420 , y vaut 150 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "REPUTATION"
+	(" intervenant lors des paragraphes "D" ")
+		D#1 est un graffiti , x vaut 20 , y vaut 200 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "xxx"
+		D#2 est un graffiti , x vaut 20 , y vaut 250 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "xxx"
+		D#3 est un graffiti , x vaut 20 , y vaut 300 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "xxx"
+		D#4 est un graffiti , x vaut 20 , y vaut 350 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "xxx"
+		D#5 est un graffiti , x vaut 20 , y vaut 500 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "xxx"
+		D#CADRE#OUI est une ligne , x1 vaut 80 , y1 vaut 400 , x2 vaut 150 , y2 vaut 400 , taille vaut 60 , couleur vaut "vert"
+		D#CADRE#NON est une ligne , x1 vaut 240 , y1 vaut 400 , x2 vaut 310 , y2 vaut 400 , taille vaut 60 , couleur vaut "rouge"
+		D#TEXTE#OUI est un graffiti , x vaut 75 , y vaut 412 , police vaut "arial black" , taille vaut 20 , texte vaut "OUI" , couleur vaut "blanc"
+		D#TEXTE#NON est un graffiti , x vaut 235 , y vaut 412 , police vaut "arial black" , taille vaut 20 , texte vaut "NON" , couleur vaut "blanc"
+		D#CADRE#OK est une ligne , x1 vaut 525, y1 vaut 500 , x2 vaut 550 , y2 vaut 500, taille vaut 50, couleur vaut "bleu"
+		D#TEXTE#OK est un graffiti , x vaut 510, y vaut 517 , taille vaut 15 , texte vaut "O.K." , couleur vaut "blanc"
+		D#ARGENT est un graffiti , x vaut 20 , y vaut 150 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "ARGENT"
+		D#STOCK est un graffiti , x vaut 220 , y vaut 150 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "STOCK"
+		D#REPUTATION est un graffiti , x vaut 420 , y vaut 150 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "REPUTATION"
+	(" intervenant lors des paragraphes "E" ")
+		E#1 est un graffiti , x vaut 20 , y vaut 200 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "xxx"
+		E#2 est un graffiti , x vaut 20 , y vaut 250 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "xxx"
+		CONSEQUENCE#REPUTATION est un graffiti , x vaut 20 , y vaut 250 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "xxx"
+		E#3 est un graffiti , x vaut 20 , y vaut 300 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "xxx"
+		E#4 est un graffiti , x vaut 20 , y vaut 350 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "xxx"
+		E#5 est un graffiti , x vaut 20 , y vaut 400 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "xxx"
+		E#6 est un graffiti , x vaut 20 , y vaut 450 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "xxx"
+		E#CADRE#OK est une ligne , x1 vaut 525, y1 vaut 500 , x2 vaut 550 , y2 vaut 500, taille vaut 50, couleur vaut "bleu"
+		E#TEXTE#OK est un graffiti , x vaut 510, y vaut 517 , taille vaut 15 , texte vaut "O.K." , couleur vaut "blanc"
+		E#ARGENT est un graffiti , x vaut 20 , y vaut 150 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "ARGENT"
+		E#STOCK est un graffiti , x vaut 200 , y vaut 150 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "STOCK"
+		E#REPUTATION est un graffiti , x vaut 420 , y vaut 150 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "REPUTATION"
+	(" intervenant lors des paragraphes "U" ")
+		U#1 est un graffiti , x vaut 20 , y vaut 150 , police vaut "arial black" , taille vaut 15 , texte vaut "ELECTIONS PRESIDENTIELLES"
+		U#2 est un graffiti , x vaut 20 , y vaut 200 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "Pour qui votez-vous ?"
+		U#CADRE#DROITE est une ligne , x1 vaut 275 , y1 vaut 190 , x2 vaut 550 , y2 vaut 190 , taille vaut 40 , couleur vaut "bleu"
+		U#CADRE#CENTRISTE est une ligne , x1 vaut 275 , y1 vaut 240 , x2 vaut 550 , y2 vaut 240 , taille vaut 40 , couleur vaut "cyan"
+		U#CADRE#ECOLO est une ligne , x1 vaut 275 , y1 vaut 290 , x2 vaut 550 , y2 vaut 290 , taille vaut 40 , couleur vaut "vert"
+		U#CADRE#GAUCHE est une ligne , x1 vaut 275 , y1 vaut 340 , x2 vaut 550 , y2 vaut 340 , taille vaut 40 , couleur vaut "rouge"
+		U#TEXTE#DROITE est un graffiti , x vaut 275 , y vaut 210 , taille vaut 40 , couleur vaut "blanc" , texte vaut "DROITE"
+		U#TEXTE#CENTRISTE est un graffiti , x vaut 275 , y vaut 260 , taille vaut 40 , couleur vaut "blanc" , texte vaut "CENTRISTE"
+		U#TEXTE#ECOLO est un graffiti , x vaut 275 , y vaut 310 , taille vaut 40 , couleur vaut "blanc" , texte vaut "ECOLO"
+		U#TEXTE#GAUCHE est un graffiti , x vaut 275 , y vaut 360 , taille vaut 40 , couleur vaut "blanc" , texte vaut "GAUCHE"
+		U#3 est un graffiti , x vaut 20 , y vaut 390 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "xxx"
+		U#4 est un graffiti , x vaut 20 , y vaut 420 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "xxx"
+		U#5 est un graffiti , x vaut 20 , y vaut 450 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "xxx"
+		U#6 est un graffiti , x vaut 20 , y vaut 480 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "xxx"
+		U#CADRE#OK est une ligne , x1 vaut 525, y1 vaut 500 , x2 vaut 550 , y2 vaut 500, taille vaut 50, couleur vaut "bleu"
+		U#TEXTE#OK est un graffiti , x vaut 510, y vaut 517 , taille vaut 15 , texte vaut "O.K." , couleur vaut "blanc"
+	(" intervenant lors des paragraphes "W" ")
+		W#1 est un graffiti , x vaut 20 , y vaut 180 , police vaut "microsoft sans serif" , taille vaut 10 , texte vaut "STAT..."
+		W#2 est un graffiti , x vaut 20 , y vaut 230 , police vaut "microsoft sans serif" , taille vaut 10 , texte vaut "STAT..."
+		W#3 est un graffiti , x vaut 20 , y vaut 280 , police vaut "microsoft sans serif" , taille vaut 10 , texte vaut "STAT..."
+	(" intervenant lors des paragraphes "X" ")
+		X#DEFAITE est une toile , couleur vaut "rouge"
+		X#1 est un graffiti , x vaut 20 , y vaut 180 , police vaut "microsoft sans serif" , taille vaut 10 , texte vaut "Votre entreprise est déclarée en faillite" , couleur vaut "blanc"
+		X#2 est un graffiti , x vaut 20 , y vaut 250 , police vaut "microsoft sans serif" , taille vaut 10 , texte vaut "En effet" , couleur vaut "blanc"
+		X#3 est une ligne , x1 vaut 510 , y1 vaut 500 , x2 vaut 550 , y2 vaut 500, taille vaut 50, couleur vaut "noir"
+		X#4 est un graffiti , x vaut 500, y vaut 517 , taille vaut 15 , texte vaut "O.K." , couleur vaut "blanc"
+		X#5 est un graffiti , x vaut 250, y vaut 517 , taille vaut 30 , texte vaut "FIN" , couleur vaut "blanc"
+		X#VICTOIRE est une toile , couleur vaut "vert"
+		CREDITS#1 est un graffiti , x vaut 20 , y vaut 700 , police vaut "microsoft sans serif" , taille vaut 10 , texte vaut "PROFIX" , couleur vaut "blanc"
+		CREDITS#2 est un graffiti , x vaut 20 , y vaut 740 , police vaut "microsoft sans serif" , taille vaut 10 , texte vaut "(version 0.0.0.1 )" , couleur vaut "blanc"
+		CREDITS#3 est un graffiti , x vaut 20 , y vaut 800 , police vaut "microsoft sans serif" , taille vaut 10 , texte vaut "Producteur executif : AUBENEAU Simon" , couleur vaut "blanc"
+		CREDITS#4 est un graffiti , x vaut 20 , y vaut 830 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "Scenariste interactif : AUBENEAU Simon" , couleur vaut "blanc"
+		CREDITS#5 est un graffiti , x vaut 20 , y vaut 860 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "Rédaction : AUBENEAU Simon" , couleur vaut "blanc"
+		CREDITS#6 est un graffiti , x vaut 20 , y vaut 890 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "Directeur général : AUBENEAU Simon" , couleur vaut "blanc"
+		CREDITS#7 est un graffiti , x vaut 20 , y vaut 920 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "Directeur artistique : AUBENEAU Simon" , couleur vaut "blanc"
+		CREDITS#8 est un graffiti , x vaut 20 , y vaut 950 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "Chef animateur : AUBENEAU Simon" , couleur vaut "blanc"
+		CREDITS#9 est un graffiti , x vaut 20 , y vaut 980 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "Chargé de projet : AUBENEAU Simon" , couleur vaut "blanc"
+		CREDITS#10 est un graffiti , x vaut 20 , y vaut 1010 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "Programmeur : AUBENEAU Simon" , couleur vaut "blanc"
+		CREDITS#11 est un graffiti , x vaut 20 , y vaut 1040 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "Infographiste : AUBENEAU Simon" , couleur vaut "blanc"
+		CREDITS#12 est un graffiti , x vaut 20 , y vaut 1070 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "Animateur : AUBENEAU Simon" , couleur vaut "blanc"
+		CREDITS#13 est un graffiti , x vaut 20 , y vaut 1100 , police vaut "microsoft sans serif" , taille vaut 5 , texte vaut "Développeur : AUBENEAU Simon" , couleur vaut "blanc"
+		CREDITS#14 est un graffiti , x vaut 20 , y vaut 1130 , police vaut "microsoft sans serif" , taille vaut 10 , texte vaut "D'après l'idée magistrale de Simon AUBENEAU" , couleur vaut "blanc"
+		CREDITS#15 est un graffiti , x vaut 20 , y vaut 1290 , police vaut "microsoft sans serif" , taille vaut 10 , texte vaut "LA GRANDE DISTRIBUTION" , couleur vaut "blanc"
+		CREDITS#16 est un graffiti , x vaut 20 , y vaut 1320 , police vaut "microsoft sans serif" , taille vaut 10 , texte vaut "(version 0.0.0.1 )" , couleur vaut "blanc"
+		CREDITS#17 est un graffiti , x vaut 20 , y vaut 1350 , police vaut "microsoft sans serif" , taille vaut 10 , texte vaut "mars 2008" , couleur vaut "blanc"
+		CREDITS#18 est un graffiti , x vaut 20 , y vaut 1380 , police vaut "microsoft sans serif" , taille vaut 10 , texte vaut "avec LINOTTE" , couleur vaut "blanc"
+		CREDITS#19 est un graffiti , x vaut 20 , y vaut 1500 , police vaut "arial black" , taille vaut 10 , texte vaut "Fin" , couleur vaut "blanc"
+
+		("j'ai uttilisé beaucoups de variable et j'en suis conscient , mais cela m'a simplifié la vie")
+		("le chargement permets d'augmenter la vitesse de lecture du livre lors du premier mois")
+
+
+paragraphe : Introduction
+	les actions :
+		Tu effaces toile
+		Tu projettes TOILE_ORIGINE
+		Tu projettes TEXTE#CHARGEMENT
+		Tu projettes CADRE#CHARGEMENT
+		Tu projettes LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers A.0
+		Si CHARGEMENT est égal à 2 alors tu copies 0 dans CHARGEMENT
+		Essaie, lis
+		explore "ouvrir lisez-moi.html"
+		Ferme
+		Sinon, lis
+			Affiche "Impossible de trouver le fichier lisez-moi.html"
+	    Ferme
+		Tu vides CHARGEMENT
+		Tu effaces TEXTE#CHARGEMENT
+		Tu effaces CADRE#CHARGEMENT
+		Tu effaces LIGNE#CHARGEMENT
+		tu projettes AFF_0
+		tu projettes AFF_1
+		Si OK_ACHAT est égal à 0 alors tu copies "Rouge" dans couleur de AFF_2
+		Si OK_ACHAT est égal à 1 alors tu copies "Vert" dans couleur de AFF_2
+		tu projettes AFF_2
+		Si OK_TRANSPORT est égal à 0 alors tu copies "Rouge" dans couleur de AFF_3
+		Si OK_TRANSPORT est égal à 1 alors tu copies "Vert" dans couleur de AFF_3
+		tu projettes AFF_3
+		Si OK_VENTE est égal à 0 alors tu copies "Rouge" dans couleur de AFF_4
+		Si OK_VENTE est égal à 1 alors tu copies "Vert" dans couleur de AFF_4
+		tu projettes AFF_4
+		Si OK_OK est égal à 0 alors tu copies "Rouge" dans couleur de AFF_5
+		Si OK_OK est égal à 1 alors tu copies "Vert" dans couleur de AFF_5
+		tu projettes AFF_5
+		tu projettes AFF_6
+		tu projettes AFF_7
+		tu projettes AFF_8
+		Tu copies "Tapez le nom de votre entreprise" dans texte de TXT_6
+		Tu projettes TXT_6
+		Tu attends 1 seconde 
+		Tu questionnes NOM sur "Tapez le nom de votre entreprise" 
+		Tu copies NOM dans texte de TXT_1
+		Tu vas vers A.0
+
+Paragraphe : A.0 (" Les paragraphes "A...." correspondent au menu principal ")
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers A.1
+		Si J2NA est plus petit que -10000 alors tu copies 2000 dans J2NA
+		Si J2NS est plus petit que 0 alors tu copies 0 dans J2NS
+		Si J3NA est plus petit que -10000 alors tu copies 2000 dans J3NA
+		Si J3NS est plus petit que 0 alors tu copies 0 dans J3NS
+		Si J4NA est plus petit que -10000 alors tu copies 2000 dans J4NA
+		Si J4NS est plus petit que 0 alors tu copies 0 dans J4NS
+		Si J1NP est égal à 85 alors tu copies 100000 dans J2NA
+		Si J1NP est égal à 85 alors tu copies 50000 dans J3NA
+		Si J1NP est égal à 85 alors tu copies 10000 dans J4NA
+		Tu effaces toile
+		tu projettes AFF_0
+		tu projettes AFF_1
+		Si OK_ACHAT est égal à 0 alors tu copies "Rouge" dans couleur de AFF_2
+		Si OK_ACHAT est égal à 1 alors tu copies "Vert" dans couleur de AFF_2
+		tu projettes AFF_2
+		Si OK_TRANSPORT est égal à 0 alors tu copies "Rouge" dans couleur de AFF_3
+		Si OK_TRANSPORT est égal à 1 alors tu copies "Vert" dans couleur de AFF_3
+		tu projettes AFF_3
+		Si OK_VENTE est égal à 0 alors tu copies "Rouge" dans couleur de AFF_4
+		Si OK_VENTE est égal à 1 alors tu copies "Vert" dans couleur de AFF_4
+		tu projettes AFF_4
+		Si OK_OK est égal à 0 alors tu copies "Rouge" dans couleur de AFF_5
+		Si OK_OK est égal à 1 alors tu copies "Vert" dans couleur de AFF_5
+		tu projettes AFF_5
+		tu projettes AFF_6
+		tu projettes AFF_7
+		tu projettes AFF_8
+		Tu projettes TXT_1
+		Tu projettes TXT_2
+		Tu projettes TXT_3
+		Tu projettes TXT_4
+		Tu projettes TXT_5
+		Tu projettes TXT_6
+		Tu projettes TXT_7
+		Tu concatènes "Argent : " , J1NA , " $" dans texte de TXT_A
+		Tu projettes TXT_A
+		Tu concatènes "Réputation : " , J1NP , " %" dans texte de TXT_B
+		Tu projettes TXT_B
+		Tu concatènes "stock total: " , J1NS , " palettes" dans texte de TXT_C
+		Tu projettes TXT_C
+		Tu concatènes "Nombre d'entrepôts : " , J1NE  dans texte de TXT_D
+		Tu projettes TXT_D
+		Tu projettes TXT_E
+		Tu projettes TXT_F
+		Tu projettes TXT_G
+		Tu projettes TXT_H
+		Tu vas vers A.1
+Paragraphe : A.1
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers A.2
+		Tu temporises
+		Tu ajoutes 1 dans EFFACE
+		Si EFFACE est plus grand que 20 alors tu copies "... ... ..." dans texte de TXT_6
+		Si EFFACE est plus grand que 20 alors tu vides EFFACE
+		Si touche est différent de "clique" alors tu vas vers A.1
+		Tu vas vers A.2
+Paragraphe : A.2
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers A.3
+		Tu copies " chargement - - - veuillez patienter" dans texte de TXT_6
+		Si sourisx est plus petit que 410 alors tu vas vers A.3
+		Si sourisy est plus petit que 109 alors tu vas vers A.3
+		Si sourisx est plus grand que 569 alors tu vas vers A.3
+		Si sourisy est plus grand que 188 alors tu vas vers A.3
+		Si OK_ACHAT est égal à 0 alors tu vas vers A.3
+		Tu vas vers C.1
+Paragraphe : A.3
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers A.4
+		Si sourisx est plus petit que 410 alors tu vas vers A.4
+		Si sourisy est plus petit que 209 alors tu vas vers A.4
+		Si sourisx est plus grand que 569 alors tu vas vers A.4
+		Si sourisy est plus grand que 288 alors tu vas vers A.4
+		Si OK_TRANSPORT est égal à 0 alors tu vas vers A.4
+		Tu vas vers D.1
+Paragraphe : A.4
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers A.5
+		Si sourisx est plus petit que 410 alors tu vas vers A.5
+		Si sourisy est plus petit que 309 alors tu vas vers A.5
+		Si sourisx est plus grand que 569 alors tu vas vers A.5
+		Si sourisy est plus grand que 388 alors tu vas vers A.5
+		Si OK_VENTE est égal à 0 alors tu vas vers A.5
+		Si J1NT est égal à 0 alors tu copies 0 dans OK_VENTE
+		Si J1NT est égal à 0 alors tu copies 1 dans OK_OK
+		Si J1NT est égal à 0 alors tu copies "La vente est annulée puisque vous n'avez rien transporté !!!" dans texte de TXT_6
+		Si J1NT est égal à 0 alors tu vas vers A.0
+		Tu vas vers E.1
+Paragraphe : A.5
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers A.6
+		Si sourisx est plus petit que 410 alors tu vas vers A.6
+		Si sourisy est plus petit que 409 alors tu vas vers A.6
+		Si sourisx est plus grand que 569 alors tu vas vers A.6
+		Si sourisy est plus grand que 488 alors tu vas vers A.6
+		Si OK_OK est égal à 0 alors tu vas vers A.6
+		Tu vas vers U.1
+Paragraphe : A.6
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers A.7
+		Si sourisx est plus petit que 10 alors tu vas vers A.7
+		Si sourisy est plus petit que 449 alors tu vas vers A.7
+		Si sourisx est plus grand que 389 alors tu vas vers A.7
+		Si sourisy est plus grand que 488 alors tu vas vers A.7
+		Tu vas vers B.EN.1
+Paragraphe : A.7
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers A.8
+		Si sourisx est plus petit que 30 alors tu vas vers A.8
+		Si sourisy est plus petit que 310 alors tu vas vers A.8
+		Si sourisx est plus grand que 185 alors tu vas vers A.8
+		Si sourisy est plus grand que 335 alors tu vas vers A.8
+		Tu vas vers B.BK.1
+Paragraphe : A.8
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers A.9
+		Si sourisx est plus petit que 30 alors tu vas vers A.9
+		Si sourisy est plus petit que 340 alors tu vas vers A.9
+		Si sourisx est plus grand que 185 alors tu vas vers A.9
+		Si sourisy est plus grand que 365 alors tu vas vers A.9
+		Tu vas vers B.AS.1
+Paragraphe : A.9
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers A.10
+		Si sourisx est plus petit que 30 alors tu vas vers A.10
+		Si sourisy est plus petit que 370 alors tu vas vers A.10
+		Si sourisx est plus grand que 185 alors tu vas vers A.10
+		Si sourisy est plus grand que 395 alors tu vas vers A.10
+		Tu vas vers B.BO.1
+Paragraphe : A.10
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers A.11
+		Si sourisx est plus petit que 30 alors tu vas vers A.11
+		Si sourisy est plus petit que 400 alors tu vas vers A.11
+		Si sourisx est plus grand que 185 alors tu vas vers A.11
+		Si sourisy est plus grand que 425 alors tu vas vers A.11
+		Tu vas vers B.JO.1
+Paragraphe : A.11
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers B.BK.1
+		Tu copies "aucune commande disponnible ici" dans texte de TXT_6
+		Tu vas vers A.1
+
+
+
+paragraphe : B.BK.1   (" Les paragraphes "B.BK....." s'intéressent à la gestion des emprunts à la banque ")
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers B.BK.2
+		Tu concatènes "Argent : " , J1NA , " $" dans texte de BK#TEXTE#ARGENT
+		Tu copies PRET dans texte de BK#TEXTE#PRET
+		Tu ajoutes " $" dans texte de BK#TEXTE#PRET
+		Tu effaces toile
+		Tu projettes BK#TOILE
+		Tu projettes BK#RECTANGLE#TITRE
+		Tu projettes BK#RECTANGLE#M
+		Tu projettes BK#RECTANGLE#PRET
+		Tu projettes BK#RECTANGLE#P
+		Tu projettes BK#RECTANGLE#RETOUR
+		Tu projettes BK#TEXTE#TITRE
+		Tu projettes BK#TEXTE#PRET
+		Tu projettes BK#TEXTE#M
+		Tu projettes BK#TEXTE#P
+		Tu projettes BK#TEXTE#RETOUR
+		Tu projettes BK#TEXTE#ARGENT
+		Tu vas vers B.BK.2
+paragraphe : B.BK.2
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers B.BK.3
+		Tu temporises
+		Si touche est différent de "clique" alors tu vas vers B.BK.2
+		Si sourisy est plus petit que 325 alors tu vas vers B.BK.2
+		Tu vas vers B.BK.3
+paragraphe : B.BK.3
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers B.BK.4
+		Si sourisx est plus petit que 25 alors tu vas vers B.BK.4
+		Si sourisx est plus grand que 99 alors tu vas vers B.BK.4
+		Si sourisy est plus grand que 374 alors tu vas vers B.BK.4
+		Si J1NA est plus petit que 10001 alors tu vas vers B.BK.2
+		Si PRET est plus petit que 10000 alors tu vas vers B.BK.2
+		Tu soustrais 10250 dans J1NA
+		Tu soustrais 10000 dans PRET
+		Tu vas vers B.BK.1
+paragraphe : B.BK.4
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers B.BK.5
+		Si sourisx est plus petit que 425 alors tu vas vers B.BK.5
+		Si sourisx est plus grand que 499 alors tu vas vers B.BK.5
+		Si sourisy est plus grand que 374 alors tu vas vers B.BK.5
+		Tu ajoutes 10000 dans J1NA
+		Tu ajoutes 10000 dans PRET
+		Tu vas vers B.BK.1
+paragraphe : B.BK.5
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers B.AS.1
+		Si sourisx est plus petit que 500 alors tu vas vers B.BK.2
+		Si sourisy est plus petit que 475 alors tu vas vers B.BK.2
+		Si sourisx est plus grand que 574 alors tu vas vers B.BK.2
+		Si sourisy est plus grand que 524 alors tu vas vers B.BK.2
+		Tu copies "... ... ..." dans texte de TXT_6
+		Tu vas vers A.0
+
+
+
+paragraphe : B.AS.1   (" Les paragraphes "B.AS....." s'intéressent aux assurances ")
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers B.AS.2
+		Si ASSURANCE_EAU est égal à 1 alors tu copies "vert" dans couleur de AS#RECTANGLE#EAU
+		Si ASSURANCE_EAU est égal à 0 alors tu copies "rouge" dans couleur de AS#RECTANGLE#EAU
+		Si ASSURANCE_VOL est égal à 1 alors tu copies "vert" dans couleur de AS#RECTANGLE#VOL
+		Si ASSURANCE_VOL est égal à 0 alors tu copies "rouge" dans couleur de AS#RECTANGLE#VOL
+		Si ASSURANCE_FEU est égal à 1 alors tu copies "vert" dans couleur de AS#RECTANGLE#FEU
+		Si ASSURANCE_FEU est égal à 0 alors tu copies "rouge" dans couleur de AS#RECTANGLE#FEU
+		Tu copies ASSURANCE_COUT_EAU dans texte de AS#TEXTE#COUT_EAU
+		Tu copies ASSURANCE_COUT_VOL dans texte de AS#TEXTE#COUT_VOL
+		Tu copies ASSURANCE_COUT_FEU dans texte de AS#TEXTE#COUT_FEU
+		Si ASSURANCE_EAU est égal à 0 alors tu copies "0" dans texte de AS#TEXTE#COUT_EAU
+		Si ASSURANCE_VOL est égal à 0 alors tu copies "0" dans texte de AS#TEXTE#COUT_VOL
+		Si ASSURANCE_FEU est égal à 0 alors tu copies "0" dans texte de AS#TEXTE#COUT_FEU
+		Tu ajoutes " $ /mois" dans texte de AS#TEXTE#COUT_EAU
+		Tu ajoutes " $ /mois" dans texte de AS#TEXTE#COUT_VOL
+		Tu ajoutes " $ /mois" dans texte de AS#TEXTE#COUT_FEU
+		Tu concatènes "Argent : " , J1NA , " $" dans texte de AS#TEXTE#ARGENT
+		Tu effaces la toile
+		Tu projettes AS#TOILE
+		Tu projettes AS#RECTANGLE#TITRE
+		Tu projettes AS#RECTANGLE#EAU
+		Tu projettes AS#RECTANGLE#VOL
+		Tu projettes AS#RECTANGLE#FEU
+		Tu projettes AS#RECTANGLE#RETOUR
+		Tu projettes AS#TEXTE#TITRE
+		Tu projettes AS#TEXTE#EAU
+		Tu projettes AS#TEXTE#VOL
+		Tu projettes AS#TEXTE#FEU
+		Tu projettes AS#TEXTE#RETOUR
+		Tu projettes AS#TEXTE#ARGENT
+		Tu projettes AS#TEXTE#COUT
+		Tu projettes AS#TEXTE#COUT_EAU
+		Tu projettes AS#TEXTE#COUT_VOL
+		Tu projettes AS#TEXTE#COUT_FEU
+		Tu vas vers B.AS.2
+
+paragraphe : B.AS.2
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers B.AS.3
+		Tu temporises
+		Si la touche est égal à "Clique" alors tu vas vers B.AS.3
+		Tu vas vers B.AS.2
+
+paragraphe : B.AS.3
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers B.AS.4
+		Tu vides variable
+		Si sourisx est plus petit que 30 alors tu vas vers B.AS.4
+		Si sourisy est plus petit que 180 alors tu vas vers B.AS.4
+		Si sourisx est plus grand que 84 alors tu vas vers B.AS.4
+		Si sourisy est plus grand que 219 alors tu vas vers B.AS.4
+		Tu ajoutes ASSURANCE_EAU dans variable
+		Si ASSURANCE_EAU_REPARATION est égal à 1 alors tu vas vers B.AS.1
+		Si Variable est égal à 1 alors tu copies 0 dans ASSURANCE_EAU
+		Si Variable est égal à 0 alors tu copies 1 dans ASSURANCE_EAU
+		Tu vas vers B.AS.1
+
+paragraphe : B.AS.4
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers B.AS.5
+		Si sourisx est plus petit que 30 alors tu vas vers B.AS.5
+		Si sourisy est plus petit que 280 alors tu vas vers B.AS.5
+		Si sourisx est plus grand que 84 alors tu vas vers B.AS.5
+		Si sourisy est plus grand que 319 alors tu vas vers B.AS.5
+		Tu ajoutes ASSURANCE_VOL dans variable
+		Si ASSURANCE_VOL_REPARATION est égal à 1 alors tu vas vers B.AS.1
+		Si Variable est égal à 1 alors tu copies 0 dans ASSURANCE_VOL
+		Si Variable est égal à 0 alors tu copies 1 dans ASSURANCE_VOL
+		Tu vas vers B.AS.1
+
+paragraphe : B.AS.5
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers B.AS.6
+		Si sourisx est plus petit que 30 alors tu vas vers B.AS.6
+		Si sourisy est plus petit que 380 alors tu vas vers B.AS.6
+		Si sourisx est plus grand que 84 alors tu vas vers B.AS.6
+		Si sourisy est plus grand que 419 alors tu vas vers B.AS.6
+		Tu ajoutes ASSURANCE_FEU dans variable
+		Si ASSURANCE_FEU_REPARATION est égal à 1 alors tu vas vers B.AS.1
+		Si Variable est égal à 1 alors tu copies 0 dans ASSURANCE_FEU
+		Si Variable est égal à 0 alors tu copies 1 dans ASSURANCE_FEU
+		Tu vas vers B.AS.1
+
+paragraphe : B.AS.6
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers B.BO.1
+		Si sourisx est plus petit que 500 alors tu vas vers B.AS.2
+		Si sourisy est plus petit que 475 alors tu vas vers B.AS.2
+		Si sourisx est plus grand que 574 alors tu vas vers B.AS.2
+		Si sourisy est plus grand que 524 alors tu vas vers B.AS.2
+		Tu copies "... ... ..." dans texte de TXT_6
+		Tu vas vers A.0
+
+
+
+paragraphe : B.BO.1   (" Les paragraphes "B.BO....." correspondent à la bourse ")
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers B.BO.2
+		Tu copies ACTION_NOMBRE dans texte de BO#TEXTE#ACTION
+		Tu copies "Argent : " dans texte de BO#TEXTE#ARGENT
+		Tu ajoutes J1NA dans texte de BO#TEXTE#ARGENT
+		Tu ajoutes " $" dans texte de BO#TEXTE#ARGENT
+		Tu effaces la toile
+		Tu projettes TOILE_ORIGINE
+		Tu projettes BO#LIGNE#X
+		Tu projettes BO#LIGNE#Y
+		Tu projettes BO#RECTANGLE#TITRE
+		Tu projettes BO#RECTANGLE#ACTION
+		Tu projettes BO#RECTANGLE#RETOUR
+		Tu projettes BO#TEXTE#TITRE
+		Tu projettes BO#TEXTE#M
+		Tu projettes BO#TEXTE#ACTION
+		Tu projettes BO#TEXTE#P
+		Tu projettes BO#TEXTE#ARGENT
+		Tu projettes BO#TEXTE#RETOUR
+		Tu projettes BO#LIGNE#GAUCHE
+		Tu projettes BO#LIGNE#DROITE
+		Tu copies 550 dans y de BO#POINT#01
+		Tu soustrais ACTION_01 dans y de BO#POINT#01
+		Tu copies 550 dans y de BO#POINT#02
+		Tu soustrais ACTION_02 dans y de BO#POINT#02
+		Tu copies 550 dans y de BO#POINT#03
+		Tu soustrais ACTION_03 dans y de BO#POINT#03
+		Tu copies 550 dans y de BO#POINT#04
+		Tu soustrais ACTION_04 dans y de BO#POINT#04
+		Tu copies 550 dans y de BO#POINT#05
+		Tu soustrais ACTION_05 dans y de BO#POINT#05
+		Tu copies 550 dans y de BO#POINT#06
+		Tu soustrais ACTION_06 dans y de BO#POINT#06
+		Tu copies 550 dans y de BO#POINT#07
+		Tu soustrais ACTION_07 dans y de BO#POINT#07
+		Tu copies 550 dans y de BO#POINT#08
+		Tu soustrais ACTION_08 dans y de BO#POINT#08
+		Tu copies 550 dans y de BO#POINT#09
+		Tu soustrais ACTION_09 dans y de BO#POINT#09
+		Tu copies 550 dans y de BO#POINT#10
+		Tu soustrais ACTION_10 dans y de BO#POINT#10
+		Tu copies 550 dans y de BO#POINT#11
+		Tu soustrais ACTION_11 dans y de BO#POINT#11
+		Tu copies 550 dans y de BO#POINT#12
+		Tu soustrais ACTION_12 dans y de BO#POINT#12
+		Tu copies 550 dans y de BO#POINT#13
+		Tu soustrais ACTION_13 dans y de BO#POINT#13
+		Tu copies 550 dans y de BO#POINT#14
+		Tu soustrais ACTION_14 dans y de BO#POINT#14
+		Tu copies 550 dans y de BO#POINT#15
+		Tu soustrais ACTION_15 dans y de BO#POINT#15
+		Tu copies 550 dans y de BO#POINT#16
+		Tu soustrais ACTION_16 dans y de BO#POINT#16
+		Tu copies 550 dans y de BO#POINT#17
+		Tu soustrais ACTION_17 dans y de BO#POINT#17
+		Tu copies 550 dans y de BO#POINT#18
+		Tu soustrais ACTION_18 dans y de BO#POINT#18
+		Tu copies 550 dans y de BO#POINT#19
+		Tu soustrais ACTION_19 dans y de BO#POINT#19
+		Tu copies 550 dans y de BO#POINT#20
+		Tu soustrais ACTION_20 dans y de BO#POINT#20
+		Tu copies 550 dans y de BO#POINT#21
+		Tu soustrais ACTION_21 dans y de BO#POINT#21
+		Tu copies 550 dans y de BO#POINT#22
+		Tu soustrais ACTION_22 dans y de BO#POINT#22
+		Tu copies 550 dans y de BO#POINT#23
+		Tu soustrais ACTION_23 dans y de BO#POINT#23
+		Tu copies 550 dans y de BO#POINT#24
+		Tu soustrais ACTION_24 dans y de BO#POINT#24
+		Tu copies 550 dans y de BO#POINT#25
+		Tu soustrais ACTION_25 dans y de BO#POINT#25
+		Tu projettes BO#POINT#01
+		Tu projettes BO#POINT#02
+		Tu projettes BO#POINT#03
+		Tu projettes BO#POINT#04
+		Tu projettes BO#POINT#05
+		Tu projettes BO#POINT#06
+		Tu projettes BO#POINT#07
+		Tu projettes BO#POINT#08
+		Tu projettes BO#POINT#09
+		Tu projettes BO#POINT#10
+		Tu projettes BO#POINT#11
+		Tu projettes BO#POINT#12
+		Tu projettes BO#POINT#13
+		Tu projettes BO#POINT#14
+		Tu projettes BO#POINT#15
+		Tu projettes BO#POINT#16
+		Tu projettes BO#POINT#17
+		Tu projettes BO#POINT#18
+		Tu projettes BO#POINT#19
+		Tu projettes BO#POINT#20
+		Tu projettes BO#POINT#21
+		Tu projettes BO#POINT#22
+		Tu projettes BO#POINT#23
+		Tu projettes BO#POINT#24
+		Tu projettes BO#POINT#25
+		Tu vas vers B.BO.2
+
+paragraphe : B.BO.2
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers B.BO.3
+		Tu temporises
+		Si touche est différent de "Clique" alors tu vas vers B.BO.2
+		Tu vas vers B.BO.3
+
+paragraphe : B.BO.3
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers B.BO.4
+		Si sourisx est plus petit que 78 alors tu vas vers B.BO.4
+		Si sourisy est plus petit que 108 alors tu vas vers B.BO.4
+		Si sourisx est plus grand que 137 alors tu vas vers B.BO.4
+		Si sourisy est plus grand que 133 alors tu vas vers B.BO.4
+		Si ACTION_NOMBRE est égal à 0 alors tu vas vers B.BO.1
+		Tu soustrais 1 dans ACTION_NOMBRE
+		Tu vides variable
+		Tu ajoutes ACTION_25 dans variable
+		Tu multiplies variable par 25
+		Tu ajoutes variable dans J1NA
+		Tu vas vers B.BO.1
+
+paragraphe : B.BO.4
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers B.BO.5
+		Si sourisx est plus petit que 342 alors tu vas vers B.BO.5
+		Si sourisy est plus petit que 108 alors tu vas vers B.BO.5
+		Si sourisx est plus grand que 402 alors tu vas vers B.BO.5
+		Si sourisy est plus grand que 133 alors tu vas vers B.BO.5
+		Si J1NA est plus petit que 10000 alors tu vas vers B.BO.1
+		Tu ajoutes 1 dans ACTION_NOMBRE
+		Tu vides variable
+		Tu ajoutes ACTION_25 dans variable
+		Tu multiplies variable par 25
+		Tu soustrais variable dans J1NA
+		Tu vas vers B.BO.1
+		
+paragraphe : B.BO.5
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers B.JO.1
+		Si sourisx est plus petit que 501 alors tu vas vers B.BO.1
+		Si sourisy est plus petit que 496 alors tu vas vers B.BO.1
+		Si sourisx est plus grand que 574 alors tu vas vers B.BO.1
+		Si sourisy est plus grand que 544 alors tu vas vers B.BO.1
+		Tu copies "... ... ..." dans texte de TXT_6
+		Tu vas vers A.0
+
+
+
+
+paragraphe : B.JO.1  (" Les paragraphes "B.JO....." correspondent au journal ")
+	les actions:
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers B.JO.2
+		Tu effaces la toile
+		Tu projettes JO#TOILE
+		Tu projettes JO#PAGE
+		Tu projettes JO#TITRE
+		Tu projettes JO#LIGNE
+		Tu projettes JO#OK#1
+		Tu projettes JO#OK#2
+		Tu projettes JO#OK#3
+		tu vas vers B.JO.2
+
+Paragraphe : B.JO.2
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers B.JO.3
+		Tu projettes JO#1
+		Tu projettes JO#2
+		Tu projettes JO#3
+		Tu projettes JO#4
+		Tu projettes JO#5
+		Tu vas vers B.JO.3
+
+Paragraphe : B.JO.3
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers B.JO.4
+		Tu temporises
+		Si touche est différent de "Clique" alors tu vas vers B.JO.3
+		Tu vas vers B.JO.4
+
+Paragraphe : B.JO.4
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers B.EN.1
+		Si sourisx est plus petit que 401 alors tu vas vers B.JO.3
+		Si sourisy est plus petit que 484 alors tu vas vers B.JO.3
+		Si sourisx est plus grand que 479 alors tu vas vers B.JO.3
+		Si sourisy est plus grand que 519 alors tu vas vers B.JO.3
+		Tu copies "... ... ..." dans texte de TXT_6
+		Tu vas vers A.0
+
+
+
+
+paragraphe : B.EN.1  (" Les paragraphes "B.EN....." correspondent à l'achat et à la vente d'entrepots ")
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers B.EN.2
+		Tu concatènes "Argent : " , J1NA , " $" dans texte de EN#TEXTE#ARGENT
+		Tu copies J1NE dans texte de EN#TEXTE#ENTREPOTS
+		Tu ajoutes " entrepôts" dans texte de EN#TEXTE#ENTREPOTS
+		Tu copies J1NE dans variable
+		Tu multiplies variable par 100
+		Tu concatènes "Stock : " , J1NS , " / " , variable dans texte de EN#TEXTE#QUANTITE
+		Tu effaces toile
+		Tu projettes EN#TOILE
+		Tu projettes EN#RECTANGLE#TITRE
+		Tu projettes EN#RECTANGLE#M
+		Tu projettes EN#RECTANGLE#PRET
+		Tu projettes EN#RECTANGLE#P
+		Tu projettes EN#RECTANGLE#RETOUR
+		Tu projettes EN#TEXTE#TITRE
+		Tu projettes EN#TEXTE#ENTREPOTS
+		Tu projettes EN#TEXTE#M
+		Tu projettes EN#TEXTE#P
+		Tu projettes EN#TEXTE#RETOUR
+		Tu projettes EN#TEXTE#ARGENT
+		Tu projettes EN#TEXTE#QUANTITE
+		Tu vas vers B.EN.2
+paragraphe : B.EN.2
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers B.EN.3
+		Tu temporises
+		Si touche est différent de "clique" alors tu vas vers B.EN.2
+		Si sourisy est plus petit que 325 alors tu vas vers B.EN.2
+		Tu vas vers B.EN.3
+paragraphe : B.EN.3
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers B.EN.4
+		Si sourisx est plus petit que 25 alors tu vas vers B.EN.4
+		Si sourisx est plus grand que 99 alors tu vas vers B.EN.4
+		Si sourisy est plus grand que 374 alors tu vas vers B.EN.4
+		Si J1NE est plus petit que 5 alors tu vas vers B.EN.2
+		Tu copies J1NE dans variable
+		Tu multiplies variable par 100
+		Tu soustrais J1NS dans variable
+		Si variable est plus petit que 100 alors tu vas vers B.EN.1
+		Tu ajoutes 9000 dans J1NA
+		Tu soustrais 1 dans J1NE
+		Tu vas vers B.EN.1
+paragraphe : B.EN.4
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers B.EN.5
+		Si sourisx est plus petit que 425 alors tu vas vers B.EN.5
+		Si sourisx est plus grand que 499 alors tu vas vers B.EN.5
+		Si sourisy est plus grand que 374 alors tu vas vers B.EN.5
+		Si J1NA est plus petit que 10000 alors tu vas vers B.EN.2
+		Tu soustrais 10000 dans J1NA
+		Tu ajoutes 1 dans J1NE
+		Tu vas vers B.EN.1
+paragraphe : B.EN.5
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers C.1
+		Si sourisx est plus petit que 500 alors tu vas vers B.EN.2
+		Si sourisy est plus petit que 475 alors tu vas vers B.EN.2
+		Si sourisx est plus grand que 574 alors tu vas vers B.EN.2
+		Si sourisy est plus grand que 524 alors tu vas vers B.EN.2
+		Tu copies "... ... ..." dans texte de TXT_6
+		Tu vas vers A.0
+
+
+
+
+paragraphe : C.1  (" Les paragraphes "C....." correspondent au menu ACHAT ")
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers C.2
+		tu effaces la toile
+		Tu projettes AFF_0
+		tu projettes AFF_1
+		tu projettes TXT_1
+		Si PROBLEME_PRODUCTION est égal à 1 alors tu vas vers C.6
+		Si ASSURANCE_EAU_REPARATION est égal à 1 alors tu vas vers C.6
+		Tu concatènes "Argent : " , J1NA , " $" dans texte de C#ARGENT
+		Tu copies J1NE dans variable
+		Tu multiplies variable par 100
+		Tu concatènes "Stock : " , J1NS , " / " , variable dans texte de C#STOCK
+		Tu concatènes "Réputation : " , J1NP , " %" dans texte de C#REPUTATION
+		Tu projettes C#ARGENT
+		Tu projettes C#STOCK
+		Tu projettes C#REPUTATION
+		Tu copies 75 dans variable
+		Tu mélanges variable
+		Tu ajoutes 6 dans variable
+		Tu multiplies variable par 10
+		Tu copies variable dans ECHANGE5
+		Tu concatènes "Les producteurs mettent " , variable , " palettes en vente" dans texte de C#1
+		Tu projettes C#1
+		Tu attends 3 secondes
+		Tu copies "A combien montez-vous l'enchère ?" dans texte de C#2
+		Tu vas vers C.2
+
+Paragraphe : C.2
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers C.3.J2
+		Tu projettes C#2
+		Tu demandes ECHANGE1
+		Si ECHANGE1 est plus grand que J1NA alors tu copies "Vous n'avez pas assez d'argent !!!" dans texte de C#2
+		Si ECHANGE1 est plus grand que J1NA alors tu vas vers C.2
+		Tu concatènes "Vous montez l'enchère à " , ECHANGE1 , " $" dans texte de C#2
+		Tu projettes C#2
+		Tu vas vers C.3.J2
+
+Paragraphe : C.3.J2
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers C.3.J3
+		Si STRATEGIE2 est égal à 1 alors tu copies 50 dans ECHANGE2
+		Si STRATEGIE2 est égal à 2 alors tu copies 150 dans ECHANGE2
+		Si STRATEGIE2 est égal à 3 alors tu copies 250 dans ECHANGE2
+		Si STRATEGIE2 est égal à 4 alors tu copies 300 dans ECHANGE2
+		Si STRATEGIE2 est égal à 5 alors tu copies 500 dans ECHANGE2
+		Tu copies 11 dans variable
+		Tu mélanges variable
+		Tu soustrais 5 dans variable
+		Tu divises variable par 10
+		Tu ajoutes 1 dans variable
+		Tu multiplies ECHANGE2 par variable
+		Tu divises ECHANGE2 par 10
+		ECHANGE2 vaut arrondi ECHANGE2
+		Tu multiplies ECHANGE2 par ECHANGE5
+		Tu concatènes "Votre concurrent -AU'CHANT- propose " , ECHANGE2 , " $ !" dans texte de C#3
+		Tu projettes C#3
+		Tu attends 1 seconde
+		tu vas vers C.3.J3
+
+Paragraphe : C.3.J3
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers C.3.J4
+		Si STRATEGIE3 est égal à 1 alors tu copies 50 dans ECHANGE3
+		Si STRATEGIE3 est égal à 2 alors tu copies 150 dans ECHANGE3
+		Si STRATEGIE3 est égal à 3 alors tu copies 250 dans ECHANGE3
+		Si STRATEGIE3 est égal à 4 alors tu copies 300 dans ECHANGE3
+		Si STRATEGIE3 est égal à 5 alors tu copies 500 dans ECHANGE3
+		Tu copies 11 dans variable
+		Tu mélanges variable
+		Tu soustrais 5 dans variable
+		Tu divises variable par 10
+		Tu ajoutes 1 dans variable
+		Tu multiplies ECHANGE3 par variable
+		Tu divises ECHANGE3 par 10
+		ECHANGE3 vaut arrondi ECHANGE3
+		Tu multiplies ECHANGE3 par ECHANGE5
+		Tu concatènes "Votre concurrent -E.LECLAIR- propose " , ECHANGE3 , " $ !" dans texte de C#4
+		Tu projettes C#4
+		Tu attends 1 seconde
+		tu vas vers C.3.J4
+
+Paragraphe : C.3.J4
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers C.4a
+		Si STRATEGIE4 est égal à 1 alors tu copies 50 dans ECHANGE4
+		Si STRATEGIE4 est égal à 2 alors tu copies 150 dans ECHANGE4
+		Si STRATEGIE4 est égal à 3 alors tu copies 250 dans ECHANGE4
+		Si STRATEGIE4 est égal à 4 alors tu copies 300 dans ECHANGE4
+		Si STRATEGIE4 est égal à 5 alors tu copies 500 dans ECHANGE4
+		Tu copies 11 dans variable
+		Tu mélanges variable
+		Tu soustrais 5 dans variable
+		Tu divises variable par 10
+		Tu ajoutes 1 dans variable
+		Tu multiplies ECHANGE4 par variable
+		Tu divises ECHANGE4 par 10
+		ECHANGE4 vaut arrondi ECHANGE4
+		Tu multiplies ECHANGE4 par ECHANGE5
+		Tu concatènes "Votre concurrent -CAR'FOURRE- propose " , ECHANGE4 , " $ !" dans texte de C#5
+		Tu projettes C#5
+		Tu attends 2 secondes
+		tu vas vers C.4a
+
+Paragraphe : C.4a
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers C.4b
+		Si ECHANGE1 est plus petit que ECHANGE2 alors tu vas vers C.4b
+		Si ECHANGE1 est plus petit que ECHANGE3 alors tu vas vers C.4c
+		Si ECHANGE1 est plus petit que ECHANGE4 alors tu vas vers C.4d
+		Tu copies "Vous remportez les enchères" dans texte de C#6
+		Tu soustrais ECHANGE1 dans J1NA
+		Tu ajoutes ECHANGE5 dans J1NS
+		Tu copies J1NE dans variable
+		Tu multiplies variable par 100
+		Si J1NS est plus grand que variable alors tu copies variable dans J1NS
+		Tu vas vers C.5
+
+Paragraphe : C.4b
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers C.4c
+		Si ECHANGE2 est plus petit que ECHANGE3 alors tu vas vers C.4c
+		Si ECHANGE2 est plus petit que ECHANGE4 alors tu vas vers C.4d
+		Tu copies "-AU'CHANT- remporte les enchères" dans texte de C#6
+		Tu soustrais ECHANGE2 dans J2NA
+		Tu ajoutes ECHANGE5 dans J2NS
+		Tu vas vers C.5
+
+Paragraphe : C.4c
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers C.4d
+		Si ECHANGE3 est plus petit que ECHANGE4 alors tu vas vers C.4d
+		Tu copies "-E.LECLAIR- remporte les enchères" dans texte de C#6
+		Tu soustrais ECHANGE3 dans J3NA
+		Tu ajoutes ECHANGE5 dans J3NS
+		Tu vas vers C.5
+
+Paragraphe : C.4d
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers C.5
+		Tu attends 100 millisecondes
+		Si ECHANGE4 est plus petit que ECHANGE1 alors tu vas vers C.4a
+		Si ECHANGE4 est plus petit que ECHANGE2 alors tu vas vers C.4b
+		Si ECHANGE4 est plus petit que ECHANGE3 alors tu vas vers C.4c
+		Tu copies "-CAR'FOURRE- remporte les enchères" dans texte de C#6
+		Tu soustrais ECHANGE4 dans J4NA
+		Tu ajoutes ECHANGE5 dans J4NS
+		Tu vas vers C.5
+
+Paragraphe : C.5
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers C.6
+		Tu projettes C#6
+		Tu concatènes "Argent : " , J1NA , " $" dans texte de C#ARGENT
+		Tu copies J1NE dans variable
+		Tu multiplies variable par 100
+		Tu concatènes "Stock : " , J1NS , " / " , variable dans texte de C#STOCK
+		Tu concatènes "Réputation : " , J1NP , " $" dans texte de C#REPUTATION
+		Tu projettes C#ARGENT
+		Tu projettes C#STOCK
+		Tu projettes C#REPUTATION
+		Tu attends 500 milliseconde
+		Tu vas vers C.7
+
+Paragraphe : C.6
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers C.7
+		Si PROBLEME_PRODUCTION est égal à 1 alors tu copies "LES PRODUCTEURS FONT GREVE !!!" dans texte de C#1
+		Si ASSURANCE_EAU_REPARATION est égal à 1 alors tu copies "La production est détruite par l'innondation" dans texte de C#1
+		Tu projettes C#1
+		Tu attends 500 milliseconde
+		Tu copies "les enchères sont annulées" dans texte de C#2
+		Tu projettes C#2
+		Tu attends 500 milliseconde
+		Tu vas vers C.7
+
+Paragraphe : C.7
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers C.8
+		Tu projettes C#CADRE#OK
+		Tu projettes C#TEXTE#OK
+		Tu vas vers C.8
+
+paragraphe : C.8
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers C.9
+		Tu temporises
+		Si touche est égal à "Clique" alors tu vas vers C.9
+		Tu vas vers C.8
+
+paragraphe : C.9
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers D.1
+		Si sourisx est plus petit que 500 alors tu vas vers C.8
+		Si sourisy est plus petit que 475 alors tu vas vers C.8
+		Si sourisx est plus grand que 574 alors tu vas vers C.8
+		Si sourisy est plus grand que 524 alors tu vas vers C.8
+		Tu copies "... ... ..." dans texte de TXT_6
+		Tu copies 0 dans OK_ACHAT
+		Tu copies 1 dans OK_TRANSPORT
+		Tu vas vers A.0
+
+
+
+paragraphe : D.1  (" Les paragraphes "D....." correspondent au menu TRANSPORT ")
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu vas vers D.2
+		tu effaces la toile
+		Tu projettes AFF_0
+		tu projettes AFF_1
+		tu projettes TXT_1
+		Tu concatènes "Argent : " , J1NA , " $" dans texte de D#ARGENT
+		Tu copies J1NE dans variable
+		Tu multiplies variable par 100
+		Tu concatènes "Stock : " , J1NS , " / " , variable dans texte de D#STOCK
+		Tu concatènes "Réputation : " , J1NP , " %" dans texte de D#REPUTATION
+		Tu projettes D#ARGENT
+		Tu projettes D#STOCK
+		Tu projettes D#REPUTATION
+		Tu copies 75 dans variable
+		Tu copies "Combien de palettes allez-vous transporter au magasin ?" dans texte de D#1
+		Si PROBLEME_PETROLE est égal à 1 alors tu copies "Attention !! le prix de l'essence est double !!" dans texte de D#2
+		Tu projettes D#1
+		Si PROBLEME_PETROLE est égal à 1 alors tu projettes D#2
+		Tu vas vers D.2
+
+paragraphe : D.2
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers D.2bis
+		Tu attends 1 seconde
+		tu demandes J1NT
+		Si J1NT est plus petit que 0 alors tu vas vers D.2
+		Tu divises J1NT par 10
+		J1NT vaut arrondi J1NT
+		Tu multiplies J1NT par 10
+		Tu concatènes "Vous avez choisi de transporter " , J1NT , " palettes." dans texte de D#3
+		Si J1NT est plus grand que J1NS alors tu copies "Votre stock n'est pas suffisant" dans texte de D#3
+		Tu projettes D#3
+		Si J1NT est plus grand que J1NS alors tu attends 3 secondes
+		Si J1NT est plus grand que J1NS alors tu vas vers D.1
+		Tu copies J1NT dans variable
+		Tu multiplies variable par COUT_TRANSPORT
+		Si PROBLEME_PETROLE est égal à 1 alors tu multiplies variable par 1.5
+		Tu divises variable par 10
+		variable vaut arrondi variable
+		Tu multiplies variable par 10
+		Tu concatènes "Ceci coutera " , variable , " $! Etes vous d'accord ?" dans texte de D#4
+		Tu projettes D#4
+		Tu multiplies variable par 2
+		Si variable est plus grand que J1NA alors tu vas vers D.2bis
+		Tu divises variable par 2
+		Tu projettes D#CADRE#OUI
+		Tu projettes D#CADRE#NON
+		Tu projettes D#TEXTE#OUI
+		Tu projettes D#TEXTE#NON
+		Tu vas vers D.3
+
+paragraphe : D.2bis
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers D.3
+		Tu copies texte de D#3 dans texte de D#2
+		Tu projettes D#2
+		Tu copies "désolé, vous n'avez pas assez d'argent ." dans texte de D#3
+		Tu copies "Transportez moins de palettes ." dans texte de D#4
+		Tu attends 3 secondes
+		Tu vas vers D.1
+
+paragraphe : D.3
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers D.4
+		Tu temporises
+		Si touche est différent de "Clique" alors tu vas vers D.3
+		Si sourisy est plus petit que 370 alors tu vas vers D.3
+		Si sourisy est plus grand que 429 alors tu vas vers D.3
+		Tu vas vers D.4
+
+paragraphe : D.4
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers D.5
+		Si sourisx est plus petit que 210 alors tu vas vers D.5
+		Si sourisx est plus grand que 339 alors tu vas vers D.3
+		Tu vas vers D.1
+
+paragraphe : D.5
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers D.6
+		Si sourisx est plus petit que 50 alors tu vas vers D.3
+		Si sourisx est plus grand que 179 alors tu vas vers D.3
+		Si J1NT est plus grand que 0 alors tu concatènes "Vos palettes seront bien transportées au magasin." dans texte de D#5
+		Si J1NT est égal à 0 alors tu concatènes "Vous ne transporterez rien." dans texte de D#5
+		Tu soustrais variable dans J1NA
+		Tu soustrais J1NT dans J1NS
+		Tu concatènes "Argent : " , J1NA , " $" dans texte de D#ARGENT
+		Tu copies J1NE dans variable
+		Tu multiplies variable par 100
+		Tu concatènes "Stock : " , J1NS , " / " , variable dans texte de D#STOCK
+		Tu projettes D#5
+		Tu attends 100 millisecondes
+		Tu projettes D#CADRE#OK
+		Tu projettes D#TEXTE#OK
+		Tu vas vers D.6
+
+paragraphe : D.6
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers D.7
+		Tu temporises
+		Si touche est égal à "Clique" alors tu vas vers D.7
+		Tu vas vers D.6
+
+paragraphe : D.7
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers D.8
+		Si sourisx est plus petit que 500 alors tu vas vers D.6
+		Si sourisy est plus petit que 475 alors tu vas vers D.6
+		Si sourisx est plus grand que 574 alors tu vas vers D.6
+		Si sourisy est plus grand que 524 alors tu vas vers D.6
+		Tu vas vers D.8
+
+paragraphe : D.8
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers D.9
+		tu effaces la toile
+		Tu projettes AFF_0
+		tu projettes AFF_1
+		tu projettes TXT_1
+		Tu copies J2N% dans J2NT
+		Tu multiplies J2NT par 4
+		Si J2NT est plus grand que J2NA alors tu copies J2NA dans J2NT
+		Tu soustrais J2NT dans J2NA
+		Tu soustrais J2NT dans J2NS
+		Si J2NT est plus petit que 0 alors tu multiplies J2NT par -1
+		Tu concatènes "-AU'CHANT- a choisi de transporter " , J2NT , " palettes" dans texte de D#2
+		Tu projettes D#2
+		Tu attends 100 millisecondes
+		Tu vas vers D.9
+
+paragraphe : D.9
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers D.10
+		Tu copies J3N% dans J3NT
+		Tu multiplies J3NT par 4
+		Si J3NT est plus grand que J3NA alors tu copies J3NA dans J3NT
+		Tu soustrais J3NT dans J3NA
+		Tu soustrais J3NT dans J3NS
+		Si J3NT est plus petit que 0 alors tu multiplies J3NT par -1
+		Tu concatènes "-E.LECLAIR- a choisi de transporter " , J3NT , " palettes" dans texte de D#3
+		Tu projettes D#3
+		Tu attends 100 millisecondes
+		Tu vas vers D.10
+
+paragraphe : D.10
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers D.11
+		Tu copies J4N% dans J4NT
+		Tu multiplies J4NT par 4
+		Si J4NT est plus grand que J4NA alors tu copies J4NA dans J4NT
+		Tu soustrais J4NT dans J4NA
+		Tu soustrais J4NT dans J4NS
+		Si J4NT est plus petit que 0 alors tu multiplies J4NT par -1
+		Tu concatènes "-CAR'FOURRE- a choisi de transporter " , J4NT , " palettes" dans texte de D#4
+		Tu projettes D#4
+		Tu attends 100 millisecondes
+		Tu projettes D#CADRE#OK
+		Tu projettes D#TEXTE#OK
+		Tu vas vers D.11
+
+paragraphe : D.11
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers D.12
+		Tu temporises
+		Si touche est égal à "Clique" alors tu vas vers D.12
+		Tu vas vers D.11
+
+paragraphe : D.12
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers E.1
+		Si sourisx est plus petit que 500 alors tu vas vers D.6
+		Si sourisy est plus petit que 475 alors tu vas vers D.6
+		Si sourisx est plus grand que 574 alors tu vas vers D.6
+		Si sourisy est plus grand que 524 alors tu vas vers D.6
+		Tu copies "... ... ..." dans texte de TXT_6
+		Tu copies 0 dans OK_TRANSPORT
+		Tu copies 1 dans OK_VENTE
+		Tu vas vers A.0
+
+
+		
+
+
+
+
+paragraphe : E.1  (" Les paragraphes "E....." correspondent au menu VENTE ")
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers E.2
+		Tu effaces la toile
+		Tu projettes AFF_0
+		Tu projettes AFF_1
+		Tu projettes TXT_1
+		Tu concatènes "Argent : " , J1NA , " $" dans texte de E#ARGENT
+		Tu concatènes "Stock transporté : " , J1NT  dans texte de E#STOCK
+		Tu concatènes "Réputation : " , J1NP , " %" dans texte de E#REPUTATION
+		Tu projettes E#ARGENT
+		Tu projettes E#STOCK
+		Tu projettes E#REPUTATION
+		Tu copies "Quel sera le prix moyen d'une palette à la vente?" dans texte de E#1
+		Si ASSURANCE_EAU_REPARATION est égal à 1 alors tu copies "Le magasin est innondé !" dans texte de E#1
+		Si ASSURANCE_FEU_REPARATION est égal à 1 alors tu copies "L'incendie a ravagé le magasin !" dans texte de E#1
+		Si PROBLEME_GREVE est égal à 1 alors tu copies "Le personnel est en grève !" dans texte de E#1
+		Tu projettes E#1
+		Si ASSURANCE_EAU_REPARATION est égal à 1 alors tu projettes E#CADRE#OK
+		Si ASSURANCE_EAU_REPARATION est égal à 1 alors tu projettes E#TEXTE#OK
+		Si ASSURANCE_FEU_REPARATION est égal à 1 alors tu projettes E#CADRE#OK
+		Si ASSURANCE_FEU_REPARATION est égal à 1 alors tu projettes E#TEXTE#OK
+		Si PROBLEME_GREVE est égal à 1 alors tu projettes E#CADRE#OK
+		Si PROBLEME_GREVE est égal à 1 alors tu projettes E#TEXTE#OK
+		Si ASSURANCE_EAU_REPARATION est égal à 1 alors tu vas vers E.10
+		Si ASSURANCE_FEU_REPARATION est égal à 1 alors tu vas vers E.10
+		Si PROBLEME_GREVE est égal à 1 alors tu vas vers E.10
+		Tu demandes ECHANGE1
+		Si ECHANGE1 est égal à 0 alors tu copies 1 dans PRIXNUL
+		Si ECHANGE1 est égal à 0 alors tu vas vers E.2
+		Si ECHANGE1 est plus grand que PRIX_MAX alors tu concatènes "le prix maximum autorisé est de " , PRIX_MAX , " $ par palette" dans texte de E#1
+		Si ECHANGE1 est plus grand que PRIX_MAX alors tu projettes E#1
+		Si ECHANGE1 est plus grand que PRIX_MAX alors tu attends 2000 millisecondes
+		Si ECHANGE1 est plus grand que PRIX_MAX alors tu vas vers E.1
+		Si ECHANGE1 est plus petit que PRIX_MIN alors tu concatènes "le prix minimum autorisé est de " , PRIX_MIN , " $ par palette" dans texte de E#1
+		Si ECHANGE1 est plus petit que PRIX_MIN alors tu projettes E#1
+		Si ECHANGE1 est plus petit que PRIX_MIN alors tu attends 2000 millisecondes
+		Si ECHANGE1 est plus petit que PRIX_MIN alors tu vas vers E.1
+		ECHANGE1 vaut arrondi ECHANGE1
+		Tu vas vers E.2
+
+paragraphe : E.2
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers E.3
+		Tu concatènes "En moyenne, vous vendez chaque palette " , ECHANGE1 , " $" dans texte de E#1
+		Tu copies 11 dans variable
+		Tu mélanges variable
+		Tu soustrais 5 dans variable
+		Si STRATEGIE2 est égal à 1 alors tu copies 56 dans ECHANGE2
+		Si STRATEGIE2 est égal à 2 alors tu copies 50 dans ECHANGE2
+		Si STRATEGIE2 est égal à 3 alors tu copies 45 dans ECHANGE2
+		Si STRATEGIE2 est égal à 4 alors tu copies 50 dans ECHANGE2
+		Si STRATEGIE2 est égal à 5 alors tu copies 56 dans ECHANGE2
+		Tu ajoutes variable dans ECHANGE2
+		Si ECHANGE2 est plus petit que PRIX_MIN alors tu copies PRIX_MIN dans ECHANGE2
+		Tu concatènes "-AU'CHANT- vends ses palettes " , ECHANGE2 , " $ en moyenne" dans texte de E#2
+		Tu projettes E#2
+		tu vas vers E.3
+
+paragraphe : E.3
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers E.4
+		Tu copies 11 dans variable
+		Tu mélanges variable
+		Tu soustrais 5 dans variable
+		Si STRATEGIE3 est égal à 1 alors tu copies 45 dans ECHANGE3
+		Si STRATEGIE3 est égal à 2 alors tu copies 50 dans ECHANGE3
+		Si STRATEGIE3 est égal à 3 alors tu copies 56 dans ECHANGE3
+		Si STRATEGIE3 est égal à 4 alors tu copies 50 dans ECHANGE3
+		Si STRATEGIE3 est égal à 5 alors tu copies 45 dans ECHANGE3
+		Tu ajoutes variable dans ECHANGE3
+		Si ECHANGE3 est plus petit que PRIX_MIN alors tu copies PRIX_MIN dans ECHANGE3
+		Tu concatènes "-E.LECLAIR- vends ses palettes " , ECHANGE3 , " $ en moyenne" dans texte de E#3
+		Tu projettes E#3
+		tu vas vers E.4
+
+paragraphe : E.4
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers E.5
+		Tu copies 11 dans variable
+		Tu mélanges variable
+		Tu soustrais 5 dans variable
+		Si STRATEGIE4 est égal à 1 alors tu copies 37 dans ECHANGE4
+		Si STRATEGIE4 est égal à 2 alors tu copies 45 dans ECHANGE4
+		Si STRATEGIE4 est égal à 3 alors tu copies 50 dans ECHANGE4
+		Si STRATEGIE4 est égal à 4 alors tu copies 56 dans ECHANGE4
+		Si STRATEGIE4 est égal à 5 alors tu copies 61 dans ECHANGE4
+		Tu ajoutes variable dans ECHANGE4
+		Si ECHANGE4 est plus petit que PRIX_MIN alors tu copies PRIX_MIN dans ECHANGE4
+		Tu concatènes "-CAR'FOURRE- vends ses palettes " , ECHANGE4 , " $ en moyenne" dans texte de E#4
+		Tu projettes E#4
+		tu vas vers E.5
+
+Paragraphe : E.5
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers E.6
+		Tu copies J1NT dans variable
+		Tu ajoutes J2NT dans variable
+		Tu ajoutes J3NT dans variable
+		Tu ajoutes J4NT dans variable
+		Tu divises variable par 400
+		Tu copies 1 dans PRIXDEMANDE
+		Tu divises PRIXDEMANDE par variable
+		Tu multiplies PRIXDEMANDE par 35
+		Tu vas vers E.6
+
+paragraphe : E.6
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers E.7.1
+		Si ECHANGE2 est plus petit que PRIXDEMANDE alors tu ajoutes 2 dans J2N%
+		Si ECHANGE3 est plus petit que PRIXDEMANDE alors tu ajoutes 2 dans J3N%
+		Si ECHANGE4 est plus petit que PRIXDEMANDE alors tu ajoutes 2 dans J4N%
+		Si ECHANGE2 est plus grand que PRIXDEMANDE alors tu soustrais 2 dans J2N%
+		Si ECHANGE3 est plus grand que PRIXDEMANDE alors tu soustrais 2 dans J3N%
+		Si ECHANGE4 est plus grand que PRIXDEMANDE alors tu soustrais 2 dans J4N%
+		Si PRIXNUL est égal à 1 alors tu vas vers E.7.1
+		Si ECHANGE1 est plus petit que PRIXDEMANDE alors tu ajoutes 2 dans J1NP
+		Si ECHANGE1 est plus grand que PRIXDEMANDE alors tu soustrais 2 dans J1NP
+		Tu vas vers E.7.1
+		
+Paragraphe : E.7.1
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers E.7.2
+		Tu copies J1NP dans variable
+		Tu multiplies variable par 4
+		Si variable est plus grand que J1NT alors tu copies J1NT dans variable
+		Tu divises variable par 10
+		variable vaut arrondi variable
+		Tu multiplies variable par 10
+		Tu soustrais variable dans J1NT
+		Tu ajoutes J1NT dans J1NS
+		Tu multiplies J1NT par COUT_TRANSPORT
+		Tu divises J1NT par 10
+		J1NT vaut arrondi J1NT
+		Tu multiplies J1NT par 10
+		Tu soustrais J1NT dans J1NA
+		Tu concatènes "Vous vendez " , variable ," palettes" dans texte de E#5
+		Tu multiplies variable par ECHANGE1
+		Tu concatènes "Vous gagnez " , variable , " $  lors des ventes" dans texte de E#6
+		Tu ajoutes variable dans J1NA
+		Tu projettes E#5
+		Tu projettes E#6
+		Tu concatènes "Argent : " , J1NA , " $" dans texte de E#ARGENT
+		Tu concatènes "Stock invendu : " , J1NT  dans texte de E#STOCK
+		Tu concatènes "Réputation : " , J1NP , " %" dans texte de E#REPUTATION
+		Tu vas vers E.7.2
+		
+Paragraphe : E.7.2
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 2 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers E.7.3
+		Tu copies J2N% dans variable
+		Tu multiplies variable par 4
+		Si variable est plus grand que J2NT alors tu copies J2NT dans variable
+		Tu soustrais variable dans J2NT
+		Tu ajoutes J2NT dans J2NS
+		Tu multiplies J2NT par COUT_TRANSPORT
+		Tu divises J2NT par 10
+		J2NT vaut arrondi J2NT
+		Tu multiplies J2NT par 10
+		Tu soustrais J2NT dans J2NA
+		Tu multiplies variable par ECHANGE2
+		Tu ajoutes variable dans J2NA
+		Tu vas vers E.7.3
+
+Paragraphe : E.7.3
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers E.7.4
+		Tu copies J3N% dans variable
+		Tu multiplies variable par 4
+		Si variable est plus grand que J3NT alors tu copies J3NT dans variable
+		Tu soustrais variable dans J3NT
+		Tu ajoutes J3NT dans J3NS
+		Tu multiplies J3NT par COUT_TRANSPORT
+		Tu divises J3NT par 10
+		J3NT vaut arrondi J3NT
+		Tu multiplies J3NT par 10
+		Tu soustrais J3NT dans J3NA
+		Tu multiplies variable par ECHANGE3
+		Tu ajoutes variable dans J3NA
+		Tu vas vers E.7.4
+
+Paragraphe : E.7.4
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers E.8.1
+		Tu copies J4N% dans variable
+		Tu multiplies variable par 4
+		Si variable est plus grand que J4NT alors tu copies J4NT dans variable
+		Tu soustrais variable dans J4NT
+		Tu ajoutes J4NT dans J4NS
+		Tu multiplies J4NT par COUT_TRANSPORT
+		Tu divises J4NT par 10
+		J4NT vaut arrondi J4NT
+		Tu multiplies J4NT par 10
+		Tu soustrais J4NT dans J4NA
+		Tu multiplies variable par ECHANGE4
+		Tu ajoutes variable dans J4NA
+		Tu vas vers E.8.1
+
+paragraphe : E.8.1
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 2 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers E.8.2
+		Tu vides touche
+		Tu temporises
+		Si touche est différent de "Clique" alors tu vas vers E.8.1
+		tu effaces la toile
+		Tu projettes AFF_0
+		tu projettes AFF_1
+		tu projettes TXT_1
+		Tu projettes E#ARGENT
+		Tu projettes E#STOCK
+		Tu projettes E#REPUTATION
+		Si PRIXNUL est égal à 1 alors tu copies "Vos marchandises ont été distribuées gratuitement !!!" dans texte de CONSEQUENCE#REPUTATION
+		Si PRIXNUL est égal à 1 alors tu vas vers E.8.1bis
+		Tu copies ECHANGE1 dans ECHANGE5
+		Tu ajoutes ECHANGE2 dans ECHANGE5
+		Tu ajoutes ECHANGE3 dans ECHANGE5
+		Tu ajoutes ECHANGE4 dans ECHANGE5
+		Tu divises ECHANGE5 par 4
+		Tu soustrais ECHANGE5 dans ECHANGE1
+		Tu multiplies ECHANGE1 par -4
+		Tu divises ECHANGE1 par 5
+		ECHANGE1 vaut arrondi ECHANGE1
+		Tu multiplies ECHANGE1 par 2
+		Tu attends 200 millisecondes
+		Si ECHANGE1 est plus grand que 0 alors tu copies "Vos prix sont inférieurs à la demande ! ! !" dans texte de E#1
+		Si ECHANGE1 est égal à 0 alors tu copies "Vos prix sont piles à la demande ..." dans texte de E#1
+		Si ECHANGE1 est plus petit que 0 alors tu copies "Vos prix sont supérieurs à la demande ..." dans texte de E#1
+		Tu projettes E#1
+		Tu ajoutes ECHANGE1 dans J1NP
+		Si J1NP est plus grand que 85 alors tu vas vers E.8.1ter
+		Si J1NP est plus petit que 5 alors tu vas vers E.8.1ter
+		Si ECHANGE1 est plus grand que 0 alors tu concatènes "Cela a pour effet d'augmenter votre réputation de " , ECHANGE1 , " %" dans texte de CONSEQUENCE#REPUTATION
+		Si ECHANGE1 est égal à 0 alors tu copies "Votre réputation reste constante" dans texte de CONSEQUENCE#REPUTATION
+		Tu multiplies ECHANGE1 par -1
+		Si ECHANGE1 est plus grand que 0 alors tu concatènes "Cela a pour effet de diminuer votre réputation de " , ECHANGE1 , " %" dans texte de CONSEQUENCE#REPUTATION
+		Tu multiplies ECHANGE1 par -1
+		Tu vas vers E.8.1bis
+paragraphe : E.8.1bis
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers E.8.1ter
+		Tu attends 200 millisecondes
+		Tu projettes CONSEQUENCE#REPUTATION
+		Tu concatènes "Argent : " , J1NA , " $" dans texte de E#ARGENT
+		Tu concatènes "Stock invendu : " , J1NT  dans texte de E#STOCK
+		Tu concatènes "Réputation : " , J1NP , " %" dans texte de E#REPUTATION
+		Tu vas vers E.8.2
+paragraphe : E.8.1ter
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers E.8.2
+		Tu attends 200 millisecondes
+		Si J1NP est plus grand que 85 alors tu copies "Votre réputation est à son maximum" dans texte de CONSEQUENCE#REPUTATION
+		Si J1NP est plus grand que 85 alors tu copies 85 dans J1NP
+		Si J1NP est plus petit que 5 alors tu copies "Votre réputation est à son minimum" dans texte de CONSEQUENCE#REPUTATION
+		Si J1NP est plus petit que 5 alors tu copies 5 dans J1NP
+		Tu projettes CONSEQUENCE#REPUTATION
+		Tu concatènes "Argent : " , J1NA , " $" dans texte de E#ARGENT
+		Tu concatènes "Stock invendu : " , J1NT  dans texte de E#STOCK
+		Tu concatènes "Réputation : " , J1NP , " %" dans texte de E#REPUTATION
+		Tu vas vers E.8.2
+
+paragraphe : E.8.2
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers E.8.3
+		Tu soustrais ECHANGE5 dans ECHANGE2
+		Tu divises ECHANGE2 par -1
+		Tu multiplies ECHANGE2 par 4
+		Tu divises ECHANGE2 par 5
+		ECHANGE2 vaut arrondi ECHANGE2
+		Tu multiplies ECHANGE2 par 2
+		Tu ajoutes ECHANGE2 dans J2N%
+		Si J2N% est plus grand que 85 alors tu copies 85 dans J2N%
+		Si J2N% est plus petit que 5 alors tu copies 5 dans J2N%
+		Tu vas vers E.8.3
+
+paragraphe : E.8.3
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers E.8.4
+		Tu soustrais ECHANGE5 dans ECHANGE3
+		Tu divises ECHANGE3 par -1
+		Tu multiplies ECHANGE3 par 4
+		Tu divises ECHANGE3 par 5
+		ECHANGE3 vaut arrondi ECHANGE3
+		Tu multiplies ECHANGE3 par 2
+		Tu ajoutes ECHANGE3 dans J3N%
+		Si J3N% est plus grand que 85 alors tu copies 85 dans J3N%
+		Si J3N% est plus petit que 5 alors tu copies 5 dans J3N%
+		Tu vas vers E.8.4
+
+paragraphe : E.8.4
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers E.8.4bis
+		Tu copies 100 dans variable
+		Tu soustrais J1NP dans variable
+		Tu soustrais J2N% dans variable
+		Tu soustrais J3N% dans variable
+		Tu copies variable dans J4N%
+		Si J4N% est plus petit que 5 alors tu vas vers E.8.4bis
+		Si J3N% est plus petit que 5 alors tu vas vers E.8.4bis
+		Si J2N% est plus petit que 5 alors tu vas vers E.8.4bis
+		Tu vas vers E.9
+paragraphe : E.8.4bis
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers E.8.4ter
+		Tu copies 100 dans variable
+		Tu soustrais J1NP dans variable
+		Tu soustrais 5 dans variable
+		Tu copies 5 dans J4N%
+		Tu divises variable par 2
+		Tu copies variable dans J2N%
+		Tu copies variable dans J3N%
+		Si variable est plus grand que 9 alors tu vas vers E.8.4ter
+		Tu vas vers E.8.4
+paragraphe : E.8.4ter
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers E.9
+		Si ECHANGE2 est plus grand que ECHANGE3 alors tu ajoutes 3 dans J3N%
+		Si ECHANGE2 est plus grand que ECHANGE3 alors tu soustrais 3 dans J2N%
+		Si ECHANGE3 est plus grand que ECHANGE2 alors tu ajoutes 3 dans J3N%
+		Si ECHANGE3 est plus grand que ECHANGE2 alors tu soustrais 3 dans J2N%
+		Si ACTION_25 est plus grand que 200 alors tu soustrais 1 dans J3N%
+		Si ACTION_25 est plus grand que 200 alors tu ajoutes 1 dans J2N%
+		Si ACTION_25 est plus petit que 200 alors tu soustrais 1 dans J2N%
+		Si ACTION_25 est plus petit que 200 alors tu ajoutes 1 dans J3N%
+		Tu vas vers E.8.4
+
+paragraphe : E.9
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers E.10
+		Tu vides touche
+		Tu temporises
+		Si touche est différent de "Clique" alors tu vas vers E.9
+		Tu effaces E#1
+		Tu copies "Voici la répartition de la population :" dans texte de E#2
+		Si PRIXNUL est égal à 1 alors tu copies J1NP2 dans J1NP
+		Tu concatènes NOM , " : " , J1NP , " %" dans texte de E#3
+		Tu concatènes "-AU'CHANT-" , " : " , J2N% , " %" dans texte de E#4
+		Tu concatènes "-E.LECLAIR-" , " : " , J3N% , " %" dans texte de E#5
+		Tu concatènes "-CAR'FOURRE-" , " : " , J4N% , " %" dans texte de E#6
+		Tu projettes E#3
+		Tu projettes E#4
+		Tu projettes E#5
+		Tu projettes E#6
+		Tu projettes E#CADRE#OK
+		Tu projettes E#TEXTE#OK
+		Tu vas vers E.10
+
+paragraphe : E.10
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu vas vers F.1
+		Tu vides touche
+		Tu temporises
+		Si touche est différent de "Clique" alors tu vas vers E.10
+		Si sourisx est plus petit que 500 alors tu vas vers E.10
+		Si sourisy est plus petit que 475 alors tu vas vers E.10
+		Si sourisx est plus grand que 574 alors tu vas vers E.10
+		Si sourisy est plus grand que 524 alors tu vas vers E.10
+		Tu copies "... ... ..." dans texte de TXT_6
+		Tu copies 0 dans OK_VENTE
+		Tu copies 1 dans OK_OK
+		Tu vas vers A.0 
+
+
+
+
+
+
+
+
+
+
+
+
+
+(" A la fin du mois , Linotte lis les paragraphes U , V , W , X , Y , Z puis F ")
+("		U gère les élections présidentielles ")
+("		V gère les rembouresements d'assurances ")
+("		W affiche les informations de fin de mois ")
+(" 		X assure la victoire ou la défaite ")
+(" 		Y remet à zéro tous les "marqueurs" uttilisés ")
+(" 		Z définit une srtatégie pour les J2 , J3 et J4 ")
+(" 		F "crée" une nouvelle information pour le journal et fait fluctuer la bourse ")
+
+
+paragraphe : F.1
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers F.2
+		Tu copies ACTION_02 dans ACTION_01
+		Tu copies ACTION_03 dans ACTION_02
+		Tu copies ACTION_04 dans ACTION_03
+		Tu copies ACTION_05 dans ACTION_04
+		Tu copies ACTION_06 dans ACTION_05
+		Tu copies ACTION_07 dans ACTION_06
+		Tu copies ACTION_08 dans ACTION_07
+		Tu copies ACTION_09 dans ACTION_08
+		Tu copies ACTION_10 dans ACTION_09
+		Tu copies ACTION_11 dans ACTION_10
+		Tu copies ACTION_12 dans ACTION_11
+		Tu copies ACTION_13 dans ACTION_12
+		Tu copies ACTION_14 dans ACTION_13
+		Tu copies ACTION_15 dans ACTION_14
+		Tu copies ACTION_16 dans ACTION_15
+		Tu copies ACTION_17 dans ACTION_16
+		Tu copies ACTION_18 dans ACTION_17
+		Tu copies ACTION_19 dans ACTION_18
+		Tu copies ACTION_20 dans ACTION_19
+		Tu copies ACTION_21 dans ACTION_20
+		Tu copies ACTION_22 dans ACTION_21
+		Tu copies ACTION_23 dans ACTION_22
+		Tu copies ACTION_24 dans ACTION_23
+		Tu copies ACTION_25 dans ACTION_24
+		Tu vas vers F.2
+
+paragraphe : F.2
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers F.3.01
+		Si SUITE_ACTION_PLACE est plus grand que 9 alors tu copies 0 dans SUITE_ACTION_PLACE
+		Si SUITE_ACTION_PLACE est égal à 0 alors tu vas vers F.3.01
+		Si SUITE_ACTION_PLACE est égal à 1 alors tu vas vers F.3.02
+		Si SUITE_ACTION_PLACE est égal à 2 alors tu vas vers F.3.03
+		Si SUITE_ACTION_PLACE est égal à 3 alors tu vas vers F.3.04
+		Si SUITE_ACTION_PLACE est égal à 4 alors tu vas vers F.3.05
+		Si SUITE_ACTION_PLACE est égal à 5 alors tu vas vers F.3.06
+		Si SUITE_ACTION_PLACE est égal à 6 alors tu vas vers F.3.07
+		Si SUITE_ACTION_PLACE est égal à 7 alors tu vas vers F.3.08
+		Si SUITE_ACTION_PLACE est égal à 8 alors tu vas vers F.3.09
+		Si SUITE_ACTION_PLACE est égal à 9 alors tu vas vers F.3.10
+		Tu divises SUITE_ACTION_PLACE par 2
+		SUITE_ACTION_PLACE vaut arrondi SUITE_ACTION_PLACE
+		Tu vas vers F.2
+
+
+Paragraphe : F.3.01
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers F.3.02
+		Tu vides variable
+		Si ACTION_24 est plus petit que 105 alors tu copies 7 dans SUITE_ACTION_NOM
+		Si ACTION_24 est plus petit que 105 alors tu vas vers F.3.07
+		Si ACTION_24 est plus petit que 105 alors tu soustrais 10 dans ACTION_25
+		Si ACTION_24 est plus grand que 395 alors tu copies 1 dans SUITE_ACTION_NOM
+		Si ACTION_24 est plus grand que 395 alors tu ajoutes 1 dans ACTION_25
+		Si ACTION_24 est plus grand que 395 alors tu vas vers F.3.01
+		Si variable est différent de 999 alors Tu copies 7 dans variable
+		Tu mélanges variable
+		Tu ajoutes 1 dans variable
+		Tu copies variable dans SUITE_ACTION_NOM
+		Si SUITE_ACTION_NOM est égal à 1 alors tu ajoutes 1 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 2 alors tu ajoutes 16 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 3 alors tu soustrais 3 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 4 alors tu soustrais 10 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 5 alors tu soustrais 10 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 6 alors tu soustrais 11 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 7 alors tu soustrais 10 dans ACTION_25
+		Tu vas vers F.4
+Paragraphe : F.3.02
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers F.3.03
+		Si SUITE_ACTION_NOM est égal à 1 alors tu ajoutes 5 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 2 alors tu ajoutes 14 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 3 alors tu soustrais 5 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 4 alors tu ajoutes 5 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 5 alors tu soustrais 5 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 6 alors tu soustrais 8 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 7 alors tu soustrais 7 dans ACTION_25
+		Tu vas vers F.4
+Paragraphe : F.3.03
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu vas vers F.3.04
+		Si SUITE_ACTION_NOM est égal à 2 alors tu ajoutes 15 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 3 alors tu soustrais 10 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 4 alors tu soustrais 19 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 5 alors tu soustrais 19 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 6 alors tu soustrais 3 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 7 alors tu ajoutes 9 dans ACTION_25
+		Tu vas vers F.4
+Paragraphe : F.3.04
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu vas vers F.3.05
+		Si SUITE_ACTION_NOM est égal à 2 alors tu ajoutes 8 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 3 alors tu soustrais 22 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 4 alors tu soustrais 1 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 5 alors tu soustrais 1 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 7 alors tu ajoutes 13 dans ACTION_25
+		Tu vas vers F.4
+Paragraphe : F.3.05
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu vas vers F.3.06
+		Si SUITE_ACTION_NOM est égal à 1 alors tu soustrais 1 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 2 alors tu ajoutes 19 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 3 alors tu soustrais 33 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 4 alors tu soustrais 2 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 5 alors tu soustrais 2 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 6 alors tu ajoutes 3 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 7 alors tu ajoutes 18 dans ACTION_25
+		Tu vas vers F.4
+Paragraphe : F.3.06
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu vas vers F.3.07
+		Si SUITE_ACTION_NOM est égal à 1 alors tu soustrais 2 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 2 alors tu soustrais 8 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 3 alors tu ajoutes 7 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 4 alors tu ajoutes 5 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 6 alors tu ajoutes 8 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 7 alors tu ajoutes 21 dans ACTION_25
+		Tu vas vers F.4
+Paragraphe : F.3.07
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers F.3.08
+		Si SUITE_ACTION_NOM est égal à 1 alors tu soustrais 15 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 2 alors tu soustrais 24 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 3 alors tu ajoutes 1 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 4 alors tu ajoutes 10 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 5 alors tu ajoutes 5 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 6 alors tu ajoutes 11 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 7 alors tu ajoutes 26 dans ACTION_25
+		Tu vas vers F.4
+Paragraphe : F.3.08
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu vas vers F.3.09
+		Si SUITE_ACTION_NOM est égal à 1 alors tu soustrais 45 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 2 alors tu soustrais 58 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 3 alors tu soustrais 10 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 4 alors tu ajoutes 20 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 5 alors tu ajoutes 20 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 6 alors tu ajoutes 42 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 7 alors tu ajoutes 31 dans ACTION_25
+		Tu vas vers F.4
+Paragraphe : F.3.09
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers F.3.10
+		Si SUITE_ACTION_NOM est égal à 1 alors tu soustrais 20 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 2 alors tu soustrais 20 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 3 alors tu soustrais 8 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 4 alors tu ajoutes 8 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 5 alors tu ajoutes 16 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 6 alors tu ajoutes 20 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 7 alors tu ajoutes 19 dans ACTION_25
+		Tu vas vers F.4
+Paragraphe : F.3.10
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu vas vers F.4
+		Si SUITE_ACTION_NOM est égal à 1 alors tu soustrais 7 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 2 alors tu soustrais 7 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 3 alors tu soustrais 2 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 4 alors tu ajoutes 2 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 5 alors tu ajoutes 5 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 6 alors tu ajoutes 7 dans ACTION_25
+		Si SUITE_ACTION_NOM est égal à 7 alors tu ajoutes 7 dans ACTION_25
+		Tu vas vers F.4
+		
+Paragraphe : F.4
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers F.5.ELECTIONS
+		Tu ajoutes 1 dans SUITE_ACTION_PLACE
+		Tu copies 100 dans variable
+		Tu mélanges variable
+		Tu ajoutes 1 dans variable
+		Si variable est plus grand que 90 alors tu vas vers F.5.ELECTIONS
+		Si variable est plus grand que 80 alors tu vas vers F.5.CATASTROPHE
+		Si variable est plus grand que 70 alors tu vas vers F.5.CADEAU
+		Si variable est plus grand que 60 alors tu vas vers F.5.PROBLEME
+		Si variable est plus grand que 50 alors tu vas vers F.5.CONSEIL
+		Si variable est plus grand que 00 alors tu vas vers F.5.ACTIONS
+		Tu attends 1 seconde
+		Tu vas vers F.1
+
+Paragraphe : F.5.ELECTIONS
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu vas vers F.5.CATASTROPHE
+		Tu copies "	Eléction présidentielle :" dans texte de JO#1
+		Tu copies "4 candidats : Gauche," dans texte de JO#2
+		Tu copies "Ecolo, Centre, Droite." dans texte de JO#3
+		Tu copies "les élections se" dans texte de JO#4
+		Tu copies "dérouleront à la fin du mois" dans texte de JO#5
+		Tu copies 1 dans PRESIDENT_ELECTIONS
+		Tu vas vers F.6
+Paragraphe : F.5.CATASTROPHE
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers F.5.CADEAU
+		Tu copies 3 dans variable
+		Tu mélanges variable
+		Si variable est égal à 0 alors tu copies "	La ville est" dans texte de JO#1
+		Si variable est égal à 0 alors tu copies "entièrement innondée !" dans texte de JO#2
+		Si variable est égal à 0 alors tu copies "Faites attention !" dans texte de JO#3
+		Si variable est égal à 0 alors tu copies "les magasins seront" dans texte de JO#4
+		Si variable est égal à 0 alors tu copies "innondés et , donc, fermés ." dans texte de JO#5
+		Si variable est égal à 0 alors tu copies 1 dans ASSURANCE_EAU_REPARATION
+		Si variable est égal à 1 alors tu copies "	L'un des entrepôts de" dans texte de JO#1
+		Si variable est égal à 1 alors tu copies NOM dans texte de JO#2
+		Si variable est égal à 1 alors tu copies "a été dévalisé ." dans texte de JO#3
+		Si variable est égal à 1 alors tu copies "La police n'a trouvé aucune" dans texte de JO#4
+		Si variable est égal à 1 alors tu copies "trace des cambrioleurs ." dans texte de JO#5
+		Si variable est égal à 1 alors tu copies 1 dans ASSURANCE_VOL_REPARATION
+		Si variable est égal à 2 alors tu copies "	Le magasin de" dans texte de JO#1
+		Si variable est égal à 2 alors tu copies NOM dans texte de JO#2
+		Si variable est égal à 2 alors tu copies "a subi un incendie ." dans texte de JO#3
+		Si variable est égal à 2 alors tu copies "Ce magasin sera fermé" dans texte de JO#4
+		Si variable est égal à 2 alors tu copies "pendant les réparations ." dans texte de JO#5	
+		Si variable est égal à 2 alors tu copies 1 dans ASSURANCE_FEU_REPARATION
+		Tu vas vers F.6
+Paragraphe : F.5.CADEAU
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers F.5.PROBLEME
+		Tu copies 8 dans variable
+		Tu mélanges variable
+		Tu ajoutes 1 dans variable
+		Tu multiplies variable par 10
+		Tu concatènes "	Les producteurs offrent " , variable dans texte de JO#1
+		Tu copies "palettes à chaque entreprise de" dans texte de JO#2
+		Tu copies "grande distribution. Ceci dans le" dans texte de JO#3
+		Tu copies "cadre d'une offre promotionnelle " dans texte de JO#4
+		Tu copies "pour lancer de nouveaux produits" dans texte de JO#5
+		Tu ajoutes variable dans J1NS
+		Tu copies J1NE dans variable
+		Tu multiplies variable par 100
+		Si variable est plus petit que J1NS alors tu copies variable dans J1NS
+		Tu vas vers F.6
+Paragraphe : F.5.PROBLEME
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers F.5.CONSEIL
+		Tu copies 3 dans variable
+		Tu mélanges variable
+		Si variable est égal à 0 alors tu copies "	Les producteurs rencontrent" dans texte de JO#1
+		Si variable est égal à 0 alors tu copies "actuellement des problèmes" dans texte de JO#2
+		Si variable est égal à 0 alors tu copies "suite à des grèves ." dans texte de JO#3
+		Si variable est égal à 0 alors tu copies "Les distributeurs vont devoir" dans texte de JO#4
+		Si variable est égal à 0 alors tu copies "puiser dans leurs réserves !" dans texte de JO#5
+		Si variable est égal à 0 alors tu copies 1 dans PROBLEME_PRODUCTION
+		Si variable est égal à 1 alors tu copies NOM dans texte de JO#1
+		Si variable est égal à 1 alors tu copies "subi actuellement une" dans texte de JO#2
+		Si variable est égal à 1 alors tu copies "grève importante !" dans texte de JO#3
+		Si variable est égal à 1 alors tu copies "bien entendu, Aucun" dans texte de JO#4
+		Si variable est égal à 1 alors tu copies "produit ne sera vendu ." dans texte de JO#5
+		Si variable est égal à 1 alors tu copies 1 dans PROBLEME_GREVE
+		Si variable est égal à 2 alors tu copies "	Attention :" dans texte de JO#1
+		Si variable est égal à 2 alors tu copies "Les prix du pétrole" dans texte de JO#2
+		Si variable est égal à 2 alors tu copies "ont doublés ! Cependant," dans texte de JO#3
+		Si variable est égal à 2 alors tu copies "La crise est passagère" dans texte de JO#4
+		Si variable est égal à 2 alors tu copies "et ne durera qu'un mois." dans texte de JO#5
+		Si variable est égal à 2 alors tu copies 1 dans PROBLEME_PETROLE
+		Si variable est égal à 2 alors tu multiplies COUT_TRANSPORT par 3 
+		Tu vas vers F.6
+Paragraphe : F.5.CONSEIL
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers F.5.ACTIONS
+		Tu copies 7 dans variable
+		Tu mélanges variable
+		Si variable est égal à 0 alors tu copies "Vous pouvez placer votre" dans texte de JO#1
+		Si variable est égal à 0 alors tu copies "argent en bourse." dans texte de JO#2
+		Si variable est égal à 0 alors tu copies "Cela est dangereux mais" dans texte de JO#3
+		Si variable est égal à 0 alors tu copies "peut rapporter gros !!" dans texte de JO#4
+		Si variable est égal à 0 alors tu copies "N'ayez pas peur ,Essayez !" dans texte de JO#5
+		Si variable est égal à 1 alors tu copies "Les prêts permettent" dans texte de JO#1
+		Si variable est égal à 1 alors tu copies "de gagner beaucoup" dans texte de JO#2
+		Si variable est égal à 1 alors tu copies "d'argent rapidement," dans texte de JO#3
+		Si variable est égal à 1 alors tu copies "Mais faites attention" dans texte de JO#4
+		Si variable est égal à 1 alors tu copies "au sur-endettement !!" dans texte de JO#5
+		Si variable est égal à 2 alors tu copies "Contactez les assurances" dans texte de JO#1
+		Si variable est égal à 2 alors tu copies "pour vous protéger contre les" dans texte de JO#2
+		Si variable est égal à 2 alors tu copies "catastrophes. Mais faites" dans texte de JO#3
+		Si variable est égal à 2 alors tu copies "attention, le cout de la " dans texte de JO#4
+		Si variable est égal à 2 alors tu copies "prime peut parfois augmenter" dans texte de JO#5
+		Si variable est égal à 3 alors tu copies "Lors d'une élection, vous" dans texte de JO#1
+		Si variable est égal à 3 alors tu copies "avez le choix entre 4 candidats:" dans texte de JO#2
+		Si variable est égal à 3 alors tu copies "L'écolo se charge de diminuer" dans texte de JO#3
+		Si variable est égal à 3 alors tu copies "le cout des transports !!" dans texte de JO#4
+		Si variable est égal à 3 alors tu copies "VOTEZ ECOLO !!!!!!" dans texte de JO#5
+		Si variable est égal à 4 alors tu copies "Lors d'une élection, vous avez le" dans texte de JO#1
+		Si variable est égal à 4 alors tu copies "choix entre 4 candidats: Celui de" dans texte de JO#2
+		Si variable est égal à 4 alors tu copies "Gauche augmente peut-etre le salaire" dans texte de JO#3
+		Si variable est égal à 4 alors tu copies "du personnel mais il diminue le prix" dans texte de JO#4
+		Si variable est égal à 4 alors tu copies "de vente minimal! VOTEZ GAUCHE!!" dans texte de JO#5
+		Si variable est égal à 5 alors tu copies "Lors d'une élection, vous avez le" dans texte de JO#1
+		Si variable est égal à 5 alors tu copies "choix entre 4 candidats: Celui de" dans texte de JO#2
+		Si variable est égal à 5 alors tu copies "Droite augmente peut-etre le prix" dans texte de JO#3
+		Si variable est égal à 5 alors tu copies "de vente minimal mais il diminue le" dans texte de JO#4
+		Si variable est égal à 5 alors tu copies "salaire du personnel! VOTEZ DROITE!!" dans texte de JO#5
+		Si variable est égal à 6 alors tu copies "Lors d'une élection, vous avez" dans texte de JO#1
+		Si variable est égal à 6 alors tu copies "le choix entre 4 candidats: Le" dans texte de JO#2
+		Si variable est égal à 6 alors tu copies "centriste offre une bonne" dans texte de JO#3
+		Si variable est égal à 6 alors tu copies "alternative entre gauche et" dans texte de JO#4
+		Si variable est égal à 6 alors tu copies "droite. VOTEZ AU CENTRE !!!" dans texte de JO#5
+		Tu vas vers F.6
+Paragraphe : F.5.ACTIONS
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers F.6
+		Tu copies ACTION_25 dans variable
+		Tu soustrais ACTION_24 dans variable
+		Tu copies "Le cours de l'action à la " dans texte de JO#1
+		Tu copies "bourse de paris reste stable" dans texte de JO#2
+		Tu copies "ce dernier mois. Ceci a pour " dans texte de JO#3
+		Tu copies "effet d'augmenter la confiance" dans texte de JO#4
+		Tu copies "entre investisseurs et entreprises." dans texte de JO#5
+		Si variable est plus grand que 4 alors tu copies "Le cours de l'action à la bourse" dans texte de JO#1
+		Si variable est plus grand que 4 alors tu concatènes "de paris a augmenté de " , variable , " points" dans texte de JO#2
+		Si variable est plus grand que 4 alors tu copies "ce dernier mois. De nombreux" dans texte de JO#3
+		Si variable est plus grand que 4 alors tu copies "investisseurs sont soulagés" dans texte de JO#4
+		Si variable est plus grand que 4 alors tu copies "de cette hausse innatendue." dans texte de JO#5
+		Tu multiplies variable par -1
+		Si variable est plus grand que 4 alors tu copies "Le cours de l'action à la bourse" dans texte de JO#1
+		Si variable est plus grand que 4 alors tu concatènes "de paris a chuté de " , variable , " points !!" dans texte de JO#2
+		Si variable est plus grand que 4 alors tu copies "De nombreux actionnaires se méfient" dans texte de JO#3
+		Si variable est plus grand que 4 alors tu copies "de cette baisse synonyme de possibles" dans texte de JO#4
+		Si variable est plus grand que 4 alors tu copies "pertes et de régression des marchés." dans texte de JO#5
+		Tu vas vers F.6
+Paragraphe : F.6
+	Les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers U.1
+		Tu copies 1 dans OK_ACHAT
+		Tu copies 0 dans OK_TRANSPORT
+		Tu copies 0 dans OK_VENTE
+		Tu copies 0 dans OK_OK
+		Tu vas vers B.JO.1
+
+
+
+
+
+paragraphe : U.1
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu vas vers U.2
+		Si PRESIDENT_ELECTIONS est égal à 0 alors tu vas vers V.1
+		Si PRESIDENT_ACTUEL est égal à 3 alors tu multiplies COUT_TRANSPORT par 3
+		Si PRESIDENT_ACTUEL est égal à 3 alors tu divises COUT_TRANSPORT par 2
+		Tu vas vers U.2
+
+paragraphe : U.2
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu vas vers U.3
+		Tu effaces la toile
+		Tu projettes AFF_0
+		Tu projettes AFF_1
+		Tu projettes TXT_1
+		Tu copies "ELECTIONS PRESIDENTIELLES" dans texte de U#1
+		Tu projettes U#1
+		Tu attends 1 seconde
+		Tu copies "Pour qui votez-vous ?" dans texte de U#2
+		Tu projettes U#2
+		Tu attends 1 seconde
+		Tu projettes U#CADRE#DROITE
+		Tu projettes U#CADRE#CENTRISTE
+		Tu projettes U#CADRE#ECOLO
+		Tu projettes U#CADRE#GAUCHE
+		Tu projettes U#TEXTE#DROITE
+		Tu projettes U#TEXTE#CENTRISTE
+		Tu projettes U#TEXTE#ECOLO
+		Tu projettes U#TEXTE#GAUCHE
+		Tu vas vers U.3
+
+paragraphe : U.3
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers U.4.1
+		Tu temporises
+		Si touche est différent de "Clique" alors tu vas vers U.3
+		Tu vas vers U.4.1
+
+paragraphe : U.4.1
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers U.4.2
+		Si sourisx est plus petit que 255 alors tu vas vers U.4.2
+		Si sourisy est plus petit que 170 alors tu vas vers U.4.2
+		Si sourisx est plus grand que 569 alors tu vas vers U.4.2
+		Si sourisy est plus grand que 209 alors tu vas vers U.4.2
+		Tu copies 1 dans ECHANGE1
+		Tu vas vers U.5
+
+paragraphe : U.4.2
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers U.4.3
+		Si sourisx est plus petit que 255 alors tu vas vers U.4.3
+		Si sourisy est plus petit que 220 alors tu vas vers U.4.3
+		Si sourisx est plus grand que 569 alors tu vas vers U.4.3
+		Si sourisy est plus grand que 259 alors tu vas vers U.4.3
+		Tu copies 2 dans ECHANGE1
+		Tu vas vers U.5
+
+paragraphe : U.4.3
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers U.4.4
+		Si sourisx est plus petit que 255 alors tu vas vers U.4.4
+		Si sourisy est plus petit que 270 alors tu vas vers U.4.4
+		Si sourisx est plus grand que 569 alors tu vas vers U.4.4
+		Si sourisy est plus grand que 309 alors tu vas vers U.4.4
+		Tu copies 3 dans ECHANGE1
+		Tu vas vers U.5
+
+paragraphe : U.4.4
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers U.5
+		Si sourisx est plus petit que 255 alors tu vas vers U.3
+		Si sourisy est plus petit que 320 alors tu vas vers U.3
+		Si sourisx est plus grand que 569 alors tu vas vers U.3
+		Si sourisy est plus grand que 359 alors tu vas vers U.3
+		Tu copies 4 dans ECHANGE1
+		Tu vas vers U.5
+
+paragraphe : U.5
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers U.6.1
+		Tu copies 125 dans variable
+		Tu mélanges variable
+		Si variable est plus petit que 100 alors tu copies 4 dans ECHANGE1
+		Si variable est plus petit que 75 alors tu copies 3 dans ECHANGE1
+		Si variable est plus petit que 50 alors tu copies 2 dans ECHANGE1
+		Si variable est plus petit que 25 alors tu copies 1 dans ECHANGE1
+		Si ECHANGE1 est égal à 1 alors tu concatènes "Le nouveau président est " , "de DROITE" dans texte de U#3
+		Si ECHANGE1 est égal à 2 alors tu concatènes "Le nouveau président est " , "CENTRISTE" dans texte de U#3
+		Si ECHANGE1 est égal à 3 alors tu concatènes "Le nouveau président est " , "ECOLO" dans texte de U#3
+		Si ECHANGE1 est égal à 4 alors tu concatènes "Le nouveau président est " , "de GAUCHE" dans texte de U#3
+		Tu projettes U#3
+		Tu attends 1 seconde
+		Si ECHANGE1 est égal à 1 alors tu vas vers U.6.1
+		Si ECHANGE1 est égal à 2 alors tu vas vers U.6.2
+		Si ECHANGE1 est égal à 3 alors tu vas vers U.6.3
+		Si ECHANGE1 est égal à 4 alors tu vas vers U.6.4
+		Tu vas vers U.1
+
+paragraphe : U.6.1
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers U.6.2
+		Tu soustrais 75 dans COUT_SALARIES
+		Si COUT_SALARIES est plus petit que 200 alors tu copies 200 dans COUT_SALARIES
+		Tu concatènes "Le salaire du personnel est désormais de " , COUT_SALARIES , " $ !!" dans texte de U#4
+		Tu projettes U#4
+		Tu ajoutes 3 dans PRIX_MIN
+		Si PRIX_MIN est plus grand que 53 alors tu copies 53 dans PRIX_MIN
+		Tu concatènes "Les palettes ne peuvent plus etre vendues en dessous de " , PRIX_MIN , " $ !!" dans texte de U#5
+		Tu projettes U#5
+		Tu vas vers U.7
+
+paragraphe : U.6.2
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers U.6.3
+		Tu copies 200 dans variable
+		Tu mélanges variable
+		Si variable est plus petit que 100 alors tu soustrais 75 dans COUT_SALARIES
+		Si variable est plus grand que 100 alors tu ajoutes 75 dans COUT_SALARIES
+		Si COUT_SALARIES est plus petit que 200 alors tu copies 200 dans COUT_SALARIES
+		Si COUT_SALARIES est plus grand que 800 alors tu copies 800 dans COUT_SALARIES
+		Tu concatènes "Le salaire du personnel est désormais de " , COUT_SALARIES , " $ !!" dans texte de U#4
+		Tu projettes U#4
+		Tu copies 200 dans variable
+		Tu mélanges variable
+		Si variable est plus petit que 100 alors tu soustrais 3 dans PRIX_MIN
+		Si variable est plus grand que 100 alors tu ajoutes 3 dans PRIX_MIN
+		Si PRIX_MIN est plus petit que 37 alors tu copies 37 dans PRIX_MIN
+		Si PRIX_MIN est plus grand que 53 alors tu copies 53 dans PRIX_MIN
+		Tu concatènes "Les palettes ne peuvent plus etre vendues en dessous de " , PRIX_MIN , " $ !!" dans texte de U#5
+		Tu projettes U#5
+		Tu vas vers U.7
+
+paragraphe : U.6.3
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers U.6.4
+		Tu copies 45 dans PRIX_MIN
+		Tu copies 500 dans COUT_SALARIES
+		Tu concatènes "Le salaire du personnel est désormais de " , COUT_SALARIES , " $ !!" dans texte de U#4
+		Tu projettes U#4
+		Tu concatènes "Les palettes ne peuvent plus etre vendues en dessous de " , PRIX_MIN , " $ !!" dans texte de U#5
+		Tu projettes U#5
+		Si PRESIDENT_ACTUEL est différent de 3 alors tu multiplies COUT_TRANSPORT par 2
+		Si PRESIDENT_ACTUEL est différent de 3 alors tu divises COUT_TRANSPORT par 3
+		Si PRESIDENT_ACTUEL est différent de 3 alors tu copies "Le cout des transports a dimminué d'un tiers !!" dans texte de U#6
+		Si PRESIDENT_ACTUEL est égal à 3 alors tu copies "Le cout des transports reste toujours aussi bas !!" dans texte de U#6
+		Tu projettes U#6
+		Tu vas vers U.7
+
+paragraphe : U.6.4
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers U.7
+		Tu ajoutes 75 dans COUT_SALARIES
+		Si COUT_SALARIES est plus grand que 800 alors tu copies 800 dans COUT_SALARIES
+		Tu concatènes "Le salaire du personnel est désormais de " , COUT_SALARIES , " $ !!" dans texte de U#4
+		Tu projettes U#4
+		Tu soustrais 3 dans PRIX_MIN
+		Si PRIX_MIN est plus petit que 37 alors tu copies 37 dans PRIX_MIN
+		Tu concatènes "Les palettes ne peuvent plus etre vendues en dessous de " , PRIX_MIN , " $ !!" dans texte de U#5
+		Tu projettes U#5
+		Tu vas vers U.7
+
+paragraphe : U.7
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers U.8
+		Tu attends 1 seconde
+		Tu copies ECHANGE1 dans PRESIDENT_ACTUEL
+		tu projettes U#CADRE#OK
+		tu projettes U#TEXTE#OK
+		Tu vas vers U.8
+		
+paragraphe : U.8
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers V.1
+		Tu temporises
+		Si touche est différent de "Clique" alors tu vas vers U.8
+		Si sourisx est plus petit que 500 alors tu vas vers U.8
+		Si sourisy est plus petit que 475 alors tu vas vers U.8
+		Si sourisx est plus grand que 574 alors tu vas vers U.8
+		Si sourisy est plus grand que 524 alors tu vas vers U.8
+		Tu vas vers V.1
+
+
+
+
+
+paragraphe : V.1
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu vas vers W.1
+		Tu soustrais COUT_SALARIES dans J1NA
+		Si ASSURANCE_EAU est égal à 1 alors tu soustrais ASSURANCE_COUT_EAU dans J1NA
+		Si ASSURANCE_EAU_REPARATION est égal à 1 alors tu ajoutes 25 dans ASSURANCE_COUT_EAU
+		Si ASSURANCE_EAU_REPARATION est égal à 1 alors tu ajoutes 15000 dans J1NA
+		Si ASSURANCE_EAU_REPARATION est égal à 1 alors tu affiches "Vous touchez la prime d'assurance de 15 000 $"
+		Si ASSURANCE_VOL est égal à 1 alors tu soustrais ASSURANCE_COUT_VOL dans J1NA
+		Si ASSURANCE_VOL_REPARATION est égal à 1 alors tu ajoutes 25 dans ASSURANCE_COUT_VOL
+		Si ASSURANCE_VOL_REPARATION est égal à 1 alors tu ajoutes 15000 dans J1NA
+		Si ASSURANCE_VOL_REPARATION est égal à 1 alors tu affiches "Vous touchez la prime d'assurance de 15 000 $"
+		Si ASSURANCE_FEU est égal à 1 alors tu soustrais ASSURANCE_COUT_FEU dans J1NA
+		Si ASSURANCE_FEU_REPARATION est égal à 1 alors tu ajoutes 25 dans ASSURANCE_COUT_FEU
+		Si ASSURANCE_FEU_REPARATION est égal à 1 alors tu ajoutes 15000 dans J1NA
+		Si ASSURANCE_FEU_REPARATION est égal à 1 alors tu affiches "Vous touchez la prime d'assurance de 15 000 $"
+		Tu copies PRET dans variable
+		Tu divises variable par 50
+		Tu soustrais variable dans J1NA
+		Tu vas vers W.1
+
+
+
+
+
+paragraphe : W.1
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers W.2
+		Tu effaces la toile
+		Tu projettes AFF_0
+		Tu projettes AFF_1
+		Tu projettes TXT_1
+		Tu copies J1NA dans variable
+		Tu soustrais J1NA2 dans variable
+		Si variable est plus grand que 0 alors tu concatènes "Votre entreprise a gagné " , variable , " $ ce mois-ci." dans texte de W#1
+		Si variable est égal à 0 alors tu concatènes "Votre entreprise a gagné " , variable , " $ ce mois-ci." dans texte de W#1
+		Tu multiplies variable par -1
+		Si variable est plus grand que 0 alors tu concatènes "Votre entreprise a perdu " , variable , " $ ce mois-ci." dans texte de W#1
+		Tu projettes W#1
+		Tu copies J1NP dans variable
+		Tu soustrais J1NP2 dans variable
+		Si variable est plus grand que 0 alors tu concatènes "Votre réputation a augmenté de " , variable , " % ce mois-ci." dans texte de W#2
+		Si variable est égal à 0 alors tu copies "Votre réputation reste stable ..." dans texte de W#2
+		Tu multiplies variable par -1
+		Si variable est plus grand que 0 alors tu concatènes "Votre réputation a diminué de " , variable , " % ce mois-ci." dans texte de W#2
+		Tu projettes W#2
+		Tu copies J1NS dans variable
+		Tu soustrais J1NS2 dans variable
+		Si variable est plus grand que 0 alors tu concatènes "Votre stock a augmenté de " , variable , " palettes ce mois-ci." dans texte de W#3
+		Si variable est égal à 0 alors tu copies "Votre stock est resté stable ce mois-ci ..." dans texte de W#3
+		Tu multiplies variable par -1
+		Si variable est plus grand que 0 alors tu concatènes "Votre stock a diminué de " , variable , " palettes ce mois-ci." dans texte de W#3
+		Tu projettes W#3
+		tu projettes U#CADRE#OK
+		tu projettes U#TEXTE#OK
+		Tu copies J1NA dans J1NA2
+		Tu copies J1NP dans J1NP2
+		Tu copies J1NS dans J1NS2
+		tu vas vers W.2
+
+paragraphe : W.2
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers X.1
+		Tu temporises
+		Si touche est différent de "Clique" alors tu vas vers W.2
+		Si sourisx est plus petit que 500 alors tu vas vers W.2
+		Si sourisy est plus petit que 475 alors tu vas vers W.2
+		Si sourisx est plus grand que 574 alors tu vas vers W.2
+		Si sourisy est plus grand que 524 alors tu vas vers W.2
+		Tu vas vers X.1
+		
+
+
+
+
+
+Paragraphe :  X.1
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers X.2
+		Tu copies J1NA dans variable
+		Tu soustrais PRET dans variable
+		Si variable est plus petit que DEFAITE alors tu vas vers X.2
+		Si variable est plus grand que VICTOIRE alors tu vas vers X.4
+		Tu vas vers Y.1
+
+paragraphe : X.2
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers X.3
+		tu effaces la toile
+		Tu projettes X#DEFAITE
+		Tu projettes X#1
+		Tu attends 1 seconde
+		Tu concatènes "Votre solde est en effet de " , variable , " $ !!" dans texte de X#2
+		Tu projettes X#2
+		Tu attends 1 seconde
+		Tu projettes X#3
+		Tu projettes X#4
+		Tu vas vers X.3
+
+paragraphe : X.3
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers X.4
+		Tu temporises
+		Si touche est différent de "Clique" alors tu vas vers X.3
+		Si sourisx est plus petit que 485 alors tu vas vers X.3
+		Si sourisy est plus petit que 475 alors tu vas vers X.3
+		Si sourisx est plus grand que 574 alors tu vas vers X.3
+		Si sourisy est plus grand que 524 alors tu vas vers X.3
+		Tu effaces la toile
+		Tu projettes TOILE_ORIGINE
+		Tu projettes X#5
+		Tu termines
+
+paragraphe : X.4
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers X.5
+		tu effaces la toile
+		Tu projettes X#VICTOIRE
+		Tu copies "Vous avez gagné !!" dans texte de X#1
+		Tu copies "noir" dans couleur de X#1
+		Tu projettes X#1
+		Tu attends 1 seconde
+		Tu concatènes "Votre solde est en effet de " , variable , " $ !!" dans texte de X#2
+		Tu copies "noir" dans couleur de X#2
+		Tu projettes X#2
+		Tu attends 1 seconde
+		Tu projettes X#3
+		Tu copies "vert" dans couleur de X#4
+		Tu projettes X#4
+		Tu vas vers X.5
+		
+paragraphe : X.5
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers X.6
+		Tu temporises
+		Si touche est différent de "Clique" alors tu vas vers X.5
+		Si sourisx est plus petit que 485 alors tu vas vers X.5
+		Si sourisy est plus petit que 475 alors tu vas vers X.5
+		Si sourisx est plus grand que 574 alors tu vas vers X.5
+		Si sourisy est plus grand que 524 alors tu vas vers X.5
+		Tu effaces la toile
+		Tu projettes TOILE_ORIGINE
+		Tu projettes CREDITS#1
+		Tu projettes CREDITS#2
+		Tu projettes CREDITS#3
+		Tu projettes CREDITS#4
+		Tu projettes CREDITS#5
+		Tu projettes CREDITS#6
+		Tu projettes CREDITS#7
+		Tu projettes CREDITS#8
+		Tu projettes CREDITS#9
+		Tu projettes CREDITS#10
+		Tu projettes CREDITS#11
+		Tu projettes CREDITS#12
+		Tu projettes CREDITS#13
+		Tu projettes CREDITS#14
+		Tu projettes CREDITS#15
+		Tu projettes CREDITS#16
+		Tu projettes CREDITS#17
+		Tu projettes CREDITS#18
+		Tu projettes CREDITS#19
+		Tu vas vers X.6
+
+paragraphe : X.6
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers X.7
+		Tu attends 40 millisecondes
+		Tu soustrais 1 dans y de CREDITS#1
+		Tu soustrais 1 dans y de CREDITS#2
+		Tu soustrais 1 dans y de CREDITS#3
+		Tu soustrais 1 dans y de CREDITS#4
+		Tu soustrais 1 dans y de CREDITS#5
+		Tu soustrais 1 dans y de CREDITS#6
+		Tu soustrais 1 dans y de CREDITS#7
+		Tu soustrais 1 dans y de CREDITS#8
+		Tu soustrais 1 dans y de CREDITS#9
+		Tu soustrais 1 dans y de CREDITS#10
+		Tu soustrais 1 dans y de CREDITS#11	
+		Tu soustrais 1 dans y de CREDITS#12
+		Tu soustrais 1 dans y de CREDITS#13
+		Tu soustrais 1 dans y de CREDITS#14
+		Tu soustrais 1 dans y de CREDITS#15
+		Tu soustrais 1 dans y de CREDITS#16
+		Tu soustrais 1 dans y de CREDITS#17
+		Tu soustrais 1 dans y de CREDITS#18
+		Tu soustrais 1 dans y de CREDITS#19
+		Si y de CREDITS#15 est égal à 50 alors tu attends 710 millisecondes
+		Si y de CREDITS#15 est égal à 50 alors tu vas vers X.7
+		Tu vas vers X.6
+
+paragraphe : X.7
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers X.8
+		Tu attends 40 millisecondes
+		Tu ajoutes 1 dans x de CREDITS#19
+		Si x de CREDITS#19 est égal à 250 alors tu copies "bleu" dans couleur de TOILE_ORIGINE
+		Si x de CREDITS#19 est égal à 250 alors tu copies "noir" dans couleur de CREDITS#19
+		Si x de CREDITS#19 est égal à 250 alors tu copies 1 dans variable
+		Si x de CREDITS#19 est égal à 250 alors tu vas vers X.8
+		Tu vas vers X.7
+		
+
+paragraphe : X.8
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers Y.1
+		Tu copies "gris" dans couleur de CREDITS#19
+		Tu attends 50 millisecondes
+		Tu copies "blanc" dans couleur de CREDITS#19
+		Tu attends 50 millisecondes
+		Tu copies "jaune" dans couleur de CREDITS#19
+		Tu attends 50 millisecondes
+		Tu copies "orange" dans couleur de CREDITS#19
+		Tu attends 50 millisecondes
+		Tu copies "rouge" dans couleur de CREDITS#19
+		Tu attends 50 millisecondes
+		Tu copies "rose" dans couleur de CREDITS#19
+		Tu attends 50 millisecondes
+		Tu copies "rouge" dans couleur de CREDITS#19
+		Tu attends 50 millisecondes
+		Tu copies "orange" dans couleur de CREDITS#19
+		Tu attends 50 millisecondes
+		Tu copies "jaune" dans couleur de CREDITS#19
+		Tu attends 50 millisecondes
+		Tu copies "vert" dans couleur de CREDITS#19
+		Tu attends 50 millisecondes
+		Tu copies "cyan" dans couleur de CREDITS#19
+		Tu attends 50 millisecondes
+		Tu copies "bleu" dans couleur de CREDITS#19
+		Tu attends 50 millisecondes
+		Tu copies "noir" dans couleur de CREDITS#19
+		Tu attends 50 millisecondes
+		Tu ajoutes 1 dans variable
+		Si variable est égal à 5 alors tu copies "Remerciements à tous" dans texte de X#5
+		Si variable est égal à 5 alors tu soustrais 140 dans x de X#5
+		Si variable est égal à 5 alors tu projettes X#5
+		Si variable est égal à 120 alors tu termines
+		Tu vas vers X.8
+		
+
+
+
+
+Paragraphe :  Y.1
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers Z.1
+		Si PROBLEME_PETROLE est égal à 1 alors tu divises COUT_TRANSPORT par 3
+		Tu vides J1NT
+		Tu vides J2NT
+		Tu vides J3NT
+		Tu vides J4NT
+		Tu vides ASSURANCE_EAU_REPARATION
+		Tu vides ASSURANCE_VOL_REPARATION
+		Tu vides ASSURANCE_FEU_REPARATION
+		Tu vides PROBLEME_PRODUCTION
+		Tu vides PROBLEME_GREVE
+		Tu vides PROBLEME_PETROLE
+		Tu vides PRESIDENT_ELECTIONS
+		Tu vides INFO
+		Tu vides STRATEGIE2
+		Tu vides STRATEGIE3
+		Tu vides STRATEGIE4
+		Tu vides ECHANGE1
+		Tu vides ECHANGE2
+		Tu vides ECHANGE3
+		Tu vides ECHANGE4
+		Tu vides OK_OK
+		Tu vides PRIXNUL
+		Tu vides EFFACE
+		Tu copies 0 dans OK_OK
+		Tu copies 1 dans OK_ACHAT
+		tu vas vers Z.1
+
+paragraphe : Z.1
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers Z.2
+		Tu copies J2NA dans variable
+		Tu soustrais 2000 dans variable
+		Tu divises variable par 20
+		Si variable est plus petit que 0 alors tu copies 0 dans variable
+		Si variable est plus grand que 100 alors tu copies 100 dans variable
+		Tu copies variable dans ECHANGE1
+		Tu copies J2NS dans variable
+		Tu divises variable par 10
+		Si variable est plus petit que 0 alors tu copies 0 dans variable
+		Si variable est plus grand que 100 alors tu copies 100 dans variable
+		Tu copies variable dans ECHANGE2
+		Tu copies ECHANGE1 dans variable
+		Tu soustrais ECHANGE2 dans variable
+		Tu ajoutes 100 dans variable
+		Tu copies 5 dans STRATEGIE2
+		Si variable est plus petit que 180 alors tu copies 4 dans STRATEGIE2
+		Si variable est plus petit que 120 alors tu copies 3 dans STRATEGIE2
+		Si variable est plus petit que 80 alors tu copies 2 dans STRATEGIE2
+		Si variable est plus petit que 30 alors tu copies 1 dans STRATEGIE2
+		Tu vas vers Z.2
+
+paragraphe : Z.2
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu vas vers Z.3
+		Tu copies J3NA dans variable
+		Tu soustrais 2000 dans variable
+		Tu divises variable par 20
+		Si variable est plus petit que 0 alors tu copies 0 dans variable
+		Si variable est plus grand que 100 alors tu copies 100 dans variable
+		Tu copies variable dans ECHANGE1
+		Tu copies J3NS dans variable
+		Tu divises variable par 10
+		Si variable est plus petit que 0 alors tu copies 0 dans variable
+		Si variable est plus grand que 100 alors tu copies 100 dans variable
+		Tu copies variable dans ECHANGE2
+		Tu copies ECHANGE1 dans variable
+		Tu soustrais ECHANGE2 dans variable
+		Tu ajoutes 100 dans variable
+		Tu copies 5 dans STRATEGIE3
+		Si variable est plus petit que 180 alors tu copies 4 dans STRATEGIE3
+		Si variable est plus petit que 120 alors tu copies 3 dans STRATEGIE3
+		Si variable est plus petit que 80 alors tu copies 2 dans STRATEGIE3
+		Si variable est plus petit que 30 alors tu copies 1 dans STRATEGIE3
+		Tu vas vers Z.3
+
+paragraphe : Z.3
+	les actions :
+		Si CHARGEMENT est égal à 1 alors tu ajoutes 1 dans x2 de LIGNE#CHARGEMENT
+		Si CHARGEMENT est égal à 1 alors tu copies 2 dans CHARGEMENT
+		Si CHARGEMENT est égal à 2 alors tu vas vers Introduction
+		Tu copies J4NA dans variable
+		Tu soustrais 2000 dans variable
+		Tu divises variable par 20
+		Si variable est plus petit que 0 alors tu copies 0 dans variable
+		Si variable est plus grand que 100 alors tu copies 100 dans variable
+		Tu copies variable dans ECHANGE1
+		Tu copies J4NS dans variable
+		Tu divises variable par 10
+		Si variable est plus petit que 0 alors tu copies 0 dans variable
+		Si variable est plus grand que 100 alors tu copies 100 dans variable
+		Tu copies variable dans ECHANGE2
+		Tu copies ECHANGE1 dans variable
+		Tu soustrais ECHANGE2 dans variable
+		Tu ajoutes 100 dans variable
+		Tu copies 5 dans STRATEGIE4
+		Si variable est plus petit que 180 alors tu copies 4 dans STRATEGIE4
+		Si variable est plus petit que 120 alors tu copies 3 dans STRATEGIE4
+		Si variable est plus petit que 80 alors tu copies 2 dans STRATEGIE4
+		Si variable est plus petit que 30 alors tu copies 1 dans STRATEGIE4
+		Tu vas vers F.1

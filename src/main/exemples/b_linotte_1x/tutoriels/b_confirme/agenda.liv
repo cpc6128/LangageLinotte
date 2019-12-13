@@ -1,0 +1,106 @@
+Agenda texte :
+	Les espèces :
+		Nom :: texte vide
+		Prénom :: texte vide
+		Téléphone :: texte vide
+		Adresse :: texte vide
+		Code postal :: nombre vide
+		Ville :: texte vide
+		L'espèce contact contient nom, prénom, téléphone, adresse, code postal, ville
+	grands rôles :
+		Agenda :: casier de contact depuis "agenda.base2donnees"
+		Traitement :: nombre valant 0 ("permet de savoir si les recherches sont fructueuses ou pas")
+
+Menu :
+	Rôles :
+		Choix :: nombre
+	Actions :
+		"Menu :" !
+		"1 : Ajouter un contact" !
+		"2 : Chercher un contact" !
+		"3 : Supprimer un contact" !
+		"4 : Quitter" !
+		"Quelle option choisissez-vous ?" !
+		Choix ?
+		Si choix == 1 alors va vers ajouter
+		Sinon, si choix == 2 alors va vers chercher
+		Sinon, si choix == 3 alors va vers supprimer
+		"A bientôt" !
+		Termine
+
+Ajouter :
+	Rôles :
+		Nouveau :: contact
+	Actions :
+		"Quel est le nom ?" !
+		nom@nouveau ?
+		"Quel est le prénom ?" !
+		prénom@nouveau ?
+		"Quel est son téléphone ?" !
+		téléphone@nouveau ?
+		"Quelle est son adresse ?" !
+		adresse@nouveau ?
+		"Quel est son code postal ?" !
+		code postal@nouveau ?
+		"Quelle est sa ville ?" !
+		ville@nouveau ?
+		Ajoute le nouveau dans l'agenda
+		Affiche "${nom@nouveau} est ajouté(e) !"
+		Va vers menu
+
+Chercher :
+	Rôles :
+		Temporaire :: texte vide
+	Actions :
+		"Quel est le nom du contact que vous voulez rechercher ?" !
+		Temporaire ?
+		traitement vaut 0
+		Pour chaque agenda, parcours analyse recherche
+		Si le traitement == 0 alors affiche "Ce contact n'a pas été trouvé !"
+		Va vers menu
+
+Analyse recherche :
+	Rôles :
+		Temporaire :: texte
+	Actions :
+		Si nom@joker != temporaire alors reviens
+		traitement vaut 1
+		Affiche "${nom@joker} a été trouvé :"
+		Nom@joker !
+		Prénom@joker !
+		Téléphone@joker !
+		Adresse@joker !
+		Code postal@joker !
+		Ville@joker !
+		Reviens
+
+Supprimer :
+	Rôles :
+		Temporaire :: texte vide
+	Actions :
+		"Quel est le nom du contact que vous voulez supprimer ?" !
+		Temporaire ?
+		traitement vaut 0
+		Pour chaque agenda, parcours analyse suppression
+		Si traitement == 0 alors affiche "Ce contact n'a pas été trouvé !"
+		Va vers menu
+
+Analyse suppression :
+	Rôles :
+		Temporaire :: texte
+		Confirmation :: texte vide
+	actions :
+		Si nom@joker != temporaire alors reviens
+		traitement vaut 1
+		Affiche "${nom@joker} va etre supprimé :"
+		Prénom@joker !
+		Téléphone@joker !
+		Adresse@joker !
+		Code postal@joker !
+		Ville@joker !
+		"Vous confimez ? ('oui')" !
+		Confirmation ?
+		Si confirmation != "oui" alors tu reviens
+		Ôte joker de agenda
+		"Contact supprimé !" !
+		Reviens

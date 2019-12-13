@@ -1,0 +1,221 @@
+espèces
+	nom est un texte
+	espèce fleur hérite de point et contient nom
+
+globale
+	toile1 est une toile, couleur prend "rouge"
+	toile2 est une toile, principale prend "non", couleur prend "bleu de minuit"//"vert"
+	toile3 est une toile, principale prend "non", couleur prend "rose", image prend "../c_multimedia/images/dn_house2.png"
+	toile4 est une toile, principale prend "non", couleur prend "bleu outremer"
+	tux est un graphique, image prend "../c_multimedia/images/tux_graduate.png", x prend 150, y prend 300, toile prend "toile3"
+	aide est un graffiti, texte prend "Tu peux déplacer Tux avec les flèches !", couleur prend "rouge", x prend 10, y prend 50, taille prend 10, toile prend "toile3"
+	p 1 est un point, taille prend 50, x prend 100, y prend 100, couleur prend "jaune"
+	p 2 est un point, taille prend 50, x prend 200, y prend 200, toile prend "toile3"
+	visage est une mozaïque, taille prend 200, modèle prend {{0,1,0,1},{1,2,-1,0},{0,-1,2,1},{1,0,1,0}}, 
+		x prend 100, y prend 100, toile prend "toile2"
+	echelle est un nombre valant 700
+	tortue est un crayon, pointe prend "non", taille prend 5
+	abeille est un crayon, pointe prend "non", couleur prend "papier bulle", taille prend 2, toile prend "toile4"
+	fleurs est un casier de fleur 
+	message_fleur est un graffiti, x prend 114, y prend 539, couleur prend "noir", texte prend "Déplace la souris sur les fleurs !", position prend 1, taille prend 10, toile prend "toile1"
+
+principale :
+	time est un nombre valant 0
+	début
+		projette tux
+		projette aide
+		projette p 1
+		projette p 2
+		fais réagir p 1 à "glisser-déposer" pour rien faire
+		fais réagir p 2 à "glisser-déposer" pour rien faire
+		appelle mozaique
+		appelle boucle
+		appelle mer avec toile1, "rose"
+		appelle mer avec toile2, "bleu"
+		appelle mer avec toile3, "noir"
+		appelle mer avec toile4, "blanc"
+		appelle animation
+		appelle pluie
+		projette message_fleur
+		pour chaque couleurs, parcours création avec joker
+		tant que vrai lis
+			temporise
+			//vide touches
+		ferme
+
+mozaique :
+	z est un nombre
+	début
+	début
+		projette visage
+		fais réagir visage à "glisser-déposer" pour rien faire
+		tant que vrai lis
+			tourne à gauche visage de 0.2
+			attends 10 millisecondes
+			incrémente z
+		ferme
+
+rien faire:
+	début
+		reviens
+
+boucle :
+	action est un texte
+	début
+		tant que vrai lis
+			action prend touche
+			si action = "gauche", déplace tux vers la gauche de 5
+			si action = "droite", déplace tux vers la droite de 5
+			si action = "haut", déplace tux vers le haut de 5
+			si action = "bas", déplace tux vers le bas de 5
+			si action = "clique", déplace tux vers sourisx@toile3 et sourisy@toile3
+		/*On lui fixe des limites !*/
+			si (x @ tux) > 470 , x @ tux prend 470
+			si (y @ tux) > 430 , y @ tux prend 430
+			si (x @ tux) < 5 , x @ tux prend 5
+			si (y @ tux) < 290 , y @ tux prend 290
+			temporise
+		ferme
+
+mer :
+	x & y est un nombre
+	*toile est une toile
+	*couleur est un texte
+	début
+		tant que vrai  lis
+			attends 0.01 secondes
+			si (x != (sourisx@toile)) ou (y != (sourisy@toile)) lis
+				x prend sourisx@toile
+				y prend sourisy@toile
+				appelle vague avec #x, #y, [toile], couleur
+			ferme
+		ferme
+
+vague :
+	*x est un nombre
+	*y est un nombre
+	*toile est un texte
+	*couleur est un texte
+	vague est un cercle, x prend x, y prend y, plein prend "non", rayon prend 1, taille prend 2, couleur prend couleur, toile prend toile
+	début
+		projette vague
+		pour chaque 50 lis
+			rayon@vague prend joker
+			transparence@vague prend 100 - joker * 2
+			attends 40 millisecondes
+		ferme
+		efface vague
+		annihile vague
+		reviens
+
+animation :
+	time est un nombre valant 0
+	i & r est un nombre valant 0
+	pi_ est un nombre valant 3.1415926
+	début
+		~ angle radian
+		//efface toile
+		tant que vrai lis
+			efface abeille
+			projette abeille
+			time prend time + 0.2
+			// The number of particles to generate
+			pour i de 500 à 0 lis
+				// The magic
+				r prend 0.8*cos((time+i)*(.05+sin(time*0.00002)/PI_*.2))/PI_
+				pique abeille à 500*(sin(i)*r+.5) et 500*(cos(i)*r+.5)
+			ferme
+			attends 5 millisecondes
+		ferme
+
+création :
+	*n est un texte
+	fleur est un fleur, toile prend "toile1"
+	yy est un nombre valant 600
+	xx est un nombre valant 600
+	début
+		mélange xx
+		mélange yy
+		déplace fleur vers xx et yy
+		couleur @ fleur prend joker
+		taille @ fleur prend 10
+		nom @ fleur prend joker
+		projette fleur
+		ajoute fleur dans fleurs
+		fais réagir fleur à "souris entrante" pour afficher le nom
+		fais réagir fleur à "souris sortante" pour effacer le nom
+		fais réagir fleur à "clic souris" pour clique
+		fais réagir fleur à "double clic souris" pour double clique
+		fais réagir fleur à "clic droit souris" pour clique droit
+		fais réagir fleur à "glisser-déposer" pour changement
+		reviens
+
+afficher le nom :
+	*fleur est un fleur
+	début
+		texte @ message_fleur prend nom de fleur
+		pointeur @ toile1 prend "main"
+		reviens
+
+effacer le nom :
+	début
+		texte @ message_fleur prend ""
+		pointeur @ toile1 prend "normal"
+		reviens
+
+clique :
+	*fleur est un fleur
+	début
+		taille @ fleur prend 20
+		Attends 1 secondes
+		taille @ fleur prend 10
+		reviens
+
+clique droit :
+	*fleur est un fleur
+	début
+		visible @ fleur prend "non"
+		reviens
+
+double clique :
+	*fleur est un fleur
+	début
+		taille @ fleur prend 5
+		Attends 1 secondes
+		taille @ fleur prend 10
+		reviens
+
+changement :
+	*fleur est un fleur
+	début
+		texte @ message_fleur prend "glisser-déposer de " + nom de fleur
+		reviens
+
+pluie :
+	x est un nombre
+	y est un nombre
+	début
+		tant que vrai  lis
+			attends 0.01 secondes
+			x prend hasard(ecranv)
+			y prend hasard(ecranh)
+			appelle goutte avec x, y
+			attends 0.15 secondes
+			appelle goutte avec x, y
+		ferme
+
+goutte :
+	*x est un nombre
+	*y est un nombre
+	vague est un cercle, x prend x, y prend y, plein prend "non", rayon prend 1, taille prend 2, couleur prend "vert d'eau", toile prend "toile2"
+	début
+		projette vague
+		pour chaque 50 lis
+			rayon@vague prend joker
+			taille@vague prend 1 + joker / 2
+			transparence@vague prend 100 - joker * 2
+			attends 10 millisecondes
+		ferme
+		efface vague
+		annihile vague
+		reviens

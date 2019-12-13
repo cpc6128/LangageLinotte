@@ -1,0 +1,34 @@
+Présentation des scribes :
+
+   Grands rôles :
+		Information :: graffiti, x vaut 170, y vaut 220, couleur vaut "or", texte vaut "Utilise la touche Entrée pour changer de scribe !"
+		Message A :: graffiti, x vaut 200, y vaut 320, couleur vaut "rouge", texte vaut "A :"
+		Réponse A :: scribe, x vaut 230, y vaut 320, couleur vaut "noir", texte vaut "", taille vaut 4, taquet vaut 20
+		Message B :: graffiti, x vaut 200, y vaut 350, couleur vaut "rouge", texte vaut "B :"
+		Réponse B :: scribe, x vaut 230, y vaut 350, couleur vaut "noir", texte vaut "", taille vaut 4, taquet vaut 20
+		Message C :: graffiti, x vaut 200, y vaut 380, couleur vaut "rouge", texte vaut "C :"
+		Réponse C :: scribe, x vaut 230, y vaut 380, couleur vaut "noir", texte vaut "", taille vaut 4, angle vaut 40, taquet vaut 20
+		Mur :: toile, couleur vaut "gris"
+
+Principal :
+    Actions :
+			Efface toile
+			Projette mur
+			Projette information
+			Projette message A
+			Projette réponse A
+			Projette message B
+			Projette réponse B
+			Projette message C
+			Projette réponse C
+			Va vers boucle
+
+Boucle :
+		Actions :
+			Stimule réponse A
+			Temporise
+			Stimule réponse B
+			Temporise
+			Stimule réponse C
+			Temporise
+			Va vers boucle	

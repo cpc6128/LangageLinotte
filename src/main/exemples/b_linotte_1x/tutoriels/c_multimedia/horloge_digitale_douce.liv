@@ -1,0 +1,209 @@
+Horloge Digitale :
+
+("http://langagelinotte.free.fr/punbb/viewtopic.php?id=311")
+	Grands rôles :
+		lumière douce :: texte <- "20 20 20"
+		lumière clair :: texte <- "255 255 255"
+		décallage :: nombre <- -95
+		deltah :: nombre <- ecranh / 2 - 400
+		deltav :: nombre <- ecranv / 2 - 200
+		élément v :: polygone, couleur = lumière douce, plein = "oui", x = 0, y = 0, ...
+			dx1 = 10 ,dy1 = -10, dx2 = 20 ,dy2 = 0, ...
+			dx3 = 20 ,dy3 = 40, dx4 = 10 ,dy4 = 50, ...
+			dx5 = 0 ,dy5 = 40
+		élément h :: polygone, couleur = lumière douce, plein = "oui", x = 0, y = 0, ...
+			dx1 = 10 ,dy1 = -10, dx2 = 38 ,dy2 = -10, ...
+			dx3 = 48 ,dy3 = 0, dx4 = 38 ,dy4 = 10, ...
+			dx5 = 10 ,dy5 = 10
+		chiffre1 :: casier de polygone vide
+		chiffre2 :: casier de polygone vide
+		chiffre3 :: casier de polygone vide
+		chiffre4 :: casier de polygone vide
+		chiffre5 :: casier de polygone vide
+		chiffre6 :: casier de polygone vide
+		rond1 :: cercle, couleur = lumière douce,  x = deltav + 285 + décallage, y = deltah + 230, rayon = 20, plein = "oui"
+		rond2 :: cercle, couleur = lumière douce,  x = deltav + 285 + décallage, y = deltah + 290, rayon = 20, plein = "oui"
+		rond3 :: cercle, couleur = lumière douce,  x = deltav + 506 + décallage, y = deltah + 230, rayon = 20, plein = "oui"
+		rond4 :: cercle, couleur = lumière douce,  x = deltav + 506 + décallage, y = deltah + 290, rayon = 20, plein = "oui"
+		vitre :: toile, couleur = "noir", pleinécran vaut "oui", bordure = "non", largeur vaut ecranv, hauteur vaut ecranh, pointeur vaut "main"
+		patron0 :: casier de nombre <- 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1
+		patron1 :: casier de nombre <- 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1
+		patron2 :: casier de nombre <- 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0
+		patron3 :: casier de nombre <- 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1
+		patron4 :: casier de nombre <- 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1
+		patron5 :: casier de nombre <- 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1
+		patron6 :: casier de nombre <- 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1
+		patron7 :: casier de nombre <- 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1
+		patron8 :: casier de nombre <- 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+		patron9 :: casier de nombre <- 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1
+		nombres :: casier de casier <- patron0, patron1, patron2, ...
+			patron3, patron4, patron5, patron6, patron7, patron8, patron9
+
+Principal :
+	Rôles :
+		position 1 :: nombre <- deltav + 0 + décallage
+		position 2 :: nombre <- deltav + 80 + décallage
+		position 3 :: nombre <- deltav + 220 + décallage
+		position 4 :: nombre <- deltav + 300 + décallage
+		position 5 :: nombre <- deltav + 440 + décallage
+		position 6 :: nombre <- deltav + 520 + décallage
+		h & m & s :: nombre
+	Actions :
+		efface la toile
+		projette vitre
+		projette rond1 & rond2 & rond3 & rond4
+		parcours init avec position 1, chiffre1
+		parcours init avec position 2, chiffre2
+		parcours init avec position 3, chiffre3
+		parcours init avec position 4, chiffre4
+		parcours init avec position 5, chiffre5
+		parcours init avec position 6, chiffre6
+		vide touche
+		tant que vrai, lis
+			h = heure
+			m = minute
+			s = seconde
+			parcours analyse avec h, chiffre1, chiffre2
+			parcours analyse avec m, chiffre3, chiffre4
+			parcours analyse avec s, chiffre5, chiffre6
+			si s mod 2 == 0 alors lis
+				appelle On Rond avec rond1
+				appelle On Rond avec rond2
+				appelle On Rond avec rond3
+				appelle On Rond avec rond4
+			ferme
+			sinon, lis
+				appelle Off Rond avec rond1
+				appelle Off Rond avec rond2
+				appelle Off Rond avec rond3
+				appelle Off Rond avec rond4
+			ferme
+			attends 1 seconde
+			si touche == "clique" alors lis
+				visible@vitre vaut "non"
+				termine
+			ferme
+		ferme
+		termine
+
+Init :
+	Rôles :
+		* d :: nombre
+		* c :: casier de polygone
+	Actions :
+		parcours affiche avec #élément h, 111 + d, deltah + 139, c
+		parcours affiche avec #élément h, 111 + d, deltah + 261, c
+		parcours affiche avec #élément h, 111 + d, deltah + 383, c
+		parcours affiche avec #élément v, 100 + d, deltah + 150, c
+		parcours affiche avec #élément v, 100 + d, deltah + 210, c
+		parcours affiche avec #élément v, 100 + d, deltah + 272, c
+		parcours affiche avec #élément v, 100 + d, deltah + 332, c
+		parcours affiche avec #élément v, 150 + d, deltah + 150, c
+		parcours affiche avec #élément v, 150 + d, deltah + 210, c
+		parcours affiche avec #élément v, 150 + d, deltah + 272, c
+		parcours affiche avec #élément v, 150 + d, deltah + 332, c
+		Reviens
+
+Analyse :
+	Rôles :
+		* n :: nombre
+		* c1 :: casier de polygone
+		* c2 :: casier de polygone
+	Actions :
+		parcours colorise avec nombres{entier(n/10)}, c1
+		parcours colorise avec nombres{décimal(n/10)*10}, c2
+		Reviens
+
+Affiche :
+	Rôles :
+		*temporaire :: polygone
+		*x :: nombre
+		*y :: nombre
+		*casier :: casier de polygone
+	Actions :
+		projette temporaire
+		ajoute temporaire dans casier
+		appelle animation avec temporaire, x, y
+		reviens
+
+Animation :
+	Rôles :
+		*temporaire :: polygone
+		*x :: nombre
+		*y :: nombre
+		§flag :: drapeau <- faux
+		§aléatoire :: nombre <- 20
+	Actions :
+		mélange aléatoire
+		aléatoire = aléatoire + 5
+		tant que flag est faux, lis
+			si (x@temporaire) != x alors x@temporaire = x@temporaire  + 1
+			si (y@temporaire) != y alors y@temporaire = y@temporaire  + 1
+			si (x@temporaire) == x alors lis
+				si (y@temporaire) == y alors flag = vrai
+			ferme
+			attends aléatoire millisecondes
+			tourne à droite temporaire de 1
+		ferme
+		tant que (angle@temporaire) mod 180 != 0  , lis
+			tourne à droite temporaire de 1
+			attends aléatoire millisecondes
+		ferme
+		reviens
+
+Colorise :
+	Rôles :
+		* modèle :: casier de nombre
+		* chiffre :: casier de polygone
+		§ position :: nombre <- 0
+	Actions :
+		pour chaque modèle, lis
+			si joker == 1 alors appelle on avec chiffre{position}
+			sinon, appelle off avec chiffre{position}
+			position = position + 1
+		ferme
+		reviens
+
+On :
+	Rôles :
+		* élément :: polygone
+	Actions :
+		si (couleur@élément) == lumière clair alors reviens
+		De 20 à 255, lis
+			couleur@élément = joker + " " + joker + " " + joker
+			Attends 1 millisecondes
+		Ferme
+		reviens
+
+Off :
+	Rôles :
+		* élément :: polygone
+	Actions :
+		si (couleur@élément) == lumière douce alors reviens
+		De 255 à 20, lis
+			couleur@élément = joker + " " + joker + " " + joker
+			Attends 2 millisecondes
+		Ferme
+		reviens
+
+On Rond:
+	Rôles :
+		* élément :: cercle
+	Actions :
+		si (couleur@élément) == lumière clair alors reviens
+		De 20 à 255, lis
+			couleur@élément = joker + " " + joker + " " + joker
+			Attends 2 millisecondes
+		Ferme
+		reviens
+
+Off Rond:
+	Rôles :
+		* élément :: cercle
+	Actions :
+		si (couleur@élément) == lumière douce alors reviens
+		De 255 à 20, lis
+			couleur@élément = joker + " " + joker + " " + joker
+			Attends 2 millisecondes
+		Ferme
+		reviens

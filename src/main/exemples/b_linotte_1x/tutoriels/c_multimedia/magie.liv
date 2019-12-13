@@ -1,0 +1,18 @@
+Clonage d'un rond :
+("Spécification 0.6.1")
+Principal :
+	Rôles :
+		rond :: cercle, couleur vaut "rose", plein vaut "oui", ...
+								rayon vaut 30,  x vaut 289, y vaut 290
+		groupe :: casier de cercle vide
+	Actions :
+		efface la toile
+		projette rond
+		ajoute #rond & #rond & #rond dans groupe
+		de 1 à 100, lis
+			déplace groupe{0} vers le haut de 1
+			déplace groupe{1} vers le bas de 1
+			déplace groupe{2} vers la droite de 1
+			déplace rond vers la gauche de 1
+			attends 20 millisecondes
+		ferme

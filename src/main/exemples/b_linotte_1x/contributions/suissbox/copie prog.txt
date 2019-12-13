@@ -1,0 +1,144 @@
+vsC=
+#D
+!vsProg{vsC}
+vsC=vsC+1
+Si vsC<vsNb-vsLgini-1
+>D
+]
+Del vsC
+a=7
+a=!" Quel est la valeur de a ?"
+!"a= "+a
+d=1
+!"d= "+d
+Save R1
+Dim tab;4;5
+tab{2,3}=555
+!"tab{2,3}= "+tab{2,3}
+c{2}=7
+!"c{2}= "+c{2}
+d=2.3
+!"d= "+d
+><étoile
+Restor R1
+!"d= "+d
+>fin
+#étoile
+vsColor_vsLo=bleu
+vsDim_vsLo=3
+vsVue_vsLo=0
+Def etoile
+Up
+Av 300;300
+Lo
+cpt=
+#debut
+Av 300
+Tg 150
+Si cpt<11
+cpt=cpt+1
+>debut
+]
+vsVue_=1
+Wait 1
+vsColor_=rose
+vsOpaq_=25
+vsKprops={"couleur;"taille;"transparence;"visible;"angle;"rvb
+Wait 1
+#Cls
+Wait 1
+couleur_=vert
+visible_=1
+#Clg
+Wait 1
+visible_=1
+!"BONJOUR"
+fill_=orange
+Wait 1
+transparence_fill_=
+Wait 1
+rvb_fill_={254;254;254
+#Clt
+Wait 1
+visible_fill_=1
+Wait 1
+couleur_=violet
+Wait 1
+angle_fill_=78
+Wait 1
+visible_fill_=1
+transparence_fill_=0.1
+Wait 1
+visible_=1
+Def vsLo
+angle_=360
+couleur_=rouge
+taille_=2
+visible_=1
+transparence_=
+Def Flèche
+Up 
+Av 500;400
+Lo
+Av 150
+Up
+Rc 150
+Lo
+couleur_vsLo=vert
+Tg 45
+Av 50
+Up
+Rc 50
+Td 90
+Lo
+Av 50
+taille_=2
+Wait 2
+<
+#fin
+rvb_={130;196;138
+Wait 3
+rvb_Flèche{2}=230
+Def cercle
+x0=70
+y0=70
+rayon=70
+pas=1
+#Fill
+x=-1*rayon-pas+x0
+go=x
+#haut_cercle
+x=x+pas
+Si x<rayon+pas+x0
+y=racine (rayon puiss 2-(x-x0) puiss 2)+y0
+Av x;y
+>haut_cercle
+]
+#bas_cercle
+x=x-pas
+Si x>go
+y=-1*(racine (rayon puiss 2-(x-x0) puiss 2))+y0
+Av x;y
+>bas_cercle
+]
+Si rayon>70
+rayon=rayon-1
+>Fill
+]
+Mov Flèche;150;250
+Mov etoile;200;150
+couleur_=rouge
+Mov cercle;600;400
+Rnd a
+!"a="+a
+a=
+a+1~b="coucou"
+a~!"au revoir"
+e=Mid b;4;
+!e
+a=Len e
+!a
+a=In b;"o;4
+!a
+!"FIN"
+Wait 30

@@ -1,0 +1,8 @@
+a :: number
+i :: number
+résultat := 1
+	/*précision arithmétique infinie*/
+~ précision 0
+a ?
+for i, a to 1, résultat = résultat * i
+résultat !

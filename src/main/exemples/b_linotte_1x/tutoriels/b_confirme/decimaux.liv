@@ -1,0 +1,13 @@
+Opération mathématique sur les nombres décimaux :
+("Spécification 0.7.3")
+Principal :
+	Rôles :
+		a :: nombre <- 1.4
+		b :: nombre <- 1.7
+	Actions :
+		efface le tableau
+		affiche arrondi a
+		affiche arrondi b
+		affiche entier b
+		affiche décimal a
+		affiche décimal b

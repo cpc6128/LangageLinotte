@@ -1,0 +1,181 @@
+/*
+Spécification : 2.0
+Auteur : Cpc
+Exemple d'utilisation de bureaux virtuels
+*/
+espèces
+	// Bureau
+	x & y est un nombre
+	nom est un texte
+	espèce bureau contient x, y, nom
+globale
+	bureau1 est un bureau, x prend 0, y prend 0, nom prend "Bureau 1"
+	bureau2 est un bureau, x prend -500, y prend 0, nom prend "Bureau 2"
+	bureau3 est un bureau, x prend 0, y prend -500, nom prend "Bureau 3"
+	bureau4 est un bureau, x prend -500, y prend -500, nom prend "Bureau 4"
+	form est un formulaire, titre prend "Utilisation de bureaux virtuels", largeur prend 500, hauteur prend 600
+	m1 est un menu, texte prend "Menu"
+	sm1 est un sousmenu, texte prend "Quitter"
+	sm2 est un sousmenu, texte prend "A propos de Linotte"
+	xtoile est un xtoile, x prend 0, y prend 0
+	toile est une toile, hauteur prend 500, largeur prend 500
+	decallage est un nombre valant -50
+	case est un caseàcocher, x prend 100 - decallage, y prend 570, texte prend "Changement de bureau en douceur"
+	b1 est un bouton, texte prend nom@bureau1, x prend 100 - decallage, y prend 510
+	b2 est un bouton, texte prend nom@bureau2, x prend 200 - decallage, y prend 510
+	b3 est un bouton, texte prend nom@bureau3, x prend 100 - decallage, y prend 540
+	b4 est un bouton, texte prend nom@bureau4, x prend 200 - decallage, y prend 540
+	image1 est un graphique, image prend "../c_multimedia/images/tux_graduate.png",  x prend 200, y prend 600, transparence prend 90, taille prend 20
+	écran est un praxinoscope, x prend 650, y prend 150, image0 prend  "../c_multimedia/images/praxinoscope-0.png",   	
+	image1 prend  "../c_multimedia/images/praxinoscope-1.png", 
+    		image2 prend  "../c_multimedia/images/praxinoscope-2.png", 
+    		image3 prend  "../c_multimedia/images/praxinoscope-3.png", 
+    		image4 prend  "../c_multimedia/images/praxinoscope-4.png", 
+   			image5 prend  "../c_multimedia/images/praxinoscope-5.png", 
+    		image6 prend  "../c_multimedia/images/praxinoscope-6.png", 
+    		image7 prend  "../c_multimedia/images/praxinoscope-7.png", 
+   			image8 prend  "../c_multimedia/images/praxinoscope-8.png", 
+    		image9 prend  "../c_multimedia/images/praxinoscope-9.png", 
+    		image10 prend  "../c_multimedia/images/praxinoscope-10.png",
+    		image11 prend  "../c_multimedia/images/praxinoscope-11.png"
+	working est un drapeau valant faux
+	max fleurs est un nombre valant 100
+
+principale :
+	début
+		// Formulaire :
+		ajoute xtoile & m1 & b1 & b2 & b3 & b4 & case dans form
+		ajoute sm2 & sm1 dans m1
+		fais réagir b1 à "clic souris" pour bureau1
+		fais réagir b2 à "clic souris" pour bureau2
+		fais réagir b3 à "clic souris" pour bureau3
+		fais réagir b4 à "clic souris" pour bureau4
+		fais réagir form à "clic souris" pour fermer la fenêtre
+		fais réagir sm1 à "clic souris" pour fermer la fenêtre
+		fais réagir sm2 à "clic souris" pour à propos
+		// Elements sur la toile
+		projette image1 & écran
+		pour chaque max fleurs, parcours création
+		appelle pluie
+		appelle minuteur
+		tant que vrai lis
+			temporise
+			vide touches
+		ferme
+
+bureau1 :
+	*b est un bouton
+	début
+		parcours change bureau avec bureau1, b
+		reviens
+
+bureau2 :
+	*b est un bouton
+	début
+		parcours change bureau avec bureau2, b
+		reviens
+
+bureau3 :
+	*b est un bouton
+	début
+		parcours change bureau avec bureau3, b
+		reviens
+
+bureau4 :
+	*b est un bouton
+	début
+		parcours change bureau avec bureau4, b
+		reviens
+
+change bureau :
+	*bureau est un bureau
+	*bouton est un bouton
+	début
+		si non(working) lis
+			working prend vrai
+			// Modification de l'apparence des boutons :
+			texte@b1 prend "${nom@bureau1}"
+			texte@b2 prend "${nom@bureau2}"
+			texte@b3 prend "${nom@bureau3}"
+			texte@b4 prend "${nom@bureau4}"
+			texte@bouton prend "[${nom@bureau}]"
+			si (valeur@case) = "vrai"  lis
+				pour chaque 100 lis
+					// X
+					si (rx@toile) != (x@bureau) lis
+						si (rx@toile) > (x@bureau), rx@toile prend rx@toile - 5
+						sinon si (rx@toile) < (x@bureau), rx@toile prend rx@toile + 5
+					ferme
+					// Y
+					si (ry@toile) != (y@bureau) lis
+						si (ry@toile) > (y@bureau), ry@toile prend ry@toile - 5
+						sinon si (ry@toile) < (y@bureau), ry@toile prend ry@toile + 5
+					ferme
+					attends 10 millisecondes
+				ferme
+			ferme
+			sinon lis
+				rx@toile prend x@bureau
+				ry@toile prend y@bureau
+			ferme
+			working prend faux
+		ferme
+		reviens
+
+fermer la fenêtre :
+	début
+		termine
+
+à propos :
+	début
+		form.àpropos()
+		reviens
+
+pluie :
+	x est un nombre
+	y est un nombre
+	début
+		tant que vrai  lis
+			attends 0.50 secondes
+			x prend hasard(500)
+			y prend hasard(500)
+			appelle vague avec x, y
+		ferme
+
+vague  :
+	*x est un nombre
+	*y est un nombre
+	vague est un cercle, x prend x, y prend y, plein prend "non", rayon prend 1, taille prend 2, couleur prend "vert d'eau"
+	début
+		projette vague
+		pour chaque 50 lis
+			rayon@vague prend joker
+			taille@vague prend 1 + joker / 2
+			transparence@vague prend 100 - joker * 2
+			attends 30 millisecondes
+		ferme
+		efface vague
+		annihile vague
+		reviens
+
+création :
+	fleur est un point
+	yy est un nombre valant 490
+	xx est un nombre valant 490
+	début
+		mélange xx
+		mélange yy
+		déplace fleur vers 510 + xx et 510 + yy
+		couleur @ fleur prend couleurs{hasard(100)}
+		taille @ fleur prend 10
+		projette fleur
+		reviens
+
+minuteur :
+	début
+		tant que vrai lis
+			pour chaque 12 lis
+				trame@écran prend joker
+				attends 0.1 secondes
+			ferme
+		ferme

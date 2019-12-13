@@ -1,0 +1,3 @@
+fibo : n
+	si n < 2 retourne n
+	sinon retourne fibo(n-1) + fibo(n-2)

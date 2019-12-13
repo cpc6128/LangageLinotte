@@ -1,0 +1,856 @@
+livre : Paint Pour Linottiens
+    ("Spécification 1.2")
+        ("Auteur : $imon")
+	les grands rôles :
+		fond est une toile , couleur vaut "200 200 200" , hauteur vaut 450 , largeur vaut 560
+		bouton_save est un rectangle , x vaut 10, y vaut 20 , hauteur vaut 20 , largeur vaut 60 , couleur vaut "140 140 140" , plein vaut "oui" , position vaut 999998
+		bouton_supprimer est un rectangle , x vaut 10, y vaut 50 , hauteur vaut 20 , largeur vaut 60 , couleur vaut "140 140 140" , plein vaut "oui" , position vaut 999998
+		bouton_couleur est un rectangle , x vaut 10, y vaut 80 , hauteur vaut 20 , largeur vaut 60 , couleur vaut "140 140 140" , plein vaut "oui" , position vaut 999998
+		bouton_taille est un rectangle , x vaut 10, y vaut 110 , hauteur vaut 20 , largeur vaut 60 , couleur vaut "140 140 140" , plein vaut "oui" , position vaut 999998
+		bouton_point est un rectangle , x vaut 10, y vaut 170 , hauteur vaut 20 , largeur vaut 60 , couleur vaut "140 140 140" , plein vaut "oui" , position vaut 999998
+		bouton_ligne est un rectangle , x vaut 10, y vaut 200 , hauteur vaut 20 , largeur vaut 60 , couleur vaut "140 140 140" , plein vaut "oui" , position vaut 999998
+		bouton_cercle est un rectangle , x vaut 10, y vaut 230 , hauteur vaut 20 , largeur vaut 60 , couleur vaut "140 140 140" , plein vaut "oui" , position vaut 999998
+		bouton_rectangle est un rectangle , x vaut 10, y vaut 260 , hauteur vaut 20 , largeur vaut 60 , couleur vaut "140 140 140" , plein vaut "oui" , position vaut 999998
+		bouton_graffiti est un rectangle , x vaut 10, y vaut 290 , hauteur vaut 20 , largeur vaut 60 , couleur vaut "140 140 140" , plein vaut "oui" , position vaut 999998
+		bouton_hauteur est un rectangle , x vaut 10, y vaut 350 , hauteur vaut 20 , largeur vaut 60 , couleur vaut "140 140 140" , plein vaut "oui" , position vaut 999998
+		bouton_largeur est un rectangle , x vaut 10, y vaut 380 , hauteur vaut 20 , largeur vaut 60 , couleur vaut "140 140 140" , plein vaut "oui" , position vaut 999998
+		bouton_couleur_toile est un rectangle , x vaut 10, y vaut 410 , hauteur vaut 20 , largeur vaut 60 , couleur vaut "140 140 140" , plein vaut "oui" , position vaut 999998
+		bouton_txt_save est un graffiti , x vaut 10, y vaut 35 , couleur vaut "0 0 0" , texte vaut "save." , position vaut 999999
+		bouton_txt_supprimer est un graffiti , x vaut 10, y vaut 65 , couleur vaut "0 0 0" , texte vaut "suppr." , position vaut 999999
+		bouton_txt_couleur est un graffiti , x vaut 10, y vaut 95 , couleur vaut "0 0 0" , texte vaut "couleur." , position vaut 999999
+		voyant_couleur est un cercle , x vaut 85 , y vaut 90 , rayon vaut 10 , couleur vaut "0 0 0" , plein vaut "oui" , position vaut 999999
+		bouton_txt_taille est un graffiti , x vaut 10, y vaut 125 , couleur vaut "0 0 0" , texte vaut "taille." , position vaut 999999
+		voyant_taille est un graffiti , x vaut 75 , y vaut 125 , couleur vaut "0 0 0" , texte vaut "1" , position vaut 999999
+		voyant_bouton est un cercle , x vaut 85 , y vaut 180 , rayon vaut 9 , couleur vaut "0 0 0" , plein vaut "oui" , taille vaut 2 , position vaut 999999
+		bouton_txt_point est un graffiti , x vaut 10, y vaut 185 , couleur vaut "0 0 0" , texte vaut "point." , position vaut 999999
+		bouton_txt_ligne est un graffiti , x vaut 10, y vaut 215 , couleur vaut "0 0 0" , texte vaut "ligne." , position vaut 999999
+		bouton_txt_cercle est un graffiti , x vaut 10, y vaut 245 , couleur vaut "0 0 0" , texte vaut "cerle." , position vaut 999999
+		bouton_txt_rectangle est un graffiti , x vaut 10, y vaut 275 , couleur vaut "0 0 0" , texte vaut "rect." , position vaut 999999
+		bouton_txt_graffiti est un graffiti , x vaut 10, y vaut 305 , couleur vaut "0 0 0" , texte vaut "graff." , position vaut 999999
+		titre_toile est un graffiti ,  x vaut 10, y vaut 345 , couleur vaut "0 0 0" , texte vaut "TOILE" , position vaut 999999
+		bouton_txt_hauteur est un graffiti , x vaut 10, y vaut 365 , couleur vaut "0 0 0" , texte vaut "hauteur." , position vaut 999999
+		voyant_hauteur est un graffiti , x vaut 75 , y vaut 365 , couleur vaut "0 0 0", texte vaut "400" , position vaut 999999
+		bouton_txt_largeur est un graffiti , x vaut 10, y vaut 395 , couleur vaut "0 0 0" , texte vaut "largeur." , position vaut 999999
+		voyant_largeur est un graffiti , x vaut 75 , y vaut 395 , couleur vaut "0 0 0", texte vaut "400" , position vaut 999999
+		bouton_txt_couleur_toile est un graffiti , x vaut 10, y vaut 425 , couleur vaut "0 0 0" , texte vaut "couleur." , position vaut 999999
+		voyant_couleur_toile est un cercle , x vaut 85 , y vaut 420 , rayon vaut 10 , couleur vaut "255 255 255" , plein vaut "oui" , position vaut 999999
+		contour est un rectangle , couleur vaut "0 0 0" , hauteur vaut 400 , largeur vaut 400 ,  x vaut 120, y vaut 20 , plein vaut "non" , taille vaut 1 , position vaut 999999
+		fausse_toile est un rectangle , couleur vaut "255 255 255" , hauteur vaut 400 , largeur vaut 400 ,  x vaut 120, y vaut 20 , plein vaut "oui" , taille vaut 1
+		occultant_1 est un rectangle , couleur vaut "200 200 200" , x vaut 0 , y vaut 0 ,  largeur vaut 120, hauteur vaut 5000 , position vaut 999997 , plein vaut "oui"
+		occultant_2 est un rectangle , couleur vaut "200 200 200" , x vaut 0 , y vaut 0 ,  largeur vaut 5000, hauteur vaut 20 , position vaut 999997 , plein vaut "oui"
+		occultant_3 est un rectangle , couleur vaut "200 200 200" , x vaut 520 , y vaut 20 ,  largeur vaut 5000, hauteur vaut 5000 , position vaut 999997 , plein vaut "oui"
+		occultant_4 est un rectangle , couleur vaut "200 200 200" , x vaut 120 , y vaut 420 ,  largeur vaut 5000, hauteur vaut 5000 , position vaut 999997 , plein vaut "oui"
+		liste_point est un casier de point
+		liste_ligne est un casier de ligne
+		liste_cercle est un casier de cercle
+		liste_rectangle est un casier de rectangle
+		liste_graffiti est un casier de graffiti
+		rouge est un nombre valant 0
+		vert est un nombre valant 0
+		bleu est un nombre valant 0
+		rouge_toile est un nombre valant 255
+		vert_toile est un nombre valant 255
+		bleu_toile est un nombre valant 255
+		taille est un nombre valant 1
+		type est un nombre valant 1
+		police est un texte valant "new times roman"
+		plein est un texte valant "oui"
+		n_point est un nombre valant 0
+		n_ligne est un nombre valant 0
+		n_cercle est un nombre valant 0
+		n_rectangle est un nombre valant 0
+		n_graffiti est un nombre valant 0
+		nom_du_casier est un texte vide
+		position est un nombre valant 0
+		c_appelé est un nombre valant 0
+		g'' est un texte
+
+paragraphe : introduction
+	les rôles :
+	les actions :
+		si c_appelé est égal à 0 alors lis
+			c_appelé = 1
+			appelle coordonnée
+		ferme
+		c_appelé = 2
+		efface la toile
+		efface le tableau
+		vide liste_point
+		vide liste_ligne
+		vide liste_cercle
+		vide liste_rectangle
+		vide liste_graffiti
+		projette fond
+		projette bouton_save
+		projette bouton_supprimer
+		projette bouton_couleur
+		projette bouton_taille
+		projette bouton_point
+		projette bouton_ligne
+		projette bouton_cercle
+		projette bouton_rectangle
+		projette bouton_graffiti
+		projette bouton_hauteur
+		projette bouton_largeur
+		projette bouton_couleur_toile
+		projette bouton_txt_save
+		projette bouton_txt_supprimer
+		projette bouton_txt_couleur
+		projette voyant_couleur
+		projette bouton_txt_taille
+		projette voyant_taille
+		projette voyant_bouton
+		projette bouton_txt_point
+		projette bouton_txt_ligne
+		projette bouton_txt_cercle
+		projette bouton_txt_rectangle
+		projette bouton_txt_graffiti
+		projette titre_toile
+		projette voyant_hauteur
+		projette bouton_txt_hauteur
+		projette voyant_largeur
+		projette bouton_txt_largeur
+		projette bouton_txt_couleur_toile
+		projette voyant_couleur_toile
+		projette contour
+		projette fausse_toile
+		projette occultant_1
+		projette occultant_2
+		projette occultant_3
+		projette occultant_4
+		g'' vaut µ "0022"
+		va vers principal
+
+paragraphe : principal
+	les rôles :
+		pointeur est un point , taille vaut 1
+	les actions :
+		temporise
+		si touche est différent de "clique" alors va vers principal
+		x de pointeur = sourisx
+		y de pointeur = sourisy
+		si pointeur est en collision avec bouton_save alors parcours save
+		si pointeur est en collision avec bouton_supprimer alors va vers supprimer
+		si pointeur est en collision avec bouton_couleur alors parcours couleur avec 1
+		si pointeur est en collision avec bouton_taille alors parcours taille
+		si pointeur est en collision avec bouton_point alors parcours type avec 180
+		si pointeur est en collision avec bouton_ligne alors parcours type avec 210
+		si pointeur est en collision avec bouton_cercle alors parcours type avec 240
+		si pointeur est en collision avec bouton_rectangle alors parcours type avec 270
+		si pointeur est en collision avec bouton_graffiti alors parcours type avec 300
+		si pointeur est en collision avec bouton_hauteur alors parcours hauteur
+		si pointeur est en collision avec bouton_largeur alors parcours largeur
+		si pointeur est en collision avec bouton_couleur_toile alors parcours couleur avec 2
+		si pointeur est en collision avec fausse_toile alors lis
+			si type est égal à 1 alors parcours point avec pointeur
+			si type est égal à 2 alors parcours ligne avec pointeur
+			si type est égal à 3 alors parcours cercle avec pointeur
+			si type est égal à 4 alors parcours rectangle avec pointeur
+			si type est égal à 5 alors parcours graffiti avec pointeur
+		ferme
+		va vers principal
+
+paragraphe : coordonnée
+	les rôles :
+		_coordonnées est un graffiti ,  x vaut 0, y vaut 0 , taille vaut 3 , couleur vaut "0 0 0" , position vaut 999999
+	les actions :
+		projette _coordonnées
+		tant que 1 est égal à 1 , lis
+			si c_appelé est égal à 2 alors lis
+				projette _coordonnées
+				c_appelé = 1
+			ferme
+			attends 50 millisecondes
+			x de _coordonnées = largeur de fond - 80
+			y de _coordonnées = hauteur de fond - 10
+			concatène ( sourisx - 120 ) , " ; " , ( sourisy - 20 ) dans texte de _coordonnées
+		ferme
+		termine
+
+paragraphe : save
+	les rôles :
+		sauvegarde est un casier de texte depuis "save.liv"
+		b est un nombre avec 0
+		t est un texte
+	les actions :
+		affiche "ATTENTION: l'ancien fichier ''save.liv'' sera effacé."
+		Questionne b sur "CONTINUER: 1       ARRETER: 0"
+		si b est différent de 1 alors affiche "vous n'avez pas enregistré. "
+		si b est différent de 1 alors va vers principal
+		vide sauvegarde
+		ajoute "livre : sauvegarde" dans sauvegarde
+		ajoute "    les grands rôles :" dans sauvegarde
+		concatène "        fond est une toile , hauteur est " , hauteur de contour , " , largeur est " , largeur de contour , " , couleur vaut " , g'' , couleur de fausse_toile , g'' dans t
+		ajoute #t dans sauvegarde
+		pour chaque liste_point, lis
+			concatène "        " , [joker] , " est un point , x vaut " , x de joker - 120 , " , y vaut " , y de joker - 20, " , taille est " , taille de joker , " , couleur vaut " , g'' , couleur de joker , g'' , " , position est " , position de joker dans t
+			ajoute #t dans sauvegarde
+		ferme
+		pour chaque liste_ligne, lis
+			concatène "        " , [joker] , " est une ligne , x1 est " , x1 de joker - 120 , " , x2 est " , x2 de joker - 120, " , y1 est " , y1 de joker - 20, " , y2 est " , y2 de joker - 20, " , taille est " , taille de joker ,  " , couleur vaut " , g'' , couleur de joker , g'' , " , position est " , position de joker dans t
+			ajoute #t dans sauvegarde
+		ferme
+		pour chaque liste_cercle, lis
+			concatène "        " , [joker] , " est un cercle , x vaut " , x de joker - 120, " , y vaut " , y de joker - 20, " , rayon vaut " , rayon de joker , " , taille est " , taille de joker , " , couleur vaut " , g'' , couleur de joker , g'' , " , plein vaut " , g'' , plein de joker , g'' , " , position est " , position de joker dans t
+			ajoute #t dans sauvegarde
+		ferme
+		pour chaque liste_rectangle, lis
+			concatène "        " , [joker] , " est un rectangle , x vaut " , x de joker - 120, " , y vaut " , y de joker - 20, " , hauteur est " , hauteur de joker , " , largeur est " , largeur de joker , " , taille est " , taille de joker , " , couleur vaut " , g'' , couleur de joker , g'' , " , plein vaut " , g'' , plein de joker , g'' , " , position est " , position de joker dans t
+			ajoute #t dans sauvegarde
+		ferme
+		pour chaque liste_graffiti, lis
+			concatène "        " , [joker] , " est un graffiti , x vaut " , x de joker - 120, " , y vaut " , y de joker - 20, " , taille est " , taille de joker , " , texte vaut " , g'' , texte de joker , g'' , " , couleur vaut " , g'' , couleur de joker , g'' , " , police est " , g'' , police de joker , g'' , " , position est " , position de joker dans t
+			ajoute #t dans sauvegarde
+		ferme
+		ajoute " " dans sauvegarde
+		ajoute "paragraphe : projection" dans sauvegarde
+		ajoute "    les actions :" dans sauvegarde
+		ajoute "        efface la toile" dans sauvegarde
+		ajoute "        projette fond" dans sauvegarde
+		pour chaque liste_point, lis
+			concatène "        projette " , [joker] dans t
+			ajoute #t dans sauvegarde
+		ferme
+		pour chaque liste_ligne, lis
+			concatène "        projette " , [joker] dans t
+			ajoute #t dans sauvegarde
+		ferme
+		pour chaque liste_cercle, lis
+			concatène "        projette " , [joker] dans t
+			ajoute #t dans sauvegarde
+		ferme
+		pour chaque liste_rectangle, lis
+			concatène "        projette " , [joker] dans t
+			ajoute #t dans sauvegarde
+		ferme
+		pour chaque liste_graffiti, lis
+			concatène "        projette " , [joker] dans t
+			ajoute #t dans sauvegarde
+		ferme
+		ajoute "        termine" dans sauvegarde
+		affiche "Il faudra peut-etre corriger des problèmes d'accent !"
+		affiche "enregistrement terminé"
+		reviens
+
+paragraphe : supprimer
+	les rôles :
+		_cadre est un rectangle , couleur vaut "200 200 200" , x vaut 70, y vaut 50 , position vaut 1000000 , plein vaut "oui" , hauteur vaut 210 , largeur vaut 110
+		_cadre_contour  est un rectangle , couleur vaut "100 100 100" ,  x vaut 70, y vaut 50 , position vaut 1000001 , plein vaut "non" , hauteur vaut 210 , largeur vaut 110
+		_cadre_fermeture est un rectangle , couleur vaut "0 0 0" ,  x vaut 165, y vaut 45 , hauteur vaut 20 , largeur vaut 20 , plein vaut "oui" , position vaut 1000003
+		_cadre_contour_fermeture est un rectangle , couleur vaut "255 255 255" ,  x vaut 165, y vaut 45 , hauteur vaut 20 , largeur vaut 20 , plein vaut "non" , position vaut 1000005
+		_graffiti_fermeture est un graffiti , x vaut 166, y vaut 64 , couleur vaut "255 0 0" , texte vaut "X" , position vaut 1000004 , taille vaut 10
+		_graffiti_titre est un graffiti ,  x vaut 80, y vaut 65 , couleur vaut "0 0 0" , texte vaut "SUPPRIMER" , position vaut 1000001 , taille vaut 0 , police vaut "arial narrow"
+		_point est un rectangle , x vaut 90, y vaut 80 , hauteur vaut 20 , largeur vaut 70 , couleur vaut "140 140 140" , plein vaut "oui" , position vaut 1000001
+		_ligne est un rectangle , x vaut 90, y vaut 110 , hauteur vaut 20 , largeur vaut 70 , couleur vaut "140 140 140" , plein vaut "oui" , position vaut 1000001
+		_cercle est un rectangle , x vaut 90, y vaut 140 , hauteur vaut 20 , largeur vaut 70 , couleur vaut "140 140 140" , plein vaut "oui" , position vaut 1000001
+		_rectangle est un rectangle , x vaut 90, y vaut 170 , hauteur vaut 20 , largeur vaut 70 , couleur vaut "140 140 140" , plein vaut "oui" , position vaut 1000001
+		_graffiti est un rectangle , x vaut 90, y vaut 200 , hauteur vaut 20 , largeur vaut 70 , couleur vaut "140 140 140" , plein vaut "oui" , position vaut 1000001
+		_tout est un rectangle , x vaut 90, y vaut 230 , hauteur vaut 20 , largeur vaut 70 , couleur vaut "140 140 140" , plein vaut "oui" , position vaut 1000001
+		_graffiti_point est un graffiti , x vaut 95, y vaut 95 , couleur vaut "0 0 0" , texte vaut "point." , position vaut 1000002
+		_graffiti_ligne est un graffiti , x vaut 95, y vaut 125 , couleur vaut "0 0 0" , texte vaut "ligne." , position vaut 1000002
+		_graffiti_cercle est un graffiti , x vaut 95, y vaut 155 , couleur vaut "0 0 0" , texte vaut "cercle." , position vaut 1000002
+		_graffiti_rectangle est un graffiti , x vaut 95, y vaut 185 , couleur vaut "0 0 0" , texte vaut "rect." , position vaut 1000002
+		_graffiti_graffiti est un graffiti , x vaut 95, y vaut 215 , couleur vaut "0 0 0" , texte vaut "graffiti." , position vaut 1000002
+		_graffiti_tout est un graffiti , x vaut 95, y vaut 245 , couleur vaut "0 0 0" , texte vaut "TOUT !!!" , position vaut 1000002
+		pointeur est un point , taille vaut 1
+		a est un nombre
+		b est un nombre
+		c est un nombre
+		fermeture est un nombre valant 0
+		t est un texte
+		tt est un texte
+	les actions :
+		projette _cadre
+		projette _cadre_contour
+		projette _cadre_fermeture
+		projette _cadre_contour_fermeture
+		projette _graffiti_fermeture
+		projette _graffiti_titre
+		projette _point
+		projette _ligne
+		projette _cercle
+		projette _rectangle
+		projette _graffiti
+		projette _tout
+		projette _graffiti_point
+		projette _graffiti_ligne
+		projette _graffiti_cercle
+		projette _graffiti_rectangle
+		projette _graffiti_graffiti
+		projette _graffiti_tout
+		fermeture = 0
+		tant que fermeture est égal à 0 , lis
+			a = 0
+			b = 0
+			tant que b est égal à 0 , lis
+				temporise
+				x de pointeur = sourisx
+				y de pointeur = sourisy
+				si touche est égal à "clique" alors lis
+					si pointeur est en collision avec _point alors lis
+						mesure liste_point dans c
+						si c est différent de 0 alors lis
+							a = 1
+							b = 1
+							couleur de _point = "180 180 180"
+							position = 0
+						ferme
+					ferme
+					si pointeur est en collision avec _ligne alors lis
+						mesure liste_ligne dans c
+						si c est différent de 0 alors lis
+							a = 2
+							b = 1
+							couleur de _ligne = "180 180 180"
+							position = 0
+						ferme
+					ferme
+					si pointeur est en collision avec _cercle alors lis
+						mesure liste_cercle dans c
+						si c est différent de 0 alors lis
+							a = 3
+							b = 1
+							couleur de _cercle = "180 180 180"
+							position = 0
+						ferme
+					ferme
+					si pointeur est en collision avec _rectangle alors lis
+						mesure liste_rectangle dans c
+						si c est différent de 0 alors lis
+							a = 4
+							b = 1
+							couleur de _rectangle = "180 180 180"
+							position = 0
+						ferme
+					ferme
+					si pointeur est en collision avec _graffiti alors lis
+						mesure liste_graffiti dans c
+						si c est différent de 0 alors lis
+							a = 5
+							b = 1
+							couleur de _graffiti = "180 180 180"
+							position = 0
+						ferme
+					ferme
+					si pointeur est en collision avec _tout alors lis
+						a = 0
+						b = -1
+					ferme
+					si pointeur est en collision avec _cadre_fermeture alors lis
+						fermeture = 1
+						b = 2
+					ferme
+				ferme
+			ferme
+			si b est égal à 1 alors lis
+				tant que x de _cadre est différent de 3 , lis
+					soustrais 1 dans x de _cadre
+					soustrais 1 dans x de _cadre_contour
+					soustrais 1 dans x de _cadre_fermeture
+					soustrais 1 dans x de _cadre_contour_fermeture
+					soustrais 1 dans x de _graffiti_fermeture
+					soustrais 1 dans x de _graffiti_titre
+					soustrais 1 dans x de _point
+					soustrais 1 dans x de _ligne
+					soustrais 1 dans x de _cercle
+					soustrais 1 dans x de _rectangle
+					soustrais 1 dans x de _graffiti
+					soustrais 1 dans x de _tout
+					soustrais 1 dans x de _graffiti_point
+					soustrais 1 dans x de _graffiti_ligne
+					soustrais 1 dans x de _graffiti_cercle
+					soustrais 1 dans x de _graffiti_rectangle
+					soustrais 1 dans x de _graffiti_graffiti
+					soustrais 1 dans x de _graffiti_tout
+					rafraîchis
+					attends 4 millisecondes
+				ferme
+				si a est égal à 1 alors nom_du_casier = "liste_point"
+				si a est égal à 2 alors nom_du_casier = "liste_ligne"
+				si a est égal à 3 alors nom_du_casier = "liste_cercle"
+				si a est égal à 4 alors nom_du_casier = "liste_rectangle"
+				si a est égal à 5 alors nom_du_casier = "liste_graffiti"
+				Appelle clignotement
+				tant que t est différent de "Entrée" , lis
+					temporise
+					t = touche
+					tt = [<<nom_du_casier>>{ position }]
+					si t est égal à "Entrée" alors lis
+						ôte <<tt>> de <<nom_du_casier>>
+						efface <<tt>>
+					ferme
+					si t est égal à "droite" alors lis
+						mesure <<nom_du_casier>> dans c
+						si position est plus petit que ( c - 1 ) alors ajoute 1 dans position
+					ferme
+					si t est égal à "gauche" alors lis
+						si position est différent de 0 alors lis
+							soustrais 1 dans position
+						ferme
+					ferme
+				ferme
+				t = ""
+				position = -1
+				tant que x de _cadre est différent de 70 , lis
+					ajoute 1 dans x de _cadre
+					ajoute 1 dans x de _cadre_contour
+					ajoute 1 dans x de _cadre_fermeture
+					ajoute 1 dans x de _cadre_contour_fermeture
+					ajoute 1 dans x de _graffiti_fermeture
+					ajoute 1 dans x de _graffiti_titre
+					ajoute 1 dans x de _point
+					ajoute 1 dans x de _ligne
+					ajoute 1 dans x de _cercle
+					ajoute 1 dans x de _rectangle
+					ajoute 1 dans x de _graffiti
+					ajoute 1 dans x de _tout
+					ajoute 1 dans x de _graffiti_point
+					ajoute 1 dans x de _graffiti_ligne
+					ajoute 1 dans x de _graffiti_cercle
+					ajoute 1 dans x de _graffiti_rectangle
+					ajoute 1 dans x de _graffiti_graffiti
+					ajoute 1 dans x de _graffiti_tout
+					rafraîchis
+					attends 4 millisecondes
+				ferme
+				copie "140 140 140" dans couleur de _point
+				copie "140 140 140" dans couleur de _ligne
+				copie "140 140 140" dans couleur de _cercle
+				copie "140 140 140" dans couleur de _rectangle
+				copie "140 140 140" dans couleur de _graffiti
+			ferme
+			si b est égal à -1 alors lis
+				affiche "ATTENTION: la page sera completement effacée."
+				Questionne a sur "CONTINUER: 1       ARRETER: 0"
+				si a est différent de 1 alors affiche "vous n'avez rien supprimé. "
+				si a est égal à 1 alors affiche "Suppression en cours..."
+				si a est égal à 1 alors va vers introduction
+			ferme
+		ferme
+		efface _cadre
+		efface _cadre_contour
+		efface _cadre_fermeture
+		efface _cadre_contour_fermeture
+		efface _graffiti_fermeture
+		efface _graffiti_titre
+		efface _point
+		efface _ligne
+		efface _cercle
+		efface _rectangle
+		efface _graffiti
+		efface _tout
+		efface _graffiti_point
+		efface _graffiti_ligne
+		efface _graffiti_cercle
+		efface _graffiti_rectangle
+		efface _graffiti_graffiti
+		efface _graffiti_tout
+		va vers principal
+
+paragraphe : clignotement
+	les rôles :
+		m est un nombre
+		a est un nombre
+		b est un nombre
+		casier est un texte
+	les actions :
+		tant que position est différent de -1 , lis
+			casier = nom_du_casier
+			m = position
+			mesure <<casier>> dans a
+			efface <<casier>>{ m }
+			attends 300 millisecondes
+			mesure <<casier>> dans b
+			si a est égal à b alors projette <<casier>>{ m }
+			attends 300 millisecondes
+		ferme
+		reviens
+
+paragraphe : couleur
+	les rôles :
+		_cadre est un rectangle , couleur vaut "150 150 150" ,  x vaut 85, y vaut 100 , position vaut 1000000 , plein vaut "oui" , hauteur vaut 100 , largeur vaut 300
+		_cadre_contour  est un rectangle , couleur vaut "255 255 255" ,  x vaut 85, y vaut 100 , position vaut 1000001 , plein vaut "non" , hauteur vaut 100 , largeur vaut 300
+		_cadre_fermeture est un rectangle , couleur vaut "0 0 0" ,  x vaut 370, y vaut 95 , hauteur vaut 20 , largeur vaut 20 , plein vaut "oui" , position vaut 1000003
+		_cadre_contour_fermeture est un rectangle , couleur vaut "255 255 255" ,  x vaut 370, y vaut 95 , hauteur vaut 20 , largeur vaut 20 , plein vaut "non" , position vaut 1000005
+		_graffiti_fermeture est un graffiti , x vaut 371, y vaut 114 , couleur vaut "255 0 0" , texte vaut "X" , position vaut 1000004 , taille vaut 10
+		_graffiti1 est un graffiti , couleur vaut "255 0 0" , texte vaut "ROUGE :" , position vaut 1000002 , x vaut 100, y vaut 125
+		_graffiti1v est un graffiti , couleur vaut "255 0 0" , texte vaut "0" , position vaut 1000002 , x vaut 215 , y vaut 125
+		_graffiti1m est un graffiti , couleur vaut "255 0 0" , texte vaut "<" , position vaut 1000002 , x vaut 200, y vaut 125
+		_graffiti1mm est un graffiti , couleur vaut "255 0 0" , texte vaut "<<" , position vaut 1000002 , x vaut 170, y vaut 125
+		_graffiti1p est un graffiti , couleur vaut "255 0 0" , texte vaut ">" , position vaut 1000002 , x vaut 250, y vaut 125
+		_graffiti1pp est un graffiti , couleur vaut "255 0 0" , texte vaut ">>" , position vaut 1000002 , x vaut 270, y vaut 125
+		_graffiti2 est un graffiti , couleur vaut "0 255 0" , texte vaut "VERT :" , position vaut 1000002 , x vaut 100, y vaut 150
+		_graffiti2v est un graffiti , couleur vaut "0 255 0" , texte vaut "0" , position vaut 1000002 , x vaut 215 , y vaut 150
+		_graffiti2m est un graffiti , couleur vaut "0 255 0" , texte vaut "<" , position vaut 1000002 , x vaut 200, y vaut 150
+		_graffiti2mm est un graffiti , couleur vaut "0 255 0" , texte vaut "<<" , position vaut 1000002 , x vaut 170, y vaut 150
+		_graffiti2p est un graffiti , couleur vaut "0 255 0" , texte vaut ">" , position vaut 1000002 , x vaut 250, y vaut 150
+		_graffiti2pp est un graffiti , couleur vaut "0 255 0" , texte vaut ">>" , position vaut 1000002 , x vaut 270, y vaut 150
+		_graffiti3 est un graffiti , couleur vaut "0 0 255" , texte vaut "BLEU :" , position vaut 1000002 , x vaut 100, y vaut 175
+		_graffiti3v est un graffiti , couleur vaut "0 0 255" , texte vaut "0" , position vaut 1000002 , x vaut 215 , y vaut 175
+		_graffiti3m est un graffiti , couleur vaut "0 0 255" , texte vaut "<" , position vaut 1000002 , x vaut 200, y vaut 175
+		_graffiti3mm est un graffiti , couleur vaut "0 0 255" , texte vaut "<<" , position vaut 1000002 , x vaut 170, y vaut 175
+		_graffiti3p est un graffiti , couleur vaut "0 0 255" , texte vaut ">" , position vaut 1000002 , x vaut 250, y vaut 175
+		_graffiti3pp est un graffiti , couleur vaut "0 0 255" , texte vaut ">>" , position vaut 1000002 , x vaut 270, y vaut 175
+		_voyant_couleur est un cercle , couleur vaut "0 0 0" , rayon vaut 30 ,  x vaut 340, y vaut 160 , position vaut 1000002 , plein vaut "oui"
+		b est un nombre
+		t est un texte
+		pointeur est un point , taille vaut 1
+		*parametre est un nombre
+		r est un nombre
+		v est un nombre
+		bl est un nombre
+	les actions :
+		si parametre est égal à 1 alors lis
+			r = rouge
+			v = vert
+			bl = bleu
+		ferme
+		si parametre est égal à 2 alors lis
+			r = rouge_toile
+			v = vert_toile
+			bl = bleu_toile
+		ferme
+		projette _cadre
+		projette _cadre_contour
+		projette _cadre_fermeture
+		projette _cadre_contour_fermeture
+		projette _graffiti_fermeture
+		projette _graffiti1
+		projette _graffiti1v
+		projette _graffiti1m
+		projette _graffiti1mm
+		projette _graffiti1p
+		projette _graffiti1pp
+		projette _graffiti2
+		projette _graffiti2v
+		projette _graffiti2m
+		projette _graffiti2mm
+		projette _graffiti2p
+		projette _graffiti2pp
+		projette _graffiti3
+		projette _graffiti3v
+		projette _graffiti3m
+		projette _graffiti3mm
+		projette _graffiti3p
+		projette _graffiti3pp
+		projette _voyant_couleur
+		b = 1
+		tant que b est égal à 1 , lis
+			texte de _graffiti1v = r
+			texte de _graffiti2v = v
+			texte de _graffiti3v = bl
+			concatène r , " " , v , " " , bl dans t
+			couleur de _voyant_couleur = t
+			si parametre est égal à 1 alors couleur de voyant_couleur = t
+			si parametre est égal à 2 alors couleur de voyant_couleur_toile = t
+			si parametre est égal à 2 alors couleur de fausse_toile = t
+			temporise
+			si touche est égal à "clique" alors lis
+				x de pointeur = sourisx
+				y de pointeur = sourisy
+				si pointeur est en collision avec _cadre_fermeture alors b = 0
+				si sourisx est plus petit que 165 alors lis
+				ferme
+				sinon , si sourisx est plus petit que 195 alors lis
+					si sourisy est plus petit que 106 alors lis
+					ferme
+					sinon , si sourisy est plus petit que 130 alors lis
+						soustrais 10 dans r
+						si r est plus petit que 0 alors r = 0
+					ferme
+					sinon , si sourisy est plus petit que 155 alors lis
+						soustrais 10 dans v
+						si v est plus petit que 0 alors v = 0
+					ferme
+					sinon , si sourisy est plus petit que 185 alors lis
+						soustrais 10 dans bl
+						si bl est plus petit que 0 alors bl = 0
+					ferme
+				ferme
+				sinon , si sourisx est plus petit que 215 alors lis
+					si sourisy est plus petit que 106 alors lis
+					ferme
+					sinon , si sourisy est plus petit que 130 alors lis
+						soustrais 1 dans r
+						si r est plus petit que 0 alors r = 0
+					ferme
+					sinon , si sourisy est plus petit que 155 alors lis
+						soustrais 1 dans v
+						si v est plus petit que 0 alors v = 0
+					ferme
+					sinon , si sourisy est plus petit que 185 alors lis
+						soustrais 1 dans bl
+						si bl est plus petit que 0 alors bl = 0
+					ferme
+				ferme
+				sinon , si sourisx est plus grand que 295 alors lis
+				ferme
+				sinon , si sourisx est plus grand que 265 alors lis
+					si sourisy est plus petit que 106 alors lis
+					ferme
+					sinon , si sourisy est plus petit que 130 alors lis
+						ajoute 10 dans r
+						si r est plus grand que 255 alors r = 255
+					ferme
+					sinon , si sourisy est plus petit que 155 alors lis
+						ajoute 10 dans v
+						si v est plus grand que 255 alors v = 255
+					ferme
+					sinon , si sourisy est plus petit que 185 alors lis
+						ajoute 10 dans bl
+						si bl est plus grand que 255 alors bl = 255
+					ferme
+				ferme
+				sinon , si sourisx est plus grand que 245 alors lis
+					si sourisy est plus petit que 106 alors lis
+					ferme
+					sinon , si sourisy est plus petit que 130 alors lis
+						ajoute 1 dans r
+						si r est plus grand que 255 alors r = 255
+					ferme
+					sinon , si sourisy est plus petit que 155 alors lis
+						ajoute 1 dans v
+						si v est plus grand que 255 alors v = 255
+					ferme
+					sinon , si sourisy est plus petit que 185 alors lis
+						ajoute 1 dans bl
+						si bl est plus grand que 255 alors bl = 255
+					ferme
+				ferme
+			ferme
+		ferme
+		efface _cadre
+		efface _cadre_contour
+		efface _cadre_fermeture
+		efface _cadre_contour_fermeture
+		efface _graffiti_fermeture
+		efface _graffiti1
+		efface _graffiti1v
+		efface _graffiti1m
+		efface _graffiti1mm
+		efface _graffiti1p
+		efface _graffiti1pp
+		efface _graffiti2
+		efface _graffiti2v
+		efface _graffiti2m
+		efface _graffiti2mm
+		efface _graffiti2p
+		efface _graffiti2pp
+		efface _graffiti3
+		efface _graffiti3v
+		efface _graffiti3m
+		efface _graffiti3mm
+		efface _graffiti3p
+		efface _graffiti3pp
+		efface _voyant_couleur
+		si parametre est égal à 1 alors lis
+			rouge = r
+			vert = v
+			bleu = bl
+		ferme
+		si parametre est égal à 2 alors lis
+			rouge_toile = r
+			vert_toile = v
+			bleu_toile = bl
+		ferme
+		reviens
+
+paragraphe : taille
+	les actions :
+		questionne taille sur "quelle est la nouvelle taille ?"
+		copie taille dans texte de voyant_taille
+		reviens
+
+paragraphe : type
+	les rôles :
+		*n est un nombre
+	les actions :
+		si n est égal à 180 alors lis
+			type = 1
+			y de voyant_bouton = n
+			plein de voyant_bouton = "oui"
+		ferme
+		si n est égal à 210 alors lis
+			type = 2
+			y de voyant_bouton = n
+			plein de voyant_bouton = "oui"
+		ferme
+		si n est égal à 240 alors lis
+			type = 3
+			y de voyant_bouton = n
+			questionne plein sur "cercle plein (oui ou non) ?"
+			plein de voyant_bouton = plein
+		ferme
+		si n est égal à 270 alors lis
+			type = 4
+			y de voyant_bouton = n
+			questionne plein sur "rectangle plein (oui ou non) ?"
+			plein de voyant_bouton = plein
+		ferme
+		si n est égal à 300 alors lis
+			type = 5
+			y de voyant_bouton = n
+			police = "Serif"
+			plein de voyant_bouton = "oui"
+		ferme
+		reviens
+
+paragraphe : hauteur
+	les rôles :
+		n est un nombre
+	les actions :
+		questionne n sur "quelle hauteur de toile ?"
+		copie n dans hauteur de fausse_toile
+		copie n dans hauteur de contour
+		si n est plus grand que 400 alors copie n + 50 dans hauteur de fond
+		sinon , copie 450 dans hauteur de fond
+		texte de voyant_hauteur = n
+		copie n + 20 dans y de occultant_4
+		reviens
+
+paragraphe : largeur
+	les rôles :
+		n est un nombre
+	les actions :
+		questionne n sur "quelle largeur de toile ?"
+		texte de voyant_largeur = n
+		copie n dans largeur de fausse_toile
+		copie n dans largeur de contour
+		copie n + 120 dans x de occultant_3
+		si n est plus grand que 240 alors copie n + 160 dans largeur de fond
+		sinon , copie 400 dans largeur de fond
+		reviens
+
+paragraphe : point
+	les rôles :
+		*origine est un point
+		t est un texte
+	les actions :
+		concatène "point_" , n_point dans t
+		crée t un acteur point
+		x de création = x de origine
+		y de création = y de origine
+		couleur de création = couleur de voyant_couleur
+		taille de création = taille
+		position de création = 102 + n_point + n_ligne + n_cercle + n_rectangle + n_graffiti
+		projette création
+		ajoute création dans liste_point
+		ajoute 1 dans n_point
+		reviens
+
+paragraphe : ligne
+	les rôles :
+		*origine est un point
+		t est un texte
+		b est un nombre
+	les actions :
+		concatène "ligne_" , n_ligne dans t
+		crée t un acteur ligne
+		x1 de création = x de origine
+		y1 de création = y de origine
+		x2 de création = x de origine
+		y2 de création = y de origine
+		couleur de création = couleur de voyant_couleur
+		taille de création = taille
+		position de création = 102 + n_point + n_ligne + n_cercle + n_rectangle + n_graffiti
+		projette création
+		vide touche
+		b = 0
+		tant que b est égal à 0 , lis
+			temporise
+			x2 de création = sourisx
+			y2 de création = sourisy
+			si touche est égal à "clique" alors b = 1
+		ferme
+		ajoute création dans liste_ligne
+		ajoute 1 dans n_ligne
+		reviens
+
+paragraphe : cercle
+	les rôles :
+		*origine est un point
+		t est un texte
+		b est un nombre
+		v est un nombre
+		u est un nombre
+	les actions :
+		concatène "cercle_" , n_cercle dans t
+		crée t un acteur cercle
+		x de création = x de origine
+		y de création = y de origine
+		rayon de création = 0
+		couleur de création = couleur de voyant_couleur
+		plein de création = plein
+		taille de création = taille
+		position de création = 102 + n_point + n_ligne + n_cercle + n_rectangle + n_graffiti
+		projette création
+		vide touche
+		b = 0
+		tant que b est égal à 0 , lis
+			temporise
+			v = sourisx - x de création
+			v = v * v
+			u = sourisy - y de création
+			u = u * u
+			rayon de création = racine ( u + v )
+			si touche est égal à "clique" alors b = 1
+		ferme
+		ajoute création dans liste_cercle
+		ajoute 1 dans n_cercle
+		reviens
+
+paragraphe : rectangle
+	les rôles :
+		*origine est un point
+		t est un texte
+		b est un nombre
+	les actions :
+		concatène "rectangle_" , n_rectangle dans t
+		crée t un acteur rectangle
+		x de création = x de origine
+		y de création = y de origine
+		hauteur de création = 0
+		largeur de création = 0
+		couleur de création = couleur de voyant_couleur
+		plein de création = plein
+		taille de création = taille
+		position de création = 102 + n_point + n_ligne + n_cercle + n_rectangle + n_graffiti
+		projette création
+		vide touche
+		b = 0
+		tant que b est égal à 0 , lis
+			temporise
+			hauteur de création = sourisy - y de création
+			largeur de création = sourisx - x de création
+			si touche est égal à "clique" alors b = 1
+		ferme
+		ajoute création dans liste_rectangle
+		ajoute 1 dans n_rectangle
+		reviens
+
+paragraphe : graffiti
+	les rôles :
+		*origine est un point
+		t est un texte
+		b est un nombre
+	les actions :
+		concatène "graffiti_" , n_graffiti dans t
+		crée t un acteur graffiti
+		couleur de création = couleur de voyant_couleur
+		taille de création = taille
+		position de création = 102 + n_point + n_ligne + n_cercle + n_rectangle + n_graffiti
+		questionne texte de création sur "Tapez le texte :"
+		x de création = x de origine
+		y de création = y de origine
+		projette création
+		vide touche
+		b = 0
+		tant que b est égal à 0 , lis
+			temporise
+			x de création = sourisx
+			y de création = sourisy
+			si touche est égal à "clique" alors b = 1
+		ferme
+		ajoute création dans liste_graffiti
+		ajoute 1 dans n_graffiti
+		reviens

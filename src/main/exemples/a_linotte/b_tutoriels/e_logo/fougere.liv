@@ -1,0 +1,32 @@
+/*http://xlogo.tuxfamily.org/fr/html/examples-fr/fractales/fern.php*/
+globale
+	tortue est un crayon, couleur prend "vert mousse", x prend 580, y prend 400, taille prend 2, angle prend 180, pointe prend "oui"
+	terre est une toile, couleur prend "noir"
+
+principale :
+		efface toile
+		projette terre
+		projette tortue
+		parcours fougère avec 700
+		pointe @ tortue prend "non"
+		photographie dans "fougere"
+		termine
+
+fougère : taille
+		si taille > 5 lis
+			couleur@tortue prend "215 " + entier(0.18 * (angle@tortue) +187) + " 88"
+			avance tortue de taille / 20
+			tourne à gauche tortue de 80
+			parcours fougère avec taille * 0.3
+			tourne à droite tortue de 82
+			avance tortue de taille / 20
+			tourne à droite tortue de 80
+			parcours fougère avec taille * 0.3
+			tourne à gauche tortue de 78
+			parcours fougère avec taille * 0.9
+			tourne à gauche tortue de 2
+			recule tortue de taille / 20
+			tourne à gauche tortue de 2
+			recule tortue de taille / 20
+		ferme
+		reviens

@@ -1,0 +1,15 @@
+ Client TCP/IP :
+("Spécification : 0.6.5")
+
+Connexion :
+	Rôles :
+		connexion :: pont, adresse vaut "localhost"
+		message :: texte <- "Bonjour !"
+	Actions :
+		Ouvre connexion avec "" depuis ""
+		état de connexion !
+		Charge message dans connexion
+		Décharge message depuis connexion
+		"Voici la réponse du serveur :" !
+		Affiche message
+		Ferme connexion

@@ -1,0 +1,19 @@
+/*Auteur : $imon*/
+principale :
+	n est un nombre
+	début
+		demande n
+		n prend abs( arrondi( n ))  //pour s'assurer qu'il s'agit bien d'un entier positif
+		parcours syracuse avec n
+		affiche "la durée du vol est " + n
+		termine
+
+syracuse :
+	*x est un nombre
+	début
+		si (arrondi(x / 2)) = (x / 2), x prend x / 2
+		sinon x prend 3 * x + 1
+		si x > 1, parcours syracuse avec x
+		sinon x prend 0
+		x prend x + 1
+		reviens

@@ -1,0 +1,10 @@
+Fonction Lambda :
+
+Principal :
+	Rôles :
+ 		x & y :: nombre
+		add :: lambda x | y <- x + y
+		multi :: lambda x | y <- x * y
+	Actions :
+		multi (5,6) !
+		add (3,2) !

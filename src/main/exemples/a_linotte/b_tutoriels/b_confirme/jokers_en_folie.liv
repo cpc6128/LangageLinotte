@@ -1,0 +1,9 @@
+/*
+joker récupère la valeur de la boucle courant.
+mais on peut également utiliser joker', joker'' et joker'''
+qui vont récupérer les boucles parentes successives !
+*/
+jokers en folie : 
+		pour "Linotte" lis
+			pour 5 affiche (joker+1) * joker'
+		ferme

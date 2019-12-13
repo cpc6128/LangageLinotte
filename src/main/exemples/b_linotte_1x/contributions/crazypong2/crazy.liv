@@ -1,0 +1,401 @@
+Livre : Crazy Pong 2
+
+Les grands rôles : 
+
+	raquette1 est une ligne,  x1 vaut 41, y1 vaut 238, x2 vaut 41, y2 vaut 278, taille vaut 15, couleur vaut "bleu"
+	raquette2 est une ligne,  x1 vaut 541, y1 vaut 238, x2 vaut 541, y2 vaut 278, taille vaut 15, couleur vaut "rouge"
+	plateau est un toile, couleur vaut "noir"
+	palet est un cercle,  x vaut 325, y vaut 530, rayon vaut 5, couleur vaut "vert", taille vaut 5
+	bulle est un cercle,  x vaut 300, y vaut 300, rayon vaut 20, couleur vaut "vert", taille vaut 20, plein vaut "oui"
+	direction est un nombre valant 4
+	vitesse est un nombre valant 1
+	nombre_tours est un nombre valant 0
+	dernier_touché est un nombre valant 1
+	état_raquette1 est un nombre valant 0
+	état_raquette2 est un nombre valant 0
+	evenement est un nombre valant 0
+	avancement_evenement est un nombre valant 0
+	affichage_evenement est un graffiti , x vaut 100 , y vaut 50 , taille vaut 10 , couleur vaut "gris" , police vaut "courrier new"
+
+Paragraphe : Décor
+	les rôles :
+		l' unité est un nombre valant 1
+	Les actions :
+		tu effaces la toile
+		tu mélanges y de palet
+		y de palet = y de palet + 30
+		tu projettes le plateau
+		tu projettes la raquette1
+		tu projettes la raquette2
+		tu projettes le palet
+		copie y de palet dans y2 de raquette1
+		copie y de palet dans y2 de raquette2
+		y1 de raquette1 = y2 de raquette1 - 40
+		y1 de raquette2 = y2 de raquette2 - 40
+		tu attends 1 seconde
+		tu vas vers analyse1
+
+Paragraphe : analyse1
+	Les rôles :
+		y est un nombre	
+		vitesse1 est un nombre
+		vitesse2 est un nombre
+		vitesse_palet est un nombre
+		choc est un nombre
+	Les actions :
+		attends 5 millisecondes
+
+		("Gestion des raquettes")
+		vitesse1 = 2
+		si état_raquette1 est égal à 5 alors vitesse1 = 5
+		si état_raquette1 est égal à 4 alors vitesse1 = 1
+		y = sourisy - 20
+		si y est plus grand que 523 alors y = 523
+		si y est plus petit que 40 alors y = 40
+		si y1 de raquette1 est plus grand que y alors tu déplaces la raquette1 vers le haut de vitesse1
+		si y1 de raquette1 est plus petit que y alors tu déplaces la raquette1 vers le bas de vitesse1
+		si état_raquette1 est égal à 3 alors vitesse1 = vitesse1 * 2
+		si état_raquette1 est différent de 3 alors vitesse1 = 0
+		si y1 de raquette1 est plus grand que y alors tu déplaces la raquette1 vers le bas de vitesse1
+		si y1 de raquette1 est plus petit que y alors tu déplaces la raquette1 vers le haut de vitesse1
+
+		vitesse2 = 2
+		si état_raquette2 est égal à 5 alors vitesse2 = 5
+		si état_raquette2 est égal à 4 alors vitesse2 = 1
+		y = y de palet - 20
+		si y est plus grand que 523 alors y = 523
+		si y est plus petit que 40 alors y = 40
+		si y1 de raquette2 est plus grand que y alors tu déplaces la raquette2 vers le haut de vitesse2
+		si y1 de raquette2 est plus petit que y alors tu déplaces la raquette2 vers le bas de vitesse2
+		si état_raquette2 est égal à 3 alors vitesse2 = vitesse2 * 2
+		si état_raquette2 est différent de 3 alors vitesse2 = 0
+		si y1 de raquette2 est plus grand que y alors tu déplaces la raquette2 vers le bas de vitesse2
+		si y1 de raquette2 est plus petit que y alors tu déplaces la raquette2 vers le haut de vitesse2
+		
+
+
+		("Gestion du palet")
+		vitesse_palet = vitesse * 2
+		si direction est égale à 1 alors tu déplaces le palet vers le haut de vitesse
+		si direction est égale à 1 alors tu déplaces le palet vers la droite de vitesse_palet
+		si direction est égale à 2 alors tu déplaces le palet vers le haut de vitesse_palet
+		si direction est égale à 2 alors tu déplaces le palet vers la droite de vitesse
+		si direction est égale à 3 alors tu déplaces le palet vers le haut de vitesse_palet
+		si direction est égale à 3 alors tu déplaces le palet vers la gauche de vitesse
+		si direction est égale à 4 alors tu déplaces le palet vers le haut de vitesse
+		si direction est égale à 4 alors tu déplaces le palet vers la gauche de vitesse_palet
+		si direction est égale à 5 alors tu déplaces le palet vers la gauche de vitesse_palet
+		si direction est égale à 5 alors tu déplaces le palet vers le bas de vitesse
+		si direction est égale à 6 alors tu déplaces le palet vers la gauche de vitesse
+		si direction est égale à 6 alors tu déplaces le palet vers le bas de vitesse_palet
+		si direction est égale à 7 alors tu déplaces le palet vers la droite de vitesse
+		si direction est égale à 7 alors tu déplaces le palet vers le bas de vitesse_palet
+		si direction est égale à 8 alors tu déplaces le palet vers la droite de vitesse_palet
+		si direction est égale à 8 alors tu déplaces le palet vers le bas de vitesse
+
+		("Gestion de la direction du palet")
+		vide choc
+		si y de palet est plus petit que 35 alors choc = 1			   ("directiony = directiony * -1")
+		si y de palet est plus grand que 570 alors choc = 2     ("directiony = directiony * -1")
+		si x de palet est plus petit que 55 alors choc = 3      ("directionx = directionx * -1")
+		si x de palet est plus grand que 519 alors choc = 4  (" directionx = directionx * -1 & x de palet = fin_mur")
+
+		si choc est égal à 0 alors va vers analyse2
+		si choc est égal à 1 alors va vers gestion_choc_1
+		si choc est égal à 2 alors va vers gestion_choc_2
+		si choc est égal à 3 alors va vers gestion_choc_3
+		si choc est égal à 4 alors va vers gestion_choc_4
+		va vers analyse2
+		
+paragraphe: gestion_choc_1
+	les actions :
+		si direction est égal à 1 alors copie 8 dans direction
+		si direction est égal à 2 alors copie 7 dans direction
+		si direction est égal à 3 alors copie 6 dans direction
+		si direction est égal à 4 alors copie 5 dans direction
+		va vers analyse2
+paragraphe: gestion_choc_2
+	les actions :
+		si direction est égal à 5 alors copie 4 dans direction
+		si direction est égal à 6 alors copie 3 dans direction
+		si direction est égal à 7 alors copie 2 dans direction
+		si direction est égal à 8 alors copie 1 dans direction
+		va vers analyse2
+paragraphe: gestion_choc_3
+	les actions :
+		(" la raquette et le palet sont-ils en collision ?")
+		si la raquette1 est en collision avec le palet alors dernier_touché = 1
+		si la raquette1 est en collision avec le palet alors tu vas vers gestion_choc_raquette1
+		tu vas vers analyse2
+paragraphe: gestion_choc_raquette1
+	les rôles :
+		y_min est un nombre
+		y_max est un nombre
+	les actions :
+		y_min = y1 de raquette1 - 13
+		si y de palet est plus petit que y_min alors tu vas vers gestion_choc_haut_raquette1
+		y_max = y2 de raquette1 + 13
+		si y de palet est plus grand que y_max alors tu vas vers gestion_choc_bas_raquette1
+		si direction est égal à 3 alors copie 2 dans direction
+		si direction est égal à 4 alors copie 1 dans direction
+		si direction est égal à 5 alors copie 8 dans direction
+		si direction est égal à 6 alors copie 7 dans direction
+		va vers analyse2
+paragraphe: gestion_choc_bas_raquette1
+	les actions :
+		si direction est égal à 3 alors copie 7 dans direction
+		si direction est égal à 4 alors copie 8 dans direction
+		si direction est égal à 5 alors copie 8 dans direction
+		si direction est égal à 6 alors copie 7 dans direction
+		va vers analyse2
+paragraphe: gestion_choc_haut_raquette1
+	les actions :
+		si direction est égal à 3 alors copie 1 dans direction
+		si direction est égal à 4 alors copie 2 dans direction
+		si direction est égal à 5 alors copie 2 dans direction
+		si direction est égal à 6 alors copie 1 dans direction
+		va vers analyse2
+
+paragraphe: gestion_choc_4
+	les actions :
+		(" la raquette et le palet sont-ils en collision ?")
+		si la raquette2 est en collision avec le palet alors dernier_touché = 2
+		si la raquette2 est en collision avec le palet alors tu vas vers gestion_choc_raquette2
+		tu vas vers analyse2
+paragraphe: gestion_choc_raquette2
+	les rôles :
+		y_min est un nombre
+		y_max est un nombre
+	les actions :
+		y_min = y1 de raquette2 - 13
+		si y de palet est plus petit que y_min alors tu vas vers gestion_choc_bas_raquette2
+		y_max = y2 de raquette2 + 13
+		si y de palet est plus grand que y_max alors tu vas vers gestion_choc_haut_raquette2
+		si direction est égal à 2 alors copie 3 dans direction
+		si direction est égal à 1 alors copie 4 dans direction
+		si direction est égal à 8 alors copie 5 dans direction
+		si direction est égal à 7 alors copie 6 dans direction
+		va vers analyse2
+paragraphe: gestion_choc_bas_raquette2
+	les actions :
+		si direction est égal à 2 alors copie 4 dans direction
+		si direction est égal à 1 alors copie 3 dans direction
+		si direction est égal à 8 alors copie 3 dans direction
+		si direction est égal à 7 alors copie 4 dans direction
+		va vers analyse2
+paragraphe: gestion_choc_haut_raquette2
+	les actions :
+		si direction est égal à 2 alors copie 5 dans direction
+		si direction est égal à 1 alors copie 6 dans direction
+		si direction est égal à 8 alors copie 6 dans direction
+		si direction est égal à 7 alors copie 5 dans direction
+		va vers analyse2
+
+
+paragraphe : analyse2
+	les rôles :
+		y_min est un nombre
+		y_max est un nombre
+
+	les actions :
+		si x de palet est plus grand que 35 alors tu vas vers analyse3
+		si x de palet est égal à 35 alors tu vas vers evenement
+
+		("le joueur a-t-il Perdu ?")
+		si x de palet est plus petit que 27 alors tu vas vers perdu
+		tu vas vers evenement
+
+paragraphe : analyse3
+	les rôles :
+		y_min est un nombre
+		y_max est un nombre
+
+	les actions :
+		si x de palet est plus petit que 547 alors tu vas vers evenement
+		si x de palet est égal à 547 alors tu vas vers evenement
+
+		("l' ordi a-t-il perdu ?")
+		si x de palet est plus grand que 547 alors tu vas vers gagné
+		
+		tu vas vers evenement
+
+Paragraphe : perdu
+
+	Les rôles :
+		message est un graffiti, texte vaut "Perdu ! Encore un partie ?",  x vaut 150, y vaut 315, taille vaut 10, couleur vaut "bleu"
+	Les actions :
+		tu projettes le message
+		couleur de plateau = "rouge"
+		tu attends 0.1 secondes
+		couleur de plateau = "noir"
+		tu attends 0.1 secondes
+		couleur de plateau = "rouge"
+		tu attends 0.1 secondes
+		couleur de plateau = "noir"
+		tu vides les touches
+		tu vas vers boucle
+
+Paragraphe : gagné
+
+	Les rôles :
+		message est un graffiti, texte vaut "Gagné ! Encore un partie ?",  x vaut 150, y vaut 315, taille vaut 10, couleur vaut "bleu"
+	Les actions :
+		tu projettes le message
+		tu vides les touches
+		tu vas vers boucle
+
+Paragraphe : boucle
+
+	Les actions :
+		tu temporises
+		si la touche est égale à "clique" alors tu vas vers initialisation
+		tu vas vers boucle
+
+Paragraphe : initialisation
+
+	Les actions :
+
+		si état_raquette1 est égal à 1 alors ajoute 30 dans y2 de raquette1
+		si état_raquette1 est égal à 2 alors soustrais 50 dans y2 de raquette1
+		si état_raquette2 est égal à 1 alors ajoute 30 dans y2 de raquette2
+		si état_raquette2 est égal à 2 alors soustrais 50 dans y2 de raquette2
+		x de palet = 325
+		y de palet = 530
+		direction = 4
+		vitesse = 1
+		vide nombre_tours
+		vide evenement
+		vide avancement_evenement
+		vide état_raquette1
+		vide état_raquette2
+		tu vas vers décor
+
+Paragraphe : evenement
+	les actions :
+
+		si avancement_evenement est égal à 1 alors va vers evenement_collision
+		si avancement_evenement est égal à 2 alors va vers fin_evenement
+		ajoute 1 dans nombre_tours
+		si nombre_tours est plus petit que 1000 alors va vers analyse1
+
+		vide evenement
+		copie 7 dans evenement
+		mélange evenement
+		copie 530 dans y de bulle
+		mélange y de bulle
+		y de bulle = y de bulle + 30
+
+		si evenement est égal à 0 alors copie "vert" dans couleur de bulle
+
+		si evenement est égal à 1 alors copie "bleu ciel" dans couleur de bulle
+
+		si evenement est égal à 2 alors copie "orange" dans couleur de bulle
+
+		si evenement est égal à 3 alors copie "jaune" dans couleur de bulle
+
+		si evenement est égal à 4 alors copie "gris" dans couleur de bulle
+
+		si evenement est égal à 5 alors copie "violet" dans couleur de bulle
+
+		si evenement est égal à 6 alors copie "rose" dans couleur de bulle
+
+		projette bulle
+		copie 1 dans avancement_evenement
+		va vers analyse1
+
+Paragraphe : evenement_collision
+	les rôles :
+		collision est un nombre
+		aleatoire est un nombre
+
+	les actions :
+		vide collision
+		si le palet est en collision avec la bulle alors collision = 1
+		si collision est différent de 1 alors va vers analyse1
+
+		si evenement est égal à 0 alors vitesse = 3
+		si evenement est égal à 0 alors copie "vert" dans couleur de affichage_evenement
+		si evenement est égal à 0 alors copie "accélération" dans texte de affichage_evenement
+
+		si evenement est égal à 1 alors y de palet = 530
+		si evenement est égal à 1 alors mélange y de palet
+		si evenement est égal à 1 alors ajoute 30 dans y de palet
+		si evenement est égal à 1 alors aleatoire = 200
+		si evenement est égal à 1 alors mélange aleatoire
+		si evenement est égal à 1 alors soustrais 100 dans aleatoire
+		si evenement est égal à 1 alors ajoute aleatoire dans x de palet
+		si evenement est égal à 1 alors aleatoire = 8
+		si evenement est égal à 1 alors mélange aleatoire
+		si evenement est égal à 1 alors ajoute 1 dans aleatoire
+		si evenement est égal à 1 alors copie aleatoire dans direction
+		si evenement est égal à 1 alors copie "bleu ciel" dans couleur de affichage_evenement
+		si evenement est égal à 1 alors copie "téléportation" dans texte de affichage_evenement
+
+		si evenement est égal à 2 alors état_raquette1 = 5
+		si evenement est égal à 2 alors état_raquette2 = 5
+		si evenement est égal à 2 alors copie "orange" dans couleur de affichage_evenement
+		si evenement est égal à 2 alors copie "raquette plus énergique" dans texte de affichage_evenement
+
+		si evenement est égal à 3 alors état_raquette1 = 4
+		si evenement est égal à 3 alors état_raquette2 = 4
+		si evenement est égal à 3 alors copie "jaune" dans couleur de affichage_evenement
+		si evenement est égal à 3 alors copie "raquette moins énergique" dans texte de affichage_evenement
+
+		si evenement est égal à 4 alors état_raquette1 = 3
+		si evenement est égal à 4 alors état_raquette2 = 3
+		si evenement est égal à 4 alors copie "blanc" dans couleur de affichage_evenement
+		si evenement est égal à 4 alors copie "inversion des commandes" dans texte de affichage_evenement
+
+		si evenement est égal à 5 alors état_raquette1 = 2
+		si evenement est égal à 5 alors état_raquette2 = 2
+		si evenement est égal à 5 alors copie "violet" dans couleur de affichage_evenement
+		si evenement est égal à 5 alors copie "raquette plus grande" dans texte de affichage_evenement
+
+		si evenement est égal à 6 alors état_raquette1 = 1
+		si evenement est égal à 6 alors état_raquette2 = 1
+		si evenement est égal à 6 alors copie "rose" dans couleur de affichage_evenement
+		si evenement est égal à 6 alors copie "raquette plus petite" dans texte de affichage_evenement
+
+		si dernier_touché est égal à 1 alors vide état_raquette2
+		si dernier_touché est égal à 2 alors vide état_raquette1
+
+		si état_raquette1 est égal à 1 alors soustrais 30 dans y2 de raquette1
+		si état_raquette1 est égal à 2 alors ajoute 50 dans y2 de raquette1
+		si état_raquette2 est égal à 1 alors soustrais 30 dans y2 de raquette2
+		si état_raquette2 est égal à 2 alors ajoute 50 dans y2 de raquette2
+
+		si direction est égal à 1 alors direction = 6
+		si direction est égal à 2 alors direction = 5
+		si direction est égal à 3 alors direction = 8
+		si direction est égal à 4 alors direction = 7
+		si direction est égal à 5 alors direction = 2
+		si direction est égal à 6 alors direction = 1
+		si direction est égal à 7 alors direction = 4
+		si direction est égal à 8 alors direction = 3
+
+		avancement_evenement = 2
+		vide nombre_tours
+		efface la bulle
+		projette affichage_evenement
+		va vers analyse1
+
+Paragraphe : fin_evenement
+	les actions :
+		
+		ajoute 1 dans nombre_tours
+		si nombre_tours est plus petit que 1750 alors va vers analyse1
+		efface affichage_evenement
+
+		si état_raquette1 est égal à 1 alors ajoute 30 dans y2 de raquette1
+		si état_raquette1 est égal à 2 alors soustrais 50 dans y2 de raquette1
+		si état_raquette2 est égal à 1 alors ajoute 30 dans y2 de raquette2
+		si état_raquette2 est égal à 2 alors soustrais 50 dans y2 de raquette2
+		
+		copie 1 dans vitesse
+		vide état_raquette1
+		vide état_raquette2
+		vide evenement
+		vide nombre_tours
+		vide avancement_evenement
+		va vers analyse1
+

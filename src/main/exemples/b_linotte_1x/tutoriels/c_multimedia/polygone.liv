@@ -1,0 +1,40 @@
+Polygone :
+("Spécification 0.6.3")
+	Grands rôles :
+		vaisseau :: polygone, couleur vaut "rouge", plein vaut "oui", x vaut 100, y vaut 100, dx1 vaut 10 ,dy1 vaut 30, dx2 vaut 0 ,dy2 vaut 20, dx3 vaut -10 ,dy3 vaut 30
+		flotte :: casier de polygone valant vaisseau, #vaisseau, #vaisseau
+
+Affichage :
+	Rôles :
+		t :: nombre vide
+	Actions :
+		efface la toile
+		pour chaque flotte, lis
+			t vaut t + 20
+			projette joker
+			déplace joker de t et t
+			angle@joker vaut 360
+			mélange angle@joker
+		ferme
+		tant que vrai, lis
+			pour chaque flotte,lis
+				tourne à gauche joker de 1
+				parcours test avec joker
+			ferme
+			attends 10 millisecondes
+		ferme
+		Termine
+
+Test :
+	Rôles :
+		*v :: polygone
+		§test :: nombre vide
+	Actions :
+		pour chaque flotte,lis
+			si v est différent de joker alors lis
+				si v est en collision avec joker alors test vaut 1
+			ferme
+		ferme
+		si test == 1 alors couleur@v vaut "jaune"
+		sinon, couleur@v vaut "rouge"
+		reviens

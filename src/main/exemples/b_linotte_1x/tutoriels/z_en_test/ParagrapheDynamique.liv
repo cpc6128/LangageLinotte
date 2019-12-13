@@ -1,0 +1,18 @@
+Paragraphe dynamique :
+
+Principal :
+	Rôles :
+		direction :: texte <- "var"
+		var :: texte <- "ici"
+	Actions :
+		Affiche <<direction>> ; appelle <<direction>> ;	attends 1 seconde
+
+Direction :
+	Actions :
+		"Faux "!
+		Reviens
+
+Ici :
+	Actions :
+		"Cool "!
+		Reviens

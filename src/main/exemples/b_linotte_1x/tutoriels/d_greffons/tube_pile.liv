@@ -1,0 +1,28 @@
+La pile :
+("Spécification : 0.6.2")
+("http://fr.wikipedia.org/wiki/Pile_(informatique)")
+
+Grands rôles :
+	data :: pile
+
+Principal :
+	Actions :
+		charge "pile !" dans data
+		charge "une" dans data
+		charge "dans" dans data
+		charge "suis" dans data
+		charge "je" dans data
+		charge "Bonjour," dans data
+		va vers suite
+
+Suite :
+	Rôles :
+		texte :: texte <- "rien"
+		boucle :: nombre <- 0
+	Souffleurs :
+		dès que texte est vide, boucle vaut 1
+	Actions :
+		tant que boucle est vide, lis	
+			décharge texte depuis data
+			texte !
+		ferme

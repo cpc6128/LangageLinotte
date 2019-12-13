@@ -1,0 +1,12 @@
+Clonage d'un acteur :
+("Spécification Linotte 0.6.1")
+	Grands rôles :
+		nombre :: nombre <- 0
+		Liste :: casier de nombre vide
+	Principal :
+		Actions :
+			pour chaque 3, lis
+				nombre vaut nombre + 1
+				ajoute  #nombre dans liste
+			ferme
+			liste !

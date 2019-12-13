@@ -1,0 +1,13 @@
+Acteurs locaux à un sous-paragraphe :
+("Spécification : 1.3")
+
+principal :
+	Rôles :
+		mon casier :: casier de nombre vide
+	Actions :
+		pour chaque 10, lis
+			§ b :: nombre valant 15
+			mélange b
+			ajoute b dans mon casier
+		ferme
+		affiche mon casier

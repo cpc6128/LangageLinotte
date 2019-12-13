@@ -1,0 +1,9 @@
+// Le code de ce greffon, écrit en langage Python, est localisé dans le répertoire "greffons" de l'Atelier.
+// C'est le fichier Abaque.py
+// Les méthodes fonctionnelles utilisables depuis le langage Linotte doivent commencer par slot_
+
+principale :
+	boulier est un abaque
+	début
+		affiche "pair ? "+ boulier.pair(25)
+		affiche "pair ? "+ boulier.pair(26)

@@ -1,0 +1,10 @@
+total := 2
+liste :: number []
+for total call suite
+for liste print joker
+
+suite :
+	numéro :: number
+	input numéro
+	insert numéro in liste
+	return

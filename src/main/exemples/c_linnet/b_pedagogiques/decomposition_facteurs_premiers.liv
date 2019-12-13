@@ -1,0 +1,27 @@
+n :: number
+diviseur :: number
+nbfacteurs := 0
+a :: number
+puissance :: number
+resultat :: string
+flag premier := false
+input n
+a = n
+resultat = n + " = "
+for diviseur, 2 to floor(n/2) {
+	puissance = 0
+	while a mod diviseur = 0 {
+			/*a est premier*/
+		flag premier = true
+		puissance = puissance + 1
+		a = a / diviseur
+	}
+	if flag premier {
+		nbfacteurs = nbfacteurs + 1
+		if nbfacteurs > 1, resultat = resultat + " * "
+		resultat = resultat + diviseur + "^" + puissance
+		puissance = 1
+		flag premier = false
+	}
+}
+print resultat

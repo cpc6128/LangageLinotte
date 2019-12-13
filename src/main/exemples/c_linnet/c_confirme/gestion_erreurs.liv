@@ -1,0 +1,8 @@
+try {
+	1/0 !
+	"ça marche !" !
+}
+else {
+	"Numéro de l'erreur : " + numéro_erreur !
+	"Message de l'erreur : " + message_erreur !
+}

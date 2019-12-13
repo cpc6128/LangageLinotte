@@ -1,0 +1,10 @@
+﻿Images :
+
+	Merci à Bruno Condoin (http://www.gcompris.net/) pour l'autorisation d'utiliser ces images :
+	 
+	dn_house2.png est copyright Ponchaut Olivier sous GPL.
+	tux_graduate.png est copyright Franck Doucet sous GPL.
+
+SVGs : 
+
+	duke.svg http://en.wikipedia.org/wiki/Image:Duke.svg

@@ -1,0 +1,23 @@
+Equation du premier degree :
+("Spécification 1.1")
+
+Eésolution :
+	Rôles :
+		x :: nombre
+		a :: nombre
+		b :: nombre
+	Actions :
+		Questionne a sur "Quelle est la valeur de a ?"
+		Questionne b sur "Quelle est la valeur de b ?"
+		Si a == 0 alors lis
+			Si b == 0 alors lis
+				Affiche "R est la solution"
+			Ferme
+			Sinon, lis
+				Affiche "Je ne sais que dire !"
+			Ferme
+ 		Ferme
+		Sinon, lis
+			x vaut b / a
+			Affiche x
+		Ferme

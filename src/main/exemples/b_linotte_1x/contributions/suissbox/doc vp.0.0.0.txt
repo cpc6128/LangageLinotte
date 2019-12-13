@@ -1,0 +1,44 @@
+DOCUMENTATION SUR SuissBox vp.0.0.0
+Voici pêle-mêle les commandes disponibles :
+1)	Faire un saut  (goto), correspond au symbole « > » premier caractère dans la ligne suivit du nom de l’adresse du saut ; exemple >adresse.
+2)	afficher une remarque dans le code ou définir une adresse pour un saut (goto) : ce fait par le symbole « # » comme premier caractère dans la ligne, soit #adresse, ou # ceci est une remarque.
+3)	Faire un saut avec retour potentiel (gosub), les deux premiers caractères de la ligne doivent être « >< » suivis de l’adresse du saut soit ><adresse, le retour potentiel correspond au premier caractère de la ligne égal au symbole « < » est renvoi à la ligne suivant le dernier saut (gosub) effectué.
+4)	Afficher  un texte et /ou le contenu d’une variable sur la zone réservée aux textes, correspond au symbole « ! » comme premier caractère, exemples :
+-	 !a   affiche la valeur de a
+-	 ! « bonjour »+a, affiche le texte « bonjour » suivit du contenu de la variable a
+-	 ! « au revoir », affiche le texte spécifié
+5)	Graphismes :
+-	Tous les dessins se font avec « une tortue » unique est sont définie en temps qu’objet par l’instruction « Def » suivit d’un espace et du nom du dessin soit, 
+Def étoile       (Il n’est pas possible pour le moment, de remplir une forme).
+-	Les instructions pour la tortue sont :
+o	« Up » signifie « lève le crayon de la tortue »
+o	« Lo » signifie « baisse le crayon de la tortue »
+o	« Tg » signifie « tourne à gauche de n degrés », exemple : Tg 90, Tg a (a étant une variable), Tg 2*a
+o	« Td » signifie « tourne à droite de n degrés »
+o	« Av » signifie « avancer de  x », soit Av 70 (avance la tortue de 70 en abscisse), Av 2*a ….
+o	« Av 70;50 »  signifie avance au point spécifié, exemple Av a;b (avance en a sur x et en b sur y
+o	« Rc » signifie « Reculer de x », Rc 50, Rc a, mais pas Rc 70;50
+-	
+6)	Fonctionnement des variables :
+-	« A= » correspond à « a=0 »
+-	La variable située à la gauche du signe = est automatiquement crée si elle n’existe pas et à la valeur 0, l’on peut ainsi taper a=a+1 sans que « a » n’est déjà été utilisée. Par contre, a=b+1 ne marche pas si b n’existe pas au préalable.
+7)	Création de liste :
+-	Pour le moment une liste ne peut être construite qu’élément par élément.
+-	Les listes sont automatiquement dimensionnées et crée comme pour les variables, ainsi l’instruction c{2}=5 entraîne la création de la liste « c » si elle n’existe pas, l’on obtiens la liste « c » avec les éléments suivants 0, 0,5 ; par la suite avec c{4}=7 l’on a « c » valant 0,0,5,0,7.
+8)	Création d’un tableau de nombres : 
+
+-	L’instruction est : Dim « le nom du tableau ; nombre de lignes ; nombres de colonnes, soit : Dim tableau ;2 ;3 ou Dim données ;l ;c  (les variables « l » et « c » doivent exister au préalable).
+9)	Les conditions :
+-	Pour le moment, les conditions ne peuvent pas être imbriquées,
+-	Les opérateurs de comparaison sont =, <,>, <> (différent), <=,>=
+-	Le signe «] » signifie  fin de la condition,
+-	Le signe « [ » correspond « sinon »
+-	Exemple : Si a<=3
+-	                   Exécuté si la condition est vraie
+-	                   [
+-	                   Exécuté si la condition est fausse 
+-	                   ]
+10)	Sauvegarde des variables simples (pas de listes, de tableaux):
+L’instruction « Save » suivie d’un espace et du nom de la sauvegarde entraine l’enregistrement (« en mémoire ») des variables et de leurs valeurs à ce moment précis.
+11)	Récupération des variables :
+L’instruction « Restor » suivie d’un espace et du nom de la sauvegarde, fait que les variables retrouvent les valeurs quelles avaient au moment de la sauvegarde par Save.

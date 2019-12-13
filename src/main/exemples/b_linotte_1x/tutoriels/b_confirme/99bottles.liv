@@ -1,0 +1,16 @@
+99 Bottles of Beer :
+("http://99-bottles-of-beer.net/")
+
+Principal :
+	Actions :
+		de 99 à 1, lis
+			§ligne <- "s"
+			si joker < 2 alors vide ligne
+			"${joker} bottle${ligne} of beer on the wall, ${joker} bottle${ligne} of beer." !
+			si joker == 2 alors ligne vaut "1 bottle"
+			sinon, si joker == 1 alors ligne vaut "no more bottles"
+			sinon, ligne vaut joker - 1 + " bottles"
+			"Take one down, pass it around, ${ligne} of beer on the wall." !
+		ferme
+		"No more bottles of beer on the wall, no more bottles of beer." !
+		"Go to the store, buy some more, 99 bottles of beer on the wall." !

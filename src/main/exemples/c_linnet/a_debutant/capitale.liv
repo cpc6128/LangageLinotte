@@ -1,0 +1,6 @@
+capitale :: string
+while capitale != "Paris" {
+	print "Quelle est la capitale de la France ?"
+	input capitale
+}
+print "Bravo, tu es trop fort !"

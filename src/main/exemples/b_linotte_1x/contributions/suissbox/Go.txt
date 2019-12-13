@@ -1,0 +1,72 @@
+#INIT
+vsRnd=0
+vsUpt=
+vsNumlo=
+vsPossig=
+vsCond=" "
+vsLsi=
+vsNbsaut=
+vsSig=
+vsDist=
+vsLogot=
+vsPosxt=
+vsPosyt=
+vsNbpt=
+vsNb_vsLo=1
+Def vsLo
+vsColor_=noir
+vsAngle_=360
+vsDim_=1
+vsOpaq_=0
+vsVue_=1
+vsColor_=rouge
+vsRvb_={254;254;254
+vsDim_=2
+Def vsSepar
+Up
+Av ecranh*0.8;0
+Lo
+Td 90
+Av ecranh*0.8;ecranv
+vsVue_=1
+Def vsLo
+vsDim_=1
+vsColor_=orange
+vsAngle_=
+vsOpaq_=80
+vsVue_=0
+Def vsBtn0
+Up
+Av ecranh*0.8;0
+Lo
+Av 30
+Tg 90
+Av ecranh*0.2
+Tg 90
+Av 30
+Tg 90
+Av ecranh*0.2
+fill_=orange
+vsOpaq_fill_=80
+vsVue_fill_=1
+Def vsLo
+vsColor_=violet
+vsOpaq_=
+vsVue_=1
+Def Trih
+Up
+Av ecranh*0.8;75
+Lo
+Av ecranh;75
+Av ecranh*0.9;50
+Av ecranh*0.8;75
+fill_=violet
+Def Trib
+Up
+Av ecranh*0.8;ecranv-75
+Lo
+Av ecranh;ecranv-75
+Av ecranh*0.9;ecranv-50
+Av ecranh*0.8;ecranv-75
+fill_=violet
+#FIN INIT

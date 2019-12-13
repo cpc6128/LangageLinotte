@@ -1,0 +1,30 @@
+Mégalithe :
+("Spécification 0.6.5")
+
+Grands rôles : 
+
+	tête :: cercle , x vaut 440, y vaut 178, rayon vaut 5, taille vaut 10, couleur vaut "chair", position vaut 2
+	corps :: ligne, x1 vaut 440, y1 vaut 188, x2 vaut 440, y2 vaut 260, taille vaut 4, couleur vaut "bleu france", position vaut 1
+	bras 1 :: ligne, x1 vaut 440, y1 vaut 203, x2 vaut 414, y2 vaut 223, taille vaut 3, couleur vaut "chair", position vaut 0
+	bras 2 :: ligne, x1 vaut 440, y1 vaut 203, x2 vaut 466, y2 vaut 223, taille vaut 3, couleur vaut "chair", position vaut 0
+	jambe 1 :: ligne, x1 vaut 420, y1 vaut 293, x2 vaut 440, y2 vaut 260, taille vaut 3, couleur vaut "bleu nuit", position vaut 0
+	jambe 2 :: ligne, x1 vaut 460, y1 vaut 293, x2 vaut 440, y2 vaut 260, taille vaut 3, couleur vaut "bleu nuit", position vaut 0
+
+	personnage1 :: mégalithe
+	personnage2 :: mégalithe
+	indicateur :: rectangle,  largeur vaut 40, hauteur vaut 20, couleur vaut "noir", plein vaut "oui"
+
+Démonstration :
+	Actions :
+		Efface la toile
+		Projette personnage1 & indicateur
+		Fusionne tête & corps & bras 1 & bras 2 & jambe 1 & jambe 2 dans personnage1
+		personnage2 vaut personnage1
+		Déplace personnage2 de -100 et 0
+		tant que vrai, lis
+			tourne à droite personnage1 de 1  	
+			tourne à gauche personnage2 de 2 
+			si personnage1 est en collision avec personnage2 alors couleur @ indicateur vaut "rouge"
+			sinon, couleur @ indicateur vaut "vert"
+			attends 0.01 seconde
+		ferme

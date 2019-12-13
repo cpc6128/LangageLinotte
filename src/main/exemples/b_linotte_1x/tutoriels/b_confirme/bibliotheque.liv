@@ -1,0 +1,19 @@
+La bibliothèque :
+
+Bibliothèque : 
+	livre1 référence bibliotheque2.liv
+
+Principal :
+
+		Rôles :
+			Message :: texte <- "Nous sommes dans le livre : "
+			Nom :: texte
+
+		Actions :
+			Concatène message, livre dans message
+			Affiche message
+			Affiche "Quel est ton nom ?"
+			Demande nom
+			Parcours bonjour de livre1 avec nom
+			Affiche "Nous sommes de retour !"
+		

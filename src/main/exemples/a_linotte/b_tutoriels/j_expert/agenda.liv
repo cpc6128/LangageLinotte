@@ -1,0 +1,98 @@
+espèces
+	Nom est un texte
+	Prénom est un texte
+	Téléphone est un texte
+	Adresse est un texte
+	Code postal est un nombre
+	Ville est un texte
+	espèce contact contient nom, prénom, téléphone, adresse, code postal, ville
+globale
+	Agenda est un casier de contact depuis "agenda.base2donnees"
+	Traitement est un nombre valant 0 /*permet de savoir si les recherches sont fructueuses ou pas*/
+
+principale :
+	Choix est un nombre
+	début
+		"Menu :" !
+		"1 : Ajouter un contact" !
+		"2 : Chercher un contact" !
+		"3 : Supprimer un contact" !
+		"4 : Quitter" !
+		"Quelle option choisissez-vous ?" !
+		Choix ?
+		Si choix == 1, va vers ajouter
+		Sinon si choix == 2, va vers chercher
+		Sinon si choix == 3, va vers supprimer
+		"A bientôt" !
+
+Ajouter :
+	Nouveau est un contact
+	début
+		"Quel est le nom ?" !
+		nom@nouveau ?
+		"Quel est le prénom ?" !
+		prénom@nouveau ?
+		"Quel est son téléphone ?" !
+		téléphone@nouveau ?
+		"Quelle est son adresse ?" !
+		adresse@nouveau ?
+		"Quel est son code postal ?" !
+		code postal@nouveau ?
+		"Quelle est sa ville ?" !
+		ville@nouveau ?
+		Ajoute nouveau dans agenda
+		Affiche "${nom@nouveau} est ajouté(e) !"
+		Va vers principale
+
+Chercher :
+	Temporaire est un texte
+	début
+		"Quel est le nom du contact que vous voulez rechercher ?" !
+		Temporaire ?
+		traitement prend 0
+		Pour chaque agenda, parcours analyse recherche
+		Si traitement == 0, affiche "Ce contact n'a pas été trouvé !"
+		Va vers principale
+
+Analyse recherche :
+	Temporaire est un texte
+	début
+		Si (nom@joker) != temporaire, reviens
+		traitement prend 1
+		Affiche "${nom@joker} a été trouvé :"
+		Nom@joker !
+		Prénom@joker !
+		Téléphone@joker !
+		Adresse@joker !
+		Code postal@joker !
+		Ville@joker !
+		Reviens
+
+Supprimer :
+	Temporaire est un texte
+	début
+		"Quel est le nom du contact que vous voulez supprimer ?" !
+		Temporaire ?
+		traitement prend 0
+		Pour chaque agenda, parcours analyse suppression
+		Si traitement == 0, affiche "Ce contact n'a pas été trouvé !"
+		Va vers principale
+
+Analyse suppression :
+	Temporaire est un texte
+	Confirmation est un texte
+	début
+		Si nom@joker != temporaire, reviens
+		traitement prend 1
+		Affiche "${nom@joker} va etre supprimé :"
+		Prénom@joker !
+		Téléphone@joker !
+		Adresse@joker !
+		Code postal@joker !
+		Ville@joker !
+		"Vous confimez ? ('oui')" !
+		Confirmation ?
+		Si confirmation != "oui", reviens
+		Ôte joker de agenda
+		"Contact supprimé !" !
+		Reviens

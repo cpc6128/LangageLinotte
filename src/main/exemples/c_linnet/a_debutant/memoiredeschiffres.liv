@@ -1,0 +1,36 @@
+score := 0
+nombre1 :: number
+nombre2 :: number
+nombre3 :: number
+réponse1 :: number
+réponse2 :: number
+réponse3 :: number
+boucle := true
+while boucle {
+	"Je vais afficher 3 nombres et tu vas devoir les retrouver !" !
+	"Voici les nombres : " !
+	nombre1 = random(500)
+	nombre2 = random(500)
+	nombre3 = random(500)
+	nombre1 !
+	nombre2 !
+	nombre3 !
+	"Je vais attendre 5 secondes" !
+	sleep 5000
+	clean
+	"Premier nombre ?" !
+	réponse1 ?
+	"Deuxième nombre ?" !
+	réponse2 ?
+	"Troisième nombre ?" !
+	réponse3 ?
+	if réponse1 != nombre1, boucle = false
+	if réponse2 != nombre2, boucle = false
+	if réponse3 != nombre3, boucle = false
+	if boucle {
+		score = score + 1
+		"Bravo !" !
+	}
+}
+"La réponse est fausse. Le jeu se termine, ton score est de ${score}" !
+"Je pense que tu peux mieux faire..." !

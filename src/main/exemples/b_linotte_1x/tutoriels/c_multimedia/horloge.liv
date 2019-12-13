@@ -1,0 +1,24 @@
+Horloge numérique :
+
+Principal :
+	rôles :
+		horloge :: graffiti, x vaut 5, y vaut 20, le texte vaut "L'horloge digitale", la couleur vaut "rose"
+		toile :: toile, la couleur vaut "noir", la hauteur vaut 30 , la largeur vaut 270, x vaut 50, y vaut 50, audessus vaut "oui", la bordure vaut "non"
+	actions :
+		copie ecranh dans x @ toile
+		copie ecranv dans y @ toile
+		soustrais 300 dans x @ toile
+		soustrais 80 dans y @ toile
+		efface la toile
+		projette toile
+		projette horloge
+		attends 1 seconde
+		va vers affichage
+
+Affichage :
+	rôles :
+		horloge :: graffiti
+	actions :
+		texte@horloge vaut "Il est ${heure} heures, ${minute} minutes et ${seconde} secondes"
+    attends 1 seconde
+		va vers affichage

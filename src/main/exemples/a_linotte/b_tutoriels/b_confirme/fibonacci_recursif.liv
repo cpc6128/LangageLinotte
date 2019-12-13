@@ -1,0 +1,23 @@
+tests
+	< "Entrez un nombre :"
+	> 20
+	< 6765
+
+principal :
+	n est un nombre
+	début
+		"Entrez un nombre :" !
+		n ?
+		parcours fibo avec n
+		n !
+
+fibo :
+	* n est un nombre
+	traitement est un nombre valant n - 1
+	traitement2 est un nombre valant n - 2
+	début
+		si n < 2 reviens
+		parcours fibo avec traitement
+		parcours fibo avec traitement2
+		n prend traitement + traitement2
+		reviens

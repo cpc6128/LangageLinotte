@@ -1,0 +1,5 @@
+principale :
+	phrase est un texte valant µ"0022" + "Voici mon texte !" + µ"0022"
+	début
+		phrase !
+		µ"06A5" !

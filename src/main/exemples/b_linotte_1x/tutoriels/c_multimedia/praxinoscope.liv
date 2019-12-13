@@ -1,0 +1,39 @@
+Praxinoscope :
+("Spécification : 1.2.4")
+	Grands Rôles :
+		écran :: praxinoscope, x vaut 200, y vaut 190, ...
+			image0 vaut  "images/praxinoscope-0.png", ...
+			image1 vaut  "images/praxinoscope-1.png", ...
+			image2 vaut  "images/praxinoscope-2.png", ...
+			image3 vaut  "images/praxinoscope-3.png", ...
+			image4 vaut  "images/praxinoscope-4.png", ...
+			image5 vaut  "images/praxinoscope-5.png", ...
+			image6 vaut  "images/praxinoscope-6.png", ...
+			image7 vaut  "images/praxinoscope-7.png", ...
+			image8 vaut  "images/praxinoscope-8.png", ...
+			image9 vaut  "images/praxinoscope-9.png", ...
+			image10 vaut  "images/praxinoscope-10.png", ...
+			image11 vaut  "images/praxinoscope-11.png"
+		fond :: toile, couleur vaut "noir"
+		texte :: graffiti, couleur vaut "lapis-lazuli", x vaut 250, y vaut 510
+
+Animation :
+	Actions :
+		efface la toile
+		projette écran & fond & texte
+		appelle minuteur
+		("boucle infinie")
+		tant que vrai, lis
+			tourne à gauche écran de 1
+			attends 0.1 seconde
+		ferme
+
+minuteur :
+	actions :
+		tant que vrai, lis
+			pour chaque 12, lis
+				trame@écran vaut joker
+				Attends 0.1 secondes
+				texte@texte vaut "trame n°" + joker
+			ferme
+		ferme

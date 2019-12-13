@@ -1,0 +1,36 @@
+Boite à texte :
+("Spécification : 0.7.2")
+	Grands rôles :
+		form :: formulaire, titre vaut "La boite à texte", largeur vaut 400, hauteur vaut 260
+		boite :: boite,x vaut 30, y vaut 30, largeur vaut 200, hauteur vaut 100
+		b1 :: menubouton, texte vaut "Afficher le texte dans le tableau"
+		l1 :: étiquette, texte vaut "", x vaut 30, y vaut 200
+		b2 :: menubouton, texte vaut "Ouvrir un fichier"
+		c :: conduit
+
+Début :
+	Actions :
+		Ajoute boite & b1 & b2 & l1 dans form
+		Fais réagir b1 à "clic souris" pour valeur
+		Fais réagir b2 à "clic souris" pour ouvrir
+		tant que 1 != 2, lis
+			temporise
+		ferme
+
+Valeur :
+	Rôles :
+		*b :: menubouton
+	Actions :
+		texte@boite !
+		Reviens
+
+Ouvrir :
+	Rôles :
+		*b :: menubouton
+		§retour :: drapeau
+	Actions :
+		retour vaut c.sélectionneretouvrir()
+		si retour alors lis
+			texte@boite vaut c.lire()
+		ferme
+		Reviens

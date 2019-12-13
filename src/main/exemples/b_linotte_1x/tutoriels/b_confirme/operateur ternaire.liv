@@ -1,0 +1,10 @@
+Opérateur ternaire :
+("Spécification 1.6")
+
+ Principal :
+	Rôles :
+		a :: drapeau <- vrai
+		b :: drapeau <- faux
+	Actions :
+		Affiche ter (a,2,3)
+		Affiche ter (b,2,3)

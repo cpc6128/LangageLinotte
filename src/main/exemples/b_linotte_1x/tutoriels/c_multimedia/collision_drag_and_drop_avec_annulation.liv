@@ -1,0 +1,41 @@
+Drag n Drop :
+    espèces :
+        copie_x & copie_y :: nombre
+        l'espèce rectangledng hérite de rectangle et contient copie_x , copie_y
+    grands rôles :
+        centre :: cercle,  x vaut 311, y vaut 285, couleur vaut "rouge", plein vaut "oui", rayon vaut 50
+        boule :: rectangledng,  largeur vaut 40, hauteur vaut 20, couleur vaut "noir", plein vaut "oui"
+        fond :: toile, couleur vaut "blanc"
+
+Principal :
+    Actions :
+        attache fixer  à boule
+        attache rétablir à boule
+        ("Mémoriser la position initiale :")
+        évoque boule.fixer()
+        projette fond & centre & boule
+        fais réagir boule à "glisser-déposer" pour changement
+        ("Boucle infinie")
+        Tant que vrai, temporise
+
+Changement :
+    Actions :
+        si boule est en collision avec centre alors évoque boule.fixer()
+        sinon, évoque boule.rétablir()
+        reviens
+
+Fixer :
+    Rôles :
+        *moi :: rectangledng
+    Actions :
+        copie_x@moi vaut x@moi
+        copie_y@moi vaut y@moi
+        retourne vrai
+
+Rétablir :
+    Rôles :
+        *moi :: rectangledng
+    Actions :
+        x@moi vaut copie_x@moi
+        y@moi vaut copie_y@moi
+        retourne vrai

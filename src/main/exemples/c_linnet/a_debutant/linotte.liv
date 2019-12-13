@@ -1,0 +1,11 @@
+valeur :: number
+réponse := 2005
+valide := false // Réponse valide ?
+while not valide {
+	print "En quelle année fut inventé le langage Linotte ?"
+	input valeur
+	if valeur > réponse print "Non non... c'est avant !"
+	else if valeur < réponse print "Il est plus jeune ! "
+	else if valeur = réponse, valide = true
+}
+print "Bravo, tu es trés fort ! "

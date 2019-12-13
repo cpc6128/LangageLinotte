@@ -1,0 +1,76 @@
+espèces
+	énergie valant 1000
+	nom est un texte
+	espèce stormtrooper contient énergie
+	espèce jedi contient énergie, nom
+
+attaquer de stormtrooper :
+	force valant 100
+	début
+		mélange force
+		// Le stormtrooper perd de l'energie quand il attaque
+		énergie@moi prend énergie@moi - force * 10
+		retourne force
+
+prendre coup de stormtrooper : point
+		énergie@moi prend énergie@moi - point
+		retourne énergie@moi
+
+respire de stormtrooper :
+		si (énergie@moi) > 0 retourne vrai
+		sinon retourne faux
+
+attaquer de jedi : ennemi
+	force valant 500
+	début
+		mélange force
+		ennemi.prendre coup(force)
+		retourne force
+
+prendre coup de jedi : point
+		énergie@moi prend énergie@moi - point
+		retourne énergie@moi
+
+respire de jedi :
+		si (énergie@moi) > 0 retourne vrai
+		sinon retourne faux
+
+principale :
+	prototype est un stormtrooper, énergie prend 1000
+	yoda est un jedi, nom prend "Yoda", énergie prend 9000
+	armée est un casier de stormtrooper
+	taille armée valant 100
+	vivants valant taille armée
+	début
+		// On ajoute les clones du prototype dans l'armée :
+		pour chaque taille armée ajoute clone(prototype) dans armée
+		// ààà l'attaaaqueeee !
+		tant que vivants > 0 lis
+			i est un nombre
+			pour i de 0 à taille armée - 1 lis
+				si armée{i}.respire() lis
+					dégât est un nombre
+					efface tableau
+					affiche ">> Attaque du stormtrooper n° " + i + " :"
+					dégât prend armée{i}.attaquer()
+					affiche "    Il vient de faire une attaque de " + dégât + " points."
+					affiche "    Il reste " + yoda.prendre coup(dégât) + " énergie à " + nom@yoda
+					si non(yoda.respire()) lis
+						affiche "    " + nom@yoda + " est mort. "
+						affiche "****L'alliance a perdu !"
+						termine
+					ferme
+					affiche "<< " + nom@yoda + " répond en attaquant... "
+					dégât prend yoda.attaquer(armée{i})
+					affiche "    ...il vient de faire un attaque de " + dégât + " points."
+					affiche "    Le stormtrooper a maintenant " + énergie@(armée{i}) + " points d'énergie."
+					si non(armée{i}.respire()) lis
+						affiche "    Le stormtrooper n° + " + i + " est mort !"
+						décrémente vivants
+					ferme
+					attends 500 milliseconde
+				ferme
+			ferme
+		ferme
+		affiche "    L'armée des clones est décimée !"
+		affiche "****L'alliance a gagné !"

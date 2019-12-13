@@ -1,0 +1,17 @@
+démonstration :
+	presse est un pressepapier
+	information est un texte valant "Texte copié depuis le langage Linotte !"
+	entrée est un texte
+	début
+		affiche "Vous avez dans votre presse-papier le texte suivant : " + presse.coller()
+		affiche "Je vais maintenant modifier le presse-papier !"
+		presse.copier(information)
+		affiche "Vérifiez votre presse-papier maintenant !"
+		demande entrée
+		affiche "je vais maintenant copier du HTML dans le presse-papier"
+		presse.copierhtml("<html>Bonjour, vous utilisez la version <b>" + version + "</b> de <i>l'Atelier Linotte</i></html>")
+		affiche "Vérifiez dans un éditeur plus évolué (Word ou Open)!"
+		demande entrée
+		affiche "Maintenant, je vais stocker la toile dans le presse-papier (la toile doit contenir un dessin !)"
+		presse.copiertoile()
+		affiche "Vérifiez votre presse-papier maintenant avec un logiciel manipulant les images (Gimp par exemple)!"

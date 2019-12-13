@@ -1,0 +1,16 @@
+Tube fichier :
+("Spécification : 0.6.1")
+Les espèces :
+	Nom :: texte vide
+	Prénom :: texte vide
+	L'espèce contact contient nom, prénom
+   
+Principal :
+	Rôles :
+		Connecteur :: fichier
+		c :: casier de contact
+	Actions :
+		ouvre connecteur avec "lecture" depuis "c:/temp/test_tube.txt"
+		décharge c depuis connecteur
+		ferme connecteur
+		affiche c 	

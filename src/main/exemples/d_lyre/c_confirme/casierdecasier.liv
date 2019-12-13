@@ -1,0 +1,5 @@
+/*Utilisation des casiers anonymes*/
+tab1 := "X" , "D" , "G"
+lettre := tab1, ["B" , "E" , "H"], ["C" , "F" , "I"]
+lettre [0 , 0] = "A"
+pour [0, 1, 2] affiche lettre [joker , 0]

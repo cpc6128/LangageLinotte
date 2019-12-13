@@ -1,0 +1,10 @@
+/*
+Exemple de création et d'utilisation d'un greffon écrit en langage Linotte
+Le greffon se trouve dans greffons/chronomètre.liv
+*/
+démonstration :
+	montre est un chronomètre
+	début
+		montre.démarrer()
+		attends 3 secondes
+		affiche montre.arrêter() + " secondes"

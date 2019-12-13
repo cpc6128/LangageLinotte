@@ -1,0 +1,93 @@
+Fractale Mandelbrot :
+	Grands rôles :
+		zonex <- -2
+		zoney <- -2
+		zonew <- 4
+		zoneh <- 4
+		fond :: toile, hauteur vaut 500, largeur vaut 500
+		ligne :: ligne, transparence vaut 50, taille vaut 1, couleur vaut "sable", y1 vaut 0, y2 vaut 500
+		crayon :: crayon, couleur vaut "rouge",pointe vaut "non"
+
+Dessine :
+	Rôles :
+		§verre :: cercle, transparence vaut 50, taille vaut 10, couleur vaut "gris acier", rayon vaut 25, plein vaut "non"
+		§tige :: ligne, transparence vaut 50, taille vaut 10, couleur vaut "queue-de-vache clair", x1 vaut -60, x2 vaut -25, y1 vaut -60, y2 vaut -25
+		§loupe :: mégalithe, transparence vaut 50
+	Actions :
+		fusionne verre & tige dans loupe
+		tant que vrai, lis
+			efface la toile
+			efface crayon
+			projette fond & crayon & ligne
+			parcours fractale
+			projette loupe
+			tant que touche != "clique", lis
+				déplace loupe vers sourisx + 25 et sourisy + 25
+				temporise
+			ferme
+			efface loupe
+			("effet zoom !")
+			taille@verre vaut 1
+			déplace verre vers sourisx + 25 et sourisy + 25
+			projette verre
+			pour chaque 30, lis
+				taille@verre vaut joker
+				rayon@verre vaut joker * 10
+				attends 0.01 secondes
+			ferme
+			efface verre
+			parcours zoom avec sourisx, sourisy
+		ferme
+
+Fractale :
+	Rôles  :
+		x & y & a & b :: nombre vide
+		c1 & c2 & c3 :: nombre
+	Actions :
+		Pour x de 0 à largeur@fond, lis
+			x1@ligne vaut x
+			x2@ligne vaut x
+			pour y de 0 à hauteur@fond, lis
+				a vaut zonex + x * zonew / (largeur@fond)
+				b vaut zoney + y * zoneh / (hauteur@fond)
+				si converge(a,b) est vrai alors lis
+					c1 vaut abs(entier(a * 55))
+					c3 vaut 255 - abs(entier(a * 55))
+					c2 vaut entier(abs(b * 255))
+					couleur@crayon vaut c1 + " " + c2 + " " + c3
+					pique crayon à x et y
+				ferme
+			ferme
+		ferme
+		reviens
+
+Converge :
+	Rôles :
+		*a :: nombre
+		*b :: nombre
+		§x :: nombre
+		§y :: nombre
+		§ynew :: nombre
+		§xnew :: nombre
+	Actions :
+		pour chaque 30, lis
+			xnew = x * x - y * y + a
+			ynew = 2 * x * y + b
+			si ((abs xnew) sup 2) ou ((abs ynew) sup 2) est vrai alors retourne faux
+			x vaut xnew
+			y vaut ynew
+		ferme
+		retourne vrai
+
+Zoom :
+	Rôles :
+		*newx :: nombre
+		*newy :: nombre
+		§scale :: nombre
+	Actions :
+		scale vaut zonew / (largeur@fond)
+		zonex vaut zonex + newx * scale
+		zoney vaut zoney + newy * scale
+		zonew vaut 50 * scale
+		zoneh vaut 50 * scale
+		reviens

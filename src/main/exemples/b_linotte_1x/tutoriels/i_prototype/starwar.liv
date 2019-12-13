@@ -1,0 +1,115 @@
+L'attaque des clones :
+("Spécification : 1.3")
+	Espèces :
+		énergie :: nombre <- 1000
+		nom :: texte
+		l'espèce stormtrooper hérite de entité et contient énergie
+		l'espèce jedi hérite de entité et contient énergie, nom
+
+Principal :
+	Rôles :
+		prototype :: stormtrooper, énergie vaut 1000
+		yoda :: jedi, nom vaut "Yoda", énergie vaut 10000
+		armée :: casier de stormtrooper vide
+		taille armée :: nombre <- 100
+		vivants :: nombre <- taille armée ("Nombre de stormtroopers encore vivants")
+	Actions :        
+        	("Construction des espèces :")
+		attache attaquer à prototype
+		attache perdre énergie à prototype
+		attache vivant à prototype
+		attache frapper à yoda
+		attache respire encore à yoda
+		attache prendre coup à yoda
+
+        	("On ajoute les clones du prototype dans l'armée :")
+		pour chaque taille armée, ajoute #prototype dans armée
+        	("àààà l'attaaaqueeee !")
+		tant que vivants > 0, lis
+			§i :: nombre
+			pour i de 0 à taille armée - 1, lis
+				si armée{i}.vivant() alors lis
+					§dégât :: nombre
+					Efface tableau
+					"--> Attaque du stormtrooper n° " + i + " :" !
+					dégât vaut armée{i}.attaquer()
+					"    Il vient de faire une attaque de " + dégât + " points." !
+					"    Il reste " + yoda.prendre coup(dégât) + " énergie à " + nom@yoda !
+					si yoda.respire encore() est faux alors lis
+						"    " + nom@yoda + " est mort. " !
+						"****L'alliance a perdu !" !
+						termine
+					ferme
+					"    " + nom@yoda + " répond en attaquant... " !
+					dégât vaut yoda.frapper(armée{i})
+					"    ...il vient de faire un attaque de " + dégât + " points." !
+					"    Le stormtrooper a maintenant " + énergie@(armée{i}) + " points d'énergie." !
+					si armée{i}.vivant() est faux alors lis
+						"    Le stormtrooper n° + " + i + " est mort !" !
+						décrémente vivants
+					ferme
+					attends 500 milliseconde
+				ferme
+			ferme
+		ferme
+		"    L'armée des clones est décimée !" !
+		"****L'alliance a gagné !" !
+
+("********************************************")
+("Méthodes fonctionnelles d'un stormtrooper :")
+("********************************************")
+
+Attaquer :
+    	("Le stormtrooper perd de l'energie quand il attaque")
+	Rôles :
+		*moi :: stormtrooper
+		§force :: nombre <- 100
+	Actions :
+		mélange force
+		énergie@moi vaut énergie@moi - force * 10
+		retourne force
+
+Perdre énergie :
+	Rôles :
+		*moi :: stormtrooper
+		*point :: nombre
+	Actions :
+		énergie@moi vaut énergie@moi - point
+		retourne énergie@moi
+
+Vivant :
+	Rôles :
+		*moi :: stormtrooper
+	Actions :
+		si (énergie@moi) > 0 alors retourne vrai
+		sinon, retourne faux
+
+("***********************************")
+("Méthodes fonctionnelles d'un jedi :")
+("***********************************")
+
+Frapper :
+	Rôles :
+		*moi :: jedi
+		*ennemi :: stormtrooper
+		§force :: nombre <- 500
+	Actions :
+		mélange force
+		évoque ennemi.perdre énergie(force)
+		retourne force
+
+Prendre coup :
+	Rôles :
+		*moi :: jedi
+		*point :: nombre
+	Actions :
+		énergie@moi vaut énergie@moi - point
+		retourne énergie@moi
+
+Respire encore :
+	Rôles :
+		*moi :: jedi
+	Actions :
+		si (énergie@moi) > 0 alors retourne vrai
+		sinon, retourne faux
+

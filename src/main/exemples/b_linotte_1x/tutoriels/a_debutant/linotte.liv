@@ -1,0 +1,24 @@
+Teste année linotte :
+Principal :
+	Rôles :
+		valeur :: nombre vide
+	Actions :
+		"En quelle année le langage Linotte a été inventé ? " !
+		valeur ?
+		Va vers vérification
+
+Vérification :
+	Rôles :
+		valeur :: nombre
+		réponse :: nombre <- 2005
+	Actions :
+		si valeur == réponse alors va vers réponse bonne
+		sinon, si valeur > réponse alors "Non non... c'est avant ! " !
+		sinon, " Il est plus jeune ! " !
+		va vers principal
+
+Réponse bonne :
+	Actions :
+		"Bravo, tu es trés fort ! " !
+		Termine
+

@@ -1,0 +1,3 @@
+/*Petit timer pour infuser parfaitement son thé*/
+sleep 3 * 60 * 1000 // 3 minutes
+"Votre thé est à votre goût, Sir !" !

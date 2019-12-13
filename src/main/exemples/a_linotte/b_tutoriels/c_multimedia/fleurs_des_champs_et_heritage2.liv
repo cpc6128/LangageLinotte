@@ -1,0 +1,47 @@
+espèces
+	nom est un texte
+	espèce fleur hérite de point et contient nom
+globale
+	champs est une toile, couleur prend "jaune mimosa"
+	fleurs est un casier de fleur 
+	message_fleur est un graffiti,  x prend 114, y prend 539, couleur prend "noir", texte prend "Déplace la souris sur les fleurs !", position prend 1, taille prend 10
+	pointeur est un point, couleur prend "blanc"
+
+décor :
+	xx & yy est un nombre
+	début
+		efface toile
+		projette champs
+		projette message_fleur
+		pour chaque couleurs, parcours création avec joker
+		projette pointeur
+		va vers action
+
+création :
+	*n est un texte
+	fleur est un fleur
+	yy est un nombre valant 600
+	xx est un nombre valant 600
+	début
+		mélange xx
+		mélange yy
+		déplace fleur vers xx et yy
+		couleur @ fleur prend joker
+		taille @ fleur prend 10
+		nom @ fleur prend joker
+		projette fleur
+		ajoute fleur dans fleurs
+		reviens
+
+action :
+	position est un nombre valant 0
+	début
+		/*boucle infinie*/
+		tant que vrai lis
+			temporise
+			vide touches
+			déplace pointeur vers sourisx et sourisy
+			pour chaque fleurs lis
+				si pointeur est en collision avec joker, texte @ message_fleur prend nom @ joker
+			ferme
+		ferme

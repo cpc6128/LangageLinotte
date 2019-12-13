@@ -1,0 +1,35 @@
+// Notice : http://programmons.forumofficiel.fr/t1098-l-horloge-decouvrir-la-programmation
+principale :
+	pièce est une toile, couleur vaut "vert bouteille"
+	comtoise est une horloge, x vaut 200, y vaut 50, rayon vaut 80, position vaut 1
+	coffre est un rectangle, couleur vaut "puce", plein vaut "oui", position vaut 0,
+		x vaut 180, y vaut 15, hauteur vaut 500, largeur vaut 205
+	balancier est un cercle, plein vaut "oui", x vaut 280, y vaut 400, position vaut 1,
+		couleur vaut "platine", rayon vaut 20
+	tige est une ligne, x1 vaut 280, y1 vaut 250, x2 vaut 280, y2 vaut 400, position vaut 1,
+		couleur vaut "platine", taille vaut 5
+	i est un nombre
+	sens est un drapeau valant vrai
+	début
+		projette comtoise
+		projette coffre
+		projette balancier
+		projette tige
+		tant que vrai, lis
+			comtoise.heure(heure)
+			comtoise.minute(minute)
+			comtoise.seconde(seconde)
+		 // Evolution du balancier
+			pour i de 0 à 40 suivant i + 5, lis
+				si sens est vrai, lis
+					x de balancier vaut 260 + i
+					x2 de tige vaut 260 + i
+				ferme
+				sinon lis
+					x de balancier vaut 300 - i
+					x2 de tige vaut 300 - i
+				ferme
+				attends 1/8 seconde
+			ferme
+			sens vaut non (sens)
+		ferme

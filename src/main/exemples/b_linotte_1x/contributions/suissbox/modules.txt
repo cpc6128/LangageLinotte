@@ -1,0 +1,13 @@
+#MODULES
+vsE=Mid vsSprg{vsLigin-1};;4
+Si vsE="Rnd "
+vsRnd=vsRnd*(2 puiss 64)
+vsA=" "
+vsA=Mid vsSprg{vsLigin-1};5;
+vsSuite_vsRnd=(6364136223846793005*vsRnd+1)
+vsRnd=(vsSuite_vsRnd)-(2 puiss 64)*entier(vsSuite_vsRnd/(2 puiss 64))
+vsRnd=vsRnd/(2 puiss 64)
+]
+vsA=vsA+"="+"vsRnd"
+Act vsA
+vsFinex=1

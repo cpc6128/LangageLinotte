@@ -1,0 +1,21 @@
+globale
+	tux est un graphique, image prend "images/tux_graduate.png" , x prend -200 , y prend 420
+	fond est une toile, couleur prend "blanc", image prend "images/dn_house2.png"
+	message est un graffiti, texte prend "Tux en balade...", couleur prend "noir", x prend 10, y prend 50, taille prend 10
+
+principale :
+  début
+		efface  toile
+		projette fond
+		projette tux
+		projette message
+		pour chaque 800, parcours boucle
+		termine
+
+boucle :
+	souffleurs
+		dès que joker == 400 , texte @ message prend "Et l'école Tux ?"
+	début
+		déplace tux vers la droite de 1
+		attends 5 millisecondes
+		reviens

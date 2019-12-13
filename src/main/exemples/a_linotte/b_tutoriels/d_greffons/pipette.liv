@@ -1,0 +1,12 @@
+Pipette :
+	p est une pipette
+	t est une toile, couleur prend "rose balais"
+	x valant 100
+	y valant 100
+	début
+		projette t
+		attends 1 seconde // Que la toile soit initialiée
+		affiche p.retournerouge(x,y)
+		affiche p.retournevert(x,y)
+		affiche p.retournebleu(x,y)
+		affiche p.retournecouleur(x,y)
