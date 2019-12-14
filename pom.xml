@@ -63,6 +63,7 @@
     <build>
 
         <finalName>linotte</finalName>
+
         <plugins>
 
             <plugin>
@@ -143,6 +144,10 @@
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/filters</directory>
+                <filtering>true</filtering>
             </resource>
         </resources>
 
