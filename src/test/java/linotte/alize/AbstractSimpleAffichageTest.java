@@ -21,7 +21,7 @@ import org.linotte.moteur.xml.alize.parseur.Parseur;
 import org.linotte.moteur.xml.analyse.multilangage.Langage;
 import org.linotte.moteur.xml.api.IHM;
 
-import test.linotte.alize.ErreursTests.LIVRE;
+import linotte.alize.TestsErreurs.LIVRE;
 
 /**
  * @author CPC

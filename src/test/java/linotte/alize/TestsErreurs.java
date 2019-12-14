@@ -11,10 +11,10 @@ import org.junit.Test;
  * @author CPC
  *
  */
-public class ErreursTests extends AbstractSimpleAffichageTest {
+public class TestsErreurs extends AbstractSimpleAffichageTest {
 
-	public ErreursTests() {
-		super(ResourceBundle.getBundle("test.livres.tests_avec_erreurs"));
+	public TestsErreurs() {
+		super(ResourceBundle.getBundle("livres.tests_avec_erreurs"));
 	}
 
 	enum LIVRE {

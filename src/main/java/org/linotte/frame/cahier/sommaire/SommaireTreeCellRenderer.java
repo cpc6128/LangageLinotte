@@ -25,6 +25,8 @@
 
 package org.linotte.frame.cahier.sommaire;
 
+import sun.swing.DefaultLookup;
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -44,7 +46,7 @@ import javax.swing.plaf.FontUIResource;
 import javax.swing.plaf.UIResource;
 import javax.swing.tree.TreeCellRenderer;
 
-import sun.swing.DefaultLookup;
+//import sun.swing.DefaultLookup;
 
 /**
  * Displays an entry in a tree.
