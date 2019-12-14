@@ -133,7 +133,7 @@ public class TestsNominaux extends AbstractSimpleAffichageTest {
 	 * @throws Exception
 	 */
 	@Test
-	@Ignore
+	//@Ignore
 	public void greffonLinotte() throws Exception {
 		assertEquals(executerLivre(LIVRE.GREFFON_LINOTTE), sortie(LIVRE.GREFFON_LINOTTE));
 	}

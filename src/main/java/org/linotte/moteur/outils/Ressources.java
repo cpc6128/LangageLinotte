@@ -233,6 +233,9 @@ public class Ressources implements RessourceManager {
 			} else if (current.getName().toLowerCase().endsWith(".exe")) {
 				// Si je suis dans un jar :
 				current = current.getParentFile();
+			} else if (current.getName().toLowerCase().endsWith("classes")) {
+				// Si je suis dans le repertoire classes :
+				current = current.getParentFile();
 			}
 			File dg = new File(current, dir);
 			// System.out.println("Chemin des greffons : " + dg);
