@@ -55,7 +55,6 @@ import org.linotte.frame.Atelier;
 import org.linotte.frame.latoile.LaToile;
 import org.linotte.greffons.api.Greffon;
 import org.linotte.greffons.externe.Graphique;
-import org.linotte.greffons.ihm.GreffonBar;
 import org.linotte.greffons.java.GreffonPrototype;
 import org.linotte.greffons.java.GreffonPrototype.Entrée;
 import org.linotte.moteur.entites.Acteur;
@@ -137,8 +136,6 @@ public class GestionDesGreffons {
 							Preference.getIntance().getHome() + File.separator + Preference.REPERTOIRE + File.separator + GreffonsHandler.DIR_USER);
 					pere.mkdirs();
 
-					GreffonBar bar = GreffonBar.createAndShowGUI(length);
-
 					File out = new File(pere, f);
 
 					try {
@@ -151,14 +148,12 @@ public class GestionDesGreffons {
 						int x = 0;
 						while ((x = in.read(data, 0, 1024)) >= 0) {
 							bout.write(data, 0, x);
-							bar.onAvanceDe(x);
 							Thread.sleep(10); // smooth it !
 						}
 						bout.close();
 						in.close();
 
 					} finally {
-						bar.getJDialog().dispose();
 					}
 
 					Librairie lib = linotte.getLibrairie();
@@ -305,7 +300,6 @@ public class GestionDesGreffons {
 
 	/**
 	 * Chargement des livres Linotte pour être utilisés en tant que greffon
-	 * @param lib
 	 * @param linotte
 	 */
 	public static void initGreffonsLinotte(Linotte linotte) {
@@ -333,7 +327,6 @@ public class GestionDesGreffons {
 	}
 
 	/**
-	 * @param lib
 	 * @param linotte
 	 * @param file
 	 */
@@ -373,21 +366,6 @@ public class GestionDesGreffons {
 		} catch (Exception e) {
 			//e.printStackTrace();
 			RegistreDesActions.ajouterErreur("Erreur, greffon Linotte non chargé : " + file.getName());
-		}
-	}
-
-	public static boolean importerGreffonsLinotte(File greffon) {
-		try {
-			File repertoire = new File(Preference.getIntance().getHome() + File.separator + Preference.REPERTOIRE + File.separator + GreffonsHandler.DIR_USER);
-			repertoire.mkdirs();
-			File greffonClible = new File(repertoire, greffon.getName());
-			InputStream in = new FileInputStream(greffon);
-			OutputStream out = new FileOutputStream(greffonClible);
-			FichierOutils.copierFichier(in, out);
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
 		}
 	}
 

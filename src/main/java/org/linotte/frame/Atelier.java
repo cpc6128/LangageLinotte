@@ -135,7 +135,6 @@ import org.linotte.frame.coloration.StyleBuilder;
 import org.linotte.frame.coloration.StyleLinotte;
 import org.linotte.frame.coloration.StyleManageur;
 import org.linotte.frame.favoris.GestionnaireFavoris;
-import org.linotte.frame.greffons.GreffonsManager;
 import org.linotte.frame.gui.JPanelBackGround;
 import org.linotte.frame.gui.JTextPaneText;
 import org.linotte.frame.gui.PopupListener;
@@ -275,8 +274,6 @@ public class Atelier extends JFrame implements WindowListener {
 
 	private JFileChooser fileChooser_exporterRTF = null;
 
-	private JFileChooser fileChooser_greffonJava = null;
-
 	public UndoAction undoAction;
 
 	public RedoAction redoAction;
@@ -292,8 +289,6 @@ public class Atelier extends JFrame implements WindowListener {
 	private JMenu jMenuBibliotheque = null;
 
 	private JMenu jMenuLangage = null;
-
-	private ButtonGroup groupCheckBoxLangage = null;
 
 	private JMenu jMenuVerbier = null;
 
@@ -338,10 +333,6 @@ public class Atelier extends JFrame implements WindowListener {
 	private JMenuItem jMenuItemFormater = null;
 
 	private JMenuItem jMenuItemLaToile = null;
-
-	private JMenuItem jMenuItemManageur = null;
-
-	private JMenuItem jMenuItemGreffonLinotte = null;
 
 	private JMenuItem jMenuItemManageurStyle = null;
 
@@ -831,11 +822,7 @@ public class Atelier extends JFrame implements WindowListener {
 
 			getJMenuOutils().add(getJMenuFormater()).setIcon(Ressources.getImageIcon("format-indent-more.png"));
 			getJMenuOutils().add(getJMenuLaToile()).setIcon(Ressources.getImageIcon("image-x-generic.png"));
-			if (!Version.isPro()) {
-				getJMenuOutils().addSeparator();
-				getJMenuOutils().add(getJMenuManageur(Version.URL_GREFFONS)).setIcon(Ressources.getImageIcon("applications-other.png"));
-			}
-			getJMenuOutils().add(getJMenuGreffonLinotte()).setIcon(Ressources.getImageIcon("applications-other.png"));
+
 			// getJMenuOutils().add(getJMenuConsole()).setIcon(Ressources.getImageIcon("utilities-terminal.png"));
 			getJMenuOutils().addSeparator();
 			JMenu options = new JMenu("Options");
@@ -970,14 +957,6 @@ public class Atelier extends JFrame implements WindowListener {
 			fileChooser_exporterRTF.setFileFilter(filtre6);
 			fileChooser_exporterRTF.setDialogTitle("Exporter votre livre au format RTF");
 			fileChooser_exporterRTF.setApproveButtonText("Exporter le livre");
-
-			// Importer une greffon Java
-			fileChooser_greffonJava = new JFileChooser(Ressources.getLocal());
-			FiltreLivre filtre7 = new FiltreLivre(new String[] { "liv" }, "Livre Linotte (*.liv)");
-			fileChooser_greffonJava.addChoosableFileFilter(filtre7);
-			fileChooser_greffonJava.setFileFilter(filtre7);
-			fileChooser_greffonJava.setDialogTitle("Ouvrir un livre Greffon Linotte");
-			fileChooser_greffonJava.setApproveButtonText("Ouvrir le greffon Linotte");
 
 			inspecteur = new Inspecteur(this);
 			inspecteur.pack();
@@ -2101,8 +2080,6 @@ public class Atelier extends JFrame implements WindowListener {
 			jMenuBar.add(creationSeparator());
 			jMenuBar.add(getJMenuVerbier());
 			jMenuBar.add(getJButtonTimbre());
-			jMenuBar.add(creationSeparator());
-			jMenuBar.add(getJMenuLangage());
 			jMenuBar.add(Box.createHorizontalGlue());
 			jMenuBar.add(getJButtonUpdate());
 			if (Version.isBeta()) {
@@ -2205,53 +2182,6 @@ public class Atelier extends JFrame implements WindowListener {
 		return jMenuBibliotheque;
 	}
 
-	public JMenu getJMenuLangage() {
-		if (jMenuLangage == null) {
-			jMenuLangage = createJMenuNonOpaque("??", Ressources.getImageIconePlusClaire("bandeau/typography.png"),
-					Ressources.getImageIcon("bandeau/typography.png"));
-			jMenuLangage.setVerticalTextPosition(buttonTextHorizontale);
-			jMenuLangage.setHorizontalTextPosition(buttonTextVerticale);
-			jMenuLangage.setMnemonic(KeyEvent.VK_G);
-			groupCheckBoxLangage = new ButtonGroup();
-			for (Langage langage : Langage.values()) {
-				groupCheckBoxLangage.add(jMenuLangage.add(getJMenuLangageProgrammation(langage)));
-			}
-
-		}
-		return jMenuLangage;
-	}
-
-	private JMenuItem getJMenuLangageProgrammation(final Langage langage) {
-		JMenuItem jMenuItemLangageLinnet = new JRadioButtonMenuItem();
-		jMenuItemLangageLinnet.setText("Programmer avec le langage " + langage.getNom());
-		if (langage == linotte.getLangage()) {
-			jMenuItemLangageLinnet.setSelected(true);
-			jMenuLangage.setText("Langage " + langage.getNom());
-		}
-		jMenuItemLangageLinnet.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				linotte = langageSwitch.selectionLangage(langage);
-				getToile().setInterpreteur(linotte);
-				getCahierOnglet().forceMiseAJourStyle();
-				getJMenuVerbier().removeAll();
-				jMenuCondition = null;
-				jMenuBoucle = null;
-				jMenuEspeces = null;
-				jMenuMathematiques = null;
-				verbes_imperatif.clear();
-				creationSousMenuVerbier("Rechargement du menu");
-				Preference.getIntance().setProperty(Preference.P_LANGAGE, langage.name());
-				jMenuLangage.setText("Langage " + langage.getNom());
-				explorateur.changeLangage(FileSystemView.getFileSystemView(), Atelier.this);
-				JOptionPane.showMessageDialog(atelier,
-						"Bravo, vous pouvez programmer en langage " + langage.getNom() + " !"
-								+ "\nA gauche, les exemples du tutoriel correspondent maintenant à ce langage.",
-						"Changement de langage de programmation", JOptionPane.PLAIN_MESSAGE, Ressources.getImageIcon("extension.png"));
-				getCahierCourant().changeAtelierEtat();
-			}
-		});
-		return jMenuItemLangageLinnet;
-	}
 
 	private JMenu getJMenuVerbier() {
 		if (jMenuVerbier == null) {
@@ -2824,47 +2754,6 @@ public class Atelier extends JFrame implements WindowListener {
 			});
 		}
 		return jMenuItemLaToile;
-	}
-
-	private JMenuItem getJMenuManageur(final String url) {
-		if (jMenuItemManageur == null) {
-			jMenuItemManageur = new JMenuItem();
-			jMenuItemManageur.setText("Manageur de greffons Java...");
-			jMenuItemManageur.setMnemonic(java.awt.event.KeyEvent.VK_F);
-			jMenuItemManageur.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent e) {
-					GreffonsManager.ouvrir(linotte, Atelier.this, url);
-				}
-			});
-		}
-		return jMenuItemManageur;
-	}
-
-	private JMenuItem getJMenuGreffonLinotte() {
-		if (jMenuItemGreffonLinotte == null) {
-			jMenuItemGreffonLinotte = new JMenuItem();
-			jMenuItemGreffonLinotte.setText("Importer un greffon Linotte...");
-			jMenuItemGreffonLinotte.setMnemonic(java.awt.event.KeyEvent.VK_L);
-			jMenuItemGreffonLinotte.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent e) {
-
-					int returnVal = fileChooser_greffonJava.showOpenDialog(FrameDialog.frame);
-					if (returnVal == JFileChooser.APPROVE_OPTION) {
-						try {
-							if (GestionDesGreffons.importerGreffonsLinotte(new File(fileChooser_greffonJava.getSelectedFile().getAbsolutePath())))
-								JOptionPane.showMessageDialog(atelier, "Greffon Linotte importé. Relancer l'atelier pour le prendre en compte.",
-										"Importation d'un greffon Linotte", JOptionPane.INFORMATION_MESSAGE);
-							else
-								JOptionPane.showMessageDialog(atelier, "Greffon Linotte n'a pas été importé.", "Importation d'un greffon Linotte",
-										JOptionPane.INFORMATION_MESSAGE);
-						} catch (Exception e1) {
-						}
-					}
-				}
-
-			});
-		}
-		return jMenuItemGreffonLinotte;
 	}
 
 	private JMenuItem getJMenuManageurStyle() {

@@ -149,7 +149,6 @@ public class FrameProcess extends Thread {
 		applet.getJButtonPause().setVisible(true);
 		applet.getJButtonPause().setEnabled(false);
 		applet.getJButtonTester().setEnabled(false);
-		applet.getJMenuLangage().setEnabled(false);
 
 		List<Image> l = new ArrayList<Image>();
 		l.add(Ressources.getImageIcon("linotte_run.png").getImage());
@@ -320,7 +319,6 @@ public class FrameProcess extends Thread {
 			applet.getJButtonPause().setEnabled(true);
 			applet.getJButtonContinuer().setVisible(false);
 			applet.getJButtonTester().setEnabled(true);
-			applet.getJMenuLangage().setEnabled(true);
 			// Mode séquentiel
 			if (!Preference.getIntance().getBoolean(Preference.P_BULLE_AIDE_INACTIF))
 				applet.getJButtonPause().setToolTipText(Debogueur.TOOLTIP_BOUTON_RALENTI);
@@ -338,7 +336,6 @@ public class FrameProcess extends Thread {
 	/**
 	 * @param e
 	 * @param file 
-	 * @param envoye
 	 * @return
 	 */
 	private boolean envoyerErreur(Throwable e, File file) {
@@ -425,7 +422,7 @@ public class FrameProcess extends Thread {
 	/**
 	 * Réveille les jobs en attente lors d'un mode debug
 	 * 
-	 * @param runtime
+	 * @param r
 	 * @param stop
 	 * 
 	 */
