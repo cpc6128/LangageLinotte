@@ -24,12 +24,9 @@ import org.linotte.moteur.exception.Constantes;
 import org.linotte.moteur.exception.FinException;
 import org.linotte.moteur.exception.StopException;
 import org.linotte.moteur.exception.SyntaxeException;
-import org.linotte.moteur.outils.Chaine;
 import org.linotte.moteur.xml.alize.parseur.ParserContext;
 import org.linotte.moteur.xml.alize.parseur.ParserContext.MODE;
 import org.linotte.moteur.xml.alize.parseur.a.Noeud;
-import org.linotte.moteur.xml.analyse.Synonyme;
-import org.linotte.moteur.xml.analyse.SynonymeLoader;
 import org.linotte.moteur.xml.exception.XMLGroupeException;
 import org.w3c.dom.Node;
 
@@ -171,43 +168,6 @@ public class NGroupe extends Noeud {
 					} else if (discriminant2 != null && s.indexOf(discriminant2) != -1) {
 						passage = true;
 						break;
-					}
-					// Synonyme ?
-					if (SynonymeLoader.charger) {
-						{
-							Set<Chaine> l = Synonyme.getSynonyme(discriminant);
-							if (l != null) {
-								boolean p2 = false;
-								for (Chaine chaine : l) {
-									String lex = chaine.toString();
-									if (s.indexOf(lex) != -1) {
-										passage = true;
-										p2 = true;
-										break;
-									}
-								}
-								if (p2) {
-									break;
-								}
-							}
-						}
-						if (discriminant2 != null) {
-							Set<Chaine> l = Synonyme.getSynonyme(discriminant2);
-							if (l != null) {
-								boolean p2 = false;
-								for (Chaine chaine : l) {
-									String lex = chaine.toString();
-									if (s.indexOf(lex) != -1) {
-										passage = true;
-										p2 = true;
-										break;
-									}
-								}
-								if (p2) {
-									break;
-								}
-							}
-						}
 					}
 				}
 			} catch (FinException e2) {

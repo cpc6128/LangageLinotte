@@ -65,7 +65,6 @@ import org.linotte.moteur.xml.alize.kernel.audit.*;
 import org.linotte.moteur.xml.alize.parseur.XMLIterator;
 import org.linotte.moteur.xml.alize.parseur.a.NExpression;
 import org.linotte.moteur.xml.alize.parseur.a.Noeud;
-import org.linotte.moteur.xml.analyse.SynonymeLoader;
 import org.linotte.moteur.xml.analyse.multilangage.Langage;
 import org.linotte.moteur.xml.api.Librairie;
 import org.linotte.web.Run;
@@ -515,17 +514,11 @@ public class Atelier extends JFrame implements WindowListener {
 		AKPatrol.auditeurs.add(new LibrairieVirtuelleAudit(librairie));
 		AKPatrol.auditLog = new LogAudit(atelier);
 
-		String info = SynonymeLoader.chargerSynonymes();
-
 		atelier.pack();
 		splashWindow1.setProgressValue(9, "Affichage de l'Atelier");
 		atelier.setVisible(true);
 
 		toile.setVisible(latoile);
-
-		if (info != null) {
-			atelier.ecrirelnTableau("Chargement du fichier de synonymes : " + info);
-		}
 
 		// Modification du comportement des tooltips :
 		// ToolTipManager.sharedInstance().setReshowDelay(50000);
