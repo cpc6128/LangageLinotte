@@ -19,34 +19,12 @@ package org.linotte.frame.cahier;
  *                                                                     *
  ***********************************************************************/
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.RenderingHints;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-
-import javax.swing.Action;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
-import javax.swing.JScrollPane;
-import javax.swing.JTextPane;
+import javax.swing.*;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultEditorKit;
 import javax.swing.text.Document;
-
-import org.linotte.frame.favoris.Favoris;
-import org.linotte.frame.favoris.GestionnaireFavoris;
-import org.linotte.moteur.outils.Ressources;
+import java.awt.*;
+import java.awt.event.*;
 
 /**
  * A class illustrating running line number count on JTextPane. Nothing is
@@ -182,20 +160,6 @@ public class LineRenderer extends JPanel implements ActionListener {
 			int pos = pane.viewToModel(pt);
 			pane.setCaretPosition(pos);
 			getAction(DefaultEditorKit.selectLineAction).actionPerformed(null);
-			String nom_favoris = pane.getSelectedText();
-			if (nom_favoris == null) {
-				nom_favoris = "";
-			}
-			String prefix = "";
-			if (cahier.getFichier() != null) {
-				prefix = cahier.getFichier().getName() + " / ";
-				nom_favoris = (String) JOptionPane.showInputDialog(cahier.getAtelier(), "Nom du favoris :", "Ajouter un favoris", JOptionPane.PLAIN_MESSAGE,
-						Ressources.getImageIcon("drive-harddisk.png"), null, prefix + nom_favoris.trim());
-				if (nom_favoris != null) {
-					Favoris favoris = new Favoris(cahier.getFichier().toURI(), pane.getCaretPosition(), nom_favoris);
-					GestionnaireFavoris.getInstance().classer(favoris);
-				}
-			}
 		} catch (BadLocationException e1) {
 			e1.printStackTrace();
 		}

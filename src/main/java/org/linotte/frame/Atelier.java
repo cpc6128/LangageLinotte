@@ -20,113 +20,10 @@
 
 package org.linotte.frame;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Frame;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Image;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.StringSelection;
-import java.awt.datatransfer.Transferable;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.awt.event.WindowStateListener;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Stack;
-
-import javax.imageio.ImageIO;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.ButtonGroup;
-import javax.swing.ButtonModel;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JComponent;
-import javax.swing.JEditorPane;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
-import javax.swing.JRadioButtonMenuItem;
-import javax.swing.JScrollPane;
-import javax.swing.JSeparator;
-import javax.swing.JSplitPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JToggleButton;
-import javax.swing.KeyStroke;
-import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.UIManager.LookAndFeelInfo;
-import javax.swing.border.Border;
-import javax.swing.filechooser.FileSystemView;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.DefaultStyledDocument;
-import javax.swing.text.Document;
-import javax.swing.text.EditorKit;
-import javax.swing.text.html.HTMLEditorKit;
-import javax.swing.text.rtf.RTFEditorKit;
-import javax.swing.undo.CannotRedoException;
-import javax.swing.undo.CannotUndoException;
-
+import console.Jinotte;
 import org.alize.kernel.AKPatrol;
-import org.alize.kernel.AKRuntime;
 import org.jdesktop.swingx.JXTextField;
-import org.linotte.frame.atelier.Apropos;
-import org.linotte.frame.atelier.BoiteRecherche;
-import org.linotte.frame.atelier.FiltreLivre;
-import org.linotte.frame.atelier.FlatIHM;
-import org.linotte.frame.atelier.FrameDialog;
-import org.linotte.frame.atelier.FrameIHM;
-import org.linotte.frame.atelier.Inspecteur;
-import org.linotte.frame.atelier.MemoryMonitor;
-import org.linotte.frame.atelier.Merci;
-import org.linotte.frame.atelier.SliderMenuItem;
-import org.linotte.frame.atelier.Updater;
-import org.linotte.frame.atelier.VerticalGridLayout;
+import org.linotte.frame.atelier.*;
 import org.linotte.frame.cahier.Cahier;
 import org.linotte.frame.cahier.Cahier.EtatCachier;
 import org.linotte.frame.cahier.Onglets;
@@ -134,14 +31,12 @@ import org.linotte.frame.cahier.sommaire.JPanelSommaire;
 import org.linotte.frame.coloration.StyleBuilder;
 import org.linotte.frame.coloration.StyleLinotte;
 import org.linotte.frame.coloration.StyleManageur;
-import org.linotte.frame.favoris.GestionnaireFavoris;
 import org.linotte.frame.gui.JPanelBackGround;
 import org.linotte.frame.gui.JTextPaneText;
 import org.linotte.frame.gui.PopupListener;
 import org.linotte.frame.gui.SplashWindow;
 import org.linotte.frame.latoile.Couleur;
 import org.linotte.frame.latoile.JPanelLaToile;
-import org.linotte.frame.latoile.Java6;
 import org.linotte.frame.latoile.LaToile;
 import org.linotte.frame.latoile.Toile;
 import org.linotte.frame.moteur.ConsoleProcess;
@@ -158,7 +53,6 @@ import org.linotte.greffons.java.JavaMethod;
 import org.linotte.implementations.LibrairieVirtuelleSyntaxeV2;
 import org.linotte.moteur.entites.Prototype;
 import org.linotte.moteur.exception.StopException;
-import org.linotte.moteur.outils.FichierOutils;
 import org.linotte.moteur.outils.JTextPaneToPdf;
 import org.linotte.moteur.outils.LangageSwitch;
 import org.linotte.moteur.outils.Preference;
@@ -166,19 +60,8 @@ import org.linotte.moteur.outils.Ressources;
 import org.linotte.moteur.xml.Linotte;
 import org.linotte.moteur.xml.RegistreDesActions;
 import org.linotte.moteur.xml.Version;
-import org.linotte.moteur.xml.alize.kernel.ContextHelper;
-import org.linotte.moteur.xml.alize.kernel.RuntimeContext;
 import org.linotte.moteur.xml.alize.kernel.Trace;
-import org.linotte.moteur.xml.alize.kernel.audit.ChronoAudit;
-import org.linotte.moteur.xml.alize.kernel.audit.JobAudit;
-import org.linotte.moteur.xml.alize.kernel.audit.LibrairieVirtuelleAudit;
-import org.linotte.moteur.xml.alize.kernel.audit.LogAudit;
-import org.linotte.moteur.xml.alize.kernel.audit.ProcessusAudit;
-import org.linotte.moteur.xml.alize.kernel.audit.RuntimeAudit;
-import org.linotte.moteur.xml.alize.kernel.audit.ToileAudit;
-import org.linotte.moteur.xml.alize.parseur.ParserContext;
-import org.linotte.moteur.xml.alize.parseur.ParserContext.MODE;
-import org.linotte.moteur.xml.alize.parseur.Parseur;
+import org.linotte.moteur.xml.alize.kernel.audit.*;
 import org.linotte.moteur.xml.alize.parseur.XMLIterator;
 import org.linotte.moteur.xml.alize.parseur.a.NExpression;
 import org.linotte.moteur.xml.alize.parseur.a.Noeud;
@@ -188,7 +71,29 @@ import org.linotte.moteur.xml.api.Librairie;
 import org.linotte.web.Run;
 import org.w3c.dom.Element;
 
-import console.Jinotte;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import javax.swing.UIManager.LookAndFeelInfo;
+import javax.swing.border.Border;
+import javax.swing.filechooser.FileSystemView;
+import javax.swing.text.*;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.rtf.RTFEditorKit;
+import javax.swing.undo.CannotRedoException;
+import javax.swing.undo.CannotUndoException;
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.Transferable;
+import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.List;
+import java.util.*;
 
 /**
  * Affichage de l'interface principale de L'atelier Linotte. Contient également
@@ -226,8 +131,6 @@ public class Atelier extends JFrame implements WindowListener {
 
 	private JButton jButtonContinuer = null;
 
-	private JButton jButtonUpdate = null;
-
 	private JButton jButtonStop = null;
 
 	private JButton jButtonTimbre = null;
@@ -236,25 +139,13 @@ public class Atelier extends JFrame implements WindowListener {
 
 	private JButton jButtonLibrairie = null;
 
-	private JPopupMenu popupTableau;
-
-	private JMenuItem itemPopupTableau;
-
-	private JMenuItem itemPopupTableau2;
-
 	private Document sortieTableau = null;
 
 	private Document sortieAudit = null;
 
-	private Apropos apropos = null;
-
-	private Merci merci = null;
-
 	private FrameIHM dialogframeihm = null;
 
 	private Cahier cahierCourant = null;
-
-	private JScrollPane jScrollPaneTableau = null;
 
 	private JScrollPane jScrollPaneAudit = null;
 
@@ -287,8 +178,6 @@ public class Atelier extends JFrame implements WindowListener {
 	private JMenu jMenuOutils = null;
 
 	private JMenu jMenuBibliotheque = null;
-
-	private JMenu jMenuLangage = null;
 
 	private JMenu jMenuVerbier = null;
 
@@ -354,7 +243,6 @@ public class Atelier extends JFrame implements WindowListener {
 
 	// Gestion multi-langage
 	public static Linotte linotte = null;
-	private LangageSwitch langageSwitch = null;
 
 	// //////////////////////////////////////////////////////////// Maps pour le menu verbes
 
@@ -406,13 +294,6 @@ public class Atelier extends JFrame implements WindowListener {
 	private int buttonTextVerticale = SwingConstants.CENTER;// AbstractButton.RIGHT;
 
 	private List<OuvrirLivreAction> listHistorique = new ArrayList<Atelier.OuvrirLivreAction>();
-
-	private final class UpdateSuccessAction implements Updater.SuccessAction {
-		public void testOK(String message) {
-			jButtonUpdate.setVisible(true);
-			jButtonUpdate.setToolTipText(message);
-		}
-	}
 
 	public class UndoAction extends AbstractAction {
 		public UndoAction() {
@@ -781,9 +662,6 @@ public class Atelier extends JFrame implements WindowListener {
 				}
 			});
 
-			GestionnaireFavoris.getInstance(cahierOnglet);
-			GestionnaireFavoris.getInstance().afficherTousLesFavoris();
-
 			sortieTableau = jEditorPaneTableau.getDocument();
 			sortieAudit = jEditorPaneAudit.getDocument();
 			addWindowListener(this);
@@ -840,8 +718,8 @@ public class Atelier extends JFrame implements WindowListener {
 			jEditorPaneTableau.setFont(font);
 
 			// Popup pour effacer le tableau :
-			popupTableau = new JPopupMenu();
-			itemPopupTableau = new JMenuItem("Effacer le tableau");
+			JPopupMenu popupTableau = new JPopupMenu();
+			JMenuItem itemPopupTableau = new JMenuItem("Effacer le tableau");
 			itemPopupTableau.addActionListener(new ActionListener() {
 
 				public void actionPerformed(ActionEvent e) {
@@ -851,7 +729,7 @@ public class Atelier extends JFrame implements WindowListener {
 			});
 
 			// Popup pour copier le tableau :
-			itemPopupTableau2 = new JMenuItem("Copier le tableau");
+			JMenuItem itemPopupTableau2 = new JMenuItem("Copier le tableau");
 			itemPopupTableau2.addActionListener(new ActionListener() {
 
 				public void actionPerformed(ActionEvent e) {
@@ -893,9 +771,6 @@ public class Atelier extends JFrame implements WindowListener {
 			};
 			threadLancementAtelier4.start();
 
-			// A propos
-			apropos = new Apropos(this);
-			merci = new Merci(this);
 			// Affichage des messages d'erreur
 			Iterator<String> erreurs = RegistreDesActions.retourneErreurs();
 			while (erreurs.hasNext()) {
@@ -964,17 +839,11 @@ public class Atelier extends JFrame implements WindowListener {
 
 			// splashWindow1.setProgressValue(8, "Chargement des livres");
 
-			if (!Version.isBeta()) {
-				// Vérification de la mise à jour :
-				Updater.SuccessAction action = new UpdateSuccessAction();
-				new Updater(Version.getVERSION_TECHNIQUE(), Version.getVERSION_TECHNIQUE_URL(), action);
-			}
 			getCahierCourant().effacerCahier();
 
 			// Restauration des préférences :
 			if (linotte.getLangage().isLegacy()) {
 				affichagePresent = false;
-				verbe = true;
 			} else {
 				affichagePresent = !verbe;
 			}
@@ -1033,8 +902,6 @@ public class Atelier extends JFrame implements WindowListener {
 
 			findAndReplace = new BoiteRecherche(Atelier.this);
 
-			chargementDesClinottes();
-
 			ecrirelnTableau("Prêt");
 
 		} catch (Throwable e) {
@@ -1044,56 +911,8 @@ public class Atelier extends JFrame implements WindowListener {
 		}
 	}
 
-	private void chargementDesClinottes() {
-		// Ne doit pas s'exécuter :
-		if (System.currentTimeMillis() < 1000) {
-			new Thread("Chargement des ClipNottes") {
-				public void run() {
-					try {
-						// Gestion des clipnottes
-						// Execution des extensions :
-						Parseur moteurXML = new Parseur();
-						ParserContext atelierOutils = new ParserContext(MODE.GENERATION_RUNTIME);
-						atelierOutils.linotte = linotte;
-						File demo = new File(linotte.getLangage().getCheminExemple() + "/b_tutoriels/z_en_test/extension.liv");
-						AKRuntime runtime = moteurXML.parseLivre(FichierOutils.lire(demo, new ArrayList<Integer>()), atelierOutils);
-						ContextHelper.populate(runtime.getContext(), linotte, cahierCourant.getFichier(), null);
-						RuntimeContext rcontext = (RuntimeContext) runtime.getContext();
-						rcontext.setLibrairie(librairie.cloneMoi());
-						runtime.execute();
-					} catch (Exception e) {
-						e.printStackTrace();
-						ecrireErreurTableau("Impossible de charger le clipnotte : extension.liv");
-					}
-				}
-			}.start();
-
-			new Thread("Chargement des ClipNottes") {
-				public void run() {
-					try {
-						// Gestion des clipnottes
-						// Execution des extensions :
-						Parseur moteurXML = new Parseur();
-						ParserContext atelierOutils = new ParserContext(MODE.GENERATION_RUNTIME);
-						atelierOutils.linotte = linotte;
-						File demo = new File(linotte.getLangage().getCheminExemple() + "/b_tutoriels/z_en_test/clipnotte.liv");
-						AKRuntime runtime = moteurXML.parseLivre(FichierOutils.lire(demo, new ArrayList<Integer>()), atelierOutils);
-						ContextHelper.populate(runtime.getContext(), linotte, cahierCourant.getFichier(), null);
-						RuntimeContext rcontext = (RuntimeContext) runtime.getContext();
-						rcontext.setLibrairie(librairie.cloneMoi());
-						runtime.execute();
-					} catch (Exception e) {
-						e.printStackTrace();
-						ecrireErreurTableau("Impossible de charger le clipnotte : clipnotte.liv");
-					}
-				}
-			}.start();
-
-		}
-	}
-
 	private Langage chargementLangageProgrammation() {
-		langageSwitch = new LangageSwitch(librairie, dialogframeihm);
+		LangageSwitch langageSwitch = new LangageSwitch(librairie, dialogframeihm);
 
 		// Quelle langue doit être chargée au lancement de l'Atelier ?
 		String parametreLangage = Preference.getIntance().getProperty(Preference.P_LANGAGE);
@@ -1164,7 +983,6 @@ public class Atelier extends JFrame implements WindowListener {
 					softCreerCahierCourant();
 					try {
 						getCahierCourant().chargerFichier(fichier);
-						GestionnaireFavoris.getInstance().peuplerCahier(getCahierCourant());
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -1398,33 +1216,6 @@ public class Atelier extends JFrame implements WindowListener {
 					cahierCourant.getEditorPanelCahier().requestFocusInWindow();
 			}
 		});
-	}
-
-	protected JButton getJButtonUpdate() {
-		if (jButtonUpdate == null) {
-			jButtonUpdate = createSimpleButton(Ressources.getImageIcon("bandeau/software-update-available.png"));
-			// jButtonUpdate.setToolTipText("Une nouvelle version de Linotte est disponible !");
-			// jButtonUpdate.setFocusable(false);
-			jButtonUpdate.setText("Nouvelle version disponible !");
-			jButtonUpdate.setVisible(false);
-			jButtonUpdate.setPressedIcon(Ressources.getImageIconePlusClaire("bandeau/software-update-available.png"));
-			jButtonUpdate.setRolloverIcon(Ressources.getImageIconePlusClaire("bandeau/software-update-available.png"));
-			jButtonUpdate.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
-			jButtonUpdate.setVerticalTextPosition(buttonTextHorizontale);
-			jButtonUpdate.setHorizontalTextPosition(buttonTextVerticale);
-			jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent e0) {
-					try {
-						Java6.getDesktop().browse(new URI(Version.getURL()));
-					} catch (IOException e) {
-						e.printStackTrace();
-					} catch (URISyntaxException e) {
-						e.printStackTrace();
-					}
-				}
-			});
-		}
-		return jButtonUpdate;
 	}
 
 	private static JButton createSimpleButton(String text) {
@@ -1848,7 +1639,7 @@ public class Atelier extends JFrame implements WindowListener {
 
 		JPanel tableau = new JPanel();
 		tableau.setLayout(new BorderLayout());
-		jScrollPaneTableau = new JScrollPane();
+		JScrollPane jScrollPaneTableau = new JScrollPane();
 		JPanelBackGround background_panel = new JPanelBackGround(null, jScrollPaneTableau);
 		background_panel.setLayout(new BorderLayout());
 		background_panel.add(getJEditorPaneTableau());
@@ -2078,14 +1869,6 @@ public class Atelier extends JFrame implements WindowListener {
 			jMenuBar.add(creationSeparator());
 			jMenuBar.add(getJMenuVerbier());
 			jMenuBar.add(getJButtonTimbre());
-			jMenuBar.add(Box.createHorizontalGlue());
-			jMenuBar.add(getJButtonUpdate());
-			if (Version.isBeta()) {
-				jMenuBar.add(getTexteBeta());
-				jMenuBar.add(Box.createHorizontalStrut(30));
-			}
-			jMenuBar.add(Box.createHorizontalStrut(30));
-			jMenuBar.add(getJMenuLinotte());
 		}
 		return jMenuBar;
 	}
@@ -2094,31 +1877,6 @@ public class Atelier extends JFrame implements WindowListener {
 		JSeparator js = new JSeparator(JSeparator.VERTICAL);
 		js.setMaximumSize(new Dimension(10, 60));
 		return js;
-	}
-
-	private JButton getTexteBeta() {
-		JButton jButtonBeta;
-		jButtonBeta = createSimpleButton("Version de travail " + Version.getVersion());
-		jButtonBeta.setVerticalTextPosition(buttonTextHorizontale);
-		jButtonBeta.setHorizontalTextPosition(buttonTextVerticale);
-		jButtonBeta.setToolTipText("<html><b>Version de travail</b><br>" + "Vous utilisez la version de travail " + Version.getVersion()
-				+ " de l'Atelier Linotte<br>" + "Merci d'informer l'auteur des bogues que vous pourriez rencontrer !<br>" + "</html>");
-		jButtonBeta.setFocusable(false);
-		jButtonBeta.setIcon(Ressources.getImageIcon("face-devilish.png"));
-		jButtonBeta.setPressedIcon(Ressources.getImageIconePlusClaire("face-devilish.png"));
-		jButtonBeta.setRolloverIcon(Ressources.getImageIconePlusClaire("face-devilish.png"));
-		jButtonBeta.setMnemonic(KeyEvent.VK_B);
-		jButtonBeta.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent e0) {
-				try {
-					final URI forum = new URI("http://langagelinotte.free.fr/");
-					Java6.getDesktop().browse(forum);
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-			}
-		});
-		return jButtonBeta;
 	}
 
 	/**
@@ -2769,60 +2527,6 @@ public class Atelier extends JFrame implements WindowListener {
 	}
 
 	/**
-	 * This method initializes jMenuLinotte
-	 * 
-	 * @return JMenu
-	 */
-	private JMenu getJMenuLinotte() {
-		if (jMenuLinotte == null) {
-			jMenuLinotte = createJMenuNonOpaque("       Plus       ", Ressources.getImageIconePlusClaire("bandeau/quote.png"),
-					Ressources.getImageIcon("bandeau/quote.png"));
-			jMenuLinotte.setBorderPainted(menuBarBordure);
-			jMenuLinotte.setVerticalTextPosition(buttonTextHorizontale);
-			jMenuLinotte.setHorizontalTextPosition(buttonTextVerticale);
-			if (!Version.isPro())
-				jMenuLinotte.add(getJMenuItemMerci()).setIcon(Ressources.getImageIcon("fenetre/heart.png"));
-			jMenuLinotte.add(getJMenuItemAPropos()).setIcon(Ressources.getImageIcon("help-browser.png"));
-			jMenuLinotte.setMnemonic(KeyEvent.VK_I);
-			jMenuLinotte.setName("Aide");
-		}
-		return jMenuLinotte;
-	}
-
-	/**
-	 * This method initializes jMenuItemApropos
-	 * 
-	 * @return JMenuItem
-	 */
-	private JMenuItem getJMenuItemAPropos() {
-		if (jMenuItemApropos == null) {
-			jMenuItemApropos = new JMenuItem();
-			jMenuItemApropos.setText("A propos");
-			jMenuItemApropos.setMnemonic(KeyEvent.VK_A);
-			jMenuItemApropos.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent e) {
-					apropos.setVisible(true);
-				}
-			});
-		}
-		return jMenuItemApropos;
-	}
-
-	private JMenuItem getJMenuItemMerci() {
-		if (jMenuItemMerci == null) {
-			jMenuItemMerci = new JMenuItem();
-			jMenuItemMerci.setText("Remerciement");
-			jMenuItemMerci.setMnemonic(KeyEvent.VK_R);
-			jMenuItemMerci.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent e) {
-					merci.setVisible(true);
-				}
-			});
-		}
-		return jMenuItemMerci;
-	}
-
-	/**
 	 * Créée un menu contenant tout les verbes du langage
 	 * 
 	 * @param racine
@@ -2932,7 +2636,6 @@ public class Atelier extends JFrame implements WindowListener {
 			}
 
 			Preference.getIntance().save();
-			GestionnaireFavoris.getInstance().enregistrerFavoris();
 			StyleBuilder.enregistrer();
 			System.exit(0);
 		}
@@ -3058,7 +2761,6 @@ public class Atelier extends JFrame implements WindowListener {
 			creerCahierCourant(false);
 			getCahierCourant().chargerFichier(file);
 			getCahierCourant().forceStyle();
-			GestionnaireFavoris.getInstance().peuplerCahier(getCahierCourant());
 			Preference.getIntance().setProperty(Preference.P_DIRECTORY, file.getAbsolutePath());
 			ajouterHistorique(file, true);
 		}

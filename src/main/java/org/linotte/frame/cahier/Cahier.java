@@ -19,76 +19,13 @@ package org.linotte.frame.cahier;
  *                                                                     *
  ***********************************************************************/
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.dnd.DropTarget;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.PushbackInputStream;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.Stack;
-
-import javax.swing.AbstractAction;
-import javax.swing.JEditorPane;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
-import javax.swing.JScrollPane;
-import javax.swing.JTextPane;
-import javax.swing.JViewport;
-import javax.swing.KeyStroke;
-import javax.swing.SwingUtilities;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import javax.swing.event.UndoableEditEvent;
-import javax.swing.event.UndoableEditListener;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.DefaultStyledDocument;
-import javax.swing.text.Document;
-import javax.swing.text.Element;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.TabSet;
-import javax.swing.text.TabStop;
-import javax.swing.text.html.HTML;
-import javax.swing.undo.UndoManager;
-
 import org.linotte.frame.Atelier;
-import org.linotte.frame.Atelier.CopyL;
-import org.linotte.frame.Atelier.CutL;
-import org.linotte.frame.Atelier.PasteL;
-import org.linotte.frame.Atelier.RedoAction;
-import org.linotte.frame.Atelier.UndoAction;
+import org.linotte.frame.Atelier.*;
 import org.linotte.frame.cahier.sommaire.JPanelSommaire;
 import org.linotte.frame.cahier.timbre.JPanelPlancheATimbre;
 import org.linotte.frame.cahier.timbre.entite.Timbre;
-import org.linotte.frame.coloration.AtelierDocument;
-import org.linotte.frame.coloration.ProcessStyle;
-import org.linotte.frame.coloration.StyleBean;
-import org.linotte.frame.coloration.StyleBuffer;
-import org.linotte.frame.coloration.StyleBuilder;
+import org.linotte.frame.coloration.*;
 import org.linotte.frame.coloration.StyleBuilder.STYLE;
-import org.linotte.frame.coloration.StyleLinotte;
-import org.linotte.frame.favoris.Favoris;
 import org.linotte.frame.gui.JTextPaneText;
 import org.linotte.frame.gui.PopupListener;
 import org.linotte.frame.moteur.Formater;
@@ -98,13 +35,32 @@ import org.linotte.moteur.outils.Ressources;
 import org.linotte.moteur.xml.Linotte;
 import org.linotte.moteur.xml.analyse.timbre.TraducteurTimbreEnTexte;
 
+import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.event.UndoableEditEvent;
+import javax.swing.event.UndoableEditListener;
+import javax.swing.text.*;
+import javax.swing.text.html.HTML;
+import javax.swing.undo.UndoManager;
+import java.awt.*;
+import java.awt.dnd.DropTarget;
+import java.awt.event.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.PushbackInputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
 /**
- * 
+ *
  * Classe pour l'affichage du cahier
- * 
+ *
  * http://www.daniweb.com/software-development/java/threads/331500/how-can-i-add
  * -a-clickable-url-in-a-jtextpane
- * 
+ *
  * @author ronan
  * 
  */
@@ -152,9 +108,6 @@ public class Cahier extends JPanel implements KeyListener, MouseListener {
 
 	private EtatCachier etatCahier = EtatCachier.MODIFIE;
 
-	// Favoris :
-	public Set<Favoris> favoris = new HashSet<Favoris>();
-
 	// Vue package :
 	public JScrollPane scrollPan;
 
@@ -180,21 +133,12 @@ public class Cahier extends JPanel implements KeyListener, MouseListener {
 					setEtatCahier(EtatCachier.MODIFIE);
 			}
 			setEditeurUpdate(true);
-			if (isGestionFavoris())
-				for (Favoris fav : favoris) {
-					fav.insert(e.getLength(), e.getOffset());
-				}
-			// processApplicationStyle.appliquer(30, 0);
 		}
 
 		public void removeUpdate(DocumentEvent e) {
 			if (e.getType() != DocumentEvent.EventType.CHANGE) {
 				if (!isVisualiserTimbre())
 					setEtatCahier(EtatCachier.MODIFIE);
-				if (isGestionFavoris())
-					for (Favoris fav : favoris) {
-						fav.remove(e.getLength(), e.getOffset());
-					}
 			}
 			setEditeurUpdate(true);
 			// processApplicationStyle.appliquer(30, 0);
@@ -782,9 +726,6 @@ public class Cahier extends JPanel implements KeyListener, MouseListener {
 		this.gestionFavoris = gestionFavoris;
 	}
 
-	public boolean isGestionFavoris() {
-		return gestionFavoris;
-	}
 
 	public class LinkController extends MouseAdapter implements MouseMotionListener {
 

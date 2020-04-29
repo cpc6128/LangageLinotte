@@ -19,55 +19,6 @@ package org.linotte.frame.projet;
  *                                                                     *
  ***********************************************************************/
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Formatter;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
-
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JComponent;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
-import javax.swing.LookAndFeel;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.filechooser.FileSystemView;
-import javax.swing.table.AbstractTableModel;
-import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.TreePath;
-
 import org.jdesktop.swingx.JXTaskPane;
 import org.jdesktop.swingx.JXTaskPaneContainer;
 import org.jdesktop.swingx.JXTitledPanel;
@@ -79,14 +30,24 @@ import org.linotte.frame.gui.RequestFocusListener;
 import org.linotte.frame.gui.WindowsMetroTaskPaneUI;
 import org.linotte.frame.latoile.Java6;
 import org.linotte.frame.projet.NavigateurFichier.FileTreeNode;
-import org.linotte.greffons.api.AKMethod;
-import org.linotte.moteur.entites.Prototype;
-import org.linotte.moteur.entites.Role;
-import org.linotte.moteur.exception.ErreurException;
 import org.linotte.moteur.outils.Ressources;
 import org.linotte.moteur.xml.Version;
 import org.linotte.moteur.xml.analyse.multilangage.Langage;
 import org.linotte.web.Run;
+
+import javax.swing.*;
+import javax.swing.filechooser.FileSystemView;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreePath;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.IOException;
+import java.io.Writer;
+import java.net.URI;
+import java.util.List;
+import java.util.*;
 
 @SuppressWarnings("serial")
 public class ExplorateurProjet extends JPanel {
@@ -100,7 +61,6 @@ public class ExplorateurProjet extends JPanel {
 	public Thread threadLancementAtelier2;
 	public Thread threadLancementAtelier3;
 	private static Writer fw = null;
-	public static ExplorateurFavoris favorisTreePanel;
 	private JXTaskPane taskTutorial = new JXTaskPane();
 	private boolean metroStyle = true;
 
@@ -132,16 +92,6 @@ public class ExplorateurProjet extends JPanel {
 			e.printStackTrace();
 		}
 		try {
-			container.add(getTaskFavoris(atelier));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		try {
-			container.add(getTaskPrototypes(atelier));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		try {
 			if (!Version.isPro())
 				container.add(getTaskPanePlus(atelier));
 		} catch (Exception e) {
@@ -159,217 +109,6 @@ public class ExplorateurProjet extends JPanel {
 
 		add(panelScroll);
 
-	}
-
-	private JXTaskPane getTaskPrototypes(final Atelier atelier) {
-		final JXTaskPane task = new JXTaskPane();
-		changeTaskPaneUI(task);
-		threadLancementAtelier3 = new Thread() {
-			public void run() {
-				task.setTitle("Boîte à espèces");
-				// task.setCollapsed(true);
-				task.setIcon(Ressources.getImageIcon("projet/application-certificate.png"));
-
-				try {
-					synchronized (this) {
-						this.wait();
-					}
-				} catch (InterruptedException e) {
-				}
-
-				List<String> noms = new ArrayList<String>();
-				final Map<String, Prototype> map = new HashMap<String, Prototype>();
-				for (Prototype e : Atelier.linotte.especeModeleMap) {
-					String n = e.getNom().toString();
-					map.put(n, e);
-					noms.add(n);
-				}
-
-				Object[] tnoms = noms.toArray();
-				Arrays.sort(tnoms);
-				JComboBox<Object> combobox = new JComboBox<Object>(tnoms);
-				task.add(combobox);
-				final JTableModel model = new JTableModel();
-				final JTable table = new JTable(model);
-				table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-				JScrollPane scrollPane = new JScrollPane(table);
-				scrollPane.setPreferredSize(new Dimension(1000, 150));
-				task.add(scrollPane);
-
-				final JLabel description = new JLabel("<HTML><b>Description :</b><br>Cliquez sur un champ pour obtenir sa description !</HTML>");
-				description.setOpaque(true);
-
-				final boolean ecrire = false;
-				try {
-					if (ecrire) {
-						File file = new File("c:/temp/prototypes.dat");
-						fw = new OutputStreamWriter(new FileOutputStream(file), "ISO-8859-1");
-						// fw = new FileWriter("c:/temp/prototypes.dat");
-					}
-				} catch (IOException e2) {
-					e2.printStackTrace();
-				}
-
-				// On charge le fichier de description des prototypes :
-				final Properties descriptions = new Properties();
-				try {
-					descriptions.load(Ressources.getFromRessources("prototypes.dat"));
-				} catch (IOException e2) {
-					e2.printStackTrace();
-				}
-
-				combobox.addActionListener(new ActionListener() {
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						JComboBox<?> cb = (JComboBox<?>) e.getSource();
-						String prototype = (String) cb.getSelectedItem();
-						model.matrix.clear();
-						model.fireTableStructureChanged();
-						Prototype p = map.get(prototype);
-
-						if (fw != null) {
-							try {
-								fw.write(escapeNonAscii(prototype) + "=" + escapeNonAscii(descriptions.getProperty(prototype)));
-								fw.write("\n");
-							} catch (IOException e1) {
-								e1.printStackTrace();
-							}
-						}
-
-						// ATTRIBUTS
-						Set<String> attributs = p.retourAttributs();
-						Collections.sort(new ArrayList<String>(attributs));
-						for (String attribut : attributs) {
-							List<TableData> l = new ArrayList<TableData>();
-							model.matrix.add(l);
-							String clef = prototype + "@" + attribut;
-							String desc = descriptions.getProperty(clef);
-							if (desc == null || desc.trim().length() == 0)
-								desc = HTML4;
-							TableData td1 = new TableData("@ " + attribut, false, HTML2 + attribut + HTML3 + desc);
-							Object v = "";
-							try {
-								if (p.retourneAttributSimple(attribut).getRole() == Role.TEXTE)
-									v = "\"" + p.retourneAttributSimple(attribut).getValeur().toString() + "\"";
-								else
-									v = p.retourneAttributSimple(attribut).getValeur();
-							} catch (ErreurException e1) {
-							}
-							TableData td2 = new TableData(v, false, null);
-							l.add(td1);
-							l.add(td2);
-							if (fw != null) {
-								try {
-									fw.write(escapeNonAscii(clef) + "=" + escapeNonAscii(desc));
-									fw.write("\n");
-								} catch (IOException e1) {
-									e1.printStackTrace();
-								}
-							}
-						}
-
-						// METHODES FONCTIONNELLES
-						Set<String> slots = p.retourneSlotsGreffons();
-						for (String slt : slots) {
-							List<TableData> l = new ArrayList<TableData>();
-							model.matrix.add(l);
-							// On récupère les paramètres :
-							AKMethod akmethod = p.retourneSlotGreffon(slt);
-							String v = akmethod.parametres();
-							String clef = prototype + "." + slt;
-							String desc = descriptions.getProperty(clef);
-							if (desc == null || desc.trim().length() == 0)
-								desc = HTML4;
-							TableData td1 = new TableData(". " + slt, false, HTML1 + slt + " " + v + HTML3 + desc);
-							TableData td2 = new TableData(v, false, null);
-							// TableData td3 = new TableData("", false);
-							l.add(td1);
-							l.add(td2);
-							// l.add(td3);
-							if (fw != null) {
-								try {
-									fw.write(escapeNonAscii(prototype) + "." + escapeNonAscii(slt) + "=" + escapeNonAscii(desc));
-									fw.write("\n");
-								} catch (IOException e1) {
-									e1.printStackTrace();
-								}
-							}
-						}
-						// METHODES GREFFON LINOTTE
-						Set<String> slotsLinotte = p.retourneSlotsLinotte();
-						for (String slt : slotsLinotte) {
-							List<TableData> l = new ArrayList<TableData>();
-							model.matrix.add(l);
-							// On récupère les paramètres :
-							//Processus akmethod = p.retourneSlot(slt);
-							String v = "()";//akmethod.parametres();
-							String clef = prototype + "." + slt;
-							String desc = descriptions.getProperty(clef);
-							if (desc == null || desc.trim().length() == 0)
-								desc = HTML4;
-							TableData td1 = new TableData(". " + slt, false, HTML1 + slt + " " + v + HTML3 + desc);
-							TableData td2 = new TableData(v, false, null);
-							// TableData td3 = new TableData("", false);
-							l.add(td1);
-							l.add(td2);
-							// l.add(td3);
-							if (fw != null) {
-								try {
-									fw.write(escapeNonAscii(prototype) + "." + escapeNonAscii(slt) + "=" + escapeNonAscii(desc));
-									fw.write("\n");
-								} catch (IOException e1) {
-									e1.printStackTrace();
-								}
-							}
-						}
-						model.fireTableDataChanged();
-						if (fw != null) {
-							try {
-								fw.flush();
-							} catch (IOException e1) {
-								e1.printStackTrace();
-							}
-						}
-						String desc = descriptions.getProperty(prototype);
-						if (desc == null || desc.length() == 0)
-							desc = "Pas de description.";
-						description.setText("<HTML><b>Espèce " + prototype + "</b><br>" + desc + "</HTML>");
-					}
-				});
-				if (Version.isPro()) {
-					combobox.setSelectedItem("formulaire");
-				} else {
-					combobox.setSelectedItem("toile");
-				}
-
-				table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-
-					@Override
-					public void valueChanged(ListSelectionEvent event) {
-						// See if this is a valid table selection
-						if (event.getSource() == table.getSelectionModel() && event.getFirstIndex() >= 0) {
-							// Get the data model for this table
-							JTableModel model = (JTableModel) table.getModel();
-
-							// Determine the selected item
-							String string = (String) model.getDescriptionAt(table.getSelectedRow());
-
-							if (string == null || string.length() == 0) {
-								description.setText("<HTML><b>Description :</b><br>" + HTML4 + "</HTML>");
-							} else
-								description.setText(string);
-
-						}
-
-					}
-				});
-
-				task.add(description);
-			}
-		};
-		threadLancementAtelier3.start();
-		return task;
 	}
 
 	private JXTaskPane getTaskPaneTutoriel(final FileSystemView view, final Atelier atelier) {
@@ -394,30 +133,6 @@ public class ExplorateurProjet extends JPanel {
 		threadLancementAtelier1.start();
 		taskTutorial.setVisible(exemples.exists());
 		return taskTutorial;
-	}
-
-	public void changeLangage(final FileSystemView view, final Atelier atelier) {
-		taskTutorial.removeAll();
-		if (tutoriels.containsKey(Atelier.linotte.getLangage())) {
-			taskTutorial.add(new JScrollPane(tutoriels.get(Atelier.linotte.getLangage()), JScrollPane.VERTICAL_SCROLLBAR_NEVER,
-					JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED));
-		} else {
-			final File exemples = Ressources.getExemples(Atelier.linotte.getLangage());
-			NavigateurFichier fileTreePanel = new NavigateurFichier(view, exemples, taskTutorial, atelier, false);
-			taskTutorial.add(new JScrollPane(fileTreePanel, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED));
-			tutoriels.put(Atelier.linotte.getLangage(), fileTreePanel);
-		}
-	}
-
-	private JXTaskPane getTaskFavoris(Atelier atelier) {
-		JXTaskPane task = new JXTaskPane();
-		changeTaskPaneUI(task);
-		task.setTitle("Favoris");
-		task.setIcon(Ressources.getImageIcon("projet/drive-harddisk.png"));
-		// task.setCollapsed(true);
-		favorisTreePanel = new ExplorateurFavoris(atelier, task);
-		task.add(new JScrollPane(favorisTreePanel, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED));
-		return task;
 	}
 
 	private JXTaskPane getTaskPaneEspaceDeTravail(String title, final FileSystemView view, final Atelier atelier, final File edt) {
@@ -582,22 +297,6 @@ public class ExplorateurProjet extends JPanel {
 				}
 			}
 
-		});
-
-		task.add(new AbstractAction() {
-			{
-				putValue(Action.NAME, "Explorer le répertoire des greffons");
-				//putValue(Action.SMALL_ICON, Ressources.getImageIcon("system-users.png"));
-				putValue(Action.SMALL_ICON, Ressources.getScaledImage(Ressources.getImageIcon("emblem-symbolic-link.png"), 16, 16));
-			}
-
-			public void actionPerformed(ActionEvent e) {
-				try {
-					Java6.getDesktop().browse(Ressources.getGreffons().toURI());
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-			}
 		});
 
 		task.add(new AbstractAction() {
