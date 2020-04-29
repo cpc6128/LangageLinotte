@@ -3,14 +3,8 @@
  */
 package linotte.alize;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.ResourceBundle;
-import java.util.Set;
-
+import linotte.greffon.Boulier;
+import linotte.greffon.Majordome;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.linotte.greffons.LinotteFacade;
@@ -18,8 +12,9 @@ import org.linotte.greffons.api.Greffon.Attribut;
 import org.linotte.moteur.entites.Prototype;
 import org.linotte.moteur.xml.Version;
 
-import linotte.greffon.Boulier;
-import linotte.greffon.Majordome;
+import java.util.*;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author CPC
@@ -133,7 +128,7 @@ public class TestsNominaux extends AbstractSimpleAffichageTest {
 	 * @throws Exception
 	 */
 	@Test
-	//@Ignore
+	@Ignore
 	public void greffonLinotte() throws Exception {
 		assertEquals(executerLivre(LIVRE.GREFFON_LINOTTE), sortie(LIVRE.GREFFON_LINOTTE));
 	}

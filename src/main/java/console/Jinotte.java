@@ -20,24 +20,12 @@ package console;
  *                                                                     *
  ***********************************************************************/
 
-import java.awt.Frame;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.PushbackInputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import org.alize.kernel.AKRuntime;
 import org.linotte.frame.atelier.FrameIHM;
 import org.linotte.frame.cahier.timbre.entite.Timbre;
 import org.linotte.frame.latoile.LaToile;
 import org.linotte.frame.latoile.Toile;
 import org.linotte.implementations.ConsoleTexte;
-import org.linotte.implementations.LibrairieVirtuelle;
 import org.linotte.implementations.LibrairieVirtuelleSyntaxeV2;
 import org.linotte.moteur.exception.LectureException;
 import org.linotte.moteur.exception.Messages;
@@ -57,6 +45,14 @@ import org.linotte.moteur.xml.analyse.multilangage.Langage;
 import org.linotte.moteur.xml.analyse.timbre.TraducteurTimbreEnTexte;
 import org.linotte.moteur.xml.api.IHM;
 import org.linotte.moteur.xml.api.Librairie;
+
+import java.awt.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.PushbackInputStream;
+import java.util.List;
+import java.util.*;
 
 public class Jinotte {
 
@@ -138,11 +134,7 @@ public class Jinotte {
 				exit();
 			}
 		} else {
-			if (!options.contains("1"))
 				lib = new LibrairieVirtuelleSyntaxeV2();
-			else
-				lib = new LibrairieVirtuelle("bibliothèque");
-
 		}
 
 		// Choix IHM :
@@ -293,7 +285,6 @@ public class Jinotte {
 		System.out.println("        -h Affiche les commandes disponibles");
 		System.out.println("        -d Affichage des traces DEBUG");
 		System.out.println("        -t Affiche le temps d'execution en milliseconde");
-		System.out.println("        -1 Force la compatibilite Linotte 1.X");
 		// System.out.println("        -g:fichier.xml Charge une autre grammaire");
 		// System.out.println("        -l:classe.class Charge un autre connecteur de librairie");
 		// /System.out.println("        -i:classe.class Charge une autre IHM");
