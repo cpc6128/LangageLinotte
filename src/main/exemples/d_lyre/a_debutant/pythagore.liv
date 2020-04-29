@@ -1,5 +1,0 @@
-AB :: nombre
-BC :: nombre
-demande AB
-demande BC
-affiche "Le carré de l'hypoténuse vaut : " + (carré AB + carré BC)

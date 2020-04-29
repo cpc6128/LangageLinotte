@@ -1,8 +1,0 @@
-Caractères UNICODE :
-
-Principal :
-	Rôles :
-		phrase :: texte <- µ"0022" + "Voici mon texte !" + µ"0022"
-	Actions :
-		phrase !
-		µ"06A5" !

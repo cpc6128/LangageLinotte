@@ -1,4 +1,0 @@
-a := true
-b := false
-print ter(a,2,3)
-print ter(b,2,3)

@@ -1,3 +1,0 @@
-phrase := µ"0022" + "Voici mon texte !" + µ"0022"
-phrase !
-µ"06A5" !

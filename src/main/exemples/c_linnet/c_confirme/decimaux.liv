@@ -1,8 +1,0 @@
-a := 1.4
-b := 1.7
-clean
-print round a // arrondi
-print round b // arrondi
-print floor b
-print decimal a
-print decimal b

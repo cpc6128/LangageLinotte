@@ -1,8 +1,0 @@
-for 40 {
-	print "{joker+1} kilomètres à pied, ça use, ça use !"
-	if joker > 3 {
-		print "Ça use les souliers ..."
-		break
-	}
-}
-print "... et je suis bien trop fatigué !"

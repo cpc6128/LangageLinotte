@@ -1,8 +1,0 @@
-Fonction Lambda :
-
-Principal :
-	Rôles :
-		n :: nombre
-		fibo :: lambda n <- ter (n<2, n, fibo (n-1) + fibo (n-2))
-	Actions :
-		fibo (20) !

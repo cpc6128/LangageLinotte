@@ -1,8 +1,0 @@
-essaie {
-	1/0 !
-	"ça marche !" !
-}
-sinon {
-	"Numéro de l'erreur : " + numéro_erreur !
-	"Message de l'erreur : " + message_erreur !
-}

@@ -1,5 +1,0 @@
-AB :: number
-BC :: number
-input AB
-input BC
-print "Le carré de l'hypoténuse vaut : " + (square AB + square BC)

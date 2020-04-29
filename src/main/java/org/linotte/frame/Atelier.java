@@ -546,9 +546,7 @@ public class Atelier extends JFrame implements WindowListener {
 			}
 			// JFrame.setDefaultLookAndFeelDecorated(true);
 
-			Langage l = Gandalf.choisirLangage();
-			if (l != null)
-				Preference.getIntance().setProperty(Preference.P_LANGAGE, l.name());
+			Langage l = Langage.Linotte2;
 
 			splashWindow1 = new SplashWindow(splash, new Frame(), 10);
 			splashWindow1.setProgressValue(0, "Construction de l'environnement");

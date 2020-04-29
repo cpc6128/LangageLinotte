@@ -1,7 +1,0 @@
-principale :
-	print "Lancez bibliotheque.liv !"
-	exit
-
-bonjour : prénom
-	print "Bonjour à toi ${prénom}, tu es maintenant dans ${livre}"
-	return

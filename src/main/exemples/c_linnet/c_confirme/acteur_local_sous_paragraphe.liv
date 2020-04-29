@@ -1,7 +1,0 @@
-casier :: number []
-for 10 {
-	b := 15
-	shuffle b
-	insert b in casier
-}
-print casier

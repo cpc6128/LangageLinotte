@@ -1,8 +1,0 @@
-Demo Ruby :
-
- Principal :
-	Rôles :
-		ruby :: rbdemo
-
-	Actions :
-		affiche ruby.bonjour()

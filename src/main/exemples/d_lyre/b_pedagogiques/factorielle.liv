@@ -1,8 +1,0 @@
-a :: nombre
-i :: nombre
-résultat := 1
-	/*précision arithmétique infinie*/
-~ précision 0
-a ?
-pour i, a à 1, résultat = résultat * i
-résultat !

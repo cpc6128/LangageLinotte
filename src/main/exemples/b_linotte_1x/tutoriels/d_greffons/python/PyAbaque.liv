@@ -1,7 +1,0 @@
-Exemple Python :
-
-Principal :
-	Rôles :
-		boulier :: abaque
-	Actions :
-		affiche "pair : "+ boulier.pair(1)

@@ -1,8 +1,0 @@
-a := 1.4
-b := 1.7
-efface
-affiche arrondi a
-affiche arrondi b
-affiche entier b
-affiche décimal a
-affiche décimal b

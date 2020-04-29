@@ -1,5 +1,0 @@
-/*Utilisation des casiers anonymes*/
-tab1 := "X" , "D" , "G"
-lettre := tab1, ["B" , "E" , "H"], ["C" , "F" , "I"]
-lettre [0 , 0] = "A"
-for [0, 1, 2] print lettre [joker , 0]

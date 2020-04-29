@@ -1,9 +1,0 @@
-Hello World avec un greffon : 
-("Spécification 1.3")
-
-Démonstration :
-	Rôles :
-		messager :: majordome
-	Actions :
-		messager.présentation("Jules") !
-		termine

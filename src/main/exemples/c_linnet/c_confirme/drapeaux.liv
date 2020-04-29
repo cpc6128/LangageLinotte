@@ -1,8 +1,0 @@
-porte := true
-while porte {
-	print "porte vaut " + porte
-	porte = false
-}
-print "porte vaut " + porte
-if porte print "vrai"
-else if not(porte) print "faux"

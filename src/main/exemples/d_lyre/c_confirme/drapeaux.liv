@@ -1,8 +1,0 @@
-porte := vrai
-tant que porte {
-	affiche "porte vaut " + porte
-	porte = faux
-}
-affiche "porte vaut " + porte
-si porte affiche "vrai"
-sinon si non(porte) affiche "faux"

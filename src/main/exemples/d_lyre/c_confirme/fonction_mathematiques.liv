@@ -1,9 +1,0 @@
-a :: nombre
-b :: nombre
-"Quelles sont les valeurs des nombres A et B :" !
-demande a
-demande b
-"Le résultat est " + addition( a, b ) !
-
-addition : v1, v2
-	retourne v1 + v2

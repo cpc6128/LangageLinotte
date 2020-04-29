@@ -1,6 +1,0 @@
-call affichage with "Nicolas" , 1976
-call affichage with "Bruno" , 1977
-
-affichage : nom, an
-	print "{nom} est né en {an}"
-	return

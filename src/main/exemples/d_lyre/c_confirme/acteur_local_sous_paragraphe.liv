@@ -1,7 +1,0 @@
-casier :: nombre []
-pour 10 {
-	b := 15 // Variable locale à un bloc
-	mélange b
-	ajoute b dans casier
-}
-affiche casier
