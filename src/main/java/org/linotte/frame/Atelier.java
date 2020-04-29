@@ -667,8 +667,8 @@ public class Atelier extends JFrame implements WindowListener {
 			addWindowListener(this);
 
 			// La feuille
-			getJMenuEdition().add(undoAction).setIcon(Ressources.getImageIcon("edit-undo.png"));
-			getJMenuEdition().add(redoAction).setIcon(Ressources.getImageIcon("edit-redo.png"));
+			getJMenuEdition().add(undoAction);
+			getJMenuEdition().add(redoAction);
 			getJMenuEdition().addSeparator();
 
 			// http://penserenjava.free.fr/pens_2.4/indexMaind0ce.html?chp=14&pge=10
@@ -682,10 +682,6 @@ public class Atelier extends JFrame implements WindowListener {
 			copy.addActionListener(copier);
 			paste.addActionListener(coller);
 
-			copy.setIcon(Ressources.getImageIcon("edit-copy.png"));
-			paste.setIcon(Ressources.getImageIcon("edit-paste.png"));
-			cut.setIcon(Ressources.getImageIcon("edit-cut.png"));
-
 			copy.setMnemonic(java.awt.event.KeyEvent.VK_P);
 			paste.setMnemonic(java.awt.event.KeyEvent.VK_O);
 			cut.setMnemonic(java.awt.event.KeyEvent.VK_C);
@@ -694,20 +690,19 @@ public class Atelier extends JFrame implements WindowListener {
 			getJMenuEdition().add(paste);
 			getJMenuEdition().add(cut);
 			getJMenuEdition().addSeparator();
-			getJMenuEdition().add(getJMenuRechercher()).setIcon(Ressources.getImageIcon("format-indent-more.png"));
+			getJMenuEdition().add(getJMenuRechercher());
 
-			getJMenuOutils().add(getJMenuFormater()).setIcon(Ressources.getImageIcon("format-indent-more.png"));
-			getJMenuOutils().add(getJMenuLaToile()).setIcon(Ressources.getImageIcon("image-x-generic.png"));
+			getJMenuOutils().add(getJMenuFormater());
+			getJMenuOutils().add(getJMenuLaToile());
 
-			// getJMenuOutils().add(getJMenuConsole()).setIcon(Ressources.getImageIcon("utilities-terminal.png"));
 			getJMenuOutils().addSeparator();
 			JMenu options = new JMenu("Options");
-			getJMenuOutils().add(options).setIcon(Ressources.getScaledImage(Ressources.getImageIcon("system-shutdown.png"), 24, 24));
-			options.add(getJMenuThemes()).setIcon(Ressources.getImageIcon("themes.png"));
-			options.add(getJMenuSaveWorkSpace()).setIcon(Ressources.getImageIcon("drive-harddisk.png"));
+			getJMenuOutils().add(options);
+			options.add(getJMenuThemes());
+			options.add(getJMenuSaveWorkSpace());
 
-			options.add(getJMenuItemBonifieur()).setIcon(Ressources.getScaledImage(Ressources.getImageIcon("preferences-desktop-locale.png"), 24, 24));
-			options.add(getJMenuManageurStyle()).setIcon(Ressources.getImageIcon("themes.png"));
+			options.add(getJMenuItemBonifieur());
+			options.add(getJMenuManageurStyle());
 
 			options.addSeparator();
 			options.add(getJMenuDelaisDebogueur());
@@ -1918,20 +1913,20 @@ public class Atelier extends JFrame implements WindowListener {
 					Ressources.getImageIcon("bandeau/system-file-manager.png"));
 			jMenuBibliotheque.setVerticalTextPosition(buttonTextHorizontale);
 			jMenuBibliotheque.setHorizontalTextPosition(buttonTextVerticale);
-			jMenuBibliotheque.add(getJMenuItemNouveau()).setIcon(Ressources.getImageIcon("document-new.png"));
-			jMenuBibliotheque.add(getJMenuItemNouveauLivreGraphique()).setIcon(Ressources.getImageIcon("timbre/timbre.png"));
+			jMenuBibliotheque.add(getJMenuItemNouveau());
+			jMenuBibliotheque.add(getJMenuItemNouveauLivreGraphique());
 			jMenuBibliotheque.addSeparator();
-			jMenuBibliotheque.add(getJMenuItemDisque()).setIcon(Ressources.getImageIcon("document-open.png"));
-			jMenuBibliotheque.add(getJMenuItemRangerSous()).setIcon(Ressources.getImageIcon("drive-harddisk.png"));
+			jMenuBibliotheque.add(getJMenuItemDisque());
+			jMenuBibliotheque.add(getJMenuItemRangerSous());
 			jMenuBibliotheque.addSeparator();
-			jMenuBibliotheque.add(getJMenuItemExporter()).setIcon(Ressources.getImageIcon("pdf_document.png"));
-			jMenuBibliotheque.add(getJMenuItemExporterHTML()).setIcon(Ressources.getImageIcon("edit-copy.png"));
-			jMenuBibliotheque.add(getJMenuItemExporterRTF()).setIcon(Ressources.getImageIcon("edit-copy.png"));
-			jMenuBibliotheque.add(getJMenuItemExporterPNG()).setIcon(Ressources.getImageIcon("image-x-generic.png"));
+			jMenuBibliotheque.add(getJMenuItemExporter());
+			jMenuBibliotheque.add(getJMenuItemExporterHTML());
+			jMenuBibliotheque.add(getJMenuItemExporterRTF());
+			jMenuBibliotheque.add(getJMenuItemExporterPNG());
 
 			jMenuBibliotheque.addSeparator();
 			// Ajout de l'historique des derniers livres ouverts
-			jMenuBibliotheque.add(getJMenuItemHistorique()).setIcon(Ressources.getImageIcon("format-indent-more.png"));
+			jMenuBibliotheque.add(getJMenuItemHistorique());
 			jMenuBibliotheque.setActionCommand("Lire");
 			jMenuBibliotheque.setMnemonic(KeyEvent.VK_B);
 		}
@@ -2017,7 +2012,6 @@ public class Atelier extends JFrame implements WindowListener {
 			jMenuThemes.setBackground(menuBarColor);
 			jMenuThemes.setForeground(textBarColor);
 			jMenuThemes.setBorderPainted(menuBarBordure);
-			jMenuThemes.setIcon(Ressources.getImageIcon("themes.png"));
 
 		}
 		return jMenuThemes;
@@ -2052,7 +2046,7 @@ public class Atelier extends JFrame implements WindowListener {
 		private LookAndFeelInfo info;
 
 		public LFAction(LookAndFeelInfo info) {
-			super("Habillage " + info.getName(), Ressources.getImageIcon("preferences-desktop-locale.png"));
+			super("Habillage " + info.getName());
 			this.info = info;
 		}
 
