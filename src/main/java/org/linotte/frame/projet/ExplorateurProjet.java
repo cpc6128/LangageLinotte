@@ -470,23 +470,7 @@ public class ExplorateurProjet extends JPanel {
 
         task.add(new AbstractAction() {
             {
-                putValue(Action.NAME, "Actualité");
-                putValue(Action.SMALL_ICON, Ressources.getScaledImage(Ressources.getImageIcon("audio-input-microphone.png"), 16, 16));
-            }
-
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    final URI forum = new URI("http://langagelinotte.free.fr/wordpress/");
-                    Java6.getDesktop().browse(forum);
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
-            }
-        });
-
-        task.add(new AbstractAction() {
-            {
-                putValue(Action.NAME, "Documentations en ligne");
+                putValue(Action.NAME, "Documentation");
                 putValue(Action.SMALL_ICON, Ressources.getScaledImage(Ressources.getImageIcon("application-certificate.png"), 16, 16));
             }
 
@@ -500,21 +484,6 @@ public class ExplorateurProjet extends JPanel {
             }
         });
 
-        task.add(new AbstractAction() {
-            {
-                putValue(Action.NAME, "Forum");
-                putValue(Action.SMALL_ICON, Ressources.getImageIcon("system-users.png"));
-            }
-
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    final URI forum = new URI("http://programmons.forumofficiel.fr");
-                    Java6.getDesktop().browse(forum);
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
-            }
-        });
         task.add(new AbstractAction() {
             {
                 putValue(Action.NAME, "CodeVallée");
@@ -534,7 +503,7 @@ public class ExplorateurProjet extends JPanel {
 
         task.add(new AbstractAction() {
             {
-                putValue(Action.NAME, "Serveur HTTP");
+                putValue(Action.NAME, "Serveur Web");
                 putValue(Action.SMALL_ICON, Ressources.getScaledImage(Ressources.getImageIcon("post.png"), 16, 16));
             }
 

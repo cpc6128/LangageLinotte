@@ -20,23 +20,23 @@
 
 package org.linotte.moteur.xml.analyse.multilangage;
 
+import org.linotte.moteur.xml.analyse.multilangage.algonotte.MathematiqueAlgonotte;
 import org.linotte.moteur.xml.analyse.multilangage.linnet.MathematiqueLinnet;
 import org.linotte.moteur.xml.analyse.multilangage.linotte2.MathematiqueLinotte;
-import org.linotte.moteur.xml.analyse.multilangage.algonotte.MathematiqueAlgonotte;
 
 public enum Langage {
 
-	Linotte2("Linotte 2", "linotte2.xml", ";", false, new String[] { "{", "}" }, new char[] { '[', ']' }, "exemples/a_linotte", MathematiqueLinotte.values(), MathematiqueLinotte.de, false), 
-	Linnet("Linnet - Algorithmique en anglais", "linnet.xml", ";", false, new String[] { "[","]" }, new char[] { '¤','¤' }, "exemples/c_linnet", MathematiqueLinnet.values(), MathematiqueLinnet.de, true), 
-	Lyre("Lyre - Algorithmique en français", "lyre.xml", ";", false, new String[] { "[","]" }, new char[] { '¤','¤' }, "exemples/d_lyre", MathematiqueAlgonotte.values(), MathematiqueAlgonotte.de, true), 
-	Linotte1X("Linotte 1 - première version du langage", "linotte1.xml", ";", true, new String[] { "{", "}" }, new char[] { '[', ']' }, "exemples/b_linotte_1x", MathematiqueLinotte.values(), MathematiqueLinotte.de, false),
-	;
+    Linotte2("Linotte 2", "linotte2.xml", ";", false, new String[]{"{", "}"}, new char[]{'[', ']'}, "exemples", MathematiqueLinotte.values(), MathematiqueLinotte.de, false),
+    Linnet("Linnet - Algorithmique en anglais", "linnet.xml", ";", false, new String[]{"[", "]"}, new char[]{'¤', '¤'}, "exemples/c_linnet", MathematiqueLinnet.values(), MathematiqueLinnet.de, true),
+    Lyre("Lyre - Algorithmique en français", "lyre.xml", ";", false, new String[]{"[", "]"}, new char[]{'¤', '¤'}, "exemples/d_lyre", MathematiqueAlgonotte.values(), MathematiqueAlgonotte.de, true),
+    Linotte1X("Linotte 1 - première version du langage", "linotte1.xml", ";", true, new String[]{"{", "}"}, new char[]{'[', ']'}, "exemples/b_linotte_1x", MathematiqueLinotte.values(), MathematiqueLinotte.de, false),
+    ;
 
-	private String nom;
+    private String nom;
 
-	private String fichier;
+    private String fichier;
 
-	private String separateurLigne;
+    private String separateurLigne;
 
 	private boolean legacy;
 

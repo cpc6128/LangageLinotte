@@ -1,0 +1,41 @@
+vaisseau est un graphique, image prend "media/space.png", x prend 133, y prend 300
+screen est une toile
+
+code :
+	appelle mouvement // Mouvement du vaisseau pour suivre la souris
+	appelle attaque // Pour lancer les attaques des monstres !
+	tant que vrai
+		temporise
+		si touche = "clique" appelle tirer avec x de vaisseau, y de vaisseau
+	ferme
+
+mouvement :
+	tant que vrai
+		attends 5 millisecondes
+		si (x de vaisseau) < sourisx déplace vaisseau vers la droite de 4
+		si (x de vaisseau) > sourisx déplace vaisseau vers la gauche de 4
+	ferme
+
+tirer : x, y
+	bullet est un graphique, image prend "media/bullet.gif", x prend x+25, y prend y
+	tant que (y de bullet) > -20
+		y de bullet prend y de bullet - 5
+		attends 10 milliseconde
+	ferme
+	efface bullet
+	reviens
+
+attaque :
+	tant que vrai
+		attends 1000 millisecondes
+		appelle monstre
+	ferme
+	
+monstre :
+	monstre est un graphique, image prend "media/bomberman.gif", x prend hasard(500), y prend -50
+	tant que (y de monstre) < 530
+		y de monstre prend y de monstre + 8
+		attends 20 milliseconde
+	ferme
+	efface monstre
+	reviens
