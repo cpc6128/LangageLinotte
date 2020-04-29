@@ -27,12 +27,7 @@ import org.alize.kernel.AKPatrol;
 import org.alize.kernel.AKRuntime;
 import org.linotte.frame.coloration.Style;
 import org.linotte.frame.coloration.StyleLinotte;
-import org.linotte.moteur.exception.ErreurException;
-import org.linotte.moteur.exception.FinException;
-import org.linotte.moteur.exception.InconnuException;
-import org.linotte.moteur.exception.LectureException;
-import org.linotte.moteur.exception.LinotteException;
-import org.linotte.moteur.exception.SyntaxeException;
+import org.linotte.moteur.exception.*;
 import org.linotte.moteur.xml.Version;
 import org.linotte.moteur.xml.alize.kernel.Job;
 import org.linotte.moteur.xml.alize.kernel.JobContext;
@@ -42,7 +37,6 @@ import org.linotte.moteur.xml.alize.kernel.processus.Processus;
 import org.linotte.moteur.xml.alize.lexer.MotAMotLexer;
 import org.linotte.moteur.xml.alize.parseur.ParserContext.MODE;
 import org.linotte.moteur.xml.alize.parseur.noeud.NNoeud;
-import org.linotte.moteur.xml.analyse.LegacyDecoupeDunLivre;
 
 public class Parseur {
 
@@ -57,11 +51,7 @@ public class Parseur {
 		// Noeud racine pour parser un livre :
 		NNoeud nodeRacine = parserContext.linotte.getGrammaire().retourneGrammaire();
 		nodeRacine.getFils().recommencer();
-		if (parserContext.linotte.getLangage().isLegacy())
-			parserContext.lexer = new LegacyDecoupeDunLivre(parserContext.linotte.getGrammaire(), flux, parserContext.styleBuffer);
-		else {
 			parserContext.lexer = new MotAMotLexer(parserContext.linotte.getGrammaire(), flux, parserContext.styleBuffer);
-		}
 		RuntimeContext context = null;
 
 		if (parserContext.mode == MODE.GENERATION_RUNTIME) {

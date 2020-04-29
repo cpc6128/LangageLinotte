@@ -1,18 +1,5 @@
 package org.linotte.moteur.xml.analyse;
 
-import java.awt.Color;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-
 import org.linotte.frame.latoile.Couleur;
 import org.linotte.moteur.entites.Livre;
 import org.linotte.moteur.entites.PrototypeGraphique;
@@ -27,6 +14,15 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+import java.util.*;
 
 public class Grammaire {
 
@@ -117,8 +113,6 @@ public class Grammaire {
 					Messages.creerErreur(n.getAttribut("id"), n.getValeur().toString());
 				else if ("chaine".equals(node.getAttribut("nom"))) {
 					ItemXML.setChaineDebut(n.getValeur().toString());
-				} else if ("articles".equals(node.getAttribut("nom"))) {
-					Article.addArticle(n.getValeur());
 				} else if ("separateur".equals(node.getAttribut("nom"))) {
 					findeligne.add(n.getAttribut("valeur"));
 				} else if ("synonymes".equals(node.getAttribut("nom"))) {

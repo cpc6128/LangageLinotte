@@ -20,9 +20,6 @@
 
 package org.linotte.frame.moteur;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.alize.kernel.AKException;
 import org.alize.kernel.AKRuntime;
 import org.linotte.frame.Atelier;
@@ -36,6 +33,9 @@ import org.linotte.moteur.xml.alize.kernel.security.Habilitation;
 import org.linotte.moteur.xml.alize.parseur.ParserContext;
 import org.linotte.moteur.xml.alize.parseur.ParserContext.MODE;
 import org.linotte.moteur.xml.alize.parseur.Parseur;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Exécuteur des livres depuis le télétype
@@ -63,9 +63,6 @@ public class ConsoleProcess extends Thread {
 
 	public static void go(StringBuilder f, Linotte param, Atelier ap) {
 		this_ = new ConsoleProcess(param, ap);
-		if (lecteur.getLangage().isLegacy())
-			this_.buffer = new StringBuilder("console : \nparagraphe :\naction :\n").append(f);
-		else
 			this_.buffer = new StringBuilder("faire :\n").append(f);
 		if (!this_.start) {
 			this_.start = true;

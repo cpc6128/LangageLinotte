@@ -1,25 +1,5 @@
 package org.linotte.frame.cahier.timbre;
 
-import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
-import java.awt.geom.AffineTransform;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-
 import org.linotte.frame.cahier.Cahier;
 import org.linotte.frame.cahier.Cahier.EtatCachier;
 import org.linotte.frame.cahier.timbre.entite.Bouton;
@@ -29,6 +9,15 @@ import org.linotte.frame.cahier.timbre.entite.i.PasSauvegarder;
 import org.linotte.frame.cahier.timbre.outils.TimbresHelper;
 import org.linotte.frame.cahier.timbre.ui.Planche;
 import org.linotte.frame.cahier.timbre.ui.theme.simple.Abaque;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.geom.AffineTransform;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * Panel graphique affichant les timbres sur le cahier
@@ -64,7 +53,7 @@ public class JPanelPlancheATimbre extends JPanel implements MouseMotionListener,
 	public Cahier cahier;
 
 	private Font font = new Font(Abaque.FONT, Font.PLAIN, Abaque.FONT_SIZE);
-	private double scale = 1;
+	private double scale = 0.85;
 
 	public JPanelPlancheATimbre(Cahier cahier) {
 		addMouseMotionListener(this);

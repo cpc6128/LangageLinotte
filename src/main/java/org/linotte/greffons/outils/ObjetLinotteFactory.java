@@ -21,12 +21,6 @@
 
 package org.linotte.greffons.outils;
 
-import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
 import org.linotte.greffons.externe.Greffon.Espece;
 import org.linotte.greffons.externe.Greffon.GreffonException;
 import org.linotte.greffons.externe.Greffon.ObjetLinotte;
@@ -40,11 +34,17 @@ import org.linotte.moteur.exception.ErreurException;
 import org.linotte.moteur.xml.analyse.Mathematiques;
 import org.linotte.moteur.xml.api.Librairie;
 
+import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
 public class ObjetLinotteFactory {
-	
+
 	public static final String CLEF_PROTOTYPE_ORIGINAL_IDENTIFIANT = "___CLEF_PROTOTYPE_IDENTIFIANT";
 
-	@SuppressWarnings({ "unchecked" })
+	@SuppressWarnings({"unchecked"})
 	public static ObjetLinotte copy(Acteur a) throws ErreurException, GreffonException {
 		if (a instanceof Casier) {
 			Casier c = (Casier) a;
@@ -66,11 +66,12 @@ public class ObjetLinotteFactory {
 			for (Object clef : clefs) {
 				espece.add((org.linotte.greffons.externe.Greffon.Acteur) copy(e.retourneAttribut((String) clef)));
 			}
-			
+
 			org.linotte.greffons.externe.Greffon.Acteur levrai = new org.linotte.greffons.externe.Greffon.Acteur(ROLE.NOMBRE,
 					CLEF_PROTOTYPE_ORIGINAL_IDENTIFIANT, new BigDecimal(e.prototypeID));
 			espece.add(levrai);
-			
+
+			espece.porteur = a;
 			return espece;
 		} else {
 			// Acteur simple 

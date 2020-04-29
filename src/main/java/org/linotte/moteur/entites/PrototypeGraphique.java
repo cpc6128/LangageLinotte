@@ -20,49 +20,32 @@
 
 package org.linotte.moteur.entites;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Shape;
-import java.awt.geom.Area;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import org.linotte.frame.latoile.LaToile;
 import org.linotte.frame.latoile.Recepteur;
-import org.linotte.frame.latoile.dessinateur.CercleDessinateur;
-import org.linotte.frame.latoile.dessinateur.CheminDessinateur;
-import org.linotte.frame.latoile.dessinateur.CrayonDessinateur;
-import org.linotte.frame.latoile.dessinateur.Dessinateur;
-import org.linotte.frame.latoile.dessinateur.ImageDessinateur;
-import org.linotte.frame.latoile.dessinateur.LigneDessinateur;
-import org.linotte.frame.latoile.dessinateur.MegalitheDessinateur;
-import org.linotte.frame.latoile.dessinateur.MozaiqueDessinateur;
-import org.linotte.frame.latoile.dessinateur.ParcheminDessinateur;
-import org.linotte.frame.latoile.dessinateur.PointDessinateur;
-import org.linotte.frame.latoile.dessinateur.PolygoneDessinateur;
-import org.linotte.frame.latoile.dessinateur.PraxinoscopeDessinateur;
-import org.linotte.frame.latoile.dessinateur.RectangleDessinateur;
-import org.linotte.frame.latoile.dessinateur.ScribeDessinateur;
-import org.linotte.frame.latoile.dessinateur.TexteDessinateur;
+import org.linotte.frame.latoile.dessinateur.*;
 import org.linotte.frame.latoile.recepteur.ScribeRecepteur;
 import org.linotte.frame.listener.Listener;
 import org.linotte.greffons.externe.Graphique;
 import org.linotte.greffons.externe.Greffon;
 import org.linotte.greffons.externe.Greffon.GreffonException;
+import org.linotte.greffons.java.interne.a.MethodeInterneDirecte;
+import org.linotte.moteur.exception.Constantes;
 import org.linotte.moteur.exception.ErreurException;
+import org.linotte.moteur.xml.actions.ConditionAction;
 import org.linotte.moteur.xml.alize.kernel.Job;
 import org.linotte.moteur.xml.alize.kernel.processus.Processus;
 import org.linotte.moteur.xml.api.Librairie;
 
+import java.awt.*;
+import java.awt.geom.Area;
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.*;
+
 /**
  * Cette classe représente un objet graphique sur la toile.
- * @author CPC
  *
+ * @author CPC
  */
 public class PrototypeGraphique extends org.linotte.moteur.entites.Prototype implements Comparable<PrototypeGraphique> {
 
@@ -150,7 +133,7 @@ public class PrototypeGraphique extends org.linotte.moteur.entites.Prototype imp
 	}
 
 	public PrototypeGraphique(LaToile pmoteur, Librairie lib, String pnom, Role r, String t, Fichier f, PrototypeGraphique.TYPE_GRAPHIQUE type_graphique,
-			Greffon greffon) {
+							  Greffon greffon) {
 		super(lib, pnom, r, t, f, greffon);
 		toile = pmoteur;
 		typeGraphique = type_graphique;
@@ -581,4 +564,33 @@ public class PrototypeGraphique extends org.linotte.moteur.entites.Prototype imp
 		debutDragAndDropListeners = null;
 		return temp;
 	}
+
+	protected void initPrototypeGraphique() {
+
+		ajouterSlotGreffon(new MethodeInterneDirecte(this) {
+
+			@Override
+			public Acteur appeler(Greffon greffon, Acteur... parametres) throws Exception {
+				try {
+					if (parametres.length != 1)
+						throw new ErreurException(Constantes.PROTOTYPE_METHODE_FONCTIONNELLE_PARAMETRE, nom());
+					Acteur cible = parametres[0];
+					if (!(cible instanceof Prototype) && (!((Prototype) cible).isEspeceGraphique()))
+						throw new ErreurException(Constantes.PROTOTYPE_METHODE_FONCTIONNELLE_PARAMETRE, nom());
+
+					return new Acteur(Role.NOMBRE, new BigDecimal(ConditionAction.collision(acteur, cible) ? 1 : 0));
+
+				} catch (Exception e) {
+					throw new ErreurException(Constantes.PROTOTYPE_METHODE_FONCTIONNELLE_PARAMETRE, nom());
+				}
+			}
+
+			@Override
+			public String nom() {
+				return "collision";
+			}
+		});
+
+	}
+
 }

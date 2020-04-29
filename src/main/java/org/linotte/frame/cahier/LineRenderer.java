@@ -75,22 +75,8 @@ public class LineRenderer extends JPanel implements ActionListener {
 		pane = cahier.jEditorPaneCachier;
 		scrollPane = cahier.scrollPan;
 
-		// Ajout du pop menu :
-		addMouseMotionListener(new MouseMotionListener() {
-			public void mouseDragged(final MouseEvent e) {
-			}
-
-			public void mouseMoved(final MouseEvent e) {
-				y = e.getY();
-				String toolTipText = "Clic droit pour ajouter cette ligne aux favoris";
-				setToolTipText(toolTipText);
-			}
-		});
 
 		popup = new JPopupMenu();
-		JMenuItem menuItem = new JMenuItem("Ajouter aux favoris...");
-		menuItem.addActionListener(this);
-		popup.add(menuItem);
 		// Add listener to components that can bring up popup menus.
 		MouseListener popupListener = new PopupListener();
 		this.addMouseListener(popupListener);

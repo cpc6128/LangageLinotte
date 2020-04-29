@@ -21,18 +21,15 @@
 
 package org.linotte.greffons.externe;
 
-import java.awt.Image;
+import java.awt.*;
 import java.io.Serializable;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 
@@ -256,17 +253,19 @@ public abstract class Greffon {
 
 	/**
 	 * TODO A documenter
-	 * 
+	 *
 	 */
 
 	public static class Espece extends ListeClonable<Acteur> implements ObjetLinotte {
 
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = 1L;
 		private String type;
-		
+		// Utilisé pour stocker les espèces graphiques
+		public transient org.linotte.moteur.entites.Acteur porteur = null;
+
 		public Espece(String type) {
 			this.type = type;
 		}

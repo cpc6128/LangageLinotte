@@ -20,17 +20,17 @@
 
 package org.linotte.moteur.xml.alize.parseur.noeud;
 
-import java.util.ArrayList;
-
 import org.linotte.moteur.exception.Constantes;
 import org.linotte.moteur.exception.FinException;
 import org.linotte.moteur.exception.StopException;
 import org.linotte.moteur.exception.SyntaxeException;
 import org.linotte.moteur.xml.alize.parseur.ParserContext;
 import org.linotte.moteur.xml.alize.parseur.ParserContext.MODE;
-import org.linotte.moteur.xml.alize.parseur.a.NExpression;
+import org.linotte.moteur.xml.alize.parseur.XMLIterator;
 import org.linotte.moteur.xml.alize.parseur.a.Noeud;
 import org.w3c.dom.Node;
+
+import java.util.ArrayList;
 
 public class NLigne extends Noeud {
 
@@ -65,9 +65,21 @@ public class NLigne extends Noeud {
 
 		try {
 			boolean noeudEtat = false;
-			for (Noeud fils : getFils()) {
-				if ( noeudEtat && parserContext.lexer.isFinDeLigne() && fils instanceof NExpression) {
-					throw new SyntaxeException(Constantes.FIN_DE_LIGNE_ATTENDUE, parserContext.lexer.getLastPosition());
+			XMLIterator iterator = getFils();
+			for (Noeud fils : iterator) {
+				if (noeudEtat && parserContext.lexer.isFinDeLigne() && fils instanceof NToken) {
+					// NToken, ça corrige la disparition de lis
+//					NToken token = (NToken) fils;
+					// HACK : Correction du bogue avec le verbe lire qui n'est plus utilisé.
+//					String style = token.getAttribut("style");
+//					System.out.println(token.getValeur() + " : " + style);
+//					System.out.println(fils.getNom());
+//					System.out.println(fils.getClass());
+//					System.out.println(parserContext.lexer.getMot());
+//					System.out.println(iterator.hasNext());
+//					System.out.println("***************");
+					if ("sinon".equalsIgnoreCase(parserContext.lexer.getMot()))
+						throw new SyntaxeException(Constantes.FIN_DE_LIGNE_ATTENDUE, parserContext.lexer.getLastPosition());
 				}
 				fils.parse(parserContext);
 				noeudEtat = fils instanceof NEtat;

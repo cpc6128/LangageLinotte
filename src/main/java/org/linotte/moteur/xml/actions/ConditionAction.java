@@ -20,18 +20,7 @@
 
 package org.linotte.moteur.xml.actions;
 
-import java.awt.Shape;
-import java.awt.geom.Area;
-import java.math.BigDecimal;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import org.linotte.moteur.entites.Acteur;
-import org.linotte.moteur.entites.Casier;
-import org.linotte.moteur.entites.Prototype;
-import org.linotte.moteur.entites.PrototypeGraphique;
-import org.linotte.moteur.entites.Role;
+import org.linotte.moteur.entites.*;
 import org.linotte.moteur.exception.Constantes;
 import org.linotte.moteur.exception.ErreurException;
 import org.linotte.moteur.exception.StopException;
@@ -47,6 +36,13 @@ import org.linotte.moteur.xml.appels.Appel;
 import org.linotte.moteur.xml.appels.Condition;
 import org.linotte.moteur.xml.appels.Condition.ETAT_CONDITION;
 import org.linotte.moteur.xml.outils.MathematiquesConstantes;
+
+import java.awt.*;
+import java.awt.geom.Area;
+import java.math.BigDecimal;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class ConditionAction extends Action implements ActionDispatcher {
 
@@ -245,7 +241,7 @@ public class ConditionAction extends Action implements ActionDispatcher {
 
 	}
 
-	private static boolean collision(Acteur a1, Acteur a2) throws Exception {
+	public static boolean collision(Acteur a1, Acteur a2) throws Exception {
 
 		if (!(a1.getRole() == Role.ESPECE) || !(a2.getRole() == Role.ESPECE))
 			throw new ErreurException(Constantes.SYNTAXE_CONDITIONS_INVALIDE);

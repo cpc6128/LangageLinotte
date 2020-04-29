@@ -20,11 +20,6 @@
 
 package org.linotte.moteur.xml.alize.parseur.noeud;
 
-import java.util.ArrayList;
-import java.util.EmptyStackException;
-import java.util.HashSet;
-import java.util.Set;
-
 import org.linotte.moteur.exception.Constantes;
 import org.linotte.moteur.exception.FinException;
 import org.linotte.moteur.exception.StopException;
@@ -37,6 +32,11 @@ import org.linotte.moteur.xml.analyse.Synonyme;
 import org.linotte.moteur.xml.analyse.SynonymeLoader;
 import org.linotte.moteur.xml.exception.XMLGroupeException;
 import org.w3c.dom.Node;
+
+import java.util.ArrayList;
+import java.util.EmptyStackException;
+import java.util.HashSet;
+import java.util.Set;
 
 public class NGroupe extends Noeud {
 

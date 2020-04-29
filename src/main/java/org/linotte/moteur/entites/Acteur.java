@@ -20,26 +20,11 @@
 
 package org.linotte.moteur.entites;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import org.linotte.frame.latoile.LaToileListener;
 import org.linotte.greffons.api.AKMethod;
 import org.linotte.greffons.externe.Greffon;
 import org.linotte.greffons.externe.Greffon.ObjetLinotte;
-import org.linotte.greffons.java.interne.CapitaliserMethodeInterne;
-import org.linotte.greffons.java.interne.ExtraireMethodeInterne;
-import org.linotte.greffons.java.interne.InverserMethodeInterne;
-import org.linotte.greffons.java.interne.MajusculeMethodeInterne;
-import org.linotte.greffons.java.interne.MelangeMethodeInterne;
-import org.linotte.greffons.java.interne.MinusculeMethodeInterne;
-import org.linotte.greffons.java.interne.PositionMethodeInterne;
-import org.linotte.greffons.java.interne.RemplacerMethodeInterne;
-import org.linotte.greffons.java.interne.TailleMethodeInterne;
+import org.linotte.greffons.java.interne.*;
 import org.linotte.greffons.java.interne.a.MethodeInterne;
 import org.linotte.greffons.outils.ObjetLinotteHelper;
 import org.linotte.moteur.entites.ecouteurs.ActeurParent;
@@ -51,6 +36,9 @@ import org.linotte.moteur.outils.LinkedHashMap;
 import org.linotte.moteur.xml.alize.kernel.processus.Processus;
 import org.linotte.moteur.xml.api.Librairie;
 import org.linotte.moteur.xml.appels.Boucle;
+
+import java.math.BigDecimal;
+import java.util.*;
 
 /**
  * Un acteur est une variable. Il possède un {@link Role} (un type).
@@ -407,7 +395,7 @@ public class Acteur {
 		return (String) contratsPrototype.toArray()[0];
 	}
 
-	private void initPrototype() {
+	protected void initPrototype() {
 		if (slots == null) {
 			slots = new LinkedHashMap<String, Processus>();
 			slotsGreffon = new LinkedHashMap<String, AKMethod>();
@@ -420,6 +408,11 @@ public class Acteur {
 			acteurToprototype = true;
 			if (prole == Role.CASIER) {
 				ajouterSlotGreffon(new TailleMethodeInterne(this));
+				ajouterSlotGreffon(new InverserMethodeInterne(this));
+				ajouterSlotGreffon(new RemplacerMethodeInterne(this));
+				ajouterSlotGreffon(new PositionMethodeInterne(this));
+				ajouterSlotGreffon(new ExtraireMethodeInterne(this));
+				ajouterSlotGreffon(new MelangeMethodeInterne(this));
 			} else if (prole == Role.TEXTE) {
 				ajouterSlotGreffon(new InverserMethodeInterne(this));
 				ajouterSlotGreffon(new RemplacerMethodeInterne(this));
@@ -450,11 +443,15 @@ public class Acteur {
 					}
 
 				});
+			} else if (prole == Role.ESPECE) {
+				if (isEspeceGraphique()) {
+					((PrototypeGraphique) this).initPrototypeGraphique();
+				}
 			}
 		}
 	}
 
-	private void ajouterSlotGreffon(MethodeInterne methodeInterne) {
+	protected void ajouterSlotGreffon(MethodeInterne methodeInterne) {
 		ajouterSlotGreffon(methodeInterne.nom(), methodeInterne);
 	}
 

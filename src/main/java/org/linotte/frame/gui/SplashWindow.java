@@ -20,27 +20,13 @@
 
 package org.linotte.frame.gui;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Frame;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.RenderingHints;
-import java.awt.Toolkit;
-import java.lang.reflect.InvocationTargetException;
-
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JProgressBar;
-import javax.swing.JWindow;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.plaf.basic.BasicProgressBarUI;
-
 import org.linotte.moteur.outils.Preference;
 import org.linotte.moteur.outils.Ressources;
+
+import javax.swing.*;
+import javax.swing.plaf.basic.BasicProgressBarUI;
+import java.awt.*;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * "Splash window" avec barre de progression
@@ -100,10 +86,6 @@ public class SplashWindow extends JWindow {
 	 * @param message Le nouveau texte
 	 */
 	public static void setProgressValue(String message) {
-		//if (Version.isBeta())
-		//	System.out.println(message);
-		if (jMessage != null)
-			jMessage.setText(message);
 	}
 
 	/** Change la valeur de la barre de progression, et le texte affiché.
@@ -112,10 +94,10 @@ public class SplashWindow extends JWindow {
 	 * @param message
 	 */
 	public void setProgressValue(int valeur, String message) {
-		//if (Version.isBeta())
-		//	System.out.println(message);
-		progressBar.setValue(valeur);
-		jMessage.setText(message);
+		// if (Version.isBeta())
+		// System.out.println(message);
+		// progressBar.setValue(5);
+		// jMessage.setText(message);
 		// si est arrivé a la valeur max : ferme le splash screen en lancant le
 		// thread
 		if (valeur >= maxValue) {

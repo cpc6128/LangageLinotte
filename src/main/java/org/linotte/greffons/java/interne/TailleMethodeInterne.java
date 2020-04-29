@@ -1,38 +1,39 @@
 package org.linotte.greffons.java.interne;
 
 import org.linotte.greffons.externe.Greffon;
-import org.linotte.greffons.externe.Greffon.ObjetLinotte;
-import org.linotte.greffons.java.interne.a.MethodeInterne;
-import org.linotte.greffons.outils.ObjetLinotteHelper;
+import org.linotte.greffons.java.interne.a.MethodeInterneDirecte;
 import org.linotte.moteur.entites.Acteur;
 import org.linotte.moteur.entites.Casier;
 import org.linotte.moteur.entites.Role;
 import org.linotte.moteur.exception.Constantes;
 import org.linotte.moteur.exception.ErreurException;
 
-public class TailleMethodeInterne extends MethodeInterne {
+import java.math.BigDecimal;
+
+public class TailleMethodeInterne extends MethodeInterneDirecte {
 
 	public TailleMethodeInterne(Acteur acteur) {
 		super(acteur);
 	}
 
 	@Override
-	public ObjetLinotte appeler(Greffon greffon, ObjetLinotte... parametres) throws Exception {
+	public Acteur appeler(Greffon greffon, Acteur... parametres) throws Exception {
+
+		Acteur a2 = new Acteur(Role.NOMBRE, null);
+
 		try {
 
-			// Transformation des parametres si le developpeur utilise des types Java :
-			if (parametres.length != 0) {
-				throw new ErreurException(Constantes.PROTOTYPE_METHODE_FONCTIONNELLE_PARAMETRE, nom());
-			}
+			Acteur a1 = acteur;
 
-			int retour;
-			if (acteur.getRole() == Role.CASIER) {
-				retour = ((Casier) acteur).taille();
-			} else {
-				retour = ((String) acteur.getValeur()).length();
-			}
+			if (a1.getRole() == Role.ESPECE)
+				throw new ErreurException(Constantes.SYNTAXE_PARAMETRE_MESURER);
+			if (a1.getRole() == Role.NOMBRE)
+				throw new ErreurException(Constantes.SYNTAXE_PARAMETRE_MESURER);
 
-			return ObjetLinotteHelper.copy(retour);
+			if (a1.getRole() == Role.TEXTE)
+				a2.setValeur(new BigDecimal(((String) a1.getValeur()).length()));
+			else if (a1.getRole() == Role.CASIER)
+				a2.setValeur(new BigDecimal(((Casier) a1).taille()));
 
 		} catch (java.lang.IndexOutOfBoundsException e) {
 			throw new ErreurException(Constantes.PROTOTYPE_METHODE_FONCTIONNELLE_PARAMETRE, nom());
@@ -42,6 +43,8 @@ public class TailleMethodeInterne extends MethodeInterne {
 			throw new ErreurException(Constantes.PROTOTYPE_METHODE_FONCTIONNELLE_PARAMETRE, nom());
 
 		}
+
+		return a2;
 	}
 
 	@Override

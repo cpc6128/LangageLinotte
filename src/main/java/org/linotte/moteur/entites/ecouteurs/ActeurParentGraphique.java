@@ -20,10 +20,6 @@
 
 package org.linotte.moteur.entites.ecouteurs;
 
-import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.linotte.frame.latoile.Couleur;
 import org.linotte.greffons.externe.Graphique;
 import org.linotte.greffons.externe.Greffon;
@@ -33,6 +29,10 @@ import org.linotte.moteur.entites.Prototype;
 import org.linotte.moteur.entites.PrototypeGraphique;
 import org.linotte.moteur.exception.Constantes;
 import org.linotte.moteur.exception.ErreurException;
+
+import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ActeurParentGraphique extends ActeurParent {
 
@@ -82,6 +82,7 @@ public class ActeurParentGraphique extends ActeurParent {
 					try {
 						run2.run(eg, valeur);
 					} catch (java.lang.ClassCastException e) {
+						//e.printStackTrace();
 						throw new ErreurException(Constantes.SYNTAXE_MINI_FORMULE, "" + valeur);
 						// 
 						// On affiche pas d'erreur, c'est de l'optimisation

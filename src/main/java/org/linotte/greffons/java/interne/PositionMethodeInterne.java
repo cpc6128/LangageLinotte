@@ -1,56 +1,49 @@
 package org.linotte.greffons.java.interne;
 
-import java.math.BigDecimal;
-
 import org.linotte.greffons.externe.Greffon;
-import org.linotte.greffons.externe.Greffon.ObjetLinotte;
-import org.linotte.greffons.java.interne.a.MethodeInterne;
-import org.linotte.greffons.outils.ObjetLinotteHelper;
+import org.linotte.greffons.java.interne.a.MethodeInterneDirecte;
 import org.linotte.moteur.entites.Acteur;
+import org.linotte.moteur.entites.Role;
 import org.linotte.moteur.exception.Constantes;
 import org.linotte.moteur.exception.ErreurException;
 import org.linotte.moteur.outils.ChaineOutils;
 
-public class PositionMethodeInterne extends MethodeInterne {
+import java.math.BigDecimal;
 
-	public PositionMethodeInterne(Acteur acteur) {
-		super(acteur);
-	}
+public class PositionMethodeInterne extends MethodeInterneDirecte {
 
-	@Override
-	public ObjetLinotte appeler(Greffon greffon, ObjetLinotte... parametres) throws Exception {
-		try {
+    public PositionMethodeInterne(Acteur acteur) {
+        super(acteur);
+    }
 
-			// Transformation des paramètres si le developpeur utilise des types Java :
-			if (parametres.length != 2) {
-				throw new ErreurException(Constantes.PROTOTYPE_METHODE_FONCTIONNELLE_PARAMETRE, nom());
-			}
+    @Override
+    public Acteur appeler(Greffon greffon, Acteur... parametres) throws Exception {
+        Acteur retour = new Acteur(Role.NOMBRE, null);
+        try {
+            int p1 = ((BigDecimal) parametres[0].getValeur()).intValue();
+            String p2 = (String) (parametres[1].getValeur());
+            String s = (String) acteur.getValeur();
+            int pos = ChaineOutils.indexOfIgnoreCase(s, p2, p1);
+            retour.setValeur(new BigDecimal(pos));
 
-			int p1 = ((BigDecimal) transformerObjet(BigDecimal.class, parametres[0])).intValue();
-			String p2 = (String) transformerObjet(String.class, parametres[1]);
+        } catch (java.lang.IndexOutOfBoundsException e) {
+            throw new ErreurException(Constantes.PROTOTYPE_METHODE_FONCTIONNELLE_PARAMETRE, nom());
+        } catch (java.lang.IllegalArgumentException e) {
+            throw new ErreurException(Constantes.PROTOTYPE_METHODE_FONCTIONNELLE_PARAMETRE, nom());
+        } catch (ClassCastException e) {
+            throw new ErreurException(Constantes.PROTOTYPE_METHODE_FONCTIONNELLE_PARAMETRE, nom());
+        }
+        return retour;
 
-			String s = (String) acteur.getValeur();
-			int pos = ChaineOutils.indexOfIgnoreCase(s, p2, p1);
+    }
 
-			return ObjetLinotteHelper.copy(pos);
+    @Override
+    public String parametres() {
+        return "( quoi )";
+    }
 
-		} catch (java.lang.IndexOutOfBoundsException e) {
-			throw new ErreurException(Constantes.PROTOTYPE_METHODE_FONCTIONNELLE_PARAMETRE, nom());
-		} catch (java.lang.IllegalArgumentException e) {
-			throw new ErreurException(Constantes.PROTOTYPE_METHODE_FONCTIONNELLE_PARAMETRE, nom());
-		} catch (ClassCastException e) {
-			throw new ErreurException(Constantes.PROTOTYPE_METHODE_FONCTIONNELLE_PARAMETRE, nom());
-
-		}
-	}
-
-	@Override
-	public String parametres() {
-		return "( à partir de , quoi )";
-	}
-
-	public String nom() {
-		return "position";
-	}
+    public String nom() {
+        return "position";
+    }
 
 }

@@ -20,14 +20,6 @@
 
 package org.linotte.frame.coloration;
 
-import java.awt.Color;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.SortedSet;
-
 import org.linotte.frame.Atelier;
 import org.linotte.frame.cahier.Cahier;
 import org.linotte.frame.outils.Process;
@@ -40,11 +32,15 @@ import org.linotte.moteur.xml.alize.parseur.ParserContext.MODE;
 import org.linotte.moteur.xml.alize.parseur.ParserContext.Prototype;
 import org.linotte.moteur.xml.alize.parseur.Parseur;
 
+import java.awt.*;
+import java.util.List;
+import java.util.*;
+
 public class ProcessStyle extends Process {
 
 	private static final Color COULEUR_ERREUR = new Color(198, 4, 38);
 
-	private static final int DELAY = 5000;
+	private static final int DELAY = 2000;
 
 	Cahier cahier = null;
 
