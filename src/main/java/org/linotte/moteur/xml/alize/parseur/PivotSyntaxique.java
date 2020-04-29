@@ -22,32 +22,19 @@
 
 package org.linotte.moteur.xml.alize.parseur;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.linotte.moteur.exception.Constantes;
 import org.linotte.moteur.exception.ErreurException;
 import org.linotte.moteur.exception.LectureException;
-import org.linotte.moteur.xml.actions.ActeurAction;
-import org.linotte.moteur.xml.actions.EspeceAction;
-import org.linotte.moteur.xml.actions.GreffonsAction;
-import org.linotte.moteur.xml.actions.ImportLivreAction;
-import org.linotte.moteur.xml.actions.ImportationAction;
-import org.linotte.moteur.xml.actions.LireAction;
-import org.linotte.moteur.xml.actions.ParagrapheAction;
-import org.linotte.moteur.xml.actions.ParcourirAction;
-import org.linotte.moteur.xml.actions.ProposerAction;
-import org.linotte.moteur.xml.actions.StructureDebutAction;
-import org.linotte.moteur.xml.actions.StructureGlobaleAction;
-import org.linotte.moteur.xml.actions.TestUnitaireAction;
-import org.linotte.moteur.xml.actions.TestUnitaireInAction;
-import org.linotte.moteur.xml.actions.TestUnitaireOutAction;
+import org.linotte.moteur.xml.actions.*;
 import org.linotte.moteur.xml.alize.ParserEnvironnement;
 import org.linotte.moteur.xml.alize.kernel.Action;
 import org.linotte.moteur.xml.alize.kernel.Job;
 import org.linotte.moteur.xml.alize.kernel.i.ActionDispatcher;
 import org.linotte.moteur.xml.alize.kernel.processus.Processus;
 import org.linotte.moteur.xml.alize.kernel.processus.ProcessusDispatcher;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Cette classe va vérifier si le livre a une structure cohérente.
@@ -120,18 +107,18 @@ public class PivotSyntaxique {
 				else
 					action = p.getAction();
 				switch (etat) {
-				case INITIALISATION:
-					if (action instanceof GreffonsAction || action instanceof TestUnitaireAction || action instanceof EspeceAction || action instanceof ActeurAction
-							|| action instanceof ProposerAction || action instanceof ImportationAction || action instanceof TestUnitaireOutAction
-							|| action instanceof TestUnitaireInAction || action instanceof ImportLivreAction) {
-						break;
-					} else if (action instanceof StructureGlobaleAction) {
-						etat = ETAT.GLOBALE;
-						if (precedent != null) {
-							precedent.setNextProcess(p.getNextProcess());
-						}
-						break;
-					} else if (action instanceof ParagrapheAction) {
+					case INITIALISATION:
+						if (action instanceof TestUnitaireAction || action instanceof EspeceAction || action instanceof ActeurAction
+								|| action instanceof ProposerAction || action instanceof ImportationAction || action instanceof TestUnitaireOutAction
+								|| action instanceof TestUnitaireInAction || action instanceof ImportLivreAction) {
+							break;
+						} else if (action instanceof StructureGlobaleAction) {
+							etat = ETAT.GLOBALE;
+							if (precedent != null) {
+								precedent.setNextProcess(p.getNextProcess());
+							}
+							break;
+						} else if (action instanceof ParagrapheAction) {
 						etat = ETAT.PARAGRAPHE_INIT;
 						//pasForcerTokenDebut = true;
 						deja.add(p);

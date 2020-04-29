@@ -20,14 +20,10 @@
 
 package org.linotte.moteur.xml;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
 import org.linotte.moteur.xml.actions.*;
 import org.linotte.moteur.xml.alize.kernel.Action;
+
+import java.util.*;
 
 public class RegistreDesActions {
 
@@ -146,7 +142,6 @@ public class RegistreDesActions {
 			addAction(new StructureGlobaleAction());
 			addAction(new StructureDebutAction());
 			addAction(new RechargerAction());
-			addAction(new GreffonsAction());
 			addAction(new InterrompreAction());
 			addAction(new AjouterSimpleAction());
 			addAction(new SoustraireSimpleAction());

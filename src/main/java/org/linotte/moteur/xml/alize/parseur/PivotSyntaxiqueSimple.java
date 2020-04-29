@@ -22,26 +22,15 @@
 
 package org.linotte.moteur.xml.alize.parseur;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.linotte.moteur.xml.actions.ActeurAction;
-import org.linotte.moteur.xml.actions.EspeceAction;
-import org.linotte.moteur.xml.actions.GreffonsAction;
-import org.linotte.moteur.xml.actions.ImportLivreAction;
-import org.linotte.moteur.xml.actions.ImportationAction;
-import org.linotte.moteur.xml.actions.ParagrapheAction;
-import org.linotte.moteur.xml.actions.ProposerAction;
-import org.linotte.moteur.xml.actions.StructureDebutAction;
-import org.linotte.moteur.xml.actions.StructureGlobaleAction;
-import org.linotte.moteur.xml.actions.TestUnitaireAction;
-import org.linotte.moteur.xml.actions.TestUnitaireInAction;
-import org.linotte.moteur.xml.actions.TestUnitaireOutAction;
+import org.linotte.moteur.xml.actions.*;
 import org.linotte.moteur.xml.alize.kernel.Action;
 import org.linotte.moteur.xml.alize.kernel.Job;
 import org.linotte.moteur.xml.alize.kernel.processus.Processus;
 import org.linotte.moteur.xml.alize.kernel.processus.ProcessusFactory;
 import org.linotte.moteur.xml.analyse.ItemXML;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Cette classe va vérifier si le livre a une structure cohérente.
@@ -87,18 +76,18 @@ public class PivotSyntaxiqueSimple {
 			else
 				action = p.getAction();
 			switch (etat) {
-			case INITIALISATION:
-				if (action instanceof GreffonsAction || action instanceof TestUnitaireAction || action instanceof EspeceAction || action instanceof ActeurAction
-						|| action instanceof ProposerAction || action instanceof ImportationAction || action instanceof TestUnitaireOutAction
-						|| action instanceof TestUnitaireInAction || action instanceof ImportLivreAction || action instanceof StructureGlobaleAction
-						|| action instanceof StructureDebutAction) {
-					break; // Rien à faire
-				} else if (action instanceof ParagrapheAction) {
-					etat = ETAT.FIN_TRAITEMENT;
-					deja.add(p);
-					if (verbe) {
-						Processus processus = ProcessusFactory.createProcessus("fin", new ArrayList<ItemXML>(), new ArrayList(), pc.linotte.getRegistreDesEtats()
-								.getActionArreter(), p.getPosition());
+				case INITIALISATION:
+					if (action instanceof TestUnitaireAction || action instanceof EspeceAction || action instanceof ActeurAction
+							|| action instanceof ProposerAction || action instanceof ImportationAction || action instanceof TestUnitaireOutAction
+							|| action instanceof TestUnitaireInAction || action instanceof ImportLivreAction || action instanceof StructureGlobaleAction
+							|| action instanceof StructureDebutAction) {
+						break; // Rien à faire
+					} else if (action instanceof ParagrapheAction) {
+						etat = ETAT.FIN_TRAITEMENT;
+						deja.add(p);
+						if (verbe) {
+							Processus processus = ProcessusFactory.createProcessus("fin", new ArrayList<ItemXML>(), new ArrayList(), pc.linotte.getRegistreDesEtats()
+									.getActionArreter(), p.getPosition());
 						precedent.setNextProcess(processus);
 					}
 					break;

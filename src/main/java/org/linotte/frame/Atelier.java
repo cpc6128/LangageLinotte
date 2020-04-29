@@ -581,7 +581,7 @@ public class Atelier extends JFrame implements WindowListener {
 			splashWindow1.setProgressValue(4, "Chargement des styles");
 			new StyleLinotte();
 			dialogframeihm = new FlatIHM(this);
-			splashWindow1.setProgressValue(5, "Initialisation du moteur Linotte " + Version.getVERSION_TECHNIQUE());
+			splashWindow1.setProgressValue(5, "Initialisation du moteur Linotte " + Version.getVersion());
 
 			Langage langage = chargementLangageProgrammation();
 
