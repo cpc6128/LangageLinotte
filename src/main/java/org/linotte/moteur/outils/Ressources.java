@@ -26,14 +26,17 @@
 
 package org.linotte.moteur.outils;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.HeadlessException;
-import java.awt.Image;
-import java.awt.Transparency;
+import org.jdesktop.swingx.image.ColorTintFilter;
+import org.linotte.frame.Atelier;
+import org.linotte.frame.latoile.LaToile;
+import org.linotte.frame.theme.ThemeManager;
+import org.linotte.greffons.externe.Greffon.RessourceManager;
+import org.linotte.moteur.xml.analyse.multilangage.Langage;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import javax.swing.filechooser.FileSystemView;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
 import java.awt.image.PixelGrabber;
@@ -49,18 +52,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.imageio.ImageIO;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.filechooser.FileSystemView;
-
-import org.jdesktop.swingx.image.ColorTintFilter;
-import org.linotte.frame.Atelier;
-import org.linotte.frame.latoile.LaToile;
-import org.linotte.frame.theme.ThemeManager;
-import org.linotte.greffons.externe.Greffon.RessourceManager;
-import org.linotte.moteur.xml.analyse.multilangage.Langage;
-
 public class Ressources implements RessourceManager {
 
 	private static File EDT = null;
@@ -74,7 +65,7 @@ public class Ressources implements RessourceManager {
 		}
 	}
 
-	private static final String CHEMIN = "/ressources/";
+	private static final String CHEMIN = "/";
 
 	private static final String CHEMIN_GREFFONS = "greffons";
 
