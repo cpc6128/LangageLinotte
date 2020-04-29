@@ -31,33 +31,14 @@
 
 package org.linotte.frame.cahier;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
-import javax.swing.AbstractButton;
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
-import javax.swing.SwingUtilities;
-import javax.swing.plaf.basic.BasicButtonUI;
-
 import org.linotte.frame.Atelier;
 import org.linotte.frame.cahier.Cahier.EtatCachier;
 import org.linotte.frame.moteur.FrameProcess;
+
+import javax.swing.*;
+import javax.swing.plaf.basic.BasicButtonUI;
+import java.awt.*;
+import java.awt.event.*;
 
 /**
  * Component to be used as tabComponent; Contains a JLabel to show the text and
@@ -167,7 +148,6 @@ public class Onglet extends JPanel implements MouseListener {
 							public void run() {
 								cahier.getAtelier();
 								Atelier.explorateur.setVisible(true);
-								cahier.getAtelier().tabbedPaneNavigateur.setVisible(true);
 								// atelier.splitPaneSommaire.getRightComponent().setVisible(true);
 								cahier.getAtelier().splitPaneProjet.setDividerLocation(cahier.getAtelier().taille_split_projet);
 							}

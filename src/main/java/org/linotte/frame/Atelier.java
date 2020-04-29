@@ -21,7 +21,6 @@
 package org.linotte.frame;
 
 import console.Jinotte;
-import org.alize.kernel.AKPatrol;
 import org.jdesktop.swingx.JXTextField;
 import org.linotte.frame.atelier.*;
 import org.linotte.frame.cahier.Cahier;
@@ -60,8 +59,6 @@ import org.linotte.moteur.outils.Ressources;
 import org.linotte.moteur.xml.Linotte;
 import org.linotte.moteur.xml.RegistreDesActions;
 import org.linotte.moteur.xml.Version;
-import org.linotte.moteur.xml.alize.kernel.Trace;
-import org.linotte.moteur.xml.alize.kernel.audit.*;
 import org.linotte.moteur.xml.alize.parseur.XMLIterator;
 import org.linotte.moteur.xml.alize.parseur.a.NExpression;
 import org.linotte.moteur.xml.alize.parseur.a.Noeud;
@@ -118,8 +115,6 @@ public class Atelier extends JFrame implements WindowListener {
 
 	public JSplitPane splitPaneProjet = null;
 
-	public JTabbedPane tabbedPaneNavigateur = null;
-
 	// //////////////////////////////////////////////////////////////// Boutons
 
 	private JButton jButtonLire = null;
@@ -140,17 +135,11 @@ public class Atelier extends JFrame implements WindowListener {
 
 	private Document sortieTableau = null;
 
-	private Document sortieAudit = null;
-
 	private FrameIHM dialogframeihm = null;
 
 	private Cahier cahierCourant = null;
 
-	private JScrollPane jScrollPaneAudit = null;
-
 	private JTextPaneText jEditorPaneTableau = null;
-
-	private JTextPaneText jEditorPaneAudit = null;
 
 	private JFileChooser fileChooser_ouvrir = null;
 
@@ -505,15 +494,6 @@ public class Atelier extends JFrame implements WindowListener {
 		// Pour l'audit :
 		librairie.setToile(toile);
 
-		// Ajout des audits :
-		AKPatrol.auditeurs.add(new ToileAudit(toile));
-		AKPatrol.auditeurs.add(new ChronoAudit());
-		AKPatrol.auditeurs.add(new RuntimeAudit());
-		AKPatrol.auditeurs.add(new JobAudit());
-		AKPatrol.auditeurs.add(new ProcessusAudit());
-		AKPatrol.auditeurs.add(new LibrairieVirtuelleAudit(librairie));
-		AKPatrol.auditLog = new LogAudit(atelier);
-
 		atelier.pack();
 		splashWindow1.setProgressValue(9, "Affichage de l'Atelier");
 		atelier.setVisible(true);
@@ -656,7 +636,6 @@ public class Atelier extends JFrame implements WindowListener {
 			});
 
 			sortieTableau = jEditorPaneTableau.getDocument();
-			sortieAudit = jEditorPaneAudit.getDocument();
 			addWindowListener(this);
 
 			// La feuille
@@ -1111,15 +1090,7 @@ public class Atelier extends JFrame implements WindowListener {
 			jSplitPaneAtelier = new JSplitPane();
 			jSplitPaneAtelier.setTopComponent(getJSplitPaneSommaire());
 
-			tabbedPaneNavigateur = new JTabbedPane();
-			tabbedPaneNavigateur.setTabPlacement(JTabbedPane.TOP);
-			tabbedPaneNavigateur.addTab("Tableau", Ressources.getImageIcon("utilities-terminal.png"), getJScrollPaneTableau());
-			tabbedPaneNavigateur.setMnemonicAt(0, KeyEvent.VK_T);
-			int i = 1;
-			tabbedPaneNavigateur.addTab("Audit", Ressources.getImageIcon("applications-development.png"), getJScrollPaneAudit());
-			tabbedPaneNavigateur.setMnemonicAt(i, KeyEvent.VK_U);
-
-			jSplitPaneAtelier.setBottomComponent(tabbedPaneNavigateur);
+			jSplitPaneAtelier.setBottomComponent(getJScrollPaneTableau());
 			jSplitPaneAtelier.setOrientation(JSplitPane.VERTICAL_SPLIT);
 			jSplitPaneAtelier.setDividerSize(8);
 			jSplitPaneAtelier.setOneTouchExpandable(true);
@@ -1564,15 +1535,6 @@ public class Atelier extends JFrame implements WindowListener {
 		}
 	}
 
-
-	public void ecrireSimpleAudit(String texte, AttributeSet attributeSet) {
-		try {
-			this.sortieAudit.insertString(sortieAudit.getLength(), texte, attributeSet);
-		} catch (BadLocationException e) {
-			e.printStackTrace();
-		}
-	}
-
 	public void ecrireDynamiquementCachier(String texte) {
 		try {
 			if (getJButtonLire().isEnabled())
@@ -1729,71 +1691,6 @@ public class Atelier extends JFrame implements WindowListener {
 	}
 
 	/**
-	 * Créé un paneau contenant un bouton pour l'audit, un bouton pour le trace,
-	 * et un {@link MemoryMonitor}.
-	 * 
-	 * @return
-	 */
-	private JPanel getJScrollPaneAudit() {
-		JPanel jPanel = new JPanel();
-		jPanel.setLayout(new BorderLayout());
-		if (jScrollPaneAudit == null) {
-			jScrollPaneAudit = new JScrollPane();
-			JPanelBackGround background_panel = new JPanelBackGround(null, jScrollPaneAudit);
-			background_panel.setLayout(new BorderLayout());
-
-			final JToggleButton button = new JToggleButton("Activer l'audit (peut ralentir l'Atelier...)", UIManager.getIcon("OptionPane.errorIcon"));
-			button.setSelectedIcon(UIManager.getIcon("OptionPane.warningIcon"));
-			button.setMnemonic(KeyEvent.VK_C);
-			button.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					if (!AKPatrol.active) {
-						button.setSelected(true);
-						AKPatrol.active = true;
-					} else {
-						button.setSelected(false);
-						AKPatrol.active = false;
-						effacerAudit();
-					}
-				}
-			});
-
-			final JToggleButton buttonTrace = new JToggleButton("Activer le fichier de trace .linotte/trace.log (peut ralentir l'Atelier...)",
-					UIManager.getIcon("OptionPane.errorIcon"));
-
-			buttonTrace.setSelectedIcon(UIManager.getIcon("OptionPane.warningIcon"));
-			buttonTrace.setMnemonic(KeyEvent.VK_F);
-			buttonTrace.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					if (!Trace.active) {
-						buttonTrace.setSelected(true);
-						Trace.active = true;
-					} else {
-						buttonTrace.setSelected(false);
-						Trace.active = false;
-					}
-				}
-			});
-			JPanel admin = new JPanel();
-			admin.add(button, BorderLayout.EAST);
-			admin.add(buttonTrace, BorderLayout.WEST);
-			background_panel.add(admin, BorderLayout.SOUTH);
-			background_panel.add(getJEditorPaneAudit(), BorderLayout.CENTER);
-			jScrollPaneAudit.getViewport().setView(background_panel);
-			jScrollPaneAudit.setFocusable(false);
-			jScrollPaneAudit.getVerticalScrollBar().setUnitIncrement(10);
-			jScrollPaneAudit.getHorizontalScrollBar().setUnitIncrement(10);
-		}
-		jPanel.add(jScrollPaneAudit, BorderLayout.CENTER);
-		MemoryMonitor memoryMonitor = new MemoryMonitor();
-		jPanel.add(memoryMonitor, BorderLayout.EAST);
-		memoryMonitor.surf.start();
-		return jPanel;
-	}
-
-	/**
 	 * Cette méthode initialise jEditorPaneTableau
 	 * 
 	 * @return JEditorPane
@@ -1807,18 +1704,8 @@ public class Atelier extends JFrame implements WindowListener {
 		return jEditorPaneTableau;
 	}
 
-	private JEditorPane getJEditorPaneAudit() {
-		if (jEditorPaneAudit == null) {
-			DefaultStyledDocument temp = new DefaultStyledDocument();
-			jEditorPaneAudit = new JTextPaneText(temp, false);
-			jEditorPaneAudit.setEditable(false);
-		}
-		return jEditorPaneAudit;
-	}
-
 	private void goFinTableau() {
 		jEditorPaneTableau.setCaretPosition(sortieTableau.getLength());
-		tabbedPaneNavigateur.setSelectedIndex(0);
 	}
 
 	/**
@@ -2584,16 +2471,6 @@ public class Atelier extends JFrame implements WindowListener {
 			selection = jEditorPaneTableau.getText();
 		StringSelection clipString = new StringSelection(selection);
 		clipbd.setContents(clipString, clipString);
-	}
-
-	public void effacerAudit() {
-		synchronized (sortieAudit) {
-			try {
-				sortieAudit.remove(0, sortieAudit.getLength());
-			} catch (BadLocationException e2) {
-				e2.printStackTrace();
-			}
-		}
 	}
 
 	public void windowActivated(WindowEvent arg0) {

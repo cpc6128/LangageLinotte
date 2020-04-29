@@ -20,13 +20,6 @@
 
 package org.linotte.moteur.entites;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import org.linotte.frame.latoile.Toile;
 import org.linotte.greffons.GreffonsChargeur;
 import org.linotte.greffons.externe.Greffon;
@@ -39,6 +32,9 @@ import org.linotte.moteur.exception.ErreurException;
 import org.linotte.moteur.outils.LinkedHashMap;
 import org.linotte.moteur.outils.Ressources;
 import org.linotte.moteur.xml.api.Librairie;
+
+import java.math.BigDecimal;
+import java.util.*;
 
 /**
  * Cette classe représente une espèce qui est {@link Acteur}.
@@ -150,7 +146,7 @@ public class Prototype extends Acteur {
 			if (g != null) {
 				try {
 					// Pour garder le greffon suite héritage (on perd le type du père) 
-					temp = g.getClass().newInstance();
+					temp = g.getClass().getDeclaredConstructor().newInstance();
 				} catch (Exception e) {
 					temp = GreffonsChargeur.getInstance().newInstance(type);
 				}

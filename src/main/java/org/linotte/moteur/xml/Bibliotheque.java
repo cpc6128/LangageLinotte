@@ -1,78 +1,23 @@
 package org.linotte.moteur.xml;
 
+import org.linotte.frame.latoile.LaToile;
+import org.linotte.greffons.LinotteFacade;
+import org.linotte.greffons.api.Greffon.Attribut;
+import org.linotte.greffons.impl.*;
+import org.linotte.greffons.impl.swing.*;
+import org.linotte.greffons.impl.swing.layout.Grille;
+import org.linotte.moteur.entites.*;
+import org.linotte.moteur.exception.ErreurException;
+import org.linotte.moteur.xml.api.Librairie;
+
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.linotte.frame.latoile.LaToile;
-import org.linotte.greffons.LinotteFacade;
-import org.linotte.greffons.api.Greffon.Attribut;
-import org.linotte.greffons.impl.Clavier;
-import org.linotte.greffons.impl.Conduit;
-import org.linotte.greffons.impl.Configuration;
-import org.linotte.greffons.impl.FichierTube;
-import org.linotte.greffons.impl.GreffonRobot;
-import org.linotte.greffons.impl.Horodatage;
-import org.linotte.greffons.impl.ImageX;
-import org.linotte.greffons.impl.Imprimeur;
-import org.linotte.greffons.impl.JukeBox;
-import org.linotte.greffons.impl.Metronome;
-import org.linotte.greffons.impl.Notification;
-import org.linotte.greffons.impl.PileTube;
-import org.linotte.greffons.impl.Pipette;
-import org.linotte.greffons.impl.Police;
-import org.linotte.greffons.impl.PontTube;
-import org.linotte.greffons.impl.PressePapier;
-import org.linotte.greffons.impl.Queue;
-import org.linotte.greffons.impl.RepertoireTube;
-import org.linotte.greffons.impl.Rss;
-import org.linotte.greffons.impl.SQL;
-import org.linotte.greffons.impl.TCPClient;
-import org.linotte.greffons.impl.TCPServeur;
-import org.linotte.greffons.impl.Tweak;
-import org.linotte.greffons.impl.Webonotte;
-import org.linotte.greffons.impl.swing.Atelier;
-import org.linotte.greffons.impl.swing.Barre;
-import org.linotte.greffons.impl.swing.BoiteTexte;
-import org.linotte.greffons.impl.swing.Bouton;
-import org.linotte.greffons.impl.swing.BoutonRadio;
-import org.linotte.greffons.impl.swing.CaseACocher;
-import org.linotte.greffons.impl.swing.Champ;
-import org.linotte.greffons.impl.swing.Extension;
-import org.linotte.greffons.impl.swing.Formulaire;
-import org.linotte.greffons.impl.swing.GroupeBoutonRadio;
-import org.linotte.greffons.impl.swing.Image;
-import org.linotte.greffons.impl.swing.Indicateur;
-import org.linotte.greffons.impl.swing.Label;
-import org.linotte.greffons.impl.swing.Liste;
-import org.linotte.greffons.impl.swing.Menu;
-import org.linotte.greffons.impl.swing.MenuBouton;
-import org.linotte.greffons.impl.swing.MenuCaseACocher;
-import org.linotte.greffons.impl.swing.Onglet;
-import org.linotte.greffons.impl.swing.Panneau;
-import org.linotte.greffons.impl.swing.Popup;
-import org.linotte.greffons.impl.swing.Scrolleur;
-import org.linotte.greffons.impl.swing.Selecteur;
-import org.linotte.greffons.impl.swing.Slider;
-import org.linotte.greffons.impl.swing.SousFormulaire;
-import org.linotte.greffons.impl.swing.SousMenu;
-import org.linotte.greffons.impl.swing.SwingToile;
-import org.linotte.greffons.impl.swing.Table;
-import org.linotte.greffons.impl.swing.Tableau;
-import org.linotte.greffons.impl.swing.layout.Grille;
-import org.linotte.moteur.entites.Acteur;
-import org.linotte.moteur.entites.Casier;
-import org.linotte.moteur.entites.Prototype;
-import org.linotte.moteur.entites.PrototypeGraphique;
-import org.linotte.moteur.entites.Role;
-import org.linotte.moteur.exception.ErreurException;
-import org.linotte.moteur.xml.api.Librairie;
-
 /**
  * Cette classe initialise les espèces et les greffons internes
- * 
- * @author CPC
  *
+ * @author CPC
  */
 public final class Bibliotheque {
 
@@ -485,7 +430,7 @@ public final class Bibliotheque {
 		Acteur taille = new Acteur(null, "taille", Role.NOMBRE, new BigDecimal(1), null);
 		Acteur taquet = new Acteur(null, "taquet", Role.NOMBRE, new BigDecimal(30), null);
 		Acteur transparence = new Acteur(null, "transparence", Role.NOMBRE, new BigDecimal(100), null);
-		Acteur visible = new Acteur(null, "visible", Role.TEXTE, "non", null);
+		Acteur visible = new Acteur(null, "visible", Role.TEXTE, "oui", null);
 		Acteur image = new Acteur(null, "image", Role.TEXTE, null, null);
 		Acteur position = new Acteur(null, "position", Role.NOMBRE, new BigDecimal(0), null);
 		Acteur attributtoile = new Acteur(null, "toile", Role.TEXTE, null, null);

@@ -20,19 +20,10 @@
 
 package org.linotte.moteur.xml.actions;
 
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-
 import org.linotte.frame.latoile.LaToile;
 import org.linotte.frame.latoile.LaToileJDialog;
 import org.linotte.frame.latoile.Toile;
-import org.linotte.moteur.entites.Acteur;
-import org.linotte.moteur.entites.Fichier;
-import org.linotte.moteur.entites.Livre;
-import org.linotte.moteur.entites.Prototype;
-import org.linotte.moteur.entites.PrototypeGraphique;
-import org.linotte.moteur.entites.Role;
+import org.linotte.moteur.entites.*;
 import org.linotte.moteur.exception.Constantes;
 import org.linotte.moteur.exception.ErreurException;
 import org.linotte.moteur.outils.ArrayIterator;
@@ -51,6 +42,10 @@ import org.linotte.moteur.xml.appels.Appel;
 import org.linotte.moteur.xml.appels.CalqueParagraphe;
 import org.linotte.moteur.xml.appels.Fonction;
 import org.linotte.moteur.xml.appels.SousParagraphe;
+
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class EspeceAction extends Action implements IProduitCartesien {
 
@@ -132,13 +127,7 @@ public class EspeceAction extends Action implements IProduitCartesien {
 				nom = test.getValeurBrute();
 
 			// Gestion variables locales :
-			boolean variable_locale = nom.startsWith("§");
-			if (variable_locale) {
-				nom = nom.substring(2);
-				if (livre.getParagraphe() == null) {
-					throw new ErreurException(Constantes.ERREUR_ACTEURS_LOCAUX);
-				}
-			}
+			boolean variable_locale = false;
 
 			/**
 			 * Si le context contient l'habilitation pour gérer la mémoire comme une pile  (Linotte 2.0):

@@ -20,19 +20,17 @@
 
 package org.linotte.frame.cahier;
 
-import java.awt.GridLayout;
+import org.linotte.frame.cahier.Cahier.EtatCachier;
+import org.linotte.moteur.outils.Ressources;
+
+import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
-import org.linotte.frame.cahier.Cahier.EtatCachier;
-import org.linotte.moteur.outils.Ressources;
 
 /**
  * 
@@ -47,7 +45,7 @@ public class Onglets extends JPanel {
 	public Onglets() {
 		super(new GridLayout(1, 1));
 		add(tabbedPane);
-		tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+		tabbedPane.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
 		tabbedPane.addChangeListener(new ChangeListener() {
 			@Override
 			public void stateChanged(ChangeEvent e) {

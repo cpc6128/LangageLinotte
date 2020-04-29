@@ -212,14 +212,12 @@ public class Cahier extends JPanel implements KeyListener, MouseListener {
 				SwingUtilities.invokeLater(new Runnable() {
 					public void run() {
 						Atelier.explorateur.setVisible(false);
-						atelier.tabbedPaneNavigateur.setVisible(false);
 					}
 				});
 			} else {
 				SwingUtilities.invokeLater(new Runnable() {
 					public void run() {
 						Atelier.explorateur.setVisible(true);
-						atelier.tabbedPaneNavigateur.setVisible(true);
 						SwingUtilities.invokeLater(new Runnable() {
 							public void run() {
 								atelier.splitPaneProjet.setDividerLocation(atelier.taille_split_projet);

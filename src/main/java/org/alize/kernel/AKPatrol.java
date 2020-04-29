@@ -23,10 +23,6 @@ package org.alize.kernel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
-import java.util.TimerTask;
-
-import org.alize.kernel.util.i.AKAudit;
-import org.alize.kernel.util.i.AKAuditLog;
 
 /**
  * Cette classe fait partie de la réécriture du moteur de Linotte.
@@ -38,60 +34,20 @@ import org.alize.kernel.util.i.AKAuditLog;
  */
 public final class AKPatrol {
 
-	private Timer timer = null;
+    public static boolean active = false;
+    public static List<AKRuntime> runtimes = new ArrayList<AKRuntime>();
+    private static AKPatrol akPatrol;
+    private Timer timer = null;
 
-	public static boolean active = false;
+    static void addRuntime(AKRuntime runtime) {
+        getPatrol();
+        AKPatrol.runtimes.add(runtime);
+    }
 
-	public static List<AKRuntime> runtimes = new ArrayList<AKRuntime>();
+    private static synchronized void getPatrol() {
+        if (akPatrol == null) {
+            akPatrol = new AKPatrol();
+        }
+    }
 
-	public static List<AKAudit> auditeurs = new ArrayList<AKAudit>();
-
-	private static AKPatrol akPatrol;
-
-	public static AKAuditLog auditLog;
-
-	private AKPatrol() {
-
-		timer = new Timer("AKPatrol", false);
-		TimerTask task = new TimerTask() {
-			@Override
-			public void run() {
-				if (active) {
-					LOG_INIT();
-					for (AKAudit audit : auditeurs) {
-						try {
-							audit.run();
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				}
-			}
-		};
-		timer.schedule(task, 1000, 1000);
-	}
-
-	static void addRuntime(AKRuntime runtime) {
-		getPatrol();
-		AKPatrol.runtimes.add(runtime);
-	}
-
-	private static synchronized void getPatrol() {
-		if (akPatrol == null) {
-			akPatrol = new AKPatrol();
-		}
-	}
-
-	public static void LOG_INIT() {
-		if (auditLog != null)
-			auditLog.init();
-	}
-
-	public static void LOG(Object audit, String message) {
-		String out = "<" + audit.getClass().getSimpleName() + ">\t\t" + message + "\n";
-		if (auditLog == null)
-			System.out.println(out);
-		else
-			auditLog.print(out);
-	}
 }

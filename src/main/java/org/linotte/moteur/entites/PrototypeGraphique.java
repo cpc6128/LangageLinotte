@@ -116,7 +116,7 @@ public class PrototypeGraphique extends org.linotte.moteur.entites.Prototype imp
 	// Optimisation :
 	public float taille, transparence;
 	public double x, y, rayon, x1, x2, y1, y2, angle, hauteur, largeur;
-	public boolean plein, visible, pointe, pose, collision;
+	public boolean plein, visible = true, pointe, pose, collision;
 	public int position, trame;
 	public Color couleur;
 	public String image, texte, police, texture;
