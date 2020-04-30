@@ -1,5 +1,11 @@
 package org.linotte.greffons;
 
+import org.linotte.greffons.api.FabriqueGreffon;
+import org.linotte.greffons.api.Greffon;
+import org.linotte.greffons.java.JavaFactory;
+import org.linotte.moteur.outils.Ressources;
+import org.linotte.moteur.xml.Version;
+
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -7,14 +13,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.linotte.frame.gui.SplashWindow;
-import org.linotte.greffons.api.FabriqueGreffon;
-import org.linotte.greffons.api.Greffon;
-import org.linotte.greffons.java.JavaFactory;
-import org.linotte.moteur.outils.Preference;
-import org.linotte.moteur.outils.Ressources;
-import org.linotte.moteur.xml.Version;
 
 /**
  * Cette classe centralise les fonctions pour trouver, instancier, stocker les
@@ -39,9 +37,7 @@ public class GreffonsChargeur {
 			//fabriques.put("python", new PythonFactory());
 
 			// Prendre en compte les .class dans les repertoires greffons
-			File repertoireUtilisateur = new File(Preference.getIntance().getHome() + File.separator
-					+ Preference.REPERTOIRE + File.separator + GreffonsHandler.DIR_USER);
-			URL urls[] = { repertoireUtilisateur.toURI().toURL(), Ressources.getGreffons().toURI().toURL() };
+			URL urls[] = {Ressources.getGreffons().toURI().toURL()};
 			for (URL url : urls) {
 				new File(url.toURI()).mkdirs();
 			}

@@ -122,7 +122,6 @@ public class RegistreDesActions {
 			addAction(new FaireReagirAction());
 			addAction(new RetournerAction());
 			addAction(new EssayerAction());
-			addAction(new PeindreAction());
 			addAction(new PlusFaireReagirAction());
 			addAction(new ImportationAction());
 			addAction(new AnnihilerAction());

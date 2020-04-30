@@ -32,11 +32,8 @@ import org.linotte.moteur.entites.Role;
 import org.linotte.moteur.xml.Linotte;
 import org.linotte.moteur.xml.api.Librairie;
 
-import java.io.File;
 import java.math.BigDecimal;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Chargement de greffons depuis la commande tilde greffon
@@ -44,8 +41,6 @@ import java.util.Map;
  * @author CPC
  */
 public class GestionDesGreffons {
-
-    private static final Map<File, Long> cacheGreffonsLinotte = new HashMap<>();
 
     /**
      * TODO ce bout de code doit être déplacé ailleur.

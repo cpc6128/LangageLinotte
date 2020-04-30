@@ -21,7 +21,6 @@
 package org.linotte.moteur.xml;
 
 import org.linotte.greffons.GestionDesGreffons;
-import org.linotte.greffons.GreffonsHandler;
 import org.linotte.moteur.entites.Prototype;
 import org.linotte.moteur.entites.PrototypeGraphique;
 import org.linotte.moteur.outils.Ressources;
@@ -80,8 +79,6 @@ public class Linotte {
                     // Initialisation des objets graphiques :
                     // Enregistrement des especes graphiques sur la toile :
                     PrototypeGraphique.init();
-                    // Greffons charges depuis l'exterieur :
-                    GreffonsHandler.chargerGreffons(Ressources.getGreffons());
                     greffonscharges = true;
                 }
                 // Especes et greffons internes :
