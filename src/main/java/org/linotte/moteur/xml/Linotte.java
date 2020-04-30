@@ -88,8 +88,6 @@ public class Linotte {
                 Bibliotheque.genererEspecesGraphiquesEtGreffonsInternes(lib, this);
                 // initialisation des greffons externes (java / python / ruby):
                 GestionDesGreffons.initGreffons(lib, this);
-                // initialisation des greffons externes en Linotte :
-                GestionDesGreffons.initGreffonsLinotte(this);
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -1,35 +1,5 @@
 package org.linotte.frame.projet;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.io.File;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.NoSuchElementException;
-
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.Icon;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
-import javax.swing.JTree;
-import javax.swing.event.TreeSelectionEvent;
-import javax.swing.event.TreeSelectionListener;
-import javax.swing.filechooser.FileSystemView;
-import javax.swing.tree.DefaultTreeCellRenderer;
-import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.TreeNode;
-import javax.swing.tree.TreePath;
-
 import org.jdesktop.swingx.JXTaskPane;
 import org.jdesktop.swingx.JXTree;
 import org.jdesktop.swingx.decorator.ColorHighlighter;
@@ -38,6 +8,22 @@ import org.linotte.frame.Atelier;
 import org.linotte.frame.latoile.Java6;
 import org.linotte.frame.outils.Tools;
 import org.linotte.moteur.outils.Ressources;
+
+import javax.swing.*;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.filechooser.FileSystemView;
+import javax.swing.tree.DefaultTreeCellRenderer;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeNode;
+import javax.swing.tree.TreePath;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 
 /**
  * @author Kirill Grouchnikov
@@ -279,6 +265,8 @@ public class NavigateurFichier extends JPanel {
 		Arrays.sort(roots);
 		rootTreeNode = new FileTreeNode(roots, edt);
 		tree = new JXTree(rootTreeNode);
+		tree.setMinimumSize(new Dimension(50, 20));
+
 		tree.setCellRenderer(new FileTreeCellRenderer());
 
 		tree.setRootVisible(false);

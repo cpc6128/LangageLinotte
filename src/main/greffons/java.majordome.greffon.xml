@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<greffon nom="Majordome" espece="majordome" class="Majordome">
-	<description>Greffon simple pour présenter les greffons à méthodes fonctionnelles</description>
-	<auteur>R.M</auteur>
-	<version>0.1</version>
-	<attribut nom="serviteur" type="TEXTE">Nestor</attribut>
-</greffon>

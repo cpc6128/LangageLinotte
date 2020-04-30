@@ -45,7 +45,6 @@ import org.linotte.frame.moteur.Formater;
 import org.linotte.frame.moteur.FrameProcess;
 import org.linotte.frame.outils.Tools;
 import org.linotte.frame.projet.ExplorateurProjet;
-import org.linotte.greffons.GestionDesGreffons;
 import org.linotte.greffons.GreffonsChargeur;
 import org.linotte.greffons.api.AKMethod;
 import org.linotte.greffons.java.JavaMethod;
@@ -355,8 +354,6 @@ public class Atelier extends JFrame implements WindowListener {
                 creationSousMenuVerbier();
             });
             ecrirelnTableau("Prêt");
-            // Vérifier la modification des greffons en Linotte :
-            GestionDesGreffons.verifierGreffons(atelier);
 
         } catch (Throwable e) {
             e.printStackTrace();
@@ -1349,9 +1346,7 @@ public class Atelier extends JFrame implements WindowListener {
             }
         });
         console.add(entree, BorderLayout.CENTER);
-        action.setIcon(Ressources.getImageIcon("go-next.png"));
-        action.setPressedIcon(Ressources.getImageIconePlusClaire("go-next.png"));
-        action.setRolloverIcon(Ressources.getImageIconePlusClaire("go-next.png"));
+        action.setIcon(Ressources.getImageTheme("GO", 24));
         console.add(action, BorderLayout.EAST);
         action.addActionListener(new ActionListener() {
             @Override

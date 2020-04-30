@@ -154,10 +154,40 @@ public class Ressources implements RessourceManager {
             case "HELP":
                 nom = "SAFARI";
                 break;
+            case "EDT":
+                nom = "FILES";
+                break;
+            case "TUTO":
+                nom = "SCIENCE";
+                break;
+            case "PLUS":
+                nom = "LINK";
+                break;
+            case "NEW":
+                nom = "NEWSPAPER";
+                break;
+            case "VISUEL":
+                nom = "SELECT";
+                break;
+            case "LINK":
+                nom = "GLOBE";
+                break;
+            case "DIR":
+                nom = "ADDTHIS";
+                break;
+            case "EXPLORE":
+                nom = "ELLIPSIS";
+                break;
+            case "DOC":
+                nom = "INFO_CIRCLE";
+                break;
+            case "GO":
+                nom = "MAIL_SEND";
+                break;
         }
         FontIcon icon = FontIcon.of(Runestroicons.valueOf(nom));
         icon.setIconColor(Color.GRAY.darker());
-        icon.setIconSize(32);
+        icon.setIconSize(taille);
         return icon;
     }
 

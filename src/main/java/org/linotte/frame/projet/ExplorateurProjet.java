@@ -311,7 +311,7 @@ public class ExplorateurProjet extends JPanel {
         final File exemples = Ressources.getExemples(Atelier.linotte.getLangage());
         changeTaskPaneUI(taskTutorial);
         taskTutorial.setTitle("Tutoriel");
-        taskTutorial.setIcon(Ressources.getScaledImage(Ressources.getImageIcon("projet/start-here.png"), 24, 24));
+        taskTutorial.setIcon(Ressources.getImageTheme("TUTO", 20));
         NavigateurFichier fileTreePanel = new NavigateurFichier(view, exemples, taskTutorial, atelier, false);
         taskTutorial.add(new JScrollPane(fileTreePanel, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED));
         tutoriels.put(Atelier.linotte.getLangage(), fileTreePanel);
@@ -323,7 +323,7 @@ public class ExplorateurProjet extends JPanel {
         final JXTaskPane task = new JXTaskPane();
         changeTaskPaneUI(task);
         task.setTitle(title);
-        task.setIcon(Ressources.getImageIcon("projet/document-open.png"));
+        task.setIcon(Ressources.getImageTheme("EDT", 20));
 
         final NavigateurFichier fileTreePanel = new NavigateurFichier(view, edt, task, atelier, true);
 
@@ -331,7 +331,8 @@ public class ExplorateurProjet extends JPanel {
             {
                 putValue(Action.NAME, "Créer un nouveau livre");
                 putValue(Action.SHORT_DESCRIPTION, "Créer un livre");
-                putValue(Action.SMALL_ICON, Ressources.getScaledImage(Ressources.getImageIcon("document-new.png"), 16, 16));
+                putValue(Action.SMALL_ICON,
+                        Ressources.getImageTheme("NEW", 16));
             }
 
             public void actionPerformed(ActionEvent e) {
@@ -345,7 +346,7 @@ public class ExplorateurProjet extends JPanel {
             {
                 putValue(Action.NAME, "Créer un nouveau livre visuel");
                 putValue(Action.SHORT_DESCRIPTION, "Créer un livre visuel");
-                putValue(Action.SMALL_ICON, Ressources.getScaledImage(Ressources.getImageIcon("timbre/timbre.png"), 16, 16));
+                putValue(Action.SMALL_ICON, Ressources.getImageTheme("VISUEL", 16));
             }
 
             public void actionPerformed(ActionEvent e) {
@@ -359,7 +360,7 @@ public class ExplorateurProjet extends JPanel {
             {
                 putValue(Action.NAME, "Créer un nouveau répertoire");
                 putValue(Action.SHORT_DESCRIPTION, "Créer un répertoire");
-                putValue(Action.SMALL_ICON, Ressources.getScaledImage(Ressources.getImageIcon("document-open.png"), 16, 16));
+                putValue(Action.SMALL_ICON, Ressources.getImageTheme("DIR", 16));
             }
 
             public void actionPerformed(ActionEvent e) {
@@ -373,7 +374,7 @@ public class ExplorateurProjet extends JPanel {
             {
                 putValue(Action.NAME, "Explorer l'espace de travail");
                 putValue(Action.SHORT_DESCRIPTION, "Explore l'espace de travail");
-                putValue(Action.SMALL_ICON, Ressources.getScaledImage(Ressources.getImageIcon("emblem-symbolic-link.png"), 16, 16));
+                putValue(Action.SMALL_ICON, Ressources.getImageTheme("EXPLORE", 16));
             }
 
             public void actionPerformed(ActionEvent e) {
@@ -404,13 +405,13 @@ public class ExplorateurProjet extends JPanel {
         JXTaskPane task = new JXTaskPane();
         changeTaskPaneUI(task);
         task.setTitle("Plus loin...");
-        task.setIcon(Ressources.getImageIcon("projet/internet-news-reader.png"));
+        task.setIcon(Ressources.getImageTheme("PLUS", 20));
         task.setSpecial(true);
 
         task.add(new AbstractAction() {
             {
                 putValue(Action.NAME, "Documentation");
-                putValue(Action.SMALL_ICON, Ressources.getScaledImage(Ressources.getImageIcon("application-certificate.png"), 16, 16));
+                putValue(Action.SMALL_ICON, Ressources.getImageTheme("DOC", 16));
             }
 
             public void actionPerformed(ActionEvent e) {
@@ -426,7 +427,7 @@ public class ExplorateurProjet extends JPanel {
         task.add(new AbstractAction() {
             {
                 putValue(Action.NAME, "CodeVallée");
-                putValue(Action.SMALL_ICON, Ressources.getScaledImage(Ressources.getImageIcon("post.png"), 16, 16));
+                putValue(Action.SMALL_ICON, Ressources.getImageTheme("LINK", 16));
             }
 
             public void actionPerformed(ActionEvent e) {
@@ -443,7 +444,7 @@ public class ExplorateurProjet extends JPanel {
         task.add(new AbstractAction() {
             {
                 putValue(Action.NAME, "Serveur Web");
-                putValue(Action.SMALL_ICON, Ressources.getScaledImage(Ressources.getImageIcon("post.png"), 16, 16));
+                putValue(Action.SMALL_ICON, Ressources.getImageTheme("LINK", 16));
             }
 
             public void actionPerformed(ActionEvent e) {

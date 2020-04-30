@@ -20,10 +20,6 @@
 
 package org.linotte.moteur.xml.actions;
 
-import java.math.MathContext;
-import java.math.RoundingMode;
-
-import org.linotte.greffons.GestionDesGreffons;
 import org.linotte.moteur.exception.Constantes;
 import org.linotte.moteur.exception.ErreurException;
 import org.linotte.moteur.xml.alize.kernel.Action;
@@ -36,15 +32,18 @@ import org.linotte.moteur.xml.analyse.ItemXML;
 import org.linotte.moteur.xml.analyse.Mathematiques;
 import org.linotte.moteur.xml.analyse.Mathematiques.ANGLE;
 
+import java.math.MathContext;
+import java.math.RoundingMode;
+
 public class TildeAction extends Action implements IProduitCartesien {
 
-	public static final String NOM_ETAT = "verbe tilde";
+    public static final String NOM_ETAT = "verbe tilde";
 
-	private static final String PRECISION = "précision ";
+    private static final String PRECISION = "précision ";
 
-	public static final String GREFFON = "greffon ";
+    public static final String GREFFON = "greffon ";
 
-	public static final String S_ANGLE = "angle";
+    public static final String S_ANGLE = "angle";
 
 	public static final String TRACE = "trace ";
 
@@ -63,31 +62,19 @@ public class TildeAction extends Action implements IProduitCartesien {
 
 	@Override
 	public ETAT analyse(String param, Job job, ItemXML[] valeurs, String[] annotations) throws Exception {
-		final String commande = valeurs[0].getValeurBrute();
-		RuntimeContext runtimeContext = (RuntimeContext) job.getRuntimeContext();
-		if (commande.startsWith(GREFFON)) {
-			
-			if (runtimeContext.canDo(Habilitation.LITTLE_BIRD)) {
-				throw new ErreurException(Constantes.MODE_CONSOLE);			
-			}		
-			
-			try {
-				GestionDesGreffons.chargerGreffon(commande.substring(GREFFON.length()).trim(), runtimeContext);
-			} catch (Exception e) {
-				e.printStackTrace();
-				runtimeContext.getIhm().afficherErreur("Impossible de vérifier le greffon : " + e.toString());
-			}
-		} else if (commande.startsWith(PRECISION)) {
-			try {
-				int valeur = Integer.valueOf(commande.substring(PRECISION.length()).trim());
-				Mathematiques.context = new MathContext(valeur, RoundingMode.HALF_UP);
-			} catch (Exception e) {
-				runtimeContext.getIhm().afficherErreur("Impossible de fixer la précision arithmétique !");
-			}
-		} else if (commande.startsWith(S_ANGLE)) {
-			try {
-				String valeur = commande.substring(S_ANGLE.length()).trim();
-				if (valeur.equalsIgnoreCase("radian"))
+        final String commande = valeurs[0].getValeurBrute();
+        RuntimeContext runtimeContext = (RuntimeContext) job.getRuntimeContext();
+        if (commande.startsWith(PRECISION)) {
+            try {
+                int valeur = Integer.valueOf(commande.substring(PRECISION.length()).trim());
+                Mathematiques.context = new MathContext(valeur, RoundingMode.HALF_UP);
+            } catch (Exception e) {
+                runtimeContext.getIhm().afficherErreur("Impossible de fixer la précision arithmétique !");
+            }
+        } else if (commande.startsWith(S_ANGLE)) {
+            try {
+                String valeur = commande.substring(S_ANGLE.length()).trim();
+                if (valeur.equalsIgnoreCase("radian"))
 					Mathematiques.angle = ANGLE.RADIAN;
 				else
 					Mathematiques.angle = ANGLE.DEGREE;
