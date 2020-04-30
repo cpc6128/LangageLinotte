@@ -1,3 +1,4 @@
+globale
 	form est un formulaire, titre prend "Première question", largeur prend 400, hauteur prend 260
 	b1 est un bouton, texte prend "Blanc", x prend 30, y prend 60
 	b2 est un bouton, texte prend "Noir", x prend 100, y prend 60

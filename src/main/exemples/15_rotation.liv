@@ -1,8 +1,10 @@
-c est un graffiti, x prend 130, y prend 223, texte prend  "J'ai mal à la tête !", couleur prend "vert pomme", taille prend 30
-d est un graphique, image prend "media/tux_graduate.png",  x prend 230, y prend 322, transparence prend 90, taille prend 20
-e est une toile, couleur prend "bleu", image prend "media/dn_house2.png"
+globale
+	c est un graffiti, x prend 130, y prend 223, texte prend  "J'ai mal à la tête !", couleur prend "vert pomme", taille prend 30
+	d est un graphique, image prend "media/tux_graduate.png",  x prend 230, y prend 322, transparence prend 90, taille prend 20
+	e est une toile, couleur prend "bleu", image prend "media/dn_house2.png"
+
 code :
-	tant que vrai 
+	tant que vrai
 		tourne à gauche c de 1
 		tourne à droite d de 1
 		attends 10 millisecondes

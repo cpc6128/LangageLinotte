@@ -155,7 +155,7 @@ public class Ressources implements RessourceManager {
                 nom = "SAFARI";
                 break;
             case "EDT":
-                nom = "FILES";
+                nom = "HOME2";
                 break;
             case "TUTO":
                 nom = "SCIENCE";
