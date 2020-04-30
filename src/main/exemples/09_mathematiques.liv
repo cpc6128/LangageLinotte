@@ -1,0 +1,30 @@
+code :
+	affiche carré 4
+	affiche 2 puiss 4
+	affiche vrai ou faux
+	affiche (2 puiss 23 + 5 * 6 - 1) / 3
+
+
+/*Les fonctions disponibles sont :
+
+    Carré d'un nombre : carré x
+    Cosinus : cos x
+    Sinus : sin x
+    Fonction exponentielle : exp x
+    Logarithme décimal: log x
+    Logarithme naturel: logn x
+    Valeur absolue : abs x
+    Racine carrée : racine x
+    Arrondi : arrondi x
+    Cube d'un nombre : cube x
+    Puissance : x puiss n
+    Modulo : x mod n
+    Et logique : x et n
+    Ou logique : x ou n
+    Xou logique : x xou n
+    Tangente : tan x
+    Arc cosinus : acos x
+    Arc sin : asin x
+    Arc tangente : atan x
+    Hasard : hasard x
+ */

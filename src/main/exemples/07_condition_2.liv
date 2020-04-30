@@ -1,0 +1,9 @@
+code :
+	// Utilisons le mot "sinon"
+	// Forme simple :
+	si (2 * 2) != (2 * 2) affiche "Tu as faux !"
+	sinon affiche "J'avais raison !"
+	
+/*
+Cliquez sur le bouton LIRE pour exécuter ce programme
+*/

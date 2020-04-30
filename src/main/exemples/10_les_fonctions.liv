@@ -1,0 +1,24 @@
+code :
+	prénom est un texte
+	âge est un nombre
+	prénom prend "Nicolas"
+	âge prend 32
+	affiche présentation (âge, prénom, 0)
+	prénom prend "Alice"
+	âge prend 19
+	affiche présentation (âge, prénom, 1)
+ 
+présentation : âge, prénom, genre // On ajoute les paramètres à suite du nom de la fonction
+	information est un texte
+	information prend "Bonjour, " + prénom + ", tu es "
+	si genre = 0, information prend information + "le bienvenu."
+	sinon information prend information + "la bienvenue."
+	si âge <= 20
+		information prend information + " Tu es bien jeune avec tes " + âge + " années !"
+		information prend information +  " Mais, tu iras loin dans la programmation !"
+	ferme
+	sinon
+		information prend information +  " Tu fais bien plus jeune que tes " + âge + " années !"
+		information prend information +  " Avec Linotte, la programmation ne sera plus un secret pour toi !"
+	ferme
+	retourne information

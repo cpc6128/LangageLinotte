@@ -1,0 +1,8 @@
+code :
+	affiche "Je sais compter jusqu'à dix !"
+	boucle est un nombre // Création de la variable boucle
+	pour boucle de 1 à 10 affiche boucle
+	affiche "voilà !"
+/*
+Cliquez sur le bouton LIRE pour exécuter ce programme
+*/

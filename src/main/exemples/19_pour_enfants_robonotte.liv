@@ -1,0 +1,35 @@
+/*
+Code source de ce greffon Robonotte destiné à faire découvrir la programmation aux jeunes débutants :
+
+Pour lancer ce programme, utilisez le bouton "Lire au ralenti !"
+*/
+code :
+	robonotte est un robonotte, largeur prend 5, longueur prend 6
+	// Construction du labyrinthe ainsi :
+   // 1, c'est un mur
+   // 3, c'est la clef
+   // 4, c'est la porte
+	plan vaut 	1,1,1,1,1,1,
+               1,0,0,0,0,4,
+               1,0,0,1,1,1,
+               1,0,0,0,3,1,
+               1,1,1,1,1,1
+	robonotte.affiche(plan) // Affichage du labyrinthe
+	robonotte.poserobot(2,3)
+	robonotte.bas()
+	robonotte.bas()
+	robonotte.droite()
+	robonotte.droite()
+	robonotte.droite()
+	robonotte.prend()
+	robonotte.haut()
+	robonotte.gauche()
+	robonotte.gauche()
+	robonotte.haut()
+	robonotte.droite()
+	robonotte.haut()
+	robonotte.droite()
+	robonotte.droite()
+	robonotte.droite()
+	robonotte.ouvre()
+	robonotte.quitte()
