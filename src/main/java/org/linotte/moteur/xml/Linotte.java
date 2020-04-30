@@ -20,10 +20,6 @@
 
 package org.linotte.moteur.xml;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.linotte.frame.gui.SplashWindow;
 import org.linotte.greffons.GestionDesGreffons;
 import org.linotte.greffons.GreffonsHandler;
 import org.linotte.moteur.entites.Prototype;
@@ -34,101 +30,96 @@ import org.linotte.moteur.xml.analyse.multilangage.Langage;
 import org.linotte.moteur.xml.api.IHM;
 import org.linotte.moteur.xml.api.Librairie;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Cette classe doit être initialisée qu'une seule fois. Elle contient la
  * grammaire du langage et la structure des espèces
- * 
- * @author CPC
  *
+ * @author CPC
  */
 public class Linotte {
 
-	private static final String prefix_grammaire = "grammaires/grammaire_";
-	private static final String prefix_definitions = "grammaires/definitions_";
+    private static final String prefix_grammaire = "grammaires/grammaire_";
+    private static final String prefix_definitions = "grammaires/definitions_";
 
-	private static boolean greffonscharges = false;
+    private static boolean greffonscharges = false;
+    public List<Prototype> especeModeleMap = new ArrayList<Prototype>();
+    private Grammaire grammaire = null;
+    private Librairie<?> lib = null;
+    private IHM ihm = null;
+    private RegistreDesActions registreDesEtats;
+    private Langage langage;
 
-	private Grammaire grammaire = null;
+    public Linotte(Librairie<?> plib, IHM pihm, Langage langageDef) {
+        lib = plib;
+        ihm = pihm;
+        langage = langageDef;
+        initVM();
+    }
 
-	private Librairie<?> lib = null;
+    private void initVM() {
+        // On utilise le proxy du système :
+        // http://www.rgagnon.com/javadetails/java-0085.html
+        try {
+            System.setProperty("java.net.useSystemProxies", "true");
+        } catch (Exception e) {
+            System.out.println("Pas de proxy, en mode bac à sable");
+        }
 
-	private IHM ihm = null;
+        grammaire = new Grammaire(Ressources.getFromRessources(prefix_grammaire + langage.getFichier()),
+                Ressources.getFromRessources(prefix_definitions + langage.getFichier()), langage);
 
-	private RegistreDesActions registreDesEtats;
+        registreDesEtats = new RegistreDesActions();
 
-	public List<Prototype> especeModeleMap = new ArrayList<Prototype>();
+        synchronized (especeModeleMap) {
+            try {
+                // A faire une seule fois !
+                if (!greffonscharges) {
+                    // Initialisation des objets graphiques :
+                    // Enregistrement des especes graphiques sur la toile :
+                    PrototypeGraphique.init();
+                    // Greffons charges depuis l'exterieur :
+                    GreffonsHandler.chargerGreffons(Ressources.getGreffons());
+                    greffonscharges = true;
+                }
+                // Especes et greffons internes :
+                Bibliotheque.genererEspecesGraphiquesEtGreffonsInternes(lib, this);
+                // initialisation des greffons externes (java / python / ruby):
+                GestionDesGreffons.initGreffons(lib, this);
+                // initialisation des greffons externes en Linotte :
+                GestionDesGreffons.initGreffonsLinotte(this);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
-	private Langage langage;
+        }
 
-	public Linotte(Librairie<?> plib, IHM pihm, Langage langageDef) {
-		lib = plib;
-		ihm = pihm;
-		langage = langageDef;
-		initVM();
-	}
+    }
 
-	private void initVM() {
-		// On utilise le proxy du système :
-		// http://www.rgagnon.com/javadetails/java-0085.html
-		try {
-			System.setProperty("java.net.useSystemProxies", "true");
-		} catch (Exception e) {
-			System.out.println("Pas de proxy, en mode bac à sable");
-		}
+    public Librairie<?> getLibrairie() {
+        return lib;
+    }
 
-		grammaire = new Grammaire(Ressources.getFromRessources(prefix_grammaire + langage.getFichier()),
-				Ressources.getFromRessources(prefix_definitions + langage.getFichier()), langage);
+    public Grammaire getGrammaire() {
+        return grammaire;
+    }
 
-		registreDesEtats = new RegistreDesActions();
+    public RegistreDesActions getRegistreDesEtats() {
+        return registreDesEtats;
+    }
 
-		synchronized (especeModeleMap) {
-			try {
-				// A faire une seule fois !
-				if (!greffonscharges) {
-					// Initialisation des objets graphiques :
-					SplashWindow.setProgressValue("Assemblage des prototypes");
-					// Enregistrement des especes graphiques sur la toile :
-					PrototypeGraphique.init();
-					// Greffons charges depuis l'exterieur :
-					GreffonsHandler.chargerGreffons(Ressources.getGreffons());
-					greffonscharges = true;
-				}
-				// Especes et greffons internes :
-				Bibliotheque.genererEspecesGraphiquesEtGreffonsInternes(lib, this);
-				// initialisation des greffons externes (java / python / ruby):
-				GestionDesGreffons.initGreffons(lib, this);
-				// initialisation des greffons externes en Linotte :
-				GestionDesGreffons.initGreffonsLinotte(this);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+    public IHM getIhm() {
+        return ihm;
+    }
 
-		}
+    public void setIhm(IHM ihm) {
+        this.ihm = ihm;
+    }
 
-	}
-
-	public Librairie<?> getLibrairie() {
-		return lib;
-	}
-
-	public Grammaire getGrammaire() {
-		return grammaire;
-	}
-
-	public RegistreDesActions getRegistreDesEtats() {
-		return registreDesEtats;
-	}
-
-	public void setIhm(IHM ihm) {
-		this.ihm = ihm;
-	}
-
-	public IHM getIhm() {
-		return ihm;
-	}
-
-	public Langage getLangage() {
-		return langage;
-	}
+    public Langage getLangage() {
+        return langage;
+    }
 
 }

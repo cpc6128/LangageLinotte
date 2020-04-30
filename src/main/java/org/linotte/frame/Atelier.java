@@ -85,6 +85,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * Affichage de l'interface principale de L'atelier Linotte. Contient également
@@ -99,7 +100,6 @@ public class Atelier extends JFrame implements WindowListener {
     public static Linotte linotte = null;
     public static Font font;
     public static ExplorateurProjet explorateur;
-    private static SplashWindow splashWindow1 = null;
     private static Atelier atelier = null;
     private static LaToile toile;
 
@@ -206,42 +206,46 @@ public class Atelier extends JFrame implements WindowListener {
         atelier = this;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
+        Preference.CAN_WRITE = true;
         if (args != null && args.length > 0) {
-            Preference.CAN_WRITE = true;
+            // Mode console
             Jinotte.main(args);
         } else {
-            Preference.CAN_WRITE = true;
-            try {
-
-                if (Preference.getIntance().getProperty(Preference.P_STYLE) != null) {
-                    UIManager.setLookAndFeel(Preference.getIntance().getProperty(Preference.P_STYLE));
-                } else {
-                    try {
-                        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                    } catch (Exception e) {
-                        UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-                    }
-                }
-
-                Preference.getIntance().setProperty(Preference.P_STYLE, UIManager.getLookAndFeel().getClass().getName());
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                Preference.getIntance().remove(Preference.P_STYLE);
-            }
-            splashWindow1 = new SplashWindow(new Frame(), 10);
-            splashWindow1.setProgressValue(0, "Construction de l'environnement");
-            createAndShowGUI();
+            // Mode graphique
+            AtomicReference<SplashWindow> splashWindow1 = new AtomicReference<>();
+            applicationStyleSwing();
+            SwingUtilities.invokeAndWait(() -> {
+                splashWindow1.set(new SplashWindow(new Frame()));
+            });
+            initialisationFrameAtelierEtToile();
+            splashWindow1.get().fermer();
         }
     }
 
-    /**
-     * Cette méthode initialise l'affichage de la fenetre
-     */
-    private static void createAndShowGUI() {
+    private static void applicationStyleSwing() {
+        try {
 
+            if (Preference.getIntance().getProperty(Preference.P_STYLE) != null) {
+                UIManager.setLookAndFeel(Preference.getIntance().getProperty(Preference.P_STYLE));
+            } else {
+                try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                } catch (Exception e) {
+                    UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+                }
+            }
+
+            Preference.getIntance().setProperty(Preference.P_STYLE, UIManager.getLookAndFeel().getClass().getName());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Preference.getIntance().remove(Preference.P_STYLE);
+        }
+    }
+
+    private static void initialisationFrameAtelierEtToile() {
         Preference preference = Preference.getIntance();
         // Avant chargement de la fenetre :
         boolean auto = false;
@@ -264,15 +268,12 @@ public class Atelier extends JFrame implements WindowListener {
             preference.setBoolean(Preference.P_WINDOW_MAX, true);
         }
 
-        Atelier atelier = new Atelier(getTitre()); // + " " + Version.getVersion()
+        Atelier atelier = new Atelier(getTitre() + " " + Version.getVersion());
         List<Image> l = new ArrayList<Image>();
         l.add(Ressources.getImageIcon("linotte_new.png").getImage());
         atelier.setIconImages(l);
-
         atelier.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         atelier.initialisationComposantsAtelier();
-
-        // Display the window.
         atelier.setResizable(true);
 
         int taille = TAILLE_H + 10;
@@ -286,7 +287,7 @@ public class Atelier extends JFrame implements WindowListener {
 
             if (auto) {
                 atelier.setLocation(px, py);
-                atelier.setPreferredSize(new java.awt.Dimension(pl, ph));
+                atelier.setPreferredSize(new Dimension(pl, ph));
             } else {
                 if (width > 1000) {
                     atelier.setLocation((width - (taille2)) / 2, height);
@@ -301,21 +302,14 @@ public class Atelier extends JFrame implements WindowListener {
         } else {
             toile = Toile.initToile(Atelier.linotte, true, atelier, false, false, latoile, ((width - (taille2)) / 2) + taille, height);
         }
+        toile.setVisible(latoile);
 
-        // Pour l'audit :
-        linotte.getLibrairie().setToile(toile);
 
         atelier.pack();
         atelier.setVisible(true);
 
-        toile.setVisible(latoile);
-
-        splashWindow1.setProgressValue(10, "Environnement prêt !");
-
-        // Vérifier la modification des greffons en Linotte :
-
-        GestionDesGreffons.verifierGreffons(atelier);
-
+        // Pour l'audit :
+        linotte.getLibrairie().setToile(toile);
     }
 
     private static JButton createSimpleButton(String text) {
@@ -381,6 +375,8 @@ public class Atelier extends JFrame implements WindowListener {
                 creationSousMenuVerbier();
             });
             ecrirelnTableau("Prêt");
+            // Vérifier la modification des greffons en Linotte :
+            GestionDesGreffons.verifierGreffons(atelier);
 
         } catch (Throwable e) {
             e.printStackTrace();
@@ -663,7 +659,6 @@ public class Atelier extends JFrame implements WindowListener {
             if (null != Preference.getIntance().getProperty(Preference.P_WEBONOTTE_DIR)) {
                 root = Preference.getIntance().getProperty(Preference.P_WEBONOTTE_DIR);
             }
-            splashWindow1.setProgressValue(6, "Chargement du serveur Webonotte sur le port " + port_webonotte);
             Run.runStandEmbededServer("jetty", "Webonotte", linotte.getLibrairie(), port_webonotte, new File(root));
         } catch (Throwable e) {
             if (Version.isBeta())
