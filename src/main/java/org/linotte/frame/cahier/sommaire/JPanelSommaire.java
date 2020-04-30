@@ -20,30 +20,19 @@
 
 package org.linotte.frame.cahier.sommaire;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.GridLayout;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import org.linotte.frame.cahier.Cahier;
+import org.linotte.moteur.outils.Ressources;
 
-import javax.swing.Icon;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTree;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.text.BadLocationException;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeSelectionModel;
-
-import org.linotte.frame.cahier.Cahier;
-import org.linotte.moteur.outils.Ressources;
+import java.awt.*;
+import java.util.List;
+import java.util.*;
 
 @SuppressWarnings("serial")
 public class JPanelSommaire extends JPanel implements TreeSelectionListener {
@@ -73,9 +62,7 @@ public class JPanelSommaire extends JPanel implements TreeSelectionListener {
 		tree.expandRow(0);
 		tree.addTreeSelectionListener(this);
 		NoeudTreeCellRenderer renderer = new NoeudTreeCellRenderer();
-		renderer.setOpenIcon(Ressources.getImageIcon("x-office-document.png"));
-		renderer.setClosedIcon(Ressources.getImageIcon("text-x-generic.png"));
-		renderer.setLeafIcon(Ressources.getImageIcon("list-remove.png"));
+		renderer.setLeafIcon(Ressources.getImageIconeTeintee(Color.GRAY.darker(), "list-remove.png"));
 		renderer.setErreurIcon(Ressources.getImageIconeTeintee(Color.RED, "list-remove.png"));
 		tree.setCellRenderer(renderer);
 		scrollPane = new JScrollPane(tree);

@@ -45,7 +45,7 @@ public class Onglets extends JPanel {
 	public Onglets() {
 		super(new GridLayout(1, 1));
 		add(tabbedPane);
-		tabbedPane.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
+		tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		tabbedPane.addChangeListener(new ChangeListener() {
 			@Override
 			public void stateChanged(ChangeEvent e) {
