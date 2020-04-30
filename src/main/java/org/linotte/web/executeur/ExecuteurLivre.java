@@ -1,16 +1,6 @@
 package org.linotte.web.executeur;
 
-import java.io.File;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
-
+import console.Jinotte;
 import org.alize.http.i.Executeur;
 import org.alize.http.i.FichierTraitement;
 import org.alize.http.i.WebTransformateur;
@@ -24,7 +14,6 @@ import org.linotte.moteur.exception.LectureException;
 import org.linotte.moteur.exception.Messages;
 import org.linotte.moteur.exception.StopException;
 import org.linotte.moteur.outils.FichierOutils;
-import org.linotte.moteur.outils.LangageSwitch;
 import org.linotte.moteur.xml.Linotte;
 import org.linotte.moteur.xml.alize.kernel.ContextHelper;
 import org.linotte.moteur.xml.alize.kernel.RuntimeContext;
@@ -38,238 +27,223 @@ import org.linotte.moteur.xml.api.Librairie;
 import org.linotte.web.transformateur.HTMLFrancaisTransformateur;
 import org.linotte.web.transformateur.WebLivreTransformateur;
 
-import console.Jinotte;
+import java.io.File;
+import java.math.BigDecimal;
+import java.util.*;
 
 /**
  * Moteur d'exécution du Webonotte
- *
  */
 public class ExecuteurLivre implements Executeur {
 
-	private LangageSwitch langageSwitch;
-	private List<WebTransformateur> transformateurs = new ArrayList<WebTransformateur>();
+    Librairie<LibrairieVirtuelleSyntaxeV2> lib = new LibrairieVirtuelleSyntaxeV2();
+    private List<WebTransformateur> transformateurs = new ArrayList<WebTransformateur>();
+    /**
+     * Gestion du cache des runtimes
+     */
+    private Timer timer;
+    private Map<String, AKRuntime> cache = Collections.synchronizedMap(new HashMap<String, AKRuntime>());
+    private Map<String, Long> cache_age = new HashMap<String, Long>();
+    private TimerTask task = new TimerTask() {
+        @Override
+        public void run() {
+            /**
+             * On supprime du cache les livres modifiés
+             */
+            List<String> aSupprimer = new ArrayList<String>();
+            synchronized (cache) {
+                for (String f : cache.keySet()) {
+                    long age = cache_age.get(f);
+                    if (new File(f).lastModified() != age) {
+                        aSupprimer.add(f);
+                    }
+                }
+            }
+            for (String f : aSupprimer) {
+                cache.remove(f);
+                cache_age.remove(f);
+            }
+        }
+    };
 
-	/**
-	 * Gestion du cache des runtimes
-	 */
-	private Timer timer;
-	private Map<String, AKRuntime> cache = Collections.synchronizedMap(new HashMap<String, AKRuntime>());
-	private Map<String, Long> cache_age = new HashMap<String, Long>();
+    /**
+     * Version standalone
+     */
+    public ExecuteurLivre() {
+        createCleaner();
+    }
 
-	/**
-	 * Version standalone
-	 */
-	public ExecuteurLivre() {
-		Librairie<LibrairieVirtuelleSyntaxeV2> lib = new LibrairieVirtuelleSyntaxeV2();
-		langageSwitch = new LangageSwitch(lib, null);
-		createCleaner();
-	}
+    public ExecuteurLivre(Librairie<?> lib) {
+        createCleaner();
+    }
 
-	public ExecuteurLivre(Librairie<?> lib) {
-		langageSwitch = new LangageSwitch(lib, null);
-		createCleaner();
-	}
+    private void createCleaner() {
+        timer = new Timer();
+        timer.schedule(task, 1000, 2000);
+        transformateurs.add(new WebLivreTransformateur());
+        transformateurs.add(new HTMLFrancaisTransformateur());
+    }
 
-	private void createCleaner() {
-		timer = new Timer();
-		timer.schedule(task, 1000, 2000);
-		transformateurs.add(new WebLivreTransformateur());
-		transformateurs.add(new HTMLFrancaisTransformateur());
-	}
+    public StringBuilder traiter(FichierTraitement plivre, final Map<String, String> pacteurs, Collection<Habilitation> habilitationsHeritees, String plangage)
+            throws Exception {
 
-	public StringBuilder traiter(FichierTraitement plivre, final Map<String, String> pacteurs, Collection<Habilitation> habilitationsHeritees, String plangage)
-			throws Exception {
+        final boolean format = Boolean.parseBoolean(pacteurs.get("wbt_html"));
+        boolean source = Boolean.parseBoolean(pacteurs.get("wbt_source"));
+        final StringBuilder sortie = new StringBuilder();
+        List<Integer> numerolignes = new ArrayList<Integer>();
+        if (format)
+            sortie.append("<HTML><HEAD><HEAD><BODY>");
+        String retourChariot = format ? "<br/>" : "";
+        if (habilitationsHeritees.contains(Habilitation.LITTLE_BIRD))
+            retourChariot = "\n"; // Pour que ça s'affiche correctement dans la console javascript
+        IHM ihm = new IHMWeb(pacteurs, sortie, retourChariot);
+        AKRuntime runtime = cache.get(plivre.getAbsolutePath());
 
-		final boolean format = Boolean.parseBoolean(pacteurs.get("wbt_html"));
-		boolean source = Boolean.parseBoolean(pacteurs.get("wbt_source"));
-		final StringBuilder sortie = new StringBuilder();
-		List<Integer> numerolignes = new ArrayList<Integer>();
-		if (format)
-			sortie.append("<HTML><HEAD><HEAD><BODY>");
-		String retourChariot = format ? "<br/>" : "";
-		if (habilitationsHeritees.contains(Habilitation.LITTLE_BIRD))
-			retourChariot = "\n"; // Pour que ça s'affiche correctement dans la console javascript
-		IHM ihm = new IHMWeb(pacteurs, sortie, retourChariot);
-		AKRuntime runtime = cache.get(plivre.getAbsolutePath());
+        Linotte linotte = new Linotte(lib, ihm, Langage.Linotte2);
 
-		// Choix de la langue :
+        if (source) {
+            runtime = null;
+        }
+        if (runtime == null) {
+            Parseur moteurXML = new Parseur();
+            ParserContext parserContext = new ParserContext(MODE.GENERATION_RUNTIME);
+            parserContext.linotte = linotte;
+            parserContext.webonotte = true;
+            StringBuilder entree = FichierOutils.lire(plivre.getInputStream(), numerolignes);
+            if (source) {
+                String formater = Formater.action(entree.toString(), linotte);
+                StringBuilder source_html = new StringBuilder("<html><head><title>" + plivre.getAbsolutePath() + "</title></head><body>");
+                source_html.append("<script src=\"https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js\"></script>");//?lang=php&skin=desert
+                source_html.append("<style>.str {background-color: aliceblue;}</style>");
+                source_html.append("<pre class=\"prettyprint\">");
+                source_html.append(formater.replaceAll("<", "&lt;").replaceAll("\n", "<br/>").replaceAll("\t", "&nbsp;&nbsp;"));
+                source_html.append("</pre>");
+                source_html.append("</body></html>");
+                return source_html;
+            }
+            // On le transforme ?
+            for (WebTransformateur transformateur : transformateurs) {
+                if (transformateur.accepter(plivre.getAbsolutePath())) {
+                    entree = transformateur.traiter(entree);
+                }
+            }
+            try {
+                runtime = moteurXML.parseLivre(entree, parserContext);
+                //Patch pour ne pas être visible dans l'audit
+                AKPatrol.runtimes.remove(runtime);
 
-		Langage langage = null;
-		try {
-			langage = Langage.valueOf(plangage);
-		} catch (Exception e1) {
-		}
-		if (langage == null) {
-			langage = Langage.Linotte2;
-		}
+            } catch (LectureException e) {
+                String message = "Ligne : " + Jinotte.retourneLaLigne(numerolignes, e.getPosition()) + " / "
+                        + Messages.retourneErreur(String.valueOf(e.getErreur()));
+                if (e.getException().getToken() != null)
+                    message += " : " + e.getException().getToken();
+                throw new Exception(message, e);
+            }
 
-		Linotte linotte = langageSwitch.selectionLangage(langage);
+            List<Habilitation> habilitations = new ArrayList<Habilitation>(habilitationsHeritees);
+            habilitations.add(Habilitation.COOKIES_ACCESS);
+            habilitations.add(Habilitation.TOILE_INVISIBLE);
 
-		if (source) {
-			runtime = null;
-		}
-		if (runtime == null) {
-			Parseur moteurXML = new Parseur();
-			ParserContext parserContext = new ParserContext(MODE.GENERATION_RUNTIME);
-			parserContext.linotte = linotte;
-			parserContext.webonotte = true;
-			StringBuilder entree = FichierOutils.lire(plivre.getInputStream(), numerolignes);
-			if (source) {
-				String formater = Formater.action(entree.toString(), linotte);
-				StringBuilder source_html = new StringBuilder("<html><head><title>" + plivre.getAbsolutePath() + "</title></head><body>");
-				source_html.append("<script src=\"https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js\"></script>");//?lang=php&skin=desert
-				source_html.append("<style>.str {background-color: aliceblue;}</style>");
-				source_html.append("<pre class=\"prettyprint\">");
-				source_html.append(formater.replaceAll("<", "&lt;").replaceAll("\n", "<br/>").replaceAll("\t", "&nbsp;&nbsp;"));
-				source_html.append("</pre>");
-				source_html.append("</body></html>");
-				return source_html;
-			}
-			// On le transforme ?
-			for (WebTransformateur transformateur : transformateurs) {
-				if (transformateur.accepter(plivre.getAbsolutePath())) {
-					entree = transformateur.traiter(entree);
-				}
-			}
-			try {
-				runtime = moteurXML.parseLivre(entree, parserContext);
-				//Patch pour ne pas être visible dans l'audit
-				AKPatrol.runtimes.remove(runtime);
+            ContextHelper.populate(runtime.getContext(), linotte, plivre.getFile(), habilitations);
+            if (plivre.lastModified() != 0) {
+                cache.put(plivre.getAbsolutePath(), runtime);
+                cache_age.put(plivre.getAbsolutePath(), plivre.lastModified());
+            }
+        }
 
-			} catch (LectureException e) {
-				String message = "Ligne : " + Jinotte.retourneLaLigne(numerolignes, e.getPosition()) + " / "
-						+ Messages.retourneErreur(String.valueOf(e.getErreur()));
-				if (e.getException().getToken() != null)
-					message += " : " + e.getException().getToken();
-				throw new Exception(message, e);
-			}
+        AKRuntime cloner = AKLoader.produceRuntime(runtime);
 
-			List<Habilitation> habilitations = new ArrayList<Habilitation>(habilitationsHeritees);
-			habilitations.add(Habilitation.COOKIES_ACCESS);
-			habilitations.add(Habilitation.TOILE_INVISIBLE);
+        // Patch pour mettre à jour l'IHM
+        RuntimeContext runtimecontext = (RuntimeContext) cloner.getContext();
+        runtimecontext.setIhm(ihm);
 
-			ContextHelper.populate(runtime.getContext(), linotte, plivre.getFile(), habilitations);
-			if (plivre.lastModified() != 0) {
-				cache.put(plivre.getAbsolutePath(), runtime);
-				cache_age.put(plivre.getAbsolutePath(), plivre.lastModified());
-			}
-		}
+        try {
+            cloner.execute();
+        } catch (LectureException e) {
+            String message = "Ligne : " + Jinotte.retourneLaLigne(numerolignes, e.getPosition()) + " / "
+                    + Messages.retourneErreur(String.valueOf(e.getErreur()));
+            if (e.getException().getToken() != null)
+                message += " : " + e.getException().getToken();
+            throw new Exception(message, e);
+        } catch (StopException e) {
+        } finally {
 
-		AKRuntime cloner = AKLoader.produceRuntime(runtime);
+        }
 
-		// Patch pour mettre à jour l'IHM
-		RuntimeContext runtimecontext = (RuntimeContext) cloner.getContext();
-		runtimecontext.setIhm(ihm);
+        if (format)
+            sortie.append("</BODY></HTML>");
 
-		try {
-			cloner.execute();
-		} catch (LectureException e) {
-			String message = "Ligne : " + Jinotte.retourneLaLigne(numerolignes, e.getPosition()) + " / "
-					+ Messages.retourneErreur(String.valueOf(e.getErreur()));
-			if (e.getException().getToken() != null)
-				message += " : " + e.getException().getToken();
-			throw new Exception(message, e);
-		} catch (StopException e) {
-		} finally {
+        return sortie;
+    }
 
-		}
+    @Override
+    public boolean accepter(String nom) {
+        boolean t1 = nom.equalsIgnoreCase("/essayer") || nom.toLowerCase().endsWith(".liv") || nom.toLowerCase().endsWith(".wliv")
+                || nom.equalsIgnoreCase("/notice") || nom.equalsIgnoreCase("/favicon.ico");
+        boolean t2 = nom.startsWith("/b_tutoriel/") && t1;
+        return t1 || t2;
+    }
 
-		if (format)
-			sortie.append("</BODY></HTML>");
+    private class IHMWeb implements IHM {
 
-		return sortie;
-	}
+        Map<String, String> ihmActeurs;
 
-	private TimerTask task = new TimerTask() {
-		@Override
-		public void run() {
-			/**
-			 * On supprime du cache les livres modifiés
-			 */
-			List<String> aSupprimer = new ArrayList<String>();
-			synchronized (cache) {
-				for (String f : cache.keySet()) {
-					long age = cache_age.get(f);
-					if (new File(f).lastModified() != age) {
-						aSupprimer.add(f);
-					}
-				}
-			}
-			for (String f : aSupprimer) {
-				cache.remove(f);
-				cache_age.remove(f);
-			}
-		}
-	};
+        String retourChariot;
 
-	private class IHMWeb implements IHM {
+        StringBuilder sortie;
 
-		Map<String, String> ihmActeurs;
+        IHMWeb(Map<String, String> pacteurs, StringBuilder psortie, String pretourChariot) {
+            ihmActeurs = pacteurs;
+            sortie = psortie;
+            retourChariot = pretourChariot;
+        }
 
-		String retourChariot;
+        public String questionne(String s, Role role, String acteur) throws StopException {
+            String valeur = ihmActeurs.get(acteur);
+            if (role == Role.NOMBRE) {
+                valeur = traiterNombre(valeur);
+            }
+            return valeur;
+        }
 
-		StringBuilder sortie;
+        private String traiterNombre(String valeur) {
+            try {
+                BigDecimal result = new BigDecimal(valeur);
+                return result.toString();
+            } catch (Exception e1) {
+                return "0";
+            }
+        }
 
-		IHMWeb(Map<String, String> pacteurs, StringBuilder psortie, String pretourChariot) {
-			ihmActeurs = pacteurs;
-			sortie = psortie;
-			retourChariot = pretourChariot;
-		}
+        public boolean effacer() throws StopException {
+            return false;
+        }
 
-		public String questionne(String s, Role role, String acteur) throws StopException {
-			String valeur = ihmActeurs.get(acteur);
-			if (role == Role.NOMBRE) {
-				valeur = traiterNombre(valeur);
-			}
-			return valeur;
-		}
+        public String demander(Role role, String acteur) throws StopException {
+            String valeur = ihmActeurs.get(acteur);
+            if (role == Role.NOMBRE) {
+                valeur = traiterNombre(valeur);
+            }
+            return valeur;
+        }
 
-		private String traiterNombre(String valeur) {
-			try {
-				BigDecimal result = new BigDecimal(valeur);
-				return result.toString();
-			} catch (Exception e1) {
-				return "0";
-			}
-		}
+        public boolean afficherErreur(String s) {
+            return false;
+        }
 
-		public boolean effacer() throws StopException {
-			return false;
-		}
+        public boolean afficher(String s, Role role) throws StopException {
+            if (retourChariot.equals("\n")) {
+                // Blocnotte
+                if (sortie.length() > 0)
+                    sortie.append(retourChariot);
+                sortie.append(s);
+            } else {
+                sortie.append(s);
+                sortie.append(retourChariot);
+            }
+            return true;
+        }
 
-		public String demander(Role role, String acteur) throws StopException {
-			String valeur = ihmActeurs.get(acteur);
-			if (role == Role.NOMBRE) {
-				valeur = traiterNombre(valeur);
-			}
-			return valeur;
-		}
-
-		public boolean afficherErreur(String s) {
-			return false;
-		}
-
-		public boolean afficher(String s, Role role) throws StopException {
-			if (retourChariot.equals("\n")) {
-				// Blocnotte
-				if (sortie.length() > 0)
-					sortie.append(retourChariot);
-				sortie.append(s);
-			} else {
-				sortie.append(s);
-				sortie.append(retourChariot);
-			}
-			return true;
-		}
-
-	}
-
-	@Override
-	public boolean accepter(String nom) {
-		boolean t1 = nom.equalsIgnoreCase("/essayer") || nom.toLowerCase().endsWith(".liv") || nom.toLowerCase().endsWith(".wliv")
-				|| nom.equalsIgnoreCase("/notice") || nom.equalsIgnoreCase("/favicon.ico");
-		boolean t2 = nom.startsWith("/b_tutoriel/") && t1;
-		return t1 || t2;
-	}
+    }
 
 }

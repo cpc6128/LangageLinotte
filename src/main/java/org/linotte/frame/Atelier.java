@@ -53,7 +53,6 @@ import org.linotte.implementations.LibrairieVirtuelleSyntaxeV2;
 import org.linotte.moteur.entites.Prototype;
 import org.linotte.moteur.exception.StopException;
 import org.linotte.moteur.outils.JTextPaneToPdf;
-import org.linotte.moteur.outils.LangageSwitch;
 import org.linotte.moteur.outils.Preference;
 import org.linotte.moteur.outils.Ressources;
 import org.linotte.moteur.xml.Linotte;
@@ -615,10 +614,8 @@ public class Atelier extends JFrame implements WindowListener {
     }
 
     private Langage chargementLangageProgrammation() {
-        LangageSwitch langageSwitch = new LangageSwitch(new LibrairieVirtuelleSyntaxeV2(), new FlatIHM(this));
-        Langage langage = Langage.Linotte2;
-        linotte = langageSwitch.selectionLangage(langage);
-        return langage;
+        linotte = new Linotte(new LibrairieVirtuelleSyntaxeV2(), new FlatIHM(this), Langage.Linotte2);
+        return linotte.getLangage();
     }
 
     private void demarrageServeurHTTP() {
