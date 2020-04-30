@@ -20,6 +20,7 @@
 
 package org.linotte.frame;
 
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import console.Jinotte;
 import org.jdesktop.swingx.JXTextField;
 import org.linotte.frame.atelier.*;
@@ -68,7 +69,6 @@ import org.w3c.dom.Element;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.border.Border;
 import javax.swing.filechooser.FileSystemView;
 import javax.swing.text.*;
@@ -162,7 +162,6 @@ public class Atelier extends JFrame implements WindowListener {
 
     // //////////////////////////////////////////////////////////// Maps pour le menu verbes
     private JMenu jMenuLinotte = null;
-    private JMenu jMenuThemes = null;
     private JMenuItem jMenuItemApropos = null;
     private JMenuItem jMenuItemMerci = null;
     private boolean saut2ligne = false;
@@ -225,24 +224,7 @@ public class Atelier extends JFrame implements WindowListener {
     }
 
     private static void applicationStyleSwing() {
-        try {
-
-            if (Preference.getIntance().getProperty(Preference.P_STYLE) != null) {
-                UIManager.setLookAndFeel(Preference.getIntance().getProperty(Preference.P_STYLE));
-            } else {
-                try {
-                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                } catch (Exception e) {
-                    UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-                }
-            }
-
-            Preference.getIntance().setProperty(Preference.P_STYLE, UIManager.getLookAndFeel().getClass().getName());
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            Preference.getIntance().remove(Preference.P_STYLE);
-        }
+        FlatIntelliJLaf.install();
     }
 
     private static void initialisationFrameAtelierEtToile() {
@@ -557,7 +539,6 @@ public class Atelier extends JFrame implements WindowListener {
         getJMenuOutils().addSeparator();
         JMenu options = new JMenu("Options");
         getJMenuOutils().add(options);
-        options.add(getJMenuThemes());
         options.add(getJMenuSaveWorkSpace());
 
         options.add(getJMenuItemBonifieur());
@@ -565,12 +546,6 @@ public class Atelier extends JFrame implements WindowListener {
 
         options.addSeparator();
         options.add(getJMenuDelaisDebogueur());
-        try {
-            for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                jMenuThemes.add(new LFAction(this, info));
-            }
-        } catch (Exception e) {
-        }
 
         jMenuItemSaveWorkSpace.setSelected(getPreference(true, Preference.P_MODE_SAVE_WORKSPACE));
         jMenuItemBonifieur.setSelected(getPreference(true, Preference.P_MODE_BONIFIEUR));
@@ -1603,20 +1578,6 @@ public class Atelier extends JFrame implements WindowListener {
             jMenuEspeces.setIcon(Ressources.getImageIcon("system-shutdown.png"));
         }
         return jMenuEspeces;
-    }
-
-    private JMenuItem getJMenuThemes() {
-        if (jMenuThemes == null) {
-            jMenuThemes = new JMenu();
-            jMenuThemes.setActionCommand("Habillages");
-            jMenuThemes.setMnemonic(KeyEvent.VK_T);
-            jMenuThemes.setText("Habillages");
-            jMenuThemes.setBackground(menuBarColor);
-            jMenuThemes.setForeground(textBarColor);
-            jMenuThemes.setBorderPainted(menuBarBordure);
-
-        }
-        return jMenuThemes;
     }
 
     private JMenu getJMenuCouleurs(int m) {

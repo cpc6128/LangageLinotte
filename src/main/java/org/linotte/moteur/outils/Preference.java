@@ -20,6 +20,8 @@
 
 package org.linotte.moteur.outils;
 
+import org.linotte.moteur.xml.Version;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -27,8 +29,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
-
-import org.linotte.moteur.xml.Version;
 
 @SuppressWarnings("serial")
 public class Preference extends Properties {
@@ -51,7 +51,6 @@ public class Preference extends Properties {
 	public static final String P_VERSION = "VERSION";
 	public static final String P_VITESSE = "RAFRAICHISSEMENT";
 	public static final String P_VITESSE_TOUCHE = "VITESSE_TOUCHE";
-	public static final String P_STYLE = "STYLE_JAVA";
 	public static final String P_FONT = "FONT";
 	public static final String P_TAILLE_FONT = "TAILLE_FONT";
 	public static final String P_CHRONO = "CHRONO";
