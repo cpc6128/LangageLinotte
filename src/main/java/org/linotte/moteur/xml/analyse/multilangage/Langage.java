@@ -20,16 +20,11 @@
 
 package org.linotte.moteur.xml.analyse.multilangage;
 
-import org.linotte.moteur.xml.analyse.multilangage.algonotte.MathematiqueAlgonotte;
-import org.linotte.moteur.xml.analyse.multilangage.linnet.MathematiqueLinnet;
 import org.linotte.moteur.xml.analyse.multilangage.linotte2.MathematiqueLinotte;
 
 public enum Langage {
 
     Linotte2("Linotte 2", "linotte2.xml", ";", false, new String[]{"{", "}"}, new char[]{'[', ']'}, "exemples", MathematiqueLinotte.values(), MathematiqueLinotte.de, false),
-    Linnet("Linnet - Algorithmique en anglais", "linnet.xml", ";", false, new String[]{"[", "]"}, new char[]{'¤', '¤'}, "exemples/c_linnet", MathematiqueLinnet.values(), MathematiqueLinnet.de, true),
-    Lyre("Lyre - Algorithmique en français", "lyre.xml", ";", false, new String[]{"[", "]"}, new char[]{'¤', '¤'}, "exemples/d_lyre", MathematiqueAlgonotte.values(), MathematiqueAlgonotte.de, true),
-    Linotte1X("Linotte 1 - première version du langage", "linotte1.xml", ";", true, new String[]{"{", "}"}, new char[]{'[', ']'}, "exemples/b_linotte_1x", MathematiqueLinotte.values(), MathematiqueLinotte.de, false),
     ;
 
     private String nom;
@@ -66,7 +61,6 @@ public enum Langage {
 	 * @param pcheminExemple
 	 * @param poperation
 	 * @param pattributEspece
-	 * @param forceParametreEnligne
 	 */
 	private Langage(String pnom, String pfichier, String pSeparateurLigne, boolean plegacy, String[] pointeur, char[] crochet, String pcheminExemple, MathematiqueOperation[] poperation, MathematiqueOperation pattributEspece, boolean pforceParametreEnligne) {
 		nom = pnom;
@@ -89,10 +83,6 @@ public enum Langage {
 
 	public String getFichier() {
 		return fichier;
-	}
-
-	public boolean isLegacy() {
-		return legacy;
 	}
 
 	public boolean isForceParametreEnligne() {

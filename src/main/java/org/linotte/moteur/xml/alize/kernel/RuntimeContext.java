@@ -20,19 +20,6 @@
 
 package org.linotte.moteur.xml.alize.kernel;
 
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.Window;
-import java.io.File;
-import java.math.MathContext;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
-
 import org.alize.kernel.AKRuntime;
 import org.alize.kernel.AKRuntimeContextI;
 import org.linotte.frame.cahier.Cahier;
@@ -53,363 +40,353 @@ import org.linotte.moteur.xml.analyse.Mathematiques.ANGLE;
 import org.linotte.moteur.xml.api.IHM;
 import org.linotte.moteur.xml.api.Librairie;
 
+import java.awt.*;
+import java.io.File;
+import java.math.MathContext;
+import java.util.List;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
+
 public class RuntimeContext extends AKRuntimeContextI {
 
-	// Runtime Context
-	
-	public int compteurExecution = 0; // Pour le mode LITTLE_BIRD
+    // Runtime Context
 
-	private Librairie<?> librairie;
+    public int compteurExecution = 0; // Pour le mode LITTLE_BIRD
+    // Job initiale :
+    public Job jobPere = null;
+    // Pour les tests unitaires :
+    public boolean doTest = false;
+    public Tests tests = new Tests();
+    // Pour le mode pas à pas
+    public AKDebugger debugger = null;
+    public int delayPasAPas = -1;
+    public Cahier cahier;
+    public StringBuilder buffer;
+    public int paragrapheExecute = 0;
+    private Librairie<?> librairie;
+    private Linotte linotte;
+    private IHM ihm = null;
+    private File reference;
+    private Map<String, List<ThreadLinotte>> threads = new ConcurrentHashMap<String, List<ThreadLinotte>>();
+    private List<Tube> tubes = new ArrayList<Tube>();
+    private List<Composant> composants = new ArrayList<Composant>();
+    // Evenements à nettoyer :
+    private List<PrototypeGraphique> evenements = new CopyOnWriteArrayList<PrototypeGraphique>();
+    private ParserEnvironnement environnment;
+    // Import de livres :
+    private Map<String, AKRuntime> tableRuntime = new ConcurrentHashMap<String, AKRuntime>();
+    private boolean importationProcess = false;
+    private Set<Habilitation> habilitations = new HashSet<Habilitation>();
 
-	private Linotte linotte;
+    public Librairie<?> getLibrairie() {
+        return librairie;
+    }
 
-	// Job initiale :
-	public Job jobPere = null;
+    public void setLibrairie(Librairie<?> librairie) {
+        this.librairie = librairie;
+    }
 
-	private IHM ihm = null;
+    public IHM getIhm() {
+        return ihm;
+    }
 
-	private File reference;
+    public void setIhm(IHM ihm) {
+        this.ihm = ihm;
+    }
 
-	private Map<String, List<ThreadLinotte>> threads = new ConcurrentHashMap<String, List<ThreadLinotte>>();
+    public Linotte getLinotte() {
+        return linotte;
+    }
 
-	private List<Tube> tubes = new ArrayList<Tube>();
+    public void setLinotte(Linotte linotte) {
+        this.linotte = linotte;
+    }
 
-	private List<Composant> composants = new ArrayList<Composant>();
+    public boolean ajouterLivre(String nom, AKRuntime runtime) {
+        if (tableRuntime.containsKey(nom)) {
+            return false;
+        }
+        tableRuntime.put(nom, runtime);
+        return true;
+    }
 
-	// Evenements à nettoyer :
-	private List<PrototypeGraphique> evenements = new CopyOnWriteArrayList<PrototypeGraphique>();
+    public AKRuntime retourLivre(String nom) {
+        return tableRuntime.get(nom);
+    }
 
-	private ParserEnvironnement environnment;
+    public void tuerTousLesMoteurs() {
+        for (AKRuntime m : tableRuntime.values()) {
+            try {
+                m.stopAll();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
-	// Import de livres :
-	private Map<String, AKRuntime> tableRuntime = new ConcurrentHashMap<String, AKRuntime>();
+    public void reveille() {
+        synchronized (linotte.getRegistreDesEtats().getPause()) {
+            linotte.getRegistreDesEtats().getPause().notifyAll();
+        }
+        synchronized (linotte.getRegistreDesEtats().getTemporiser()) {
+            linotte.getRegistreDesEtats().getTemporiser().notify();
+        }
+        synchronized (linotte.getRegistreDesEtats().getAttendreMilliSeconde()) {
+            linotte.getRegistreDesEtats().getAttendreMilliSeconde().notify();
+        }
+        synchronized (linotte.getRegistreDesEtats().getAttendreSeconde()) {
+            linotte.getRegistreDesEtats().getAttendreSeconde().notify();
+        }
+    }
 
-	private boolean importationProcess = false;
+    private void setStopLecture() {
 
-	private Set<Habilitation> habilitations = new HashSet<Habilitation>();
+        List<ThreadLinotte> all = new ArrayList<ThreadLinotte>();
 
-	// Pour les tests unitaires :
-	public boolean doTest = false;
+        synchronized (threads) {
+            for (List<ThreadLinotte> l : threads.values()) {
+                synchronized (l) {
+                    all.addAll(l);
+                }
+            }
+        }
+        for (ThreadLinotte thread : all) {
+            try {
+                thread.forceToStop = true;
+                thread.getJob().stop();
+                // pour arrêter les verbes "attendre"
+                thread.threadCourant.interrupt();
+            } catch (NullPointerException e) {
+                // Si getJob est null ? il sera arrêté grace à forceToStop =
+                // true
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
-	public Tests tests = new Tests();
+        // On vide les evenements de la toile :
+        for (PrototypeGraphique eg : evenements) {
+            eg.cleanListener();
+        }
 
-	// Pour le mode pas à pas
-	public AKDebugger debugger = null;
-	public int delayPasAPas = -1;
-	public Cahier cahier;
-	public StringBuilder buffer;
-	
-	public int paragrapheExecute = 0;
+        reveille();
+        // On force la fermeture des tubes :
+        for (Tube tube : tubes) {
+            try {
+                tube.fermer();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        // On ferme les composants :
+        for (Composant composant : composants) {
+            try {
+                composant.destruction();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
-	public Librairie<?> getLibrairie() {
-		return librairie;
-	}
+        tuerTousLesMoteurs();
+        // Appel de fonctions :
+        // TODO Alizé
+        // if (moteurPere != null)
+        // moteurPere.setStopLecture(stopLecture);
 
-	public void setLibrairie(Librairie<?> librairie) {
-		this.librairie = librairie;
-	}
+        // On coupe le son :
+        SonAction.closeChannel();
 
-	public IHM getIhm() {
-		return ihm;
-	}
+    }
 
-	public void setIhm(IHM ihm) {
-		this.ihm = ihm;
-	}
+    @Override
+    public void initializeRuntime(AKRuntime akRuntime) {
+        for (Object otoile : librairie.getToiles()) {
+            LaToile toile = ((LaToile) otoile);
+            if (toile != null && toile.getPanelLaToile() != null)
+                toile.getPanelLaToile().annulerBuffer();
+        }
 
-	public Linotte getLinotte() {
-		return linotte;
-	}
+        librairie.cleanEspece(getLinotte());
+        Ressources.getInstance().toile = librairie.getToilePrincipale();
+        habilitations.add(Habilitation.STACK_MEMORY_MANAGEMENT);
+        // Evolution Linotte 2.0
+        // Patch Pat pour le télétype :
+        if (!habilitations.contains(Habilitation.MEMORY_FULL_ACCESS)) {
+            for (Object otoile : librairie.getToiles()) {
+                LaToile toile = ((LaToile) otoile);
+                if (toile != null && toile.getPanelLaToile() != null)
+                    toile.getPanelLaToile().effacer();
+            }
+            if (librairie.getToilePrincipale() != null)
+                librairie.getToilePrincipale().getPanelLaToile().effacer();
+            librairie.vider();
+        }
+        try {
+            Ressources.setCheminReference(reference);
+            Ressources.clearCacheImages();
+        } catch (Exception e) {
+        }
+        // Pour le webonotte et les évènements :
+        jobPere = (Job) akRuntime.getJob();
+        if (jobPere.getPere() != null && jobPere.getPere().isDead()) {
+            jobPere.getPere().setRunning(true);
+        }
+        // On réinitialise des comportements systèmes :
+        Mathematiques.context = MathContext.DECIMAL128;
+        Mathematiques.angle = ANGLE.DEGREE;
+    }
 
-	public void setLinotte(Linotte linotte) {
-		this.linotte = linotte;
-	}
+    @Override
+    public void closeRuntime(AKRuntime akRuntime) {
+        if (importationProcess)
+            return;
+        // Il faut supprimer le recepteur de la toile !
+        for (Object otoile : librairie.getToiles()) {
+            LaToile toile = ((LaToile) otoile);
+            if (toile != null && toile.getPanelLaToile() != null)
+                toile.getPanelLaToile().setRecepteur(null);
+        }
+        try {
+            setStopLecture();
+            boolean pleinecran = false; // Pour corriger le bogue de la toile
+            // plein écran avec l'horloge douce
+            if (librairie.getToilePrincipale() != null) {
+                // Sortir du plein écran :
+                GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+                pleinecran = device.getFullScreenWindow() == null ? false : true;
+                Window element = device.getFullScreenWindow();
+                if (device.isFullScreenSupported()) {
+                    device.setFullScreenWindow(null);
+                }
+                // A faire seulement si plein écran !!!
+                if (element == librairie.getToilePrincipale().getPanelLaToile().getToileParent()) {
+                    //System.out.println("fermeture");
+                    librairie.getToilePrincipale().setUndecorated(false);// empeche la toile de prendre toute la place de l'écran
+                }
+            }
+            for (Object otoile : librairie.getToiles()) {
+                LaToile toile = ((LaToile) otoile);
+                // Afficheer la bordure :
+                if (toile != null && toile.getFrameParent() != null) {
+                    ITransparence.getTransparence().setOpaque(toile.getFrameParent(), true);
+                }
+                if (toile != null && toile.isUndecorated()) {
+                    toile.dispose();
+                    toile.setUndecorated(false);
+                    if (!pleinecran)
+                        toile.setVisible(true);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            Ressources.clearCacheImages();
+            nettoyerMemoire();
+        }
 
-	public boolean ajouterLivre(String nom, AKRuntime runtime) {
-		if (tableRuntime.containsKey(nom)) {
-			return false;
-		}
-		tableRuntime.put(nom, runtime);
-		return true;
-	}
+    }
 
-	public AKRuntime retourLivre(String nom) {
-		return tableRuntime.get(nom);
-	}
+    private void nettoyerMemoire() {
+        ((JobContext) jobPere.getContext()).nettoyerMemoire();
+        librairie = null;
+        // linotte = null;
+        jobPere = null;
+        ihm = null;
+        reference = null;
+        threads.clear();
+        threads = null;
+        tubes.clear();
+        tubes = null;
+        composants.clear();
+        composants = null;
+        evenements.clear();
+        evenements = null;
+        environnment = null;
+        tableRuntime.clear();
+        tableRuntime = null;
+        habilitations.clear();
+        habilitations = null;
+        tests = null;
+    }
 
-	public void tuerTousLesMoteurs() {
-		for (AKRuntime m : tableRuntime.values()) {
-			try {
-				m.stopAll();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
+    public void setContinuerLecture() {
+        synchronized (linotte.getRegistreDesEtats().getPause()) {
+            linotte.getRegistreDesEtats().getPause().notifyAll();
+        }
+    }
 
-	public void reveille() {
-		synchronized (linotte.getRegistreDesEtats().getPause()) {
-			linotte.getRegistreDesEtats().getPause().notifyAll();
-		}
-		synchronized (linotte.getRegistreDesEtats().getTemporiser()) {
-			linotte.getRegistreDesEtats().getTemporiser().notify();
-		}
-		synchronized (linotte.getRegistreDesEtats().getAttendreMilliSeconde()) {
-			linotte.getRegistreDesEtats().getAttendreMilliSeconde().notify();
-		}
-		synchronized (linotte.getRegistreDesEtats().getAttendreSeconde()) {
-			linotte.getRegistreDesEtats().getAttendreSeconde().notify();
-		}
-	}
+    public List<Composant> getComposants() {
+        return composants;
+    }
 
-	private void setStopLecture() {
+    public List<PrototypeGraphique> getEvenements() {
+        return evenements;
+    }
 
-		List<ThreadLinotte> all = new ArrayList<ThreadLinotte>();
+    public void setEvenements(List<PrototypeGraphique> evenements) {
+        this.evenements = evenements;
+    }
 
-		synchronized (threads) {
-			for (List<ThreadLinotte> l : threads.values()) {
-				synchronized (l) {
-					all.addAll(l);
-				}
-			}
-		}
-		for (ThreadLinotte thread : all) {
-			try {
-				thread.forceToStop = true;
-				thread.getJob().stop();
-				// pour arrêter les verbes "attendre"
-				thread.threadCourant.interrupt();
-			} catch (NullPointerException e) {
-				// Si getJob est null ? il sera arrêté grace à forceToStop =
-				// true
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+    public List<Tube> getTubes() {
+        return tubes;
+    }
 
-		// On vide les evenements de la toile :
-		for (PrototypeGraphique eg : evenements) {
-			eg.cleanListener();
-		}
+    public void setTubes(List<Tube> tubes) {
+        this.tubes = tubes;
+    }
 
-		reveille();
-		// On force la fermeture des tubes :
-		for (Tube tube : tubes) {
-			try {
-				tube.fermer();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		// On ferme les composants :
-		for (Composant composant : composants) {
-			try {
-				composant.destruction();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+    public Map<String, List<ThreadLinotte>> getThreads() {
+        return threads;
+    }
 
-		tuerTousLesMoteurs();
-		// Appel de fonctions :
-		// TODO Alizé
-		// if (moteurPere != null)
-		// moteurPere.setStopLecture(stopLecture);
+    public File getReference() {
+        return reference;
+    }
 
-		// On coupe le son :
-		SonAction.closeChannel();
+    public void setReference(File reference) {
+        this.reference = reference;
+    }
 
-	}
+    public ParserEnvironnement getEnvironnment() {
+        return environnment;
+    }
 
-	@Override
-	public void initializeRuntime(AKRuntime akRuntime) {
-		for (Object otoile : librairie.getToiles()) {
-			LaToile toile = ((LaToile) otoile);
-			if (toile != null && toile.getPanelLaToile() != null)
-				toile.getPanelLaToile().annulerBuffer();
-		}
+    public void setEnvironnment(ParserEnvironnement environnment) {
+        this.environnment = environnment;
+    }
 
-		librairie.cleanEspece(getLinotte());
-		Ressources.getInstance().toile = librairie.getToilePrincipale();
-		if (!linotte.getLangage().isLegacy())
-			habilitations.add(Habilitation.STACK_MEMORY_MANAGEMENT);
-		// Evolution Linotte 2.0
-		// Patch Pat pour le télétype :
-		if (!habilitations.contains(Habilitation.MEMORY_FULL_ACCESS)) {
-			for (Object otoile : librairie.getToiles()) {
-				LaToile toile = ((LaToile) otoile);
-				if (toile != null && toile.getPanelLaToile() != null)
-					toile.getPanelLaToile().effacer();
-			}
-			if (librairie.getToilePrincipale() != null)
-				librairie.getToilePrincipale().getPanelLaToile().effacer();
-			librairie.vider();
-		}
-		try {
-			Ressources.setCheminReference(reference);
-			Ressources.clearCacheImages();
-		} catch (Exception e) {
-		}
-		// Pour le webonotte et les évènements :
-		jobPere = (Job) akRuntime.getJob();
-		if (jobPere.getPere() != null && jobPere.getPere().isDead()) {
-			jobPere.getPere().setRunning(true);
-		}
-		// On réinitialise des comportements systèmes :
-		Mathematiques.context = MathContext.DECIMAL128;
-		Mathematiques.angle = ANGLE.DEGREE;
-	}
+    public boolean isImportationProcess() {
+        return importationProcess;
+    }
 
-	@Override
-	public void closeRuntime(AKRuntime akRuntime) {
-		if (importationProcess)
-			return;
-		// Il faut supprimer le recepteur de la toile !
-		for (Object otoile : librairie.getToiles()) {
-			LaToile toile = ((LaToile) otoile);
-			if (toile != null && toile.getPanelLaToile() != null)
-				toile.getPanelLaToile().setRecepteur(null);
-		}
-		try {
-			setStopLecture();
-			boolean pleinecran = false; // Pour corriger le bogue de la toile
-										// plein écran avec l'horloge douce
-			if (librairie.getToilePrincipale() != null) {
-				// Sortir du plein écran :
-				GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-				pleinecran = device.getFullScreenWindow() == null ? false : true;
-				Window element = device.getFullScreenWindow();
-				if (device.isFullScreenSupported()) {
-					device.setFullScreenWindow(null);
-				}
-				// A faire seulement si plein écran !!!
-				if ( element == librairie.getToilePrincipale().getPanelLaToile().getToileParent()) {
-					//System.out.println("fermeture");
-					librairie.getToilePrincipale().setUndecorated(false);// empeche la toile de prendre toute la place de l'écran
-				}
-			}
-			for (Object otoile : librairie.getToiles()) {
-				LaToile toile = ((LaToile) otoile);
-				// Afficheer la bordure :
-				if (toile != null && toile.getFrameParent() != null) {
-					ITransparence.getTransparence().setOpaque(toile.getFrameParent(), true);
-				}
-				if (toile != null && toile.isUndecorated()) {
-					toile.dispose();
-					toile.setUndecorated(false);
-					if (!pleinecran)
-						toile.setVisible(true);
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			Ressources.clearCacheImages();
-			nettoyerMemoire();
-		}
+    public void setImportationProcess(boolean pimportationProcess) {
+        importationProcess = pimportationProcess;
+    }
 
-	}
+    @Override
+    public Object clone() {
+        RuntimeContext context = new RuntimeContext();
+        context.librairie = librairie.cloneMoi();
+        context.linotte = linotte;
+        context.ihm = ihm;
+        context.reference = reference;
+        context.environnment = environnment;
+        context.debugger = debugger;
+        if (habilitations != null && !habilitations.isEmpty())
+            context.habilitations.addAll(habilitations);
+        return context;
+    }
 
-	private void nettoyerMemoire() {
-		((JobContext) jobPere.getContext()).nettoyerMemoire();
-		librairie = null;
-		// linotte = null;
-		jobPere = null;
-		ihm = null;
-		reference = null;
-		threads.clear();
-		threads = null;
-		tubes.clear();
-		tubes = null;
-		composants.clear();
-		composants = null;
-		evenements.clear();
-		evenements = null;
-		environnment = null;
-		tableRuntime.clear();
-		tableRuntime = null;
-		habilitations.clear();
-		habilitations = null;
-		tests = null;
-	}
+    protected boolean addHabilitation(Habilitation habilitation) {
+        return habilitations.add(habilitation);
+    }
 
-	public void setContinuerLecture() {
-		synchronized (linotte.getRegistreDesEtats().getPause()) {
-			linotte.getRegistreDesEtats().getPause().notifyAll();
-		}
-	}
+    public boolean canDo(Habilitation habilitation) {
+        return habilitations.contains(habilitation);
+    }
 
-	public List<Composant> getComposants() {
-		return composants;
-	}
-
-	public List<PrototypeGraphique> getEvenements() {
-		return evenements;
-	}
-
-	public void setEvenements(List<PrototypeGraphique> evenements) {
-		this.evenements = evenements;
-	}
-
-	public List<Tube> getTubes() {
-		return tubes;
-	}
-
-	public void setTubes(List<Tube> tubes) {
-		this.tubes = tubes;
-	}
-
-	public Map<String, List<ThreadLinotte>> getThreads() {
-		return threads;
-	}
-
-	public File getReference() {
-		return reference;
-	}
-
-	public void setReference(File reference) {
-		this.reference = reference;
-	}
-
-	public void setEnvironnment(ParserEnvironnement environnment) {
-		this.environnment = environnment;
-	}
-
-	public ParserEnvironnement getEnvironnment() {
-		return environnment;
-	}
-
-	public void setImportationProcess(boolean pimportationProcess) {
-		importationProcess = pimportationProcess;
-	}
-
-	public boolean isImportationProcess() {
-		return importationProcess;
-	}
-
-	@Override
-	public Object clone() {
-		RuntimeContext context = new RuntimeContext();
-		context.librairie = librairie.cloneMoi();
-		context.linotte = linotte;
-		context.ihm = ihm;
-		context.reference = reference;
-		context.environnment = environnment;
-		context.debugger = debugger;
-		if (habilitations != null && !habilitations.isEmpty())
-			context.habilitations.addAll(habilitations);
-		return context;
-	}
-
-	protected boolean addHabilitation(Habilitation habilitation) {
-		return habilitations.add(habilitation);
-	}
-
-	public boolean canDo(Habilitation habilitation) {
-		return habilitations.contains(habilitation);
-	}
-
-	public boolean removeHabilitation(Habilitation habilitation) {
-		return habilitations.remove(habilitation);
-	}
+    public boolean removeHabilitation(Habilitation habilitation) {
+        return habilitations.remove(habilitation);
+    }
 }
