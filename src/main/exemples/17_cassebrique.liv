@@ -1,28 +1,29 @@
 // Création d'un casse-brique en seulement 80 lignes !
-fluctuation est un nombre
-orientation est un nombre
-espèce palet hérite de cercle et contient fluctuation, orientation
-
-zoom est un nombre valant 2 /*Vous pouvez modifier la taille du jeu */
-vitesse est un nombre valant 5
-briques est un casier de rectangle
-palet est un palet,  plein prend "oui", rayon prend 5 * zoom, couleur prend "rouge", taille prend 1,
+espèces
+	fluctuation est un nombre
+	orientation est un nombre
+	espèce palet hérite de cercle et contient fluctuation, orientation
+globale
+	zoom est un nombre valant 2 /*Vous pouvez modifier la taille du jeu */
+	vitesse est un nombre valant 5
+	briques est un casier de rectangle
+	palet est un palet,  plein prend "oui", rayon prend 5 * zoom, couleur prend "rouge", taille prend 1,
 		y prend 80 * zoom, x prend 100,		angle prend 45, position prend 2, fluctuation prend 45
-raquette est un rectangle, couleur prend "anthracite", hauteur prend 5 * zoom,
+	raquette est un rectangle, couleur prend "anthracite", hauteur prend 5 * zoom,
 		largeur prend 26 * zoom, plein prend "oui",  x prend 10 * zoom, 		y prend 140 * zoom
 
 code : /* affichage du jeu et lancement du jeu */
 	fond  est une toile, couleur prend "argile", hauteur prend 150 * zoom, largeur prend 200 * zoom
 	parcours affichage matrice
 	appelle moteur palet
-	tant que vrai 
+	tant que vrai
 		x est un nombre valant sourisx - 12
 		x de raquette prend ter(x > (175 * zoom), 175 * zoom, ter( x < 0, 0 , x))
 		temporise
 	Ferme
 
 moteur palet : /*Détermine le chemin que doit suivre le palet en fonction des obstacles*/
-	tant que vrai 
+	tant que vrai
 		attends vitesse millisecondes
 		avance palet de 1 * zoom
 		si palet.collision(raquette)
@@ -70,8 +71,8 @@ calculer angle : /* calcule l'angle que doit suivre le palet (en degree) */
 
 affichage matrice : /* Affiche les briques */
 	r est un nombre
-	pour r de 0 à 9 
-		de 0 à 6 
+	pour r de 0 à 9
+		de 0 à 6
 			p est un rectangle, couleur prend "prasin", hauteur prend 10*zoom-2,
 				largeur prend 20*zoom-2, x prend r*20*zoom, y prend joker*10*zoom, plein prend "oui"
 			ajoute p dans briques

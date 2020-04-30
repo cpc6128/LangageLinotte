@@ -1,17 +1,17 @@
-form est un formulaire, titre prend "Première question", largeur prend 400, hauteur prend 260
-b1 est un bouton, texte prend "Blanc", x prend 30, y prend 60
-b2 est un bouton, texte prend "Noir", x prend 100, y prend 60
-l1 est un étiquette, texte prend "Quelle est la couleur du cheval blanc d'Henri 4 ?", x prend 30, y prend 30
-l2 est un étiquette, texte prend "", x prend 30, y prend 100
+	form est un formulaire, titre prend "Première question", largeur prend 400, hauteur prend 260
+	b1 est un bouton, texte prend "Blanc", x prend 30, y prend 60
+	b2 est un bouton, texte prend "Noir", x prend 100, y prend 60
+	l1 est un étiquette, texte prend "Quelle est la couleur du cheval blanc d'Henri 4 ?", x prend 30, y prend 30
+	l2 est un étiquette, texte prend "", x prend 30, y prend 100
 
 code :
-	ajoute b1 dans form // On ajoute les éléments graphiques 
+	ajoute b1 dans form // On ajoute les éléments graphiques
 	ajoute b2 dans form // dans la fenêtre "form"
 	ajoute l1 dans form
 	ajoute l2 dans form
-	lie form à fermer fenêtre avec "clic souris"
-	lie b2 à réponse fausse avec "clic souris"
-	lie b1 à bouger bouton avec "souris entrante"
+	fais réagir b2 à "clic souris" pour réponse fausse
+	fais réagir b1 à "souris entrante" pour bouger bouton
+	fais réagir b1 à "clic souris" pour bouger bouton
 	tant que vrai
 		temporise
 		vide touches
