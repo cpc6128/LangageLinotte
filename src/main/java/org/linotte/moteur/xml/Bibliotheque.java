@@ -319,11 +319,6 @@ public final class Bibliotheque {
 		}
 		{
 			Map<String, Attribut> attributs = new HashMap<String, Attribut>();
-			attributs.put("titre", new Attribut(TEXTE, "Clipnotte"));
-			LinotteFacade.creationPrototype(attributs, new Extension(), "clipnotte");
-		}
-		{
-			Map<String, Attribut> attributs = new HashMap<String, Attribut>();
 			attributs.put("x", new Attribut(NOMBRE, "0"));
 			attributs.put("y", new Attribut(NOMBRE, "0"));
 			attributs.put("texte", new Attribut(TEXTE, ""));
@@ -390,10 +385,6 @@ public final class Bibliotheque {
 			attributs.put("largeur", new Attribut(NOMBRE, "100"));
 			attributs.put("visible", new Attribut(TEXTE, "oui"));
 			LinotteFacade.creationPrototype(attributs, new Barre(), "barre");
-		}
-		{
-			Map<String, Attribut> attributs = new HashMap<String, Attribut>();
-			LinotteFacade.creationPrototype(attributs, new Atelier(), "atelier");
 		}
 		{
 			Map<String, Attribut> attributs = new HashMap<String, Attribut>();

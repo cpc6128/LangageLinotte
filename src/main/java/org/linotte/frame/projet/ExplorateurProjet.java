@@ -36,7 +36,6 @@ import org.linotte.web.Run;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
-import javax.swing.table.AbstractTableModel;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 import java.awt.*;
@@ -45,8 +44,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.Writer;
 import java.net.URI;
-import java.util.List;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 @SuppressWarnings("serial")
 public class ExplorateurProjet extends JPanel {
@@ -56,9 +55,6 @@ public class ExplorateurProjet extends JPanel {
     private static final String HTML3 = "</b> <br>";
     private static final String HTML4 = "Pas de description";
     private static Writer fw = null;
-    public Thread threadLancementAtelier1;
-    public Thread threadLancementAtelier2;
-    public Thread threadLancementAtelier3;
     private JXTaskPane taskTutorial = new JXTaskPane();
     private boolean metroStyle = true;
 
@@ -310,43 +306,15 @@ public class ExplorateurProjet extends JPanel {
         }
     }
 
-    private static String escapeNonAscii(String input) {
-        if (input != null) {
-            StringBuilder b = new StringBuilder(input.length());
-            Formatter f = new Formatter(b);
-            for (char c : input.toCharArray()) {
-                if (c < 128) {
-                    b.append(c);
-                } else {
-                    f.format("\\u%04X", (int) c);
-                }
-            }
-            f.close();
-            return b.toString();
-        } else
-            return null;
-    }
-
     private JXTaskPane getTaskPaneTutoriel(final FileSystemView view, final Atelier atelier) {
         taskTutorial = new JXTaskPane();
         final File exemples = Ressources.getExemples(Atelier.linotte.getLangage());
         changeTaskPaneUI(taskTutorial);
-        threadLancementAtelier1 = new Thread() {
-            public void run() {
-                try {
-                    synchronized (this) {
-                        this.wait();
-                    }
-                } catch (InterruptedException e) {
-                }
-                taskTutorial.setTitle("Tutoriel");
-                taskTutorial.setIcon(Ressources.getScaledImage(Ressources.getImageIcon("projet/start-here.png"), 24, 24));
-                NavigateurFichier fileTreePanel = new NavigateurFichier(view, exemples, taskTutorial, atelier, false);
-                taskTutorial.add(new JScrollPane(fileTreePanel, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED));
-                tutoriels.put(Atelier.linotte.getLangage(), fileTreePanel);
-            }
-        };
-        threadLancementAtelier1.start();
+        taskTutorial.setTitle("Tutoriel");
+        taskTutorial.setIcon(Ressources.getScaledImage(Ressources.getImageIcon("projet/start-here.png"), 24, 24));
+        NavigateurFichier fileTreePanel = new NavigateurFichier(view, exemples, taskTutorial, atelier, false);
+        taskTutorial.add(new JScrollPane(fileTreePanel, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED));
+        tutoriels.put(Atelier.linotte.getLangage(), fileTreePanel);
         taskTutorial.setVisible(exemples.exists());
         return taskTutorial;
     }
@@ -357,80 +325,67 @@ public class ExplorateurProjet extends JPanel {
         task.setTitle(title);
         task.setIcon(Ressources.getImageIcon("projet/document-open.png"));
 
-        threadLancementAtelier2 = new Thread() {
-            public void run() {
+        final NavigateurFichier fileTreePanel = new NavigateurFichier(view, edt, task, atelier, true);
 
-                try {
-                    synchronized (this) {
-                        wait();
-                    }
-                } catch (InterruptedException e) {
-                }
-
-                final NavigateurFichier fileTreePanel = new NavigateurFichier(view, edt, task, atelier, true);
-
-                task.add(new AbstractAction() {
-                    {
-                        putValue(Action.NAME, "Créer un nouveau livre");
-                        putValue(Action.SHORT_DESCRIPTION, "Créer un livre");
-                        putValue(Action.SMALL_ICON, Ressources.getScaledImage(Ressources.getImageIcon("document-new.png"), 16, 16));
-                    }
-
-                    public void actionPerformed(ActionEvent e) {
-
-                        wizardNouveauLivre(atelier, fileTreePanel, false);
-
-                    }
-                });
-
-                task.add(new AbstractAction() {
-                    {
-                        putValue(Action.NAME, "Créer un nouveau livre visuel");
-                        putValue(Action.SHORT_DESCRIPTION, "Créer un livre visuel");
-                        putValue(Action.SMALL_ICON, Ressources.getScaledImage(Ressources.getImageIcon("timbre/timbre.png"), 16, 16));
-                    }
-
-                    public void actionPerformed(ActionEvent e) {
-
-                        wizardNouveauLivre(atelier, fileTreePanel, true);
-
-                    }
-                });
-
-                task.add(new AbstractAction() {
-                    {
-                        putValue(Action.NAME, "Créer un nouveau répertoire");
-                        putValue(Action.SHORT_DESCRIPTION, "Créer un répertoire");
-                        putValue(Action.SMALL_ICON, Ressources.getScaledImage(Ressources.getImageIcon("document-open.png"), 16, 16));
-                    }
-
-                    public void actionPerformed(ActionEvent e) {
-
-                        wizardNouveauRepertoire(atelier, fileTreePanel);
-
-                    }
-                });
-
-                task.add(new AbstractAction() {
-                    {
-                        putValue(Action.NAME, "Explorer l'espace de travail");
-                        putValue(Action.SHORT_DESCRIPTION, "Explore l'espace de travail");
-                        putValue(Action.SMALL_ICON, Ressources.getScaledImage(Ressources.getImageIcon("emblem-symbolic-link.png"), 16, 16));
-                    }
-
-                    public void actionPerformed(ActionEvent e) {
-                        try {
-                            Java6.getDesktop().browse(Ressources.getEDT().toURI());
-                        } catch (IOException e1) {
-                            e1.printStackTrace();
-                        }
-                    }
-                });
-
-                task.add(new JScrollPane(fileTreePanel, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED));
+        task.add(new AbstractAction() {
+            {
+                putValue(Action.NAME, "Créer un nouveau livre");
+                putValue(Action.SHORT_DESCRIPTION, "Créer un livre");
+                putValue(Action.SMALL_ICON, Ressources.getScaledImage(Ressources.getImageIcon("document-new.png"), 16, 16));
             }
-        };
-        threadLancementAtelier2.start();
+
+            public void actionPerformed(ActionEvent e) {
+
+                wizardNouveauLivre(atelier, fileTreePanel, false);
+
+            }
+        });
+
+        task.add(new AbstractAction() {
+            {
+                putValue(Action.NAME, "Créer un nouveau livre visuel");
+                putValue(Action.SHORT_DESCRIPTION, "Créer un livre visuel");
+                putValue(Action.SMALL_ICON, Ressources.getScaledImage(Ressources.getImageIcon("timbre/timbre.png"), 16, 16));
+            }
+
+            public void actionPerformed(ActionEvent e) {
+
+                wizardNouveauLivre(atelier, fileTreePanel, true);
+
+            }
+        });
+
+        task.add(new AbstractAction() {
+            {
+                putValue(Action.NAME, "Créer un nouveau répertoire");
+                putValue(Action.SHORT_DESCRIPTION, "Créer un répertoire");
+                putValue(Action.SMALL_ICON, Ressources.getScaledImage(Ressources.getImageIcon("document-open.png"), 16, 16));
+            }
+
+            public void actionPerformed(ActionEvent e) {
+
+                wizardNouveauRepertoire(atelier, fileTreePanel);
+
+            }
+        });
+
+        task.add(new AbstractAction() {
+            {
+                putValue(Action.NAME, "Explorer l'espace de travail");
+                putValue(Action.SHORT_DESCRIPTION, "Explore l'espace de travail");
+                putValue(Action.SMALL_ICON, Ressources.getScaledImage(Ressources.getImageIcon("emblem-symbolic-link.png"), 16, 16));
+            }
+
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Java6.getDesktop().browse(Ressources.getEDT().toURI());
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
+
+        task.add(new JScrollPane(fileTreePanel, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED));
 
         return task;
     }
@@ -444,22 +399,6 @@ public class ExplorateurProjet extends JPanel {
         }
     }
 
-    // @SuppressWarnings("unused")
-    // private void messageFonctionNonImplemente(final Atelier atelier) {
-    // try {
-    // JOptionPane.showMessageDialog(atelier, "Fonctionnalité non terminée !",
-    // "Action impossible", JOptionPane.ERROR_MESSAGE);
-    // final URI forum = new
-    // URI("http://langagelinotte.free.fr/wordpress/?p=255");
-    // Java6.getDesktop().browse(forum);
-    // } catch (Exception e1) {
-    // e1.printStackTrace();
-    // }
-    // }
-    //
-    /*
-     * Classes internes
-     */
 
     private JXTaskPane getTaskPanePlus(final Atelier atelier) {
         JXTaskPane task = new JXTaskPane();
@@ -524,50 +463,6 @@ public class ExplorateurProjet extends JPanel {
         return task;
     }
 
-    /**
-     * Ajoute un clipnotte dans la zone projet de l'Atelier
-     *
-     * @param jComponent clipnotte à ajouter
-     * @param titre
-     */
-    public void ajouteExtension(final Component jComponent, final String titre) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    JXTaskPane task = new JXTaskPane(titre);
-                    changeTaskPaneUI(task);
-                    task.add(jComponent);
-                    container.add(task);
-                    // On stocke dans le cache :
-                    extensions.put(jComponent, task);
-                    container.repaint();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
-    /**
-     * Supprime un clipnotte dans la zone projet de l'Atelier
-     *
-     * @param jComponent clipnotte à supprimer
-     */
-    public void supprimeExtension(final Component jComponent) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    JXTaskPane task = extensions.get(jComponent);
-                    if (task != null)
-                        container.remove(task);
-                    container.repaint();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
     private void changeUIdefaults() {
         UIManager.put("TaskPaneContainer.useGradient", Boolean.FALSE);
         Color brighter = new Color(240, 240, 240);
@@ -579,117 +474,6 @@ public class ExplorateurProjet extends JPanel {
         // 72,
         // 204)
         UIManager.put("TaskPane.background", brighter);
-    }
-
-    private class TableData {
-
-        Object o;
-        boolean editable;
-        String description;
-
-        public TableData(Object o, boolean editable, String description) {
-            super();
-            this.o = o;
-            this.editable = editable;
-            this.description = description;
-        }
-
-    }
-
-    private class JTableModel extends AbstractTableModel {
-        private String[] columnNames = {"Champ", "Valeur"};
-        private List<List<TableData>> matrix = new ArrayList<List<TableData>>();
-
-        public int getColumnCount() {
-            return columnNames.length;
-        }
-
-        public int getRowCount() {
-            return matrix.size();
-        }
-
-        public String getColumnName(int col) {
-            return columnNames[col];
-        }
-
-        public Object getValueAt(int row, int col) {
-            try {
-                return matrix.get(row).get(col).o;
-            } catch (Exception e) {
-                return null;
-            }
-        }
-
-        public Object getDescriptionAt(int row) {
-            try {
-                return matrix.get(row).get(0).description;
-            } catch (Exception e) {
-                return null;
-            }
-        }
-
-        public TableData getValueAtData(int row, int col) {
-            try {
-                return matrix.get(row).get(col);
-            } catch (Exception e) {
-                return null;
-            }
-        }
-
-        /*
-         * JTable uses this method to determine the default renderer/ editor for
-         * each cell. If we didn't implement this method, then the last column
-         * would contain text ("true"/"false"), rather than a check box.
-         */
-        public Class<?> getColumnClass(int c) {
-            TableData data = getValueAtData(0, c);
-            if (data != null) {
-                Object o = data.o;
-                if (o != null)
-                    return o.getClass();
-                else
-                    return String.class;
-            } else
-                return String.class;
-        }
-
-        /*
-         * Don't need to implement this method unless your table's editable.
-         */
-        public boolean isCellEditable(int row, int col) {
-            return getValueAtData(row, col).editable;
-        }
-
-        // public void setValueAt(Object value, int row, int col) {
-        // getValueAtData(row, col).o = value;
-        // }
-
-        /*
-         * Don't need to implement this method unless your table's data can
-         * change.
-         */
-        public void setValueAt(Object value, int row, int col) {
-            if (matrix.size() < row) {
-                int s = matrix.size();
-                for (int i = s; i <= row; i++) {
-                    matrix.add(new ArrayList<TableData>());
-                }
-            }
-            List<TableData> ligne = matrix.get(row);
-            if (ligne.size() <= col) {
-                int s = ligne.size();
-                for (int i = s; i <= col; i++) {
-                    ligne.add(null);
-                }
-            }
-            TableData ne_w = new TableData(value, false, null);
-            TableData old = ligne.set(col, ne_w);
-            if (old != null) {
-                ne_w.editable = old.editable;
-            }
-            fireTableCellUpdated(row, col);
-        }
-
     }
 
 }
