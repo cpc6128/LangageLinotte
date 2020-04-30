@@ -7,11 +7,11 @@ import java.awt.*;
 
 public class JMenuAtelier extends JMenu {
 
-    private final ImageIcon iconeClair;
-    private final ImageIcon icone;
+    private final Icon iconeClair;
+    private final Icon icone;
     ArrowIcon iconRenderer;
 
-    public JMenuAtelier(String titre, ImageIcon iconeClair, ImageIcon icone) {
+    public JMenuAtelier(String titre, Icon iconeClair, Icon icone) {
         // http://java-swing-tips.blogspot.fr/2009/08/jmenubar-background-image.html
         super(titre);
         this.iconeClair = iconeClair;

@@ -27,6 +27,8 @@
 package org.linotte.moteur.outils;
 
 import org.jdesktop.swingx.image.ColorTintFilter;
+import org.kordamp.ikonli.runestroicons.Runestroicons;
+import org.kordamp.ikonli.swing.FontIcon;
 import org.linotte.frame.Atelier;
 import org.linotte.frame.latoile.LaToile;
 import org.linotte.frame.theme.ThemeManager;
@@ -54,422 +56,454 @@ import java.util.Map;
 
 public class Ressources implements RessourceManager {
 
-	private static File EDT = null;
+    private static final String CHEMIN = "/";
+    private static final String CHEMIN_GREFFONS = "greffons";
+    private static final String ENTETE_INTERNET = "http://";
+    private static final Ressources instance = new Ressources();
+    private static File EDT = null;
+    private static URLClassLoader urlLoader = null;
+    /**
+     * Cache pour les images
+     */
+    private static Map<String, Image> cacheImages = new HashMap<String, Image>();
 
-	static {
-		try {
-			FileSystemView fsv = FileSystemView.getFileSystemView();
-			EDT = new File(fsv.getDefaultDirectory(), "EspaceDeTravail");
-		} catch (Throwable e) {
-			// Ne rien faire, on peut être dans une applet.
-		}
-	}
+    static {
+        try {
+            FileSystemView fsv = FileSystemView.getFileSystemView();
+            EDT = new File(fsv.getDefaultDirectory(), "EspaceDeTravail");
+        } catch (Throwable e) {
+            // Ne rien faire, on peut être dans une applet.
+        }
+    }
 
-	private static final String CHEMIN = "/";
+    public LaToile toile;
 
-	private static final String CHEMIN_GREFFONS = "greffons";
+    public Ressources() {
+    }
 
-	private static URLClassLoader urlLoader = null;
+    public Ressources(LaToile t) {
+        toile = t;
+    }
 
-	private static final String ENTETE_INTERNET = "http://";
+    public static Image getImageFromHome(String nom_image) {
+        Image image = null;
+        String chemin = construireChemin(nom_image);
+        try {
+            image = ImageIO.read(new File(chemin));
+        } catch (Exception e) {
+            // Si applet :
+            try {
+                // e.printStackTrace();
+                java.net.URL imgURL = Ressources.class.getResource(nom_image);
+                if (imgURL != null) {
+                    System.out.println("Tentative mode applet pour " + nom_image);
+                    image = new ImageIcon(imgURL).getImage();
+                }
+            } catch (Exception e1) {
+            }
+        }
+        return image;
+    }
 
-	private static final Ressources instance = new Ressources();
+    public static ImageIcon getImageIcon(String nom_image) {
+        // On recherche dans le thème en premier :
+        if (ThemeManager.getCurrent() != null) {
+            Image image = ThemeManager.getCurrent().getImage(nom_image);
+            if (image != null) {
+                ImageIcon imageIcon = new ImageIcon(image);
+                return imageIcon;
+            }
+        }
+        // Traitement habituel :
+        java.net.URL imgURL = Ressources.class.getResource(CHEMIN + nom_image);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL);
+        } else {
+            return null;
+        }
 
-	public LaToile toile;
+    }
 
-	/**
-	 * Cache pour les images
-	 */
-	private static Map<String, Image> cacheImages = new HashMap<String, Image>();
+    public static FontIcon getImageTheme(String pnom, int taille) {
+        String nom = "AFTER_EFFECTS";
+        switch (pnom) {
+            case "PLAY":
+                nom = "PLAY";
+                break;
+            case "DEBUG":
+                nom = "PAUSE";
+                break;
+            case "STOP":
+                nom = "STOP";
+                break;
+            case "MEM":
+                nom = "SELECT_CELLS";
+                break;
+            case "SAVE":
+                nom = "SAVE";
+                break;
+            case "LIB":
+                nom = "BOOKS";
+                break;
+            case "EDIT":
+                nom = "EDIT";
+                break;
+            case "TOOLS":
+                nom = "COGS";
+                break;
+            case "HELP":
+                nom = "SAFARI";
+                break;
+        }
+        FontIcon icon = FontIcon.of(Runestroicons.valueOf(nom));
+        icon.setIconColor(Color.GRAY.darker());
+        icon.setIconSize(32);
+        return icon;
+    }
 
-	public Ressources() {
-	}
+    public static ImageIcon getImageIconePlusClaire(String nom_image) {
+        // On recherche dans le thème en premier :
+        if (ThemeManager.getCurrent() != null) {
+            Image image = ThemeManager.getCurrent().getImage(nom_image);
+            if (image != null) {
+                BufferedImage bi = toBufferedImage(image);
+                RescaleOp rescaleOp = new RescaleOp(1.2f, 15, null);
+                rescaleOp.filter(bi, bi);
+                ImageIcon imageIcon = new ImageIcon(bi);
+                return imageIcon;
+            }
+        }
+        // Traitement habituel :
+        java.net.URL imgURL = Ressources.class.getResource(CHEMIN + nom_image);
+        if (imgURL != null) {
+            Image image = new ImageIcon(imgURL).getImage();
+            if (image != null) {
+                BufferedImage bi = toBufferedImage(image);
+                RescaleOp rescaleOp = new RescaleOp(1.2f, 15, null);
+                rescaleOp.filter(bi, bi);
+                ImageIcon imageIcon = new ImageIcon(bi);
+                return imageIcon;
+            }
+            return null;
+        } else {
+            return null;
+        }
 
-	public Ressources(LaToile t) {
-		toile = t;
-	}
+    }
 
-	public Image getImage(String nom_image) {
-		ImageIcon ii = getImageIcon(nom_image);
-		return ii == null ? null : ii.getImage();
-	}
+    public static Icon getImageIconeTeintee(Color couleur, String nom_image) {
+        // On recherche dans le thème en premier :
+        if (ThemeManager.getCurrent() != null) {
+            Image image = ThemeManager.getCurrent().getImage(nom_image);
+            if (image != null) {
+                ColorTintFilter colorFilter = new ColorTintFilter(couleur, .4f);
+                BufferedImage bi = toBufferedImage(image);
+                colorFilter.filter(bi, bi);
+                ImageIcon imageIcon = new ImageIcon(bi);
+                return imageIcon;
+            }
+        }
+        // Traitement habituel :
+        java.net.URL imgURL = Ressources.class.getResource(CHEMIN + nom_image);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL);
+        } else {
+            return null;
+        }
 
-	public static Image getImageFromHome(String nom_image) {
-		Image image = null;
-		String chemin = construireChemin(nom_image);
-		try {
-			image = ImageIO.read(new File(chemin));
-		} catch (Exception e) {
-			// Si applet :
-			try {
-				// e.printStackTrace();
-				java.net.URL imgURL = Ressources.class.getResource(nom_image);
-				if (imgURL != null) {
-					System.out.println("Tentative mode applet pour " + nom_image);
-					image = new ImageIcon(imgURL).getImage();
-				}
-			} catch (Exception e1) {
-			}
-		}
-		return image;
-	}
+    }
 
-	public static ImageIcon getImageIcon(String nom_image) {
-		// On recherche dans le thème en premier :
-		if (ThemeManager.getCurrent() != null) {
-			Image image = ThemeManager.getCurrent().getImage(nom_image);
-			if (image != null) {
-				ImageIcon imageIcon = new ImageIcon(image);
-				return imageIcon;
-			}
-		}
-		// Traitement habituel :
-		java.net.URL imgURL = Ressources.class.getResource(CHEMIN + nom_image);
-		if (imgURL != null) {
-			return new ImageIcon(imgURL);
-		} else {
-			return null;
-		}
+    public static URL getURL(String nom) {
+        return Ressources.class.getResource(CHEMIN + nom);
+    }
 
-	}
+    public static File getGreffons() {
+        return getdirectory(CHEMIN_GREFFONS);
+    }
 
-	public static ImageIcon getImageIconePlusClaire(String nom_image) {
-		// On recherche dans le thème en premier :
-		if (ThemeManager.getCurrent() != null) {
-			Image image = ThemeManager.getCurrent().getImage(nom_image);
-			if (image != null) {
-				BufferedImage bi = toBufferedImage(image);
-				RescaleOp rescaleOp = new RescaleOp(1.2f, 15, null);
-				rescaleOp.filter(bi, bi);
-				ImageIcon imageIcon = new ImageIcon(bi);
-				return imageIcon;
-			}
-		}
-		// Traitement habituel :
-		java.net.URL imgURL = Ressources.class.getResource(CHEMIN + nom_image);
-		if (imgURL != null) {
-			Image image = new ImageIcon(imgURL).getImage();
-			if (image != null) {
-				BufferedImage bi = toBufferedImage(image);
-				RescaleOp rescaleOp = new RescaleOp(1.2f, 15, null);
-				rescaleOp.filter(bi, bi);
-				ImageIcon imageIcon = new ImageIcon(bi);
-				return imageIcon;
-			}
-			return null;
-		} else {
-			return null;
-		}
+    public static File getExemples(Langage langage) {
+        return getdirectory(langage.getCheminExemple());
+    }
 
-	}
+    public static boolean creationEDT() {
+        File home = EDT;
+        if (!home.exists()) {
+            home.mkdirs();
+            return true;
+        }
+        return false;
+    }
 
-	public static Icon getImageIconeTeintee(Color couleur, String nom_image) {
-		// On recherche dans le thème en premier :
-		if (ThemeManager.getCurrent() != null) {
-			Image image = ThemeManager.getCurrent().getImage(nom_image);
-			if (image != null) {
-				ColorTintFilter colorFilter = new ColorTintFilter(couleur, .4f);
-				BufferedImage bi = toBufferedImage(image);
-				colorFilter.filter(bi, bi);
-				ImageIcon imageIcon = new ImageIcon(bi);
-				return imageIcon;
-			}
-		}
-		// Traitement habituel :
-		java.net.URL imgURL = Ressources.class.getResource(CHEMIN + nom_image);
-		if (imgURL != null) {
-			return new ImageIcon(imgURL);
-		} else {
-			return null;
-		}
+    public static File getEDT() {
+        File home = EDT;
+        if (!home.exists()) {
+            home.mkdirs();
+        }
+        return home;
+    }
 
-	}
+    public static File getdirectory(String dir) {
+        // http://www.rgagnon.com/howto.html
+        try {
+            File current = new File(new Ressources().getClass().getProtectionDomain().getCodeSource().getLocation().toURI());
+            if (current.getName().toLowerCase().endsWith(".jar")) {
+                // Si je suis dans un jar :
+                current = current.getParentFile();
+            } else if (current.getName().toLowerCase().endsWith(".exe")) {
+                // Si je suis dans un jar :
+                current = current.getParentFile();
+            } else if (current.getName().toLowerCase().endsWith("classes")) {
+                // Si je suis dans le repertoire classes :
+                current = current.getParentFile();
+            }
+            File dg = new File(current, dir);
+            // System.out.println("Chemin des greffons : " + dg);
+            return dg;
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
-	public static URL getURL(String nom) {
-		return Ressources.class.getResource(CHEMIN + nom);
-	}
+    public static InputStream getFlux(String nom_fichier) {
+        return Ressources.class.getResourceAsStream("/" + nom_fichier);
+    }
 
-	public static File getGreffons() {
-		return getdirectory(CHEMIN_GREFFONS);
-	}
+    public static InputStream getFromRessources(String nom_fichier) {
+        return Ressources.class.getResourceAsStream(CHEMIN + nom_fichier);
+    }
 
-	public static File getExemples(Langage langage) {
-		return getdirectory(langage.getCheminExemple());
-	}
+    /**
+     * Récupére un fichier présent dans le répertoire Ressources
+     *
+     * @param nom_fichier
+     * @return
+     * @throws URISyntaxException
+     */
+    public static File getFileInRessources(String nom_fichier) throws URISyntaxException {
+        return new File(Ressources.class.getResource(CHEMIN + nom_fichier).getFile());
+    }
 
-	public static boolean creationEDT() {
-		File home = EDT;
-		if (!home.exists()) {
-			home.mkdirs();
-			return true;
-		}
-		return false;
-	}
+    public static InputStream getFluxFromHome(String nom_fichier) {
+        return Ressources.class.getResourceAsStream(construireChemin(nom_fichier));
+    }
 
-	public static File getEDT() {
-		File home = EDT;
-		if (!home.exists()) {
-			home.mkdirs();
-		}
-		return home;
-	}
+    public static File getLocal() {
+        URL url = ClassLoader.getSystemResource("/");
+        if (url != null)
+            return new File(url.getPath());
+        else
+            return new File(".");
+    }
 
-	public static File getdirectory(String dir) {
-		// http://www.rgagnon.com/howto.html
-		try {
-			File current = new File(new Ressources().getClass().getProtectionDomain().getCodeSource().getLocation().toURI());
-			if (current.getName().toLowerCase().endsWith(".jar")) {
-				// Si je suis dans un jar :
-				current = current.getParentFile();
-			} else if (current.getName().toLowerCase().endsWith(".exe")) {
-				// Si je suis dans un jar :
-				current = current.getParentFile();
-			} else if (current.getName().toLowerCase().endsWith("classes")) {
-				// Si je suis dans le repertoire classes :
-				current = current.getParentFile();
-			}
-			File dg = new File(current, dir);
-			// System.out.println("Chemin des greffons : " + dg);
-			return dg;
-		} catch (Exception e) {
-			return null;
-		}
-	}
+    public static void setCheminReference(File fichier) {
+        List<URL> urls = new ArrayList<URL>(1);
+        if (fichier != null && fichier.getParent() != null)
+            try {
+                urls.add(new File(fichier.getParent()).toURI().toURL());
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+        else
+            try {
+                urls.add(getLocal().toURI().toURL());
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+        if (urlLoader != null)
+            urlLoader = new URLClassLoader(urls.toArray(new URL[1]), urlLoader);
+        else
+            urlLoader = new URLClassLoader(urls.toArray(new URL[1]));
+    }
 
-	public static InputStream getFlux(String nom_fichier) {
-		return Ressources.class.getResourceAsStream("/" + nom_fichier);
-	}
+    public static String construireChemin(String chemin) {
+        if (urlLoader != null) {
+            URL f = urlLoader.getResource(chemin);
+            // System.out.println(f);
+            if (f != null) {
+                // System.out.println(urlLoader.getResource(chemin).getPath());
+                try {
+                    return urlLoader.getResource(chemin).toURI().getPath();
+                } catch (URISyntaxException e) {
+                    return chemin;
+                }
+            } else {
+                // On essaye de construire le chemin à la "main"
+                String pere = new File(chemin).getParent();
+                if (pere != null) {
+                    File parent = new File(pere);
+                    if (parent.isAbsolute()) {
+                        return chemin;
+                    }
+                }
+                try {
+                    return urlLoader.getURLs()[0].toURI().getPath() + File.separator + chemin;
+                } catch (URISyntaxException e) {
+                    return chemin;
+                }
+            }
+        } else {
+            return chemin;
+        }
+    }
 
-	public static InputStream getFromRessources(String nom_fichier) {
-		return Ressources.class.getResourceAsStream(CHEMIN + nom_fichier);
-	}
+    public static void clearCacheImages() {
+        cacheImages.clear();
+    }
 
-	/**
-	 * Récupére un fichier présent dans le répertoire Ressources
-	 * @param nom_fichier
-	 * @return
-	 * @throws URISyntaxException
-	 */
-	public static File getFileInRessources(String nom_fichier) throws URISyntaxException {
-		return new File(Ressources.class.getResource(CHEMIN + nom_fichier).getFile());
-	}
+    /**
+     * Cette méthode charge une image d'un disque et prend en compte un cache
+     * d'image
+     *
+     * @param fichier
+     * @return
+     */
+    public static Image chargementImage(String fichier) {
+        Image image = null;
+        /**
+         * Gestion du cache :
+         */
+        if (cacheImages.containsKey(fichier)) {
+            return cacheImages.get(fichier);
+        }
+        if (instance.isInternetUrl(fichier)) {
+            try {
+                URL url = new URL(fichier);
+                image = ImageIO.read(url);
+            } catch (Exception e) {
+            }
 
-	public static InputStream getFluxFromHome(String nom_fichier) {
-		return Ressources.class.getResourceAsStream(construireChemin(nom_fichier));
-	}
+        } else {
+            image = getImageFromHome(fichier);
+        }
+        /**
+         * Ajout dans le cache
+         */
+        cacheImages.put(fichier, image);
+        if (image == null) {
+            // .getInterpreteur().getIhm().afficherErreur("Impossible de charger l'image : "
+            // + fichier);
+            try {
+                LaToile toile = getInstance().toile;
+                if (toile != null && toile.getFrameParent() != null && toile.getFrameParent() instanceof Atelier)
+                    ((Atelier) toile.getFrameParent()).ecrireErreurTableau("Impossible de charger l'image : " + fichier);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
-	public static File getLocal() {
-		URL url = ClassLoader.getSystemResource("/");
-		if (url != null)
-			return new File(url.getPath());
-		else
-			return new File(".");
-	}
+        }
+        return image;
+    }
 
-	public static void setCheminReference(File fichier) {
-		List<URL> urls = new ArrayList<URL>(1);
-		if (fichier != null && fichier.getParent() != null)
-			try {
-				urls.add(new File(fichier.getParent()).toURI().toURL());
-			} catch (MalformedURLException e) {
-				e.printStackTrace();
-			}
-		else
-			try {
-				urls.add(getLocal().toURI().toURL());
-			} catch (MalformedURLException e) {
-				e.printStackTrace();
-			}
-		if (urlLoader != null)
-			urlLoader = new URLClassLoader(urls.toArray(new URL[1]), urlLoader);
-		else
-			urlLoader = new URLClassLoader(urls.toArray(new URL[1]));
-	}
+    public static Ressources getInstance() {
+        return instance;
+    }
 
-	public static String construireChemin(String chemin) {
-		if (urlLoader != null) {
-			URL f = urlLoader.getResource(chemin);
-			// System.out.println(f);
-			if (f != null) {
-				// System.out.println(urlLoader.getResource(chemin).getPath());
-				try {
-					return urlLoader.getResource(chemin).toURI().getPath();
-				} catch (URISyntaxException e) {
-					return chemin;
-				}
-			} else {
-				// On essaye de construire le chemin à la "main"
-				String pere = new File(chemin).getParent();
-				if (pere != null) {
-					File parent = new File(pere);
-					if (parent.isAbsolute()) {
-						return chemin;
-					}
-				}
-				try {
-					return urlLoader.getURLs()[0].toURI().getPath() + File.separator + chemin;
-				} catch (URISyntaxException e) {
-					return chemin;
-				}
-			}
-		} else {
-			return chemin;
-		}
-	}
+    public static ImageIcon getScaledImage(ImageIcon myIcon2, int width, int height) {
+        Image img = myIcon2.getImage();
+        Image newimg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return new ImageIcon(newimg);
+    }
 
-	public static void clearCacheImages() {
-		cacheImages.clear();
-	}
+    /**
+     * http://www.rgagnon.com/javadetails/java-0662.html
+     *
+     * @param name
+     * @return
+     */
+    public static String sanitizeFilename(String name) {
+        return name.replaceAll("[:\\\\/*?|<>]", "_");
+    }
 
-	/**
-	 * Cette méthode charge une image d'un disque et prend en compte un cache
-	 * d'image
-	 * 
-	 * @param fichier
-	 * @return
-	 */
-	public static Image chargementImage(String fichier) {
-		Image image = null;
-		/**
-		 * Gestion du cache :
-		 */
-		if (cacheImages.containsKey(fichier)) {
-			return cacheImages.get(fichier);
-		}
-		if (instance.isInternetUrl(fichier)) {
-			try {
-				URL url = new URL(fichier);
-				image = ImageIO.read(url);
-			} catch (Exception e) {
-			}
+    public static BufferedImage toBufferedImage(Image image) {
+        if (image instanceof BufferedImage) {
+            return (BufferedImage) image;
+        }
 
-		} else {
-			image = getImageFromHome(fichier);
-		}
-		/**
-		 * Ajout dans le cache
-		 */
-		cacheImages.put(fichier, image);
-		if (image == null) {
-			// .getInterpreteur().getIhm().afficherErreur("Impossible de charger l'image : "
-			// + fichier);
-			try {
-				LaToile toile = getInstance().toile;
-				if (toile != null && toile.getFrameParent() != null && toile.getFrameParent() instanceof Atelier)
-					((Atelier) toile.getFrameParent()).ecrireErreurTableau("Impossible de charger l'image : " + fichier);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+        // This code ensures that all the pixels in the image are loaded
+        image = new ImageIcon(image).getImage();
 
-		}
-		return image;
-	}
+        // Determine if the image has transparent pixels; for this method's
+        // implementation, see Determining If an Image Has Transparent Pixels
+        boolean hasAlpha = hasAlpha(image);
 
-	public boolean isInternetUrl(String url) {
-		return url != null && url.toLowerCase().startsWith(ENTETE_INTERNET);
-	}
+        // Create a buffered image with a format that's compatible with the
+        // screen
+        BufferedImage bimage = null;
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        try {
+            // Determine the type of transparency of the new buffered image
+            int transparency = Transparency.OPAQUE;
+            if (hasAlpha) {
+                transparency = Transparency.BITMASK;
+            }
 
-	public String analyserChemin(String chemin) {
-		return construireChemin(chemin);
-	}
+            // Create the buffered image
+            GraphicsDevice gs = ge.getDefaultScreenDevice();
+            GraphicsConfiguration gc = gs.getDefaultConfiguration();
+            bimage = gc.createCompatibleImage(image.getWidth(null), image.getHeight(null), transparency);
+        } catch (HeadlessException e) {
+            // The system does not have a screen
+        }
 
-	public static Ressources getInstance() {
-		return instance;
-	}
+        if (bimage == null) {
+            // Create a buffered image using the default color model
+            int type = BufferedImage.TYPE_INT_RGB;
+            if (hasAlpha) {
+                type = BufferedImage.TYPE_INT_ARGB;
+            }
+            bimage = new BufferedImage(image.getWidth(null), image.getHeight(null), type);
+        }
 
-	public void viderUrlLoader() {
-		urlLoader = null;
-	}
+        // Copy image to buffered image
+        Graphics g = bimage.createGraphics();
 
-	public void setChangement() {
-		toile.getPanelLaToile().setChangement();
-	}
+        // Paint the image onto the buffered image
+        g.drawImage(image, 0, 0, null);
+        g.dispose();
 
-	public static ImageIcon getScaledImage(ImageIcon myIcon2, int width, int height) {
-		Image img = myIcon2.getImage();
-		Image newimg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-		return new ImageIcon(newimg);
-	}
+        return bimage;
+    }
 
-	/**
-	 * http://www.rgagnon.com/javadetails/java-0662.html
-	 * 
-	 * @param name
-	 * @return
-	 */
-	public static String sanitizeFilename(String name) {
-		return name.replaceAll("[:\\\\/*?|<>]", "_");
-	}
+    // This method returns true if the specified image has transparent pixels
+    private static boolean hasAlpha(Image image) {
+        // If buffered image, the color model is readily available
+        if (image instanceof BufferedImage) {
+            BufferedImage bimage = (BufferedImage) image;
+            return bimage.getColorModel().hasAlpha();
+        }
 
-	public static BufferedImage toBufferedImage(Image image) {
-		if (image instanceof BufferedImage) {
-			return (BufferedImage) image;
-		}
+        // Use a pixel grabber to retrieve the image's color model;
+        // grabbing a single pixel is usually sufficient
+        PixelGrabber pg = new PixelGrabber(image, 0, 0, 1, 1, false);
+        try {
+            pg.grabPixels();
+        } catch (InterruptedException e) {
+        }
 
-		// This code ensures that all the pixels in the image are loaded
-		image = new ImageIcon(image).getImage();
+        // Get the image's color model
+        ColorModel cm = pg.getColorModel();
+        return cm.hasAlpha();
+    }
 
-		// Determine if the image has transparent pixels; for this method's
-		// implementation, see Determining If an Image Has Transparent Pixels
-		boolean hasAlpha = hasAlpha(image);
+    public Image getImage(String nom_image) {
+        ImageIcon ii = getImageIcon(nom_image);
+        return ii == null ? null : ii.getImage();
+    }
 
-		// Create a buffered image with a format that's compatible with the
-		// screen
-		BufferedImage bimage = null;
-		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		try {
-			// Determine the type of transparency of the new buffered image
-			int transparency = Transparency.OPAQUE;
-			if (hasAlpha) {
-				transparency = Transparency.BITMASK;
-			}
+    public boolean isInternetUrl(String url) {
+        return url != null && url.toLowerCase().startsWith(ENTETE_INTERNET);
+    }
 
-			// Create the buffered image
-			GraphicsDevice gs = ge.getDefaultScreenDevice();
-			GraphicsConfiguration gc = gs.getDefaultConfiguration();
-			bimage = gc.createCompatibleImage(image.getWidth(null), image.getHeight(null), transparency);
-		} catch (HeadlessException e) {
-			// The system does not have a screen
-		}
+    public String analyserChemin(String chemin) {
+        return construireChemin(chemin);
+    }
 
-		if (bimage == null) {
-			// Create a buffered image using the default color model
-			int type = BufferedImage.TYPE_INT_RGB;
-			if (hasAlpha) {
-				type = BufferedImage.TYPE_INT_ARGB;
-			}
-			bimage = new BufferedImage(image.getWidth(null), image.getHeight(null), type);
-		}
+    public void viderUrlLoader() {
+        urlLoader = null;
+    }
 
-		// Copy image to buffered image
-		Graphics g = bimage.createGraphics();
-
-		// Paint the image onto the buffered image
-		g.drawImage(image, 0, 0, null);
-		g.dispose();
-
-		return bimage;
-	}
-
-	// This method returns true if the specified image has transparent pixels
-	private static boolean hasAlpha(Image image) {
-		// If buffered image, the color model is readily available
-		if (image instanceof BufferedImage) {
-			BufferedImage bimage = (BufferedImage) image;
-			return bimage.getColorModel().hasAlpha();
-		}
-
-		// Use a pixel grabber to retrieve the image's color model;
-		// grabbing a single pixel is usually sufficient
-		PixelGrabber pg = new PixelGrabber(image, 0, 0, 1, 1, false);
-		try {
-			pg.grabPixels();
-		} catch (InterruptedException e) {
-		}
-
-		// Get the image's color model
-		ColorModel cm = pg.getColorModel();
-		return cm.hasAlpha();
-	}
+    public void setChangement() {
+        toile.getPanelLaToile().setChangement();
+    }
 
 }

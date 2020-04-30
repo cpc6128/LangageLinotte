@@ -901,9 +901,10 @@ public class Atelier extends JFrame implements WindowListener {
                 jButtonLire.setToolTipText("<html><b>Bouton Lire</b><br>" + "<i>Description</i> : Lis le livre présent dans le cahier<br>"
                         + "<i>Action</i> : Cliquer sur le bouton [Lire] ou appuyer sur les boutons Alt+L<br>" + "</html>");
             jButtonLire.setFocusable(false);
-            jButtonLire.setIcon(Ressources.getImageIcon("bandeau/applications-multimedia.png"));
-            jButtonLire.setPressedIcon(Ressources.getImageIconePlusClaire("bandeau/applications-multimedia.png"));
-            jButtonLire.setRolloverIcon(Ressources.getImageIconePlusClaire("bandeau/applications-multimedia.png"));
+            //jButtonLire.setIcon(Ressources.getImageIcon("bandeau/applications-multimedia.png"));
+            jButtonLire.setIcon(Ressources.getImageTheme("PLAY", 32));
+            //jButtonLire.setPressedIcon(Ressources.getImageIconePlusClaire("bandeau/applications-multimedia.png"));
+            //jButtonLire.setRolloverIcon(Ressources.getImageIconePlusClaire("bandeau/applications-multimedia.png"));
             jButtonLire.setName("boutonLire");
             jButtonLire.setMnemonic(KeyEvent.VK_L);
             jButtonLire.addActionListener(new java.awt.event.ActionListener() {
@@ -1004,9 +1005,10 @@ public class Atelier extends JFrame implements WindowListener {
                 jButtonPasAPas.setToolTipText(Debogueur.TOOLTIP_BOUTON_RALENTI);
             jButtonPasAPas.setFocusable(false);
             jButtonPasAPas.setVisible(true);
-            jButtonPasAPas.setIcon(Ressources.getImageIcon("bandeau/start-here.png"));
-            jButtonPasAPas.setPressedIcon(Ressources.getImageIconePlusClaire("bandeau/start-here.png"));
-            jButtonPasAPas.setRolloverIcon(Ressources.getImageIconePlusClaire("bandeau/start-here.png"));
+            jButtonPasAPas.setIcon(Ressources.getImageTheme("DEBUG", 32));
+            //jButtonPasAPas.setIcon(Ressources.getImageIcon("bandeau/start-here.png"));
+            //jButtonPasAPas.setPressedIcon(Ressources.getImageIconePlusClaire("bandeau/start-here.png"));
+            //jButtonPasAPas.setRolloverIcon(Ressources.getImageIconePlusClaire("bandeau/start-here.png"));
             jButtonPasAPas.setName("boutonPause");
             jButtonPasAPas.setMnemonic(KeyEvent.VK_A);
             jButtonPasAPas.addActionListener(new java.awt.event.ActionListener() {
@@ -1065,9 +1067,7 @@ public class Atelier extends JFrame implements WindowListener {
             jButtonStop.setEnabled(false);
             jButtonStop.setFocusable(false);
             jButtonStop.setVisible(true);
-            jButtonStop.setIcon(Ressources.getImageIcon("bandeau/process-stop.png"));
-            jButtonStop.setPressedIcon(Ressources.getImageIconePlusClaire("bandeau/process-stop.png"));
-            jButtonStop.setRolloverIcon(Ressources.getImageIconePlusClaire("bandeau/process-stop.png"));
+            jButtonStop.setIcon(Ressources.getImageTheme("STOP", 32));
             jButtonStop.setMnemonic(KeyEvent.VK_S);
             if (!Preference.getIntance().getBoolean(Preference.P_BULLE_AIDE_INACTIF))
                 jButtonStop.setToolTipText("<html><b>Bouton Stop</b><br>" + "<i>Description</i> : Stop le livre en cours de lecture<br>"
@@ -1094,9 +1094,7 @@ public class Atelier extends JFrame implements WindowListener {
             jButtonLibrairie.setHorizontalTextPosition(buttonTextVerticale);
             jButtonLibrairie.setVisible(true);
             jButtonLibrairie.setFocusable(false);
-            jButtonLibrairie.setIcon(Ressources.getImageIcon("bandeau/utilities-system-monitor.png"));
-            jButtonLibrairie.setPressedIcon(Ressources.getImageIconePlusClaire("bandeau/utilities-system-monitor.png"));
-            jButtonLibrairie.setRolloverIcon(Ressources.getImageIconePlusClaire("bandeau/utilities-system-monitor.png"));
+            jButtonLibrairie.setIcon(Ressources.getImageTheme("MEM", 32));
             jButtonLibrairie.setMnemonic(KeyEvent.VK_P);
             jButtonLibrairie.setToolTipText("Inspecteur (Alt+P)");
             if (!Preference.getIntance().getBoolean(Preference.P_BULLE_AIDE_INACTIF))
@@ -1123,9 +1121,7 @@ public class Atelier extends JFrame implements WindowListener {
             jButtonRanger.setEnabled(false);
             jButtonRanger.setFocusable(false);
             jButtonRanger.setVisible(true);
-            jButtonRanger.setIcon(Ressources.getImageIcon("bandeau/document-save.png"));
-            jButtonRanger.setPressedIcon(Ressources.getImageIconePlusClaire("bandeau/document-save.png"));
-            jButtonRanger.setRolloverIcon(Ressources.getImageIconePlusClaire("bandeau/document-save.png"));
+            jButtonRanger.setIcon(Ressources.getImageTheme("SAVE", 32));
             jButtonRanger.setMnemonic(KeyEvent.VK_R);
             if (!Preference.getIntance().getBoolean(Preference.P_BULLE_AIDE_INACTIF))
                 jButtonRanger.setToolTipText("<html><b>Bouton Ranger</b><br>" + "<i>Description</i> : Sauvegarder votre livre sur le disque<br>"
@@ -1456,8 +1452,9 @@ public class Atelier extends JFrame implements WindowListener {
     private JMenu getJMenuEdition() {
         if (jMenuEdition == null) {
 
-            jMenuEdition = createJMenuNonOpaque("    Edition    ", Ressources.getImageIconePlusClaire("bandeau/edit-select-all.png"),
-                    Ressources.getImageIcon("bandeau/edit-select-all.png"));
+            jMenuEdition = createJMenuNonOpaque("    Edition    ",
+                    Ressources.getImageTheme("EDIT", 32),
+                    Ressources.getImageTheme("EDIT", 32));
             jMenuEdition.setVerticalTextPosition(buttonTextHorizontale);
             jMenuEdition.setHorizontalTextPosition(buttonTextVerticale);
             jMenuEdition.setMnemonic(KeyEvent.VK_E);
@@ -1467,8 +1464,10 @@ public class Atelier extends JFrame implements WindowListener {
 
     private JMenu getJMenuOutils() {
         if (jMenuOutils == null) {
-            jMenuOutils = createJMenuNonOpaque("    Outils    ", Ressources.getImageIconePlusClaire("bandeau/forum_openoffice.png"),
-                    Ressources.getImageIcon("bandeau/forum_openoffice.png"));
+            jMenuOutils = createJMenuNonOpaque("    Outils    ",
+                    Ressources.getImageTheme("TOOLS", 32),
+                    Ressources.getImageTheme("TOOLS", 32)
+            );
             jMenuOutils.setVerticalTextPosition(buttonTextHorizontale);
             jMenuOutils.setHorizontalTextPosition(buttonTextVerticale);
             jMenuOutils.setMnemonic(KeyEvent.VK_I);
@@ -1483,8 +1482,9 @@ public class Atelier extends JFrame implements WindowListener {
      */
     private JMenu getJMenuBibliotheque() {
         if (jMenuBibliotheque == null) {
-            jMenuBibliotheque = createJMenuNonOpaque("Bibliothèques", Ressources.getImageIconePlusClaire("bandeau/system-file-manager.png"),
-                    Ressources.getImageIcon("bandeau/system-file-manager.png"));
+            jMenuBibliotheque = createJMenuNonOpaque("Bibliothèques",
+                    Ressources.getImageTheme("LIB", 32),
+                    Ressources.getImageTheme("LIB", 32));
             jMenuBibliotheque.setVerticalTextPosition(buttonTextHorizontale);
             jMenuBibliotheque.setHorizontalTextPosition(buttonTextVerticale);
             jMenuBibliotheque.add(getJMenuItemNouveau());
@@ -1509,8 +1509,9 @@ public class Atelier extends JFrame implements WindowListener {
 
     private JMenu getJMenuVerbier() {
         if (jMenuVerbier == null) {
-            jMenuVerbier = createJMenuNonOpaque("  Le verbier  ", Ressources.getImageIconePlusClaire("bandeau/compass.png"),
-                    Ressources.getImageIcon("bandeau/compass.png"));
+            jMenuVerbier = createJMenuNonOpaque("  Le verbier  ",
+                    Ressources.getImageTheme("HELP", 32),
+                    Ressources.getImageTheme("HELP", 32));
             VerticalGridLayout menuGrid = new VerticalGridLayout(30, 0);
             jMenuVerbier.getPopupMenu().setLayout(menuGrid);
             jMenuVerbier.setActionCommand("Le verbier");
@@ -2243,7 +2244,7 @@ public class Atelier extends JFrame implements WindowListener {
         return cahierOnglet;
     }
 
-    private JMenu createJMenuNonOpaque(String titre, final ImageIcon iconeClair, final ImageIcon icone) {
+    private JMenu createJMenuNonOpaque(String titre, final Icon iconeClair, final Icon icone) {
         JMenu jMenu = new JMenuAtelier(titre, iconeClair, icone);
         if ("Windows XP".equals(System.getProperty("os.name"))) {
             jMenu.setBackground(new Color(0, 0, 0, 0)); // XXX Windows XP lnf?
