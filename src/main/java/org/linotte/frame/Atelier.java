@@ -110,8 +110,8 @@ public class Atelier extends JFrame implements WindowListener {
     private final ImageIcon iconeEditeurTexte = Ressources.getImageIcon("accessories-text-editor.png");
     public JSplitPane splitPaneProjet = null;
     public JButton jButtonRanger = null;
-    public UndoAction undoAction;
-    public RedoAction redoAction;
+    public UndoAction undoAction = new UndoAction(this);
+    public RedoAction redoAction = new RedoAction(this);
     public int taille_split_projet = 320;
     int position = 0;
     private JPanel jPanelAtelier = null;
@@ -231,10 +231,6 @@ public class Atelier extends JFrame implements WindowListener {
                 e.printStackTrace();
                 Preference.getIntance().remove(Preference.P_STYLE);
             }
-            // JFrame.setDefaultLookAndFeelDecorated(true);
-
-            Langage l = Langage.Linotte2;
-
             splashWindow1 = new SplashWindow(new Frame(), 10);
             splashWindow1.setProgressValue(0, "Construction de l'environnement");
             createAndShowGUI();
@@ -342,232 +338,48 @@ public class Atelier extends JFrame implements WindowListener {
      */
     public void initialisationComposantsAtelier() {
         try {
-            new StyleLinotte();
-            chargementLangageProgrammation();
-
-            demarrageServeurHTTP();
-            chargementDesFonts();
-
-            undoAction = new UndoAction(this);
-            redoAction = new RedoAction(this);
-
-            this.setContentPane(getJPanelAtelier());
-            this.setJMenuBar(getxJMenuBar());
-            this.setPreferredSize(new java.awt.Dimension(TAILLE_H, TAILLE_V));
-            this.setSize(new java.awt.Dimension(TAILLE_H, TAILLE_V));
-
-            ajoutListenerDeplacement();
-
-            sortieTableau = jEditorPaneTableau.getDocument();
-
-            // La feuille
-            getJMenuEdition().add(undoAction);
-            getJMenuEdition().add(redoAction);
-            getJMenuEdition().addSeparator();
-
-            // http://penserenjava.free.fr/pens_2.4/indexMaind0ce.html?chp=14&pge=10
-            JMenuItem cut = new JMenuItem("Couper"), copy = new JMenuItem("Copier"), paste = new JMenuItem("Coller");
-
-            couper = new CutL(this);
-            copier = new CopyL(this);
-            coller = new PasteL(this);
-
-            cut.addActionListener(couper);
-            copy.addActionListener(copier);
-            paste.addActionListener(coller);
-
-            copy.setMnemonic(java.awt.event.KeyEvent.VK_P);
-            paste.setMnemonic(java.awt.event.KeyEvent.VK_O);
-            cut.setMnemonic(java.awt.event.KeyEvent.VK_C);
-
-            getJMenuEdition().add(copy);
-            getJMenuEdition().add(paste);
-            getJMenuEdition().add(cut);
-            getJMenuEdition().addSeparator();
-            getJMenuEdition().add(getJMenuRechercher());
-
-            getJMenuOutils().add(getJMenuFormater());
-            getJMenuOutils().add(getJMenuLaToile());
-
-            getJMenuOutils().addSeparator();
-            JMenu options = new JMenu("Options");
-            getJMenuOutils().add(options);
-            options.add(getJMenuThemes());
-            options.add(getJMenuSaveWorkSpace());
-
-            options.add(getJMenuItemBonifieur());
-            options.add(getJMenuManageurStyle());
-
-            options.addSeparator();
-            options.add(getJMenuDelaisDebogueur());
-
-            jEditorPaneTableau.setOpaque(false);
-            // jEditorPaneTableau.setForeground(COULEUR_TABLEAU);
-
-            jEditorPaneTableau.setFont(font);
-
-            // Popup pour effacer le tableau :
-            JPopupMenu popupTableau = new JPopupMenu();
-            JMenuItem itemPopupTableau = new JMenuItem("Effacer le tableau");
-            itemPopupTableau.addActionListener(new ActionListener() {
-
-                public void actionPerformed(ActionEvent e) {
-                    effacerTableau();
-                }
-
+            SwingUtilities.invokeAndWait(() -> {
+                chargementLangageProgrammation();
             });
-
-            // Popup pour copier le tableau :
-            JMenuItem itemPopupTableau2 = new JMenuItem("Copier le tableau");
-            itemPopupTableau2.addActionListener(new ActionListener() {
-
-                public void actionPerformed(ActionEvent e) {
-                    copierTableau();
-                }
-
+            SwingUtilities.invokeLater(() -> {
+                demarrageServeurHTTP();
             });
-
-            popupTableau.add(itemPopupTableau);
-            popupTableau.add(itemPopupTableau2);
-            MouseListener popupListener = new PopupListener(popupTableau);
-            jEditorPaneTableau.addMouseListener(popupListener);
-
-            try {
-                for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                    jMenuThemes.add(new LFAction(this, info));
-                }
-            } catch (Exception e) {
-            }
-
-            // Affichage des messages d'erreur
-            Iterator<String> erreurs = RegistreDesActions.retourneErreurs();
-            while (erreurs.hasNext()) {
-                ecrireErreurTableau_(erreurs.next());
-                ecrirelnTableau("");
-            }
-            RegistreDesActions.effaceErreurs();
-
-            saut2ligne = false;
-            // Ouvrir
-            fileChooser_ouvrir = new JFileChooser(Ressources.getLocal());
-            FiltreLivre filtre = new FiltreLivre(new String[]{"liv"}, "Livre Linotte (*.liv)");
-            fileChooser_ouvrir.addChoosableFileFilter(filtre);
-            fileChooser_ouvrir.setFileFilter(filtre);
-            fileChooser_ouvrir.setDialogTitle("Ouvrir un livre Linotte");
-            fileChooser_ouvrir.setApproveButtonText("Ouvrir le livre");
-            // Ranger
-            fileChooser_sauvegarder = new JFileChooser(Ressources.getLocal());
-            FiltreLivre filtre2 = new FiltreLivre(new String[]{"liv"}, "Livre Linotte (*.liv)");
-            fileChooser_sauvegarder.addChoosableFileFilter(filtre2);
-            fileChooser_sauvegarder.setFileFilter(filtre2);
-            fileChooser_sauvegarder.setDialogTitle("Ranger un livre Linotte");
-            fileChooser_sauvegarder.setApproveButtonText("Ranger le livre");
-
-            // Exporter PDF
-            fileChooser_exporter = new JFileChooser(Ressources.getLocal());
-            fileChooser_exporter.setSelectedFile(new File(Ressources.getLocal(), "Nouveau.pdf"));
-            FiltreLivre filtre3 = new FiltreLivre(new String[]{"pdf"}, "Format PDF (*.pdf)");
-            fileChooser_exporter.addChoosableFileFilter(filtre3);
-            fileChooser_exporter.setFileFilter(filtre3);
-            fileChooser_exporter.setDialogTitle("Exporter votre livre au format PDF");
-            fileChooser_exporter.setApproveButtonText("Exporter le livre");
-
-            // Exporter PNG
-            fileChooser_exporterPNG = new JFileChooser(Ressources.getLocal());
-            fileChooser_exporterPNG.setSelectedFile(new File(Ressources.getLocal(), "Nouveau.png"));
-            FiltreLivre filtre4 = new FiltreLivre(new String[]{"png"}, "Format PNG (*.png)");
-            fileChooser_exporterPNG.addChoosableFileFilter(filtre4);
-            fileChooser_exporterPNG.setFileFilter(filtre4);
-            fileChooser_exporterPNG.setDialogTitle("Exporter votre livre au format PNG");
-            fileChooser_exporterPNG.setApproveButtonText("Exporter le livre");
-
-            // Exporter HTML
-            fileChooser_exporterHTML = new JFileChooser(Ressources.getLocal());
-            fileChooser_exporterHTML.setSelectedFile(new File(Ressources.getLocal(), "Export.html"));
-            FiltreLivre filtre5 = new FiltreLivre(new String[]{"html"}, "Format HTML (*.HTML)");
-            fileChooser_exporterHTML.addChoosableFileFilter(filtre5);
-            fileChooser_exporterHTML.setFileFilter(filtre5);
-            fileChooser_exporterHTML.setDialogTitle("Exporter votre livre au format HTML");
-            fileChooser_exporterHTML.setApproveButtonText("Exporter le livre");
-
-            // Exporter RTF
-            fileChooser_exporterRTF = new JFileChooser(Ressources.getLocal());
-            fileChooser_exporterRTF.setSelectedFile(new File(Ressources.getLocal(), "Export.rtf"));
-            FiltreLivre filtre6 = new FiltreLivre(new String[]{"rtf"}, "Format RTF (*.RTF)");
-            fileChooser_exporterRTF.addChoosableFileFilter(filtre6);
-            fileChooser_exporterRTF.setFileFilter(filtre6);
-            fileChooser_exporterRTF.setDialogTitle("Exporter votre livre au format RTF");
-            fileChooser_exporterRTF.setApproveButtonText("Exporter le livre");
-
-            inspecteur = new Inspecteur(this);
-            inspecteur.pack();
-
-            this.setSize(TAILLE_H, TAILLE_V);
-            this.setName("L'Atelier Linotte " + Version.getVersion());
-
-            // splashWindow1.setProgressValue(8, "Chargement des livres");
-
-            getCahierCourant().effacerCahier();
-
-            jMenuItemSaveWorkSpace.setSelected(getPreference(true, Preference.P_MODE_SAVE_WORKSPACE));
-            jMenuItemBonifieur.setSelected(getPreference(true, Preference.P_MODE_BONIFIEUR));
-            jMenuItemDebogueur.setValue(getDelaisPasApas(400));
-
-            // Ouvrir le fichier :
-
-            // Si premier lancement :
-            if (!Preference.getIntance().isExiste()) {
-                Preference.getIntance().setProperty(Preference.P_FICHIER + "_1",
-                        linotte.getLangage().getCheminExemple() + "/b_tutoriels/h_interfaces_utilisateur/Demonstration_IHM.liv");
-                // Preference.getIntance().setProperty(Preference.P_FICHIER +
-                // "_2",
-                // "exemples/tutoriels/j_expert/messagerie_instantanee.liv");
-                Preference.getIntance().setProperty(Preference.P_FICHIER + "_2",
-                        linotte.getLangage().getCheminExemple() + "/b_tutoriels/a_debutant/bienvenue.liv");
-                // Pour les autres langages de programmation :
-                Preference.getIntance().setProperty(Preference.P_FICHIER + "_3", linotte.getLangage().getCheminExemple() + "/a_debutant/bienvenue.liv");
-
-            }
-
-            File exemples = Ressources.getExemples(linotte.getLangage());
-            if (exemples.isDirectory()) {
-                // ecrirelnTableau("Retrouvez les exemples dans le répertoire : "
-                // + exemples.getCanonicalPath());
-            } else {
-                // Patch sous linux si on utilise l'icone dans le menu pour
-                // lancer l'Atelier :
-                exemples = new File("/usr/share/langagelinotte/" + linotte.getLangage().getCheminExemple());
-                if (exemples.isDirectory()) {
-                    // ecrirelnTableau("Retrouvez les exemples dans le répertoire : "
-                    // + exemples.getCanonicalPath());
-                }
-            }
-
-            File temp = null;
-            if (Preference.getIntance().getProperty(Preference.P_DIRECTORY) != null) {
-                temp = new File(Preference.getIntance().getProperty(Preference.P_DIRECTORY));
-            }
-            if (temp == null && exemples.isDirectory()) {
-                temp = exemples;
-            }
-            if (temp == null) {
-                Ressources.getLocal();
-            }
-            fileChooser_ouvrir.setCurrentDirectory(temp);
-            fileChooser_sauvegarder.setCurrentDirectory(temp);
-            fileChooser_sauvegarder.setSelectedFile(new File(temp, "Nouveau.liv"));
-
-            chargerFichiers();
-            chargerHistorique();
-
-            // Chargement de l'historique des fichiers ouverts :
-
-            findAndReplace = new BoiteRecherche(Atelier.this);
-
+            SwingUtilities.invokeLater(() -> {
+                chargementDesFonts();
+            });
+            SwingUtilities.invokeAndWait(() -> {
+                constructionAtelier();
+            });
+            SwingUtilities.invokeAndWait(() -> {
+                constructionMenu();
+            });
+            SwingUtilities.invokeAndWait(() -> {
+                ajoutListenerDeplacement();
+            });
+            SwingUtilities.invokeLater(() -> {
+                ajoutPopupMenu();
+            });
+            SwingUtilities.invokeAndWait(() -> {
+                affichageMessagesRegistreDesActions();
+            });
+            SwingUtilities.invokeAndWait(() -> {
+                initFilesChooser();
+            });
+            SwingUtilities.invokeAndWait(() -> {
+                ouvertureExemples();
+            });
+            SwingUtilities.invokeAndWait(() -> {
+                repertoireParDefaut();
+            });
+            SwingUtilities.invokeAndWait(() -> {
+                chargerFichiers();
+            });
+            SwingUtilities.invokeLater(() -> {
+                chargerHistorique();
+            });
             SwingUtilities.invokeLater(() -> {
                 creationSousMenuVerbier();
             });
-
             ecrirelnTableau("Prêt");
 
         } catch (Throwable e) {
@@ -575,6 +387,199 @@ public class Atelier extends JFrame implements WindowListener {
             Tools.showError(e);
             System.exit(-1);
         }
+    }
+
+    private void repertoireParDefaut() {
+        File exemples = Ressources.getExemples(linotte.getLangage());
+        if (exemples.isDirectory()) {
+        } else {
+            exemples = new File("/usr/share/langagelinotte/" + linotte.getLangage().getCheminExemple());
+        }
+
+        File temp = null;
+        if (Preference.getIntance().getProperty(Preference.P_DIRECTORY) != null) {
+            temp = new File(Preference.getIntance().getProperty(Preference.P_DIRECTORY));
+        }
+        if (temp == null && exemples.isDirectory()) {
+            temp = exemples;
+        }
+        if (temp == null) {
+            Ressources.getLocal();
+        }
+        fileChooser_ouvrir.setCurrentDirectory(temp);
+        fileChooser_sauvegarder.setCurrentDirectory(temp);
+        fileChooser_sauvegarder.setSelectedFile(new File(temp, "Nouveau.liv"));
+    }
+
+    private void ouvertureExemples() {
+        // Si premier lancement :
+        if (!Preference.getIntance().isExiste()) {
+            Preference.getIntance().setProperty(Preference.P_FICHIER + "_1",
+                    linotte.getLangage().getCheminExemple() + "/b_tutoriels/h_interfaces_utilisateur/Demonstration_IHM.liv");
+            // Preference.getIntance().setProperty(Preference.P_FICHIER +
+            // "_2",
+            // "exemples/tutoriels/j_expert/messagerie_instantanee.liv");
+            Preference.getIntance().setProperty(Preference.P_FICHIER + "_2",
+                    linotte.getLangage().getCheminExemple() + "/b_tutoriels/a_debutant/bienvenue.liv");
+            // Pour les autres langages de programmation :
+            Preference.getIntance().setProperty(Preference.P_FICHIER + "_3", linotte.getLangage().getCheminExemple() + "/a_debutant/bienvenue.liv");
+
+        }
+    }
+
+    private void initFilesChooser() {
+        fileChooser_ouvrir = new JFileChooser(Ressources.getLocal());
+        FiltreLivre filtre = new FiltreLivre(new String[]{"liv"}, "Livre Linotte (*.liv)");
+        fileChooser_ouvrir.addChoosableFileFilter(filtre);
+        fileChooser_ouvrir.setFileFilter(filtre);
+        fileChooser_ouvrir.setDialogTitle("Ouvrir un livre Linotte");
+        fileChooser_ouvrir.setApproveButtonText("Ouvrir le livre");
+        // Ranger
+        fileChooser_sauvegarder = new JFileChooser(Ressources.getLocal());
+        FiltreLivre filtre2 = new FiltreLivre(new String[]{"liv"}, "Livre Linotte (*.liv)");
+        fileChooser_sauvegarder.addChoosableFileFilter(filtre2);
+        fileChooser_sauvegarder.setFileFilter(filtre2);
+        fileChooser_sauvegarder.setDialogTitle("Ranger un livre Linotte");
+        fileChooser_sauvegarder.setApproveButtonText("Ranger le livre");
+
+        // Exporter PDF
+        fileChooser_exporter = new JFileChooser(Ressources.getLocal());
+        fileChooser_exporter.setSelectedFile(new File(Ressources.getLocal(), "Nouveau.pdf"));
+        FiltreLivre filtre3 = new FiltreLivre(new String[]{"pdf"}, "Format PDF (*.pdf)");
+        fileChooser_exporter.addChoosableFileFilter(filtre3);
+        fileChooser_exporter.setFileFilter(filtre3);
+        fileChooser_exporter.setDialogTitle("Exporter votre livre au format PDF");
+        fileChooser_exporter.setApproveButtonText("Exporter le livre");
+
+        // Exporter PNG
+        fileChooser_exporterPNG = new JFileChooser(Ressources.getLocal());
+        fileChooser_exporterPNG.setSelectedFile(new File(Ressources.getLocal(), "Nouveau.png"));
+        FiltreLivre filtre4 = new FiltreLivre(new String[]{"png"}, "Format PNG (*.png)");
+        fileChooser_exporterPNG.addChoosableFileFilter(filtre4);
+        fileChooser_exporterPNG.setFileFilter(filtre4);
+        fileChooser_exporterPNG.setDialogTitle("Exporter votre livre au format PNG");
+        fileChooser_exporterPNG.setApproveButtonText("Exporter le livre");
+
+        // Exporter HTML
+        fileChooser_exporterHTML = new JFileChooser(Ressources.getLocal());
+        fileChooser_exporterHTML.setSelectedFile(new File(Ressources.getLocal(), "Export.html"));
+        FiltreLivre filtre5 = new FiltreLivre(new String[]{"html"}, "Format HTML (*.HTML)");
+        fileChooser_exporterHTML.addChoosableFileFilter(filtre5);
+        fileChooser_exporterHTML.setFileFilter(filtre5);
+        fileChooser_exporterHTML.setDialogTitle("Exporter votre livre au format HTML");
+        fileChooser_exporterHTML.setApproveButtonText("Exporter le livre");
+
+        // Exporter RTF
+        fileChooser_exporterRTF = new JFileChooser(Ressources.getLocal());
+        fileChooser_exporterRTF.setSelectedFile(new File(Ressources.getLocal(), "Export.rtf"));
+        FiltreLivre filtre6 = new FiltreLivre(new String[]{"rtf"}, "Format RTF (*.RTF)");
+        fileChooser_exporterRTF.addChoosableFileFilter(filtre6);
+        fileChooser_exporterRTF.setFileFilter(filtre6);
+        fileChooser_exporterRTF.setDialogTitle("Exporter votre livre au format RTF");
+        fileChooser_exporterRTF.setApproveButtonText("Exporter le livre");
+    }
+
+    private void affichageMessagesRegistreDesActions() {
+        // Affichage des messages d'erreur
+        Iterator<String> erreurs = RegistreDesActions.retourneErreurs();
+        while (erreurs.hasNext()) {
+            ecrireErreurTableau_(erreurs.next());
+            ecrirelnTableau("");
+        }
+        RegistreDesActions.effaceErreurs();
+    }
+
+    private void constructionAtelier() {
+        this.setContentPane(getJPanelAtelier());
+        this.setJMenuBar(getxJMenuBar());
+        this.setPreferredSize(new Dimension(TAILLE_H, TAILLE_V));
+        this.setSize(new Dimension(TAILLE_H, TAILLE_V));
+        //this.setSize(TAILLE_H, TAILLE_V);
+        this.setName("L'Atelier Linotte " + Version.getVersion());
+        getCahierCourant().effacerCahier();
+        inspecteur = new Inspecteur(this);
+        inspecteur.pack();
+        findAndReplace = new BoiteRecherche(Atelier.this);
+    }
+
+    private void ajoutPopupMenu() {
+        // Popup pour effacer le tableau :
+        JPopupMenu popupTableau = new JPopupMenu();
+        JMenuItem itemPopupTableau = new JMenuItem("Effacer le tableau");
+        itemPopupTableau.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                effacerTableau();
+            }
+
+        });
+
+        // Popup pour copier le tableau :
+        JMenuItem itemPopupTableau2 = new JMenuItem("Copier le tableau");
+        itemPopupTableau2.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                copierTableau();
+            }
+
+        });
+
+        popupTableau.add(itemPopupTableau);
+        popupTableau.add(itemPopupTableau2);
+        MouseListener popupListener = new PopupListener(popupTableau);
+        jEditorPaneTableau.addMouseListener(popupListener);
+    }
+
+    private void constructionMenu() {
+        getJMenuEdition().add(undoAction);
+        getJMenuEdition().add(redoAction);
+        getJMenuEdition().addSeparator();
+        // http://penserenjava.free.fr/pens_2.4/indexMaind0ce.html?chp=14&pge=10
+        JMenuItem cut = new JMenuItem("Couper"), copy = new JMenuItem("Copier"), paste = new JMenuItem("Coller");
+
+        couper = new CutL(this);
+        copier = new CopyL(this);
+        coller = new PasteL(this);
+
+        cut.addActionListener(couper);
+        copy.addActionListener(copier);
+        paste.addActionListener(coller);
+
+        copy.setMnemonic(KeyEvent.VK_P);
+        paste.setMnemonic(KeyEvent.VK_O);
+        cut.setMnemonic(KeyEvent.VK_C);
+
+        getJMenuEdition().add(copy);
+        getJMenuEdition().add(paste);
+        getJMenuEdition().add(cut);
+        getJMenuEdition().addSeparator();
+        getJMenuEdition().add(getJMenuRechercher());
+
+        getJMenuOutils().add(getJMenuFormater());
+        getJMenuOutils().add(getJMenuLaToile());
+
+        getJMenuOutils().addSeparator();
+        JMenu options = new JMenu("Options");
+        getJMenuOutils().add(options);
+        options.add(getJMenuThemes());
+        options.add(getJMenuSaveWorkSpace());
+
+        options.add(getJMenuItemBonifieur());
+        options.add(getJMenuManageurStyle());
+
+        options.addSeparator();
+        options.add(getJMenuDelaisDebogueur());
+        try {
+            for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                jMenuThemes.add(new LFAction(this, info));
+            }
+        } catch (Exception e) {
+        }
+
+        jMenuItemSaveWorkSpace.setSelected(getPreference(true, Preference.P_MODE_SAVE_WORKSPACE));
+        jMenuItemBonifieur.setSelected(getPreference(true, Preference.P_MODE_BONIFIEUR));
+        jMenuItemDebogueur.setValue(getDelaisPasApas(400));
+
     }
 
     private boolean getPreference(boolean saveWorkSpace, String pModeSaveWorkspace) {
@@ -1222,25 +1227,26 @@ public class Atelier extends JFrame implements WindowListener {
     }
 
     private void ecrireSimpleTableau(Object texte, AttributeSet attributeSet) {
-        try {
-            // Suppression du curseur.
-            if (sortieTableau.getLength() > 0) {
-                String carret = this.sortieTableau.getText(sortieTableau.getLength() - 1, 1);
-                if (carret.equals("\u2588")) {
-                    this.sortieTableau.remove(sortieTableau.getLength() - 1, 1);
+        SwingUtilities.invokeLater(() -> {
+            try {
+                // Suppression du curseur.
+                if (sortieTableau.getLength() > 0) {
+                    String carret = this.sortieTableau.getText(sortieTableau.getLength() - 1, 1);
+                    if (carret.equals("\u2588")) {
+                        this.sortieTableau.remove(sortieTableau.getLength() - 1, 1);
+                    }
                 }
+                if (texte instanceof Component)
+                    this.jEditorPaneTableau.insertComponent((Component) texte);
+                else {
+                    this.sortieTableau.insertString(sortieTableau.getLength(), (String) texte + "", attributeSet);
+                    // Ajout du curseur.
+                    this.sortieTableau.insertString(sortieTableau.getLength(), "\u2588", null);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            if (texte instanceof Component)
-                this.jEditorPaneTableau.insertComponent((Component) texte);
-            else {
-                this.sortieTableau.insertString(sortieTableau.getLength(), (String) texte + "", attributeSet);
-                // Ajout du curseur.
-                this.sortieTableau.insertString(sortieTableau.getLength(), "\u2588", null);
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        });
     }
 
     public void effacerTableau() {
@@ -1419,6 +1425,9 @@ public class Atelier extends JFrame implements WindowListener {
             DefaultStyledDocument temp = new DefaultStyledDocument();
             jEditorPaneTableau = new JTextPaneText(temp, false);
             jEditorPaneTableau.setEditable(false);
+            jEditorPaneTableau.setOpaque(false);
+            jEditorPaneTableau.setFont(font);
+            sortieTableau = jEditorPaneTableau.getDocument();
         }
         return jEditorPaneTableau;
     }
