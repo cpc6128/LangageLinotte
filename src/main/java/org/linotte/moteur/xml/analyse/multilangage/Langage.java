@@ -62,7 +62,7 @@ public enum Langage {
 	 * @param poperation
 	 * @param pattributEspece
 	 */
-	private Langage(String pnom, String pfichier, String pSeparateurLigne, boolean plegacy, String[] pointeur, char[] crochet, String pcheminExemple, MathematiqueOperation[] poperation, MathematiqueOperation pattributEspece, boolean pforceParametreEnligne) {
+	Langage(String pnom, String pfichier, String pSeparateurLigne, boolean plegacy, String[] pointeur, char[] crochet, String pcheminExemple, MathematiqueOperation[] poperation, MathematiqueOperation pattributEspece, boolean pforceParametreEnligne) {
 		nom = pnom;
 		fichier = pfichier;
 		legacy = plegacy;

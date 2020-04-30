@@ -184,6 +184,9 @@ public class Ressources implements RessourceManager {
             case "GO":
                 nom = "MAIL_SEND";
                 break;
+            case "CODE":
+                nom = "SELECT";
+                break;
         }
         FontIcon icon = FontIcon.of(Runestroicons.valueOf(nom));
         icon.setIconColor(Color.GRAY.darker());

@@ -20,27 +20,6 @@
 
 package org.linotte.moteur.xml.analyse;
 
-import static org.linotte.frame.coloration.StyleItem.STYLE.ARTICLE;
-import static org.linotte.frame.coloration.StyleItem.STYLE.CHAINE;
-import static org.linotte.frame.coloration.StyleItem.STYLE.DOUBLURE;
-import static org.linotte.frame.coloration.StyleItem.STYLE.MATH;
-import static org.linotte.frame.coloration.StyleItem.STYLE.NOMBRE;
-import static org.linotte.frame.coloration.StyleItem.STYLE.STRING;
-import static org.linotte.frame.coloration.StyleItem.STYLE.SYSTEME;
-import static org.linotte.frame.coloration.StyleItem.STYLE.VALEUR;
-import static org.linotte.frame.coloration.StyleItem.STYLE.VARIABLE_SYSTEME;
-
-import java.awt.Color;
-import java.math.BigDecimal;
-import java.math.MathContext;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import org.alize.kernel.AKException;
 import org.alize.kernel.AKLoader;
 import org.alize.kernel.AKProcessus;
@@ -48,19 +27,8 @@ import org.linotte.frame.coloration.StyleItem;
 import org.linotte.frame.coloration.StyleItem.STYLE;
 import org.linotte.greffons.api.AKMethod;
 import org.linotte.greffons.externe.Greffon.GreffonException;
-import org.linotte.moteur.entites.Acteur;
-import org.linotte.moteur.entites.Casier;
-import org.linotte.moteur.entites.Livre;
-import org.linotte.moteur.entites.Prototype;
-import org.linotte.moteur.entites.Role;
-import org.linotte.moteur.exception.Constantes;
-import org.linotte.moteur.exception.ErreurException;
-import org.linotte.moteur.exception.FonctionDoublureException;
-import org.linotte.moteur.exception.LectureException;
-import org.linotte.moteur.exception.LinotteException;
-import org.linotte.moteur.exception.RetourException;
-import org.linotte.moteur.exception.RetournerException;
-import org.linotte.moteur.exception.StopException;
+import org.linotte.moteur.entites.*;
+import org.linotte.moteur.exception.*;
 import org.linotte.moteur.outils.Chaine;
 import org.linotte.moteur.xml.alize.kernel.Job;
 import org.linotte.moteur.xml.alize.kernel.JobContext;
@@ -76,18 +44,8 @@ import org.linotte.moteur.xml.analyse.multilangage.TypeSyntaxe;
 import org.linotte.moteur.xml.appels.CalqueParagraphe;
 import org.linotte.moteur.xml.appels.Fonction;
 import org.linotte.moteur.xml.operation.OPERATION;
-import org.linotte.moteur.xml.operation.binaire.Diff;
-import org.linotte.moteur.xml.operation.binaire.Egal;
-import org.linotte.moteur.xml.operation.binaire.Inf;
-import org.linotte.moteur.xml.operation.binaire.InfOuEgal;
-import org.linotte.moteur.xml.operation.binaire.Puiss;
-import org.linotte.moteur.xml.operation.binaire.Sup;
-import org.linotte.moteur.xml.operation.binaire.SupOuEgal;
-import org.linotte.moteur.xml.operation.i.Operation;
-import org.linotte.moteur.xml.operation.i.OperationBinaire;
-import org.linotte.moteur.xml.operation.i.OperationSimple;
-import org.linotte.moteur.xml.operation.i.OperationTernaire;
-import org.linotte.moteur.xml.operation.i.OperationUnaire;
+import org.linotte.moteur.xml.operation.binaire.*;
+import org.linotte.moteur.xml.operation.i.*;
 import org.linotte.moteur.xml.operation.simple.Addition;
 import org.linotte.moteur.xml.operation.simple.Division;
 import org.linotte.moteur.xml.operation.simple.Multiplication;
@@ -96,6 +54,16 @@ import org.linotte.moteur.xml.operation.unaire.Clone;
 import org.linotte.moteur.xml.operation.unaire.Negatif;
 import org.linotte.moteur.xml.operation.unaire.Positif;
 import org.linotte.moteur.xml.operation.unaire.Unicode;
+
+import java.awt.*;
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.util.List;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static org.linotte.frame.coloration.StyleItem.STYLE.*;
 
 public class Mathematiques {
 
@@ -293,27 +261,7 @@ public class Mathematiques {
 							if (big != null)
 								couleur(scanner, couleurs, debut_style, NOMBRE);
 							else {
-								// Un article ?
-								int pa = retour.indexOf(' ');
-								if (pa == -1) {
-									pa = retour.indexOf('\'');
-								}
-								boolean barticle = false;
-								if (pa > 1) {
-									String article = retour.substring(0, pa);
-									if (Article.isArticle(article)) {
-										barticle = true;
-										int b = article.length();
-										retour = retour.substring(b).trim();
-										scanner.position_fin = scanner.position_debut + b;
-										couleur(scanner, couleurs, debut_style, ARTICLE);
-										scanner.position_debut = scanner.position;
-										scanner.position_fin = scanner.position + retour.length();
-										couleur(scanner, couleurs, debut_style, VALEUR);
-									}
-
-								}
-								if (!barticle) {
+								if (true) {
 									if (parserContext != null) {
 										String retour_lower = retour.toLowerCase();
 										// Est-ce un attribut d'une espece ?
@@ -404,24 +352,6 @@ public class Mathematiques {
 								couleur(scanner, couleurs, debut_style, STRING);
 							else
 								couleur(scanner, couleurs, debut_style, NOMBRE);
-						}
-					} else {
-						if (isActeur(retour)) { // Acteur anomyme chaine ?
-							BigDecimal big = isBigDecimal(retour);
-							if (big == null) {
-								// Un article ?
-								int pa = retour.indexOf(' ');
-								if (pa == -1) {
-									pa = retour.indexOf('\'');
-								}
-								if (pa > 1) {
-									String article = retour.substring(0, pa).trim();
-									if (Article.isArticle(article)) {
-										int b = article.length();
-										retour = retour.substring(b).trim();
-									}
-								}
-							}
 						}
 					}
 					total.add(retour);

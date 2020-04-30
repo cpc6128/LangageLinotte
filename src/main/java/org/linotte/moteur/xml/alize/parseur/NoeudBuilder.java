@@ -21,20 +21,7 @@
 package org.linotte.moteur.xml.alize.parseur;
 
 import org.linotte.moteur.xml.alize.parseur.a.Noeud;
-import org.linotte.moteur.xml.alize.parseur.noeud.NActeur;
-import org.linotte.moteur.xml.alize.parseur.noeud.NArticle;
-import org.linotte.moteur.xml.alize.parseur.noeud.NChoix;
-import org.linotte.moteur.xml.alize.parseur.noeud.NEtat;
-import org.linotte.moteur.xml.alize.parseur.noeud.NFin;
-import org.linotte.moteur.xml.alize.parseur.noeud.NGroupe;
-import org.linotte.moteur.xml.alize.parseur.noeud.NLigne;
-import org.linotte.moteur.xml.alize.parseur.noeud.NMarqueur;
-import org.linotte.moteur.xml.alize.parseur.noeud.NNoeud;
-import org.linotte.moteur.xml.alize.parseur.noeud.NPointDeRetour;
-import org.linotte.moteur.xml.alize.parseur.noeud.NSouffleur;
-import org.linotte.moteur.xml.alize.parseur.noeud.NSousParagraphe;
-import org.linotte.moteur.xml.alize.parseur.noeud.NToken;
-import org.linotte.moteur.xml.alize.parseur.noeud.NValeur;
+import org.linotte.moteur.xml.alize.parseur.noeud.*;
 import org.w3c.dom.Node;
 
 public final class NoeudBuilder {
@@ -48,8 +35,6 @@ public final class NoeudBuilder {
 			return new NPointDeRetour(node);
 		} else if (nom.equals("marqueur")) {
 			return new NMarqueur(node);
-		} else if (nom.equals("article")) {
-			return new NArticle(node);
 		} else if (nom.equals("groupe")) {
 			return new NGroupe(node);
 		} else if (nom.equals("ligne")) {

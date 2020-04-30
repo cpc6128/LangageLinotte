@@ -898,10 +898,7 @@ public class Atelier extends JFrame implements WindowListener {
                 jButtonLire.setToolTipText("<html><b>Bouton Lire</b><br>" + "<i>Description</i> : Lis le livre présent dans le cahier<br>"
                         + "<i>Action</i> : Cliquer sur le bouton [Lire] ou appuyer sur les boutons Alt+L<br>" + "</html>");
             jButtonLire.setFocusable(false);
-            //jButtonLire.setIcon(Ressources.getImageIcon("bandeau/applications-multimedia.png"));
             jButtonLire.setIcon(Ressources.getImageTheme("PLAY", 32));
-            //jButtonLire.setPressedIcon(Ressources.getImageIconePlusClaire("bandeau/applications-multimedia.png"));
-            //jButtonLire.setRolloverIcon(Ressources.getImageIconePlusClaire("bandeau/applications-multimedia.png"));
             jButtonLire.setName("boutonLire");
             jButtonLire.setMnemonic(KeyEvent.VK_L);
             jButtonLire.addActionListener(new java.awt.event.ActionListener() {
@@ -930,9 +927,7 @@ public class Atelier extends JFrame implements WindowListener {
                         + "<i>Action</i> : appuyer sur les boutons Alt+D<br>" + "</html>");
             jButtonTimbre.setFocusable(false);
             jButtonTimbre.setVisible(false);
-            jButtonTimbre.setIcon(Ressources.getImageIcon("timbre/dev.png"));
-            jButtonTimbre.setPressedIcon(Ressources.getImageIconePlusClaire("timbre/dev.png"));
-            jButtonTimbre.setRolloverIcon(Ressources.getImageIconePlusClaire("timbre/dev.png"));
+            jButtonTimbre.setIcon(Ressources.getImageTheme("CODE", 32));
             jButtonTimbre.setName("boutonTimbre");
             jButtonTimbre.setMnemonic(KeyEvent.VK_C);
             jButtonTimbre.addActionListener(new java.awt.event.ActionListener() {
