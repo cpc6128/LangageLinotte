@@ -63,7 +63,6 @@ import org.linotte.moteur.xml.alize.parseur.XMLIterator;
 import org.linotte.moteur.xml.alize.parseur.a.NExpression;
 import org.linotte.moteur.xml.alize.parseur.a.Noeud;
 import org.linotte.moteur.xml.analyse.multilangage.Langage;
-import org.linotte.moteur.xml.api.Librairie;
 import org.linotte.web.Run;
 import org.w3c.dom.Element;
 
@@ -75,13 +74,9 @@ import javax.swing.filechooser.FileSystemView;
 import javax.swing.text.*;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.rtf.RTFEditorKit;
-import javax.swing.undo.CannotRedoException;
-import javax.swing.undo.CannotUndoException;
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
-import java.awt.datatransfer.Transferable;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
@@ -100,7 +95,6 @@ public class Atelier extends JFrame implements WindowListener {
 
     private static final int TAILLE_H = 800, TAILLE_V = 650;
 
-    private static final String splash = "splashlinotte.png";
     // Gestion multi-langage
     public static Linotte linotte = null;
     public static Font font;
@@ -109,8 +103,6 @@ public class Atelier extends JFrame implements WindowListener {
     private static Atelier atelier = null;
     private static LaToile toile;
 
-    // //////////////////////////////////////////////////////////////// Boutons
-    private static Librairie<?> librairie;
     /**
      * Une icone de lien symbolique
      */
@@ -134,9 +126,7 @@ public class Atelier extends JFrame implements WindowListener {
     private JButton jButtonLibrairie = null;
     private Document sortieTableau = null;
 
-    // ////////////////////////////////////////////////////////////////// Menus
-    private FrameIHM dialogframeihm = null;
-    private Cahier cahierCourant = null;
+    public Clipboard clipbd = getToolkit().getSystemClipboard();
     private JTextPaneText jEditorPaneTableau = null;
     private JFileChooser fileChooser_ouvrir = null;
     private JFileChooser fileChooser_sauvegarder = null;
@@ -162,8 +152,6 @@ public class Atelier extends JFrame implements WindowListener {
     private JMenuItem jMenuItemExporterHTML = null;
     private JMenuItem jMenuItemExporterRTF = null;
     private JMenuItem jMenuItemExporterPNG = null;
-    private JMenuItem jMenuItemPresent = null;
-    private JMenuItem jMenuItemImperatif = null;
     private JMenuItem jMenuItemBonifieur = null;
     private SliderMenuItem jMenuItemDebogueur = null;
     private JMenuItem jMenuItemSaveWorkSpace = null;
@@ -178,10 +166,11 @@ public class Atelier extends JFrame implements WindowListener {
     private JMenuItem jMenuItemApropos = null;
     private JMenuItem jMenuItemMerci = null;
     private boolean saut2ligne = false;
-    private CutL couper = new CutL();
-    private CopyL copier = new CopyL();
-    private PasteL coller = new PasteL();
-    private Map<String, String> verbes_present = new HashMap<String, String>();
+    public List<OuvrirLivreAction> listHistorique = new ArrayList<OuvrirLivreAction>();
+    // ////////////////////////////////////////////////////////////////// Menus
+    //private FrameIHM dialogframeihm = null;
+    private Cahier cahierCourant = null;
+    private CutL couper = new CutL(this);
     private Map<String, Set<String>> slots_prototype = new HashMap<String, Set<String>>();
     private Map<String, String> verbes_imperatif = new HashMap<String, String>();
     private Map<String, Boolean> verbes_icone = new HashMap<String, Boolean>();
@@ -192,19 +181,18 @@ public class Atelier extends JFrame implements WindowListener {
 
     // Gestion des onglets :
     private Map<String, String> verbes_aide = new HashMap<String, String>();
-    private boolean affichagePresent = true;
 
-    // Théme :
     private Inspecteur inspecteur;
-    private Clipboard clipbd = getToolkit().getSystemClipboard();
+    private CopyL copier = new CopyL(this);
     private BoiteRecherche findAndReplace;
     private Onglets cahierOnglet;
-    private Color menuBarColor = null;// Color.BLACK;
+    private PasteL coller = new PasteL(this);
     private Color textBarColor = null;// Color.WHITE;
     private boolean menuBarBordure = false;// false;
     private int buttonTextHorizontale = SwingConstants.BOTTOM; // AbstractButton.TOP;
     private int buttonTextVerticale = SwingConstants.CENTER;// AbstractButton.RIGHT;
-    private List<OuvrirLivreAction> listHistorique = new ArrayList<Atelier.OuvrirLivreAction>();
+    // Théme :
+    private Color menuBarColor = null;// Color.BLACK;
     private int taille_split_tableau = 400;
     private int taille_split_sommaire = 180;
 
@@ -219,23 +207,6 @@ public class Atelier extends JFrame implements WindowListener {
     }
 
     public static void main(String[] args) {
-
-        try {
-            //String HOTSPOT_BEAN_NAME = "com.sun.management:type=HotSpotDiagnostic";
-            //MBeanServer server = ManagementFactory.getPlatformMBeanServer();
-            //HotSpotDiagnosticMXBean bean;
-            //bean = ManagementFactory.newPlatformMXBeanProxy(server, HOTSPOT_BEAN_NAME, HotSpotDiagnosticMXBean.class);
-            //bean.setVMOption("add-exports", "java.desktop/sun.swing=ALL-UNNAMED");
-            //bean.setVMOption("addExports", "java.desktop/sun.swing=ALL-UNNAMED");
-            //List<VMOption> l = bean.getDiagnosticOptions();
-            //for (VMOption vmOption : l) {
-            //	System.out.println(vmOption.toString());
-            //}
-        } catch (Exception e1) {
-            e1.printStackTrace();
-        }
-
-        // --add-exports java.desktop/sun.swing=ALL-UNNAMED
 
         if (args != null && args.length > 0) {
             Preference.CAN_WRITE = true;
@@ -264,7 +235,7 @@ public class Atelier extends JFrame implements WindowListener {
 
             Langage l = Langage.Linotte2;
 
-            splashWindow1 = new SplashWindow(splash, new Frame(), 10);
+            splashWindow1 = new SplashWindow(new Frame(), 10);
             splashWindow1.setProgressValue(0, "Construction de l'environnement");
             createAndShowGUI();
         }
@@ -296,9 +267,6 @@ public class Atelier extends JFrame implements WindowListener {
             // comportement par defaut souhaite :
             preference.setBoolean(Preference.P_WINDOW_MAX, true);
         }
-
-        splashWindow1.setProgressValue(1, "Chargement des thèmes");
-        splashWindow1.setProgressValue(2, "Contruction de l'Atelier");
 
         Atelier atelier = new Atelier(getTitre()); // + " " + Version.getVersion()
         List<Image> l = new ArrayList<Image>();
@@ -339,10 +307,9 @@ public class Atelier extends JFrame implements WindowListener {
         }
 
         // Pour l'audit :
-        librairie.setToile(toile);
+        linotte.getLibrairie().setToile(toile);
 
         atelier.pack();
-        splashWindow1.setProgressValue(9, "Affichage de l'Atelier");
         atelier.setVisible(true);
 
         toile.setVisible(latoile);
@@ -364,15 +331,6 @@ public class Atelier extends JFrame implements WindowListener {
         return button;
     }
 
-    private static JButton createSimpleButton(Icon icon) {
-        JButton button = new JButton(icon);
-        button.setOpaque(false);
-        button.setBorderPainted(false);
-        button.setFocusPainted(false);
-        button.setContentAreaFilled(false);
-        return button;
-    }
-
     public static String getTitre() {
         return "Atelier de programmation " + ((linotte == null || linotte.getLangage() == null) ? "Linotte" : linotte.getLangage().getNom());
     }
@@ -384,96 +342,23 @@ public class Atelier extends JFrame implements WindowListener {
      */
     public void initialisationComposantsAtelier() {
         try {
-
-            librairie = new LibrairieVirtuelleSyntaxeV2();
-            splashWindow1.setProgressValue(3, "Chargement du fichier de grammaire");
-
-            splashWindow1.setProgressValue(4, "Chargement des styles");
             new StyleLinotte();
-            dialogframeihm = new FlatIHM(this);
-            splashWindow1.setProgressValue(5, "Initialisation du moteur Linotte " + Version.getVersion());
-
-            Langage langage = chargementLangageProgrammation();
+            chargementLangageProgrammation();
 
             demarrageServeurHTTP();
+            chargementDesFonts();
 
-            splashWindow1.setProgressValue(6, "Chargement des préférences");
-            // Gestion de la police :
-            String sfont = Preference.getIntance().getProperty(Preference.P_FONT);
-            if (sfont == null) {
-                sfont = "Consolas";
-                Preference.getIntance().setProperty(Preference.P_FONT, sfont);
-            }
-            int sftaille = Preference.getIntance().getInt(Preference.P_TAILLE_FONT);
-            if (sftaille == 0) {
-                sftaille = 14;
-                Preference.getIntance().setInt(Preference.P_TAILLE_FONT, sftaille);
-            }
-            font = new Font(sfont, Font.PLAIN, sftaille);
-
-            undoAction = new UndoAction();
-            redoAction = new RedoAction();
-
-            boolean verbe = true, saveWorkSpace = true, bonifieur = false;
-            int delais_pas_a_pas = 400;
-
-            // Restauration des préférences :
-            if (Preference.getIntance().get(Preference.P_MODE_VERBE) != null) {
-                verbe = Preference.getIntance().getBoolean(Preference.P_MODE_VERBE);
-            }
-
-            if (Preference.getIntance().get(Preference.P_MODE_SAVE_WORKSPACE) != null) {
-                saveWorkSpace = Preference.getIntance().getBoolean(Preference.P_MODE_SAVE_WORKSPACE);
-            } else {
-                Preference.getIntance().setBoolean(Preference.P_MODE_SAVE_WORKSPACE, saveWorkSpace);
-            }
-
-            if (Preference.getIntance().get(Preference.P_MODE_BONIFIEUR) != null) {
-                bonifieur = Preference.getIntance().getBoolean(Preference.P_MODE_BONIFIEUR);
-            } else {
-                Preference.getIntance().setBoolean(Preference.P_MODE_BONIFIEUR, bonifieur);
-            }
-
-            if (Preference.getIntance().get(Preference.P_PAS_A_PAS) != null) {
-                delais_pas_a_pas = Preference.getIntance().getInt(Preference.P_PAS_A_PAS);
-            } else {
-                Preference.getIntance().setInt(Preference.P_PAS_A_PAS, delais_pas_a_pas);
-            }
-
-            splashWindow1.setProgressValue(7, "Construction de l'Atelier");
+            undoAction = new UndoAction(this);
+            redoAction = new RedoAction(this);
 
             this.setContentPane(getJPanelAtelier());
             this.setJMenuBar(getxJMenuBar());
             this.setPreferredSize(new java.awt.Dimension(TAILLE_H, TAILLE_V));
             this.setSize(new java.awt.Dimension(TAILLE_H, TAILLE_V));
 
-            addComponentListener(new ComponentAdapter() {
-                public void componentMoved(ComponentEvent ce) {
-                    Preference.getIntance().setInt(Preference.P_X, getX());
-                    Preference.getIntance().setInt(Preference.P_Y, getY());
-                    Preference.getIntance().setInt(Preference.P_HAUTEUR, getHeight());
-                    Preference.getIntance().setInt(Preference.P_LARGEUR, getWidth());
-                    // Preference.getIntance().setBoolean(Preference.P_WINDOW_MAX,
-                    // false);
-                }
-
-                public void componentResized(ComponentEvent e) {
-                    Preference.getIntance().setInt(Preference.P_X, getX());
-                    Preference.getIntance().setInt(Preference.P_Y, getY());
-                    Preference.getIntance().setInt(Preference.P_HAUTEUR, getHeight());
-                    Preference.getIntance().setInt(Preference.P_LARGEUR, getWidth());
-                }
-
-            });
-
-            addWindowStateListener(new WindowStateListener() {
-                public void windowStateChanged(WindowEvent e) {
-                    Preference.getIntance().setBoolean(Preference.P_WINDOW_MAX, (e.getNewState() & Frame.MAXIMIZED_BOTH) == Frame.MAXIMIZED_BOTH);
-                }
-            });
+            ajoutListenerDeplacement();
 
             sortieTableau = jEditorPaneTableau.getDocument();
-            addWindowListener(this);
 
             // La feuille
             getJMenuEdition().add(undoAction);
@@ -483,9 +368,9 @@ public class Atelier extends JFrame implements WindowListener {
             // http://penserenjava.free.fr/pens_2.4/indexMaind0ce.html?chp=14&pge=10
             JMenuItem cut = new JMenuItem("Couper"), copy = new JMenuItem("Copier"), paste = new JMenuItem("Coller");
 
-            couper = new CutL();
-            copier = new CopyL();
-            coller = new PasteL();
+            couper = new CutL(this);
+            copier = new CopyL(this);
+            coller = new PasteL(this);
 
             cut.addActionListener(couper);
             copy.addActionListener(copier);
@@ -549,7 +434,7 @@ public class Atelier extends JFrame implements WindowListener {
 
             try {
                 for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                    jMenuThemes.add(new LFAction(info));
+                    jMenuThemes.add(new LFAction(this, info));
                 }
             } catch (Exception e) {
             }
@@ -624,15 +509,9 @@ public class Atelier extends JFrame implements WindowListener {
 
             getCahierCourant().effacerCahier();
 
-            // Restauration des préférences :
-            if (linotte.getLangage().isLegacy()) {
-                affichagePresent = false;
-            } else {
-                affichagePresent = !verbe;
-            }
-            jMenuItemSaveWorkSpace.setSelected(saveWorkSpace);
-            jMenuItemBonifieur.setSelected(bonifieur);
-            jMenuItemDebogueur.setValue(delais_pas_a_pas);
+            jMenuItemSaveWorkSpace.setSelected(getPreference(true, Preference.P_MODE_SAVE_WORKSPACE));
+            jMenuItemBonifieur.setSelected(getPreference(true, Preference.P_MODE_BONIFIEUR));
+            jMenuItemDebogueur.setValue(getDelaisPasApas(400));
 
             // Ouvrir le fichier :
 
@@ -657,7 +536,7 @@ public class Atelier extends JFrame implements WindowListener {
             } else {
                 // Patch sous linux si on utilise l'icone dans le menu pour
                 // lancer l'Atelier :
-                exemples = new File("/usr/share/langagelinotte/" + langage.getCheminExemple());
+                exemples = new File("/usr/share/langagelinotte/" + linotte.getLangage().getCheminExemple());
                 if (exemples.isDirectory()) {
                     // ecrirelnTableau("Retrouvez les exemples dans le répertoire : "
                     // + exemples.getCanonicalPath());
@@ -698,25 +577,71 @@ public class Atelier extends JFrame implements WindowListener {
         }
     }
 
+    private boolean getPreference(boolean saveWorkSpace, String pModeSaveWorkspace) {
+        if (Preference.getIntance().get(pModeSaveWorkspace) != null) {
+            saveWorkSpace = Preference.getIntance().getBoolean(pModeSaveWorkspace);
+        } else {
+            Preference.getIntance().setBoolean(pModeSaveWorkspace, saveWorkSpace);
+        }
+        return saveWorkSpace;
+    }
+
+    private int getDelaisPasApas(int delais_pas_a_pas) {
+        if (Preference.getIntance().get(Preference.P_PAS_A_PAS) != null) {
+            delais_pas_a_pas = Preference.getIntance().getInt(Preference.P_PAS_A_PAS);
+        } else {
+            Preference.getIntance().setInt(Preference.P_PAS_A_PAS, delais_pas_a_pas);
+        }
+        return delais_pas_a_pas;
+    }
+
+    private void ajoutListenerDeplacement() {
+        addComponentListener(new ComponentAdapter() {
+            public void componentMoved(ComponentEvent ce) {
+                Preference.getIntance().setInt(Preference.P_X, getX());
+                Preference.getIntance().setInt(Preference.P_Y, getY());
+                Preference.getIntance().setInt(Preference.P_HAUTEUR, getHeight());
+                Preference.getIntance().setInt(Preference.P_LARGEUR, getWidth());
+                // Preference.getIntance().setBoolean(Preference.P_WINDOW_MAX,
+                // false);
+            }
+
+            public void componentResized(ComponentEvent e) {
+                Preference.getIntance().setInt(Preference.P_X, getX());
+                Preference.getIntance().setInt(Preference.P_Y, getY());
+                Preference.getIntance().setInt(Preference.P_HAUTEUR, getHeight());
+                Preference.getIntance().setInt(Preference.P_LARGEUR, getWidth());
+            }
+
+        });
+
+        addWindowStateListener(new WindowStateListener() {
+            public void windowStateChanged(WindowEvent e) {
+                Preference.getIntance().setBoolean(Preference.P_WINDOW_MAX, (e.getNewState() & Frame.MAXIMIZED_BOTH) == Frame.MAXIMIZED_BOTH);
+            }
+        });
+        addWindowListener(this);
+
+    }
+
+    private void chargementDesFonts() {
+        // Gestion de la police :
+        String sfont = Preference.getIntance().getProperty(Preference.P_FONT);
+        if (sfont == null) {
+            sfont = "Consolas";
+            Preference.getIntance().setProperty(Preference.P_FONT, sfont);
+        }
+        int sftaille = Preference.getIntance().getInt(Preference.P_TAILLE_FONT);
+        if (sftaille == 0) {
+            sftaille = 14;
+            Preference.getIntance().setInt(Preference.P_TAILLE_FONT, sftaille);
+        }
+        font = new Font(sfont, Font.PLAIN, sftaille);
+    }
+
     private Langage chargementLangageProgrammation() {
-        LangageSwitch langageSwitch = new LangageSwitch(librairie, dialogframeihm);
-
-        // Quelle langue doit être chargée au lancement de l'Atelier ?
-        String parametreLangage = Preference.getIntance().getProperty(Preference.P_LANGAGE);
-        if (parametreLangage == null) {
-            parametreLangage = Langage.Linotte2.name();
-            Preference.getIntance().setProperty(Preference.P_LANGAGE, parametreLangage);
-        }
-        Langage langage = null;
-        try {
-            langage = Langage.valueOf(parametreLangage);
-        } catch (Exception e1) {
-            e1.printStackTrace();
-        }
-        if (langage == null) {
-            langage = Langage.Linotte2;
-        }
-
+        LangageSwitch langageSwitch = new LangageSwitch(new LibrairieVirtuelleSyntaxeV2(), new FlatIHM(this));
+        Langage langage = Langage.Linotte2;
         linotte = langageSwitch.selectionLangage(langage);
         return langage;
     }
@@ -734,7 +659,7 @@ public class Atelier extends JFrame implements WindowListener {
                 root = Preference.getIntance().getProperty(Preference.P_WEBONOTTE_DIR);
             }
             splashWindow1.setProgressValue(6, "Chargement du serveur Webonotte sur le port " + port_webonotte);
-            Run.runStandEmbededServer("jetty", "Webonotte", librairie, port_webonotte, new File(root));
+            Run.runStandEmbededServer("jetty", "Webonotte", linotte.getLibrairie(), port_webonotte, new File(root));
         } catch (Throwable e) {
             if (Version.isBeta())
                 e.printStackTrace();
@@ -1275,7 +1200,7 @@ public class Atelier extends JFrame implements WindowListener {
     }
 
     public void ecrireErreurTableau(String texte) {
-        dialogframeihm.getTableauBatch().ecrireErreur(texte);
+        ((FlatIHM) linotte.getIhm()).getTableauBatch().ecrireErreur(texte);
     }
 
     public void ecrireErreurTableau_(String texte) {
@@ -1921,23 +1846,6 @@ public class Atelier extends JFrame implements WindowListener {
         return jMenuItemExporterPNG;
     }
 
-    private JMenuItem getJMenuItemPresent() {
-        if (jMenuItemPresent == null) {
-            jMenuItemPresent = new JRadioButtonMenuItem();
-            jMenuItemPresent.setText("Présent");
-            jMenuItemPresent.setSelected(true);
-            jMenuItemPresent.setIcon(Ressources.getImageIcon("system-users.png"));
-            jMenuItemPresent.setMnemonic(java.awt.event.KeyEvent.VK_P);
-            jMenuItemPresent.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent e) {
-                    affichagePresent = false;
-                    Preference.getIntance().setBoolean(Preference.P_MODE_VERBE, affichagePresent);
-                }
-            });
-        }
-        return jMenuItemPresent;
-    }
-
     private String capitalizeFirstLetter(String value) {
         if (value == null) {
             return null;
@@ -1969,11 +1877,7 @@ public class Atelier extends JFrame implements WindowListener {
 
         itemPresent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                if (affichagePresent) {
-                    getCahierCourant().ecrireInsertAuCurseurCachier(verbes_present.get(((JMenuItemID) e.getSource()).getID()));
-                } else {
-                    getCahierCourant().ecrireInsertAuCurseurCachier(verbes_imperatif.get(((JMenuItemID) e.getSource()).getID()));
-                }
+                getCahierCourant().ecrireInsertAuCurseurCachier(verbes_imperatif.get(((JMenuItemID) e.getSource()).getID()));
             }
         });
         if (verbes_conditions.get(id) == null) {
@@ -2013,23 +1917,6 @@ public class Atelier extends JFrame implements WindowListener {
         if (verbes_aide.get(id) != null) {
             itemPresent.setToolTipText(verbes_aide.get(id));
         }
-    }
-
-    private JMenuItem getJMenuItemImperatif() {
-        if (jMenuItemImperatif == null) {
-            jMenuItemImperatif = new JRadioButtonMenuItem();
-            jMenuItemImperatif.setText("Impératif");
-            jMenuItemImperatif.setSelected(true);
-            jMenuItemImperatif.setIcon(Ressources.getImageIcon("computer.png"));
-            jMenuItemImperatif.setMnemonic(java.awt.event.KeyEvent.VK_I);
-            jMenuItemImperatif.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent e) {
-                    affichagePresent = true;
-                    Preference.getIntance().setBoolean(Preference.P_MODE_VERBE, affichagePresent);
-                }
-            });
-        }
-        return jMenuItemImperatif;
     }
 
     private JMenuItem getJMenuSaveWorkSpace() {
@@ -2151,26 +2038,22 @@ public class Atelier extends JFrame implements WindowListener {
                     }
                     if (n.getAttribut("texte") == null && n.getAttribut("math") == null && n.getAttribut("boucle") == null) {
                         verbes_imperatif.put(clef, filtre(n.getAttribut("imperatif")));
-                        verbes_present.put(clef, filtre(n.getAttribut("present")));
                         verbes_icone.put(clef, n.getAttribut("icone") != null);
                     } else {
                         if (n.getAttribut("texte") != null) {
                             verbes_conditions.put(clef, filtre(n.getAttribut("texte")));
                             verbes_icone.put(clef, n.getAttribut("icone") != null);
                             verbes_imperatif.put(clef, filtre(n.getAttribut("texte")));
-                            verbes_present.put(clef, filtre(n.getAttribut("texte")));
                         } else {
                             if (n.getAttribut("math") != null) {
                                 verbes_mathematiques.put(clef, filtre(n.getAttribut("math")));
                                 verbes_icone.put(clef, n.getAttribut("icone") != null);
                                 verbes_imperatif.put(clef, filtre(n.getAttribut("math")));
-                                verbes_present.put(clef, filtre(n.getAttribut("math")));
                             } else {
                                 if (n.getAttribut("boucle") != null) {
                                     verbes_boucle.put(clef, filtre(n.getAttribut("boucle")));
                                     verbes_icone.put(clef, n.getAttribut("icone") != null);
                                     verbes_imperatif.put(clef, filtre(n.getAttribut("boucle")));
-                                    verbes_present.put(clef, filtre(n.getAttribut("boucle")));
                                 }
                             }
                         }
@@ -2286,7 +2169,6 @@ public class Atelier extends JFrame implements WindowListener {
             verbes_especes.put(string, string);
             verbes_icone.put(string, false);
             verbes_imperatif.put(string, texte);
-            verbes_present.put(string, texte);
             if (aide != null)
                 verbes_aide.put(string, aide);
         }
@@ -2362,7 +2244,7 @@ public class Atelier extends JFrame implements WindowListener {
             while (listHistorique.size() > 19)
                 listHistorique.remove(0);
             supprimerHistorique(file);
-            listHistorique.add(new OuvrirLivreAction(file));
+            listHistorique.add(new OuvrirLivreAction(this, file));
             if (recharger)
                 rechargerHistorique();
         }
@@ -2453,11 +2335,6 @@ public class Atelier extends JFrame implements WindowListener {
     }
 
     private void creationSousMenuVerbier() {
-        if (linotte.getLangage().isLegacy()) {
-            jMenuVerbier.add(getJMenuItemPresent());
-            jMenuVerbier.add(getJMenuItemImperatif());
-            jMenuVerbier.addSeparator();
-        }
         getJMenuCondition();
         getJMenuMathematiques();
         getJMenuBoucle();
@@ -2472,157 +2349,5 @@ public class Atelier extends JFrame implements WindowListener {
         jMenuVerbier.add(getJMenuMathematiques());
         jMenuVerbier.addSeparator();
         creerJMenuCouleurs();
-
-        if (jMenuItemPresent != null) {
-            jMenuItemPresent.setSelected(affichagePresent);
-            jMenuItemImperatif.setSelected(!affichagePresent);
-        }
     }
-
-    public class UndoAction extends AbstractAction {
-        public UndoAction() {
-            super("Undo");
-            setEnabled(false);
-        }
-
-        public void actionPerformed(ActionEvent e) {
-            try {
-                getCahierCourant().setEditeurUpdate(true);
-                getCahierCourant().getUndoManager().undo();
-            } catch (CannotUndoException ex) {
-                ex.printStackTrace();
-            }
-            updateUndoState();
-            redoAction.updateRedoState();
-        }
-
-        public void updateUndoState() {
-            if (getCahierCourant() != null && getCahierCourant().getUndoManager() != null && getCahierCourant().getUndoManager().canUndo()) {
-                setEnabled(true);
-                putValue(Action.NAME, "Annuler");
-            } else {
-                setEnabled(false);
-                putValue(Action.NAME, "Annuler");
-            }
-        }
-    }
-
-    public class RedoAction extends AbstractAction {
-        public RedoAction() {
-            super("Redo");
-            setEnabled(false);
-        }
-
-        public void actionPerformed(ActionEvent e) {
-            try {
-                getCahierCourant().setEditeurUpdate(true);
-                getCahierCourant().getUndoManager().redo();
-            } catch (CannotRedoException ex) {
-                ex.printStackTrace();
-            }
-            updateRedoState();
-            undoAction.updateUndoState();
-        }
-
-        public void updateRedoState() {
-            if (getCahierCourant() != null && getCahierCourant().getUndoManager() != null && getCahierCourant().getUndoManager().canRedo()) {
-                setEnabled(true);
-                putValue(Action.NAME, "Rétablir");
-            } else {
-                setEnabled(false);
-                putValue(Action.NAME, "Rétablir");
-            }
-        }
-    }
-
-    public class CopyL extends AbstractAction {
-        public void actionPerformed(ActionEvent e) {
-            String selection = getCahierCourant().getSelectedText();
-            if (selection == null)
-                return;
-            StringSelection clipString = new StringSelection(selection);
-            clipbd.setContents(clipString, clipString);
-        }
-    }
-
-    public class CutL extends AbstractAction {
-        public void actionPerformed(ActionEvent e) {
-            String selection = getCahierCourant().getSelectedText();
-            if (selection == null)
-                return;
-            StringSelection clipString = new StringSelection(selection);
-            clipbd.setContents(clipString, clipString);
-            getCahierCourant().replaceSelection("");
-        }
-    }
-
-    public class PasteL extends AbstractAction {
-        public void actionPerformed(ActionEvent e) {
-            Transferable clipData = clipbd.getContents(Atelier.this);
-            try {
-                String clipString = (String) clipData.getTransferData(DataFlavor.stringFlavor);
-                getCahierCourant().replaceSelection(clipString);
-            } catch (Exception ex) {
-            }
-        }
-    }
-
-    public class OuvrirLivreAction extends AbstractAction {
-
-        private File info;
-
-        public OuvrirLivreAction(File info) {
-            super(info.getName());
-            this.info = info;
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            try {
-                synchronized (listHistorique) {
-                    listHistorique.remove(this);
-                }
-                ouvrirLivre(info);
-            } catch (Exception e1) {
-            }
-        }
-    }
-
-    /**
-     * Action pour changer le Look & Feel Swing.
-     */
-    public class LFAction extends AbstractAction {
-
-        private LookAndFeelInfo info;
-
-        public LFAction(LookAndFeelInfo info) {
-            super("Habillage " + info.getName());
-            this.info = info;
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            try {
-                UIManager.setLookAndFeel(info.getClassName());
-                SwingUtilities.updateComponentTreeUI(Atelier.this);
-                Preference.getIntance().setProperty(Preference.P_STYLE, UIManager.getLookAndFeel().getClass().getName());
-            } catch (Exception eX) {
-                eX.printStackTrace();
-            }
-        }
-    }
-
-    private class JMenuItemID extends JMenuItem {
-        String id;
-
-        public JMenuItemID(String texte, String pid) {
-            super(texte);
-            id = pid;
-        }
-
-        public String getID() {
-            return id;
-        }
-    }
-
 }
