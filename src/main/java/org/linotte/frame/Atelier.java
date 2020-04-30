@@ -43,7 +43,6 @@ import org.linotte.frame.moteur.ConsoleProcess;
 import org.linotte.frame.moteur.Debogueur;
 import org.linotte.frame.moteur.Formater;
 import org.linotte.frame.moteur.FrameProcess;
-import org.linotte.frame.outils.ArrowIcon;
 import org.linotte.frame.outils.Tools;
 import org.linotte.frame.projet.ExplorateurProjet;
 import org.linotte.greffons.GestionDesGreffons;
@@ -304,7 +303,7 @@ public class Atelier extends JFrame implements WindowListener {
     }
 
     public static String getTitre() {
-        return "Atelier de programmation " + ((linotte == null || linotte.getLangage() == null) ? "Linotte" : linotte.getLangage().getNom());
+        return "Atelier de programmation Linotte";
     }
 
     /**
@@ -2248,54 +2247,10 @@ public class Atelier extends JFrame implements WindowListener {
     }
 
     private JMenu createJMenuNonOpaque(String titre, final ImageIcon iconeClair, final ImageIcon icone) {
-        // http://java-swing-tips.blogspot.fr/2009/08/jmenubar-background-image.html
-        //
-
-        JMenu jMenu = new JMenu(titre) {
-
-            ArrowIcon iconRenderer = new ArrowIcon(SwingConstants.SOUTH, true);
-
-            @Override
-            protected void fireStateChanged() {
-                ButtonModel m = getModel();
-                if (m.isPressed() && m.isArmed()) {
-                    setIcon(iconeClair);
-                    setOpaque(true);
-                } else if (m.isSelected()) {
-                    setIcon(iconeClair);
-                    setOpaque(true);
-                } else if (isRolloverEnabled() && m.isRollover()) {
-                    setIcon(iconeClair);
-                } else {
-                    setIcon(icone);
-                    setOpaque(false);
-                }
-                super.fireStateChanged();
-            }
-
-            ;
-
-            @Override
-            public void updateUI() {
-                super.updateUI();
-                setOpaque(false); // Motif lnf
-            }
-
-            @Override
-            public void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                Dimension d = this.getPreferredSize();
-                int x = Math.max(0, d.width - iconRenderer.getIconWidth() - 3);
-                iconRenderer.paintIcon(this, g, x, 15);
-            }
-
-        };
-
-        jMenu.setIcon(icone);
+        JMenu jMenu = new JMenuAtelier(titre, iconeClair, icone);
         if ("Windows XP".equals(System.getProperty("os.name"))) {
             jMenu.setBackground(new Color(0, 0, 0, 0)); // XXX Windows XP lnf?
         }
-
         return jMenu;
     }
 
@@ -2315,4 +2270,5 @@ public class Atelier extends JFrame implements WindowListener {
         jMenuVerbier.addSeparator();
         creerJMenuCouleurs();
     }
+
 }
