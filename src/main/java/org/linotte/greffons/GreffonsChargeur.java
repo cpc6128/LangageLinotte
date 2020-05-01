@@ -38,9 +38,9 @@ public class GreffonsChargeur {
 
 			// Prendre en compte les .class dans les repertoires greffons
 			URL urls[] = {Ressources.getGreffons().toURI().toURL()};
-			for (URL url : urls) {
-				new File(url.toURI()).mkdirs();
-			}
+			//for (URL url : urls) {
+			//	new File(url.toURI()).mkdirs();
+			//}
 
 			fabriques.put("java", new JavaFactory(urls));
 
