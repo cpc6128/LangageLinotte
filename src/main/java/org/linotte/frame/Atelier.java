@@ -388,14 +388,7 @@ public class Atelier extends JFrame implements WindowListener {
         // Si premier lancement :
         if (!Preference.getIntance().isExiste()) {
             Preference.getIntance().setProperty(Preference.P_FICHIER + "_1",
-                    linotte.getLangage().getCheminExemple() + "/b_tutoriels/h_interfaces_utilisateur/Demonstration_IHM.liv");
-            // Preference.getIntance().setProperty(Preference.P_FICHIER +
-            // "_2",
-            // "exemples/tutoriels/j_expert/messagerie_instantanee.liv");
-            Preference.getIntance().setProperty(Preference.P_FICHIER + "_2",
-                    linotte.getLangage().getCheminExemple() + "/b_tutoriels/a_debutant/bienvenue.liv");
-            // Pour les autres langages de programmation :
-            Preference.getIntance().setProperty(Preference.P_FICHIER + "_3", linotte.getLangage().getCheminExemple() + "/a_debutant/bienvenue.liv");
+                    linotte.getLangage().getCheminExemple() + "/01_bonjour.liv");
 
         }
     }

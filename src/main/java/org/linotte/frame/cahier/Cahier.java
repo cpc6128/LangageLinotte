@@ -657,10 +657,16 @@ public class Cahier extends JPanel implements KeyListener, MouseListener {
 					atelier.setTitle(getFichier().getAbsolutePath() + " - " + Atelier.getTitre());
 				}
 				atelier.jButtonRanger.setEnabled(modifie);
+				if (modifie) {
+					atelier.jButtonRanger.setIcon(Ressources.getImageTheme("SAVE", 32, Color.RED));
+				} else {
+					atelier.jButtonRanger.setIcon(Ressources.getImageTheme("SAVE", 32));
+				}
+
 				atelier.getJButtonTester().setVisible(tests);
 				atelier.undoAction.updateUndoState();
 				atelier.redoAction.updateRedoState();
-				if (!visualiserTimbre) { 
+				if (!visualiserTimbre) {
 					atelier.refreshSommaireLocation();
 					atelier.getJButtonTimbre().setVisible(false);
 					atelier.refreshBoutonTimbre(Cahier.this);
@@ -702,6 +708,11 @@ public class Cahier extends JPanel implements KeyListener, MouseListener {
 
 	public void setEtatCahier(EtatCachier etat) {
 		atelier.jButtonRanger.setEnabled(etat == EtatCachier.MODIFIE);
+		if (etat == EtatCachier.MODIFIE) {
+			atelier.jButtonRanger.setIcon(Ressources.getImageTheme("SAVE", 32, Color.RED));
+		} else {
+			atelier.jButtonRanger.setIcon(Ressources.getImageTheme("SAVE", 32));
+		}
 		copieLivreDepuisTimbres = null;
 		etatCahier = etat;
 		onglet.setTitre();

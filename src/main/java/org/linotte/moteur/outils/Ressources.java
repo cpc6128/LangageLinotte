@@ -125,6 +125,10 @@ public class Ressources implements RessourceManager {
     }
 
     public static FontIcon getImageTheme(String pnom, int taille) {
+        return getImageTheme(pnom, taille, Color.GRAY.darker());
+    }
+
+    public static FontIcon getImageTheme(String pnom, int taille, Color couleur) {
         String nom = "AFTER_EFFECTS";
         switch (pnom) {
             case "PLAY":
@@ -189,7 +193,7 @@ public class Ressources implements RessourceManager {
                 break;
         }
         FontIcon icon = FontIcon.of(Runestroicons.valueOf(nom));
-        icon.setIconColor(Color.GRAY.darker());
+        icon.setIconColor(couleur);
         icon.setIconSize(taille);
         return icon;
     }
