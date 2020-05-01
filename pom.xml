@@ -14,7 +14,7 @@
         <maven.compiler.target>9</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <timestamp>${maven.build.timestamp}</timestamp>
-        <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+        <maven.build.timestamp.format>yyyy-MM-dd-HH-mm</maven.build.timestamp.format>
     </properties>
 
 
@@ -104,13 +104,11 @@
 
     <build>
 
-        <finalName>linotte</finalName>
+        <finalName>Atelier</finalName>
 
         <plugins>
-
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.1.0</version>
                 <executions>
                     <execution>
                         <id>copy-exemples</id>
@@ -164,7 +162,6 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <executions>
                     <execution>
@@ -182,9 +179,7 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
-
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -195,6 +190,5 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-
     </build>
 </project>
