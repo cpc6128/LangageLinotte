@@ -53,7 +53,7 @@ public class JPanelPlancheATimbre extends JPanel implements MouseMotionListener,
 	public Cahier cahier;
 
 	private Font font = new Font(Abaque.FONT, Font.PLAIN, Abaque.FONT_SIZE);
-	private double scale = 0.85;
+	private double scale = 1;
 
 	public JPanelPlancheATimbre(Cahier cahier) {
 		addMouseMotionListener(this);

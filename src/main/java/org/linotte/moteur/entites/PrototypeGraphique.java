@@ -216,7 +216,8 @@ public class PrototypeGraphique extends org.linotte.moteur.entites.Prototype imp
 
 	/**
 	 * Affecte un nom au cache niveau 1
-	 * @param o
+	 *
+	 * @param nom_Object
 	 */
 	public void setNomObject(String nom_Object) {
 		this.nomObject = nom_Object;
@@ -361,6 +362,8 @@ public class PrototypeGraphique extends org.linotte.moteur.entites.Prototype imp
 		espece.greffon = creationGreffon(greffon);
 		espece.slots = slots;
 		espece.slotsGreffon = slotsGreffon;
+		// on reecrase les methodes internes :
+		espece.initPrototypeGraphique();
 		espece.contratsPrototype = contratsPrototype;
 		espece.copierAttributs(this);
 		toile.getPanelLaToile().addActeursAAfficher(espece, true);

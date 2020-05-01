@@ -52,6 +52,7 @@ public final class AKRuntime {
 		} finally {
 			job.stop();
 			runtimeContext.closeRuntime(this);
+			AKPatrol.runtimes.remove(this);
 			if (akException != null) {
 				throw akException;
 			}

@@ -298,10 +298,6 @@ public class Acteur {
 		this.acteurSystem = acteur_system;
 	}
 
-	public boolean equalsActeur(Acteur param) {
-		return true;
-	}
-
 	public boolean isEspeceGraphique() {
 		return false;
 	}

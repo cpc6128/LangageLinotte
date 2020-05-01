@@ -276,15 +276,6 @@ public class Prototype extends Acteur {
 	}
 
 	@Override
-	public boolean equalsActeur(Acteur param1) {
-		Prototype espece = (Prototype) param1;
-		Map<String, Acteur> m = espece.valeurs;
-		if (m.size() != valeurs.size())
-			return false;
-		return m.keySet().equals(valeurs.keySet());
-	}
-
-	@Override
 	public boolean isEspeceGraphique() {
 		return false;
 	}
