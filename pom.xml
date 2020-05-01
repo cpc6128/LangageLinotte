@@ -172,6 +172,7 @@
                         </goals>
                         <configuration>
                             <appendAssemblyId>false</appendAssemblyId>
+                            <finalName>Linotte_${project.version}-${timestamp}</finalName>
                             <descriptors>
                                 <descriptor>src/main/assembly/distribution.xml</descriptor>
                             </descriptors>
