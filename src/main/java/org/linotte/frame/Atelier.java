@@ -80,6 +80,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
@@ -224,7 +225,7 @@ public class Atelier extends JFrame implements WindowListener {
         FlatIntelliJLaf.install();
     }
 
-    private static void initialisationFrameAtelierEtToile() {
+    private static void initialisationFrameAtelierEtToile() throws InvocationTargetException, InterruptedException {
         Preference preference = Preference.getIntance();
         // Avant chargement de la fenetre :
         boolean auto = false;
@@ -283,9 +284,10 @@ public class Atelier extends JFrame implements WindowListener {
         }
         toile.setVisible(latoile);
 
-
-        atelier.pack();
-        atelier.setVisible(true);
+        SwingUtilities.invokeAndWait(() -> {
+            atelier.pack();
+            atelier.setVisible(true);
+        });
 
         // Pour l'audit :
         linotte.getLibrairie().setToile(toile);

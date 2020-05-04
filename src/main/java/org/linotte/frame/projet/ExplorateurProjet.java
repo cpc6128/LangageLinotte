@@ -23,11 +23,8 @@ import org.jdesktop.swingx.JXTaskPane;
 import org.jdesktop.swingx.JXTaskPaneContainer;
 import org.jdesktop.swingx.JXTitledPanel;
 import org.jdesktop.swingx.border.DropShadowBorder;
-import org.jdesktop.swingx.plaf.basic.BasicTaskPaneUI;
-import org.jdesktop.swingx.plaf.windows.WindowsTaskPaneUI;
 import org.linotte.frame.Atelier;
 import org.linotte.frame.gui.RequestFocusListener;
-import org.linotte.frame.gui.WindowsMetroTaskPaneUI;
 import org.linotte.frame.latoile.Java6;
 import org.linotte.frame.projet.NavigateurFichier.FileTreeNode;
 import org.linotte.moteur.outils.Ressources;
@@ -392,12 +389,12 @@ public class ExplorateurProjet extends JPanel {
     }
 
     private void changeTaskPaneUI(JXTaskPane task) {
-        if (metroStyle && task.getUI() instanceof WindowsTaskPaneUI) {
+        /*if (metroStyle && task.getUI() instanceof WindowsTaskPaneUI) {
             BasicTaskPaneUI ui = new WindowsMetroTaskPaneUI();
             task.setUI(ui);
             task.setSpecial(true);
             ((JComponent) task.getContentPane()).setBorder(BorderFactory.createEmptyBorder(8, 2, 5, 2));
-        }
+        }*/
     }
 
 
