@@ -20,8 +20,6 @@
 
 package org.linotte.moteur.xml.actions;
 
-import java.math.BigDecimal;
-
 import org.linotte.moteur.entites.Acteur;
 import org.linotte.moteur.entites.Livre;
 import org.linotte.moteur.entites.Paragraphe;
@@ -39,6 +37,8 @@ import org.linotte.moteur.xml.analyse.Mathematiques;
 import org.linotte.moteur.xml.api.IHM;
 import org.linotte.moteur.xml.appels.CalqueParagraphe;
 import org.linotte.moteur.xml.appels.Fonction;
+
+import java.math.BigDecimal;
 
 public class ParagrapheAction extends Action {
 
@@ -58,10 +58,7 @@ public class ParagrapheAction extends Action {
 		runtimeContext.paragrapheExecute++;
 
 		Livre livre = jobContext.getLivre();
-		String clef = "§";
-		if (valeurs.length != 0)
-			//throw new ErreurException(Constantes.IMPOSSIBLE_LIRE_LIVRE);
-			/*String*/clef = valeurs[0].toString();
+		String clef = valeurs[0].toString();
 
 		//VERSION2.2, on ne clone plus le paragraphe
 		CalqueParagraphe calqueParagraphe = new CalqueParagraphe(job.getCurrentProcessus().getPosition(), clef);

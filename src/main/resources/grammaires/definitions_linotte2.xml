@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<grammaire compatible="Meta-Linotte 0.2" version="2.7.0" langue="français" auteur="Ronan Mounès" creation="février 2006" modification="Octobre 2015" >
+<grammaire compatible="Meta-Linotte 0.2" version="2.8.0" langue="français" auteur="Ronan Mounès" creation="février 2006"
+		   modification="Octobre 2015">
 	<!-- Version release date : September 01, 2006                           -->
 	<!-- Author : Mounès Ronan ronan.mounes@amstrad.eu                       -->
 	<!--                                                                     -->
@@ -764,7 +765,6 @@
 			<aide present="" imperatif="tourne à gauche ? de ?" aide="Rotation à gauche d'un acteur graphique de n degrés" >Tourner à gauche</aide>
 			<aide present="" imperatif="tourne à droite ? de ?" aide="Rotation à droite d'un acteur graphique de n degrés" >Tourner à droite</aide>
 			<aide present="" imperatif="modifie ? par ? dans ? de ?" aide="Modifier les propriétés d'un greffon graphique" >Modifier</aide>
-			<aide present="" imperatif="lis" aide="Ouverture d'un bloc" >Lire</aide>
 			<aide present="" imperatif="ferme" aide="Fermeture un bloc" >Fermer</aide>
 			<aide present="" imperatif="débogue" aide="Lance le débogueur" >Déboguer</aide>
 			<aide present="" imperatif="ferme ?" aide="Fermer un tube (greffon)" >Fermer (tube)</aide>
@@ -776,7 +776,6 @@
 			<aide present="" imperatif="décharge ? depuis ? avec ?" aide="Décharger un tube avec des paramètres (greffon)" >Décharger avec (tube)</aide>
 			<aide present="" imperatif="fais réagir ? à ? pour ?" aide="Ajoute un évènement à une espèce graphique" >Faire réagir</aide>
 			<aide present="" imperatif="ne fais plus réagir ? à ?" aide="Supprime un évènement à une espèce graphique" >Ne plus faire réagir</aide>
-			<aide present="" imperatif="peins ?" aide="Peindre une scène IDIL sur la toile" >Peindre</aide>
 			<aide present="" imperatif="attache ?" aide="Attache une nouvelle caractèristique ou fonction à une espèce" >Attacher</aide>
 			<aide present="" imperatif="évoque ?" aide="Execution une fonction sans prendre en compte le résultat" >Evoquer</aide>
 			<aide present="" imperatif="incrémente ?" aide="Ajouter un à un nombre" >Incrémenter</aide>
@@ -792,11 +791,7 @@
 			<aide icone="oui" present="" imperatif="Essaie lis:ligne::tab:ferme" aide="Insérer dans le cahier le squelette d'une bloc de gestion d'erreurs" >-Gestion d'erreurs</aide>
 			<condition texte="Si ? > ?" >Plus grand que</condition>
 			<condition texte="Si ? &lt; ?" >Plus petit que</condition>
-			<condition texte="Si ? est en collision avec ?" >En collision avec</condition>
-			<condition texte="Si ? est vide" >Vide</condition>
-			<condition texte="Si ? est non vide" >Non vide</condition>
 			<condition texte="Si ? = ?" >Égal à</condition>
-			<condition texte="Si ? est (vrai/faux)" >Est (vrai/faux)</condition>
 			<condition texte="Si ? != ?" >Différent de</condition>
 			<condition texte="Si ? contient ?" >Contient</condition>
 			<condition texte="Si ? >= ?" >Plus grand ou égal à</condition>

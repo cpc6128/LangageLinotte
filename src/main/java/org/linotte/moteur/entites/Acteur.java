@@ -314,6 +314,7 @@ public class Acteur {
 	 */
 	public boolean ajouterSlot(String nom, Processus processus) {
 		initPrototype();
+		initPrototype(getRole());
 		return slots.put(nom, processus) == null;
 	}
 
@@ -328,7 +329,6 @@ public class Acteur {
 	}
 
 	/**
-	 * @param nom
 	 * @return
 	 */
 	public Set<String> retourneSlotsGreffons() {
@@ -339,6 +339,7 @@ public class Acteur {
 
 	public Set<String> retourneSlotsLinotte() {
 		initPrototype();
+		initPrototype(getRole());
 		return slots.keySet();
 	}
 
@@ -350,6 +351,7 @@ public class Acteur {
 	 */
 	public boolean ajouterSlotGreffon(String nom, AKMethod processus) {
 		initPrototype();
+		initPrototype(getRole());
 		return slotsGreffon.put(nom, processus) == null;
 	}
 
@@ -359,6 +361,7 @@ public class Acteur {
 	 */
 	public AKMethod retourneSlotGreffon(String nom) {
 		initPrototype();
+		initPrototype(getRole());
 		return (AKMethod) slotsGreffon.get(nom);
 	}
 
