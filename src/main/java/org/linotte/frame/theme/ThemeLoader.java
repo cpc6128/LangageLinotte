@@ -30,10 +30,10 @@ import java.io.InputStream;
 
 public interface ThemeLoader {
 
-	public InputStream getInputStream();
+    InputStream getInputStream();
 
-	public String getID();
+    String getID();
 
-	public String getNom();
+    String getNom();
 
 }

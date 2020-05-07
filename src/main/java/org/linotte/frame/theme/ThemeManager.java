@@ -28,112 +28,75 @@
 
 package org.linotte.frame.theme;
 
-import java.io.File;
+import org.linotte.moteur.outils.Preference;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-import org.linotte.frame.latoile.Toile;
-import org.linotte.moteur.outils.Preference;
-
 public class ThemeManager {
 
-	public static final String THEME_PREFERENCE = "THEME_ICON";
+    public static final String THEME_PREFERENCE = "THEME_ICON";
 
-	private static final String REPERTOIRE_THEME = "themes";
+    private static List<ThemeLoader> theme = new ArrayList<ThemeLoader>();
+    private static ThemeManager instance = null;
+    private Theme currentTheme = null;
 
-	private static List<ThemeLoader> theme = new ArrayList<ThemeLoader>();
+    /**
+     * @throws Exception
+     */
+    private ThemeManager() {
+        try {
+            theme.add(new ThemeLoaderFromJar("themes/Extra-Elementary.zip"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Ne rien faire
+        }
+    }
 
-	private Theme currentTheme = null;
+    private static synchronized ThemeManager getInstance() {
+        if (instance == null) {
+            instance = new ThemeManager();
+            try {
+                instance.chargerTheme();
+            } catch (Exception e) {
+                // Le thème ne veut pas se charger, on va prendre celui par défaut
+                e.printStackTrace();
+                Preference.getIntance().setProperty(THEME_PREFERENCE, "");
+                try {
+                    instance.chargerTheme();
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
+        return instance;
+    }
 
-	private static ThemeManager instance = null;
+    /**
+     * @return Returns the current.
+     */
+    public static Theme getCurrent() {
+        return getInstance().currentTheme;
+    }
 
-	/**
-	 * @throws Exception 
-	 *  
-	 */
-	private ThemeManager() {
-		try {
-			theme.add(new ThemeLoaderFromJar("themes/Extra-Elementary.zip"));
-		} catch (Exception e) {
-			e.printStackTrace();
-			// Ne rien faire
-		}
-		try {
-			if (!Toile.isApplet())
-				theme.addAll(getFilesFromDir());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+    private void chargerTheme() throws Exception {
+        ThemeLoader tl = null;
+        // Recherche du th�me dans le fichier de configuration :
+        String key = Preference.getIntance().getProperty(THEME_PREFERENCE);
+        // Si on ne trouve pas le th�me :
+        tl = theme.get(0);
+        Iterator i = theme.iterator();
+        while (i.hasNext()) {
+            ThemeLoader temp = (ThemeLoader) i.next();
+            if (temp.getID().equals(key))
+                tl = temp;
+        }
 
-	private void chargerTheme() throws Exception {
-		ThemeLoader tl = null;
-		// Recherche du th�me dans le fichier de configuration :
-		String key = Preference.getIntance().getProperty(THEME_PREFERENCE);
-		// Si on ne trouve pas le th�me :
-		tl = theme.get(0);
-		Iterator i = theme.iterator();
-		while (i.hasNext()) {
-			ThemeLoader temp = (ThemeLoader) i.next();
-			if (temp.getID().equals(key))
-				tl = temp;
-		}
-
-		// Chargement :
-		currentTheme = new Theme(tl.getInputStream());
-		Preference.getIntance().setProperty(THEME_PREFERENCE, tl.getID());
-		return;
-	}
-
-	private static synchronized ThemeManager getInstance() {
-		if (instance == null) {
-			instance = new ThemeManager();
-			try {
-				instance.chargerTheme();
-			} catch (Exception e) {
-				// Le thème ne veut pas se charger, on va prendre celui par défaut
-				e.printStackTrace();
-				Preference.getIntance().setProperty(THEME_PREFERENCE, "");
-				try {
-					instance.chargerTheme();
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-			}
-		}
-		return instance;
-	}
-
-	/**
-	 * @return Returns the current.
-	 */
-	public static Theme getCurrent() {
-		return getInstance().currentTheme;
-	}
-
-	public static Iterable<ThemeLoader> getThemesLoader() {
-		return theme;
-	}
-
-	private List<ThemeLoader> getFilesFromDir() {
-		List<ThemeLoader> retour = new ArrayList<ThemeLoader>();
-		try {
-			new File(Preference.getIntance().getHome() + File.separator + Preference.REPERTOIRE).mkdirs();
-			File dir = new File(Preference.getIntance().getHome() + File.separator + Preference.REPERTOIRE + File.separator + REPERTOIRE_THEME);
-			dir.mkdirs();
-			Iterator temp = Arrays.asList(dir.listFiles()).iterator();
-
-			while (temp.hasNext()) {
-				File f = (File) temp.next();
-				if (f.isFile())
-					retour.add(new ThemeLoaderFromFile(f));
-			}
-		} catch (Exception e) {
-			//e.printStackTrace();
-		}
-		return retour;
-	}
+        // Chargement :
+        currentTheme = new Theme(tl.getInputStream());
+        Preference.getIntance().setProperty(THEME_PREFERENCE, tl.getID());
+        return;
+    }
 
 }

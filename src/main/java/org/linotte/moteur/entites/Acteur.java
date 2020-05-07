@@ -426,7 +426,7 @@ public class Acteur {
 				ajouterSlotGreffon(new MethodeInterne() {
 
 					@Override
-					public ObjetLinotte appeler(Greffon greffon, ObjetLinotte... parametres) throws Exception {
+					public ObjetLinotte appeler(Acteur moi, Greffon greffon, ObjetLinotte... parametres) throws Exception {
 						try {
 							if (parametres.length != 0)
 								throw new ErreurException(Constantes.PROTOTYPE_METHODE_FONCTIONNELLE_PARAMETRE, nom());
