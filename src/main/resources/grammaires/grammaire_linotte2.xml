@@ -1048,9 +1048,9 @@
 											<!-- ***************** -->
 											<groupe nom="boucle" discriminant="essaie"><!-- 2.7.7 marche pas -->
 												<choix>
-													<ligne tab="1">
+													<ligne tab="2">
 														<token obligatoire="oui" annotation="tant">essaie</token>
-														<etat souffleur="non" nom="essayer" hack_bloc="oui" />
+														<etat souffleur="non" nom="essayer" hack_bloc="oui"/>
 														<sousparagraphe etat="ouverture"/>
 														<etat nom="§ début"/>
 													</ligne>
@@ -1059,7 +1059,7 @@
 											<groupe nom="boucle" discriminant="essaie">
 												<choix>
 													<p:build>
-														<ligne tab="1">
+														<ligne tab="2">
 															<token obligatoire="oui" annotation="tant">essaie</token>
 															<etat souffleur="non" nom="essayer"/>
 															<p:copynode target="node_base"/>
@@ -1073,10 +1073,12 @@
 											<groupe nom="boucle_de" discriminant="à">
 												<choix>
 													<p:build>
-														<ligne tab="1">
+														<ligne tab="2">
 															<token obligatoire="oui">de</token>
 															<acteur type="jusquautoken" obligatoire="oui">à</acteur>
-															<acteur type="jusquautoken" obligatoire="oui" hack_analyse="suppressionvirgule">,</acteur>
+															<acteur type="jusquautoken" obligatoire="oui"
+																	hack_analyse="suppressionvirgule">,
+															</acteur>
 															<etat souffleur="non" nom="boucle"/>
 															<p:copynode target="node_base"/>
 														</ligne>
@@ -1085,11 +1087,11 @@
 											</groupe>
 											<groupe nom="boucle_de" discriminant="à"><!-- 2.7.7 -->
 												<choix>
-													<ligne tab="1">
+													<ligne tab="2">
 														<token obligatoire="oui">de</token>
 														<acteur type="jusquautoken" obligatoire="oui">à</acteur>
-														<acteur type="resteligne" obligatoire="oui" />
-														<etat souffleur="non" nom="boucle" hack_bloc="oui" />
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat souffleur="non" nom="boucle" hack_bloc="oui"/>
 														<sousparagraphe etat="ouverture"/>
 														<etat nom="§ début"/>
 													</ligne>
@@ -1098,12 +1100,15 @@
 											<groupe nom="boucle_suite" discriminant="pour">
 												<choix>
 													<p:build>
-														<ligne tab="1">
+														<ligne tab="2">
 															<token obligatoire="oui">pour</token>
 															<acteur type="jusquautoken" obligatoire="oui">de</acteur>
 															<acteur type="jusquautoken" obligatoire="oui">à</acteur>
-															<acteur type="jusquautoken" obligatoire="oui">suivant</acteur>
-															<acteur type="jusquautoken" obligatoire="oui" hack_analyse="suppressionvirgule">,</acteur>
+															<acteur type="jusquautoken" obligatoire="oui">suivant
+															</acteur>
+															<acteur type="jusquautoken" obligatoire="oui"
+																	hack_analyse="suppressionvirgule">,
+															</acteur>
 															<etat souffleur="non" nom="boucle"/>
 															<p:copynode target="node_base"/>
 														</ligne>
@@ -1112,13 +1117,13 @@
 											</groupe>
 											<groupe nom="boucle_suite" discriminant="pour"><!-- 2.7.7 -->
 												<choix>
-													<ligne tab="1">
+													<ligne tab="2">
 														<token obligatoire="oui">pour</token>
 														<acteur type="jusquautoken" obligatoire="oui">de</acteur>
 														<acteur type="jusquautoken" obligatoire="oui">à</acteur>
 														<acteur type="jusquautoken" obligatoire="oui">suivant</acteur>
-														<acteur type="resteligne" obligatoire="oui" />
-														<etat souffleur="non" nom="boucle" hack_bloc="oui" />
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat souffleur="non" nom="boucle" hack_bloc="oui"/>
 														<sousparagraphe etat="ouverture"/>
 														<etat nom="§ début"/>
 													</ligne>
@@ -1127,11 +1132,13 @@
 											<groupe nom="boucle_for" discriminant="pour">
 												<choix>
 													<p:build>
-														<ligne tab="1">
+														<ligne tab="2">
 															<token obligatoire="oui">pour</token>
 															<acteur type="jusquautoken" obligatoire="oui">de</acteur>
 															<acteur type="jusquautoken" obligatoire="oui">à</acteur>
-															<acteur type="jusquautoken" obligatoire="oui" hack_analyse="suppressionvirgule">,</acteur>
+															<acteur type="jusquautoken" obligatoire="oui"
+																	hack_analyse="suppressionvirgule">,
+															</acteur>
 															<etat souffleur="non" nom="boucle"/>
 															<p:copynode target="node_base"/>
 														</ligne>
@@ -1140,12 +1147,12 @@
 											</groupe>
 											<groupe nom="boucle_for" discriminant="pour"><!-- 2.7.7 -->
 												<choix>
-													<ligne tab="1">
+													<ligne tab="2">
 														<token obligatoire="oui">pour</token>
 														<acteur type="jusquautoken" obligatoire="oui">de</acteur>
 														<acteur type="jusquautoken" obligatoire="oui">à</acteur>
-														<acteur type="resteligne" obligatoire="oui" />
-														<etat souffleur="non" nom="boucle" hack_bloc="oui" />
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat souffleur="non" nom="boucle" hack_bloc="oui"/>
 														<sousparagraphe etat="ouverture"/>
 														<etat nom="§ début"/>
 													</ligne>
@@ -1154,10 +1161,12 @@
 											<groupe nom="boucle" discriminant="pour">
 												<choix>
 													<p:build>
-														<ligne tab="1">
+														<ligne tab="2">
 															<token obligatoire="oui" annotation="joker">pour</token>
 															<token obligatoire="non">chaque</token>
-															<acteur type="jusquautoken" obligatoire="oui" hack_analyse="suppressionvirgule">,</acteur>
+															<acteur type="jusquautoken" obligatoire="oui"
+																	hack_analyse="suppressionvirgule">,
+															</acteur>
 															<etat souffleur="non" nom="boucle"/>
 															<p:copynode target="node_base"/>
 														</ligne>
@@ -1166,11 +1175,11 @@
 											</groupe>
 											<groupe nom="boucle" discriminant="pour"><!-- 2.7.7 -->
 												<choix>
-													<ligne tab="1">
+													<ligne tab="2">
 														<token obligatoire="oui" annotation="joker">pour</token>
 														<token obligatoire="non">chaque</token>
-														<acteur type="resteligne" obligatoire="oui" />
-														<etat souffleur="non" nom="boucle" hack_bloc="oui"  />
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat souffleur="non" nom="boucle" hack_bloc="oui"/>
 														<sousparagraphe etat="ouverture"/>
 														<etat nom="§ début"/>
 													</ligne>
@@ -1184,14 +1193,16 @@
 											<groupe nom="test" discriminant="collision">
 												<choix>
 													<p:build>
-														<ligne tab="1">
+														<ligne tab="2">
 															<token obligatoire="oui" annotation="tant">tant</token>
 															<token obligatoire="oui">que</token>
 															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
 															<token obligatoire="oui">en</token>
 															<token obligatoire="oui">collision</token>
 															<token obligatoire="oui">avec</token>
-															<acteur type="jusquautoken" obligatoire="oui" hack_analyse="suppressionvirgule">,</acteur>
+															<acteur type="jusquautoken" obligatoire="oui"
+																	hack_analyse="suppressionvirgule">,
+															</acteur>
 															<etat nom="boucle" param="collision"/>
 															<p:copynode target="node_base"/>
 														</ligne>
@@ -1202,12 +1213,14 @@
 											<groupe nom="test" discriminant="vide">
 												<choix>
 													<p:build>
-														<ligne tab="1">
+														<ligne tab="2">
 															<token obligatoire="oui" annotation="tant">tant</token>
 															<token obligatoire="oui">que</token>
 															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
 															<token obligatoire="oui">vide</token>
-															<token obligatoire="oui" hack_analyse="suppressionvirgule">,</token>
+															<token obligatoire="oui" hack_analyse="suppressionvirgule">
+																,
+															</token>
 															<etat nom="boucle" param="si vide"/>
 															<p:copynode target="node_base"/>
 														</ligne>
@@ -1218,13 +1231,15 @@
 											<groupe nom="test" discriminant="vide" discriminant2="non">
 												<choix>
 													<p:build>
-														<ligne tab="1">
+														<ligne tab="2">
 															<token obligatoire="oui" annotation="tant">tant</token>
 															<token obligatoire="oui">que</token>
 															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
 															<token obligatoire="oui">non</token>
 															<token obligatoire="oui">vide</token>
-															<token obligatoire="oui" hack_analyse="suppressionvirgule">,</token>
+															<token obligatoire="oui" hack_analyse="suppressionvirgule">
+																,
+															</token>
 															<etat nom="boucle" param="si non vide"/>
 															<p:copynode target="node_base"/>
 														</ligne>
@@ -1236,11 +1251,14 @@
 											<groupe nom="test" discriminant="contient">
 												<choix>
 													<p:build>
-														<ligne tab="1">
+														<ligne tab="2">
 															<token obligatoire="oui" annotation="tant">tant</token>
 															<token obligatoire="oui">que</token>
-															<acteur type="jusquautoken" obligatoire="oui">contient</acteur>
-															<acteur type="jusquautoken" obligatoire="oui" hack_analyse="suppressionvirgule">,</acteur>
+															<acteur type="jusquautoken" obligatoire="oui">contient
+															</acteur>
+															<acteur type="jusquautoken" obligatoire="oui"
+																	hack_analyse="suppressionvirgule">,
+															</acteur>
 															<etat nom="boucle" param="contient"/>
 															<p:copynode target="node_base"/>
 														</ligne>
@@ -1253,11 +1271,13 @@
 											<groupe nom="test" discriminant="est" discriminant2="tant">
 												<choix>
 													<p:build>
-														<ligne tab="1">
+														<ligne tab="2">
 															<token obligatoire="oui" annotation="tant">tant</token>
 															<token obligatoire="oui">que</token>
 															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
-															<acteur type="jusquautoken" obligatoire="oui" hack_analyse="suppressionvirgule">,</acteur>
+															<acteur type="jusquautoken" obligatoire="oui"
+																	hack_analyse="suppressionvirgule">,
+															</acteur>
 															<etat nom="boucle" param="est égal à"/>
 															<p:copynode target="node_base"/>
 														</ligne>
@@ -1267,10 +1287,12 @@
 											<groupe nom="test" discriminant="tant">
 												<choix>
 													<p:build>
-														<ligne tab="1">
+														<ligne tab="2">
 															<token obligatoire="oui" annotation="tant">tant</token>
 															<token obligatoire="oui">que</token>
-															<acteur type="jusquautoken" obligatoire="oui" hack_analyse="suppressionvirgule">,</acteur>
+															<acteur type="jusquautoken" obligatoire="oui"
+																	hack_analyse="suppressionvirgule">,
+															</acteur>
 															<etat nom="boucle" param="est égal à vrai"/>
 															<p:copynode target="node_base"/>
 														</ligne>
@@ -1279,11 +1301,11 @@
 											</groupe>
 											<groupe nom="test" discriminant="tant"><!-- 2.7.7 -->
 												<choix>
-													<ligne tab="1">
+													<ligne tab="2">
 														<token obligatoire="oui" annotation="tant">tant</token>
 														<token obligatoire="oui">que</token>
-														<acteur type="resteligne" obligatoire="oui" />
-														<etat nom="boucle" param="est égal à vrai" hack_bloc="oui"  />
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="boucle" param="est égal à vrai" hack_bloc="oui"/>
 														<sousparagraphe etat="ouverture"/>
 														<etat nom="§ début"/>
 													</ligne>
@@ -1296,9 +1318,11 @@
 											<groupe nom="test" discriminant="si">
 												<choix>
 													<p:build>
-														<ligne tab="1">
+														<ligne tab="2">
 															<token obligatoire="oui">si</token>
-															<acteur type="jusquautoken" obligatoire="oui" hack_analyse="suppressionvirgule" >,</acteur>
+															<acteur type="jusquautoken" obligatoire="oui"
+																	hack_analyse="suppressionvirgule">,
+															</acteur>
 															<etat nom="condition" param="est égal à vrai"/>
 															<p:copynode target="node_base"/>
 														</ligne>
@@ -1307,10 +1331,10 @@
 											</groupe>
 											<groupe nom="test" discriminant="si"><!-- 2.7.7 -->
 												<choix>
-													<ligne tab="1">
+													<ligne tab="2">
 														<token obligatoire="oui">si</token>
 														<acteur type="resteligne" obligatoire="oui"/>
-														<etat nom="condition" param="est égal à vrai" hack_bloc="oui" />
+														<etat nom="condition" param="est égal à vrai" hack_bloc="oui"/>
 														<sousparagraphe etat="ouverture"/>
 														<etat nom="§ début"/>
 													</ligne>
@@ -1322,10 +1346,12 @@
 											<groupe nom="test" discriminant="sinon" >
 												<choix>
 													<p:build>
-														<ligne tab="1">
+														<ligne tab="2">
 															<token obligatoire="oui">sinon</token>
 															<token obligatoire="oui">si</token>
-															<acteur type="jusquautoken" obligatoire="oui" hack_analyse="suppressionvirgule">,</acteur>
+															<acteur type="jusquautoken" obligatoire="oui"
+																	hack_analyse="suppressionvirgule">,
+															</acteur>
 															<etat nom="sinon" param="est égal à vrai"/>
 															<p:copynode target="node_base"/>
 														</ligne>
@@ -1334,11 +1360,11 @@
 											</groupe>
 											<groupe nom="test" discriminant="sinon" ><!-- 2.7.7 -->
 												<choix>
-													<ligne tab="1">
+													<ligne tab="2">
 														<token obligatoire="oui">sinon</token>
 														<token obligatoire="oui">si</token>
-														<acteur type="resteligne" obligatoire="oui" />
-														<etat nom="sinon" param="est égal à vrai" hack_bloc="oui" />
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="sinon" param="est égal à vrai" hack_bloc="oui"/>
 														<sousparagraphe etat="ouverture"/>
 														<etat nom="§ début"/>
 													</ligne>
@@ -1348,8 +1374,9 @@
 											<groupe nom="test" discriminant="sinon">
 												<choix>
 													<p:build>
-														<ligne tab="1">
-															<token obligatoire="oui" annotation="sinon_simple">sinon</token>
+														<ligne tab="2">
+															<token obligatoire="oui" annotation="sinon_simple">sinon
+															</token>
 															<etat nom="sinon" param="est égal à"/>
 															<p:copynode target="node_base"/>
 														</ligne>
@@ -1359,9 +1386,9 @@
 											<!-- sinon, action -->
 											<groupe nom="test" discriminant="sinon"><!-- 2.7.7 -->
 												<choix>
-													<ligne tab="1">
+													<ligne tab="2">
 														<token obligatoire="oui" annotation="sinon_simple">sinon</token>
-														<etat nom="sinon" param="est égal à" hack_bloc="oui" />
+														<etat nom="sinon" param="est égal à" hack_bloc="oui"/>
 														<sousparagraphe etat="ouverture"/>
 														<etat nom="§ début"/>
 													</ligne>
@@ -1374,16 +1401,16 @@
 											<!-- Afficher -->
 											<groupe nom="Afficher" discriminant="_">
 												<choix>
-													 <ligne tab="1" id="node_base">
-													 	<token obligatoire="oui" annotation="brute" >_</token>
-														<valeur type="resteligne" obligatoire="oui" style="tests" />
-														<etat nom="verbe afficher" />
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui" annotation="brute">_</token>
+														<valeur type="resteligne" obligatoire="oui" style="tests"/>
+														<etat nom="verbe afficher"/>
 													</ligne>
 												</choix>
 											</groupe>																			
 											<groupe nom="afficher" discriminant="!">
 												<choix>
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<acteur type="jusquautoken" obligatoire="oui">!</acteur>
 														<etat nom="verbe afficher"/>
 													</ligne>
@@ -1391,7 +1418,7 @@
 											</groupe>
 											<groupe nom="afficher" discriminant="affiche">
 												<choix>
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">affiche</token>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="verbe afficher"/>
@@ -1401,7 +1428,7 @@
 											<groupe nom="demander" discriminant="demande">
 												<choix>
 
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">demande</token>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="verbe demander"/>
@@ -1412,7 +1439,7 @@
 											<groupe nom="questionner" discriminant="questionne">
 												<choix>
 
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">questionne</token>
 														<acteur type="jusquautoken" obligatoire="oui">sur</acteur>
 														<acteur type="resteligne" obligatoire="oui"/>
@@ -1424,7 +1451,7 @@
 											<groupe nom="vider les touches" discriminant="vide">
 												<choix>
 
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">vide</token>
 														<token obligatoire="non">les</token>
 														<token obligatoire="oui">touches</token>
@@ -1436,7 +1463,7 @@
 											<groupe nom="vider" discriminant="vide">
 												<choix>
 
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">vide</token>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="verbe vider"/>
@@ -1447,7 +1474,7 @@
 											<groupe nom="mélanger" discriminant="mélange">
 												<choix>
 
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">mélange</token>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="verbe mélanger"/>
@@ -1459,7 +1486,7 @@
 											<groupe nom="inverser" discriminant="inverse">
 												<choix>
 
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">inverse</token>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="verbe inverser"/>
@@ -1470,7 +1497,7 @@
 											<groupe nom="trier" discriminant="trie">
 												<choix>
 
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">trie</token>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="verbe trier"/>
@@ -1481,12 +1508,12 @@
 											<groupe nom="aller" discriminant="vers">
 												<choix>
 
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">va</token>
 														<token obligatoire="oui">vers</token>
-														
-														<valeur type="resteligne" obligatoire="oui" style="paragraphe" />
-														<etat nom="verbe aller" souffleur="non" />
+
+														<valeur type="resteligne" obligatoire="oui" style="paragraphe"/>
+														<etat nom="verbe aller" souffleur="non"/>
 													</ligne>
 												</choix>
 											</groupe>
@@ -1494,12 +1521,13 @@
 											<groupe nom="appeler" discriminant="appelle">
 												<choix>
 
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">appelle</token>
-														
+
 														<choix>
 															<groupe nom="valeur" obligatoire="non">
-																<valeur type="jusquautoken" style="paragraphe">avec</valeur>
+																<valeur type="jusquautoken" style="paragraphe">avec
+																</valeur>
 																<choix multiple="oui">
 																	<groupe nom="valeur" obligatoire="non">
 																		<acteur type="jusquautoken">,</acteur>
@@ -1516,11 +1544,11 @@
 											<!-- Verbe Observer -->
 											<groupe nom="observer" discriminant="observe">
 												<choix>
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">observe</token>
-														
+
 														<valeur type="resteligne" obligatoire="oui" style="paragraphe"/>
-														<etat nom="verbe observer" souffleur="non" />
+														<etat nom="verbe observer" souffleur="non"/>
 													</ligne>
 												</choix>
 											</groupe>
@@ -1528,11 +1556,11 @@
 											<groupe nom="parcourir de" discriminant="parcours">
 												<choix>
 
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">parcours</token>
-														
-														<valeur type="jusquautoken" obligatoire="oui" >de</valeur>
-														
+
+														<valeur type="jusquautoken" obligatoire="oui">de</valeur>
+
 														<choix>
 															<groupe nom="valeur" obligatoire="non">
 																<valeur type="jusquautoken">avec</valeur>
@@ -1553,12 +1581,13 @@
 											<groupe nom="parcourir" discriminant="parcours">
 												<choix>
 
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">parcours</token>
-														
+
 														<choix>
 															<groupe nom="valeur" obligatoire="non">
-																<valeur type="jusquautoken" style="paragraphe">avec</valeur>
+																<valeur type="jusquautoken" style="paragraphe">avec
+																</valeur>
 																<choix multiple="oui">
 																	<groupe nom="valeur" obligatoire="non">
 																		<acteur type="jusquautoken">,</acteur>
@@ -1576,7 +1605,7 @@
 											<groupe nom="copier" discriminant="copie">
 												<choix>
 
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">copie</token>
 														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
 														<acteur type="resteligne" obligatoire="oui"/>
@@ -1587,8 +1616,8 @@
 											<!-- Verbe convertir -->
 											<groupe nom="convertir" discriminant="convertis">
 												<choix>
-													
-													<ligne tab="1" id="node_base">
+
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">convertis</token>
 														<acteur type="jusquautoken" obligatoire="oui">en</acteur>
 														<acteur type="resteligne" obligatoire="oui"/>
@@ -1600,7 +1629,7 @@
 											<!-- Depuis 0.3.3.2 -->
 											<groupe nom="concaténer" discriminant="concatène">
 												<choix>
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">concatène</token>
 														<groupe nom="valeur2" obligatoire="oui">
 															<choix multiple="oui">
@@ -1609,7 +1638,8 @@
 																</groupe>
 															</choix>
 															<groupe nom="demo" obligatoire="oui">
-																<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
+																<acteur type="jusquautoken" obligatoire="oui">dans
+																</acteur>
 																<acteur type="resteligne" obligatoire="oui"/>
 															</groupe>
 														</groupe>
@@ -1622,8 +1652,8 @@
 											<!-- Depuis 0.3.1 -->
 											<groupe nom="chercher" discriminant="cherche">
 												<choix>
-													
-													<ligne tab="1" id="node_base">
+
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">cherche</token>
 														<acteur type="jusquautoken" obligatoire="oui">,</acteur>
 														<token obligatoire="non">la</token>
@@ -1639,8 +1669,8 @@
 											<!-- Depuis 0.3.1 -->
 											<groupe nom="extraire" discriminant="extrais">
 												<choix>
-													
-													<ligne tab="1" id="node_base">
+
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">extrais</token>
 														<token obligatoire="oui">de</token>
 														<acteur type="jusquautoken" obligatoire="oui">à</acteur>
@@ -1657,8 +1687,8 @@
 											<!-- Depuis 0.3.1 -->
 											<groupe nom="insérer" discriminant="insère">
 												<choix>
-													
-													<ligne tab="1" id="node_base">
+
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">insère</token>
 														<acteur type="jusquautoken" obligatoire="oui">à</acteur>
 														<token obligatoire="oui">partir</token>
@@ -1672,8 +1702,8 @@
 											<!-- Verbe fusionner -->
 											<groupe nom="fusionner" discriminant="fusionne">
 												<choix>
-													
-													<ligne tab="1" id="node_base">
+
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">fusionne</token>
 														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
 														<acteur type="resteligne" obligatoire="oui"/>
@@ -1684,8 +1714,8 @@
 											<!-- Verbe mesurer -->
 											<groupe nom="mesurer" discriminant="mesure">
 												<choix>
-													
-													<ligne tab="1" id="node_base">
+
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">mesure</token>
 														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
 														<acteur type="resteligne" obligatoire="oui"/>
@@ -1696,8 +1726,8 @@
 											<!-- Verbe ajouter -->
 											<groupe nom="ajouter" discriminant="ajoute">
 												<choix>
-													
-													<ligne tab="1" id="node_base">
+
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">ajoute</token>
 														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
 														<acteur type="resteligne" obligatoire="oui"/>
@@ -1708,8 +1738,8 @@
 											<!-- Verbe soustraire -->
 											<groupe nom="soustraire" discriminant="soustrais">
 												<choix>
-													
-													<ligne tab="1" id="node_base">
+
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">soustrais</token>
 														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
 														<acteur type="resteligne" obligatoire="oui"/>
@@ -1720,8 +1750,8 @@
 											<!-- Verbe multiplier -->
 											<groupe nom="multiplier" discriminant="multiplie">
 												<choix>
-													
-													<ligne tab="1" id="node_base">
+
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">multiplie</token>
 														<acteur type="jusquautoken" obligatoire="oui">par</acteur>
 														<acteur type="resteligne" obligatoire="oui"/>
@@ -1732,7 +1762,7 @@
 											<!-- Verbe faire -->
 											<groupe nom="faire" discriminant="fais">
 												<choix>
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">fais</token>
 														<token obligatoire="oui">le</token>
 														<token obligatoire="oui">café</token>
@@ -1743,8 +1773,8 @@
 											<!-- Verbe revenir -->
 											<groupe nom="revenir" discriminant="reviens">
 												<choix>
-													
-													<ligne tab="1" id="node_base">
+
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">reviens</token>
 														<etat souffleur="non" nom="verbe revenir"/>
 													</ligne>
@@ -1753,7 +1783,7 @@
 											<!-- Verbe attendre milliseconde -->
 											<groupe nom="retourner" discriminant="retourne">
 												<choix>
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">retourne</token>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="verbe retourner"/>
@@ -1764,8 +1794,8 @@
 											<!-- Depuis 0.3.1 -->
 											<groupe nom="arrêter" discriminant="termine">
 												<choix>
-													
-													<ligne tab="1" id="node_base">
+
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">termine</token>
 														<etat souffleur="non" nom="verbe arrêter"/>
 													</ligne>
@@ -1774,13 +1804,15 @@
 											<!-- Verbe attendre seconde -->
 											<groupe nom="attendre seconde" discriminant="attend">
 												<choix>
-													
-													<ligne tab="1" id="node_base">
+
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">attends</token>
 														<groupe obligatoire="oui">
 															<choix>
-																<acteur type="jusquautoken" obligatoire="oui">secondes</acteur>
-																<acteur type="jusquautoken" obligatoire="oui">seconde</acteur>
+																<acteur type="jusquautoken" obligatoire="oui">secondes
+																</acteur>
+																<acteur type="jusquautoken" obligatoire="oui">seconde
+																</acteur>
 															</choix>
 														</groupe>
 														<etat nom="verbe attendre seconde"/>
@@ -1790,13 +1822,17 @@
 											<!-- Verbe attendre milliseconde -->
 											<groupe nom="attendre milliseconde" discriminant="attend">
 												<choix>
-													
-													<ligne tab="1" id="node_base">
+
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">attends</token>
 														<groupe obligatoire="oui">
 															<choix>
-																<acteur type="jusquautoken" obligatoire="oui">millisecondes</acteur>
-																<acteur type="jusquautoken" obligatoire="oui">milliseconde</acteur>
+																<acteur type="jusquautoken" obligatoire="oui">
+																	millisecondes
+																</acteur>
+																<acteur type="jusquautoken" obligatoire="oui">
+																	milliseconde
+																</acteur>
 															</choix>
 														</groupe>
 														<etat nom="verbe attendre milliseconde"/>
@@ -1806,8 +1842,8 @@
 											<!-- Verbe attendre milliseconde -->
 											<groupe nom="stimuler" discriminant="stimule">
 												<choix>
-													
-													<ligne tab="1" id="node_base">
+
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">stimule</token>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="verbe stimuler"/>
@@ -1817,8 +1853,8 @@
 											<!-- Explorer-->
 											<groupe nom="explorer" discriminant="explore">
 												<choix>
-													
-													<ligne tab="1" id="node_base">
+
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">explore</token>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="verbe explorer"/>
@@ -1831,8 +1867,8 @@
 											<!-- Verbe diviser -->
 											<groupe nom="diviser" discriminant="divise">
 												<choix>
-													
-													<ligne tab="1" id="node_base">
+
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">divise</token>
 														<acteur type="jusquautoken" obligatoire="oui">par</acteur>
 														<acteur type="resteligne" obligatoire="oui"/>
@@ -1843,7 +1879,7 @@
 											<!-- Début mathématiques simplifiées-->
 											<groupe nom="math ==" discriminant="vaut">
 												<choix>
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<acteur type="jusquautoken" obligatoire="oui">vaut</acteur>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="verbe valoir"/>
@@ -1853,7 +1889,7 @@
 											<!-- Début mathématiques simplifiées-->
 											<groupe nom="math ==" discriminant="prend">
 												<choix>
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<acteur type="jusquautoken" obligatoire="oui">prend</acteur>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="verbe valoir"/>
@@ -1863,7 +1899,7 @@
 											<!-- addition raccourci -->
 											<groupe nom="math +" discriminant="+=">
 												<choix>
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<acteur type="jusquautoken" obligatoire="oui">+=</acteur>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="verbe ajouter simple"/>
@@ -1873,7 +1909,7 @@
 											<!-- soustraction raccourci -->
 											<groupe nom="math -" discriminant="-=">
 												<choix>
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<acteur type="jusquautoken" obligatoire="oui">-=</acteur>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="verbe soustraire simple"/>
@@ -1883,7 +1919,7 @@
 											<!-- Temporaire, tant que le = est utilisé -->
 											<groupe nom="math ==" discriminant="=">
 												<choix>
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<acteur type="jusquautoken" obligatoire="oui">=</acteur>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="verbe valoir"/>
@@ -1897,8 +1933,8 @@
 											<!-- Jouer une note-->
 											<groupe nom="jouer son" discriminant="joue">
 												<choix>
-													
-													<ligne tab="1" id="node_base">
+
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">joue</token>
 														<token obligatoire="non">le</token>
 														<acteur type="resteligne" obligatoire="oui"/>
@@ -1912,7 +1948,7 @@
 											<!-- Montrer-->
 											<groupe nom="montrer" discriminant="montre">
 												<choix>
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">montre</token>
 														<token obligatoire="oui">toile</token>
 														<etat nom="verbe montrer"/>
@@ -1922,7 +1958,7 @@
 											<!-- Projeter-->
 											<groupe nom="projeter" discriminant="projette">
 												<choix>
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">projette</token>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="verbe projeter"/>
@@ -1953,7 +1989,7 @@
 											<!-- Effacer-->
 											<groupe nom="effacer" discriminant="efface">
 												<choix>
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">efface</token>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="verbe effacer"/>
@@ -1963,7 +1999,7 @@
 											<!-- Tu déplaces A vers la gauche de 5 -->
 											<groupe nom="deplacer gauche" discriminant="déplace">
 												<choix>
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">déplace</token>
 														<acteur type="jusquautoken" obligatoire="oui">vers</acteur>
 														<token obligatoire="oui">la</token>
@@ -1977,7 +2013,7 @@
 											<!-- Tu déplaces A vers la droite de 5 -->
 											<groupe nom="deplacer droite" discriminant="déplace">
 												<choix>
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">déplace</token>
 														<acteur type="jusquautoken" obligatoire="oui">vers</acteur>
 														<token obligatoire="oui">la</token>
@@ -1991,7 +2027,7 @@
 											<!-- Tu déplaces A vers le haut de 5 -->
 											<groupe nom="deplacer haut" discriminant="déplace">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">déplace</token>
 														<acteur type="jusquautoken" obligatoire="oui">vers</acteur>
 														<token obligatoire="oui">le</token>
@@ -2005,7 +2041,7 @@
 											<!-- Tu déplaces A vers le haut de 5 -->
 											<groupe nom="deplacer base" discriminant="déplace">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">déplace</token>
 														<acteur type="jusquautoken" obligatoire="oui">vers</acteur>
 														<token obligatoire="oui">le</token>
@@ -2019,7 +2055,7 @@
 											<!-- Tu déplaces A vers 50 et 42 -->
 											<groupe nom="deplacer vers" discriminant="déplace">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">déplace</token>
 														<acteur type="jusquautoken" obligatoire="oui">vers</acteur>
 														<acteur type="jusquautoken" obligatoire="oui">et</acteur>
@@ -2031,7 +2067,7 @@
 											<!-- Tu déplaces A de 5 et -6 -->
 											<groupe nom="deplacer" discriminant="déplace">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">déplace</token>
 														<acteur type="jusquautoken" obligatoire="oui">de</acteur>
 														<acteur type="jusquautoken" obligatoire="oui">et</acteur>
@@ -2043,7 +2079,7 @@
 											<!-- Tu piques A à 5 et -6 -->
 											<groupe nom="piquer" discriminant="pique">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">pique</token>
 														<acteur type="jusquautoken" obligatoire="oui">à</acteur>
 														<acteur type="jusquautoken" obligatoire="oui">et</acteur>
@@ -2055,7 +2091,7 @@
 											<!-- Tu temporises -->
 											<groupe nom="temporise" discriminant="temporise">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">temporise</token>
 														<etat nom="verbe temporiser"/>
 													</ligne>
@@ -2064,7 +2100,7 @@
 											<!-- Tu temporises -->
 											<groupe nom="temporise n secondes" discriminant="temporise">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">temporise</token>
 														<acteur type="jusquautoken" obligatoire="oui">secondes</acteur>
 														<etat nom="verbe temporiser"/>
@@ -2074,7 +2110,7 @@
 											<!-- Tu photographies la toile -->
 											<groupe nom="photographier" discriminant="photographie">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">photographie</token>
 														<token obligatoire="oui">dans</token>
 														<acteur type="resteligne" obligatoire="oui"/>
@@ -2085,7 +2121,7 @@
 											<!-- Création d'un acteur texte -->
 											<groupe nom="creation d'un acteur texte" discriminant="cré">
 												<choix>
-													<ligne tab="1" nom="acteur type texte">
+													<ligne tab="2" nom="acteur type texte">
 														<!-- creation d'un texte  -->
 														<token obligatoire="oui">crée</token>
 														<acteur type="jusquautoken">un</acteur>
@@ -2098,7 +2134,7 @@
 											<!-- Création d'un acteur nombre -->
 											<groupe nom="creation d'un acteur nombre" discriminant="cré">
 												<choix>
-													<ligne tab="1" nom="acteur type nombre">
+													<ligne tab="2" nom="acteur type nombre">
 														<!-- creation d'un nombre  -->
 														<token obligatoire="oui">crée</token>
 														<acteur type="jusquautoken">un</acteur>
@@ -2111,7 +2147,7 @@
 											<!-- Création d'un acteur drapeau -->
 											<groupe nom="creation d'un acteur drapeau" discriminant="cré">
 												<choix>
-													<ligne tab="1" nom="acteur type drapeau">
+													<ligne tab="2" nom="acteur type drapeau">
 														<!-- creation d'un nombre  -->
 														<token obligatoire="oui">crée</token>
 														<acteur type="jusquautoken">un</acteur>
@@ -2124,7 +2160,7 @@
 											<!-- Création d'un acteur espèce -->
 											<groupe nom="creation d'un acteur espèce" discriminant="cré">
 												<choix>
-													<ligne tab="1" nom="acteur type espèce">
+													<ligne tab="2" nom="acteur type espèce">
 														<!-- creation d'un espèce  -->
 														<token obligatoire="oui" annotation="livre">crée</token>
 														<acteur type="jusquautoken">un</acteur>
@@ -2137,7 +2173,7 @@
 											<!-- Création d'un acteur casier de texte -->
 											<groupe nom="creation d'un acteur casier de texte" discriminant="cré">
 												<choix>
-													<ligne tab="1" nom="acteur type texte">
+													<ligne tab="2" nom="acteur type texte">
 														<!-- creation d'un texte  -->
 														<token obligatoire="oui">crée</token>
 														<acteur type="jusquautoken">un</acteur>
@@ -2151,7 +2187,7 @@
 											<!-- Création d'un acteur nombre -->
 											<groupe nom="creation d'un acteur nombre" discriminant="cré">
 												<choix>
-													<ligne tab="1" nom="acteur type nombre">
+													<ligne tab="2" nom="acteur type nombre">
 														<!-- creation d'un nombre  -->
 														<token obligatoire="oui">crée</token>
 														<acteur type="jusquautoken">un</acteur>
@@ -2165,7 +2201,7 @@
 											<!-- Création d'un acteur nombre -->
 											<groupe nom="creation d'un acteur nombre" discriminant="cré">
 												<choix>
-													<ligne  tab="1" nom="acteur type nombre">
+													<ligne tab="2" nom="acteur type nombre">
 														<!-- creation d'un nombre  -->
 														<token obligatoire="oui">crée</token>
 														<acteur type="jusquautoken">un</acteur>
@@ -2178,7 +2214,7 @@
 											</groupe>
 											<groupe nom="creation d'un casier espèce" discriminant="cré">
 												<choix>
-													<ligne tab="1" nom="casier type espèce">
+													<ligne tab="2" nom="casier type espèce">
 														<!-- creation d'un espèce  -->
 														<token obligatoire="oui">crée</token>
 														<acteur type="jusquautoken">un</acteur>
@@ -2192,8 +2228,8 @@
 											<!-- sous-paragraphe § -->
 											<groupe nom="§" discriminant="lis" >
 												<choix>
-													 <ligne tab="1" id="node_base">
-														<token obligatoire="oui" style="sousparagraphe" >lis</token>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui" style="sousparagraphe">lis</token>
 														<sousparagraphe etat="ouverture"/>
 														<etat nom="§ début"/>
 													</ligne>
@@ -2201,8 +2237,8 @@
 											</groupe>
 											<groupe nom="§" discriminant="§" >
 												<choix>
-													 <ligne tab="1" id="node_base">
-														<token obligatoire="oui" style="sousparagraphe" >:</token>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui" style="sousparagraphe">:</token>
 														<sousparagraphe etat="ouverture"/>
 														<etat nom="§ début"/>
 													</ligne>
@@ -2211,7 +2247,7 @@
 											<!-- Verbe Ôter De -->
 											<groupe nom="oter" discriminant="ôte">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">ôte</token>
 														<acteur type="jusquautoken" obligatoire="oui">de</acteur>
 														<acteur type="resteligne" obligatoire="oui"/>
@@ -2222,7 +2258,7 @@
 											<!-- Depuis 0.5.6 -->
 											<groupe nom="modifier" discriminant="modifie">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">modifie</token>
 														<acteur type="jusquautoken" obligatoire="oui">par</acteur>
 														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
@@ -2234,7 +2270,7 @@
 											</groupe>
 											<groupe nom="rafraîchir" discriminant="rafraîchis">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">rafraîchis</token>
 														<etat nom="verbe rafraîchir"/>
 													</ligne>
@@ -2243,7 +2279,7 @@
 											<!-- Verbe Avancer De -->
 											<groupe nom="avancer" discriminant="avance">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">avance</token>
 														<acteur type="jusquautoken" obligatoire="oui">de</acteur>
 														<acteur type="resteligne" obligatoire="oui"/>
@@ -2254,7 +2290,7 @@
 											<!-- Verbe Recule De -->
 											<groupe nom="reculer" discriminant="recule">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">recule</token>
 														<acteur type="jusquautoken" obligatoire="oui">de</acteur>
 														<acteur type="resteligne" obligatoire="oui"/>
@@ -2265,7 +2301,7 @@
 											<!-- Verbe Tourner gauche -->
 											<groupe nom="tourner gauche" discriminant="tourne">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">tourne</token>
 														<token obligatoire="non">à</token>
 														<token obligatoire="oui">gauche</token>
@@ -2278,7 +2314,7 @@
 											<!-- Verbe Tourner droite -->
 											<groupe nom="tourner droite" discriminant="tourne">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">tourne</token>
 														<token obligatoire="non">à</token>
 														<token obligatoire="oui">droite</token>
@@ -2291,7 +2327,7 @@
 											<!-- Verbe Ouvrir Tube -->
 											<groupe nom="ouvrir" discriminant="ouvre">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">ouvre</token>
 														<acteur type="jusquautoken" obligatoire="oui">avec</acteur>
 														<acteur type="jusquautoken" obligatoire="oui">depuis</acteur>
@@ -2302,7 +2338,7 @@
 											</groupe>
 											<groupe nom="fermer tube" discriminant="ferme">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">ferme</token>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="fermer tube"/>
@@ -2311,7 +2347,7 @@
 											</groupe>
 											<groupe nom="charger tube" discriminant="charge">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">charge</token>
 														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
 														<acteur type="jusquautoken" obligatoire="oui">avec</acteur>
@@ -2322,7 +2358,7 @@
 											</groupe>
 											<groupe nom="charger tube" discriminant="charge">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">charge</token>
 														<acteur type="jusquautoken" obligatoire="oui">dans</acteur>
 														<acteur type="resteligne" obligatoire="oui"/>
@@ -2332,7 +2368,7 @@
 											</groupe>
 											<groupe nom="décharger tube" discriminant="décharge">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">décharge</token>
 														<acteur type="jusquautoken" obligatoire="oui">depuis</acteur>
 														<acteur type="jusquautoken" obligatoire="oui">avec</acteur>
@@ -2343,7 +2379,7 @@
 											</groupe>
 											<groupe nom="décharger tube" discriminant="décharge">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">décharge</token>
 														<acteur type="jusquautoken" obligatoire="oui">depuis</acteur>
 														<acteur type="resteligne" obligatoire="oui"/>
@@ -2353,7 +2389,7 @@
 											</groupe>
 											<groupe nom="configurer tube" discriminant="configure">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">configure</token>
 														<acteur type="jusquautoken" obligatoire="oui">avec</acteur>
 														<acteur type="resteligne" obligatoire="oui"/>
@@ -2363,8 +2399,8 @@
 											</groupe>
 											<groupe nom="§" discriminant="ferme" >
 												<choix>
-													 <ligne tab="1" id="node_base">
-														<token obligatoire="oui" style="sousparagraphe" >ferme</token>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui" style="sousparagraphe">ferme</token>
 														<etat nom="§ fin"/>
 														<sousparagraphe etat="fermeture"/>
 													</ligne>
@@ -2372,8 +2408,8 @@
 											</groupe>
 											<groupe nom="§" discriminant="§" >
 												<choix>
-													 <ligne tab="1" id="node_base">
-														<token obligatoire="oui" style="sousparagraphe" >§</token>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui" style="sousparagraphe">§</token>
 														<etat nom="§ fin"/>
 														<sousparagraphe etat="fermeture"/>
 													</ligne>
@@ -2382,7 +2418,7 @@
 											<!-- Tu évalues la toile -->
 											<groupe nom="évaluer" discriminant="value">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">évalue</token>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="verbe évaluer"/>
@@ -2392,7 +2428,7 @@
 											<!-- Verbe demander -->
 											<groupe nom="demander" discriminant="?">
 												<choix>
-													<ligne tab="1">
+													<ligne tab="2">
 														<acteur type="jusquautoken" obligatoire="oui">?</acteur>
 														<etat nom="verbe demander"/>
 													</ligne>
@@ -2401,8 +2437,8 @@
 											<!-- Pause -->
 											<groupe nom="pause" discriminant="débogue">
 												<choix>
-													 <ligne tab="1" id="node_base">
-														<token obligatoire="oui" style="système" >débogue</token>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui" style="système">débogue</token>
 														<etat nom="pause"/>
 													</ligne>
 												</choix>
@@ -2410,7 +2446,7 @@
 											<!-- Faire réagir -->
 											<groupe nom="Faire réagir" discriminant="réagir">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">Fais</token>
 														<token obligatoire="oui">réagir</token>
 														<acteur type="jusquautoken" obligatoire="oui">à</acteur>
@@ -2423,7 +2459,7 @@
 											<!-- Plus Faire réagir -->
 											<groupe nom="Faire réagir" discriminant="réagir">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">Ne</token>
 														<token obligatoire="oui">fais</token>
 														<token obligatoire="oui">plus</token>
@@ -2437,7 +2473,7 @@
 											<!-- Peindre -->
 											<groupe nom="Peindre" discriminant="pein">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">Peins</token>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="verbe peindre"/>
@@ -2447,7 +2483,7 @@
 											<!-- Supprimer un acteur -->
 											<groupe nom="Annihiler" discriminant="annihile">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">annihile</token>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="verbe annihiler"/>
@@ -2457,8 +2493,9 @@
 											<!-- Attacher une caractèristique -->
 											<groupe nom="Attacher" discriminant="attache">
 												<choix>
-													 <ligne tab="1" id="node_base">
-														<token obligatoire="oui" annotation="methodeprototype">attache</token>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui" annotation="methodeprototype">attache
+														</token>
 														<acteur type="jusquautoken" obligatoire="oui">à</acteur>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="verbe attacher"/>
@@ -2468,7 +2505,7 @@
 											<!-- Attacher une caractèristique -->
 											<groupe nom="Evoquer" discriminant="voque">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">évoque</token>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="verbe évoquer"/>
@@ -2477,7 +2514,7 @@
 											</groupe>																			
 											<groupe nom="Evoquer" discriminant="fais">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">fais</token>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="verbe évoquer"/>
@@ -2487,7 +2524,7 @@
 											<!-- Incrémenter -->
 											<groupe nom="Incrémenter" discriminant="incrémente">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">incrémente</token>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="verbe incrémenter"/>
@@ -2497,28 +2534,28 @@
 											<!-- Décrémenter -->
 											<groupe nom="Décrémenter" discriminant="décrémente">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">décrémente</token>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="verbe décrémenter"/>
 													</ligne>
 												</choix>
-											</groupe>																			
+											</groupe>
 											<!-- Provoquer -->
-											<groupe nom="Décrémenter" discriminant="prov">
+											<groupe nom="Provoquer" discriminant="prov">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">provoque</token>
 														<acteur type="jusquautoken" obligatoire="oui">,</acteur>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="verbe stopper"/>
 													</ligne>
 												</choix>
-											</groupe>																			
+											</groupe>
 											<!-- Recharger -->
 											<groupe nom="Recharger" discriminant="rech">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">recharge</token>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="verbe recharger"/>
@@ -2528,7 +2565,7 @@
 											<!-- Tilde -->
 											<groupe nom="tilde" discriminant="~">
 												<choix>
-													 <ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">~</token>
 														<valeur type="resteligne" obligatoire="oui" style="tests"/>
 														<etat nom="verbe tilde"/>
@@ -2538,8 +2575,8 @@
 											<!-- Nommer le livre -->
 											<groupe nom="Nommer" discriminant="nomme">
 												<choix>
-													 <ligne tab="1" id="node_base">
-													 	<token obligatoire="oui">nomme</token>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">nomme</token>
 														<valeur type="resteligne" obligatoire="oui" style="livre"/>
 														<etat nom="creation livre"/>
 													</ligne>
@@ -2548,9 +2585,9 @@
 											<!-- Interrompre boucle -->
 											<groupe nom="Interrompre" discriminant="inte">
 												<choix>
-													 <ligne tab="1" id="node_base">
-													 	<token obligatoire="oui">interromps</token>
-													 	<token obligatoire="non">boucle</token>
+													<ligne tab="2" id="node_base">
+														<token obligatoire="oui">interromps</token>
+														<token obligatoire="non">boucle</token>
 														<etat nom="verbe interrompre"/>
 													</ligne>
 												</choix>
@@ -2558,8 +2595,9 @@
 											<!-- Evoquer -->
 											<groupe nom="Evoquer" discriminant="." discriminant2="(">
 												<choix>
-													 <ligne tab="1" id="node_base">
-														<acteur type="resteligne" obligatoire="oui" annotation="évoquer"/>
+													<ligne tab="2" id="node_base">
+														<acteur type="resteligne" obligatoire="oui"
+																annotation="évoquer"/>
 														<etat nom="verbe évoquer"/>
 													</ligne>
 												</choix>
