@@ -13,8 +13,8 @@ import org.linotte.moteur.exception.ErreurException;
  */
 public abstract class MethodeInterneDirecte extends MethodeInterne {
 
-    public MethodeInterneDirecte(Acteur pacteur) {
-        super(pacteur);
+    public MethodeInterneDirecte() {
+        super();
     }
 
     @Override
@@ -22,6 +22,6 @@ public abstract class MethodeInterneDirecte extends MethodeInterne {
         throw new ErreurException(Constantes.ERREUR_GREFFON);
     }
 
-    public abstract Acteur appeler(Greffon greffon, final Acteur... parametres) throws Exception;
+    public abstract Acteur appeler(Acteur moi, Greffon greffon, final Acteur... parametres) throws Exception;
 
 }

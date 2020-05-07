@@ -88,9 +88,9 @@ public class ProcessusSlot extends Processus {
 				}
 
 				if (prototype instanceof Prototype)
-					retour = xmethod.appeler(((Prototype) prototype).getGreffon(), listActeurs.toArray(new Acteur[listActeurs.size()]));
+					retour = xmethod.appeler(prototype, ((Prototype) prototype).getGreffon(), listActeurs.toArray(new Acteur[listActeurs.size()]));
 				else
-					retour = xmethod.appeler(null, listActeurs.toArray(new Acteur[listActeurs.size()]));
+					retour = xmethod.appeler(prototype, null, listActeurs.toArray(new Acteur[listActeurs.size()]));
 				throw new RetournerException(retour);
 			} catch (LinotteException e) {
 				throw e;

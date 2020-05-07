@@ -12,12 +12,12 @@ import java.math.BigDecimal;
 
 public class ExtraireMethodeInterne extends MethodeInterneDirecte {
 
-	public ExtraireMethodeInterne(Acteur acteur) {
-		super(acteur);
+	public ExtraireMethodeInterne() {
+		super();
 	}
 
 	@Override
-	public Acteur appeler(Greffon greffon, Acteur... parametres) throws Exception {
+	public Acteur appeler(Acteur acteur, Greffon greffon, Acteur... parametres) throws Exception {
 
 		if (parametres.length != 2) {
 			throw new ErreurException(Constantes.PROTOTYPE_METHODE_FONCTIONNELLE_PARAMETRE, nom());

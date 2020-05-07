@@ -12,12 +12,12 @@ import java.math.BigDecimal;
 
 public class PositionMethodeInterne extends MethodeInterneDirecte {
 
-    public PositionMethodeInterne(Acteur acteur) {
-        super(acteur);
+    public PositionMethodeInterne() {
+        super();
     }
 
     @Override
-    public Acteur appeler(Greffon greffon, Acteur... parametres) throws Exception {
+    public Acteur appeler(Acteur acteur, Greffon greffon, Acteur... parametres) throws Exception {
         Acteur retour = new Acteur(Role.NOMBRE, null);
         try {
             int p1 = ((BigDecimal) parametres[0].getValeur()).intValue();

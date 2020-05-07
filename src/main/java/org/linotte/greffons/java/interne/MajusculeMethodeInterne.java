@@ -10,12 +10,12 @@ import org.linotte.moteur.exception.ErreurException;
 
 public class MajusculeMethodeInterne extends MethodeInterne {
 
-	public MajusculeMethodeInterne(Acteur acteur) {
-		super(acteur);
+	public MajusculeMethodeInterne() {
+		super();
 	}
 
 	@Override
-	public ObjetLinotte appeler(Greffon greffon, ObjetLinotte... parametres) throws Exception {
+	public ObjetLinotte appeler(Acteur acteur, Greffon greffon, ObjetLinotte... parametres) throws Exception {
 		try {
 
 			// Transformation des paramètres si le developpeur utilise des types Java :

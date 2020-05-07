@@ -406,31 +406,31 @@ public class Acteur {
 		if (!acteurToprototype) {
 			acteurToprototype = true;
 			if (prole == Role.CASIER) {
-				ajouterSlotGreffon(new TailleMethodeInterne(this));
-				ajouterSlotGreffon(new InverserMethodeInterne(this));
-				ajouterSlotGreffon(new RemplacerMethodeInterne(this));
-				ajouterSlotGreffon(new PositionMethodeInterne(this));
-				ajouterSlotGreffon(new ExtraireMethodeInterne(this));
-				ajouterSlotGreffon(new MelangeMethodeInterne(this));
+				ajouterSlotGreffon(new TailleMethodeInterne());
+				ajouterSlotGreffon(new InverserMethodeInterne());
+				ajouterSlotGreffon(new RemplacerMethodeInterne());
+				ajouterSlotGreffon(new PositionMethodeInterne());
+				ajouterSlotGreffon(new ExtraireMethodeInterne());
+				ajouterSlotGreffon(new MelangeMethodeInterne());
 			} else if (prole == Role.TEXTE) {
-				ajouterSlotGreffon(new InverserMethodeInterne(this));
-				ajouterSlotGreffon(new RemplacerMethodeInterne(this));
-				ajouterSlotGreffon(new MajusculeMethodeInterne(this));
-				ajouterSlotGreffon(new MinusculeMethodeInterne(this));
-				ajouterSlotGreffon(new TailleMethodeInterne(this));
-				ajouterSlotGreffon(new PositionMethodeInterne(this));
-				ajouterSlotGreffon(new ExtraireMethodeInterne(this));
-				ajouterSlotGreffon(new MelangeMethodeInterne(this));
-				ajouterSlotGreffon(new CapitaliserMethodeInterne(this));
+				ajouterSlotGreffon(new InverserMethodeInterne());
+				ajouterSlotGreffon(new RemplacerMethodeInterne());
+				ajouterSlotGreffon(new MajusculeMethodeInterne());
+				ajouterSlotGreffon(new MinusculeMethodeInterne());
+				ajouterSlotGreffon(new TailleMethodeInterne());
+				ajouterSlotGreffon(new PositionMethodeInterne());
+				ajouterSlotGreffon(new ExtraireMethodeInterne());
+				ajouterSlotGreffon(new MelangeMethodeInterne());
+				ajouterSlotGreffon(new CapitaliserMethodeInterne());
 			} else if (prole == Role.NOMBRE) {
-				ajouterSlotGreffon(new MethodeInterne(this) {
+				ajouterSlotGreffon(new MethodeInterne() {
 
 					@Override
 					public ObjetLinotte appeler(Greffon greffon, ObjetLinotte... parametres) throws Exception {
 						try {
 							if (parametres.length != 0)
 								throw new ErreurException(Constantes.PROTOTYPE_METHODE_FONCTIONNELLE_PARAMETRE, nom());
-							return ObjetLinotteHelper.copy(new BigDecimal(Math.floor(((BigDecimal) acteur.getValeur()).doubleValue() * Math.random())));
+							return ObjetLinotteHelper.copy(new BigDecimal(Math.floor(((BigDecimal) Acteur.this.getValeur()).doubleValue() * Math.random())));
 						} catch (Exception e) {
 							throw new ErreurException(Constantes.PROTOTYPE_METHODE_FONCTIONNELLE_PARAMETRE, nom());
 						}

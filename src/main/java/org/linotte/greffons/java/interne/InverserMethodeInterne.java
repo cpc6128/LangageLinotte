@@ -10,12 +10,12 @@ import org.linotte.moteur.exception.ErreurException;
 
 public class InverserMethodeInterne extends MethodeInterne {
 
-	public InverserMethodeInterne(Acteur acteur) {
-		super(acteur);
+	public InverserMethodeInterne() {
+		super();
 	}
 
 	@Override
-	public ObjetLinotte appeler(Greffon greffon, ObjetLinotte... parametres) throws Exception {
+	public ObjetLinotte appeler(Acteur moi, Greffon greffon, ObjetLinotte... parametres) throws Exception {
 		try {
 
 			// Transformation des paramètres si le developpeur utilise des types Java :
@@ -23,7 +23,7 @@ public class InverserMethodeInterne extends MethodeInterne {
 				throw new ErreurException(Constantes.PROTOTYPE_METHODE_FONCTIONNELLE_PARAMETRE, nom());
 			}
 
-			String p = (String) acteur.getValeur();//(String) transformerObjet(String.class, parametres[0]);
+			String p = (String) moi.getValeur();
 
 			String retour = new StringBuilder(p).reverse().toString();
 

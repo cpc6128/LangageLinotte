@@ -12,18 +12,17 @@ import java.math.BigDecimal;
 
 public class TailleMethodeInterne extends MethodeInterneDirecte {
 
-	public TailleMethodeInterne(Acteur acteur) {
-		super(acteur);
+	public TailleMethodeInterne() {
 	}
 
 	@Override
-	public Acteur appeler(Greffon greffon, Acteur... parametres) throws Exception {
+	public Acteur appeler(Acteur moi, Greffon greffon, Acteur... parametres) throws Exception {
 
 		Acteur a2 = new Acteur(Role.NOMBRE, null);
 
 		try {
 
-			Acteur a1 = acteur;
+			Acteur a1 = moi;
 
 			if (a1.getRole() == Role.ESPECE)
 				throw new ErreurException(Constantes.SYNTAXE_PARAMETRE_MESURER);

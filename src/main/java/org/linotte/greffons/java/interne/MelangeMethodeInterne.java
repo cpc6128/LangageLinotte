@@ -16,15 +16,14 @@ import java.util.List;
 
 public class MelangeMethodeInterne extends MethodeInterneDirecte {
 
-	public MelangeMethodeInterne(Acteur acteur) {
-		super(acteur);
+	public MelangeMethodeInterne() {
 	}
 
 	@Override
-	public Acteur appeler(Greffon greffon, Acteur... parametres) throws Exception {
+	public Acteur appeler(Acteur moi, Greffon greffon, Acteur... parametres) throws Exception {
 		try {
 
-			Acteur a = acteur;
+			Acteur a = moi;
 
 			if (a.getRole() == Role.ESPECE)
 				throw new ErreurException(Constantes.SYNTAXE_PARAMETRE_MELANGER, a.toString());

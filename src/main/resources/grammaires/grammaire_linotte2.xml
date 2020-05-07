@@ -1932,9 +1932,9 @@
 											<!-- Tu effaces la toile -->
 											<groupe nom="effacer tablette" discriminant="efface">
 												<choix>
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">efface</token>
-																												
+
 														<token obligatoire="oui">toile</token>
 														<etat nom="verbe effacer la tablette"/>
 													</ligne>
@@ -1943,7 +1943,7 @@
 											<!-- Tu effaces le tableau -->
 											<groupe nom="effacer tableau" discriminant="efface">
 												<choix>
-													<ligne tab="1" id="node_base">
+													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">efface</token>
 														<token obligatoire="oui">tableau</token>
 														<etat nom="verbe effacer le tableau"/>

@@ -10,12 +10,12 @@ import org.linotte.moteur.exception.ErreurException;
 
 public class RemplacerMethodeInterne extends MethodeInterne {
 
-	public RemplacerMethodeInterne(Acteur acteur) {
-		super(acteur);
+	public RemplacerMethodeInterne() {
+		super();
 	}
 
 	@Override
-	public ObjetLinotte appeler(Greffon greffon, ObjetLinotte... parametres) throws Exception {
+	public ObjetLinotte appeler(Acteur acteur, Greffon greffon, ObjetLinotte... parametres) throws Exception {
 		try {
 
 			// Transformation des paramètres si le developpeur utilise des types Java :

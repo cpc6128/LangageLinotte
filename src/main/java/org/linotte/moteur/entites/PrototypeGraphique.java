@@ -363,7 +363,7 @@ public class PrototypeGraphique extends org.linotte.moteur.entites.Prototype imp
 		espece.slots = slots;
 		espece.slotsGreffon = slotsGreffon;
 		// on reecrase les methodes internes :
-		espece.initPrototypeGraphique();
+		//espece.initPrototypeGraphique();
 		espece.contratsPrototype = contratsPrototype;
 		espece.copierAttributs(this);
 		toile.getPanelLaToile().addActeursAAfficher(espece, true);
@@ -570,10 +570,10 @@ public class PrototypeGraphique extends org.linotte.moteur.entites.Prototype imp
 
 	protected void initPrototypeGraphique() {
 
-		ajouterSlotGreffon(new MethodeInterneDirecte(this) {
+		ajouterSlotGreffon(new MethodeInterneDirecte() {
 
 			@Override
-			public Acteur appeler(Greffon greffon, Acteur... parametres) throws Exception {
+			public Acteur appeler(Acteur acteur, Greffon greffon, Acteur... parametres) throws Exception {
 				try {
 					if (parametres.length != 1)
 						throw new ErreurException(Constantes.PROTOTYPE_METHODE_FONCTIONNELLE_PARAMETRE, nom());

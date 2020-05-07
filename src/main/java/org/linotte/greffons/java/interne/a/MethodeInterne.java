@@ -1,15 +1,19 @@
 package org.linotte.greffons.java.interne.a;
 
+import org.linotte.greffons.externe.Greffon;
 import org.linotte.greffons.java.JavaMethod;
 import org.linotte.moteur.entites.Acteur;
+import org.linotte.moteur.exception.Constantes;
+import org.linotte.moteur.exception.ErreurException;
 
 public abstract class MethodeInterne extends JavaMethod {
 
-	protected Acteur acteur;
-
-	public MethodeInterne(Acteur pacteur) {
+	public MethodeInterne() {
 		super(null);
-		acteur = pacteur;
+	}
+
+	public Greffon.ObjetLinotte appeler(Acteur moi, Greffon greffon, Greffon.ObjetLinotte... parametres) throws Exception {
+		throw new ErreurException(Constantes.ERREUR_GREFFON);
 	}
 
 	@Override
