@@ -113,6 +113,14 @@ public final class Bibliotheque {
 				e.printStackTrace();
 			}
 		}
+		{
+			Map<String, Attribut> attributs = new HashMap<String, Attribut>();
+			attributs.put("largeur", new Attribut(NOMBRE, "5"));
+			attributs.put("longueur", new Attribut(NOMBRE, "5"));
+			LinotteFacade.creationPrototype(attributs, new Robonotte(), "robonotte");
+		}
+
+
 	}
 
 	/**
