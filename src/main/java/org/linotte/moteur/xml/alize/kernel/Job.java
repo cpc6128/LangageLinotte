@@ -1,10 +1,5 @@
 package org.linotte.moteur.xml.alize.kernel;
 
-import static org.linotte.moteur.xml.alize.kernel.Action.ETAT.PAS_DE_CHANGEMENT;
-import static org.linotte.moteur.xml.alize.kernel.Action.ETAT.SAUTER_PARAGRAPHE;
-
-import java.math.BigDecimal;
-
 import org.alize.kernel.AKContextI;
 import org.alize.kernel.AKException;
 import org.alize.kernel.AKJob;
@@ -12,17 +7,7 @@ import org.alize.kernel.AKJobContext;
 import org.linotte.moteur.entites.Acteur;
 import org.linotte.moteur.entites.Livre;
 import org.linotte.moteur.entites.Role;
-import org.linotte.moteur.exception.Constantes;
-import org.linotte.moteur.exception.ErreurException;
-import org.linotte.moteur.exception.FonctionDoublureException;
-import org.linotte.moteur.exception.FonctionException;
-import org.linotte.moteur.exception.LectureException;
-import org.linotte.moteur.exception.LinotteException;
-import org.linotte.moteur.exception.MathematiquesException;
-import org.linotte.moteur.exception.Messages;
-import org.linotte.moteur.exception.PositionException;
-import org.linotte.moteur.exception.RetournerException;
-import org.linotte.moteur.exception.StopException;
+import org.linotte.moteur.exception.*;
 import org.linotte.moteur.outils.Chaine;
 import org.linotte.moteur.xml.Version;
 import org.linotte.moteur.xml.actions.ConditionAction;
@@ -37,6 +22,11 @@ import org.linotte.moteur.xml.appels.CalqueParagraphe;
 import org.linotte.moteur.xml.appels.Condition;
 import org.linotte.moteur.xml.appels.Condition.ETAT_CONDITION;
 import org.linotte.moteur.xml.appels.Ring;
+
+import java.math.BigDecimal;
+
+import static org.linotte.moteur.xml.alize.kernel.Action.ETAT.PAS_DE_CHANGEMENT;
+import static org.linotte.moteur.xml.alize.kernel.Action.ETAT.SAUTER_PARAGRAPHE;
 
 public class Job extends AKJob {
 
@@ -83,19 +73,6 @@ public class Job extends AKJob {
 
 						if (erreurAPropager != null) {
 							throw erreurAPropager;
-						}
-						// Souffleur ?
-						if (currentProcessus.getSouffleurs() != null) {
-							Processus temp = currentProcessus;
-							KernelStack kernelStack = ((JobContext) getContext()).getLivre().getKernelStack();
-							for (Processus souffleur : currentProcessus.getSouffleurs()) {
-								currentProcessus = souffleur;
-								kernelStack.ajouterAppel(new Condition());
-								while (currentProcessus != null)
-									currentProcessus = (Processus) currentProcessus.execute(this);
-								kernelStack.fermeCondition();
-							}
-							currentProcessus = temp;
 						}
 
 						if (!isRunning() && erreurAPropager == null) {

@@ -1822,7 +1822,6 @@
 											<!-- Verbe attendre milliseconde -->
 											<groupe nom="attendre milliseconde" discriminant="attend">
 												<choix>
-
 													<ligne tab="2" id="node_base">
 														<token obligatoire="oui">attends</token>
 														<groupe obligatoire="oui">

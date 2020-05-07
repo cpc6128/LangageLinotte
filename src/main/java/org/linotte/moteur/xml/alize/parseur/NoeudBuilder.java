@@ -51,8 +51,6 @@ public final class NoeudBuilder {
 			return new NActeur(node);
 		} else if (nom.equals("etat")) {
 			return new NEtat(node);
-		} else if (nom.equals("souffleur")) {
-			return new NSouffleur(node);
 		} else if (nom.equals("sousparagraphe")) {
 			return new NSousParagraphe(node);
 		}

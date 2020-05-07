@@ -1,8 +1,5 @@
 package org.linotte.moteur.xml.alize.kernel.processus;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.alize.kernel.AKJob;
 import org.alize.kernel.AKProcessus;
 import org.linotte.moteur.xml.alize.kernel.Action;
@@ -31,9 +28,6 @@ public class Processus extends AKProcessus {
 
 	protected ItemXML[][] matrice = null;
 
-	// Souffleurs
-	private List<Processus> souffleurs = null;
-	
 	// Processus secondaire ?
 	private boolean secondaire = false;
 
@@ -97,14 +91,6 @@ public class Processus extends AKProcessus {
 
 	public ItemXML[][] getMatrice() {
 		return matrice;
-	}
-
-	public void addSouffleurs(List<Processus> psouffleurs) {
-		souffleurs = new ArrayList<Processus>(psouffleurs);
-	}
-
-	public List<Processus> getSouffleurs() {
-		return souffleurs;
 	}
 
 	public String[] getAnnotations() {

@@ -29,7 +29,7 @@ public abstract class NExpression extends Noeud {
 	
 	public NExpression(Node node) {
 		super(node);
-		valeur = Chaine.produire(node.getTextContent());
+		valeur = Chaine.produire(node.getTextContent().trim());
 	}
 
 	public NExpression(NExpression n) {

@@ -1,17 +1,6 @@
 package org.linotte.moteur.xml.alize.parseur;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.SortedSet;
-import java.util.Stack;
-import java.util.TreeSet;
-
+import com.scottlogic.util.SortedList;
 import org.linotte.frame.cahier.sommaire.JPanelSommaire;
 import org.linotte.frame.coloration.StyleBuffer;
 import org.linotte.moteur.exception.SyntaxeException;
@@ -22,7 +11,7 @@ import org.linotte.moteur.xml.alize.kernel.processus.Processus;
 import org.linotte.moteur.xml.alize.parseur.a.Lexer;
 import org.linotte.moteur.xml.outils.FastStack;
 
-import com.scottlogic.util.SortedList;
+import java.util.*;
 
 /**
  * Cette classe contient tous les objets utilisés pour parser un fichier
@@ -65,15 +54,12 @@ public class ParserContext {
 	public boolean premier_paragraphe = true;
 	public Job jobRacine;
 	public Linotte linotte;
-	public boolean souffleur = false;
-	public Processus avantSouffleur;
 	public Processus lastProcessus = null;
 
 	/**
 	 * Gestion des paragraphes :
 	 */
 	public List<Processus> awares = new ArrayList<Processus>();
-	public List<Processus> souffleurs = new ArrayList<Processus>();
 	// Livre court (avec pied-de-mouche)
 	public boolean piedDeMouche = false;
 
@@ -89,9 +75,9 @@ public class ParserContext {
 	 * Pour retenir l'erreur la plus loin sur une ligne :
 	 */
 	public SyntaxeException derniere_erreur = null;
-	private List<String> dernierePhrase = new ArrayList<String>();
-	// premier caractère d'une ligne
-	public Integer lastPositionLigne = new Integer(0);
+    private List<String> dernierePhrase = new ArrayList<String>();
+    // premier caractère d'une ligne
+    public Integer lastPositionLigne = 0;
 
 	/**
 	 * Pour la gestion du formatage :

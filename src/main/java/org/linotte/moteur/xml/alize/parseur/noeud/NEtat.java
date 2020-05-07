@@ -20,29 +20,6 @@
 
 package org.linotte.moteur.xml.alize.parseur.noeud;
 
-import static org.linotte.frame.coloration.StyleItem.STYLE.ARTICLE;
-import static org.linotte.frame.coloration.StyleItem.STYLE.CHAINE;
-import static org.linotte.frame.coloration.StyleItem.STYLE.DOUBLURE;
-import static org.linotte.frame.coloration.StyleItem.STYLE.LIVRE;
-import static org.linotte.frame.coloration.StyleItem.STYLE.MATH;
-import static org.linotte.frame.coloration.StyleItem.STYLE.NOMBRE;
-import static org.linotte.frame.coloration.StyleItem.STYLE.SOUS_PARAGRAPHE;
-import static org.linotte.frame.coloration.StyleItem.STYLE.STRING;
-import static org.linotte.frame.coloration.StyleItem.STYLE.STRUCTURE;
-import static org.linotte.frame.coloration.StyleItem.STYLE.SYSTEME;
-import static org.linotte.frame.coloration.StyleItem.STYLE.VALEUR;
-import static org.linotte.frame.coloration.StyleItem.STYLE.VARIABLE_DOUBLURE;
-import static org.linotte.frame.coloration.StyleItem.STYLE.VARIABLE_LOCALE;
-import static org.linotte.frame.coloration.StyleItem.STYLE.VARIABLE_SYSTEME;
-
-import java.awt.Color;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-
-import javax.swing.text.AttributeSet;
-
 import org.linotte.frame.coloration.Style;
 import org.linotte.frame.coloration.StyleItem;
 import org.linotte.frame.coloration.StyleItem.STYLE;
@@ -70,6 +47,15 @@ import org.linotte.moteur.xml.analyse.ItemXML;
 import org.linotte.moteur.xml.analyse.Mathematiques;
 import org.linotte.moteur.xml.outils.FastEnumMap;
 import org.w3c.dom.Node;
+
+import javax.swing.text.AttributeSet;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+import static org.linotte.frame.coloration.StyleItem.STYLE.*;
 
 public class NEtat extends Noeud {
 
@@ -278,9 +264,6 @@ public class NEtat extends Noeud {
 
 					Processus processusPrimaire = tabetat.size() > 0 ? tabetat.get(0) : null;
 
-					if (pc.souffleurs.size() > 0 && !"non".equals(getAttribut("souffleur")))
-						processus.addSouffleurs(pc.souffleurs);
-
 					if (processusPrimaire != null) {
 
 						// Peut être un début de paragraphe ?
@@ -295,11 +278,6 @@ public class NEtat extends Noeud {
 							((ProcessusDispatcher) processus).setProcessusPrimaire(processusPrimaire);
 
 						processus = processusPrimaire;
-
-						// Souffleurs ?
-						if (pc.souffleur) {
-							pc.souffleurs.add(processus);
-						}
 
 					} else {
 						// Peut être une fin de paragraphe ?
@@ -338,13 +316,6 @@ public class NEtat extends Noeud {
 									&& ((ProcessusDispatcher) pc.lastProcessus).getProcessusSecondaire() != null) {
 								((ProcessusDispatcher) pc.lastProcessus).getProcessusSecondaire().setNextProcess(processus);
 							}
-							// Par contre, si processus secondaire est
-							// souffleur :
-							if (!(etat instanceof ParagrapheAction) && (pc.lastProcessus instanceof ProcessusDispatcher)
-									&& ((ProcessusDispatcher) pc.lastProcessus).getProcessusSecondaire() != null && pc.souffleur) {
-								((ProcessusDispatcher) pc.lastProcessus).getProcessusSecondaire().setNextProcess(null);
-								((ProcessusDispatcher) pc.lastProcessus).setNextProcess(null);
-							}
 
 							pc.lastProcessus = processus;
 						}
@@ -367,7 +338,6 @@ public class NEtat extends Noeud {
 							pc.methodeFonctionnellePrototype = null;
 						} else
 							pc.environnement.setParagraphes(pc.dernierParagraphe, pc.lastProcessus);
-						pc.souffleurs.clear();
 					}
 				}
 			}
