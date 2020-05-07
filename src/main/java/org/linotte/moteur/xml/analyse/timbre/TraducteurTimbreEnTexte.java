@@ -200,7 +200,7 @@ public final class TraducteurTimbreEnTexte {
     }
 
     private void ajouterCondition(Condition timbre, StringBuilder livre, Langage langage) {
-        livre.append("si " + ajouterActeur(timbre.formule) + " lis");
+        livre.append("si " + ajouterActeur(timbre.formule));
         ajouterRetourChariot(livre, timbre);
         ajouteCommandes(timbre.timbreSuivant, livre, langage);
         livre.append("ferme");
@@ -215,7 +215,7 @@ public final class TraducteurTimbreEnTexte {
     }
 
     private void ajouterTantQue(TantQue timbre, StringBuilder livre, Langage langage) {
-        livre.append("tant que " + ajouterActeur(timbre.formule) + " lis");
+        livre.append("tant que " + ajouterActeur(timbre.formule));
         ajouterRetourChariot(livre, timbre);
         ajouteCommandes(timbre.timbreSuivant, livre, langage);
         livre.append("ferme");
@@ -223,6 +223,7 @@ public final class TraducteurTimbreEnTexte {
     }
 
     private void sectionRole(StringBuilder livre, Langage langage) {
+        debut = false;
         livre.append("début");
         ajouterRetourChariot(livre, null);
     }
@@ -421,7 +422,7 @@ public final class TraducteurTimbreEnTexte {
     }
 
     private void ajouterDebutProgramme(StringBuilder livre, Langage langage) {
-        livre.append("principale :");
+        livre.append("code :");
         ajouterRetourChariot(livre, null);
     }
 

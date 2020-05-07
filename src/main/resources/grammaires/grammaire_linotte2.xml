@@ -2225,7 +2225,8 @@
 												</choix>
 											</groupe>
 											<!-- sous-paragraphe § -->
-											<groupe nom="§" discriminant="lis" >
+											<!-- A supprimer ??? -->
+											<groupe nom="§" discriminant="lis">
 												<choix>
 													<ligne tab="2" id="node_base">
 														<token obligatoire="oui" style="sousparagraphe">lis</token>
@@ -2234,7 +2235,7 @@
 													</ligne>
 												</choix>
 											</groupe>
-											<groupe nom="§" discriminant="§" >
+											<groupe nom="§" discriminant="§">
 												<choix>
 													<ligne tab="2" id="node_base">
 														<token obligatoire="oui" style="sousparagraphe">:</token>
