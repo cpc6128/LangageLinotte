@@ -33,7 +33,7 @@ fixer de pièce :
 		// On supprime si une pièce est déjà présente la case :
 		pour chaque pieces
 			si joker != moi
-				si joker est en collision avec moi lis
+				si joker.collision(moi)
 					efface joker
 					ôte joker de pieces
 				ferme
@@ -129,7 +129,7 @@ activer ombre : pièce
 					vérification prend vrai
 					pour chaque pieces
 						si joker != pièce
-							si joker est en collision avec ombre
+							si joker.collision(ombre)
 								vérification prend faux
 								si (équipe de joker) != (équipe de pièce)
 									différent prend vrai
