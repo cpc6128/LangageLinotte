@@ -25,7 +25,6 @@ import org.jdesktop.swingx.JXTitledPanel;
 import org.jdesktop.swingx.border.DropShadowBorder;
 import org.jdesktop.swingx.painter.MattePainter;
 import org.jdesktop.swingx.plaf.basic.BasicTaskPaneUI;
-import org.jdesktop.swingx.plaf.windows.WindowsTaskPaneUI;
 import org.linotte.frame.Atelier;
 import org.linotte.frame.gui.RequestFocusListener;
 import org.linotte.frame.gui.WindowsMetroTaskPaneUI;
@@ -393,7 +392,7 @@ public class ExplorateurProjet extends JPanel {
     }
 
     private void changeTaskPaneUI(JXTaskPane task) {
-        if (metroStyle && task.getUI() instanceof WindowsTaskPaneUI) {
+        if (metroStyle) {
             BasicTaskPaneUI ui = new WindowsMetroTaskPaneUI();
             task.setUI(ui);
             task.setSpecial(true);
