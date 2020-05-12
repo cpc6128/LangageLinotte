@@ -546,9 +546,8 @@ public class Atelier extends AtelierFrame implements WindowListener {
         font = new Font(sfont, Font.PLAIN, sftaille);
     }
 
-    private Langage chargementLangageProgrammation() {
+    private void chargementLangageProgrammation() {
         linotte = new Linotte(new LibrairieVirtuelleSyntaxeV2(), new FlatIHM(this), Langage.Linotte2);
-        return linotte.getLangage();
     }
 
     private void demarrageServeurHTTP() {

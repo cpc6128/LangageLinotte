@@ -108,7 +108,7 @@ public class Cahier extends JPanel implements KeyListener, MouseListener {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
         panel.add(getJEditorPaneCahier(), BorderLayout.CENTER);
-        panel.setBackground(Color.WHITE);
+        panel.setBackground(new Color(242, 243, 244));
 
         scrollPan = new JScrollPane();
         scrollPan.getVerticalScrollBar().setUnitIncrement(10);
