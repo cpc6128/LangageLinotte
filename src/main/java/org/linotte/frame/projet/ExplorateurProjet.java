@@ -26,6 +26,7 @@ import org.jdesktop.swingx.border.DropShadowBorder;
 import org.jdesktop.swingx.painter.MattePainter;
 import org.jdesktop.swingx.plaf.basic.BasicTaskPaneUI;
 import org.linotte.frame.Atelier;
+import org.linotte.frame.atelier.AtelierFrame;
 import org.linotte.frame.gui.RequestFocusListener;
 import org.linotte.frame.gui.WindowsMetroTaskPaneUI;
 import org.linotte.frame.latoile.Java6;
@@ -65,7 +66,7 @@ public class ExplorateurProjet extends JPanel {
 
     private JXTaskPaneContainer container;
 
-    public ExplorateurProjet(FileSystemView view, File greffons, Atelier atelier, File edt) {
+    public ExplorateurProjet(FileSystemView view, AtelierFrame atelier, File edt) {
 
         changeUIdefaults();
 
@@ -75,17 +76,17 @@ public class ExplorateurProjet extends JPanel {
             LookAndFeel.uninstallBorder(container);
 
         try {
-            container.add(getTaskPaneEspaceDeTravail("Espace de travail", view, atelier, edt));
+            container.add(getTaskPaneEspaceDeTravail("Espace de travail", view, (Atelier) atelier, edt));
         } catch (Exception e) {
             e.printStackTrace();
         }
         try {
-            container.add(getTaskPaneTutoriel(view, atelier));
+            container.add(getTaskPaneTutoriel(view, (Atelier) atelier));
         } catch (Exception e) {
             e.printStackTrace();
         }
         try {
-            container.add(getTaskPanePlus(atelier));
+            container.add(getTaskPanePlus((Atelier) atelier));
         } catch (Exception e) {
             e.printStackTrace();
         }

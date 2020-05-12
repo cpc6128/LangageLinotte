@@ -20,26 +20,9 @@
 
 package org.linotte.frame.atelier;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-
-import javax.swing.BorderFactory;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
-
-import org.linotte.frame.Atelier;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
 /**
 * The class provides a means to find words in a file
@@ -54,23 +37,22 @@ import org.linotte.frame.Atelier;
 
 /**
  * Affichage de la boite de recherche
- *
  */
 
 @SuppressWarnings("serial")
 public class BoiteRecherche extends JDialog implements ActionListener {
 
-	Atelier atelier;
+	AtelierFrame atelier;
 
 	/**
-	* textfields hold String user input
-	*/
+	 * textfields hold String user input
+	 */
 
 	private JTextField textfield;
 
 	/**
-	* JCheckBox cbCase, if true the search is case sensitive
-	* JCheckBox cbWhole, if true the search is for the whole word only
+	 * JCheckBox cbCase, if true the search is case sensitive
+	 * JCheckBox cbWhole, if true the search is for the whole word only
 	* @see #caseNotSelected()
 	* @see #wholeWordIsSelected()
 
@@ -88,12 +70,12 @@ public class BoiteRecherche extends JDialog implements ActionListener {
 	private JRadioButton down;
 
 	/**
-	* Constructor is a sharedInstance() of the MainEditor.class.
-	* @param java.awt.Frame
-	* @param boolean if true the class is the Replace frame /else the Find frame
-	*/
+	 * Constructor is a sharedInstance() of the MainEditor.class.
+	 * @param java.awt.Frame
+	 * @param boolean if true the class is the Replace frame /else the Find frame
+	 */
 
-	public BoiteRecherche(Atelier atelier) {
+	public BoiteRecherche(AtelierFrame atelier) {
 
 		super(atelier);
 		this.atelier = atelier;

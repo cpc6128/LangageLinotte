@@ -1,15 +1,13 @@
 package org.linotte.frame.atelier;
 
-import org.linotte.frame.Atelier;
-
 import javax.swing.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 
 public class CutL extends AbstractAction {
-    private final Atelier atelier;
+    private final AtelierFrame atelier;
 
-    public CutL(Atelier atelier) {
+    public CutL(AtelierFrame atelier) {
         this.atelier = atelier;
     }
 

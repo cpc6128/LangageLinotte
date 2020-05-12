@@ -37,10 +37,15 @@ package org.linotte.frame.coloration;
  *   ColorEditor.java
  */
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GraphicsEnvironment;
+import org.linotte.frame.atelier.AtelierFrame;
+import org.linotte.frame.coloration.StyleBuilder.STYLE;
+import org.linotte.moteur.outils.Ressources;
+
+import javax.swing.*;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableColumn;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -52,24 +57,6 @@ import java.io.FileOutputStream;
 import java.util.Arrays;
 import java.util.Comparator;
 
-import javax.swing.DefaultCellEditor;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JComponent;
-import javax.swing.JDialog;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.table.AbstractTableModel;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.TableColumn;
-
-import org.linotte.frame.Atelier;
-import org.linotte.frame.coloration.StyleBuilder.STYLE;
-import org.linotte.moteur.outils.Ressources;
-
 /**
  * This is like TableDemo, except that it substitutes a
  * Favorite Color column for the Last Name column and specifies
@@ -78,9 +65,9 @@ import org.linotte.moteur.outils.Ressources;
 @SuppressWarnings("serial")
 public final class StyleManageur extends JPanel {
 
-	private Atelier atelier;
+	private AtelierFrame atelier;
 
-	public StyleManageur(final JDialog pere, final Atelier atelier) {
+	public StyleManageur(final JDialog pere, final AtelierFrame atelier) {
 		super(new BorderLayout());
 
 		JTable table = new JTable(new MyTableModel());
@@ -298,7 +285,7 @@ public final class StyleManageur extends JPanel {
 
 	}
 
-	public static void ouvrir(Atelier atelier) {
+	public static void ouvrir(AtelierFrame atelier) {
 		JDialog jd = new JDialog(atelier, "Editeur de styles", true);
 		jd.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		jd.setIconImage(Ressources.getImageIcon("themes.png").getImage());
@@ -323,7 +310,7 @@ public final class StyleManageur extends JPanel {
 		return tab;
 	}
 
-	private void fermer(final Atelier atelier) {
+	private void fermer(final AtelierFrame atelier) {
 		atelier.getCahierOnglet().forceMiseAJourStyle();
 	}
 

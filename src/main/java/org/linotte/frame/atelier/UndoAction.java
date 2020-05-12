@@ -1,15 +1,13 @@
 package org.linotte.frame.atelier;
 
-import org.linotte.frame.Atelier;
-
 import javax.swing.*;
 import javax.swing.undo.CannotUndoException;
 import java.awt.event.ActionEvent;
 
 public class UndoAction extends AbstractAction {
-    private final Atelier atelier;
+    private final AtelierFrame atelier;
 
-    public UndoAction(Atelier atelier) {
+    public UndoAction(AtelierFrame atelier) {
         super("Undo");
         this.atelier = atelier;
         setEnabled(false);

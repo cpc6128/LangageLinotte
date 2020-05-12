@@ -1,16 +1,14 @@
 package org.linotte.frame.atelier;
 
-import org.linotte.frame.Atelier;
-
 import javax.swing.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.event.ActionEvent;
 
 public class PasteL extends AbstractAction {
-    private final Atelier atelier;
+    private final AtelierFrame atelier;
 
-    public PasteL(Atelier atelier) {
+    public PasteL(AtelierFrame atelier) {
         this.atelier = atelier;
     }
 

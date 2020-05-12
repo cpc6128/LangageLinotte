@@ -1,15 +1,13 @@
 package org.linotte.frame.atelier;
 
-import org.linotte.frame.Atelier;
-
 import javax.swing.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 
 public class CopyL extends AbstractAction {
-    private final Atelier atelier;
+    private final AtelierFrame atelier;
 
-    public CopyL(Atelier atelier) {
+    public CopyL(AtelierFrame atelier) {
         this.atelier = atelier;
     }
 

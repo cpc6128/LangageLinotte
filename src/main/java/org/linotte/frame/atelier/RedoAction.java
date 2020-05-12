@@ -1,15 +1,13 @@
 package org.linotte.frame.atelier;
 
-import org.linotte.frame.Atelier;
-
 import javax.swing.*;
 import javax.swing.undo.CannotRedoException;
 import java.awt.event.ActionEvent;
 
 public class RedoAction extends AbstractAction {
-    private final Atelier atelier;
+    private final AtelierFrame atelier;
 
-    public RedoAction(Atelier atelier) {
+    public RedoAction(AtelierFrame atelier) {
         super("Redo");
         this.atelier = atelier;
         setEnabled(false);
