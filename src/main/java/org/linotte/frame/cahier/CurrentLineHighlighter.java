@@ -20,23 +20,19 @@
 
 package org.linotte.frame.cahier;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.Shape;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import java.util.List;
+import org.linotte.moteur.xml.alize.parseur.ParserContext.Couple;
 
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Highlighter;
 import javax.swing.text.JTextComponent;
-
-import org.linotte.moteur.xml.alize.parseur.ParserContext.Couple;
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.util.List;
 
 /*
  * http://www.camick.com/java/source/LinePainter.java
@@ -109,7 +105,7 @@ public class CurrentLineHighlighter implements Highlighter.HighlightPainter, Car
 	 * @return the color of the background line
 	 */
 	public void setLighter(Color color) {
-		setColor(new Color(225, 236, 255, 60));
+		setColor(new Color(225, 236, 255, 180));
 	}
 
 	// Paint the background highlight

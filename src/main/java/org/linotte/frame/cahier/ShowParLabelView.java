@@ -1,19 +1,12 @@
 package org.linotte.frame.cahier;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.Shape;
-import java.awt.Stroke;
+import org.linotte.moteur.outils.Preference;
 
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Element;
 import javax.swing.text.LabelView;
 import javax.swing.text.Position;
-
-import org.linotte.moteur.outils.Preference;
+import java.awt.*;
 
 /**
  * 
@@ -84,7 +77,7 @@ public class ShowParLabelView extends LabelView {
 			}
 		}
 		//Do whatever other painting here;
-		Color c = (Color) getElement().getAttributes().getAttribute("Underline-Color");
+		/*Color c = (Color) getElement().getAttributes().getAttribute("Underline-Color");
 		if (c == null) {
 			c = Color.WHITE;
 		}
@@ -97,7 +90,7 @@ public class ShowParLabelView extends LabelView {
 		g2.setStroke(dashed);
 		g.setColor(c);
 		g.drawLine(x1, y, x2, y);
-		g2.setStroke(stroke_bak);
+		g2.setStroke(stroke_bak);*/
 		super.paint(g, a);
 	}
 }
