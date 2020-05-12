@@ -15,7 +15,7 @@
     </fileSets>
     <files>
         <file>
-            <source>${project.build.directory}/DoubleCliqueMoi.jar</source>
+            <source>${project.build.directory}/Atelier.jar</source>
             <outputDirectory>/</outputDirectory>
         </file>
     </files>
