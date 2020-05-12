@@ -21,8 +21,12 @@
 package org.linotte.frame.atelier;
 
 import javax.swing.*;
+import java.awt.event.WindowListener;
 
-public class AtelierFrame extends JFrame {
+public abstract class AtelierFrame extends JFrame implements WindowListener {
+    public AtelierFrame(String nom) {
+        super(nom);
+    }
 
     /**
      *

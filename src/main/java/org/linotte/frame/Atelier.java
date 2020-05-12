@@ -20,8 +20,6 @@
 
 package org.linotte.frame;
 
-import com.formdev.flatlaf.FlatIntelliJLaf;
-import console.Jinotte;
 import org.jdesktop.swingx.JXTextField;
 import org.linotte.frame.atelier.*;
 import org.linotte.frame.cahier.Cahier;
@@ -34,7 +32,6 @@ import org.linotte.frame.coloration.StyleManageur;
 import org.linotte.frame.gui.JPanelBackGround;
 import org.linotte.frame.gui.JTextPaneText;
 import org.linotte.frame.gui.PopupListener;
-import org.linotte.frame.gui.SplashWindow;
 import org.linotte.frame.latoile.Couleur;
 import org.linotte.frame.latoile.JPanelLaToile;
 import org.linotte.frame.latoile.LaToile;
@@ -43,7 +40,6 @@ import org.linotte.frame.moteur.ConsoleProcess;
 import org.linotte.frame.moteur.Debogueur;
 import org.linotte.frame.moteur.Formater;
 import org.linotte.frame.moteur.FrameProcess;
-import org.linotte.frame.outils.Tools;
 import org.linotte.frame.projet.ExplorateurProjet;
 import org.linotte.greffons.GreffonsChargeur;
 import org.linotte.greffons.api.AKMethod;
@@ -83,14 +79,13 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * Affichage de l'interface principale de L'atelier Linotte. Contient également
  * le "main" pour exécuter l'Atelier
  */
 @SuppressWarnings("serial")
-public class Atelier extends JFrame implements WindowListener {
+public class Atelier extends AtelierFrame {
 
     private static final int TAILLE_H = 800, TAILLE_V = 650;
 
@@ -203,29 +198,7 @@ public class Atelier extends JFrame implements WindowListener {
         atelier = this;
     }
 
-    public static void main(String[] args) throws Exception {
-
-        Preference.CAN_WRITE = true;
-        if (args != null && args.length > 0) {
-            // Mode console
-            Jinotte.main(args);
-        } else {
-            // Mode graphique
-            AtomicReference<SplashWindow> splashWindow1 = new AtomicReference<>();
-            applicationStyleSwing();
-            SwingUtilities.invokeAndWait(() -> {
-                splashWindow1.set(new SplashWindow(new Frame()));
-            });
-            initialisationFrameAtelierEtToile();
-            splashWindow1.get().fermer();
-        }
-    }
-
-    private static void applicationStyleSwing() {
-        FlatIntelliJLaf.install();
-    }
-
-    private static void initialisationFrameAtelierEtToile() throws InvocationTargetException, InterruptedException {
+    protected static void initialisationFrameAtelierEtToile() throws InvocationTargetException, InterruptedException {
         Preference preference = Preference.getIntance();
         // Avant chargement de la fenetre :
         boolean auto = false;
@@ -311,57 +284,50 @@ public class Atelier extends JFrame implements WindowListener {
      *
      * @return void
      */
-    public void initialisationComposantsAtelier() {
-        try {
-            SwingUtilities.invokeAndWait(() -> {
-                chargementLangageProgrammation();
-            });
-            SwingUtilities.invokeLater(() -> {
-                demarrageServeurHTTP();
-            });
-            SwingUtilities.invokeLater(() -> {
-                chargementDesFonts();
-            });
-            SwingUtilities.invokeAndWait(() -> {
-                constructionAtelier();
-            });
-            SwingUtilities.invokeAndWait(() -> {
-                constructionMenu();
-            });
-            SwingUtilities.invokeAndWait(() -> {
-                ajoutListenerDeplacement();
-            });
-            SwingUtilities.invokeLater(() -> {
-                ajoutPopupMenu();
-            });
-            SwingUtilities.invokeAndWait(() -> {
-                affichageMessagesRegistreDesActions();
-            });
-            SwingUtilities.invokeAndWait(() -> {
-                initFilesChooser();
-            });
-            SwingUtilities.invokeAndWait(() -> {
-                ouvertureExemples();
-            });
-            SwingUtilities.invokeAndWait(() -> {
-                repertoireParDefaut();
-            });
-            SwingUtilities.invokeAndWait(() -> {
-                chargerFichiers();
-            });
-            SwingUtilities.invokeLater(() -> {
-                chargerHistorique();
-            });
-            SwingUtilities.invokeLater(() -> {
-                creationSousMenuVerbier();
-            });
-            ecrirelnTableau("Prêt");
-
-        } catch (Throwable e) {
-            e.printStackTrace();
-            Tools.showError(e);
-            System.exit(-1);
-        }
+    public void initialisationComposantsAtelier() throws InvocationTargetException, InterruptedException {
+        SwingUtilities.invokeAndWait(() -> {
+            chargementLangageProgrammation();
+        });
+        SwingUtilities.invokeLater(() -> {
+            demarrageServeurHTTP();
+        });
+        SwingUtilities.invokeLater(() -> {
+            chargementDesFonts();
+        });
+        SwingUtilities.invokeAndWait(() -> {
+            constructionAtelier();
+        });
+        SwingUtilities.invokeAndWait(() -> {
+            constructionMenu();
+        });
+        SwingUtilities.invokeAndWait(() -> {
+            ajoutListenerDeplacement();
+        });
+        SwingUtilities.invokeLater(() -> {
+            ajoutPopupMenu();
+        });
+        SwingUtilities.invokeAndWait(() -> {
+            affichageMessagesRegistreDesActions();
+        });
+        SwingUtilities.invokeAndWait(() -> {
+            initFilesChooser();
+        });
+        SwingUtilities.invokeAndWait(() -> {
+            ouvertureExemples();
+        });
+        SwingUtilities.invokeAndWait(() -> {
+            repertoireParDefaut();
+        });
+        SwingUtilities.invokeAndWait(() -> {
+            chargerFichiers();
+        });
+        SwingUtilities.invokeLater(() -> {
+            chargerHistorique();
+        });
+        SwingUtilities.invokeLater(() -> {
+            creationSousMenuVerbier();
+        });
+        ecrirelnTableau("Prêt");
     }
 
     private void repertoireParDefaut() {
