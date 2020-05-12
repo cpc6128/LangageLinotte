@@ -498,43 +498,41 @@ public class Cahier extends JPanel implements KeyListener, MouseListener {
     }
 
     public void changeAtelierEtat() {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                boolean modifie = etatCahier == EtatCachier.MODIFIE;
-                if (getFichier() == null) {
-                    Preference.getIntance().setProperty(Preference.P_FICHIER, "");
-                    atelier.setTitle("(nouveau livre) - " + Atelier.getTitre());
-                } else {
-                    Preference.getIntance().setProperty(Preference.P_FICHIER, getFichier().getAbsolutePath());
-                    atelier.setTitle(getFichier().getAbsolutePath() + " - " + Atelier.getTitre());
-                }
-                atelier.jButtonRanger.setEnabled(modifie);
-                if (modifie) {
-                    atelier.jButtonRanger.setIcon(Ressources.getImageTheme("SAVE", 32, Color.RED));
-                } else {
-                    atelier.jButtonRanger.setIcon(Ressources.getImageTheme("SAVE", 32));
-                }
-
-                atelier.getJButtonTester().setVisible(tests);
-                atelier.undoAction.updateUndoState();
-                atelier.redoAction.updateRedoState();
-                if (!visualiserTimbre) {
-                    atelier.refreshSommaireLocation();
-                    atelier.getJButtonTimbre().setVisible(false);
-                    atelier.refreshBoutonTimbre(Cahier.this);
-                } else {
-                    atelier.getJButtonTimbre().setVisible(true);
-                    atelier.refreshBoutonTimbre(Cahier.this);
-                }
-
-                // Temporaire :
-                atelier.getJMenuItemExporter().setVisible(!visualiserTimbre);
-                atelier.getJMenuItemExporterHTML().setVisible(!visualiserTimbre);
-                atelier.getJMenuItemExporterRTF().setVisible(!visualiserTimbre);
-                atelier.getJMenuItemExporterPNG().setVisible(!visualiserTimbre);
-
-
+        SwingUtilities.invokeLater(() -> {
+            boolean modifie = etatCahier == EtatCachier.MODIFIE;
+            if (getFichier() == null) {
+                Preference.getIntance().setProperty(Preference.P_FICHIER, "");
+                atelier.setTitle("(nouveau livre) - " + AtelierFrame.ATELIER_DE_PROGRAMMATION_LINOTTE);
+            } else {
+                Preference.getIntance().setProperty(Preference.P_FICHIER, getFichier().getAbsolutePath());
+                atelier.setTitle(getFichier().getAbsolutePath() + " - " + AtelierFrame.ATELIER_DE_PROGRAMMATION_LINOTTE);
             }
+            atelier.jButtonRanger.setEnabled(modifie);
+            if (modifie) {
+                atelier.jButtonRanger.setIcon(Ressources.getImageTheme("SAVE", 32, Color.RED));
+            } else {
+                atelier.jButtonRanger.setIcon(Ressources.getImageTheme("SAVE", 32));
+            }
+
+            atelier.getJButtonTester().setVisible(tests);
+            atelier.undoAction.updateUndoState();
+            atelier.redoAction.updateRedoState();
+            if (!visualiserTimbre) {
+                atelier.refreshSommaireLocation();
+                atelier.getJButtonTimbre().setVisible(false);
+                atelier.refreshBoutonTimbre(Cahier.this);
+            } else {
+                atelier.getJButtonTimbre().setVisible(true);
+                atelier.refreshBoutonTimbre(Cahier.this);
+            }
+
+            // Temporaire :
+            atelier.getJMenuItemExporter().setVisible(!visualiserTimbre);
+            atelier.getJMenuItemExporterHTML().setVisible(!visualiserTimbre);
+            atelier.getJMenuItemExporterRTF().setVisible(!visualiserTimbre);
+            atelier.getJMenuItemExporterPNG().setVisible(!visualiserTimbre);
+
+
         });
     }
 

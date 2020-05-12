@@ -88,9 +88,6 @@ public class Atelier extends AtelierFrame implements WindowListener {
     private final ImageIcon iconeEditeurTexte = Ressources.getImageIcon("accessories-text-editor.png");
 
     // //////////////////////////////////////////////////////////// Maps pour le menu verbes
-    private JMenu jMenuLinotte = null;
-    private JMenuItem jMenuItemApropos = null;
-    private JMenuItem jMenuItemMerci = null;
     private boolean saut2ligne = false;
     public List<OuvrirLivreAction> listHistorique = new ArrayList<OuvrirLivreAction>();
     // ////////////////////////////////////////////////////////////////// Menus
@@ -112,8 +109,8 @@ public class Atelier extends AtelierFrame implements WindowListener {
      *
      * @param nom Le titre de la fenêtre, usuellement "Atelier Linotte"
      */
-    public Atelier(String nom) {
-        super(nom);
+    public Atelier() {
+        super();
         atelier = this;
     }
 
@@ -140,7 +137,7 @@ public class Atelier extends AtelierFrame implements WindowListener {
             preference.setBoolean(Preference.P_WINDOW_MAX, true);
         }
 
-        Atelier atelier = new Atelier(getTitre() + " " + Version.getVersion());
+        Atelier atelier = new Atelier();
         List<Image> l = new ArrayList<Image>();
         l.add(Ressources.getImageIcon("linotte_new.png").getImage());
         atelier.setIconImages(l);
@@ -185,10 +182,6 @@ public class Atelier extends AtelierFrame implements WindowListener {
         linotte.getLibrairie().setToile(toile);
     }
 
-    public static String getTitre() {
-        return "Atelier de programmation Linotte";
-    }
-
     /**
      * This method initializes this
      *
@@ -210,9 +203,7 @@ public class Atelier extends AtelierFrame implements WindowListener {
         });
         SwingUtilities.invokeAndWait(() -> {
             constructionMenu();
-            jMenuItemSaveWorkSpace.setSelected(getPreference(true, Preference.P_MODE_SAVE_WORKSPACE));
-            jMenuItemBonifieur.setSelected(getPreference(true, Preference.P_MODE_BONIFIEUR));
-            jMenuItemDebogueur.setValue(getDelaisPasApas(400));
+            valeursParDefauts();
         });
         SwingUtilities.invokeAndWait(() -> {
             ajoutListenerDeplacement();
@@ -246,6 +237,12 @@ public class Atelier extends AtelierFrame implements WindowListener {
             initialisationActions();
         });
         ecrirelnTableau("Prêt");
+    }
+
+    private void valeursParDefauts() {
+        jMenuItemSaveWorkSpace.setSelected(getPreference(true, Preference.P_MODE_SAVE_WORKSPACE));
+        jMenuItemBonifieur.setSelected(getPreference(true, Preference.P_MODE_BONIFIEUR));
+        jMenuItemDebogueur.setValue(getDelaisPasApas(400));
     }
 
     private void initialisationActions() {

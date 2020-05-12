@@ -49,6 +49,7 @@ import java.io.IOException;
 
 public class AtelierFrame extends JFrame {
 
+    public static final String ATELIER_DE_PROGRAMMATION_LINOTTE = "Atelier de programmation Linotte";
     protected static final int TAILLE_H = 800, TAILLE_V = 650;
     public static ExplorateurProjet explorateur;
     protected static Font font;
@@ -120,8 +121,8 @@ public class AtelierFrame extends JFrame {
     private Onglets cahierOnglet;
 
 
-    public AtelierFrame(String nom) {
-        super(nom);
+    public AtelierFrame() {
+        super();
     }
 
     protected static JButton createSimpleButton(String text) {
