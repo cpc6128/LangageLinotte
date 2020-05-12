@@ -20,7 +20,7 @@
 
 package org.linotte.frame.coloration;
 
-import org.linotte.frame.Atelier;
+import org.linotte.frame.atelier.Atelier;
 import org.linotte.frame.cahier.Cahier;
 import org.linotte.frame.outils.Process;
 import org.linotte.moteur.entites.Acteur;

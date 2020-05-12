@@ -1,7 +1,5 @@
 package org.linotte.frame.atelier;
 
-import org.linotte.frame.Atelier;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.io.File;

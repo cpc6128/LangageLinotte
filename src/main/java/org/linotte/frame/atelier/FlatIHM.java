@@ -20,23 +20,16 @@
 
 package org.linotte.frame.atelier;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Dimension;
+import org.linotte.frame.moteur.FrameProcess;
+import org.linotte.moteur.entites.Role;
+import org.linotte.moteur.exception.StopException;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-
-import org.linotte.frame.Atelier;
-import org.linotte.frame.moteur.FrameProcess;
-import org.linotte.moteur.entites.Role;
-import org.linotte.moteur.exception.StopException;
 
 /**
  * Implémentation de l'interface IHM en mode FLAT : fin de la popup !

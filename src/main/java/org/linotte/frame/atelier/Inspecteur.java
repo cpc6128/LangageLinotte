@@ -21,7 +21,6 @@
 package org.linotte.frame.atelier;
 
 import org.alize.kernel.AKPatrol;
-import org.linotte.frame.Atelier;
 import org.linotte.frame.latoile.LaToile;
 import org.linotte.moteur.entites.Acteur;
 import org.linotte.moteur.entites.Casier;

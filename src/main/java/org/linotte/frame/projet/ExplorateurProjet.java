@@ -25,7 +25,7 @@ import org.jdesktop.swingx.JXTitledPanel;
 import org.jdesktop.swingx.border.DropShadowBorder;
 import org.jdesktop.swingx.painter.MattePainter;
 import org.jdesktop.swingx.plaf.basic.BasicTaskPaneUI;
-import org.linotte.frame.Atelier;
+import org.linotte.frame.atelier.Atelier;
 import org.linotte.frame.atelier.AtelierFrame;
 import org.linotte.frame.gui.RequestFocusListener;
 import org.linotte.frame.gui.WindowsMetroTaskPaneUI;

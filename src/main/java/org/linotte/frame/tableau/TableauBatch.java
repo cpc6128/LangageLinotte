@@ -20,16 +20,13 @@
 
 package org.linotte.frame.tableau;
 
-import static org.linotte.frame.tableau.TableauBatch.Type.effacer;
-import static org.linotte.frame.tableau.TableauBatch.Type.erreur;
-import static org.linotte.frame.tableau.TableauBatch.Type.info;
-import static org.linotte.frame.tableau.TableauBatch.Type.enligne;
+import org.linotte.frame.atelier.Atelier;
+import org.linotte.frame.outils.Process;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import org.linotte.frame.Atelier;
-import org.linotte.frame.outils.Process;
+import static org.linotte.frame.tableau.TableauBatch.Type.*;
 
 public class TableauBatch extends Process {
 

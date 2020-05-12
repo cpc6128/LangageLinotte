@@ -24,7 +24,7 @@ import console.Jinotte;
 import org.alize.kernel.AKException;
 import org.alize.kernel.AKJob;
 import org.alize.kernel.AKRuntime;
-import org.linotte.frame.Atelier;
+import org.linotte.frame.atelier.Atelier;
 import org.linotte.frame.atelier.Inspecteur;
 import org.linotte.frame.cahier.Cahier;
 import org.linotte.frame.coloration.ProcessStyle;

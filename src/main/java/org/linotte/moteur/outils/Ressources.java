@@ -29,7 +29,7 @@ package org.linotte.moteur.outils;
 import org.jdesktop.swingx.image.ColorTintFilter;
 import org.kordamp.ikonli.runestroicons.Runestroicons;
 import org.kordamp.ikonli.swing.FontIcon;
-import org.linotte.frame.Atelier;
+import org.linotte.frame.atelier.Atelier;
 import org.linotte.frame.latoile.LaToile;
 import org.linotte.frame.theme.ThemeManager;
 import org.linotte.greffons.externe.Greffon.RessourceManager;

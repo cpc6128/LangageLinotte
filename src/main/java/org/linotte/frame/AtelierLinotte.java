@@ -2,6 +2,7 @@ package org.linotte.frame;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import console.Jinotte;
+import org.linotte.frame.atelier.Atelier;
 import org.linotte.frame.gui.SplashWindow;
 import org.linotte.frame.outils.Tools;
 import org.linotte.moteur.outils.Preference;

@@ -22,7 +22,7 @@ package org.linotte.frame.moteur;
 
 import org.alize.kernel.AKException;
 import org.alize.kernel.AKRuntime;
-import org.linotte.frame.Atelier;
+import org.linotte.frame.atelier.Atelier;
 import org.linotte.moteur.exception.LectureException;
 import org.linotte.moteur.exception.Messages;
 import org.linotte.moteur.exception.StopException;

@@ -19,7 +19,6 @@ package org.linotte.frame.cahier;
  *                                                                     *
  ***********************************************************************/
 
-import org.linotte.frame.Atelier;
 import org.linotte.frame.atelier.*;
 import org.linotte.frame.cahier.sommaire.JPanelSommaire;
 import org.linotte.frame.cahier.timbre.JPanelPlancheATimbre;

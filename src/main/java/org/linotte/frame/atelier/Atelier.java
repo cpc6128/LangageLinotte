@@ -18,9 +18,8 @@
  *                                                                     *
  ***********************************************************************/
 
-package org.linotte.frame;
+package org.linotte.frame.atelier;
 
-import org.linotte.frame.atelier.*;
 import org.linotte.frame.cahier.Cahier;
 import org.linotte.frame.cahier.Cahier.EtatCachier;
 import org.linotte.frame.coloration.StyleBuilder;
@@ -114,7 +113,7 @@ public class Atelier extends AtelierFrame implements WindowListener {
         atelier = this;
     }
 
-    protected static void initialisationFrameAtelierEtToile() throws InvocationTargetException, InterruptedException {
+    public static void initialisationFrameAtelierEtToile() throws InvocationTargetException, InterruptedException {
         Preference preference = Preference.getIntance();
         // Avant chargement de la fenetre :
         boolean auto = false;

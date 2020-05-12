@@ -30,22 +30,18 @@
 
 package org.linotte.frame.latoile;
 
-import java.awt.Point;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import org.linotte.frame.Atelier;
+import org.linotte.frame.atelier.Atelier;
 import org.linotte.frame.listener.Listener;
 import org.linotte.moteur.entites.PrototypeGraphique;
 import org.linotte.moteur.exception.ErreurException;
 import org.linotte.moteur.outils.Preference;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 @SuppressWarnings("serial")
 public class LaToileListener extends JPanelLaToile implements KeyListener, Runnable, MouseMotionListener, MouseListener {

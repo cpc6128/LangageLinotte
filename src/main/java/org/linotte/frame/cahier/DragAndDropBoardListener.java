@@ -26,6 +26,8 @@
 
 package org.linotte.frame.cahier;
 
+import org.linotte.frame.atelier.Atelier;
+
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.dnd.DropTargetDragEvent;
@@ -37,8 +39,6 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.List;
 import java.util.StringTokenizer;
-
-import org.linotte.frame.Atelier;
 
 public class DragAndDropBoardListener implements DropTargetListener {
 

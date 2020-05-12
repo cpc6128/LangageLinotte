@@ -26,22 +26,18 @@
 
 package org.linotte.frame.latoile;
 
-import java.awt.AlphaComposite;
-import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.Image;
-import java.awt.MediaTracker;
-import java.awt.Point;
-import java.awt.RenderingHints;
-import java.awt.Robot;
-import java.awt.Toolkit;
-import java.awt.Window;
+import com.scottlogic.util.SortedList;
+import org.linotte.frame.atelier.Atelier;
+import org.linotte.frame.outils.ITransparence;
+import org.linotte.frame.outils.ProcessMg;
+import org.linotte.moteur.entites.PrototypeGraphique;
+import org.linotte.moteur.exception.ErreurException;
+import org.linotte.moteur.outils.Preference;
+import org.linotte.moteur.outils.Ressources;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.image.BufferedImage;
@@ -52,19 +48,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
-
-import javax.imageio.ImageIO;
-import javax.swing.JPanel;
-
-import org.linotte.frame.Atelier;
-import org.linotte.frame.outils.ITransparence;
-import org.linotte.frame.outils.ProcessMg;
-import org.linotte.moteur.entites.PrototypeGraphique;
-import org.linotte.moteur.exception.ErreurException;
-import org.linotte.moteur.outils.Preference;
-import org.linotte.moteur.outils.Ressources;
-
-import com.scottlogic.util.SortedList;
 
 //import com.sun.awt.AWTUtilities;
 

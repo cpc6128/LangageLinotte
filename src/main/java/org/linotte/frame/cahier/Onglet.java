@@ -31,7 +31,7 @@
 
 package org.linotte.frame.cahier;
 
-import org.linotte.frame.Atelier;
+import org.linotte.frame.atelier.Atelier;
 import org.linotte.frame.cahier.Cahier.EtatCachier;
 import org.linotte.frame.moteur.FrameProcess;
 

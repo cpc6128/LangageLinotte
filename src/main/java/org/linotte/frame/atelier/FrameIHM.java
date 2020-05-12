@@ -20,17 +20,15 @@
 
 package org.linotte.frame.atelier;
 
-import java.awt.Frame;
-import java.math.BigDecimal;
-
-import javax.swing.JOptionPane;
-
-import org.linotte.frame.Atelier;
 import org.linotte.frame.moteur.FrameProcess;
 import org.linotte.frame.tableau.TableauBatch;
 import org.linotte.moteur.entites.Role;
 import org.linotte.moteur.exception.StopException;
 import org.linotte.moteur.xml.api.IHM;
+
+import javax.swing.*;
+import java.awt.*;
+import java.math.BigDecimal;
 
 /**
  * Implémentation de l'interface IHM en mode Swing

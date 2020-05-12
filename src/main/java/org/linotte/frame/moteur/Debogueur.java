@@ -20,19 +20,10 @@
 
 package org.linotte.frame.moteur;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-
-import javax.swing.SwingUtilities;
-import javax.swing.text.BadLocationException;
-
+import console.Jinotte;
 import org.alize.kernel.AKJob;
 import org.alize.kernel.AKProcessus;
-import org.linotte.frame.Atelier;
+import org.linotte.frame.atelier.Atelier;
 import org.linotte.frame.atelier.Inspecteur;
 import org.linotte.frame.cahier.Cahier;
 import org.linotte.moteur.outils.Preference;
@@ -42,7 +33,14 @@ import org.linotte.moteur.xml.alize.kernel.RuntimeContext;
 import org.linotte.moteur.xml.alize.kernel.i.AKDebugger;
 import org.linotte.moteur.xml.alize.kernel.processus.Processus;
 
-import console.Jinotte;
+import javax.swing.*;
+import javax.swing.text.BadLocationException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Ce debogueur affiche l'inspecteur et adapte l'atelier

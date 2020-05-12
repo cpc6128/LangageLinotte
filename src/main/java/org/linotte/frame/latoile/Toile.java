@@ -20,16 +20,14 @@
 
 package org.linotte.frame.latoile;
 
-import java.awt.Dialog;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-
-import javax.swing.JFrame;
-import javax.swing.UIManager;
-
-import org.linotte.frame.Atelier;
+import org.linotte.frame.atelier.Atelier;
 import org.linotte.moteur.outils.Ressources;
 import org.linotte.moteur.xml.Linotte;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 public final class Toile {
 
