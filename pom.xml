@@ -104,7 +104,7 @@
 
     <build>
 
-        <finalName>Atelier</finalName>
+        <finalName>DoubleCliqueMoi</finalName>
 
         <plugins>
             <plugin>
