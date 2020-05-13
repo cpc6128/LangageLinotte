@@ -14,24 +14,23 @@ code :
                1,0,0,1,1,1,
                1,0,0,0,3,1,
                1,1,1,1,1,1
-	début
-		projette robonotte
-		robonotte.affiche(plan) // Affichage du labyrinthe
-		robonotte.poserobot(2,3)
-		robonotte.bas()
-		robonotte.bas()
-		robonotte.droite()
-		robonotte.droite()
-		robonotte.droite()
-		robonotte.prend()
-		robonotte.haut()
-		robonotte.gauche()
-		robonotte.gauche()
-		robonotte.haut()
-		robonotte.droite()
-		robonotte.haut()
-		robonotte.droite()
-		robonotte.droite()
-		robonotte.droite()
-		robonotte.ouvre()
-		robonotte.quitte()
+	projette robonotte
+	robonotte.affiche(plan) // Affichage du labyrinthe
+	robonotte.poserobot(2,3)
+	robonotte.bas()
+	robonotte.bas()
+	robonotte.droite()
+	robonotte.droite()
+	robonotte.droite()
+	robonotte.prend()
+	robonotte.haut()
+	robonotte.gauche()
+	robonotte.gauche()
+	robonotte.haut()
+	robonotte.droite()
+	robonotte.haut()
+	robonotte.droite()
+	robonotte.droite()
+	robonotte.droite()
+	robonotte.ouvre()
+	robonotte.quitte()

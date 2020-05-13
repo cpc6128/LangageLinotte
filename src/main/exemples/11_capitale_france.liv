@@ -1,11 +1,10 @@
 code :
 	capitale est un texte
-	début
-		tant que capitale != "Paris"
-			affiche "Quelle est la capitale de la France ?"
-			demande capitale
-		ferme
-		affiche "Bravo, tu es trop fort !"
+	tant que capitale != "Paris"
+		affiche "Quelle est la capitale de la France ?"
+		demande capitale
+	ferme
+	affiche "Bravo, tu es trop fort !"
 
 /*
 Pour arrêter ce programme, appuyez sur le bouton STOP

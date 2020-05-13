@@ -1,7 +1,7 @@
 Historique des versions :
 -------------------------
 
-*01/07/20 - Linotte 2.8
+*01/07/20 - Linotte 3
  -Evolution : Possiblité de ne plus utiliser le verbe Lire
  -Evolution : Casier, ajout fonctions anonymes ( ex : moncasier.taille() )
  -Evolution  : Ajout de l'exemple TapTempo.liv

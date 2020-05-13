@@ -1,9 +1,8 @@
 code : // Nom de la première fonction
 	prénom est un texte valant "Clément" // Création d'une variable
-	début
-		affiche "Bravo " + prénom + ", tu viens de lire ton deuxième programme Linotte !"
-		prénom prend "Jade" // On affecte une nouvelle valeur à notre variable.
-		affiche "Bravo " + prénom + ", tu viens de lire ton deuxième programme Linotte !"
+	affiche "Bravo " + prénom + ", tu viens de lire ton deuxième programme Linotte !"
+	prénom prend "Jade" // On affecte une nouvelle valeur à notre variable.
+	affiche "Bravo " + prénom + ", tu viens de lire ton deuxième programme Linotte !"
 
 /*
 Cliquez sur le bouton LIRE pour exécuter ce programme

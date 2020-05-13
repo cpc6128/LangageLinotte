@@ -1,7 +1,6 @@
 code :
 	prénom est un texte	// Création d'une variable sans valeur initiale.
 							// Il faut préciser si elle stockera un texte ou un nombre
-	début
-		affiche "Quel est ton prénom ?"
-		demande prénom // On demande à l'utilisateur la valeur de la variable 'prénom'
-		affiche "Bravo " + prénom + ", tu viens de lire ton troisième programme Linotte !"
+	affiche "Quel est ton prénom ?"
+	demande prénom // On demande à l'utilisateur la valeur de la variable 'prénom'
+	affiche "Bravo " + prénom + ", tu viens de lire ton troisième programme Linotte !"

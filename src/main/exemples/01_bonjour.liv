@@ -1,5 +1,5 @@
 code : // Nom de la première fonction du programme
-		affiche "Bravo Arthur, tu viens de lire ton premier programme Linotte !"
+	affiche "Bravo Arthur, tu viens de lire ton premier programme Linotte !"
 
 /*
 Cliquez sur le bouton LIRE pour exécuter ce programme
