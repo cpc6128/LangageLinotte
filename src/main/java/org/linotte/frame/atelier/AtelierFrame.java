@@ -325,7 +325,7 @@ public class AtelierFrame extends JFrame {
                 jButtonLire.setToolTipText("<html><b>Bouton Lire</b><br>" + "<i>Description</i> : Lis le livre présent dans le cahier<br>"
                         + "<i>Action</i> : Cliquer sur le bouton [Lire] ou appuyer sur les boutons Alt+L<br>" + "</html>");
             jButtonLire.setFocusable(false);
-            jButtonLire.setIcon(Ressources.getImageTheme("PLAY", 32));
+            jButtonLire.setIcon(Ressources.getImageTheme("PLAY", 32, new Color(63, 72, 204)));
             jButtonLire.setName("boutonLire");
             jButtonLire.setMnemonic(KeyEvent.VK_L);
         }
