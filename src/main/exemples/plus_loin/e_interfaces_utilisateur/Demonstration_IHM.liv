@@ -1,5 +1,5 @@
 bibliothèque
-	commun référence "../g_reseau/TCPCommun.liv"
+	commun référence "../j_expert/reseau/TCPCommun.liv"
 espèces
 	espèce serveur
 globale
