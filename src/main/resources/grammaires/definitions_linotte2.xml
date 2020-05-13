@@ -775,28 +775,45 @@
 			<aide present="" imperatif="décharge ? depuis ?" aide="Décharger un tube (greffon)" >Décharger (tube)</aide>
 			<aide present="" imperatif="décharge ? depuis ? avec ?" aide="Décharger un tube avec des paramètres (greffon)" >Décharger avec (tube)</aide>
 			<aide present="" imperatif="fais réagir ? à ? pour ?" aide="Ajoute un évènement à une espèce graphique" >Faire réagir</aide>
-			<aide present="" imperatif="ne fais plus réagir ? à ?" aide="Supprime un évènement à une espèce graphique" >Ne plus faire réagir</aide>
-			<aide present="" imperatif="attache ?" aide="Attache une nouvelle caractèristique ou fonction à une espèce" >Attacher</aide>
-			<aide present="" imperatif="évoque ?" aide="Execution une fonction sans prendre en compte le résultat" >Evoquer</aide>
-			<aide present="" imperatif="incrémente ?" aide="Ajouter un à un nombre" >Incrémenter</aide>
-			<aide present="" imperatif="décrémente ?" aide="Déduire un d'un nombre" >Décrémenter</aide>
-			<aide present="" imperatif="nomme ?" aide="Donner un nom au livre courant" >Nommer</aide>
-			<aide present="" imperatif="montre toile" aide="Affiche la toile" >Montrer</aide>
-			<aide present="" imperatif="provoque ?, ?" aide="Provoque l'arrêt du programme avec un numéro d'erreur et un message" >Provoquer</aide>
-			<aide present="" imperatif="recharge ?" aide="Recharge un acteur depuis un fichier" >Recharger</aide>
-  		 <aide present="" imperatif="interromps" aide="Interrompre une boucle" >Interrompre</aide>
-			<aide icone="oui" present="" imperatif="/*:ligne:Spécification : :version::ligne:Auteur : :auteur::ligne:*/:ligne::ligne:bibliothèque:ligne::ligne:espèces:ligne::ligne:globale:ligne::ligne:principale ::ligne::tab://ici les acteurs:ligne::tab::ligne::tab:début:ligne::tab::tab://ici les actions:ligne::tab::tab:" aide="Insérer dans le cahier le squelette complet d'un livre" >+Livre</aide>
-			<aide icone="oui" present="" imperatif=":ligne:F ::ligne::tab:début:ligne::tab::tab:" aide="Insérer dans le cahier le squelette d'une fonction" >-Fonction</aide>
-			<aide icone="oui" present="" imperatif="lis:ligne::tab:ferme" aide="Insérer dans le cahier le squelette d'un bloc" >-Bloc</aide>
-			<aide icone="oui" present="" imperatif="Essaie lis:ligne::tab:ferme" aide="Insérer dans le cahier le squelette d'une bloc de gestion d'erreurs" >-Gestion d'erreurs</aide>
-			<condition texte="Si ? > ?" >Plus grand que</condition>
-			<condition texte="Si ? &lt; ?" >Plus petit que</condition>
-			<condition texte="Si ? = ?" >Égal à</condition>
-			<condition texte="Si ? != ?" >Différent de</condition>
-			<condition texte="Si ? contient ?" >Contient</condition>
-			<condition texte="Si ? >= ?" >Plus grand ou égal à</condition>
-			<condition texte="Si ? &lt;= ?" >Plus petit ou égal à</condition>
-			<condition texte="Sinon ?" >Sinon</condition>
+			<aide present="" imperatif="ne fais plus réagir ? à ?" aide="Supprime un évènement à une espèce graphique">
+				Ne plus faire réagir
+			</aide>
+			<aide present="" imperatif="attache ?" aide="Attache une nouvelle caractèristique ou fonction à une espèce">
+				Attacher
+			</aide>
+			<aide present="" imperatif="évoque ?" aide="Execution une fonction sans prendre en compte le résultat">
+				Evoquer
+			</aide>
+			<aide present="" imperatif="incrémente ?" aide="Ajouter un à un nombre">Incrémenter</aide>
+			<aide present="" imperatif="décrémente ?" aide="Déduire un d'un nombre">Décrémenter</aide>
+			<aide present="" imperatif="nomme ?" aide="Donner un nom au livre courant">Nommer</aide>
+			<aide present="" imperatif="montre toile" aide="Affiche la toile">Montrer</aide>
+			<aide present="" imperatif="provoque ?, ?"
+				  aide="Provoque l'arrêt du programme avec un numéro d'erreur et un message">Provoquer
+			</aide>
+			<aide present="" imperatif="recharge ?" aide="Recharge un acteur depuis un fichier">Recharger</aide>
+			<aide present="" imperatif="interromps" aide="Interrompre une boucle">Interrompre</aide>
+			<aide icone="oui" present=""
+				  imperatif="/*:ligne:Spécification : :version::ligne:Auteur : :auteur::ligne:*/:ligne::ligne:bibliothèque:ligne::ligne:espèces:ligne::ligne:globale:ligne::ligne:principale ::ligne::tab://ici les acteurs:ligne::tab://ici les actions:ligne::tab:"
+				  aide="Insérer dans le cahier le squelette complet d'un livre">+Livre
+			</aide>
+			<aide icone="oui" present="" imperatif=":ligne:F ::ligne::tab:"
+				  aide="Insérer dans le cahier le squelette d'une fonction">-Fonction
+			</aide>
+			<aide icone="oui" present="" imperatif="lis:ligne::tab:ferme"
+				  aide="Insérer dans le cahier le squelette d'un bloc">-Bloc
+			</aide>
+			<aide icone="oui" present="" imperatif="Essaie lis:ligne::tab:ferme"
+				  aide="Insérer dans le cahier le squelette d'une bloc de gestion d'erreurs">-Gestion d'erreurs
+			</aide>
+			<condition texte="Si ? > ?">Plus grand que</condition>
+			<condition texte="Si ? &lt; ?">Plus petit que</condition>
+			<condition texte="Si ? = ?">Égal à</condition>
+			<condition texte="Si ? != ?">Différent de</condition>
+			<condition texte="Si ? contient ?">Contient</condition>
+			<condition texte="Si ? >= ?">Plus grand ou égal à</condition>
+			<condition texte="Si ? &lt;= ?">Plus petit ou égal à</condition>
+			<condition texte="Sinon ?">Sinon</condition>
 			<condition math="carré ?" >Carré d'un nombre</condition>
 			<condition math="cos ?" >Cosinus</condition>
 			<condition math="sin ?" >Sinus</condition>

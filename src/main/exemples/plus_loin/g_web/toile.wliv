@@ -35,7 +35,6 @@ tortue est un crayon, couleur vaut "vert mousse", x vaut 580, y vaut 400, taille
 <%
 magique :
 t est un rectangle, largeur vaut 20, hauteur vaut 20
-    début
     x de t vaut hasard(600)
     y de t vaut hasard(600)
     couleur de t vaut couleurs{hasard(100)}
@@ -47,8 +46,7 @@ c1 est un crayon, couleur vaut "bleu", x vaut 350, y vaut 230, taille vaut 5, an
 c2 est un crayon, couleur vaut "vert", x vaut 350, y vaut 230, taille vaut 4, angle vaut 90
 c3 est un crayon, couleur vaut "rouge", x vaut 350, y vaut 230, taille vaut 3, angle vaut 90
 c4 est un crayon, couleur vaut "noir", x vaut 350, y vaut 230, taille vaut 1, angle vaut 90
-    début
-        efface toile        
+        efface toile
         parcours commencer avec c1, 1
         parcours commencer avec c2, 2
         parcours commencer avec c3, 3
@@ -58,7 +56,6 @@ c4 est un crayon, couleur vaut "noir", x vaut 350, y vaut 230, taille vaut 1, an
 commencer :
     *tortue est un crayon
     *pas est un nombre
-    début
         projette tortue
         parcours flocon avec tortue, 200, pas
         pointe @ tortue vaut "non"
@@ -68,8 +65,7 @@ flocon :
     *tortue est un crayon
     *longueur est un nombre
     *pas est un nombre
-    début
-        pour chaque 3, lis
+        pour chaque 3
             parcours ligne avec tortue, longueur , pas
             tourne à droite tortue de 120
         ferme
@@ -79,9 +75,8 @@ ligne :
     *tortue est un crayon
     *longueur est un nombre
     *pas est un nombre
-    début
         si pas == 0, avance tortue de longueur
-        sinon lis
+        sinon
             parcours ligne avec tortue, longueur / 3, pas - 1
             tourne à gauche tortue de 60
             parcours ligne avec tortue, longueur / 3, pas - 1
@@ -95,8 +90,7 @@ ligne :
 fougère :
 	*taille est un nombre
 	*tortue est un crayon
-	début
-		si taille > 5, lis
+		si taille > 5
 			couleur@tortue vaut "215 " + entier(0.18 * (angle@tortue) +187) + " 88"
 			avance tortue de taille / 20
 			tourne à gauche tortue de 80

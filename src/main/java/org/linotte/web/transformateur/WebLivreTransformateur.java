@@ -3,17 +3,17 @@ package org.linotte.web.transformateur;
 import org.alize.http.i.WebTransformateur;
 
 /**
- * 
+ *
  * Parseur des fichiers WebLivre (*.wliv)
- * 
+ *
  * Prend en entrée un Weblivre et le transforme en Livre
- * 
+ *
  * @author Ronan Mounès
  *
  */
 public class WebLivreTransformateur implements WebTransformateur {
 
-	private static final String TEMPLATE_DEBUT_LIVRE = " décor :\ndébut\naffiche \"";
+	private static final String TEMPLATE_DEBUT_LIVRE = " décor :\naffiche \"";
 	private static final String TEMPLATE_VERBE_AFFICHER_DEBUT = "\naffiche \"";
 	private static final String TEMPLATE_VERBE_AFFICHER_FIN = "\"\n";
 	private static final String TEMPLATE_FIN_LIVRE = "\ntermine";

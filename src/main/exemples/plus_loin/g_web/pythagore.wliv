@@ -18,20 +18,20 @@ GC est un graffiti, texte vaut "C", x vaut 130, y vaut 60
 	demande A & B & C
 	
 	// Vérification des valeurs et calcul de la valeur demandée
-	si (A != 0) et (B != 0), lis
+	si (A != 0) et (B != 0)
 		C vaut racine (carré A + carré B )
 		couleur C vaut "rouge"
 	ferme
-	sinon si (A != 0) et (C != 0), lis
+	sinon si (A != 0) et (C != 0)
 		si C < A, message erreur vaut message 1
-		sinon lis
+		sinon
 			B vaut racine (carré C - carré A )
 			couleur B vaut "rouge"
 		ferme
 	ferme
-	sinon si (B != 0) et (C != 0), lis
+	sinon si (B != 0) et (C != 0)
 		si C < B, message erreur vaut message 1
-		sinon lis
+		sinon
 			A vaut racine (carré C - carré B )
 			couleur A vaut "rouge"
 		ferme

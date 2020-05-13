@@ -1,7 +1,6 @@
 principale :
 	wbt_repertoire est un texte
 	wbt_port est un texte
-	début
 		Demande wbt_repertoire
 		Demande wbt_port
 		"
@@ -91,7 +90,6 @@ sélectionner dans le menu Encodage : UTF-8 (sans BOM).</h4></font></center>
 Exemple :<br/><br/>
 <div style='background-color:#E6E6E6;width:90%;margin:auto;'><code style='font-size: smaller;'>
 Page simple :<br/>
-<span class=marge>début<br/></span>
 <span class=marge2>affiche " + µ"0022" + "Bonjour !" + µ"0022" + "</span><br/>
 </code></div>
 <br/>
@@ -104,7 +102,6 @@ et executez dans un navigateur Internet l'adresse WEB suivante:<br/>
 Exemple :<br/><br/>
 <div style='background-color:#E6E6E6;width:90%;margin:auto;'><code style='font-size: smaller;'>
 Boucle en ligne :<br/>
-<span class=marge>début</span><br/>
 <span class=marge2>affiche " + µ"0022" + "&lt;html>&lt;head>&lt;title>" + µ"0022" + "</span><br/>
 <span class=marge2>affiche " + µ"0022" + "Boucle en ligne !" + µ"0022" + "</span><br/>
 <span class=marge2>affiche " + µ"0022" + "&lt;/title>&lt;/head>&lt;body>" + µ"0022" + "</span><br/>
@@ -128,7 +125,6 @@ Exemple :<br/><br/>
 Page HTML simple avec parametres :<br/>
 <span class=marge>a est un nombre </span><br/>
 <span class=marge>b est un nombre </span><br/>
-<span class=marge>début<br/></span>
 <span class=marge2>Demande a</span><br/>
 <span class=marge2>Demande b</span><br/>
 <span class=marge2>Affiche " + µ"0022" + µ"0026" + "lt;html>"+ µ"0026" + "lt;body>" + µ"0022" + "</span><br/>
