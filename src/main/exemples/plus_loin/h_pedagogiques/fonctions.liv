@@ -1,0 +1,6 @@
+/*f(x)=x/(x-3)*/
+f : x
+		si x = 3
+			provoque 20001, "Impossible de calculer la fonction avec la valeur " + x
+		ferme
+		sinon retourne x/(x-3 )

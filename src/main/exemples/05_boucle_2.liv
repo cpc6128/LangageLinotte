@@ -1,11 +1,12 @@
 code :
-	affiche "Je sais compter jusqu'à dix et doucement !"
 	boucle est un nombre // Création de la variable boucle
-	pour boucle de 1 à 10 
-		affiche boucle
-		attends 200 millisecondes
-	ferme
-	affiche "voilà !"
+	début
+		affiche "Je sais compter jusqu'à dix et doucement !"
+		pour boucle de 1 à 10
+			affiche boucle
+			attends 200 millisecondes
+		ferme
+		affiche "voilà !"
 /*
 Cliquez sur le bouton LIRE pour exécuter ce programme
 */

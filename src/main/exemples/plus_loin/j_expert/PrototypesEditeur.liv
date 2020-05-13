@@ -1,0 +1,194 @@
+globale
+	// Fenetre :
+	V est un texte valant "1.0"
+	form est un formulaire, titre prend "Editeur De Descriptions De Prototypes (E3DP) v" + V, largeur prend 700, hauteur prend 550
+	m1 est un menu, texte prend "Fichier"
+	sm1 est un sousmenu, texte prend "Ouvrir un fichier .dat"
+	sm2 est un sousmenu, texte prend "A propos"
+	sm3 est un sousmenu, texte prend "Quitter"
+
+	// Editeur :
+	scrolleur est un scrolleur, largeur prend 200, hauteur prend 450, x prend 10, y prend 10
+	liste est un liste, valeurs prend "", x prend 20, y prend 40
+	boite est un boite, x prend 230, y prend 10, largeur prend 400, hauteur prend 200
+	description est un étiquette, texte prend "<html><b>Affichage en HTML :</b></html>", x prend 230, y prend 270
+	label est un étiquette, texte prend "", x prend 230, y prend 290
+	bouton est un bouton, texte prend "Valider le changement", x prend 230, y prend 220
+	bouton_message est un étiquette, texte prend "Enregistrement sur disque en cours...", x prend 230, y prend 220, visible prend "non"
+	status est un étiquette, texte prend "...", x prend 10, y prend 470
+
+	// Acteurs autres :
+	c est un conduit
+	lignes est un casier de textes
+	valeurs est un répertoire
+
+	// Outils en langage Python pour les traitements unicode
+	outils est un pyoutils // Ce greffon correspond au fichier PyOutils.py dans le répertoire greffons
+	
+principale :
+	début
+		/*On ajoute les menus principaux*/
+		ajoute m1 & scrolleur & boite & bouton & description & label & bouton_message & status dans form
+		form.changementdimension(faux)
+		ajoute liste dans scrolleur
+		/*On ajoute les sous-menus*/
+		Ajoute sm1 & sm2 & sm3 dans m1
+		// Initialisation des évènements :
+		fais réagir form à "clic souris" pour fermer la fenêtre
+		fais réagir sm1 à "clic souris" pour ouvrir depuis un fichier
+		fais réagir sm2 à "clic souris" pour à propos
+		fais réagir sm3 à "clic souris" pour fermer la fenêtre
+		fais réagir liste à "clic souris" pour afficher valeur
+		fais réagir bouton à "clic souris" pour valider changement
+		// boucle infinie
+		tant que vrai
+			temporise
+		ferme
+
+à propos :
+	début
+		form.àpropos()
+		reviens
+
+fermer la fenêtre :
+	début
+		termine
+
+ouvrir depuis un fichier :
+	retour est un drapeau
+	temp & temp2 est un texte
+	pos est un nombre
+	taille est un nombre
+	nb est un nombre
+	début
+		Essaie
+			vide lignes & valeurs
+		//	retour prend c.ouvrir("z:/prototypes.dat")
+			retour prend c.sélectionneretouvrir()
+			si retour
+				temp prend c.lireligne()
+				tant que temp != "fin"
+					incrémente nb
+					temp prend ascii2unicode(temp)
+					cherche pos, la position de "=" dans temp
+					pos prend pos + 1
+					mesure temp dans taille
+					extrais de temp à partir de pos + 1 à taille dans temp2
+					extrais de temp à partir de 1 à pos - 1 dans temp
+					ajoute #temp dans lignes
+					charge #temp2 dans valeurs avec temp
+					essaie temp prend c.lireligne()
+					sinon temp prend "fin"
+				ferme
+				liste.chargevaleurs(lignes)
+			ferme
+			c.fermer()
+			parcours message info avec nb + " lignes chargées"
+		ferme
+		sinon	parcours message erreur avec message_erreur
+		reviens
+
+afficher valeur :
+	*l est un liste
+	champ est un texte
+	valeur est un texte
+	début
+		pour chaque liste.valeurs()
+			champ prend joker
+		ferme
+		décharge valeur depuis valeurs avec champ
+		texte@boite prend valeur
+		texte@label prend "<html>" + valeur + "</html>"
+		reviens
+
+valider changement :
+	*b est un bouton
+	champ est un texte
+	début
+		visible@bouton prend "non"
+		visible@bouton_message prend "oui"
+		pour chaque liste.valeurs()
+			champ prend joker
+		ferme
+		charge texte@boite dans valeurs avec champ
+		texte@label prend "<html>" + texte@boite + "</html>"
+		// On sauvegarde le fichier sur disque :
+		parcours sauvegarde
+		visible@bouton_message prend "non"
+		visible@bouton prend "oui"
+		reviens
+
+ascii2unicode :
+	*ligne est un texte
+	pos est un nombre
+	unicode est un texte
+	retour est un texte valant ligne
+	taille est un nombre
+	début
+		cherche pos, la position de "\" dans ligne
+		pos prend pos + 1
+		tant que pos != 0
+			// Est-ce un retour chariot ?
+			si (ligne{pos}) == "N"
+				extrais de ligne à partir de 1 à pos - 1 dans retour
+				ajoute "
+" dans retour
+				mesure ligne dans taille
+				extrais de ligne à partir de pos + 2 à taille dans ligne
+				ajoute ligne dans retour
+				ligne prend retour
+			ferme
+			sinon
+				// C'est un code unicode
+				extrais de ligne à partir de pos à pos + 5 dans unicode
+				extrais de ligne à partir de 1 à pos - 1 dans retour
+				ajoute outils.unicode2ascii(unicode) dans retour
+				mesure ligne dans taille
+				extrais de ligne à partir de pos + 6 à taille dans ligne
+				ajoute ligne dans retour
+				ligne prend retour
+			ferme
+			cherche pos, la position de "\" dans ligne
+			pos prend pos + 1
+		ferme
+		retourne retour
+
+sauvegarde :
+	valeur est un texte
+	début
+		Essaie
+			c.enregistrer(c.nomfichiercomplet())
+			pour chaque lignes
+				décharge valeur depuis valeurs avec joker
+				valeur prend unicode2ascii(joker + "=" + valeur)
+				c.écrire(valeur)
+				c.écrire(c.retourchariot())
+			ferme
+			c.fermer()
+		ferme
+		sinon parcours message erreur avec message_erreur
+		reviens
+
+unicode2ascii :
+	*ligne est un texte
+	taille & i est un nombre
+	retour est un texte
+	début
+		mesure ligne dans taille
+		pour i de 0 à taille - 1
+			ajoute outils.ascii2unicode(ligne{i}) dans retour
+		ferme
+		retourne retour
+
+message erreur :
+	*erreur est un texte
+	début
+		affiche erreur
+		texte@status prend "<html><font size='+2' color=red>" + erreur + "</font></html>"
+		reviens
+
+message info :
+	*info est un texte
+	début
+		texte@status prend "<html><font size='+1'>" + info + "</font></html>"
+		reviens

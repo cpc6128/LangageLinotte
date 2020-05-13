@@ -1,0 +1,19 @@
+globale
+	secret est un nombre valant hasard(500)
+	boucle est un nombre valant 0
+code :
+	réponse est un nombre valant 0
+	début
+		affiche "Tu dois trouver un nombre entre 0 et 500."
+		tant que réponse != secret
+			boucle prend boucle + 1
+			affiche "Propose un nombre"
+			demande réponse
+			si réponse > secret
+				"Ce nombre est trop grand !" !
+			ferme
+			sinon si réponse < secret
+				"Ce nombre est trop petit !" !
+			ferme
+		ferme
+		affiche "Félicitation, c'était ${secret} et tu as réussi en ${boucle} coups !"

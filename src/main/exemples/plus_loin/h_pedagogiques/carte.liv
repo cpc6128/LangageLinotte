@@ -1,0 +1,74 @@
+/*Auteur : Dadodudou*/
+	globale
+	numéros est un casier de nombre valant -1 , -1 , -1 , -1
+	coul est un casier de nombre valant 0 , 0 , 0 , 0
+	numéros2 est un casier de texte valant "1" , "2" , "3", "4" , "5" , "6" , "7" , "8" , "9" , "10" , "valet" , "dame" , "roi"
+	coul2 est un casier de texte valant "trèfle" , "carreau" , "coeur" , "pique"
+	i est un nombre
+	x est un nombre
+	co est un texte
+Cheminement :
+	début
+		Essaie
+			explore "ouvrir aide.txt"
+		Ferme
+		Sinon
+			Affiche "Impossible de trouver le fichier aide.txt"
+		Ferme
+		pour i de 0 à 3
+			tant que (numéros{i}) == -1, parcours Numéro avec i
+			tant que (coul{i}) == 0, parcours Couleur avec i
+		ferme
+		parcours Calculs
+		affiche "La dernière carte est..."
+		attends 3 secondes
+		si x == 11, affiche "la " + numéros2{x} + " de " + co
+		sinon affiche "le " + numéros2{x} + " de " + co
+		termine
+
+Numéro :
+	*a est un nombre
+	b est un texte
+	c est un nombre
+	j est un nombre
+	début
+		c prend a+1
+		affiche "numéro de la carte " + c + " ?"
+		demande b
+		pour j de 0 à 12
+			si b == (numéros2{j}), numéros{a} prend j
+		ferme
+		reviens
+
+Couleur :
+	*a est un nombre
+	b est un texte
+	c est un nombre
+	j est un nombre
+	début
+		c prend a+1
+		affiche "couleur de la carte " + c + " ?"
+		demande b
+		pour j de 0 à 3
+			si b == (coul2{j}), coul{a} prend 0.2*(j+1)
+		ferme
+		si a == 0, co prend b
+		reviens
+
+Calculs :
+	j est un nombre
+	k est un nombre
+	l est un nombre
+	supp est un nombre valant 0
+	début
+		j prend numéros{1} + coul{1}
+		k prend numéros{2} + coul{2}
+		l prend numéros{3} + coul{3}
+		si j > k, supp prend supp + 3
+		si j > l, supp prend supp + 2
+		si k > l, supp prend supp + 2
+		si supp == 7, supp prend 6
+		si supp == 0, supp prend 1
+		x prend numéros{0} + supp
+		si x > 12, x prend x-13
+		reviens

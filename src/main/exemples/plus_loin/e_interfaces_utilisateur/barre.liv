@@ -1,0 +1,41 @@
+globale
+	form est un formulaire, titre prend "Démonstration barrée", largeur prend 400, hauteur prend 260
+	m1 est un menu, texte prend "Outils"
+	barre est un barre, x prend 1, y prend 10
+	b1 est un bouton, texte prend "Rouge", icône prend "medias/rouge.png"
+	b2 est un bouton, texte prend "Blanc", icône prend "medias/blanc.png"
+	b3 est un bouton, texte prend "Logo", icône prend "medias/logo.png"
+	sm1 est un sousmenu, texte prend "Démarrer"
+	l1 est un étiquette, texte prend "", x prend 30, y prend 100
+principale :
+	début
+		Ajoute m1 & l1 & barre dans form
+		Ajoute b1 dans barre
+		évoque barre.séparateur()
+		Ajoute b2 dans barre
+		évoque barre.espace(100)
+		Ajoute b3 dans barre
+		Ajoute sm1 dans m1
+		Fais réagir sm1 à "clic souris" pour message
+		Fais réagir b1 & b2 & b3 à "clic souris" pour messagebouton
+		Fais réagir form à  "clic souris" pour fermer fenêtre
+		tant que vrai
+			temporise
+			vide touches
+		ferme
+
+message :
+	*m est un sousmenu
+	début
+		texte @ l1 prend "Le sous-menu fonctionne !"
+		Reviens
+
+Messagebouton :
+	*m est un bouton
+	début
+		texte @ l1 prend "Le bouton ${texte@m} fonctionne !"
+		Reviens
+
+Fermer fenêtre :
+	début
+		Termine

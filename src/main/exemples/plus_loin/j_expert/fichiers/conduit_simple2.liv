@@ -1,0 +1,35 @@
+/*
+Exemple simple pour écrire et lire du texte dans un fichier !
+Plus d'informations ici : http://langagelinotte.free.fr/wiki/index.php?title=Conduit
+*/
+globale
+	container est un conduit
+	// Attention, le répertoire "c:/temp" doit exister !!
+	localisation est un texte valant "c:/temp/linotte_conduit2.txt" // Sous Windows
+	// localisation est un texte valant "/tmp/linotte_conduit2.txt" // Sous Linux
+
+principale :
+		efface tableau
+		parcours écriture
+		parcours lecture
+
+écriture :
+	caractère est un nombre valant 48
+	début
+		container.enregistrer(localisation)
+		container.écrire("écrivons du bla bla" + container.retourchariot() )
+		pour 100
+			container.écrire(chr(caractère))
+			incrémente caractère
+		ferme
+		container.écrire("fin du bla bla !")
+		container.fermer()
+		reviens
+
+lecture :
+		container.ouvrir(localisation)
+		affiche container.lireligne()
+		pour chaque 10 affiche container.nlire(10) // nlire(10) permet lire 10 caractères à la suite dans le fichier
+		affiche container.lireligne()
+		container.fermer()
+		reviens

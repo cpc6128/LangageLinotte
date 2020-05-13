@@ -1,7 +1,0 @@
-principale :
-	AB est un nombre
-	BC est un nombre
-	début
-		AB ?
-		BC ?
-		affiche "Le carré de l'hypoténuse prend : " + (carré AB + carré BC)

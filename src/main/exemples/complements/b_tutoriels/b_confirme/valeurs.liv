@@ -1,3 +1,0 @@
-principale :
-	début
-		"Pi : " + pi & "e : " + euler !

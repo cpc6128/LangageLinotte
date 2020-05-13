@@ -1,0 +1,3 @@
+code :
+	début
+		"Pi : " + pi & "e : " + euler !

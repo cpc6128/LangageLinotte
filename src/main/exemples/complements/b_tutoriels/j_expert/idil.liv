@@ -1,4 +1,0 @@
-principale :
-	début
-		Efface toile
-		Peins "scene1.xml"

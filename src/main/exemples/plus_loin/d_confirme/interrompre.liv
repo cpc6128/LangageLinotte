@@ -1,0 +1,10 @@
+code :
+	début
+		pour 40
+			affiche "{joker+1} kilomètres à pied, ça use, ça use !"
+			si joker > 3
+				affiche "Ça use les souliers ..."
+				interromps
+			ferme
+		ferme
+		affiche "... et je suis bien trop fatigué !"

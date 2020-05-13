@@ -1,0 +1,39 @@
+// Procédure d'installation du greffon : http://programmons.forumofficiel.fr/t1168-manipulation-du-gpio-avec-linotte-a-tester
+
+globale
+	gpio est un gpio // Communication entre Linotte et le GPIO du Raspberry PI.
+
+principale :
+	début
+		essaie parcours guirlande
+		sinon
+			affiche "oups, une erreur !"
+			affiche "Numéro de l'erreur : " + numéro_erreur
+			affiche "Message de l'erreur : " + message_erreur
+		ferme
+		affiche "on ferme l'interface de communication"
+		gpio.arrêterinterface()
+
+guirlande :
+	pin1 est un gpio, pin prend "1"
+	pin2 est un gpio, pin prend "2"
+	début
+		affiche "connexion aux pins"
+		pin1.démarrer()
+		pin2.démarrer()
+		affiche "on allume les pins"
+		pin1.allumer()
+		pin2.allumer()
+		attends 2 secondes
+		affiche "on bascule l'état des pins"
+		pin1.basculer()
+		pin2.basculer()
+		attends 2 secondes
+		affiche "on allume les pins"
+		pin1.allumer()
+		pin2.allumer()
+		attends 2 secondes
+		affiche "on éteint les pins"
+		pin1.éteindre()
+		pin2.éteindre()
+		reviens

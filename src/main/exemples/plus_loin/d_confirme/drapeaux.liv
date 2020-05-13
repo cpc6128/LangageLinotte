@@ -1,0 +1,10 @@
+code :
+	Porte est un drapeau valant vrai
+	début
+		tant que porte
+			Affiche "porte prend " + porte
+			Porte prend faux
+		ferme
+		affiche "porte prend " + porte
+		si porte affiche "vrai"
+		sinon si non(porte) affiche "faux"

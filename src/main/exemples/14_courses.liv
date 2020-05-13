@@ -1,3 +1,6 @@
+/*
+Dans la section globale, on définit des variables qui seront visibles dans toutes les fonctions
+*/
 globale
 	v1 est un rectangle, x prend 50, y prend 35, plein prend "oui", couleur prend "rouge", hauteur prend 7, largeur prend 15
 	v2 est un rectangle, x prend 50, y prend 65, plein prend "oui", couleur prend "vert", hauteur prend 7, largeur prend 15

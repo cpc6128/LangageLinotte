@@ -1,0 +1,13 @@
+code :
+	flux_commentaires est un rss
+	début
+		flux_commentaires.chargerarticles("http://programmons.forumofficiel.fr/feed/")
+		tant que flux_commentaires.articlesuivant()
+			efface tableau
+			"Titre : ${flux_commentaires.titre()}" !
+			"Date : ${flux_commentaires.date()}" !
+			"Description : ${flux_commentaires.description()}" !
+			"Lien : ${flux_commentaires.lien()}" !
+			attends 3 secondes
+			"************************************" !
+		ferme

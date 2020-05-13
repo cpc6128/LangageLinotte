@@ -1,0 +1,49 @@
+globale
+	Information est un graffiti, x prend 200, y prend 300, texte prend "Quel est ton nom ?", transparence prend 100, couleur prend "blanc"
+	Message est un graffiti, x prend 20, y prend 20, couleur prend "rouge"
+	Réponse est un scribe, x prend 220, y prend 320, couleur prend "noir", texte prend "", taille prend 4, taquet prend 20
+
+principale :
+	Mur est une toile, couleur prend "gris"
+	début
+		Efface toile
+		Projette mur
+		Projette information
+		Projette réponse
+		Stimule réponse
+		Temporise
+		Efface réponse
+		Efface information
+		Transparence @ information prend 0
+		Texte de message prend "Bonjour, " + texte @ réponse + "."
+		Projette message
+		Texte @ information prend "Félitation, tu viens de lire ..."
+		De 20 à 250
+			Déplace message vers joker et joker
+			Attends 5 millisecondes
+		ferme
+		Projette information
+		Couleur @ mur prend "noir"
+		Couleur @ message prend "bleu"
+		joue "sons/bouchon.wav"
+		De 0 à 100, parcours effet
+		Attends 2 secondes
+		Transparence @ information prend 0
+		Texte @ information prend "... un livre en langage Linotte !"
+		De 0 à 100, parcours effet
+		Attends 2 secondes
+		Transparence @ information prend 0
+		Texte @ information prend "... C'est simple à comprendre ?"
+		De 0 à 100, parcours effet
+		Attends 2 secondes
+		Transparence @ information prend 0
+		Texte @ information prend "Alors, à toi de jouer maintenant !"
+		De 0 à 100, parcours effet
+		Explore "internet http://programmons.forumofficiel.fr"
+		Termine
+
+effet :
+	début
+		Transparence @ information prend joker
+		Attends 15 millisecondes
+		Reviens

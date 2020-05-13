@@ -1,0 +1,52 @@
+globale
+	form est un formulaire, titre prend "La boite à texte", largeur prend 400, hauteur prend 260
+	boite est un boite,x prend 30, y prend 30, largeur prend 200, hauteur prend 100
+	b1 est un bouton, texte prend "Afficher le texte dans le tableau", x prend 30, y prend 150
+	l1 est un étiquette, texte prend "", x prend 30, y prend 200
+	m1 est un menu, texte prend "Edition"
+	b2 est un sousmenu, texte prend "Annuler action"
+	b3 est un sousmenu, texte prend "Rétablir action"
+
+principale :
+	début
+		ajoute m1 & boite & b1 & l1 dans form
+		ajoute b2 & b3 dans m1
+		fais réagir b1 à "clic souris" pour afficher valeur
+		// Réaction aux touches contrôle + entrée :
+		fais réagir boite à "clic souris" pour afficher valeur
+		fais réagir boite à "touche" pour majuscule
+		fais réagir b2 à "clic souris" pour annuler
+		fais réagir b3 à "clic souris" pour rétablir
+		fais réagir form à  "clic souris" pour fermer fenêtre
+		tant que vrai
+			temporise
+			vide touches
+		ferme
+
+afficher valeur :
+	*b est un bouton
+	début
+		affiche texte @ boite
+		reviens
+
+annuler :
+	*b est un sousmenu
+	début
+		boite.annuler()
+		reviens
+
+rétablir :
+	*b est un sousmenu
+	début
+		boite.rétablir()
+		reviens
+
+majuscule :
+	*b est une boite
+	début
+		texte @ boite vaut (texte @ boite).majuscule()
+		reviens
+
+
+fermer fenêtre :
+		termine

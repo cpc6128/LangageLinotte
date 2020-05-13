@@ -1,0 +1,25 @@
+globale
+	tête est un cercle , x prend 440, y prend 178, rayon prend 5, taille prend 10, couleur prend "chair", position prend 2
+	corps est un ligne, x1 prend 440, y1 prend 188, x2 prend 440, y2 prend 260, taille prend 4, couleur prend "bleu france", position prend 1
+	bras 1 est un ligne, x1 prend 440, y1 prend 203, x2 prend 414, y2 prend 223, taille prend 3, couleur prend "chair", position prend 0
+	bras 2 est un ligne, x1 prend 440, y1 prend 203, x2 prend 466, y2 prend 223, taille prend 3, couleur prend "chair", position prend 0
+	jambe 1 est un ligne, x1 prend 420, y1 prend 293, x2 prend 440, y2 prend 260, taille prend 3, couleur prend "bleu nuit", position prend 0
+	jambe 2 est un ligne, x1 prend 460, y1 prend 293, x2 prend 440, y2 prend 260, taille prend 3, couleur prend "bleu nuit", position prend 0
+	personnage1 est un mégalithe
+	personnage2 est un mégalithe
+	indicateur est un rectangle,  largeur prend 40, hauteur prend 20, couleur prend "noir", plein prend "oui"
+
+démonstration :
+	début
+		Efface toile
+		Projette personnage1 & indicateur
+		Fusionne tête & corps & bras 1 & bras 2 & jambe 1 & jambe 2 dans personnage1
+		personnage2 prend personnage1
+		Déplace personnage2 de -100 et 0
+		tant que vrai
+			tourne à droite personnage1 de 1
+			tourne à gauche personnage2 de 2
+			si personnage1.collision(personnage2), couleur @ indicateur prend "rouge"
+			sinon couleur @ indicateur prend "vert"
+			attends 0.01 seconde
+		ferme

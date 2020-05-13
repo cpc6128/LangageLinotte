@@ -1,0 +1,57 @@
+/*
+
+http://fr.wikipedia.org/wiki/Technique_Pomodoro
+
+La technique Pomodoro est une technique de planification développée par Francesco Cirillo à la fin des années 1980. 
+Cette méthode se base sur l'usage d'un minuteur permettant de respecter des périodes de 25 minutes appelées pomodori (
+qui signifie en italien « tomates »). Ces différentes périodes de travail sont séparées par de courtes pauses. 
+La méthode a pour principale idée que des pauses régulières favorisent l'agilité intellectuelle.
+
+Tomate rouge pendant 15 minutes, il faut bosser.
+Tomate grise, on peut prendre la pause mais on termine sa tâche en cours.
+Dès que l'on souhaite prendre la pause, on double clique sur la tomate qui devient verte.
+Tomate verte pendant 5 minutes, on peut effecter la pause !
+
+Inspiré par ce lien : http://linuxfr.org/news/tomate-une-petite-applet-de-productivit%C3%A9-pour-linux
+
+*/
+
+globale
+	// Images (http://gitorious.org/tomate/)
+	icone bosse  est un texte valant "http://langagelinotte.free.fr/wordpress/wp-content/working.png"
+	icone pause  est un texte valant "http://langagelinotte.free.fr/wordpress/wp-content/ok.png"
+	icone attente  est un texte valant "http://langagelinotte.free.fr/wordpress/wp-content/idle.png"
+	// Temps de travail en minute :
+	travail  est un nombre valant 25
+	// Temps de pause en minute :
+	stop  est un nombre valant 5
+	tomate est une notification, icône prend icone bosse, description prend "Tomate (technique Pomodoro)"
+	attente est un drapeau valant vrai
+
+principale :
+	début
+		tomate.ajoutermenu("Quitter", "quitter")
+		tomate.actionclique("continuer")
+		tomate.afficher()
+		tant que vrai
+			icône de tomate prend icone bosse
+			attends 60 * travail secondes
+			icône de tomate prend icone attente
+			//tomate.messagesystème("Message d'une tomate", "Fin de la tâche.")
+			attente prend vrai // Si l'utilisateur a cliqué avant la tomate grisse
+			tant que attente, attends 0.2 seconde
+			attente prend vrai
+			icône de tomate prend icone pause
+			attends 60 * stop secondes
+			tomate.messagesystème("Message d'une tomate", "On retourne à la tâche.")
+		ferme
+
+quitter :
+	début
+		tomate.supprimer()
+		termine
+		
+continuer :
+	début
+		attente prend faux
+		reviens

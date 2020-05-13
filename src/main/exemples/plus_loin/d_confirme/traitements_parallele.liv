@@ -1,0 +1,12 @@
+code :
+	début
+		appelle traitement
+		affiche "On attend 3 secondes"
+		attends 3 secondes
+		affiche "Fin des 3 secondes"
+
+traitement :
+	début
+		attends 1 seconde
+		affiche "....moi, je ne veux pas attendre !"
+		reviens

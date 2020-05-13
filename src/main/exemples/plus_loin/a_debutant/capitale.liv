@@ -1,0 +1,12 @@
+code :
+	capitale est un texte 
+	début
+		questionne capitale sur "Quelle est la capitale de la France ?"
+		si capitale = "Paris" va vers réponse bonne
+		affiche "Faux ! tu peux recommencer !"
+		va vers principale
+
+réponse bonne :
+	début
+		affiche "Bravo, tu es trop fort !"
+		termine

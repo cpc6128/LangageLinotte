@@ -1,0 +1,94 @@
+/*
+Exemple plus complexe pour écrire et lire des tableaux dans un fichier !
+Plus d'informations ici : http://langagelinotte.free.fr/wiki/index.php?title=Conduit
+*/
+globale
+	container est un conduit
+	// Attention, le répertoire "c:/temp" doit exister !!
+	localisation est un texte valant "c:/temp/linotte_conduit4.txt" // Sous Windows
+	// localisation est un texte valant "/tmp/linotte_conduit4.txt" // Sous Linux
+	séparateur valant ","
+
+principale :
+		efface tableau
+		affiche "écriture des tableaux dans le fichier : " + localisation
+		parcours écriture
+		affiche "lecture des tableaux depuis ce même fichier : "
+		parcours lecture
+
+écriture :
+	à écrire 1 valant "janvier", "février", "mars", "avril", "mail"
+	à écrire 2 valant "a", "b", "c", "d", "e"
+	à écrire 3 valant 100, 3.14, 4, 5, 0.5
+	taille est un nombre
+	début
+		// Ecriture des deux tableaux dans un unique fichier
+		container.enregistrer(localisation)
+		parcours écrire tableau avec à écrire 1
+		parcours écrire tableau avec à écrire 2
+		parcours écrire tableau nombres avec à écrire 3
+		container.fermer()
+		reviens
+
+lecture :
+	tableau 1 est un casier de textes
+	tableau 2 est un casier de textes
+	tableau 3 est un casier de nombres
+	début
+		container.ouvrir(localisation)
+		parcours lire tableau avec tableau 1
+		parcours lire tableau avec tableau 2
+		parcours lire tableau nombre avec tableau 3
+		affiche "Tableau 1 :"
+		affiche tableau 1
+		affiche "Tableau 2 :"
+		affiche tableau 2
+		affiche "Tableau 3 :"
+		affiche tableau 3
+		reviens
+
+écrire tableau : tab
+	taille est un nombre
+	début
+		mesure tab dans taille
+		container.écrire("" + taille) // Le conduit ne connait pas les nombres
+		container.écrire(séparateur)
+		pour chaque tab
+			container.écrire(joker)
+			container.écrire(séparateur)
+		ferme
+		reviens
+
+écrire tableau nombres : tab
+	taille est un nombre
+	début
+		mesure tab dans taille
+		container.écrirenombre(taille) // Le conduit ne connait pas les nombres
+		container.écrire(séparateur)
+		pour chaque tab
+			container.écrirenombre(joker)
+			container.écrire(séparateur)
+		ferme
+		reviens
+
+lire tableau : tab
+	taille est un nombre
+	début
+		// Combien d'éléments dans le tableau 1 ?
+		convertis container.clire(séparateur) en taille
+		pour taille
+			ajoute container.clire(séparateur) dans tab
+		ferme
+		reviens
+
+lire tableau nombre : tab
+	taille est un nombre
+	tampon est un nombre
+	début
+		// Combien d'éléments dans le tableau :
+		convertis container.clire(séparateur) en taille
+		pour taille
+			convertis container.clire(séparateur) en tampon
+			ajoute clone(tampon) dans tab
+		ferme
+		reviens

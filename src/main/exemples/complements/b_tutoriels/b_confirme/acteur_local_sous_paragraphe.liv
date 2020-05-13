@@ -1,9 +1,0 @@
-principale :
-	casier est un casier de nombres
-	début
-		pour chaque 10 lis
-			b est un nombre valant 15
-			mélange b
-			ajoute b dans casier
-		ferme
-		affiche casier

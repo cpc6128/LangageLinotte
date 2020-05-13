@@ -1,9 +1,0 @@
-Horodatage :
-	montre est un horodatage
-	début
-		tant que vrai lis
-			attends .1 seconde
-			efface tableau
-			montre.maintenant()
-			affiche montre.heure() + ":" + montre.minute() + ":" + montre.seconde() + ":" + montre.milliseconde()
-		ferme

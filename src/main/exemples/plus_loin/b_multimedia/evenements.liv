@@ -1,0 +1,81 @@
+espèces
+	nom est un texte
+	espèce fleur hérite de point et contient nom
+globale
+	champs est une toile, couleur prend "jaune mimosa"
+	fleurs est un casier de fleur 
+	message_fleur est un graffiti, x prend 114, y prend 539, couleur prend "noir", texte prend "Déplace la souris sur les fleurs !", position prend 1, taille prend 10
+principale :
+	début
+		efface toile
+		projette champs
+		projette message_fleur
+		pour chaque couleurs, parcours création avec joker
+		tant que vrai
+			/*boucle infinie*/
+			temporise
+			vide touches
+		ferme
+
+création :
+	*n est un texte
+	fleur est un fleur
+	yy est un nombre valant 600
+	xx est un nombre valant 600
+	début
+		mélange xx
+		mélange yy
+		déplace fleur vers xx et yy
+		couleur @ fleur prend joker
+		taille @ fleur prend 10
+		nom @ fleur prend joker
+		projette fleur
+		ajoute fleur dans fleurs
+		fais réagir fleur à "souris entrante" pour afficher le nom
+		fais réagir fleur à "souris sortante" pour effacer le nom
+		fais réagir fleur à "clic souris" pour clique
+		fais réagir fleur à "double clic souris" pour double clique
+		fais réagir fleur à "clic droit souris" pour clique droit
+		fais réagir fleur à "glisser-déposer" pour changement
+		reviens
+
+afficher le nom :
+	*fleur est un fleur
+	début
+		texte @ message_fleur prend nom de fleur
+		pointeur @ champs prend "main"
+		reviens
+
+effacer le nom :
+	début
+		texte @ message_fleur prend ""
+		pointeur @ champs prend "normal"
+		reviens
+
+clique :
+	*fleur est un fleur
+	début
+		taille @ fleur prend 20
+		Attends 1 secondes
+		taille @ fleur prend 10
+		reviens
+
+clique droit :
+	*fleur est un fleur
+	début
+		visible @ fleur prend "non"
+		reviens
+
+double clique :
+	*fleur est un fleur
+	début
+		taille @ fleur prend 5
+		Attends 1 secondes
+		taille @ fleur prend 10
+		reviens
+
+changement :
+	*fleur est un fleur
+	début
+		texte @ message_fleur prend "glisser-déposer de " + nom de fleur
+		reviens

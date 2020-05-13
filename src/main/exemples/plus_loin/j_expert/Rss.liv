@@ -1,0 +1,13 @@
+principale :
+	flux_commentaires est un rss
+	début
+		flux_commentaires.chargerarticles("http://rss.lemonde.fr/c/205/f/3050/index.rss")
+		tant que flux_commentaires.articlesuivant()
+			Efface tableau
+			"Titre : {flux_commentaires.titre()}" !
+			"Date : {flux_commentaires.date()}" !
+			"Description : {flux_commentaires.description()}" !
+			"Lien : {flux_commentaires.lien()}" !
+			"Image : {flux_commentaires.image()}" !
+			attends 4 secondes
+		ferme

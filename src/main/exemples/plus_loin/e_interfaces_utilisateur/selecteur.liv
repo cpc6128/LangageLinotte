@@ -1,0 +1,27 @@
+globale
+	form est un formulaire, titre prend "Le sélecteur", largeur prend 200, hauteur prend 100
+	s1 est un sélecteur, valeurs prend "sinople|rose balais|bleu cyan", x prend 20, y prend 50
+	l1 est un  étiquette, texte prend "Choisissez la couleur :", x prend 20, y prend 20
+	toile est une toile, couleur prend "blanc"
+
+formulaire :
+	début
+		Projette toile
+		Ajoute s1 & l1 dans form
+		Fais réagir s1 à "clic souris" pour changer la couleur
+		Fais réagir form à "clic souris" pour fermer la fenêtre
+		Tant que vrai
+			temporise
+			vide touches
+		Ferme
+
+changer la couleur :
+	*s est un sélecteur
+	début
+		Couleur @ toile prend valeur @ s
+		Reviens
+
+fermer la fenêtre :
+	*f est un formulaire
+	début
+		Termine
