@@ -164,6 +164,7 @@
                                     </excludes>
                                 </filter>
                             </filters>
+                            <shadedArtifactAttached>false</shadedArtifactAttached>
                         </configuration>
                     </execution>
                 </executions>

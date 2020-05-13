@@ -24,7 +24,7 @@ public class TeleType extends JPanel {
     public TeleType() {
 
         setLayout(new BorderLayout());
-        action = new JButton("Essayer");
+        action = new JButton();
         action.setMnemonic(KeyEvent.VK_Y);
         entree = new JXTextField("Entrer une action à exécuter");
         if (!Preference.getIntance().getBoolean(Preference.P_BULLE_AIDE_INACTIF))

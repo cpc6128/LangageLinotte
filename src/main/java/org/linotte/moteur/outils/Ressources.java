@@ -140,6 +140,9 @@ public class Ressources implements RessourceManager {
             case "STOP":
                 nom = "STOP";
                 break;
+            case "TEST":
+                nom = "OK";
+                break;
             case "MEM":
                 nom = "SELECT_CELLS";
                 break;
@@ -153,7 +156,7 @@ public class Ressources implements RessourceManager {
                 nom = "EDIT";
                 break;
             case "TOOLS":
-                nom = "COGS";
+                nom = "ATTRACTION";
                 break;
             case "HELP":
                 nom = "SAFARI";
@@ -186,7 +189,7 @@ public class Ressources implements RessourceManager {
                 nom = "INFO_CIRCLE";
                 break;
             case "GO":
-                nom = "MAIL_SEND";
+                nom = "TERMINAL";
                 break;
             case "CODE":
                 nom = "SELECT";

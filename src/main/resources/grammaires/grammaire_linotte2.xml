@@ -2225,16 +2225,6 @@
 												</choix>
 											</groupe>
 											<!-- sous-paragraphe § -->
-											<!-- A supprimer ??? -->
-											<groupe nom="§" discriminant="lis">
-												<choix>
-													<ligne tab="2" id="node_base">
-														<token obligatoire="oui" style="sousparagraphe">lis</token>
-														<sousparagraphe etat="ouverture"/>
-														<etat nom="§ début"/>
-													</ligne>
-												</choix>
-											</groupe>
 											<groupe nom="§" discriminant="§">
 												<choix>
 													<ligne tab="2" id="node_base">

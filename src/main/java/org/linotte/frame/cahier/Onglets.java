@@ -43,19 +43,19 @@ public class Onglets extends JPanel {
 	private JTabbedPane tabbedPane = new JTabbedPane();
 
 	public Onglets() {
-		super(new GridLayout(1, 1));
-		add(tabbedPane);
-		tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
-		tabbedPane.addChangeListener(new ChangeListener() {
-			@Override
-			public void stateChanged(ChangeEvent e) {
-				JTabbedPane pane = (JTabbedPane) e.getSource();
-				Cahier cahier = (Cahier) pane.getSelectedComponent();
-				if (cahier != null) {
-					cahier.getAtelier().setCahierCourant(cahier);
-					cahier.changeAtelierEtat();
-				}
-			}
+        super(new GridLayout(1, 1));
+        add(tabbedPane);
+        tabbedPane.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
+        tabbedPane.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                JTabbedPane pane = (JTabbedPane) e.getSource();
+                Cahier cahier = (Cahier) pane.getSelectedComponent();
+                if (cahier != null) {
+                    cahier.getAtelier().setCahierCourant(cahier);
+                    cahier.changeAtelierEtat();
+                }
+            }
 		});
 	}
 

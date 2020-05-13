@@ -189,7 +189,7 @@ public class AtelierFrame extends JFrame {
                 splitPaneProjet.setRightComponent(getJSplitPaneAtelier());
                 splitPaneProjet.setOrientation(JSplitPane.HORIZONTAL_SPLIT);
                 splitPaneProjet.setDividerSize(8);
-                splitPaneProjet.setOneTouchExpandable(true);
+                splitPaneProjet.setOneTouchExpandable(false);
                 splitPaneProjet.addComponentListener(new ComponentListener() {
                     public void componentHidden(ComponentEvent e) {
                     }
@@ -229,7 +229,7 @@ public class AtelierFrame extends JFrame {
             jSplitPaneAtelier.setBottomComponent(getJScrollPaneTableau());
             jSplitPaneAtelier.setOrientation(JSplitPane.VERTICAL_SPLIT);
             jSplitPaneAtelier.setDividerSize(8);
-            jSplitPaneAtelier.setOneTouchExpandable(true);
+            jSplitPaneAtelier.setOneTouchExpandable(false);
             jSplitPaneAtelier.addComponentListener(new ComponentListener() {
                 public void componentHidden(ComponentEvent e) {
                 }
@@ -267,7 +267,7 @@ public class AtelierFrame extends JFrame {
             setSommaire(getCahierCourant().getJSommaire());
             splitPaneSommaire.setOrientation(JSplitPane.HORIZONTAL_SPLIT);
             splitPaneSommaire.setDividerSize(8);
-            splitPaneSommaire.setOneTouchExpandable(true);
+            splitPaneSommaire.setOneTouchExpandable(false);
             splitPaneSommaire.addComponentListener(new ComponentListener() {
                 public void componentHidden(ComponentEvent e) {
                 }
@@ -392,9 +392,7 @@ public class AtelierFrame extends JFrame {
                 jButtonTester.setToolTipText("<html><b>Bouton Tester</b><br>" + "<i>Description</i> : Teste le livre présent dans le cahier<br>"
                         + "<i>Action</i> : Cliquer sur le bouton [Tester] ou appuyer sur les boutons Alt+T<br>" + "</html>");
             jButtonTester.setFocusable(false);
-            jButtonTester.setIcon(Ressources.getImageIcon("bandeau/start-here.png"));
-            jButtonTester.setPressedIcon(Ressources.getImageIconePlusClaire("bandeau/start-here.png"));
-            jButtonTester.setRolloverIcon(Ressources.getImageIconePlusClaire("bandeau/start-here.png"));
+            jButtonTester.setIcon(Ressources.getImageTheme("TEST", 32));
             jButtonTester.setName("boutonTester");
             jButtonTester.setMnemonic(KeyEvent.VK_T);
         }
@@ -411,9 +409,6 @@ public class AtelierFrame extends JFrame {
             jButtonPasAPas.setFocusable(false);
             jButtonPasAPas.setVisible(true);
             jButtonPasAPas.setIcon(Ressources.getImageTheme("DEBUG", 32));
-            //jButtonPasAPas.setIcon(Ressources.getImageIcon("bandeau/start-here.png"));
-            //jButtonPasAPas.setPressedIcon(Ressources.getImageIconePlusClaire("bandeau/start-here.png"));
-            //jButtonPasAPas.setRolloverIcon(Ressources.getImageIconePlusClaire("bandeau/start-here.png"));
             jButtonPasAPas.setName("boutonPause");
             jButtonPasAPas.setMnemonic(KeyEvent.VK_A);
         }
