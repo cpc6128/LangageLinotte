@@ -19,8 +19,6 @@ public final class TraducteurTimbreEnTexte {
 
     private int numeroLigne = 1;
 
-    private boolean debut = true; // Pour le langage Linotte 2 et Linotte 1
-
     public String traiter(List<Timbre> timbresAExecuter, Langage langage) {
         StringBuilder livre = new StringBuilder();
         Debut debutTimbre = null;
@@ -41,14 +39,9 @@ public final class TraducteurTimbreEnTexte {
             ajouteCommandes(debutTimbre.timbreSuivant, livre, langage);
         }
 
-        if (debut == true) { // Si vide ?
-            sectionRole(livre, langage);
-        }
-
         // Ajout des fonctions :
         for (Fonction fonction : fonctions) {
             Acteur prochaine = ajouterEnteteFonction(livre, fonction, langage);
-            debut = true;
             ajouteCommandes(prochaine == null ? fonction.timbreSuivant : prochaine.timbreSuivant, livre, langage);
         }
 
@@ -76,27 +69,15 @@ public final class TraducteurTimbreEnTexte {
             ajouterCreationActeur((Acteur) timbre, livre, langage);
             return timbre.timbreSuivant;
         } else if (timbre instanceof Condition) {
-            if (debut == true) {
-                sectionRole(livre, langage);
-            }
             ajouterCondition((Condition) timbre, livre, langage);
             return ((BlocDebut) timbre).blocfin.timbreSuivant;
         } else if (timbre instanceof TantQue) {
-            if (debut == true) {
-                sectionRole(livre, langage);
-            }
             ajouterTantQue((TantQue) timbre, livre, langage);
             return ((BlocDebut) timbre).blocfin.timbreSuivant;
         } else if (timbre instanceof Pour) {
-            if (debut == true) {
-                sectionRole(livre, langage);
-            }
             ajouterPour((Pour) timbre, livre, langage);
             return ((BlocDebut) timbre).blocfin.timbreSuivant;
         } else if (timbre instanceof Verbe) {
-            if (debut == true) {
-                sectionRole(livre, langage);
-            }
             switch (timbre.parfum) {
                 case AFFICHER:
                     ajouterAfficher((Verbe) timbre, livre, langage);
@@ -206,7 +187,7 @@ public final class TraducteurTimbreEnTexte {
         livre.append("ferme");
         ajouterRetourChariot(livre, null);
         if (!(timbre.timbreSuivantSecondaire instanceof BlocFin)) {
-            livre.append("sinon lis");
+            livre.append("sinon");
             ajouterRetourChariot(livre, null);
             ajouteCommandes(timbre.timbreSuivantSecondaire, livre, langage);
             livre.append("ferme");
@@ -219,12 +200,6 @@ public final class TraducteurTimbreEnTexte {
         ajouterRetourChariot(livre, timbre);
         ajouteCommandes(timbre.timbreSuivant, livre, langage);
         livre.append("ferme");
-        ajouterRetourChariot(livre, null);
-    }
-
-    private void sectionRole(StringBuilder livre, Langage langage) {
-        debut = false;
-        livre.append("début");
         ajouterRetourChariot(livre, null);
     }
 

@@ -141,18 +141,6 @@ public class PivotSyntaxique {
 					if (action instanceof EspeceAction || action instanceof ActeurAction) {
 						//pasForcerTokenDebut = false;
 						break;
-					} else if (action instanceof StructureDebutAction ) { //|| pasForcerTokenDebut
-						etat = ETAT.PARAGRAPHE_CORPS;
-						if (action instanceof ActionDispatcher ) { //&& pasForcerTokenDebut
-							ProcessusDispatcher pd = (ProcessusDispatcher) p;
-							if (pd.getProcessusSecondaire() != null && pd.getProcessusSecondaire().getAction() instanceof LireAction) {
-								etat = ETAT.PARAGRAPHE_INIT_BLOC;
-							}
-						}
-						if (precedent != null && action instanceof StructureDebutAction ) { // && !pasForcerTokenDebut
-							precedent.setNextProcess(p.getNextProcess());
-						}
-						break;
 					}
 					break;
 					//throw new ErreurException(Constantes.STRUCTURE_LIVRE, "le mot 'début' est manquant");

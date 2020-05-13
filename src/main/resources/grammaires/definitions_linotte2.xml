@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<grammaire compatible="Meta-Linotte 0.2" version="2.8.0" langue="français" auteur="Ronan Mounès" creation="février 2006"
+<grammaire compatible="Meta-Linotte 0.2" version="3" langue="français" auteur="Ronan Mounès" creation="février 2006"
 		   modification="Octobre 2015">
 	<!-- Version release date : September 01, 2006                           -->
 	<!-- Author : Mounès Ronan ronan.mounes@amstrad.eu                       -->

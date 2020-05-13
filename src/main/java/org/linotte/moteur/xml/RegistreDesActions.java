@@ -117,7 +117,6 @@ public class RegistreDesActions {
 			addAction(new DechargerAction());
 			addAction(new ConfigurerAction());
 			addAction(new EvaluerAction());
-			addAction(new SouffleurAction());
 			addAction(new FusionnerAction());
 			addAction(new FaireReagirAction());
 			addAction(new RetournerAction());
@@ -139,7 +138,6 @@ public class RegistreDesActions {
 			addAction(new MontrerAction());
 			addAction(new ProposerAction());
 			addAction(new StructureGlobaleAction());
-			addAction(new StructureDebutAction());
 			addAction(new RechargerAction());
 			addAction(new InterrompreAction());
 			addAction(new AjouterSimpleAction());
