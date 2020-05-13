@@ -326,6 +326,8 @@ public class AtelierFrame extends JFrame {
                         + "<i>Action</i> : Cliquer sur le bouton [Lire] ou appuyer sur les boutons Alt+L<br>" + "</html>");
             jButtonLire.setFocusable(false);
             jButtonLire.setIcon(Ressources.getImageTheme("PLAY", 32, new Color(63, 72, 204)));
+            jButtonLire.setPressedIcon(Ressources.getImageTheme("PLAY", 32, Color.darkGray));
+            jButtonLire.setDisabledIcon(Ressources.getImageTheme("PLAY", 32, Color.lightGray));
             jButtonLire.setName("boutonLire");
             jButtonLire.setMnemonic(KeyEvent.VK_L);
         }
@@ -408,7 +410,9 @@ public class AtelierFrame extends JFrame {
                 jButtonPasAPas.setToolTipText(Debogueur.TOOLTIP_BOUTON_RALENTI);
             jButtonPasAPas.setFocusable(false);
             jButtonPasAPas.setVisible(true);
+            //jButtonPasAPas.setIcon(Ressources.getImageTheme("DEBUG", 32, new Color(63, 72, 204)));
             jButtonPasAPas.setIcon(Ressources.getImageTheme("DEBUG", 32));
+            jButtonPasAPas.setDisabledIcon(Ressources.getImageTheme("DEBUG", 32, Color.lightGray));
             jButtonPasAPas.setName("boutonPause");
             jButtonPasAPas.setMnemonic(KeyEvent.VK_A);
         }
@@ -454,6 +458,7 @@ public class AtelierFrame extends JFrame {
             jButtonStop.setFocusable(false);
             jButtonStop.setVisible(true);
             jButtonStop.setIcon(Ressources.getImageTheme("STOP", 32));
+            jButtonStop.setDisabledIcon(Ressources.getImageTheme("STOP", 32, Color.lightGray));
             jButtonStop.setMnemonic(KeyEvent.VK_S);
             if (!Preference.getIntance().getBoolean(Preference.P_BULLE_AIDE_INACTIF))
                 jButtonStop.setToolTipText("<html><b>Bouton Stop</b><br>" + "<i>Description</i> : Stop le livre en cours de lecture<br>"
@@ -508,6 +513,7 @@ public class AtelierFrame extends JFrame {
             jButtonRanger.setFocusable(false);
             jButtonRanger.setVisible(true);
             jButtonRanger.setIcon(Ressources.getImageTheme("SAVE", 32));
+            jButtonRanger.setDisabledIcon(Ressources.getImageTheme("SAVE", 32, Color.lightGray));
             jButtonRanger.setMnemonic(KeyEvent.VK_R);
             if (!Preference.getIntance().getBoolean(Preference.P_BULLE_AIDE_INACTIF))
                 jButtonRanger.setToolTipText("<html><b>Bouton Ranger</b><br>" + "<i>Description</i> : Sauvegarder votre livre sur le disque<br>"
