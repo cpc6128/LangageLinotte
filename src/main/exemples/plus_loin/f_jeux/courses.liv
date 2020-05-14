@@ -2,7 +2,6 @@ espèces
 	vitesse est un nombre
 	modèle est un texte
 	espèce voiture hérite de rectangle et contient vitesse, modèle
-
 globale
 	v1 est un voiture, modèle prend "Renault", x prend 50, y prend 35, plein prend "oui", couleur prend "rouge", hauteur prend 7, largeur prend 15
 	v2 est un voiture, modèle prend "Peugeot", x prend 50, y prend 65, plein prend "oui", couleur prend "vert", hauteur prend 7, largeur prend 15
@@ -18,31 +17,28 @@ globale
 	résultat3 est un graffiti, x prend 210, y prend 225
 
 principale :
-	début
-		efface toile
-		projette piste & arrivée
-		appelle course avec v1
-		appelle course avec v2
-		appelle course avec v3
-		observe course
-		texte @ résultat1 prend "la voiture " + modèle @ (classement{0}) + " est la première !"
-		texte @ résultat2 prend "la voiture " + modèle @ (classement{1}) + " est la deuxième !"
-		texte @ résultat3 prend "la voiture " + modèle @ (classement{2}) + " est la dernière !"
-		couleur @ résultat1 prend couleur @ (classement{0})
-		couleur @ résultat2 prend couleur @ (classement{1})
-		couleur @ résultat3 prend couleur @ (classement{2})
-		projette résultat1 & résultat2 & résultat3
-		temporise
+	projette piste & arrivée
+	appelle course avec v1
+	appelle course avec v2
+	appelle course avec v3
+	observe course
+	texte @ résultat1 prend "la voiture " + modèle @ (classement{0}) + " est la première !"
+	texte @ résultat2 prend "la voiture " + modèle @ (classement{1}) + " est la deuxième !"
+	texte @ résultat3 prend "la voiture " + modèle @ (classement{2}) + " est la dernière !"
+	couleur @ résultat1 prend couleur @ (classement{0})
+	couleur @ résultat2 prend couleur @ (classement{1})
+	couleur @ résultat3 prend couleur @ (classement{2})
+	projette résultat1 & résultat2 & résultat3
+	temporise
 
 course :
 	*vehicule est une voiture
-	début
-		projette vehicule
-		tant que (x @ vehicule) < limite
-			vitesse de vehicule prend max
-			mélange vitesse @ vehicule
-			déplace vehicule vers la droite de vitesse @ vehicule
-			attends tempo millisecondes
-		ferme
-		ajoute vehicule dans classement
-		reviens
+	projette vehicule
+	tant que (x @ vehicule) < limite
+		vitesse de vehicule prend max
+		mélange vitesse @ vehicule
+		déplace vehicule vers la droite de vitesse @ vehicule
+		attends tempo millisecondes
+	ferme
+	ajoute vehicule dans classement
+	reviens

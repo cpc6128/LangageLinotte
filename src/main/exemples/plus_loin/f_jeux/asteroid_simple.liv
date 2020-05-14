@@ -3,45 +3,43 @@ globale
 	screen est une toile, largeur prend 500, hauteur prend 500
 
 principale :
-		projette screen & vaisseau
-		appelle mouvement // Mouvement du vaisseau pour suivre la souris
-		appelle attaque // Pour lancer les attaques des monstres !
-		tant que vrai
-			temporise
-			si touche = "clique" appelle tirer avec x@vaisseau, y@vaisseau
-		ferme
+	projette screen & vaisseau
+	appelle mouvement // Mouvement du vaisseau pour suivre la souris
+	appelle attaque // Pour lancer les attaques des monstres !
+	tant que vrai
+		temporise
+		si touche = "clique" appelle tirer avec x@vaisseau, y@vaisseau
+	ferme
 
 mouvement :
-		tant que vrai 
-			attends 5 millisecondes
-			si (x@vaisseau) < sourisx déplace vaisseau vers la droite de 4
-			si (x@vaisseau) > sourisx déplace vaisseau vers la gauche de 4
-		ferme
+	tant que vrai
+		attends 5 millisecondes
+		si (x@vaisseau) < sourisx déplace vaisseau vers la droite de 4
+		si (x@vaisseau) > sourisx déplace vaisseau vers la gauche de 4
+	ferme
 
 tirer : x, y
 	bullet est un graphique, image prend "astronotte/bullet.gif", x prend x+25, y prend y
-	début
-		projette bullet
-		tant que (y@bullet) > -20
-			y@bullet prend y@bullet - 5
-			attends 10 milliseconde
-		ferme
-		efface bullet
-		reviens
+	projette bullet
+	tant que (y@bullet) > -20
+		y@bullet prend y@bullet - 5
+		attends 10 milliseconde
+	ferme
+	efface bullet
+	reviens
 
 monstre :
 	monstre est un graphique, image prend "astronotte/bomberman.gif", x prend hasard(500), y prend -50
-	début
-		projette monstre
-		tant que (y@monstre) < (530)
-			y@monstre prend y@monstre + 8
-			attends 20 milliseconde
-		ferme
-		efface monstre
-		reviens
+	projette monstre
+	tant que (y@monstre) < (530)
+		y@monstre prend y@monstre + 8
+		attends 20 milliseconde
+	ferme
+	efface monstre
+	reviens
 
 attaque :
-		tant que vrai
-			attends 1000 millisecondes
-			appelle monstre
-		ferme
+	tant que vrai
+		attends 1000 millisecondes
+		appelle monstre
+	ferme

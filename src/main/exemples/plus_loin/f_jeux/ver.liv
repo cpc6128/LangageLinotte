@@ -11,55 +11,55 @@ globale
 	Utilisez les flèches de votre clavier le diriger.
 	
 	Appuyez sur la touche C pour commencer !", x prend 150, y prend 100, largeur prend 300, taille prend 5, couleur prend "capucine"
+
 Go :
 	fin & sens est un nombre
 	ancien x & ancien y est un nombre
 	action est un texte
-	début
-		efface toile
-		projette terre & aide
-		tant que touche != "c", temporise
-		efface aide
-		projette message & ver & lièvre
-		tant que fin != 1
-			posé de ver prend "oui"
-			ancien x prend x de lièvre
-			ancien y prend y de lièvre
-			si sens == 0, x de lièvre prend x de lièvre + 5
-			sinon si sens == 1, y de lièvre prend y de lièvre + 5
-			sinon si sens == 2, x de lièvre prend x de lièvre - 5
-			sinon y de lièvre prend y de lièvre - 5
-			si (x de lièvre) > 590
-				x de lièvre prend 5
-				posé de ver prend "non"
-			ferme
-			sinon si (x de lièvre) < 5
-				x de lièvre prend 590
-				posé  de ver prend "non"
-			ferme
-			si (y de lièvre) > 580
-				y de lièvre prend 10
-				posé de ver prend "non"
-			ferme
-			sinon si (y de lièvre) < 10
-				y de lièvre prend 580
-				posé  de ver prend "non"
-			ferme
-			si lièvre.collision(ver)
-				fin prend 1
-			ferme
-			déplace ver vers x de lièvre et y de lièvre
-			attends 0.03 seconde
-			action prend touche
-			si action == "gauche", sens prend 2
-			sinon si action == "droite", sens prend 0
-			sinon si action == "haut", sens prend 3
-			sinon si action == "bas", sens prend 1
-			score prend score + 1
-			texte de message prend "Score : " + score
+	efface toile
+	projette terre & aide
+	tant que touche != "c", temporise
+	efface aide
+	projette message & ver & lièvre
+	tant que fin != 1
+		posé de ver prend "oui"
+		ancien x prend x de lièvre
+		ancien y prend y de lièvre
+		si sens == 0, x de lièvre prend x de lièvre + 5
+		sinon si sens == 1, y de lièvre prend y de lièvre + 5
+		sinon si sens == 2, x de lièvre prend x de lièvre - 5
+		sinon y de lièvre prend y de lièvre - 5
+		si (x de lièvre) > 590
+			x de lièvre prend 5
+			posé de ver prend "non"
 		ferme
-		texte de message prend "GAME OVER ! Score de " + score
-		couleur de message prend "rouge"
-		transparence de message prend 100
-		temporise
-		termine
+		sinon si (x de lièvre) < 5
+			x de lièvre prend 590
+			posé  de ver prend "non"
+		ferme
+		si (y de lièvre) > 580
+			y de lièvre prend 10
+			posé de ver prend "non"
+		ferme
+		sinon si (y de lièvre) < 10
+			y de lièvre prend 580
+			posé  de ver prend "non"
+		ferme
+		si lièvre.collision(ver)
+			fin prend 1
+		ferme
+		déplace ver vers x de lièvre et y de lièvre
+		attends 0.03 seconde
+		action prend touche
+		si action == "gauche", sens prend 2
+		sinon si action == "droite", sens prend 0
+		sinon si action == "haut", sens prend 3
+		sinon si action == "bas", sens prend 1
+		score prend score + 1
+		texte de message prend "Score : " + score
+	ferme
+	texte de message prend "GAME OVER ! Score de " + score
+	couleur de message prend "rouge"
+	transparence de message prend 100
+	temporise
+	termine

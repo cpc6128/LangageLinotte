@@ -47,24 +47,18 @@ public class Preference extends Properties {
 	public static final String P_NO_SPLASH = "NO_SPLASH";
 	public static final String P_FICHIER = "FICHIER";
 	public static final String P_DIRECTORY = "DIRECTORY";
-	public static final String P_MODE_VERBE = "MODE_VERBE";
 	public static final String P_VERSION = "VERSION";
 	public static final String P_VITESSE = "RAFRAICHISSEMENT";
 	public static final String P_VITESSE_TOUCHE = "VITESSE_TOUCHE";
 	public static final String P_FONT = "FONT";
 	public static final String P_TAILLE_FONT = "TAILLE_FONT";
-	public static final String P_CHRONO = "CHRONO";
 	public static final String ENCODAGE = "ENCODAGE";
 	public static final String P_WINDOW_MAX = "WINDOW_MAX";
-	public static final String P_WARNING = "WARNING";
 	public static final String P_MODE_SAVE_WORKSPACE = "SAVE_WORKSPACE";
 	public static final String P_BULLE_AIDE_INACTIF = "BULLE_AIDE_INACTIF";
 	public static final String P_MODE_BONIFIEUR = "BONIFIEUR";
 	public static final String P_HISTORIQUE = "HISTORIQUE";
-	public static final String P_MODE_FURTIF = "MODE_FURTIF";
 	public static final String P_PAS_A_PAS = "PAS_A_PAS";
-	public static final String P_LANGAGE = "LANGAGE";
-	public static final String P_GANDALF = "GANDALF";
 	public static final String P_TOUCHE_ENTREE = "TOUCHE_ENTREE";
 
 	// Webonotte
@@ -74,7 +68,7 @@ public class Preference extends Properties {
 
 	private static final String FICHIER = "atelier.cfg";
 
-	public static final String REPERTOIRE = ".linotte";
+	public static final String REPERTOIRE = ".linotte3";
 
 	public static boolean CAN_WRITE = false;
 

@@ -1,14 +1,16 @@
-code : // Cliquez sur le bouton 'Lire !' pour exécuter ce programme
+// Cliquez sur le bouton 'LIRE' pour exécuter ce programme.
+
+code :
 	efface tableau
 	affiche "Merci d'utiliser Linotte {version} !
 
-La programmation est toujours aussi simple avec Linotte et même encore plus plaisante avec cette nouvelle version de L'Atelier !
+La programmation est toujours aussi simple avec Linotte... et même plus plaisante avec cette nouvelle version de L'Atelier !
 
 ⚠ Note importante pour les programmeurs en Linotte 2.X :
 	✔ Le verbe 'lire ne doit plus être utilisé : il suffit de le supprimer.
 	✔ Le mot de clé 'début' ne doit plus être utilisé : il suffit de le supprimer. 
 	    Il n'y a plus d'obligatoire de créer les acteurs au début d'une fonction
-	✔ Le test 'A est en collision avec B' doit être remplacé par 'a.collision(B)'
+	✔ Le test 'si A est en collision avec B' doit être remplacé par 'si A.collision(B)'
 	↳ Vos programmes seront plus lisibles !
 
 Bonne programmation !

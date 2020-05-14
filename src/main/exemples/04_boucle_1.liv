@@ -1,6 +1,6 @@
 code :
 	boucle est un nombre // Création de la variable boucle
-@	affiche "Je sais compter jusqu'à dix !"
+	affiche "Je sais compter jusqu'à dix !"
 	pour boucle de 1 à 10 affiche boucle
 	affiche "voilà !"
 /*

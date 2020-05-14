@@ -388,6 +388,8 @@ public class Atelier extends AtelierFrame implements WindowListener {
         // Si premier lancement :
         if (!Preference.getIntance().isExiste()) {
             Preference.getIntance().setProperty(Preference.P_FICHIER + "_1",
+                    linotte.getLangage().getCheminExemple() + "/00_quoideneuf.liv");
+            Preference.getIntance().setProperty(Preference.P_FICHIER + "_2",
                     linotte.getLangage().getCheminExemple() + "/01_bonjour.liv");
 
         }
