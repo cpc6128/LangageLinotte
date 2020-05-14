@@ -16,22 +16,20 @@ globale
 	texte est un graffiti, couleur prend "lapis-lazuli", x prend 250, y prend 510
 
 animation :
-	début
-		efface toile
-		projette écran & fond & texte
-		appelle minuteur
+	efface toile
+	projette écran & fond & texte
+	appelle minuteur
 		/*boucle infinie*/
-		tant que vrai
-			tourne à gauche écran de 1
-			attends 0.1 seconde
-		ferme
+	tant que vrai
+		tourne à gauche écran de 1
+		attends 0.1 seconde
+	ferme
 
 minuteur :
-	début
-		tant que vrai
-			pour chaque 12
-				trame@écran prend joker
-				attends 0.1 secondes
-				texte@texte prend "trame n°" + joker
-			ferme
+	tant que vrai
+		pour chaque 12
+			trame@écran prend joker
+			attends 0.1 secondes
+			texte@texte prend "trame n°" + joker
 		ferme
+	ferme

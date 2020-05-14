@@ -4,7 +4,7 @@ globale
 	c2 est un crayon, couleur prend "noir", x prend 350, y prend 230, taille prend 3, angle prend 90
 	c3 est un crayon, couleur prend "vert", x prend 350, y prend 230, taille prend 1, angle prend 90
 
-principale :
+code :
 		efface toile
 		appelle commencer avec c1, 6
 		attends 0.2 seconde

@@ -4,13 +4,12 @@ globale
 	e est une toile, couleur prend "bleu", image prend "images/dn_house2.png"
 
 principale :
-	début
-		efface toile
-		projette c
-		projette d
-		projette e
-		tant que vrai
-			tourne à gauche c de 1
-			tourne à droite d de 1
-			attends 0.01 seconde
-		ferme
+	efface toile
+	projette c
+	projette d
+	projette e
+	tant que vrai
+		tourne à gauche c de 1
+		tourne à droite d de 1
+		attends 0.01 seconde
+	ferme

@@ -4,12 +4,11 @@ globale
 	mur est une toile, couleur prend "blanc"
 
 code :
-	début
-		efface toile
-		projette tableau
-		projette couleur
-		pour chaque couleurs
-			couleur@tableau prend joker
-			texte@couleur prend joker
-			attends 0.3 seconde
-		ferme
+	efface toile
+	projette tableau
+	projette couleur
+	pour chaque couleurs
+		couleur@tableau prend joker
+		texte@couleur prend joker
+		attends 0.3 seconde
+	ferme

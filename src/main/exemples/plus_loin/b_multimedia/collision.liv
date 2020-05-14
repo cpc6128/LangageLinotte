@@ -2,14 +2,14 @@ globale
 	centre est un cercle,  x prend 311, y prend 285, couleur prend "rouge", plein prend "oui", rayon prend 50
 	boule est un rectangle,  largeur prend 40, hauteur prend 20, couleur prend "noir", plein prend "oui"
 	salle est une toile, couleur prend "blanc"
+
 code :
-	début
-		efface toile
-		projette salle & centre & boule
-		tant que vrai
-			temporise
-			vide touches
-			déplace boule vers sourisx et sourisy
-			si boule.collision(centre), couleur@centre prend "jaune"
-			sinon couleur@centre prend "rouge"
-		ferme
+	efface toile
+	projette salle & centre & boule
+	tant que vrai
+		temporise
+		vide touches
+		déplace boule vers sourisx et sourisy
+		si boule.collision(centre), couleur@centre prend "jaune"
+		sinon couleur@centre prend "rouge"
+	ferme

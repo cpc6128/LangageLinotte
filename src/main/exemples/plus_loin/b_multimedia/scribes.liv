@@ -9,24 +9,22 @@ globale
 	Mur est une toile, couleur prend "gris"
 
 principale :
-	début
-		Efface toile
-		Projette mur
-		Projette information
-		Projette message A
-		Projette réponse A
-		Projette message B
-		Projette réponse B
-		Projette message C
-		Projette réponse C
-		Va vers boucle
+	Efface toile
+	Projette mur
+	Projette information
+	Projette message A
+	Projette réponse A
+	Projette message B
+	Projette réponse B
+	Projette message C
+	Projette réponse C
+	Va vers boucle
 
 boucle :
-	début
-		Stimule réponse A
-		Temporise
-		Stimule réponse B
-		Temporise
-		Stimule réponse C
-		Temporise
-		Va vers boucle
+	Stimule réponse A
+	Temporise
+	Stimule réponse B
+	Temporise
+	Stimule réponse C
+	Temporise
+	Va vers boucle

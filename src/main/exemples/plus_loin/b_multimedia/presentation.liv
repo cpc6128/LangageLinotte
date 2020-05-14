@@ -5,45 +5,43 @@ globale
 
 principale :
 	Mur est une toile, couleur prend "gris"
-	début
-		Efface toile
-		Projette mur
-		Projette information
-		Projette réponse
-		Stimule réponse
-		Temporise
-		Efface réponse
-		Efface information
-		Transparence @ information prend 0
-		Texte de message prend "Bonjour, " + texte @ réponse + "."
-		Projette message
-		Texte @ information prend "Félitation, tu viens de lire ..."
-		De 20 à 250
-			Déplace message vers joker et joker
-			Attends 5 millisecondes
-		ferme
-		Projette information
-		Couleur @ mur prend "noir"
-		Couleur @ message prend "bleu"
-		joue "sons/bouchon.wav"
-		De 0 à 100, parcours effet
-		Attends 2 secondes
-		Transparence @ information prend 0
-		Texte @ information prend "... un livre en langage Linotte !"
-		De 0 à 100, parcours effet
-		Attends 2 secondes
-		Transparence @ information prend 0
-		Texte @ information prend "... C'est simple à comprendre ?"
-		De 0 à 100, parcours effet
-		Attends 2 secondes
-		Transparence @ information prend 0
-		Texte @ information prend "Alors, à toi de jouer maintenant !"
-		De 0 à 100, parcours effet
-		Explore "internet http://programmons.forumofficiel.fr"
-		Termine
+	Efface toile
+	Projette mur
+	Projette information
+	Projette réponse
+	Stimule réponse
+	Temporise
+	Efface réponse
+	Efface information
+	Transparence @ information prend 0
+	Texte de message prend "Bonjour, " + texte @ réponse + "."
+	Projette message
+	Texte @ information prend "Félitation, tu viens de lire ..."
+	De 20 à 250
+		Déplace message vers joker et joker
+		Attends 5 millisecondes
+	ferme
+	Projette information
+	Couleur @ mur prend "noir"
+	Couleur @ message prend "bleu"
+	joue "sons/bouchon.wav"
+	De 0 à 100, parcours effet
+	Attends 2 secondes
+	Transparence @ information prend 0
+	Texte @ information prend "... un livre en langage Linotte !"
+	De 0 à 100, parcours effet
+	Attends 2 secondes
+	Transparence @ information prend 0
+	Texte @ information prend "... C'est simple à comprendre ?"
+	De 0 à 100, parcours effet
+	Attends 2 secondes
+	Transparence @ information prend 0
+	Texte @ information prend "Alors, à toi de jouer maintenant !"
+	De 0 à 100, parcours effet
+	Explore "internet http://programmons.forumofficiel.fr"
+	Termine
 
 effet :
-	début
-		Transparence @ information prend joker
-		Attends 15 millisecondes
-		Reviens
+	Transparence @ information prend joker
+	Attends 15 millisecondes
+	Reviens

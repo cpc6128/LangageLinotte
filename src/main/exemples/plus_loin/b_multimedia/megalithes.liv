@@ -10,16 +10,15 @@ globale
 	indicateur est un rectangle,  largeur prend 40, hauteur prend 20, couleur prend "noir", plein prend "oui"
 
 démonstration :
-	début
-		Efface toile
-		Projette personnage1 & indicateur
-		Fusionne tête & corps & bras 1 & bras 2 & jambe 1 & jambe 2 dans personnage1
-		personnage2 prend personnage1
-		Déplace personnage2 de -100 et 0
-		tant que vrai
-			tourne à droite personnage1 de 1
-			tourne à gauche personnage2 de 2
-			si personnage1.collision(personnage2), couleur @ indicateur prend "rouge"
-			sinon couleur @ indicateur prend "vert"
-			attends 0.01 seconde
-		ferme
+	Efface toile
+	Projette personnage1 & indicateur
+	Fusionne tête & corps & bras 1 & bras 2 & jambe 1 & jambe 2 dans personnage1
+	personnage2 prend personnage1
+	Déplace personnage2 de -100 et 0
+	tant que vrai
+		tourne à droite personnage1 de 1
+		tourne à gauche personnage2 de 2
+		si personnage1.collision(personnage2), couleur @ indicateur prend "rouge"
+		sinon couleur @ indicateur prend "vert"
+		attends 0.01 seconde
+	ferme

@@ -4,31 +4,27 @@ globale
 	Salle est une toile, couleur prend "blanc"
 
 code :
-	début
-		Efface toile
-		Projette salle & centre & palet
-		Fais réagir palet & centre à "glisser-déposer" pour changement
-		Fais réagir palet à "début glisser-déposer" pour début changement palet
-		Fais réagir centre à "début glisser-déposer" pour début changement centre
-		Tant que vrai
+	Efface toile
+	Projette salle & centre & palet
+	Fais réagir palet & centre à "glisser-déposer" pour changement
+	Fais réagir palet à "début glisser-déposer" pour début changement palet
+	Fais réagir centre à "début glisser-déposer" pour début changement centre
+	Tant que vrai
 			/*boucle infinie*/
-			Temporise
-			Vide touches
-		Ferme
+		Temporise
+		Vide touches
+	Ferme
 
 changement :
-	début
-		Si palet.collision(centre), couleur@centre prend "jaune"
-		Sinon couleur@centre prend "rouge"
-		couleur@palet prend "noir"
-		Reviens
+	Si palet.collision(centre), couleur@centre prend "jaune"
+	Sinon couleur@centre prend "rouge"
+	couleur@palet prend "noir"
+	Reviens
 
 Début Changement Palet :
-	début
-		couleur@palet prend "vert"
-		Reviens
+	couleur@palet prend "vert"
+	Reviens
 
 Début Changement Centre :
-	début
-		couleur@centre prend "vert"
-		Reviens
+	couleur@centre prend "vert"
+	Reviens

@@ -22,11 +22,10 @@ globale
 
 principale :
 	position est un nombre
-	début
-		projette monstre2 & monstre1
-		tant que vrai
-			tourne à gauche monstre2 de 1
-			taille de monstre1 prend abs(cos(position)*300)
-			attends 20 millisecondes
-			incrémente position
-		ferme
+	projette monstre2 & monstre1
+	tant que vrai
+		tourne à gauche monstre2 de 1
+		taille de monstre1 prend abs(cos(position)*300)
+		attends 20 millisecondes
+		incrémente position
+	ferme

@@ -7,32 +7,28 @@ globale
 	fond est une toile, couleur prend "blanc"
 
 principale :
-	début
 		/*Mémoriser la position initiale :*/
-		évoque boule.fixer()
-		projette fond & centre & boule
-		fais réagir boule à "glisser-déposer" pour changement
+	évoque boule.fixer()
+	projette fond & centre & boule
+	fais réagir boule à "glisser-déposer" pour changement
 		/*Boucle infinie*/
-		Tant que vrai
-			temporise
-			vide touche
-		Ferme
+	Tant que vrai
+		temporise
+		vide touche
+	Ferme
 
 changement :
 	*moi est un rectangledng
-	début
-		si moi.collision(centre, évoque moi.fixer()
-		sinon évoque moi.rétablir()
-		reviens
+	si moi.collision(centre), évoque moi.fixer()
+	sinon évoque moi.rétablir()
+	reviens
 
 fixer de rectangledng :
-	début
-		copie_x@moi prend x@moi
-		copie_y@moi prend y@moi
-		retourne vrai
+	copie_x@moi prend x@moi
+	copie_y@moi prend y@moi
+	retourne vrai
 
 rétablir de rectangledng :
-	début
-		x@moi prend copie_x@moi
-		y@moi prend copie_y@moi
-		retourne vrai
+	x@moi prend copie_x@moi
+	y@moi prend copie_y@moi
+	retourne vrai
