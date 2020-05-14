@@ -1,7 +1,24 @@
+code : // Cliquez sur le bouton 'Lire !' pour exécuter ce programme
+	efface tableau
+	affiche "Merci d'utiliser Linotte {version} !
+
+La programmation est toujours aussi simple avec Linotte et même encore plus plaisante avec cette nouvelle version de L'Atelier !
+
+⚠ Note importante pour les programmeurs en Linotte 2.X :
+	✔ Le verbe 'lire ne doit plus être utilisé : il suffit de le supprimer.
+	✔ Le mot de clé 'début' ne doit plus être utilisé : il suffit de le supprimer. 
+	    Il n'y a plus d'obligatoire de créer les acteurs au début d'une fonction
+	✔ Le test 'A est en collision avec B' doit être remplacé par 'a.collision(B)'
+	↳ Vos programmes seront plus lisibles !
+
+Bonne programmation !
+{auteur}"
+
+/*
 Historique des versions :
 -------------------------
 
-*01/07/20 - Linotte 3
+*01/07/20 - Linotte 3.0
  -Evolution : Possiblité de ne plus utiliser le verbe Lire
  -Evolution : Casier, ajout fonctions anonymes ( ex : moncasier.taille() )
  -Evolution  : Ajout de l'exemple TapTempo.liv
@@ -829,3 +846,5 @@ Historique des versions :
 *25/10/05 - Linotte alpha a
  - Première version en ligne :
  http://forum.framasoft.org/viewtopic.php?f=11&t=11455&p=79562&hilit=linotte#p79562
+
+*/
