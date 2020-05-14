@@ -78,7 +78,7 @@ public class Parseur {
                     // Pivot syntaxique : (Linotte 2.1)
                     if (!parserContext.linotte.getLangage().isForceParametreEnligne()
                             && !parserContext.webonotte) {
-                        new PivotSyntaxique(parserContext.environnement, parserContext.jobRacine).verifier();
+                        //new PivotSyntaxique(parserContext.environnement, parserContext.jobRacine).verifier();
                     }
 
                 }
