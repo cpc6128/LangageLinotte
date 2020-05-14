@@ -5,23 +5,20 @@ globale
 	toile est une toile, couleur prend "blanc"
 
 formulaire :
-	début
-		Projette toile
-		Ajoute s1 & l1 dans form
-		Fais réagir s1 à "clic souris" pour changer la couleur
-		Fais réagir form à "clic souris" pour fermer la fenêtre
-		Tant que vrai
-			temporise
-			vide touches
-		Ferme
+	Projette toile
+	Ajoute s1 & l1 dans form
+	Fais réagir s1 à "clic souris" pour changer la couleur
+	Fais réagir form à "clic souris" pour fermer la fenêtre
+	Tant que vrai
+		temporise
+		vide touches
+	Ferme
 
 changer la couleur :
 	*s est un sélecteur
-	début
-		Couleur @ toile prend valeur @ s
-		Reviens
+	Couleur @ toile prend valeur @ s
+	Reviens
 
 fermer la fenêtre :
 	*f est un formulaire
-	début
-		Termine
+	Termine

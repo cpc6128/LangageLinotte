@@ -6,32 +6,29 @@ globale
 
 formulaire :
 	position est un nombre
-	début
-		Projette toile
-		Ajoute l1 & s1 dans form
-		Fais réagir s1 à "clic souris" pour changer la couleur
-		Fais réagir form à "clic souris" pour fermer la fenêtre
-		Pour chaque {"sinople","rose balais","bleu cyan","rouille","rouge ponceau"}
+	Projette toile
+	Ajoute l1 & s1 dans form
+	Fais réagir s1 à "clic souris" pour changer la couleur
+	Fais réagir form à "clic souris" pour fermer la fenêtre
+	Pour chaque {"sinople","rose balais","bleu cyan","rouille","rouge ponceau"}
 			/*
 			évoque s1.ajoutervaleur(joker)
 			évoque s1.infobulle(position,"Sélectionner la couleur " + µ"0022" + joker + µ"0022")
 			*/
-			évoque s1.ajoutervaleuretinfobulle(joker,"Sélectionner la couleur " + µ"0022" + joker + µ"0022")
-			incrémente position
-		Ferme
-		Tant que vrai
-			temporise
-			vide touches
-		Ferme
-		Termine
+		évoque s1.ajoutervaleuretinfobulle(joker,"Sélectionner la couleur " + µ"0022" + joker + µ"0022")
+		incrémente position
+	Ferme
+	Tant que vrai
+		temporise
+		vide touches
+	Ferme
+	Termine
 
 changer la couleur :
 	*s est un liste
-	début
-		Couleur @ toile prend valeur de s
-		Reviens
+	Couleur @ toile prend valeur de s
+	Reviens
 
 fermer la fenêtre :
 	*f est un formulaire
-	début
-		Termine
+	Termine

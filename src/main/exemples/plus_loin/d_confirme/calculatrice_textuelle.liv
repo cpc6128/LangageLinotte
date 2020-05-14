@@ -8,43 +8,41 @@ globale
 
 code :
 	commande est un texte
-	début
-		tant que vrai
-			demande commande // Ne saisir qu'un caractère pour simuler la calculatrice !
-			parcours analyser avec commande
-		ferme
+	tant que vrai
+		demande commande // Ne saisir qu'un caractère pour simuler la calculatrice !
+		parcours analyser avec commande
+	ferme
 
 analyser : commande
-		si commande = "+" parcours traiter commande avec commande
-		sinon si commande = "-" parcours traiter commande avec commande
-		sinon si commande = "/" parcours traiter commande avec commande
-		sinon si commande = "*" parcours traiter commande avec commande
-		sinon si commande = "=" parcours traiter commande avec commande
-		sinon ajoute commande dans saisi
-		reviens
+	si commande = "+" parcours traiter commande avec commande
+	sinon si commande = "-" parcours traiter commande avec commande
+	sinon si commande = "/" parcours traiter commande avec commande
+	sinon si commande = "*" parcours traiter commande avec commande
+	sinon si commande = "=" parcours traiter commande avec commande
+	sinon ajoute commande dans saisi
+	reviens
 
 traiter commande : commande
-		si opération != "" parcours calculer
-		sinon tampon = saisi
-		opération prend commande
-		saisi prend ""
-		reviens
+	si opération != "" parcours calculer
+	sinon tampon = saisi
+	opération prend commande
+	saisi prend ""
+	reviens
 
 calculer :
 	a est un nombre
 	b est un nombre
-	début
-		si saisi = "" reviens
-		si tampon = "", tampon prend "0"
-		convertis tampon en a
-		convertis saisi en b
-		si opération = "+", tampon prend a + b
-		sinon si opération = "-", tampon prend a - b
-		sinon si opération = "/" 
-			si b = 0 affiche "interdit de diviser par zéro !"
-			sinon tampon prend a / b
-		ferme
-		sinon si opération = "*", tampon prend a * b
+	si saisi = "" reviens
+	si tampon = "", tampon prend "0"
+	convertis tampon en a
+	convertis saisi en b
+	si opération = "+", tampon prend a + b
+	sinon si opération = "-", tampon prend a - b
+	sinon si opération = "/"
+		si b = 0 affiche "interdit de diviser par zéro !"
+		sinon tampon prend a / b
+	ferme
+	sinon si opération = "*", tampon prend a * b
 		// si opération = "=", on ne fait rien de plus !
-		affiche tampon
-		reviens
+	affiche tampon
+	reviens

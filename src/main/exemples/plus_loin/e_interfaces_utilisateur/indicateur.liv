@@ -5,19 +5,17 @@ globale
 	indicateur est un indicateur, x prend 20, y prend 20, valeur prend 0, largeur prend 200, hauteur prend 20
 
 Formulaire :
-	début
-		Ajoute indicateurh & indicateurv  dans form
-		Appelle boucle
-		Tant que vrai
-			Temporise
-		Ferme
+	Ajoute indicateurh & indicateurv  dans form
+	Appelle boucle
+	Tant que vrai
+		Temporise
+	Ferme
 
 Boucle :
 	valeur est un nombre
-	début
-		Pour valeur de 0 à 100 
-			Attends 200 millisecondes
-			valeur @ indicateurh prend valeur
-			valeur @ indicateurv prend 100 - valeur
-		Ferme
-		Termine
+	Pour valeur de 0 à 100
+		Attends 200 millisecondes
+		valeur @ indicateurh prend valeur
+		valeur @ indicateurv prend 100 - valeur
+	Ferme
+	Termine

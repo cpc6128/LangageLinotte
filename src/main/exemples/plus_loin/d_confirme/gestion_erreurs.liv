@@ -1,10 +1,9 @@
 code :
-	début
-		essaie
-			1/0 !
-			"ça marche !" !
-		ferme
-		sinon
-			"Numéro de l'erreur : " + numéro_erreur !
-			"Message de l'erreur : " + message_erreur !
-		ferme
+	essaie
+		1/0 !
+		"ça marche !" !
+	ferme
+	sinon
+		"Numéro de l'erreur : " + numéro_erreur !
+		"Message de l'erreur : " + message_erreur !
+	ferme

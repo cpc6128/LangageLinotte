@@ -6,29 +6,26 @@ globale
 	l2 est un étiquette, texte prend "", x prend 30, y prend 100
 
 formulaire :
-	début
-		Ajoute b1 & b2 & l1 & l2 dans form
-		Fais réagir b2 à "clic souris" pour réponse fausse
-		Fais réagir b1 à "souris entrante" pour bouger bouton
-		Fais réagir b1 à "clic souris" pour bouger bouton
-		Tant que vrai
-			temporise
-			vide touches
-		Ferme
+	ajoute b1 & b2 & l1 & l2 dans form
+	Fais réagir b2 à "clic souris" pour réponse fausse
+	Fais réagir b1 à "souris entrante" pour bouger bouton
+	Fais réagir b1 à "clic souris" pour bouger bouton
+	Tant que vrai
+		temporise
+		vide touches
+	Ferme
 
 Réponse fausse :
 	*b est un bouton
-	début
-		Texte @ l2 prend "Tu es bien trop mauvais pour continuer le test !"
-		attends 3 secondes
-		termine
+	Texte @ l2 prend "Tu es bien trop mauvais pour continuer le test !"
+	attends 3 secondes
+	termine
 
 Bouger bouton :
 	*b est un bouton
 	posx est un nombre valant 320
 	posy est un nombre valant 220
-	début
-		mélange posx & posy
-		x @ b1 prend posx + 30
-		y @ b1 prend posy + 30
-		Reviens
+	mélange posx & posy
+	x @ b1 prend posx + 30
+	y @ b1 prend posy + 30
+	Reviens

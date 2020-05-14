@@ -4,14 +4,13 @@ globale
 	xtoile est un xtoile, x prend 0, y prend 0
 	toile est une toile, couleur prend "noir",hauteur prend 300 , largeur prend 400
 	scrolleur est un scrolleur, largeur prend 200, hauteur prend 200, x prend 10, y prend 10
-	
+
 principale :
-	début
-		ajoute scrolleur dans form
-		ajoute xtoile dans scrolleur 
-		efface toile
-		projette d
-		tant que vrai
-			tourne à droite d de 1
-			attends 0.01 seconde
-		ferme
+	ajoute scrolleur dans form
+	ajoute xtoile dans scrolleur
+	efface toile
+	projette d
+	tant que vrai
+		tourne à droite d de 1
+		attends 0.01 seconde
+	ferme

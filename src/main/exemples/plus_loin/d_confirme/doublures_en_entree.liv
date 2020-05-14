@@ -6,5 +6,4 @@ Les doublures en entrée d'un livre (dans la première fonction du livre) décle
 addition :
 	*a est un nombre
 	*b est un nombre
-	début
-		affiche "le résultat est " + (a + b)
+	affiche "le résultat est " + (a + b)

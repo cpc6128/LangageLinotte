@@ -8,45 +8,39 @@ globale
 	b3 est un sousmenu, texte prend "Rétablir action"
 
 principale :
-	début
-		ajoute m1 & boite & b1 & l1 dans form
-		ajoute b2 & b3 dans m1
-		fais réagir b1 à "clic souris" pour afficher valeur
-		// Réaction aux touches contrôle + entrée :
-		fais réagir boite à "clic souris" pour afficher valeur
-		fais réagir boite à "touche" pour majuscule
-		fais réagir b2 à "clic souris" pour annuler
-		fais réagir b3 à "clic souris" pour rétablir
-		fais réagir form à  "clic souris" pour fermer fenêtre
-		tant que vrai
-			temporise
-			vide touches
-		ferme
+	ajoute m1 & boite & b1 & l1 dans form
+	ajoute b2 & b3 dans m1
+	fais réagir b1 à "clic souris" pour afficher valeur
+	// Réaction aux touches contrôle + entrée :
+	fais réagir boite à "clic souris" pour afficher valeur
+	fais réagir boite à "touche" pour majuscule
+	fais réagir b2 à "clic souris" pour annuler
+	fais réagir b3 à "clic souris" pour rétablir
+	fais réagir form à  "clic souris" pour fermer fenêtre
+	tant que vrai
+		temporise
+		vide touches
+	ferme
 
 afficher valeur :
 	*b est un bouton
-	début
-		affiche texte @ boite
-		reviens
+	affiche texte @ boite
+	reviens
 
 annuler :
 	*b est un sousmenu
-	début
-		boite.annuler()
-		reviens
+	boite.annuler()
+	reviens
 
 rétablir :
 	*b est un sousmenu
-	début
-		boite.rétablir()
-		reviens
+	boite.rétablir()
+	reviens
 
 majuscule :
 	*b est une boite
-	début
-		texte @ boite vaut (texte @ boite).majuscule()
-		reviens
-
+	texte @ boite vaut (texte @ boite).majuscule()
+	reviens
 
 fermer fenêtre :
-		termine
+	termine

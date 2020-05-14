@@ -1,11 +1,9 @@
 code :
-	début
-		parcours affichage avec "Nicolas" , 1976
-		parcours affichage avec "Bruno" , 1977
+	parcours affichage avec "Nicolas" , 1976
+	parcours affichage avec "Bruno" , 1977
 
 affichage :
 	*nom est un texte
 	*an est un nombre
-	début
-		affiche "{nom} est né en {an}"
-		reviens
+	affiche "{nom} est né en {an}"
+	reviens

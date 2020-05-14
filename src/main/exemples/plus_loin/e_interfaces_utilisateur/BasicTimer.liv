@@ -8,45 +8,41 @@ globale
 	max est un nombre
 
 formulaire :
-	début
-		/*Construction de la fenêtre :*/
-		Ajoute l1 & s1 & b1 dans form
-		/*Initialisation des acteurs :*/
-		Mesure textes dans max
-		/*Ajout des évènements :*/
-		Fais réagir b1 à "clic souris" pour minuteur
-		Fais réagir form à  "clic souris" pour fermer fenêtre
-		/*Boucle infinie, on attend les évènements invoqués par l'utilisateur.*/
-		Tant que vrai
-			temporise
-			vide touches
-		Ferme
+	/*Construction de la fenêtre :*/
+	Ajoute l1 & s1 & b1 dans form
+	/*Initialisation des acteurs :*/
+	Mesure textes dans max
+	/*Ajout des évènements :*/
+	Fais réagir b1 à "clic souris" pour minuteur
+	Fais réagir form à  "clic souris" pour fermer fenêtre
+	/*Boucle infinie, on attend les évènements invoqués par l'utilisateur.*/
+	Tant que vrai
+		temporise
+		vide touches
+	Ferme
 
 Minuteur :
 	temps est un nombre
-	début
-		/*On calcule le temps en secondes :*/
-		convertis valeur@s1 en temps
-		temps prend temps * 60
-		/*On cache la fenêtre le temps de l'attente :*/
-		visible@form prend "non"
-		/*Minuterie :*/
-		Attends temps secondes
-		/*L'attente est terminée, on prévient avec un son et...*/
-		Joue "http://www.arobase.org/sons/sons/bell.wav"
-		textes {aléatoire(max)} !
-		/*On réaffiche la fenêtre :*/
-		visible@form prend "oui"
-		Reviens
+	/*On calcule le temps en secondes :*/
+	convertis valeur@s1 en temps
+	temps prend temps * 60
+	/*On cache la fenêtre le temps de l'attente :*/
+	visible@form prend "non"
+	/*Minuterie :*/
+	Attends temps secondes
+	/*L'attente est terminée, on prévient avec un son et...*/
+	Joue "http://www.arobase.org/sons/sons/bell.wav"
+	textes {aléatoire(max)} !
+	/*On réaffiche la fenêtre :*/
+	visible@form prend "oui"
+	Reviens
 
 Aléatoire :
 	*n est un nombre
 	r est un nombre
-	début
-		r prend n
-		Mélange r
-		Retourne r
+	r prend n
+	Mélange r
+	Retourne r
 
 Fermer fenêtre :
-	début
-		Termine
+	Termine

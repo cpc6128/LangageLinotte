@@ -18,10 +18,10 @@ code :
 	g valant "Coucou", "Bonjour", "Hello" // g est un casier de textes valant "coucou", "bonjour", "hello"
 	i valant {1,2},{3,4} // i est un casier de casiers valant {1,2},{3,4}
 	j valant {"a","e"},{"c","e"} // j est un casier de casiers valant {"a","e"},{"c","e"}
-	début
-		// On peut utiliser ${d} ou plus simplement {d} dans une texte pour afficher la valeur d'un acteur :
-		affiche g{2} + ", {d} !"
-		f += 12 // Evolution 2.7
-		affiche f // Affiche 123 + 12
-		f -= 6 // Evolution 2.7
-		affiche f // Affiche 135 - 6
+
+	// On peut utiliser ${d} ou plus simplement {d} dans une texte pour afficher la valeur d'un acteur :
+	affiche g{2} + ", {d} !"
+	f += 12 // Evolution 2.7
+	affiche f // Affiche 123 + 12
+	f -= 6 // Evolution 2.7
+	affiche f // Affiche 135 - 6

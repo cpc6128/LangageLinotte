@@ -19,27 +19,26 @@ globale
 	lm est un bouton, texte prend "-"
 
 formulaire :
-		ajoute calculatrice dans formulaire // A faire en premier !
-		ajoute écran dans calculatrice
-		ajoute panneau dans calculatrice
-		ajoute touches dans panneau // A faire en premier !
-		ajoute l1 dans panneau
-		ajoute l2 dans panneau
-		ajoute l3 dans panneau
-		ajoute lp dans panneau
-		ajoute l4 dans panneau
-		ajoute l5 dans panneau
-		ajoute l6 dans panneau
-		ajoute lm dans panneau
-		ajoute l7 dans panneau
-		ajoute l8 dans panneau
-		ajoute l9 dans panneau
-		ajoute l0 dans panneau
-		fais réagir l1 & l2 & l3 & l4 & l5 & l6 & l7 & l8 & l9 & l0 à "clic souris" pour ajouter chiffre
-		tant que vrai temporise
+	ajoute calculatrice dans formulaire // A faire en premier !
+	ajoute écran dans calculatrice
+	ajoute panneau dans calculatrice
+	ajoute touches dans panneau // A faire en premier !
+	ajoute l1 dans panneau
+	ajoute l2 dans panneau
+	ajoute l3 dans panneau
+	ajoute lp dans panneau
+	ajoute l4 dans panneau
+	ajoute l5 dans panneau
+	ajoute l6 dans panneau
+	ajoute lm dans panneau
+	ajoute l7 dans panneau
+	ajoute l8 dans panneau
+	ajoute l9 dans panneau
+	ajoute l0 dans panneau
+	fais réagir l1 & l2 & l3 & l4 & l5 & l6 & l7 & l8 & l9 & l0 à "clic souris" pour ajouter chiffre
+	tant que vrai temporise
 
 ajouter chiffre :
 	* b est un bouton
-	début
-		texte de écran prend texte de écran + texte de b
-		reviens
+	texte de écran prend texte de écran + texte de b
+	reviens

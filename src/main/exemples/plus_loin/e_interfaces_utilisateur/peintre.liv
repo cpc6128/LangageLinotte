@@ -12,33 +12,29 @@ globale
 	toile est une toile, couleur prend "blanc"
 
 formulaire :
-	début
-		Projette toile
-		Ajoute b1 & b2 & b3 & l1 & l2 & c1 dans form
-		Fais réagir b1 & b2 & b3 à "clic souris" pour changer la couleur
-		Fais réagir c1 à "touche" pour récupère la couleur
-		Fais réagir form à "clic souris" pour fermer la fenêtre
-		Tant que vrai
-			temporise
-			vide touches
-		Ferme
+	Projette toile
+	Ajoute b1 & b2 & b3 & l1 & l2 & c1 dans form
+	Fais réagir b1 & b2 & b3 à "clic souris" pour changer la couleur
+	Fais réagir c1 à "touche" pour récupère la couleur
+	Fais réagir form à "clic souris" pour fermer la fenêtre
+	Tant que vrai
+		temporise
+		vide touches
+	Ferme
 
 changer la couleur :
 	*b est un bouton
-	début
-		Affiche texte @ b
-		Couleur @ toile prend texte @ b
-		Texte @ l2 prend "Couleur affichée :" + texte @ b
-		Titre @ form prend "Le peintre vient de peindre en " + texte @ b
-		Reviens
+	Affiche texte @ b
+	Couleur @ toile prend texte @ b
+	Texte @ l2 prend "Couleur affichée :" + texte @ b
+	Titre @ form prend "Le peintre vient de peindre en " + texte @ b
+	Reviens
 
 récupère la couleur :
 	*b est un champ
-	début
-		Texte @ b1 prend texte @ c1
-		Reviens
+	Texte @ b1 prend texte @ c1
+	Reviens
 
 fermer la fenêtre :
 	*f est un formulaire
-	début
-		Termine
+	Termine

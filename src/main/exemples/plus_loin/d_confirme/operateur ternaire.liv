@@ -1,6 +1,5 @@
 principale :
 	a est un drapeau valant vrai
 	b est un drapeau valant faux
-	début
-		Affiche ter (a,2,3)
-		Affiche ter (b,2,3)
+	Affiche ter (a,2,3)
+	Affiche ter (b,2,3)

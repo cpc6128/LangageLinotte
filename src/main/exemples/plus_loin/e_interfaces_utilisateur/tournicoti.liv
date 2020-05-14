@@ -7,25 +7,22 @@ globale
 	sens est un nombre
 
 principale :
-	début
-		Ajoute b1 & b2 & l1 dans form
-		efface toile
-		projette d
-		Fais réagir b1 à "clic souris" pour à droite
-		Fais réagir b2 à "clic souris" pour à gauche
-		tant que vrai
-			tourne à droite d de sens
-			attends 0.01 seconde
-		ferme
+	ajoute b1 & b2 & l1 dans form
+	efface toile
+	projette d
+	Fais réagir b1 à "clic souris" pour à droite
+	Fais réagir b2 à "clic souris" pour à gauche
+	tant que vrai
+		tourne à droite d de sens
+		attends 0.01 seconde
+	ferme
 
 à droite :
 	*b est un bouton
-	début
-		sens prend -1
-		Reviens
+	sens prend -1
+	Reviens
 
 à gauche :
 	*b est un bouton
-	début
-		sens prend 1
-		Reviens
+	sens prend 1
+	Reviens

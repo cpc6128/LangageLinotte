@@ -1,14 +1,13 @@
 code :
 	n est un nombre
 	b est un nombre valant 1
-	début
-		"Boucle FOR simple :" !
-		Pour n de 1 à 20 affiche n
-		"Boucle FOR avec un pas simple" !
-		Pour n de 1 à 20 suivant n + 2 affiche n
-		"Boucle FOR avec un pas variable" !
-		Pour n de 1 à 20 suivant n + b
-			affiche n
-			b prend b + 1
-		Ferme
-		Termine
+	"Boucle FOR simple :" !
+	Pour n de 1 à 20 affiche n
+	"Boucle FOR avec un pas simple" !
+	Pour n de 1 à 20 suivant n + 2 affiche n
+	"Boucle FOR avec un pas variable" !
+	Pour n de 1 à 20 suivant n + b
+		affiche n
+		b prend b + 1
+	Ferme
+	Termine

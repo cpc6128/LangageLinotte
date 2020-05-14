@@ -1,3 +1,2 @@
 code :
-	début
-		"Pi : " + pi & "e : " + euler !
+	"Pi : " + pi & "e : " + euler !

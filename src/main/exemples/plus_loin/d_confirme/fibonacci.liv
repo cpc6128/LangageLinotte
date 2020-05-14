@@ -15,12 +15,11 @@ tests
 code :
 	A est un nombre valant 1
 	B & C & boucle est un nombre valant 0
-	début
-		"Nombre à calculer ?" !
-		boucle ?
-		de 2 à boucle
-			C prend A + B
-			B prend A
-			A prend C
-		ferme
-		"Le résultat est : {A}" !
+	"Nombre à calculer ?" !
+	boucle ?
+	de 2 à boucle
+		C prend A + B
+		B prend A
+		A prend C
+	ferme
+	"Le résultat est : {A}" !

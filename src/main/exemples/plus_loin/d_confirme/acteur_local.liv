@@ -3,13 +3,11 @@ globale
 	liste est un casier de nombre
 
 code :
-	début
-		pour chaque total parcours suite
-		pour chaque liste affiche joker
+	pour chaque total parcours suite
+	pour chaque liste affiche joker
 
 suite :
 	numéro est un nombre
-	début
-		demande numéro
-		ajoute numéro dans Liste
-		reviens
+	demande numéro
+	ajoute numéro dans Liste
+	reviens

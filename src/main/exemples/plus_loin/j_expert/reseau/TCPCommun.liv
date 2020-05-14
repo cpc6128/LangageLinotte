@@ -6,11 +6,9 @@ espèces
 	espèce packet contient nom, message, commande, horodatage
 
 principale :
-	début
-		affiche "rien à faire..."		
+	affiche "rien à faire..."
 
 horodater :
 	* message est un packet
-	début
-		horodatage@message prend heure + "h " + minute + "m le {jour}/{mois}"
-		reviens
+	horodatage@message prend heure + "h " + minute + "m le {jour}/{mois}"
+	reviens

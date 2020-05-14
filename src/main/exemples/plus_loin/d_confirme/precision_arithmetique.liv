@@ -2,22 +2,21 @@
 Attention, la valeur de la précision impacte énormement les performances de l'Atelier Linotte*/
 
 code :
-	début
-		Efface tableau
-		"Précision par défaut :" !
-		affiche pi * 2
-		"Précision à 2 nombres : " !
-		~précision 2
-		affiche pi * 2
-		"Précision à 5 nombres : " !
-		~précision 5
-		affiche pi * 2
-		"Précision à 40 nombres : " !
-		~précision 40
-		affiche pi * 2
-		"Précision infinie : " !
-		~précision 0
-		affiche pi * 2
-		"Retour à la valeur par défaut :" !
-		~précision 34
-		affiche pi * 2
+	Efface tableau
+	"Précision par défaut :" !
+	affiche pi * 2
+	"Précision à 2 nombres : " !
+	~précision 2
+	affiche pi * 2
+	"Précision à 5 nombres : " !
+	~précision 5
+	affiche pi * 2
+	"Précision à 40 nombres : " !
+	~précision 40
+	affiche pi * 2
+	"Précision infinie : " !
+	~précision 0
+	affiche pi * 2
+	"Retour à la valeur par défaut :" !
+	~précision 34
+	affiche pi * 2
