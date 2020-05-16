@@ -9,7 +9,7 @@ La programmation est toujours aussi simple avec Linotte... et même plus plaisan
 ⚠ Note importante pour les programmeurs en Linotte 2.X :
 	✔ Le verbe 'lire ne doit plus être utilisé : il suffit de le supprimer.
 	✔ Le mot de clé 'début' ne doit plus être utilisé : il suffit de le supprimer. 
-	    Il n'y a plus d'obligatoire de créer les acteurs au début d'une fonction
+	    Il n'y a plus d'obligation à créer des acteurs au début d'une fonction
 	✔ Le test 'si A est en collision avec B' doit être remplacé par 'si A.collision(B)'
 	↳ Vos programmes seront plus lisibles !
 
