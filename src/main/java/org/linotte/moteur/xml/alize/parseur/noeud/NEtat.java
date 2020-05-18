@@ -95,21 +95,22 @@ public class NEtat extends Noeud {
 	@Override
 	public boolean parse(ParserContext pc) throws Exception {
 
-		List<ItemXML> tableau = new ArrayList<ItemXML>();
+		List<ItemXML> valeurs = new ArrayList<>();
+        List<String> annotations = new ArrayList<>();
+
 		Iterator<?> i = pc.valeurs.iterator();
 		while (i.hasNext()) {
 			List<ItemXML> l = (List<ItemXML>) i.next();
 			while (!l.isEmpty()) {
-				tableau.add(l.remove(0));
+				valeurs.add(l.remove(0));
 			}
 		}
 
-		List<String> tableau_annotations = new ArrayList<String>();
 		Iterator<?> i2 = pc.annotations.iterator();
 		while (i2.hasNext()) {
 			List<String> l = (List<String>) i2.next();
 			while (!l.isEmpty()) {
-				tableau_annotations.add(l.remove(0));
+				annotations.add(l.remove(0));
 			}
 		}
 
@@ -133,36 +134,36 @@ public class NEtat extends Noeud {
 		// Gestion de la complétion des prototypes :
 
 		if (pc.mode == MODE.COLORATION) {
-			if (tableau_annotations.size() > 0) {
-				if (tableau_annotations.contains("prototype")) {
-					pc.types_prototypes.put(tableau.get(0).toString().toLowerCase(), new ArrayList<String>());
-					if (tableau_annotations.contains("atributespece")) {
+			if (annotations.size() > 0) {
+				if (annotations.contains("prototype")) {
+					pc.types_prototypes.put(valeurs.get(0).toString().toLowerCase(), new ArrayList<String>());
+					if (annotations.contains("atributespece")) {
 						int debut = 1;
-						String[] tab_a = new String[tableau.size() - debut];
-						int max_tab_a = tableau.size();
+						String[] tab_a = new String[valeurs.size() - debut];
+						int max_tab_a = valeurs.size();
 						for (int ia = debut; ia < max_tab_a; ia++) {
-							tab_a[ia - debut] = tableau.get(ia).toString().toLowerCase();
+							tab_a[ia - debut] = valeurs.get(ia).toString().toLowerCase();
 						}
-						pc.prototypes_attributs.put(tableau.get(0).toString().toLowerCase(), tab_a);
+						pc.prototypes_attributs.put(valeurs.get(0).toString().toLowerCase(), tab_a);
 					}
 				}
-				if (tableau_annotations.contains("instanceprototype")) {
+				if (annotations.contains("instanceprototype")) {
 					// Il faut mettre dans un pile ?
-					String nom = tableau.get(0).toString().toLowerCase();
+					String nom = valeurs.get(0).toString().toLowerCase();
 					if (nom.startsWith("* "))
 						nom = nom.substring(2);
-					pc.prototypes.add(new Prototype(tableau.get(1).toString().toLowerCase(), nom, pc.lexer.getLastPosition()));
+					pc.prototypes.add(new Prototype(valeurs.get(1).toString().toLowerCase(), nom, pc.lexer.getLastPosition()));
 				}
 
-				if (tableau_annotations.contains("nomacteur")) {
-					ItemXML itxml = tableau.get(0);
+				if (annotations.contains("nomacteur")) {
+					ItemXML itxml = valeurs.get(0);
 					if (itxml instanceof GroupeItemXML) {
 						ItemXML[] temp = ((GroupeItemXML) itxml).items;
 						int bogue = 0;
 						for (ItemXML t : temp) {
 							String nom = t.toString().toLowerCase();
-							if (tableau.size() > 1)
-								pc.acteursgloblaux.add(new ActeurGlobal(tableau.get(1).toString().toLowerCase(), nom, pc.lexer.getLastPosition() + bogue));
+							if (valeurs.size() > 1)
+								pc.acteursgloblaux.add(new ActeurGlobal(valeurs.get(1).toString().toLowerCase(), nom, pc.lexer.getLastPosition() + bogue));
 							else
 								pc.acteursgloblaux.add(new ActeurGlobal("", nom, pc.lexer.getLastPosition() + bogue));
 							bogue++;
@@ -171,8 +172,8 @@ public class NEtat extends Noeud {
 						}
 					} else {
 						String nom = itxml.toString().toLowerCase();
-						if (tableau.size() > 1)
-							pc.acteursgloblaux.add(new ActeurGlobal(tableau.get(1).toString().toLowerCase(), nom, pc.lexer.getLastPosition()));
+						if (valeurs.size() > 1)
+							pc.acteursgloblaux.add(new ActeurGlobal(valeurs.get(1).toString().toLowerCase(), nom, pc.lexer.getLastPosition()));
 						else
 							pc.acteursgloblaux.add(new ActeurGlobal("", nom, pc.lexer.getLastPosition()));
 						// Linote 2.6.2 : complétion des types simples 
@@ -180,14 +181,14 @@ public class NEtat extends Noeud {
 					}
 				}
 
-				if (tableau_annotations.contains("héritage")) {
-					pc.prototypes_heritage.put(tableau.get(0).toString().toLowerCase(), tableau.get(1).toString().toLowerCase());
+				if (annotations.contains("héritage")) {
+					pc.prototypes_heritage.put(valeurs.get(0).toString().toLowerCase(), valeurs.get(1).toString().toLowerCase());
 				}
 
-				if (tableau_annotations.contains("joker")) {
+				if (annotations.contains("joker")) {
 					//TODO A OPTIMISER //
 					//URGENT
-					String acteur_boucle = tableau.get(0).toString().toLowerCase();
+					String acteur_boucle = valeurs.get(0).toString().toLowerCase();
 					String type = null;
 					// On recherche l'acteur :
 					label: for (Set<org.linotte.moteur.xml.alize.parseur.ParserContext.Prototype> set : pc.constructionPileContexteVariables) {
@@ -211,18 +212,18 @@ public class NEtat extends Noeud {
 					}
 				}
 
-				if (tableau_annotations.contains("nomacteurfonction")) {
-					ItemXML itxml = tableau.get(0);
-					ajouterActeursFonction(pc, tableau, itxml);
+				if (annotations.contains("nomacteurfonction")) {
+					ItemXML itxml = valeurs.get(0);
+					ajouterActeursFonction(pc, valeurs, itxml);
 					String nom = itxml.toString().toLowerCase();
 					// Linote 2.6.2 : complétion des types simples 
 					pc.prototypes.add(new Prototype(getAttribut("param"), nom, pc.lexer.getLastPosition()));
 				}
 				// Paramètres simplifiés :
-				if (tableau_annotations.contains("nomacteurfonctionsimple")) {
-					for (int idx=1;idx< tableau.size();idx++) {
-						ItemXML itxml = tableau.get(idx);
-						ajouterActeursFonction(pc, tableau, itxml);					
+				if (annotations.contains("nomacteurfonctionsimple")) {
+					for (int idx=1;idx< valeurs.size();idx++) {
+						ItemXML itxml = valeurs.get(idx);
+						ajouterActeursFonction(pc, valeurs, itxml);
 					}
 				}
 			}
@@ -242,7 +243,7 @@ public class NEtat extends Noeud {
 						etat instanceof ConditionSinonAction // Pour gérer le cas de la phrase ne contenant que "sinon"
 						) && !syntaxev2) {
 					// debug("==> C'est pas l'état de fin de ligne !");
-					Processus processusPrincipal = ProcessusFactory.createProcessus(getAttribut("param"), tableau, tableau_annotations, etat,
+					Processus processusPrincipal = ProcessusFactory.createProcessus(getAttribut("param"), valeurs, annotations, etat,
 							pc.lastPositionLigne);
 					((List<Processus>) pc.etats.peek()).add(processusPrincipal);
 					if (etat instanceof ParserHandler) {
@@ -256,7 +257,7 @@ public class NEtat extends Noeud {
 						tabetat.addAll(temp);
 						temp.clear();
 					}
-					Processus processus = ProcessusFactory.createProcessus(getAttribut("param"), tableau, tableau_annotations, etat, pc.lastPositionLigne);
+					Processus processus = ProcessusFactory.createProcessus(getAttribut("param"), valeurs, annotations, etat, pc.lastPositionLigne);
 
 					if (etat instanceof ParserHandler) {
 						pc.awares.add(processus);
