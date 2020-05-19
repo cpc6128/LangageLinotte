@@ -27,7 +27,6 @@
 
     <dependencies>
 
-        <!-- https://mvnrepository.com/artifact/org.swinglabs.swingx/swingx-all -->
         <dependency>
             <groupId>org.swinglabs.swingx</groupId>
             <artifactId>swingx-all</artifactId>
@@ -48,7 +47,6 @@
             <artifactId>javax.servlet-api</artifactId>
             <version>4.0.1</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.eclipse.jetty.aggregate/jetty-all-server -->
         <dependency>
             <groupId>org.eclipse.jetty.aggregate</groupId>
             <artifactId>jetty-all-server</artifactId>
@@ -68,17 +66,18 @@
         <dependency>
             <groupId>com.formdev</groupId>
             <artifactId>flatlaf</artifactId>
-            <version>0.33</version>
+            <version>0.35</version>
         </dependency>
+        <!-- version pour jdk 8 : -->
         <dependency>
             <groupId>org.kordamp.ikonli</groupId>
             <artifactId>ikonli-swing</artifactId>
-            <version>2.4.0</version>
+            <version>2.6.0</version>
         </dependency>
         <dependency>
             <groupId>org.kordamp.ikonli</groupId>
             <artifactId>ikonli-runestroicons-pack</artifactId>
-            <version>2.4.0</version>
+            <version>2.6.0</version>
         </dependency>
     </dependencies>
 
@@ -165,6 +164,60 @@
                                 </filter>
                             </filters>
                             <shadedArtifactAttached>false</shadedArtifactAttached>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.akathist.maven.plugins.launch4j</groupId>
+                <artifactId>launch4j-maven-plugin</artifactId>
+                <version>1.7.25</version>
+                <executions>
+                    <execution>
+                        <id>l4j-gui</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>launch4j</goal>
+                        </goals>
+                        <configuration>
+                            <headerType>gui</headerType>
+                            <outfile>target/Atelier.exe</outfile>
+                            <jar>target/Atelier.jar</jar>
+                            <errTitle>Atelier</errTitle>
+                            <dontWrapJar>true</dontWrapJar>
+                            <jar>Atelier.jar</jar>
+                            <classPath>
+                                <mainClass>org.linotte.frame.AtelierLinotte</mainClass>
+                            </classPath>
+                            <icon>src/main/resources/linotte_new.ico</icon>
+                            <jre>
+                                <minVersion>1.8.0</minVersion>
+                            </jre>
+                            <versionInfo>
+                                <fileVersion>3.0.0.0</fileVersion>
+                                <txtFileVersion>Atelier Linotte</txtFileVersion>
+                                <fileDescription>L&apos;Atelier Linotte</fileDescription>
+                                <copyright>Ronan Mounès - CodeVallée</copyright>
+                                <productVersion>3.0.0.0</productVersion>
+                                <txtProductVersion>Atelier Linotte</txtProductVersion>
+                                <productName>L&apos;Atelier Linotte</productName>
+                                <internalName>L&apos;Atelier Linotte</internalName>
+                                <originalFilename>Atelier.exe</originalFilename>
+                            </versionInfo>
+                            <messages>
+                                <startupErr>Avant d'utiliser l&apos;Atelier Linotte, vous devez installer le Java
+                                    Runtime Environment
+                                </startupErr>
+                                <bundledJreErr>Avant d'utiliser l&apos;Atelier Linotte, vous devez installer le Java
+                                    Runtime Environment
+                                </bundledJreErr>
+                                <jreVersionErr>Avant d'utiliser l&apos;Atelier Linotte, vous devez installer le Java
+                                    Runtime Environment
+                                </jreVersionErr>
+                                <launcherErr>Avant d'utiliser l&apos;Atelier Linotte, vous devez installer le Java
+                                    Runtime Environment.
+                                </launcherErr>
+                            </messages>
                         </configuration>
                     </execution>
                 </executions>

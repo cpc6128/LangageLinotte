@@ -18,5 +18,9 @@
             <source>${project.build.directory}/Atelier.jar</source>
             <outputDirectory>/</outputDirectory>
         </file>
+        <file>
+            <source>${project.build.directory}/Atelier.exe</source>
+            <outputDirectory>/</outputDirectory>
+        </file>
     </files>
 </assembly>
