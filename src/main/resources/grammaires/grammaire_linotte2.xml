@@ -1310,17 +1310,6 @@
 											<!-- * Condition     * -->
 											<!-- ***************** -->
 											<!-- test si nom contient nom2 alors tu vas vers -->
-											<!-- sinon, action -->
-											<groupe nom="test" discriminant="sinon"><!-- 2.7.7 -->
-												<choix>
-													<ligne tab="1">
-														<token obligatoire="oui" annotation="sinon_simple">sinon</token>
-														<etat nom="sinon" param="est égal à" hack_bloc="oui"/>
-														<sousparagraphe etat="ouverture"/>
-														<etat nom="§ début"/>
-													</ligne>
-												</choix>
-											</groupe>
 											<groupe nom="test" discriminant="si">
 												<choix>
 													<p:build>
@@ -1386,6 +1375,17 @@
 															<p:copynode target="node_base"/>
 														</ligne>
 													</p:build>
+												</choix>
+											</groupe>
+											<!-- sinon, action -->
+											<groupe nom="test" discriminant="sinon"><!-- 2.7.7 -->
+												<choix>
+													<ligne tab="1">
+														<token obligatoire="oui" annotation="sinon_simple">sinon</token>
+														<etat nom="sinon" param="est égal à" hack_bloc="oui"/>
+														<sousparagraphe etat="ouverture"/>
+														<etat nom="§ début"/>
+													</ligne>
 												</choix>
 											</groupe>
 											<!-- ***************** -->
