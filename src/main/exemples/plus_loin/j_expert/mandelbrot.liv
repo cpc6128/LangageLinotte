@@ -11,74 +11,70 @@ dessine :
 	verre est un cercle, transparence prend 50, taille prend 10, couleur prend "gris acier", rayon prend 25, plein prend "non"
 	tige est un ligne, transparence prend 50, taille prend 10, couleur prend "queue-de-vache clair", x1 prend -60, x2 prend -25, y1 prend -60, y2 prend -25
 	loupe est un mégalithe, transparence prend 50
-	début
-		fusionne verre & tige dans loupe
-		tant que vrai
-			efface toile
-			efface crayon
-			projette fond & crayon & ligne
-			parcours fractale
-			projette loupe
-			tant que touche != "clique"
-				déplace loupe vers sourisx + 25 et sourisy + 25
-				temporise
-			ferme
-			efface loupe
-			/*effet zoom !*/
-			taille@verre prend 1
-			déplace verre vers sourisx + 25 et sourisy + 25
-			projette verre
-			pour chaque 30
-				taille@verre prend joker
-				rayon@verre prend joker * 10
-				attends 0.01 secondes
-			ferme
-			efface verre
-			parcours zoom avec sourisx, sourisy
+	fusionne verre & tige dans loupe
+	tant que vrai
+		efface toile
+		efface crayon
+		projette fond & crayon & ligne
+		parcours fractale
+		projette loupe
+		tant que touche != "clique"
+			déplace loupe vers sourisx + 25 et sourisy + 25
+			temporise
 		ferme
+		efface loupe
+			/*effet zoom !*/
+		taille@verre prend 1
+		déplace verre vers sourisx + 25 et sourisy + 25
+		projette verre
+		pour chaque 30
+			taille@verre prend joker
+			rayon@verre prend joker * 10
+			attends 0.01 secondes
+		ferme
+		efface verre
+		parcours zoom avec sourisx, sourisy
+	ferme
 
 fractale :
 	x & y & a & b est un nombre
 	c1 & c2 & c3 est un nombre
-	début
-		pour x de 0 à largeur@fond
-			x1@ligne prend x
-			x2@ligne prend x
-			pour y de 0 à hauteur@fond
-				a prend zonex + x * zonew / (largeur@fond)
-				b prend zoney + y * zoneh / (hauteur@fond)
-				si converge(a,b)
-					c1 prend abs(entier(a * 55))
-					c3 prend 255 - abs(entier(a * 55))
-					c2 prend entier(abs(b * 255))
-					couleur@crayon prend c1 + " " + c2 + " " + c3
-					pique crayon à x et y
-				ferme
+	pour x de 0 à largeur@fond
+		x1@ligne prend x
+		x2@ligne prend x
+		pour y de 0 à hauteur@fond
+			a prend zonex + x * zonew / (largeur@fond)
+			b prend zoney + y * zoneh / (hauteur@fond)
+			si converge(a,b)
+				c1 prend abs(entier(a * 55))
+				c3 prend 255 - abs(entier(a * 55))
+				c2 prend entier(abs(b * 255))
+				couleur@crayon prend c1 + " " + c2 + " " + c3
+				pique crayon à x et y
 			ferme
 		ferme
-		reviens
+	ferme
+	reviens
 
 converge : a , b
 	x est un nombre
 	y est un nombre
 	ynew est un nombre
 	xnew est un nombre
-	début
-		pour chaque 30
-			xnew prend x * x - y * y + a
-			ynew prend 2 * x * y + b
-			si ((abs xnew) sup 2) ou ((abs ynew) sup 2) retourne faux
-			x prend xnew
-			y prend ynew
-		ferme
-		retourne vrai
+	pour chaque 30
+		xnew prend x * x - y * y + a
+		ynew prend 2 * x * y + b
+		si ((abs xnew) sup 2) ou ((abs ynew) sup 2) retourne faux
+		x prend xnew
+		y prend ynew
+	ferme
+	retourne vrai
 
 zoom : newx, newy
 	scale est un nombre
-	début
-		scale prend zonew / (largeur@fond)
-		zonex prend zonex + newx * scale
-		zoney prend zoney + newy * scale
-		zonew prend 50 * scale
-		zoneh prend 50 * scale
-		reviens
+	scale prend zonew / (largeur@fond)
+	zonex prend zonex + newx * scale
+	zoney prend zoney + newy * scale
+	zonew prend 50 * scale
+	zoneh prend 50 * scale
+	reviens

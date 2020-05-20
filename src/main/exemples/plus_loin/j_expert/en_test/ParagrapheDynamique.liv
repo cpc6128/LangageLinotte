@@ -1,17 +1,14 @@
 principal :
-	direction est un texte <- "var"
-	var est un texte <- "ici"
-	début
-		Affiche <<direction>>
-		appelle <<direction>>
-		attends 1 seconde
+	direction <- "var"
+	var <- "ici"
+	Affiche <<direction>>
+	appelle <<direction>>
+	attends 1 seconde
 
 Direction :
-	début
-		"Faux "!
-		Reviens
+	"Faux "!
+	Reviens
 
 Ici :
-	début
-		"Cool "!
-		Reviens
+	"Cool "!
+	Reviens

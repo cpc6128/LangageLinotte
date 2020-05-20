@@ -97,8 +97,7 @@ globale
 	largeur est un nombre
 principale :
 	toile est une toile
-	début
-		quitter prend 0
+	quitter prend 0
 		/*Initialiser les moteurs :*/
 		appelle gestion touches
 		parcours affichage niveau avec niveaux{niveau@jeu}
@@ -133,8 +132,7 @@ affichage niveau :
 	position est un nombre valant 2
 	image fond est un rectangle, couleur prend "noir", plein prend "oui"
 	bug est un nombre
-	début
-		largeur prend niveau{0}
+	largeur prend niveau{0}
 		largeur@image fond prend largeur * taille
 		hauteur@image fond prend hauteur * taille
 		vide niveau courant
@@ -179,8 +177,7 @@ affichage image :
 	*largeur est un nombre
 	*hauteur est un nombre
 	image est un casier de graphique
-	début
-		si type = 2
+	si type = 2
 			x@pacman prend x+largeur*taille
 			y@pacman prend y+hauteur*taille
 			posx@pacman prend largeur
@@ -244,16 +241,14 @@ calculer X et Y :
 	*hauteur est un nombre
 	*delta l est un nombre
 	*delta h est un nombre
-	début
-		x prend ( largeur@image jeu - largeur ) / 2 - delta l / 2
+	x prend ( largeur@image jeu - largeur ) / 2 - delta l / 2
 		y prend ( hauteur@image jeu - hauteur) / 2 - delta h / 2
 		reviens
 
 gestion touches :
 	t est un texte
 	i est un nombre
-	début
-		Vide touches
+	Vide touches
 		Tant que vrai
 			temporise
 			t prend touche
@@ -270,8 +265,7 @@ moteur fantome :
 	positiony est un texte
 	largeur & hauteur est un nombre
 	temps est un nombre
-	début
-		Tant que vrai
+	Tant que vrai
 			si init@monstre
 				posx@monstre prend posinitx@monstre
 				posy@monstre prend posinity@monstre
@@ -438,8 +432,7 @@ nouvelle direction fantome :
 	*sens est un texte
 	dé est un nombre valant 2
 	t est un nombre
-	début
-		mélange dé
+	mélange dé
 		cherche t, la position de sens dans sensv
 		si t != 0
 			sens prend sensh {dé}
@@ -449,8 +442,7 @@ nouvelle direction fantome :
 
 moteur pacman :
 	temp est un texte
-	début
-		Tant que vrai
+	Tant que vrai
 			si init@pacman
 				posx@pacman prend posinitx@pacman
 				posy@pacman prend posinity@pacman
@@ -504,8 +496,7 @@ moteur pacman :
 		Ferme
 
 animation pacman :
-	début
-		Tant que vrai
+	Tant que vrai
 			Pour chaque 2
 				Attends vitesse * 3 * 10 millisecondes
 				trame@pacman prend joker
@@ -513,8 +504,7 @@ animation pacman :
 		Ferme
 
 Animation fantome :
-	début
-		Tant que vrai
+	Tant que vrai
 			Pour chaque 3
 				Attends vitesse * 50 millisecondes
 				parcours change apparance avec fantome, joker
@@ -527,8 +517,7 @@ Animation fantome :
 Change apparance :
 	*monstre est un personnage
 	*trame est un nombre
-	début
-		si mangé@monstre, trame@monstre prend 6
+	si mangé@monstre, trame@monstre prend 6
 		sinon si malade@monstre, trame@monstre prend trame + 3
 		sinon trame@monstre prend trame
 		Reviens
@@ -538,8 +527,7 @@ Télétransportation :
 	*ty est un nombre
 	*spock est un personnage
 	type est un nombre valant niveau courant{tx + largeur * ty}
-	début
-		si  type > 20
+	si  type > 20
             /*Le type correspond au delta*/
             /*angle@spock prend 180*/
 			télétransporté@spock prend vrai
@@ -571,8 +559,7 @@ Vérifier position :
 	*tx est un nombre
 	*ty est un nombre
 	type est un nombre valant niveau courant{tx + largeur * ty}
-	début
-		si type = 1
+	si type = 1
             /*BOGUE Linotte 1.2.4, la ligne suivante ne marche pas si on n'utilise
             pas la variable bogue (cf plus haut). 
             Le codeur de Linotte programme comme ses pieds !*/
@@ -606,8 +593,7 @@ Vérifier position fantome :
 	*tx est un nombre
 	*ty est un nombre
 	type est un nombre valant niveau courant{tx + largeur * ty}
-	début
-		si type = 3
+	si type = 3
 			retourne vrai
 		ferme
 		sinon si ((type = 2)) ou (type = 0)
@@ -630,8 +616,7 @@ Effacer image :
 	*g est un graphique
 	boucle est un nombre valant transparence@g
 	i est un nombre
-	début
-		Pour i de boucle à 0 
+	Pour i de boucle à 0 
 			attends vitesse  milliseconde
 			transparence@g prend i
 		Ferme
@@ -639,8 +624,7 @@ Effacer image :
 
 Tester contacte :
 	*monstre est un personnage
-	début
-		si monstre.collision(pacman)
+	si monstre.collision(pacman)
 			si (posy@monstre) = (posy@pacman)
 				si (posx@monstre) = (posx@pacman)
 					si non(télétransporté@pacman)
@@ -661,8 +645,7 @@ Tester contacte :
 		Reviens
 
 Vies :
-	début
-		si vie = 0, parcours game over
+	si vie = 0, parcours game over
 		si vie = 2
 			efface icônelifes2
 			va vers respawn
@@ -673,8 +656,7 @@ Vies :
 		ferme
 
 Respawn :
-	début
-		init@pacman prend vrai
+	init@pacman prend vrai
 		init@fantome prend vrai
 		init@fantome1 prend vrai
 		init@fantome2 prend vrai
@@ -682,15 +664,13 @@ Respawn :
 		va vers moteur fantome
 
 Game Over :
-	début
-		Projette gGameOver
+	Projette gGameOver
 		Attends 3 secondes
 		Termine
 
 Clignotement :
 	boucle est un nombre
-	début
-		Tant que vrai
+	Tant que vrai
 			pour chaque boules
 				boucle prend boucle + 2
 				transparence de joker prend abs (cos boucle)  * 100
@@ -701,8 +681,7 @@ Clignotement :
 
 Pac pac pac :
 	marqueur est un nombre
-	début
-		pacpacpac prend pacpacpac + 1
+	pacpacpac prend pacpacpac + 1
 		marqueur prend pacpacpac
 		malade@fantome prend vrai
 		malade@fantome1 prend vrai
@@ -715,8 +694,7 @@ Pac pac pac :
 		Reviens
 
 Initialisation des personnages :
-	début
-		malade@fantome prend faux
+	malade@fantome prend faux
 		malade@fantome1 prend faux
 		malade@fantome2 prend faux
 		malade@fantome3 prend faux
@@ -728,7 +706,6 @@ Initialisation des personnages :
 
 Incrémentescore :
 	*val est un nombre
-	début
-		score@jeu prend score@jeu + val
+	score@jeu prend score@jeu + val
 		texte@gscore prend score@jeu
 		Reviens

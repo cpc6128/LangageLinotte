@@ -3,19 +3,17 @@ globale
 	data est un pile
 
 principale :
-	début
-		charge "pile !" dans data
-		charge "une" dans data
-		charge "dans" dans data
-		charge "suis" dans data
-		charge "je" dans data
-		charge "Bonjour," dans data
-		va vers suite
+	charge "pile !" dans data
+	charge "une" dans data
+	charge "dans" dans data
+	charge "suis" dans data
+	charge "je" dans data
+	charge "Bonjour," dans data
+	va vers suite
 
 suite :
 	texte est un texte valant "rien"
-	début
-		tant que texte != ""
-			décharge texte depuis data
-			texte !
-		ferme
+	tant que texte != ""
+		décharge texte depuis data
+		texte !
+	ferme

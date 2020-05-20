@@ -20,76 +20,75 @@ globale
 boucle :
 	alea est un nombre
 	valeur est un nombre
-	début
-		efface toile
-		projette lignesol
-		projette graffiti
-		copie 0 dans compteur
-		vide casier_
-		nbr_point prend -1
-		projette graffiti
+	efface toile
+	projette lignesol
+	projette graffiti
+	copie 0 dans compteur
+	vide casier_
+	nbr_point prend -1
+	projette graffiti
 		// boucle infinie :
-		tant que 1 != 2
-			copie 40 dans alea
-			mélange alea
-			ajoute 1 dans compteur
-			si nbr_point > 100, alea prend 0
-			si nbr_point < BALLES
-				si compteur > alea, vide compteur
-				si compteur == 0
+	tant que 1 != 2
+		copie 40 dans alea
+		mélange alea
+		ajoute 1 dans compteur
+		si nbr_point > 100, alea prend 0
+		si nbr_point < BALLES
+			si compteur > alea, vide compteur
+			si compteur == 0
 	        //création dynamique d'acteurs point+
-					P  est un point plus
-					ajoute 1 dans nbr_point
-					ajoute p dans casier_
-					alea prend 350
-					mélange alea
-					ajoute 150 dans alea
-					copie alea dans x de p
+				P  est un point plus
+				ajoute 1 dans nbr_point
+				ajoute p dans casier_
+				alea prend 350
+				mélange alea
+				ajoute 150 dans alea
+				copie alea dans x de p
 					//caractéristiques des points
-					copie 30 dans y de p
-					projette p
-					copie 10 dans taille de p
-					copie 0 dans gauche de p
-					copie 0 dans droite de p
-					copie 0 dans bas de p
-					copie 0 dans haut de p
+				copie 30 dans y de p
+				projette p
+				copie 10 dans taille de p
+				copie 0 dans gauche de p
+				copie 0 dans droite de p
+				copie 0 dans bas de p
+				copie 0 dans haut de p
 					//pour la couleur
-					alea prend 7
-					mélange alea
-					si alea == 0, copie "rouge" dans couleur de p
-					sinon si alea == 1, copie "vert" dans couleur de p
-					sinon si alea == 2, copie "bleu" dans couleur de p
-					sinon si alea == 3, copie "blanc" dans couleur de p
-					sinon si alea == 4, copie "noir" dans couleur de p
-					sinon si alea == 5, copie "violet" dans couleur de p
-					sinon si alea == 6, copie "bordeaux" dans couleur de p
-				ferme
-			ferme
-			valeur prend BALLES - nbr_point
-			valeur prend valeur / VITESSE
-			si valeur < 10, copie 10 dans valeur
-			//rafraîchis
-			attends valeur millisecondes
-			pour chaque casier_ 
-				valeur prend 0
-		    //affichage
-				concatène nbr_point , " billes" dans texte de graffiti		
-		    //la bille tombe
-				ajoute 2 dans bas de joker		      
-		    //résistance de l'air
-				si (haut de joker) > (bas de joker), ajoute 1 dans bas de joker
-				//annulation des forces contraires
-				si (bas de joker) < (haut de joker), copie bas de joker dans valeur
-				sinon si (haut de joker) < (bas de joker), copie haut de joker dans valeur
-				sinon copie haut de joker dans valeur
-				bas de joker prend bas de joker - valeur
-				haut de joker prend haut de joker - valeur
-				//déplacement
-				déplace joker vers le haut de haut de joker
-				déplace joker vers le bas de bas de joker		
-		    //rebond sur le sol
-				si (y de joker) > (y1 de lignesol), haut de joker prend bas de joker + haut de joker
-				si (y de joker) > (y1 de lignesol), vide bas de joker
-				si (y de joker) > (y1 de lignesol), copie y1 de lignesol dans y de joker
+				alea prend 7
+				mélange alea
+				si alea == 0, copie "rouge" dans couleur de p
+				sinon si alea == 1, copie "vert" dans couleur de p
+				sinon si alea == 2, copie "bleu" dans couleur de p
+				sinon si alea == 3, copie "blanc" dans couleur de p
+				sinon si alea == 4, copie "noir" dans couleur de p
+				sinon si alea == 5, copie "violet" dans couleur de p
+				sinon si alea == 6, copie "bordeaux" dans couleur de p
 			ferme
 		ferme
+		valeur prend BALLES - nbr_point
+		valeur prend valeur / VITESSE
+		si valeur < 10, copie 10 dans valeur
+			//rafraîchis
+		attends valeur millisecondes
+		pour chaque casier_
+			valeur prend 0
+		    //affichage
+			concatène nbr_point , " billes" dans texte de graffiti		
+		    //la bille tombe
+			ajoute 2 dans bas de joker		      
+		    //résistance de l'air
+			si (haut de joker) > (bas de joker), ajoute 1 dans bas de joker
+				//annulation des forces contraires
+			si (bas de joker) < (haut de joker), copie bas de joker dans valeur
+			sinon si (haut de joker) < (bas de joker), copie haut de joker dans valeur
+			sinon copie haut de joker dans valeur
+			bas de joker prend bas de joker - valeur
+			haut de joker prend haut de joker - valeur
+				//déplacement
+			déplace joker vers le haut de haut de joker
+			déplace joker vers le bas de bas de joker		
+		    //rebond sur le sol
+			si (y de joker) > (y1 de lignesol), haut de joker prend bas de joker + haut de joker
+			si (y de joker) > (y1 de lignesol), vide bas de joker
+			si (y de joker) > (y1 de lignesol), copie y1 de lignesol dans y de joker
+		ferme
+	ferme

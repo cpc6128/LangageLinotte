@@ -13,33 +13,33 @@ globale
 	fond est une toile, couleur prend "noir", largeur prend echelle, hauteur prend echelle
 	tortue est un crayon, pointe prend "non", taille prend 1
 	cache1 & cache2 & cache3 est un casier de nombres
+
 Animation :
 	time est un nombre valant 0
 	i & r est un nombre valant 0
 	PI_ est un nombre valant 3.1416
 	delta est un nombre valant -2
-	début
-		pour 1000, ajoute 0 dans cache1 & cache2 & cache3
+	pour 1000, ajoute 0 dans cache1 & cache2 & cache3
 		// Diminution de la précision des calculs mathématiques
 		// pour être plus rapide : 10 chiffres est suffisant.
-		~ précision 6
+	~ précision 6
 		// Les calcules cosinus et sinus se font directement en radian et non en degré
-		~ angle radian
-		efface toile
-		projette tortue
-		tant que vrai
-			time prend time + delta
+	~ angle radian
+	efface toile
+	projette tortue
+	tant que vrai
+		time prend time + delta
 			// The number of particles to generate
-			pour i de 799 à 0
+		pour i de 799 à 0
 				// The magic
-				couleur de tortue prend "noir"
-				r prend cache1{i}
-				pique tortue à cache2{i} et cache3{i}
-				couleur de tortue prend "blanc"
-				cache1{i} prend 0.8*cos((time+i)*(.05+sin(time*0.00002)/PI_*.2))/PI_
-				r prend cache1{i}
-				cache2{i} prend 2*echelle*(sin(i)*r+.5)-(echelle/2)
-				cache3{i} prend 2*echelle*(cos(i)*r+.5)-(echelle/2)
-				pique tortue à cache2{i} et cache3{i}
-			ferme
+			couleur de tortue prend "noir"
+			r prend cache1{i}
+			pique tortue à cache2{i} et cache3{i}
+			couleur de tortue prend "blanc"
+			cache1{i} prend 0.8*cos((time+i)*(.05+sin(time*0.00002)/PI_*.2))/PI_
+			r prend cache1{i}
+			cache2{i} prend 2*echelle*(sin(i)*r+.5)-(echelle/2)
+			cache3{i} prend 2*echelle*(cos(i)*r+.5)-(echelle/2)
+			pique tortue à cache2{i} et cache3{i}
 		ferme
+	ferme

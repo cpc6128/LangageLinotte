@@ -6,25 +6,22 @@ principale :
 	i est un nombre valant 1
 	t est un texte valant "C'est sec"
 	c est un casier de nombre valant 1, 2, 3
-	début
-		attache addition à i
-		attache inverse à t
-		attache inverse à c
-		affiche i.addition(2).addition(3)
-		affiche clone(i).addition(5)
-		affiche i
-		t.inverse()
-		affiche t
-		c.inverse()
-		affiche c
+	attache addition à i
+	attache inverse à t
+	attache inverse à c
+	affiche i.addition(2).addition(3)
+	affiche clone(i).addition(5)
+	affiche i
+	t.inverse()
+	affiche t
+	c.inverse()
+	affiche c
 
 addition :
 	*n est un nombre
-	début
-		moi prend n + moi
-		retourne moi
+	moi prend n + moi
+	retourne moi
 
 inverse :
-	début
-		inverse moi
-		retourne moi
+	inverse moi
+	retourne moi

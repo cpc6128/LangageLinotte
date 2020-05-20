@@ -4,7 +4,7 @@ globale
 	gpio est un gpio // Communication entre Linotte et le GPIO du Raspberry PI.
 
 principale :
-	début
+	essaie
 		essaie parcours guirlande
 		sinon
 			affiche "oups, une erreur !"
@@ -14,10 +14,9 @@ principale :
 		affiche "on ferme l'interface de communication"
 		gpio.arrêterinterface()
 
-guirlande :
-	pin1 est un gpio, pin prend "1"
-	pin2 est un gpio, pin prend "2"
-	début
+	guirlande :
+		pin1 est un gpio, pin prend "1"
+		pin2 est un gpio, pin prend "2"
 		affiche "connexion aux pins"
 		pin1.démarrer()
 		pin2.démarrer()

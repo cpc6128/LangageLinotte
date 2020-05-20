@@ -1,5 +1,3 @@
-greffons tweak
-
 /*
 La gestion de la transparence ne fonctionne pas correctement sur certains systèmes
 d'exploitation.
@@ -19,7 +17,6 @@ Principal :
 	a_minute est un ligne, transparence prend 90, taille prend 2, couleur prend "rouge ponceau",  x1 prend 60, y1 prend 60, x2 prend 60, y2 prend 60, position prend 3
 	a_seconde est un ligne, transparence prend 90, taille prend 1, couleur prend "gris de lin",  x1 prend 60, y1 prend 60, x2 prend 60, y2 prend 60, position prend 2
 	tweak est un tweak
-	début
 		efface toile
 		projette fond & cadre & centre & a_heure & a_minute & a_seconde & contour
 		tweak.toileinvisible()
@@ -44,7 +41,6 @@ Moteur :
 	*a_heure est un ligne
 	*a_minute est un ligne
 	*a_seconde est un ligne
-	début
 		tant que vrai
 			// Affichage des secondes :
 			angle seconde est un nombre valant seconde * pi / 30  - pi / 2
@@ -69,21 +65,17 @@ Moteur :
 
 Degré :
 	* angle :: nombre
-	début
 		retourne 180 * angle / pi
 
 Plus clair :
 	* cercle :: cercle
-	début
 		transparence@cercle prend 30
 		reviens
 
 Plus foncé :
 	* cercle :: cercle
-	début
 		transparence@cercle prend 60
 		reviens
 
 Fin :
-	début
 		termine

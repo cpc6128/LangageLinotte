@@ -30,100 +30,96 @@ globale
 	liste est un liste, valeurs prend "", x prend 20, y prend 40, visible prend "non"
 
 démarrage :
-		ajoute amis & boite & boite_titre & b1 & tableau & info & login & e_ip & c_ip & e_port & c_port & connecter & deconnecter & scrolleur dans form
-		ajoute liste dans scrolleur
-		form.changementdimension(faux)
-		fais réagir boite à "clic souris" pour envoyer message
-		fais réagir b1 à "clic souris" pour envoyer message
-		fais réagir connecter à "clic souris" pour connexion
-		fais réagir deconnecter à "clic souris" pour déconnexion
-		fais réagir form à  "clic souris" pour quitter
-		texte@login prend client.nommachine()
+	ajoute amis & boite & boite_titre & b1 & tableau & info & login & e_ip & c_ip & e_port & c_port & connecter & deconnecter & scrolleur dans form
+	ajoute liste dans scrolleur
+	form.changementdimension(faux)
+	fais réagir boite à "clic souris" pour envoyer message
+	fais réagir b1 à "clic souris" pour envoyer message
+	fais réagir connecter à "clic souris" pour connexion
+	fais réagir deconnecter à "clic souris" pour déconnexion
+	fais réagir form à  "clic souris" pour quitter
+	texte@login prend client.nommachine()
 		// chargement des données sauvegardées :
-		si configuration.vérifier("login")
-			texte@login prend configuration.récupérer("login")
-			texte@c_ip prend configuration.récupérer("serveur")
-			texte@c_port prend configuration.récupérer("port")
-		ferme
-		appelle liste amis
-		tant que vrai temporise
+	si configuration.vérifier("login")
+		texte@login prend configuration.récupérer("login")
+		texte@c_ip prend configuration.récupérer("serveur")
+		texte@c_port prend configuration.récupérer("port")
+	ferme
+	appelle liste amis
+	tant que vrai temporise
 
 attendre message :
 	message est un packet // packet reçu
-	début
-		tant que vrai
-			essaie
+	tant que vrai
+		essaie
 				// On attend un message du serveur :
-				message prend client.recevoir()
+			message prend client.recevoir()
 				// Commande PING
-				si (commande@message) = "ping" parcours pong
+			si (commande@message) = "ping" parcours pong
 				// Commande VERSION
-				sinon si (commande@message) = "version" affiche "version du serveur : " + message@message
+			sinon si (commande@message) = "version" affiche "version du serveur : " + message@message
 				// Commande LISTE AMIS
-				sinon si (commande@message) = "liste amis", valeurs@liste prend message@message
+			sinon si (commande@message) = "liste amis", valeurs@liste prend message@message
 				// Autres commandes, on affiche le message ...
-				sinon
-					affiche nom@message + "(" + horodatage@message + ") > " + message@message
-					form.clignoter()
-				ferme
-			ferme
 			sinon
-				affiche "Connexion perdue avec le serveur"
-				parcours changer affichage avec "oui", "non"
-				visible@connecter prend "oui"
-				visible@deconnecter prend "non"
-				reviens
+				affiche nom@message + "(" + horodatage@message + ") > " + message@message
+				form.clignoter()
 			ferme
 		ferme
+		sinon
+			affiche "Connexion perdue avec le serveur"
+			parcours changer affichage avec "oui", "non"
+			visible@connecter prend "oui"
+			visible@deconnecter prend "non"
+			reviens
+		ferme
+	ferme
 
 envoyer message :
 	message est un packet // packet à envoyer
-	début
-		message@message prend texte@boite
-		commande@message prend "parler"
-		nom@message prend texte@login
-		parcours horodater de commun avec message
+	message@message prend texte@boite
+	commande@message prend "parler"
+	nom@message prend texte@login
+	parcours horodater de commun avec message
 		// Envoi du packet au serveur
-		client.envoyer(message)
-		texte@boite prend ""
-		reviens
+	client.envoyer(message)
+	texte@boite prend ""
+	reviens
 
 connexion :
 	port est un nombre
-	début
-		configuration.stocker("serveur",texte@c_ip)
-		configuration.stocker("port",texte@c_port)
-		configuration.stocker("login",texte@login)
-		essaie
-			visible@connecter prend "non"
-			convertis texte@c_port en port
-			client.connexion(texte@c_ip, port)
+	configuration.stocker("serveur",texte@c_ip)
+	configuration.stocker("port",texte@c_port)
+	configuration.stocker("login",texte@login)
+	essaie
+		visible@connecter prend "non"
+		convertis texte@c_port en port
+		client.connexion(texte@c_ip, port)
 			//affiche "nous sommes connecté au serveur ..."
-			parcours version
-			parcours historique
-			appelle attendre message
-			parcours changer affichage avec "non", "oui"
-			visible@deconnecter prend "oui"
-		ferme
-		sinon
-			affiche "impossible de se connecter ..."
-			visible@connecter prend "oui"
-			visible@deconnecter prend "non"
-		ferme
-		reviens
+		parcours version
+		parcours historique
+		appelle attendre message
+		parcours changer affichage avec "non", "oui"
+		visible@deconnecter prend "oui"
+	ferme
+	sinon
+		affiche "impossible de se connecter ..."
+		visible@connecter prend "oui"
+		visible@deconnecter prend "non"
+	ferme
+	reviens
 
 quitter :
 	message est un packet // packet à envoyer
-	début
-		nom@message prend texte@login
-		commande@message prend "quitter"
-		affiche "nous quittons le serveur ..."
+	nom@message prend texte@login
+	commande@message prend "quitter"
+	affiche "nous quittons le serveur ..."
+	essaie
 		essaie client.envoyer(message)
 		termine
 
-déconnexion :
-	message est un packet // packet à envoyer
-	début
+	déconnexion :
+		message est un packet // packet à envoyer
 		nom@message prend texte@login
 		commande@message prend "quitter"
 		affiche "nous quittons le serveur ..."
@@ -133,7 +129,7 @@ déconnexion :
 		visible@deconnecter prend "non"
 		reviens
 
-changer affichage : état 1 , état 2
+	changer affichage : état 1 , état 2
 		visible@e_ip prend état 1
 		visible@c_ip prend état 1
 		visible@e_port prend état 1
@@ -146,37 +142,37 @@ changer affichage : état 1 , état 2
 		visible@liste prend état 2
 		reviens
 
-liste amis :
-	message est un packet // packet à envoyer
-	début
+	liste amis :
+		message est un packet // packet à envoyer
 		commande@message prend "liste amis"
 		tant que vrai
 			nom@message prend texte@login
-			essaie client.envoyer(message)
-			sinon	valeurs@liste prend ""
-			attends 3 seconde
-		ferme
+			essaie
+				essaie client.envoyer(message)
+				sinon	valeurs@liste prend ""
+				attends 3 seconde
+			ferme
 
-version :
-	message est un packet // packet à envoyer
-	début
-		commande@message prend "version"
-		nom@message prend texte@login
-		essaie client.envoyer(message)
-		reviens
+		version :
+			message est un packet // packet à envoyer
+			commande@message prend "version"
+			nom@message prend texte@login
+			essaie
+				essaie client.envoyer(message)
+				reviens
 
-historique :
-	message est un packet // packet à envoyer
-	début
-		commande@message prend "historique"
-		nom@message prend texte@login
-		essaie client.envoyer(message)
-		reviens
+			historique :
+				message est un packet // packet à envoyer
+				commande@message prend "historique"
+				nom@message prend texte@login
+				essaie
+					essaie client.envoyer(message)
+					reviens
 
-pong :
-	message est un packet // packet à envoyer
-	début
-		commande@message prend "pong"
-		nom@message prend texte@login
-		essaie client.envoyer(message)
-		reviens
+				pong :
+					message est un packet // packet à envoyer
+					commande@message prend "pong"
+					nom@message prend texte@login
+					essaie
+						essaie client.envoyer(message)
+						reviens

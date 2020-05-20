@@ -36,156 +36,139 @@ code :
 	tmp est un texte
 	nb est un nombre
 	piano est un métronome
-	début
-		ajoute s1 & l1 & do & ré & mi & fa & sol & la2 & si & do2 dans form
-		ajoute slider & l2 & l3 dans form
-		ajoute slider2 & l4 & l5 dans form
-		ajoute slider3 & l6 & l7 dans form
-		ajoute slider4 & l8 & l9 dans form
-		ajoute slider5 & l10 & l11 dans form
-		ajoute slider6 & l12 & l13 dans form
-		fais réagir s1 à "clic souris" pour changer instrument
-		fais réagir slider à "clic souris" pour changer velocity
-		fais réagir slider2 à "clic souris" pour changer pressure
-		fais réagir slider3 à "clic souris" pour changer reverb
-		fais réagir slider4 à "clic souris" pour changer canal
-		fais réagir slider5 à "clic souris" pour changer bend
-		fais réagir slider6 à "clic souris" pour changer durée
-		fais réagir do à "clic souris" pour DO
-		fais réagir ré à "clic souris" pour RE
-		fais réagir mi à "clic souris" pour MI
-		fais réagir fa à "clic souris" pour FA
-		fais réagir sol à "clic souris" pour SOL
-		fais réagir la2 à "clic souris" pour LA2
-		fais réagir si à "clic souris" pour SI
-		fais réagir do2 à "clic souris" pour DO2
-		fais réagir form à "clic souris" pour fermer la fenêtre
+	ajoute s1 & l1 & do & ré & mi & fa & sol & la2 & si & do2 dans form
+	ajoute slider & l2 & l3 dans form
+	ajoute slider2 & l4 & l5 dans form
+	ajoute slider3 & l6 & l7 dans form
+	ajoute slider4 & l8 & l9 dans form
+	ajoute slider5 & l10 & l11 dans form
+	ajoute slider6 & l12 & l13 dans form
+	fais réagir s1 à "clic souris" pour changer instrument
+	fais réagir slider à "clic souris" pour changer velocity
+	fais réagir slider2 à "clic souris" pour changer pressure
+	fais réagir slider3 à "clic souris" pour changer reverb
+	fais réagir slider4 à "clic souris" pour changer canal
+	fais réagir slider5 à "clic souris" pour changer bend
+	fais réagir slider6 à "clic souris" pour changer durée
+	fais réagir do à "clic souris" pour DO
+	fais réagir ré à "clic souris" pour RE
+	fais réagir mi à "clic souris" pour MI
+	fais réagir fa à "clic souris" pour FA
+	fais réagir sol à "clic souris" pour SOL
+	fais réagir la2 à "clic souris" pour LA2
+	fais réagir si à "clic souris" pour SI
+	fais réagir do2 à "clic souris" pour DO2
+	fais réagir form à "clic souris" pour fermer la fenêtre
 		/*Construction de la liste des instruments :*/
-		pour chaque piano.instruments()
-			tmp prend tmp + joker + "|"
-		ferme
-		valeurs@s1 prend tmp
-		maximum@slider4 prend piano.nombrechannels()
-		valeur@slider4 prend 0
+	pour chaque piano.instruments()
+		tmp prend tmp + joker + "|"
+	ferme
+	valeurs@s1 prend tmp
+	maximum@slider4 prend piano.nombrechannels()
+	valeur@slider4 prend 0
 		/*Boucle infinie*/
-		tant que vrai 
-			temporise
-			vide touches
-		ferme
+	tant que vrai
+		temporise
+		vide touches
+	ferme
 
 fermer la fenêtre :
 	*f est un formulaire
 	piano est un métronome
-	début
-		piano.fermer()
-		Termine
+	piano.fermer()
+	Termine
 
 changer instrument :
 	*s est un sélecteur
 	piano est un métronome
-	début
-		piano.instrument(valeur@s)
-		Reviens
+	piano.instrument(valeur@s)
+	Reviens
 
 changer velocity :
 	*s est un slider
 	piano est un métronome
-	début
-		texte@l3 prend valeur@s
-		piano.velocity(valeur@s)
-		Reviens
+	texte@l3 prend valeur@s
+	piano.velocity(valeur@s)
+	Reviens
 
 changer pressure :
 	*s est un slider
 	piano est un métronome
-	début
-		texte@l5 prend valeur@s
-		piano.pressure(valeur@s)
-		reviens
+	texte@l5 prend valeur@s
+	piano.pressure(valeur@s)
+	reviens
 
 changer reverb :
 	*s est un slider
 	piano est un métronome
-	début
-		texte@l7 prend valeur@s
-		piano.reverb(valeur@s)
-		reviens
+	texte@l7 prend valeur@s
+	piano.reverb(valeur@s)
+	reviens
 
 changer canal :
 	*s est un slider
 	piano est un métronome
-	début
-		texte@l9 prend valeur@s
-		piano.canal(valeur@s)
-		reviens
+	texte@l9 prend valeur@s
+	piano.canal(valeur@s)
+	reviens
 
 changer bend :
 	*s est un slider
 	piano est un métronome
-	début
-		texte@l11 prend valeur@s
-		piano.bend(valeur@s)
-		reviens
+	texte@l11 prend valeur@s
+	piano.bend(valeur@s)
+	reviens
 
 changer durée :
 	*s est un slider
 	piano est un métronome
-	début
-		texte@l13 prend valeur@s
-		reviens
+	texte@l13 prend valeur@s
+	reviens
 
 DO :
 	*s est un bouton
 	piano est un métronome
-	début
-		piano.joue(60,valeur@slider6)
-		reviens
+	piano.joue(60,valeur@slider6)
+	reviens
 
 RE :
 	*s est un bouton
 	piano est un métronome
-	début
-		piano.joue(62,valeur@slider6)
-		reviens
+	piano.joue(62,valeur@slider6)
+	reviens
 
 MI :
 	*s est un bouton
 	piano est un métronome
-	début
-		piano.joue(64,valeur@slider6)
-		reviens
+	piano.joue(64,valeur@slider6)
+	reviens
 
 FA :
 	*s est un bouton
 	piano est un métronome
-	début
-		piano.joue(65,valeur@slider6)
-		reviens
+	piano.joue(65,valeur@slider6)
+	reviens
 
 SOL :
 	*s est un bouton
 	piano est un métronome
-	début
-		évoque piano.joue(67,valeur@slider6)
-		reviens
+	évoque piano.joue(67,valeur@slider6)
+	reviens
 
 LA2 :
 	*s est un bouton
 	piano est un métronome
-	début
-		évoque piano.joue(69,valeur@slider6)
-		reviens
+	évoque piano.joue(69,valeur@slider6)
+	reviens
 
 SI :
 	*s est un bouton
 	piano est un métronome
-	début
-		évoque piano.joue(71,valeur@slider6)
-		reviens
+	évoque piano.joue(71,valeur@slider6)
+	reviens
 
 DO2 :
 	*s est un bouton
 	piano est un métronome
-	début
-		évoque piano.joue(72,valeur@slider6)
-		reviens
+	évoque piano.joue(72,valeur@slider6)
+	reviens

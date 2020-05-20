@@ -1,10 +1,9 @@
 principale :
-	début
-		pour 40
-			affiche "{joker+1} kilomètres à pied, ça use, ça use !"
-			si joker > 3
-				affiche "Ça use les souliers ..."
-				interromps
-			§
+	pour 40
+		affiche "{joker+1} kilomètres à pied, ça use, ça use !"
+		si joker > 3
+			affiche "Ça use les souliers ..."
+			interromps
 		§
-		affiche "... et je suis bien trop fatigué !"
+	§
+	affiche "... et je suis bien trop fatigué !"

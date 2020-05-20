@@ -3,16 +3,14 @@ globale
 
 principale :
 	âge est un nombre valant 15
-	début
-		Charge "Bertrand dupont" dans dictionnaire avec "utilisateur1"
-		Charge âge dans dictionnaire avec "utilisateur1_age"
-		Va vers suite
+	Charge "Bertrand dupont" dans dictionnaire avec "utilisateur1"
+	Charge âge dans dictionnaire avec "utilisateur1_age"
+	Va vers suite
 
 suite :
 	nb est un nombre
 	texte est un texte
-	début
-		Décharge nb depuis dictionnaire avec "utilisateur1_age"
-		nb !
-		Décharge texte depuis dictionnaire avec "utilisateur1"
-		texte !
+	Décharge nb depuis dictionnaire avec "utilisateur1_age"
+	nb !
+	Décharge texte depuis dictionnaire avec "utilisateur1"
+	texte !

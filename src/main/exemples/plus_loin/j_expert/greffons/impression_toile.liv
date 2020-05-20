@@ -5,23 +5,20 @@ la toile sur l'imprimante !
 Sympa ?"
 	cercle est un cercle, taille prend 1, couleur prend "rouge", x prend 200, y prend 200, rayon prend 200
 	i est un nombre valant 0
-	début
-		efface toile
-		projette texte & cercle
-		pour i de 30 à 200 suivant i + 10, parcours création carré avec i
-		va vers imprimer
+	efface toile
+	projette texte & cercle
+	pour i de 30 à 200 suivant i + 10, parcours création carré avec i
+	va vers imprimer
 
 création carré :
 	t est un rectangle
 	*i est un nombre
-	début
-		largeur@t & hauteur@t prend 20
-		x@t & y@t prend 50 + i
-		projette t
-		reviens
+	largeur@t & hauteur@t prend 20
+	x@t & y@t prend 50 + i
+	projette t
+	reviens
 
 imprimer :
 	imprimeur est un imprimeur
-	début
-		affiche imprimeur.imprimertoile()
-		Termine
+	affiche imprimeur.imprimertoile()
+	Termine

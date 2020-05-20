@@ -7,27 +7,24 @@ globale
 	c est un conduit
 
 principale :
-	début
-		Ajoute boite & b1 & b2 & l1 dans form
-		Fais réagir b1 à "clic souris" pour valeur
-		Fais réagir b2 à "clic souris" pour ouvrir
-		tant que 1 != 2
-			temporise
-			vide touches
-		ferme
+	Ajoute boite & b1 & b2 & l1 dans form
+	Fais réagir b1 à "clic souris" pour valeur
+	Fais réagir b2 à "clic souris" pour ouvrir
+	tant que 1 != 2
+		temporise
+		vide touches
+	ferme
 
 valeur :
 	*b est un menubouton
-	début
-		texte@boite !
-		Reviens
+	texte@boite !
+	Reviens
 
 ouvrir :
 	*b est un menubouton
 	retour est un drapeau
-	début
-		retour prend c.sélectionneretouvrir()
-		si retour
-			texte@boite prend c.lire()
-		ferme
-		Reviens
+	retour prend c.sélectionneretouvrir()
+	si retour
+		texte@boite prend c.lire()
+	ferme
+	Reviens

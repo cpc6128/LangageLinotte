@@ -3,40 +3,36 @@ globale
 
 Principale :
 	clavier est un clavier
-	début
-		efface toile
-		projette centre
-		clavier.commencer()
-		clavier.enregistremolettehaut("analyse haut")
-		clavier.enregistremolettebas("analyse bas")
-		tant que vrai
-			attends 100 millisecondes
-			parcours afficher avec clavier.touches()
-		ferme
+	efface toile
+	projette centre
+	clavier.commencer()
+	clavier.enregistremolettehaut("analyse haut")
+	clavier.enregistremolettebas("analyse bas")
+	tant que vrai
+		attends 100 millisecondes
+		parcours afficher avec clavier.touches()
+	ferme
 
 Afficher :
 	*liste est un casier de nombre
 	msg est un  texte
-	début
-		efface tableau
-		si liste.taille() != 0
-			pour chaque liste
-				ajoute joker + ";" dans msg
-			ferme
-			affiche msg
+	efface tableau
+	si liste.taille() != 0
+		pour chaque liste
+			ajoute joker + ";" dans msg
 		ferme
-		reviens
+		affiche msg
+	ferme
+	reviens
 
 Analyse haut :
-	début
-		déplace centre vers le haut de 1
-		rayon@centre prend rayon@centre + 1
-		affiche "vers le haut !"
-		reviens
+	déplace centre vers le haut de 1
+	rayon@centre prend rayon@centre + 1
+	affiche "vers le haut !"
+	reviens
 
 Analyse bas :
-	début
-		déplace centre vers le bas de 1
-		rayon@centre prend rayon@centre - 1
-		affiche "vers le bas !"
-		reviens
+	déplace centre vers le bas de 1
+	rayon@centre prend rayon@centre - 1
+	affiche "vers le bas !"
+	reviens

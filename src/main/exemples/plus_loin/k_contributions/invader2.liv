@@ -2,22 +2,21 @@
 space invaders :
 	bloc est un rectangle, largeur prend 10, hauteur prend 10, plein prend "oui"
 	x & y est un nombre
-	début
-		tant que vrai
-			x & y prend hasard(500)
-			couleur@bloc = couleurs{hasard(x/2)}
-			pour chaque {2,4,8,9,10,11,12,15,17,19,22,24,26,28,29,30,31,32,33,34,35,37,39,41}
-				x@bloc = x + joker mod 7*11
-				y@bloc = y + entier(joker/7)*11
-				projette clone(bloc)
-			ferme
-			couleur@bloc = "noir"
-			x@bloc = x + 2 * 11
-			y@bloc = y + (2 + x mod 2) * 11
+	tant que vrai
+		x & y prend hasard(500)
+		couleur@bloc = couleurs{hasard(x/2)}
+		pour chaque {2,4,8,9,10,11,12,15,17,19,22,24,26,28,29,30,31,32,33,34,35,37,39,41}
+			x@bloc = x + joker mod 7*11
+			y@bloc = y + entier(joker/7)*11
 			projette clone(bloc)
-			x@bloc = x + 4 * 11
-			y@bloc = y + (2 + y mod 2) * 11
-			projette clone(bloc)
-			attends 1 seconde
-			efface toile
 		ferme
+		couleur@bloc = "noir"
+		x@bloc = x + 2 * 11
+		y@bloc = y + (2 + x mod 2) * 11
+		projette clone(bloc)
+		x@bloc = x + 4 * 11
+		y@bloc = y + (2 + y mod 2) * 11
+		projette clone(bloc)
+		attends 1 seconde
+		efface toile
+	ferme

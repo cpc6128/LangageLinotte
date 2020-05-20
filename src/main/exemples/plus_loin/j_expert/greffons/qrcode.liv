@@ -5,5 +5,4 @@ Procédure pour installer le greffon QRCode : http://programmons.forumofficiel.f
 principale :
 	fond est une toile, couleur prend "blanc", hauteur prend 200, largeur prend 200
 	code est un qrcode, x prend 0, y prend 0, taille vaut 200, texte prend "http://langagelinotte.free.fr/"
-	début
-		projette code
+	projette code

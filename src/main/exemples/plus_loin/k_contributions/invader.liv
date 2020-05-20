@@ -1,12 +1,16 @@
 // Concours SiteDuZero : http://fr.openclassrooms.com/forum/sujet/atelier-fond-anime-space-invaders?page=2#message-84276241
 b:
-x&y<-hasard 500
-b::rectangle,largeur=8,hauteur=8,plein="oui",couleur=couleurs{x/2}
-début
-projette b
-pour {2,4,8,9,10,11,12,15,17,19,22,24,26,28,29,30,31,32,33,34,35,37,39,41}
-x@b=x+joker mod 7*9;y@(#b)=y+entier(joker/7)*9
-ferme
-couleur@b=0;x@b=x+18;y@(#b)=y+(2+x mod 2)*9;x@b=x+36;y@b=y+(2+y mod 2)*9
-attends 1 seconde;efface toile
-va vers b
+	x&y<-hasard 500
+	b::rectangle,largeur=8,hauteur=8,plein="oui",couleur=couleurs{x/2}
+	pour {2,4,8,9,10,11,12,15,17,19,22,24,26,28,29,30,31,32,33,34,35,37,39,41}
+		x@b=x+joker mod 7*9
+		y@(#b)=y+entier(joker/7)*9
+	ferme
+	couleur@b=0
+	x@b=x+18
+	y@(#b)=y+(2+x mod 2)*9
+	x@b=x+36
+	y@b=y+(2+y mod 2)*9
+	attends 1 seconde
+	efface toile
+	va vers b

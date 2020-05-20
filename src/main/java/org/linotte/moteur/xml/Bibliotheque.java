@@ -46,6 +46,7 @@ public final class Bibliotheque {
 		// Ajout des autres greffons :
 		// ***************************
 
+		LinotteFacade.creationPrototype(null, new Majordome(), "majordome");
 		LinotteFacade.creationPrototype(null, new TCPClient(), "tcpclient");
 		LinotteFacade.creationPrototype(null, new TCPServeur(), "tcpserveur");
 		LinotteFacade.creationPrototype(null, new Clavier(), "clavier");

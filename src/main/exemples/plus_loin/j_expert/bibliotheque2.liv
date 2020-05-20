@@ -1,10 +1,8 @@
 principale :
-	début
-		Affiche "Lancez bibliotheque.liv !"
-		termine
+	Affiche "Lancez bibliotheque.liv !"
+	termine
 
 bonjour :
 	*Prénom est un texte
-	début
-		affiche "Bonjour à toi ${prénom}, tu es maintenant dans ${livre}"
-		reviens
+	affiche "Bonjour à toi ${prénom}, tu es maintenant dans ${livre}"
+	reviens

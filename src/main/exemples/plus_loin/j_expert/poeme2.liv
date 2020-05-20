@@ -1,6 +1,5 @@
 dame souris trotte :
-	début
-		affiche "Dame souris trotte, 
+	affiche "Dame souris trotte, 
 Noire dans le gris du soir, 
 Dame souris trotte, 
 Grise dans le noir. 
@@ -17,4 +16,3 @@ Rose dans les rayons bleus,
 Dame souris trotte, 
 Debout, paresseux. 
 Dame souris de Paul Verlaine. "
-		termine

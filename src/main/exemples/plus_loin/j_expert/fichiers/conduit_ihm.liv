@@ -7,25 +7,23 @@ globale
 	container est un conduit
 
 principal :
-		Ajoute boite & b1 & b2 & l1 dans form
-		Fais réagir b1 à "clic souris" pour valeur
-		Fais réagir b2 à "clic souris" pour ouvrir
-		tant que 1 != 2
-			temporise
-		ferme
+	Ajoute boite & b1 & b2 & l1 dans form
+	Fais réagir b1 à "clic souris" pour valeur
+	Fais réagir b2 à "clic souris" pour ouvrir
+	tant que 1 != 2
+		temporise
+	ferme
 
 valeur :
 	*b est un menubouton
-	début
-		texte@boite !
-		Reviens
+	texte@boite !
+	Reviens
 
 Ouvrir :
 	*b est un menubouton
 	retour est un drapeau
-	début
-		retour prend container.sélectionneretouvrir()
-		si retour
-			texte@boite prend container.lire()
-		ferme
-		Reviens
+	retour prend container.sélectionneretouvrir()
+	si retour
+		texte@boite prend container.lire()
+	ferme
+	Reviens

@@ -16,52 +16,46 @@ principale :
 	basededonnées est une base, pilote="org.hsqldb.jdbcDriver", url="jdbc:hsqldb:file:c:/temp/baseAtelier", utilisateur="sa"
 	utilisateurs est un utilisateurs
 	utilisateur est un utilisateur
-	début
-		basededonnées.connecter()
-		utilisateurs.créertable(basededonnées)
-		questionne nom@utilisateur sur "Votre nom ?"
-		questionne prénom@utilisateur sur "Votre prénom ?"
-		utilisateurs.ajouterutilisateur(utilisateur)
-		affiche utilisateurs.listerutilisateurs()
-		basededonnées.fermer()
+	basededonnées.connecter()
+	utilisateurs.créertable(basededonnées)
+	questionne nom@utilisateur sur "Votre nom ?"
+	questionne prénom@utilisateur sur "Votre prénom ?"
+	utilisateurs.ajouterutilisateur(utilisateur)
+	affiche utilisateurs.listerutilisateurs()
+	basededonnées.fermer()
 
 connecter de base :
-	début
-		retourne (connecteur@moi).open(pilote@moi,url@moi,utilisateur@moi,motdepasse@moi)
+	retourne (connecteur@moi).open(pilote@moi,url@moi,utilisateur@moi,motdepasse@moi)
 
 fermer de base :
-	début
-		(connecteur@moi).execute("SHUTDOWN", {})
-		retourne (connecteur@moi).close()
+	(connecteur@moi).execute("SHUTDOWN", {})
+	retourne (connecteur@moi).close()
 
 créertable de utilisateurs :
 	*basededonnées est une base
 	sql_create est un texte valant "CREATE TABLE utilisateurs (nom VARCHAR(100), prenom VARCHAR(100))"
-	début
-		attache basededonnées à moi
-		essaie 
-			(connecteur@basededonnées).execute(sql_create,{})
-			retourne vrai
-		ferme
-		sinon retourne faux
+	attache basededonnées à moi
+	essaie
+		(connecteur@basededonnées).execute(sql_create,{})
+		retourne vrai
+	ferme
+	sinon retourne faux
 
 ajouterutilisateur de utilisateurs :
 	*utilisateur est un utilisateur
 	sql_insert est un texte valant "INSERT INTO utilisateurs (nom, prenom) VALUES (?, ?)"
-	début
-		retourne (connecteur@(basededonnées@moi)).execute(sql_insert, {nom@utilisateur, prénom@utilisateur})
+	retourne (connecteur@(basededonnées@moi)).execute(sql_insert, {nom@utilisateur, prénom@utilisateur})
 
 listerutilisateurs de utilisateurs :
 	sql_select est un texte valant "SELECT nom, prenom FROM utilisateurs"
 	résultat est un casier de utilisateur
 	retour est un casier de texte
 	utilisateur est un utilisateur
-	début
-		(connecteur@(basededonnées@moi)).select(sql_select)
-		tant que (connecteur@(basededonnées@moi)).hasnext()
-			retour prend (connecteur@(basededonnées@moi)).next()
-			nom@utilisateur prend retour{0}
-			prénom@utilisateur prend retour{1}
-			ajoute #utilisateur dans résultat
-		ferme
-		retourne résultat
+	(connecteur@(basededonnées@moi)).select(sql_select)
+	tant que (connecteur@(basededonnées@moi)).hasnext()
+		retour prend (connecteur@(basededonnées@moi)).next()
+		nom@utilisateur prend retour{0}
+		prénom@utilisateur prend retour{1}
+		ajoute #utilisateur dans résultat
+	ferme
+	retourne résultat

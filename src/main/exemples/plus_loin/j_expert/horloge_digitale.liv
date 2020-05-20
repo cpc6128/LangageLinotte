@@ -5,12 +5,12 @@ globale
 	décallage valant -95
 	élément v est un polygone, couleur prend lumière douce, plein prend "oui", x prend 0, y prend 0, dx1 prend 10 ,dy1 prend -10, dx2 prend 20 ,dy2 prend 0, dx3 prend 20 ,dy3 prend 40, dx4 prend 10 ,dy4 prend 50,  dx5 prend 0 ,dy5 prend 40
 	élément h est un polygone, couleur prend lumière douce, plein prend "oui", x prend 0, y prend 0, dx1 prend 10 ,dy1 prend -10, dx2 prend 38 ,dy2 prend -10, dx3 prend 48 ,dy3 prend 0, dx4 prend 38 ,dy4 prend 10,  dx5 prend 10 ,dy5 prend 10
-	chiffre1 est un casier de polygone 
-	chiffre2 est un casier de polygone 
-	chiffre3 est un casier de polygone 
-	chiffre4 est un casier de polygone 
-	chiffre5 est un casier de polygone 
-	chiffre6 est un casier de polygone 
+	chiffre1 est un casier de polygone
+	chiffre2 est un casier de polygone
+	chiffre3 est un casier de polygone
+	chiffre4 est un casier de polygone
+	chiffre5 est un casier de polygone
+	chiffre6 est un casier de polygone
 	rond1 est un cercle, couleur prend lumière douce, x prend 285 + décallage, y prend 230, rayon prend 20, plein prend "oui"
 	rond2 est un cercle, couleur prend lumière douce, x prend 285 + décallage, y prend 290, rayon prend 20, plein prend "oui"
 	rond3 est un cercle, couleur prend lumière douce, x prend 506 + décallage, y prend 230, rayon prend 20, plein prend "oui"
@@ -27,6 +27,7 @@ globale
 	patron8 valant 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 	patron9 valant 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1
 	nombres valant patron0, patron1, patron2, patron3, patron4, patron5, patron6, patron7, patron8, patron9
+
 principale :
 	position 1 valant 0 + décallage
 	position 2 valant 80 + décallage
@@ -35,60 +36,58 @@ principale :
 	position 5 valant 440 + décallage
 	position 6 valant 520 + décallage
 	h & m & s est un nombre
-	début
-		efface toile
-		projette vitre
-		projette rond1 & rond2 & rond3 & rond4
-		parcours init avec position 1, chiffre1
-		parcours init avec position 2, chiffre2
-		parcours init avec position 3, chiffre3
-		parcours init avec position 4, chiffre4
-		parcours init avec position 5, chiffre5
-		parcours init avec position 6, chiffre6
-		tant que vrai
-			h prend heure
-			m prend minute
-			s prend seconde
-			parcours analyse avec h, chiffre1, chiffre2
-			parcours analyse avec m, chiffre3, chiffre4
-			parcours analyse avec s, chiffre5, chiffre6
-			couleur@rond1 & couleur@rond2 & couleur@rond3 & couleur@rond4 prend ter((s mod 2) = 0, lumière clair, lumière douce)
-			attends 1 seconde
-		ferme
-		termine
+	efface toile
+	projette vitre
+	projette rond1 & rond2 & rond3 & rond4
+	parcours init avec position 1, chiffre1
+	parcours init avec position 2, chiffre2
+	parcours init avec position 3, chiffre3
+	parcours init avec position 4, chiffre4
+	parcours init avec position 5, chiffre5
+	parcours init avec position 6, chiffre6
+	tant que vrai
+		h prend heure
+		m prend minute
+		s prend seconde
+		parcours analyse avec h, chiffre1, chiffre2
+		parcours analyse avec m, chiffre3, chiffre4
+		parcours analyse avec s, chiffre5, chiffre6
+		couleur@rond1 & couleur@rond2 & couleur@rond3 & couleur@rond4 prend ter((s mod 2) = 0, lumière clair, lumière douce)
+		attends 1 seconde
+	ferme
+	termine
 
 init : d, c
-		parcours affichage nombre avec #élément h, 111 + d, 139, c
-		parcours affichage nombre avec #élément h, 111 + d, 261, c
-		parcours affichage nombre avec #élément h, 111 + d, 383, c
-		parcours affichage nombre avec #élément v, 100 + d, 150, c
-		parcours affichage nombre avec #élément v, 100 + d, 210, c
-		parcours affichage nombre avec #élément v, 100 + d, 272, c
-		parcours affichage nombre avec #élément v, 100 + d, 332, c
-		parcours affichage nombre avec #élément v, 150 + d, 150, c
-		parcours affichage nombre avec #élément v, 150 + d, 210, c
-		parcours affichage nombre avec #élément v, 150 + d, 272, c
-		parcours affichage nombre avec #élément v, 150 + d, 332, c
-		Reviens
+	parcours affichage nombre avec #élément h, 111 + d, 139, c
+	parcours affichage nombre avec #élément h, 111 + d, 261, c
+	parcours affichage nombre avec #élément h, 111 + d, 383, c
+	parcours affichage nombre avec #élément v, 100 + d, 150, c
+	parcours affichage nombre avec #élément v, 100 + d, 210, c
+	parcours affichage nombre avec #élément v, 100 + d, 272, c
+	parcours affichage nombre avec #élément v, 100 + d, 332, c
+	parcours affichage nombre avec #élément v, 150 + d, 150, c
+	parcours affichage nombre avec #élément v, 150 + d, 210, c
+	parcours affichage nombre avec #élément v, 150 + d, 272, c
+	parcours affichage nombre avec #élément v, 150 + d, 332, c
+	Reviens
 
 analyse : n, c1, c2
-		parcours colorise avec nombres{entier(n/10)}, c1
-		parcours colorise avec nombres{décimal(n/10)*10}, c2
-		Reviens
+	parcours colorise avec nombres{entier(n/10)}, c1
+	parcours colorise avec nombres{décimal(n/10)*10}, c2
+	Reviens
 
 affichage nombre : temporaire, x, y, casier
-		x@temporaire prend x
-		y@temporaire prend y
-		projette temporaire
-		ajoute temporaire dans casier
-		reviens
+	x@temporaire prend x
+	y@temporaire prend y
+	projette temporaire
+	ajoute temporaire dans casier
+	reviens
 
 colorise : modèle, chiffre
 	position est un nombre valant 0
-	début
-		pour chaque modèle
-			si joker = 1, couleur@(chiffre{position}) prend lumière clair
-			sinon couleur@(chiffre{position}) prend lumière douce
-			position prend position + 1
-		ferme
-		reviens
+	pour chaque modèle
+		si joker = 1, couleur@(chiffre{position}) prend lumière clair
+		sinon couleur@(chiffre{position}) prend lumière douce
+		position prend position + 1
+	ferme
+	reviens

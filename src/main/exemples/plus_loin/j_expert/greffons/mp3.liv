@@ -13,40 +13,40 @@ principale :
 	pause est un bouton, texte prend "Pause", x prend 130, y prend 50
 	continuer est un bouton, texte prend "Continuer", x prend 200, y prend 50
 	indicateur est un indicateur, x prend 10, y prend 100, valeur prend 0, largeur prend 270, hauteur prend 20
-	début
 		/*Construction de la fenêtre :*/
-		ajoute ouvrir & play & pause & stop & continuer & indicateur dans jukebox
-		fais réagir ouvrir à "clic souris" pour ouvrir
-		fais réagir play à "clic souris" pour play
-		fais réagir pause à "clic souris" pour pause
-		fais réagir stop à "clic souris" pour stop
-		fais réagir continuer à "clic souris" pour continuer
-		fais réagir jukebox à  "clic souris" pour fermer fenêtre
-		jukebox.changementdimension(faux)
-		tant que vrai // boucle infinie
-			attends 100 millisecondes
-			si ((lecteur.taille())!=0) et ((lecteur.position())!=0), valeur de indicateur prend 100 - (lecteur.position()) / (lecteur.taille()) * 100
-			sinon valeur de indicateur prend 0
-			vide touches
-		ferme
+	ajoute ouvrir & play & pause & stop & continuer & indicateur dans jukebox
+	fais réagir ouvrir à "clic souris" pour ouvrir
+	fais réagir play à "clic souris" pour play
+	fais réagir pause à "clic souris" pour pause
+	fais réagir stop à "clic souris" pour stop
+	fais réagir continuer à "clic souris" pour continuer
+	fais réagir jukebox à  "clic souris" pour fermer fenêtre
+	jukebox.changementdimension(faux)
+	tant que vrai // boucle infinie
+		attends 100 millisecondes
+		si ((lecteur.taille())!=0) et ((lecteur.position())!=0), valeur de indicateur prend 100 - (lecteur.position()) / (lecteur.taille()) * 100
+		sinon valeur de indicateur prend 0
+		vide touches
+	ferme
 
 ouvrir :
-		fichier de lecteur prend sélecteur.sélectionner()
-		affiche fichier de lecteur
+	fichier de lecteur prend sélecteur.sélectionner()
+	affiche fichier de lecteur
 
 play :
+	essaie
 		essaie lecteur.jouer()
-		sinon popup.message("Impossible de lire ce fichier !")	
+		sinon popup.message("Impossible de lire ce fichier !")
 
-pause :
+	pause :
 		lecteur.pause()
 
-stop :
+	stop :
 		lecteur.arrêter()
 
-continuer :
+	continuer :
 		lecteur.continuer()
 
-fermer fenêtre :
+	fermer fenêtre :
 		lecteur.arrêter()
 		termine

@@ -29,29 +29,26 @@ globale
 	attente est un drapeau valant vrai
 
 principale :
-	début
-		tomate.ajoutermenu("Quitter", "quitter")
-		tomate.actionclique("continuer")
-		tomate.afficher()
-		tant que vrai
-			icône de tomate prend icone bosse
-			attends 60 * travail secondes
-			icône de tomate prend icone attente
+	tomate.ajoutermenu("Quitter", "quitter")
+	tomate.actionclique("continuer")
+	tomate.afficher()
+	tant que vrai
+		icône de tomate prend icone bosse
+		attends 60 * travail secondes
+		icône de tomate prend icone attente
 			//tomate.messagesystème("Message d'une tomate", "Fin de la tâche.")
-			attente prend vrai // Si l'utilisateur a cliqué avant la tomate grisse
-			tant que attente, attends 0.2 seconde
-			attente prend vrai
-			icône de tomate prend icone pause
-			attends 60 * stop secondes
-			tomate.messagesystème("Message d'une tomate", "On retourne à la tâche.")
-		ferme
+		attente prend vrai // Si l'utilisateur a cliqué avant la tomate grisse
+		tant que attente, attends 0.2 seconde
+		attente prend vrai
+		icône de tomate prend icone pause
+		attends 60 * stop secondes
+		tomate.messagesystème("Message d'une tomate", "On retourne à la tâche.")
+	ferme
 
 quitter :
-	début
-		tomate.supprimer()
-		termine
-		
+	tomate.supprimer()
+	termine
+
 continuer :
-	début
-		attente prend faux
-		reviens
+	attente prend faux
+	reviens

@@ -3,22 +3,21 @@ Bombernotte : /*V0.0*/
 	map est un image, image prend "everything.png" // <- image qui contient tous les sprites
 	sprites est un casier de image // Tableau qui contenir nos prites à afficher
 	position est un nombre
-	début
-		efface toile
-		projette map
-		pour 8 // On découpe les 8 sprites
-			dx de map prend 8
-			dy de map prend 10 + 32 * joker
-			hauteur de map prend 23
-			largeur de map prend 18
+	efface toile
+	projette map
+	pour 8 // On découpe les 8 sprites
+		dx de map prend 8
+		dy de map prend 10 + 32 * joker
+		hauteur de map prend 23
+		largeur de map prend 18
 			// On positionne le sprite aléatoirement sur la toile
-			y de map prend hasard(400) + 20
-			x de map prend hasard(400) + 20
-			ajoute clone(map) dans sprites // on le clone afin de l'ajouter à la liste des sprites.
+		y de map prend hasard(400) + 20
+		x de map prend hasard(400) + 20
+		ajoute clone(map) dans sprites // on le clone afin de l'ajouter à la liste des sprites.
+	ferme
+	tant que vrai // On boucle sur les 17 positions possibles :
+		pour position de 8 à 392 suivant position + 24
+			pour chaque sprites, dx de joker prend position
+			attends 200 millisecondes
 		ferme
-		tant que vrai // On boucle sur les 17 positions possibles :
-			pour position de 8 à 392 suivant position + 24
-				pour chaque sprites, dx de joker prend position
-				attends 200 millisecondes
-			ferme
-		ferme
+	ferme

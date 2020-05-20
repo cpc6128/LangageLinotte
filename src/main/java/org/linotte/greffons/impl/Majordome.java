@@ -1,3 +1,5 @@
+package org.linotte.greffons.impl;
+
 import org.linotte.greffons.externe.Greffon;
 
 /**

@@ -27,25 +27,25 @@ globale
 	pieces est un casier de pièce
 
 fixer de pièce :
-		efface ombre
-		copie_x de moi prend x de moi
-		copie_y de moi prend y de moi
+	efface ombre
+	copie_x de moi prend x de moi
+	copie_y de moi prend y de moi
 		// On supprime si une pièce est déjà présente la case :
-		pour chaque pieces
-			si joker != moi
-				si joker.collision(moi)
-					efface joker
-					ôte joker de pieces
-				ferme
+	pour chaque pieces
+		si joker != moi
+			si joker.collision(moi)
+				efface joker
+				ôte joker de pieces
 			ferme
 		ferme
-		retourne vrai
+	ferme
+	retourne vrai
 
 rétablir de pièce :
-		efface ombre
-		x de moi prend copie_x de moi
-		y de moi prend copie_y de moi
-		retourne vrai
+	efface ombre
+	x de moi prend copie_x de moi
+	y de moi prend copie_y de moi
+	retourne vrai
 
 affichage du support :
 	support est un rectangle,	largeur prend largeur_piece * 8, 
@@ -55,101 +55,99 @@ affichage du support :
 													position prend 0
 	image est une pièce, image prend "pieces.png", position prend 2
 	position est un nombre
-	début
-		projette support
+	projette support
 		// Quadrillage :
-		appelle quadrillage 
+	appelle quadrillage 
 		// Affichage des pièces, on clone et on découpe l'image pour récupérer le bon sprite :
-		pour chaque 8
+	pour chaque 8
 			// pièce blanche
-			ajoute clone(image) dans pieces
-			dx de pieces{position} prend {1, 2, 3, 4, 5, 3, 2, 1}{joker} * largeur_piece
-			dy de pieces{position} prend 1
-			hauteur de pieces{position} prend largeur_piece
-			largeur de pieces{position} prend largeur_piece
-			x de pieces{position} prend largeur_piece * joker
-			projette pieces{position}
+		ajoute clone(image) dans pieces
+		dx de pieces{position} prend {1, 2, 3, 4, 5, 3, 2, 1}{joker} * largeur_piece
+		dy de pieces{position} prend 1
+		hauteur de pieces{position} prend largeur_piece
+		largeur de pieces{position} prend largeur_piece
+		x de pieces{position} prend largeur_piece * joker
+		projette pieces{position}
 			// Soldat blanc
-			ajoute clone(pieces{position}) dans pieces
-			incrémente position
-			dx de pieces{position} prend 0
-			y de pieces{position} prend largeur_piece
-			projette pieces{position}
+		ajoute clone(pieces{position}) dans pieces
+		incrémente position
+		dx de pieces{position} prend 0
+		y de pieces{position} prend largeur_piece
+		projette pieces{position}
 			// pièce noir
-			ajoute clone(pieces{position-1}) dans pieces
-			incrémente position
-			équipe de pieces{position} prend faux
-			y de pieces{position} prend largeur_piece * 7
-			dy de pieces{position} prend largeur_piece
-			projette pieces{position}
+		ajoute clone(pieces{position-1}) dans pieces
+		incrémente position
+		équipe de pieces{position} prend faux
+		y de pieces{position} prend largeur_piece * 7
+		dy de pieces{position} prend largeur_piece
+		projette pieces{position}
 			// Soldat noir
-			ajoute clone(pieces{position}) dans pieces
-			incrémente position
-			dx de pieces{position} prend 0
-			y de pieces{position} prend largeur_piece * 6
-			équipe de pieces{position} prend faux
-			projette pieces{position}
-			incrémente position
-			attends 100 millisecondes
-		ferme
-		pour chaque pieces
-			fais réagir joker à "début glisser-déposer" pour activer ombre
-			fais réagir joker à "glisser-déposer" pour changement
-			joker.fixer()
-		ferme
-		tant que vrai attends 10 secondes // boucle infinie
+		ajoute clone(pieces{position}) dans pieces
+		incrémente position
+		dx de pieces{position} prend 0
+		y de pieces{position} prend largeur_piece * 6
+		équipe de pieces{position} prend faux
+		projette pieces{position}
+		incrémente position
+		//attends 100 millisecondes
+	ferme
+	pour chaque pieces
+		fais réagir joker à "début glisser-déposer" pour activer ombre
+		fais réagir joker à "glisser-déposer" pour changement
+		joker.fixer()
+	ferme
+	tant que vrai attends 10 secondes // boucle infinie
 
 quadrillage :
-		pour chaque 9
-			ligne & ligne_v est un ligne
-			couleur de ligne & couleur de ligne_v prend "mordoré"
-			x1 de ligne & y1 de ligne_v prend 0
-			x2 de ligne & y2 de ligne_v prend largeur_piece * 8
-			y1 de ligne & y2 de ligne  prend joker * largeur_piece
-			x1 de ligne_v & x2 de ligne_v  prend joker * largeur_piece
-			projette ligne & ligne_v
-			attends 100 millisecondes
-		ferme
+	pour chaque 9
+		ligne & ligne_v est un ligne
+		couleur de ligne & couleur de ligne_v prend "mordoré"
+		x1 de ligne & y1 de ligne_v prend 0
+		x2 de ligne & y2 de ligne_v prend largeur_piece * 8
+		y1 de ligne & y2 de ligne  prend joker * largeur_piece
+		x1 de ligne_v & x2 de ligne_v  prend joker * largeur_piece
+		projette ligne & ligne_v
+		//attends 100 millisecondes
+	ferme
 
 activer ombre : pièce
 	vérification valant faux
 	différent valant faux
-	début
-		projette ombre
-		tant que (visible de ombre) = "oui"
-			temporise
-			vide touches
-			vérification prend faux
-			différent prend faux
-			valide de ombre prend faux
-			x de ombre prend x de pièce + 15 - ((x de pièce + largeur_piece + 15 ) mod largeur_piece)
-			y de ombre prend y de pièce + 15 - ((y de pièce + largeur_piece + 15 ) mod largeur_piece)
-			si ((x de ombre) < (largeur_piece * 8)) et ((x de ombre) > -1)
-				si ((y de ombre) < (largeur_piece * 8)) et ((y de ombre) > -1)
-					vérification prend vrai
-					pour chaque pieces
-						si joker != pièce
-							si joker.collision(ombre)
-								vérification prend faux
-								si (équipe de joker) != (équipe de pièce)
-									différent prend vrai
-									vérification prend vrai
-								ferme
+	projette ombre
+	tant que (visible de ombre) = "oui"
+		temporise
+		vide touches
+		vérification prend faux
+		différent prend faux
+		valide de ombre prend faux
+		x de ombre prend x de pièce + 15 - ((x de pièce + largeur_piece + 15 ) mod largeur_piece)
+		y de ombre prend y de pièce + 15 - ((y de pièce + largeur_piece + 15 ) mod largeur_piece)
+		si ((x de ombre) < (largeur_piece * 8)) et ((x de ombre) > -1)
+			si ((y de ombre) < (largeur_piece * 8)) et ((y de ombre) > -1)
+				vérification prend vrai
+				pour chaque pieces
+					si joker != pièce
+						si joker.collision(ombre)
+							vérification prend faux
+							si (équipe de joker) != (équipe de pièce)
+								différent prend vrai
+								vérification prend vrai
 							ferme
 						ferme
 					ferme
 				ferme
 			ferme
-			couleur de ombre prend ter(différent, "vert", ter(vérification, "jaune", "rouge"))
-			valide de ombre prend vérification
 		ferme
-		reviens
+		couleur de ombre prend ter(différent, "vert", ter(vérification, "jaune", "rouge"))
+		valide de ombre prend vérification
+	ferme
+	reviens
 
 changement : pièce
-		si (valide de ombre)
-			x de pièce prend x de ombre
-			y de pièce prend y de ombre
-			pièce.fixer()
-		ferme
-		sinon pièce.rétablir()
-		reviens
+	si (valide de ombre)
+		x de pièce prend x de ombre
+		y de pièce prend y de ombre
+		pièce.fixer()
+	ferme
+	sinon pièce.rétablir()
+	reviens

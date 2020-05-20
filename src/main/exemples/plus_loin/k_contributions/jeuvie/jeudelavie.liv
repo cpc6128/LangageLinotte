@@ -13,7 +13,6 @@ globale
 	graffiti1 est un graffiti ,  x prend 50 , y prend 25 , taille prend 10 , couleur prend "blanc" , texte prend " "
 
 simulation :
-	début
 		Essaie
 			explore "ouvrir AIDE.TXT"
 		Ferme
@@ -127,7 +126,6 @@ simulation :
 
 analyse :
 	*position est un nombre
-	début
 		si position < 0, reviens
 		si position > 2499, reviens
 		si (couleur de ( casier { position } )) == "gris perle", ajoute 1 dans m

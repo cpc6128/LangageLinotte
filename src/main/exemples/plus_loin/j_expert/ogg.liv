@@ -1,3 +1,2 @@
 principale :
-	début
-		joue "http://radiotux.de/radiotuxathorads_17.01.08.ogg"
+	joue "http://radiotux.de/radiotuxathorads_17.01.08.ogg"

@@ -9,26 +9,25 @@ globale
 	// localisation est un texte valant "/tmp/linotte_conduit3.txt" // Sous Linux
 
 principale :
-		efface tableau
-		parcours écriture
-		parcours lecture
+	efface tableau
+	parcours écriture
+	parcours lecture
 
 écriture :
-		container.enregistrer(localisation)
-		container.écrire("100,2.2,3,5.5,4,56,32,4546,3223,2")
-		container.fermer()
-		reviens
+	container.enregistrer(localisation)
+	container.écrire("100,2.2,3,5.5,4,56,32,4546,3223,2")
+	container.fermer()
+	reviens
 
 lecture :
 	éléments est un casier de nombres
-	début
-		container.ouvrir(localisation)
-		tant que container.nonvide()
-			tampon est un nombre // Acteur utilisé pour convertir un texte en nombre
-			convertis container.clire(",") en tampon // clire (",") va lire toutes les lettres dans le fichier jusqu'à 
+	container.ouvrir(localisation)
+	tant que container.nonvide()
+		tampon est un nombre // Acteur utilisé pour convertir un texte en nombre
+		convertis container.clire(",") en tampon // clire (",") va lire toutes les lettres dans le fichier jusqu'à 
 			// la première chaine de caractère ","
-			ajoute tampon dans éléments
-		ferme
-		container.fermer()
-		affiche éléments
-		reviens
+		ajoute tampon dans éléments
+	ferme
+	container.fermer()
+	affiche éléments
+	reviens

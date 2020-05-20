@@ -24,102 +24,95 @@ globale
 principale :
 	k & i est un nombre
 	tmp est un texte
-	début
-		efface toile
-		pour k de 0 à 10
-			pour i de 0 à 24
-				si (i  + k*25) <= 255
+	efface toile
+	pour k de 0 à 10
+		pour i de 0 à 24
+			si (i  + k*25) <= 255
 				g est un graffiti
 				r est un box
-					fais réagir r à "souris entrante" pour afficher ascii
-					fais réagir r à "souris sortante" pour assombrir
-					fais réagir r à "clic souris" pour copier la lettre
-					fais réagir r à "clic droit souris" pour copier ascii
-					y@g prend 20 + (k * 30)
-					x@g prend 25 + (i * 22)
-					taille@g prend 12
-					texte@g prend chr (i  + k*25)
-					position@g prend 2
-					couleur@g prend "argile"
-					ajoute g dans lettres
-					y@r prend 5 + k * 30
-					x@r prend  25 + i * 22
-					hauteur@r prend 21
-					largeur@r prend 21
-					couleur@r prend couleur off
-					plein@r prend "oui"
-					position@r prend 1
-					lettre@r prend chr (i  + k*25)
-					projette r & g
-				ferme
+				fais réagir r à "souris entrante" pour afficher ascii
+				fais réagir r à "souris sortante" pour assombrir
+				fais réagir r à "clic souris" pour copier la lettre
+				fais réagir r à "clic droit souris" pour copier ascii
+				y@g prend 20 + (k * 30)
+				x@g prend 25 + (i * 22)
+				taille@g prend 12
+				texte@g prend chr (i  + k*25)
+				position@g prend 2
+				couleur@g prend "argile"
+				ajoute g dans lettres
+				y@r prend 5 + k * 30
+				x@r prend  25 + i * 22
+				hauteur@r prend 21
+				largeur@r prend 21
+				couleur@r prend couleur off
+				plein@r prend "oui"
+				position@r prend 1
+				lettre@r prend chr (i  + k*25)
+				projette r & g
 			ferme
 		ferme
-		projette info & infoc & aide & toile
-		ajoute s1& l1 dans form
-		fais réagir s1 à "clic souris" pour changer la police
-		fais réagir form à "clic souris" pour fermer la fenêtre
-		couleur@toile prend "noir"
+	ferme
+	projette info & infoc & aide & toile
+	ajoute s1& l1 dans form
+	fais réagir s1 à "clic souris" pour changer la police
+	fais réagir form à "clic souris" pour fermer la fenêtre
+	couleur@toile prend "noir"
 		/*Construction de la liste des polices :*/
-		pour chaque polices
-			tmp prend tmp + joker + "|"
-		ferme
-		valeurs@s1 prend tmp
+	pour chaque polices
+		tmp prend tmp + joker + "|"
+	ferme
+	valeurs@s1 prend tmp
 		/*Boucle infinie*/
-		tant que vrai
-			temporise
-			vide touches
-		ferme
+	tant que vrai
+		temporise
+		vide touches
+	ferme
 
 afficher ascii :
 	* b est un box
-	début
-		texte@info prend lettre@b + ", valeur ascii : " + ascii (lettre@b)
-		couleur@b prend couleur on
-		transparence@b prend 100
-		reviens
+	texte@info prend lettre@b + ", valeur ascii : " + ascii (lettre@b)
+	couleur@b prend couleur on
+	transparence@b prend 100
+	reviens
 
 assombrir :
 	* b est un box
-	début
-		attends .2 seconde
-		de 100 à 0
-			transparence@b prend joker
-			attends 10 millisecondes
-		ferme
-		reviens
+	attends .2 seconde
+	de 100 à 0
+		transparence@b prend joker
+		attends 10 millisecondes
+	ferme
+	reviens
 
 changer la police :
 	*s est un sélecteur
-	début
-		police prend valeur@s
-		pour chaque lettres
-			police@joker prend police
-		ferme
-		Reviens
+	police prend valeur@s
+	pour chaque lettres
+		police@joker prend police
+	ferme
+	Reviens
 
 fermer la fenêtre :
 	*f est un formulaire
-	début
-		Termine
+	Termine
 
 copier la lettre :
 	*f est un box
 	texte est un texte
-	début
-		presse.copierhtml("<font face='" + police + "'>" + lettre@f + "</font>")
-		texte prend "Le caractère '" + lettre@f + "' est copié dans le presse-papier !"
-		texte@infoc prend texte
-		attends 5 secondes
-		si (texte@infoc) == texte, vide texte@infoc
-		reviens
+	presse.copierhtml("<font face='" + police + "'>" + lettre@f + "</font>")
+	texte prend "Le caractère '" + lettre@f + "' est copié dans le presse-papier !"
+	texte@infoc prend texte
+	attends 5 secondes
+	si (texte@infoc) == texte, vide texte@infoc
+	reviens
 
 copier ascii :
 	*f est un box
 	texte est un texte
-	début
-		presse.copier(ascii(lettre@f))
-		texte prend "Le numéro ASCII '" + ascii(lettre@f) + "' est copié dans le presse-papier !"
-		texte@infoc prend texte
-		attends 5 secondes
-		si (texte@infoc) == texte, vide texte@infoc
-		reviens
+	presse.copier(ascii(lettre@f))
+	texte prend "Le numéro ASCII '" + ascii(lettre@f) + "' est copié dans le presse-papier !"
+	texte@infoc prend texte
+	attends 5 secondes
+	si (texte@infoc) == texte, vide texte@infoc
+	reviens

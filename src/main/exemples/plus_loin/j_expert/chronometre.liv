@@ -2,21 +2,18 @@ globale
 	_seconde & _minute & _heure est un nombre
 
 principale :
-	début
-		affiche "Ne pas exécuter directement ce livre !"
+	affiche "Ne pas exécuter directement ce livre !"
 
 start :
-	début
-		_seconde prend seconde
-		_minute prend minute
-		_heure prend heure
-		reviens
+	_seconde prend seconde
+	_minute prend minute
+	_heure prend heure
+	reviens
 
 stop :
 	*temps est un texte
 	tmp_seconde est un nombre valant seconde
 	tmp_minute est un nombre valant minute
 	tmp_heure est un nombre valant heure
-	début
-		temps prend tmp_heure * 3600 + tmp_minute * 60 + tmp_seconde - (_heure * 3600 + _minute * 60 + _seconde)
-		reviens
+	temps prend tmp_heure * 3600 + tmp_minute * 60 + tmp_seconde - (_heure * 3600 + _minute * 60 + _seconde)
+	reviens

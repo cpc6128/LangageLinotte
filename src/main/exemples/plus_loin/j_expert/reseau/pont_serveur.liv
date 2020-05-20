@@ -1,13 +1,12 @@
 connexion :
 	connexion est un pont
 	réponse est un texte
-	début
-		Affiche "Lancement du serveur, on va attendre une connexion"
-		ouvre connexion avec "" depuis ""
-		Affiche "Connexion ok avec un client"
-		Décharge réponse depuis connexion
-		Affiche "Voici le message du client :"
-		Affiche réponse
-		état de connexion !
-		Charge "ça marche !" dans connexion
-		Ferme connexion
+	Affiche "Lancement du serveur, on va attendre une connexion"
+	ouvre connexion avec "" depuis ""
+	Affiche "Connexion ok avec un client"
+	Décharge réponse depuis connexion
+	Affiche "Voici le message du client :"
+	Affiche réponse
+	état de connexion !
+	Charge "ça marche !" dans connexion
+	Ferme connexion

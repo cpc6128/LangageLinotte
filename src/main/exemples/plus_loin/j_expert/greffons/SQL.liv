@@ -15,14 +15,14 @@ globale
 principale :
 	connecteur est un sql
 	nom & prénom est un texte
-	début
-		efface tableau
-		essaie
+	efface tableau
+	essaie
 			// Connexion à la base de données :
-			connecteur.open(pilote,url,utilisateur,motdepasse)
+		connecteur.open(pilote,url,utilisateur,motdepasse)
 			// *****************************
 			
 			// Création de la table FAMILLE :
+		essaie
 			essaie connecteur.execute(sql_create,{})
 			sinon affiche "La table 'FAMILLE' existe déjà."
 			// *****************************
