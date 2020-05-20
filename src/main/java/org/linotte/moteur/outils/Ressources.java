@@ -191,6 +191,9 @@ public class Ressources implements RessourceManager {
             case "GO":
                 nom = "TERMINAL";
                 break;
+            case "NEXT":
+                nom = "FAST_FORWARD";
+                break;
             case "CODE":
                 nom = "SELECT";
                 break;

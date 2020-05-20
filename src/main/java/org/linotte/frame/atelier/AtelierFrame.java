@@ -427,9 +427,8 @@ public class AtelierFrame extends JFrame {
             jButtonContinuer.setToolTipText("Continuer (Alt+C)");
             jButtonContinuer.setFocusable(false);
             jButtonContinuer.setVisible(false);
-            jButtonContinuer.setIcon(Ressources.getScaledImage(Ressources.getImageIcon("go-jump.png"), 32, 32));
-            jButtonContinuer.setPressedIcon(Ressources.getScaledImage(Ressources.getImageIconePlusClaire("go-jump.png"), 32, 32));
-            jButtonContinuer.setRolloverIcon(Ressources.getScaledImage(Ressources.getImageIconePlusClaire("go-jump.png"), 32, 32));
+            jButtonContinuer.setIcon(Ressources.getImageTheme("NEXT", 32));
+            jButtonContinuer.setDisabledIcon(Ressources.getImageTheme("NEXT", 32, Color.lightGray));
             jButtonContinuer.setName("boutonPause");
             jButtonContinuer.setMnemonic(KeyEvent.VK_C);
             jButtonContinuer.addActionListener(new java.awt.event.ActionListener() {
