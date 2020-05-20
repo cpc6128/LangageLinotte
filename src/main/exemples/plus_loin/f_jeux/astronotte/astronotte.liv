@@ -59,8 +59,7 @@ principale :
 	curseur est un graphique, image prend chemin + "etoile.gif", position prend 4
 	screen est une toile, largeur prend taille_h, hauteur prend taille_v, pointeur prend "sans"
 	t est un texte
-	début
-		efface toile
+	efface toile
 		projette screen & vaisseau & curseur & énergie & scoreg & raquette & palet & raquette2 & feu & titre & titrepower
 		attache init à moteur
 		attache start à moteur
@@ -87,8 +86,7 @@ principale :
 		ferme
 
 animation vaisseau :
-	début
-		Tant que vrai
+	Tant que vrai
 			Pour chaque 3
 				Attends 500 millisecondes
 				trame@vaisseau = joker
@@ -96,8 +94,7 @@ animation vaisseau :
 		Ferme
 
 mouvement :
-	début
-		tant que vrai
+	tant que vrai
 			attends 5 millisecondes
 			si ((x@vaisseau) + 4) < sourisx
 				si (x@vaisseau) < (taille_h -100), déplace vaisseau vers la droite de 4 + ((sourisx  - (x@vaisseau))  / 50)
@@ -109,8 +106,7 @@ init :
 	*moi est un arcade
 	*pattern est un graphique
 	a & b & position est un nombre valant 0
-	début
-		tant que a < (taille_v)
+	tant que a < (taille_v)
 			ajoute #pattern dans cache
 			y@(cache{position}) prend a
 			projette cache{position}
@@ -124,14 +120,12 @@ init :
 
 start :
 	*moi est un arcade
-	début
-		appelle défilement
+	appelle défilement
 		retourne vrai
 
 défilement :
 	t est un nombre
-	début
-		mesure cache dans t
+	mesure cache dans t
 		tant que vrai 
 			pour chaque cache
 				tant que (y@joker) > taille_v
@@ -146,8 +140,7 @@ défilement :
 décaler :
 	*boucle est un nombre
 	*g est un graphique
-	début
-		pour chaque boucle
+	pour chaque boucle
 			y@g prend y@g - pattern_v
 		ferme
 		reviens
@@ -159,8 +152,7 @@ tirer :
 	t est un nombre
 	bullet est un graphique, image prend chemin + "bullet.gif", position prend 2,  x prend d+ x, y prend y, transparence prend 0
 	bullet2 est un graphique, image prend chemin + "bullet.gif", position prend 2,  x prend d + x + 20, y prend y, transparence prend 0
-	début
-		mesure missiles dans t
+	mesure missiles dans t
 		si t < (max missibles*2)
 			ajoute bullet dans missiles
 			ajoute bullet2 dans missiles
@@ -192,8 +184,7 @@ asteroid :
 	asteroid est un graphique, image prend chemin + "asteroid.gif", position prend 2,  x prend hasard(taille_h), y prend -50
 	pas est un nombre valant hasard (10) - 5
 	vitesse est un nombre valant hasard (10)
-	début
-		projette asteroid
+	projette asteroid
 		tant que (y@asteroid) < (taille_v + 30)
 			y@asteroid prend y@asteroid + 5 + vitesse
 			tourne à droite asteroid de pas
@@ -216,8 +207,7 @@ asteroid :
 barrage :
 	*p est un nombre
 	barrage est un graphique, image prend chemin + "ligne.gif", position prend 2,  x prend p, y prend -20
-	début
-		projette barrage
+	projette barrage
 		tant que (y@barrage) < (taille_v + 30)
 			y@barrage prend y@barrage + 2.5
 			si barrage.collision(vaisseau), parcours perdu avec 30
@@ -232,8 +222,7 @@ créer canal :
 	*largeur est un nombre
 	*aléatoire est un nombre
 	sens est un nombre valant hasard (2)
-	début
-		pour chaque 20
+	pour chaque 20
 			appelle canal avec largeur , aléatoire
 			attends délai * 5 milliseconde
 			si aléatoire
@@ -254,8 +243,7 @@ canal :
 	*aléatoire est un drapeau
 	canal est un rectangle,  x prend 0, y prend -50, largeur prend largeur + pos_canal, hauteur prend 10, couleur prend "sable", plein prend "oui", transparence prend 80, position prend 3
 	canal2 est un rectangle,  x prend taille_h - largeur + pos_canal, y prend -50, largeur prend largeur - pos_canal, hauteur prend 10, couleur prend "sable", plein prend "oui", transparence prend 80, position prend 3
-	début
-		projette canal & canal2
+	projette canal & canal2
 		tant que (y@canal) < (taille_v + 30) 
 			y@canal prend y@canal + vitesse_canal
 			y@canal2 prend y@canal2 + vitesse_canal
@@ -272,8 +260,7 @@ canal :
 
 power :
 	power est un graphique, image prend chemin + "power.png", position prend 2,  x prend hasard(taille_h - 100) + 50, y prend -50
-	début
-		projette power
+	projette power
 		tant que (y@power) < (taille_v + 30)
 			y@power prend y@power + 2
 			si power.collision(vaisseau)
@@ -288,8 +275,7 @@ power :
 
 planet :
 	planet est un graphique, image prend chemin + "planet.gif", position prend 2,  x prend 500, y prend -600, transparence prend 80
-	début
-		projette planet
+	projette planet
 		tant que (y@planet) < (taille_v + 600)
 			y@planet prend y@planet + 1
 			attends délai * 2 milliseconde
@@ -299,8 +285,7 @@ planet :
 mur :
 	mur est un graphique, image prend chemin + "brick.gif", position prend 5,  transparence prend 0
 	i & j & p est un nombre valant 0
-	début
-		vide bricks
+	vide bricks
 		pour i de 0 à 17
 			pour j de 0 à 5 
 				ajoute #mur dans bricks
@@ -319,8 +304,7 @@ monstre 1 :
 	monstre est un graphique, image prend chemin + "monstre.png", position prend 2,  x prend hasard(taille_h), y prend -50
 	vitesse est un nombre valant hasard (3)
 	delta est un nombre valant hasard (100)
-	début
-		projette monstre
+	projette monstre
 		tant que (y@monstre) < (taille_v + 30)
 			y@monstre prend y@monstre + 8 + vitesse
 			x@monstre prend x@monstre + ( cos ((y@monstre) + delta) * 10)
@@ -346,8 +330,7 @@ monstre 1 :
 
 vérifier bricks :
 	*m est un graphique
-	début
-		pour chaque bricks
+	pour chaque bricks
 			si (visible@m) == "oui"
 				si (visible@joker) == "oui"
 					si m.collision(joker)
@@ -372,8 +355,7 @@ vérifier bricks :
 bomberman :
 	bomberman est un graphique, image prend chemin + "bomberman.gif", position prend 2,  x prend hasard(taille_h), y prend -50
 	vitesse est un nombre valant hasard (3)
-	début
-		projette bomberman
+	projette bomberman
 		tant que (y@bomberman) < (taille_v + 30) 
 			y@bomberman prend y@bomberman + 8 + vitesse
 			si (x@vaisseau + 15) < (x@bomberman), x@bomberman prend x@bomberman - 6
@@ -403,8 +385,7 @@ chasseur :
 	*flag est un drapeau
 	chasseur est un graphique, image prend chemin + "chasseur.png", position prend 5,  x prend -100, y prend 577
 	tmp est un nombre valant 1
-	début
-		projette chasseur
+	projette chasseur
 		tant que flag
 			si (x@vaisseau + 15) < (x@chasseur), x@chasseur prend x@chasseur - 10
 			si (x@vaisseau + 15) > (x@chasseur), x@chasseur prend x@chasseur + 10
@@ -422,8 +403,7 @@ tirer obut :
 	d est un nombre valant 10
 	t est un nombre
 	bullet est un graphique, image prend chemin + "obut.png", position prend 2,  x prend d+ x, y prend y, transparence prend 100
-	début
-		projette bullet
+	projette bullet
 		tant que (y@bullet) > -20 
 			y@bullet prend y@bullet - 5
 			attends délai / 4 milliseconde
@@ -443,8 +423,7 @@ clignotement :
 	*message est un texte
 	boucle est un nombre valant 0
 	info est un graffiti, couleur prend "nacarat",  x prend 100 , y prend 110 , texte prend message, taille prend 10, position prend 2
-	début
-		projette info
+	projette info
 		tant que boucle < 700
 			boucle prend boucle + 10
 			transparence de info prend abs (cos boucle)  * 100
@@ -458,8 +437,7 @@ boom :
 	*x est un nombre
 	*y est un nombre
 	explosion est un graphique, image prend chemin + "explosion.gif", position prend 2,  x prend x, y prend y
-	début
-		projette explosion
+	projette explosion
 		de 100 à 0
 			transparence@explosion prend joker
 			angle@explosion prend angle@explosion + 1
@@ -471,8 +449,7 @@ boom :
 
 perdu :
 	*point est un nombre
-	début
-		largeur@énergie prend largeur@énergie - point
+	largeur@énergie prend largeur@énergie - point
 		délai feu prend 100
 		si (largeur@énergie) < 0
 			parcours fin
@@ -480,29 +457,25 @@ perdu :
 		reviens
 
 énergie :
-	début
-		largeur@énergie prend max énergie
+	largeur@énergie prend max énergie
 		reviens
 
 fin :
 	info est un graffiti, couleur prend "nacarat",  x prend 350 , y prend 350 , texte prend "Game Over", taille prend 10, position prend 2
-	début
-		efface vaisseau
+	efface vaisseau
 		projette info
 		attends 5 secondes
 		termine
 
 score :
 	*s est un nombre
-	début
-		score prend score + s
+	score prend score + s
 		texte@scoreg prend score
 		reviens
 
 moteur palet :
 	/*Moteur du jeu crasy_pong.liv, le retour !*/
-	début
-		tant que action_raquette
+	tant que action_raquette
 			y@raquette2 prend y@palet - 20
 			attends 5 millisecondes
 			/*Gestion du palet*/
@@ -525,8 +498,7 @@ moteur palet :
 		ferme
 
 affichage dégât :
-	début
-		tant que vrai
+	tant que vrai
 			attends 10 millisecondes
 			si délai feu > 0
 				visible@feu prend "oui"
@@ -542,8 +514,7 @@ affichage dégât :
 		Reviens
 
 initialisation niveau :
-	début
-		visible@raquette prend "non"
+	visible@raquette prend "non"
 		visible@raquette2 prend "non"
 		visible@palet prend "non"
 		parcours niveau 1
@@ -560,8 +531,7 @@ initialisation niveau :
 		reviens
 
 niveau 1 :
-	début
-		appelle clignotement avec "Niveau 1 : la ceinture d'astéroïdes"
+	appelle clignotement avec "Niveau 1 : la ceinture d'astéroïdes"
 		attends 3 seconde
 		pour chaque 10
 			attends 2 secondes
@@ -602,8 +572,7 @@ niveau 1 :
 		reviens
 
 niveau 2 :
-	début
-		appelle clignotement avec "Niveau 2 : la défense s'organise"
+	appelle clignotement avec "Niveau 2 : la défense s'organise"
 		attends 3 seconde
 		appelle monstre 1
 		attends 2 secondes
@@ -646,8 +615,7 @@ niveau 2 :
 		reviens
 
 niveau 3 :
-	début
-		appelle clignotement avec "Niveau 3 : les kamikazes"
+	appelle clignotement avec "Niveau 3 : les kamikazes"
 		attends 5 secondes
 		pour chaque 30
 			attends .5 secondes
@@ -699,8 +667,7 @@ niveau 3 :
 		reviens
 
 niveau 4 :
-	début
-		appelle clignotement avec "Niveau 4 : Le défis !"
+	appelle clignotement avec "Niveau 4 : Le défis !"
 		attends 5 secondes
 		visible@raquette prend "oui"
 		visible@raquette2 prend "oui"
@@ -749,8 +716,7 @@ niveau 4 :
 		reviens
 
 niveau 5 :
-	début
-		appelle clignotement avec "Niveau 5 : Le barrage"
+	appelle clignotement avec "Niveau 5 : Le barrage"
 		appelle power
 		pour chaque 2
 			appelle asteroid
@@ -870,8 +836,7 @@ niveau 5 :
 		reviens
 
 niveau 6 :
-	début
-		appelle clignotement avec "Niveau 6 : Le mur d'or"
+	appelle clignotement avec "Niveau 6 : Le mur d'or"
 		appelle power
 		attends 8 secondes
 		appelle planet
@@ -890,8 +855,7 @@ niveau 6 :
 
 niveau 7 :
 	espace est un nombre valant 10
-	début
-		appelle clignotement avec "Niveau 7 : L'hyper-canal"
+	appelle clignotement avec "Niveau 7 : L'hyper-canal"
 		appelle power
 		attends 5 secondes
 		parcours créer canal avec espace, faux
@@ -921,8 +885,7 @@ niveau 7 :
 niveau 8 :
 	delta est un nombre valant 300
 	flag est un drapeau valant vrai
-	début
-		appelle clignotement avec "Niveau 8 : Le chasseur de prime"
+	appelle clignotement avec "Niveau 8 : Le chasseur de prime"
 		appelle power
 		/*On monte le vaiseau :*/
 		pour chaque delta
@@ -963,8 +926,7 @@ niveau 8 :
 		Reviens
 
 niveau 9 :
-	début
-		appelle clignotement avec "Niveau 9 : La détermination"
+	appelle clignotement avec "Niveau 9 : La détermination"
 		appelle power
 		attends 3 seconde
 		pour chaque 10
@@ -999,8 +961,7 @@ niveau 9 :
 		Reviens
 
 niveau 10 :
-	début
-		appelle clignotement avec "Niveau 10 : l'apocalypse finale"
+	appelle clignotement avec "Niveau 10 : l'apocalypse finale"
 		appelle power
 		attends 5 secondes
 		visible@raquette prend "oui"
@@ -1035,8 +996,7 @@ niveau 10 :
 		reviens
 
 niveau THE END :
-	début
-		appelle clignotement avec "Bravo, vous avez réussi à passer la barrière ! "
+	appelle clignotement avec "Bravo, vous avez réussi à passer la barrière ! "
 		pour chaque taille_v
 			déplace vaisseau vers le haut de 1
 			attends 10 milliseconde

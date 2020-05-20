@@ -139,7 +139,7 @@ moteur palet :
 			Ferme
 		Ferme
 		texte de gscore prend score
-		Si briques.taille = 0
+		Si briques.taille() = 0
 			gameover prend 2
 			Reviens
 		Ferme
