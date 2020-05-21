@@ -14,4 +14,15 @@ La page officielle du site est http://langagelinotte.free.fr
 
 - 3.0 bêta : https://bitbucket.org/metalm/langagelinotte/downloads/Linotte_3.0-NON-STABLE-2020-05-20-15-05.zip
 
+#### Produire le livrable :
+
+mvn clean package
+
+#### Projet documentation en ligne :
+
+- documentation en ligne à produire : https://cpc6128.frama.io/linotte3/fr/
+
+- code source de la documentation : https://framagit.org/cpc6128/linotte3
+
+
 ![Atelier 3.0](http://langagelinotte.free.fr/github/atelier2.png)
