@@ -1,4 +1,6 @@
-![Linotter 3.0](http://langagelinotte.free.fr/github/entete2.png)
+<p align="center">
+  <img src="http://langagelinotte.free.fr/github/entete2.png">
+</p>
 
 # Atelier de programmation pour le Langage Linotte
 
