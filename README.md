@@ -2,6 +2,8 @@
   <img src="http://langagelinotte.free.fr/github/entete2.png">
 </p>
 
+![Java CI with Maven](https://github.com/cpc6128/LangageLinotte/workflows/Java%20CI%20with%20Maven/badge.svg)
+
 # Atelier de programmation pour le Langage Linotte
 
 Code source officiel du langage Linotte 3.X
