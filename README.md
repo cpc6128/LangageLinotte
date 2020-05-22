@@ -15,11 +15,11 @@ La page officielle du site est http://langagelinotte.free.fr
 - 3.0 bêta : https://bitbucket.org/metalm/langagelinotte/downloads/Linotte_3.0-NON-STABLE-2020-05-20-15-05.zip
 
 #### Pour contribuer à faire évoluer Linotte :
-`
-git clone https://github.com/cpc6128/LangageLinotte.git
-cd LangageLinotte
-mvn compile -P Run
-`
+ `git clone https://github.com/cpc6128/LangageLinotte.git`
+ 
+ `cd LangageLinotte`
+ 
+ `mvn compile -P Run`
 
 #### Projet documentation en ligne :
 
