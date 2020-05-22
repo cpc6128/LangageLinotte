@@ -10,13 +10,16 @@ Vous voulez contribuer au projet ? N'hésitez pas à venir me rejoindre sur ce d
 
 La page officielle du site est http://langagelinotte.free.fr
 
-#### Télécharger une version de travail (version non finalisée):
+#### Pour les utilisateurs, télécharger une version de travail (version non finalisée):
 
 - 3.0 bêta : https://bitbucket.org/metalm/langagelinotte/downloads/Linotte_3.0-NON-STABLE-2020-05-20-15-05.zip
 
-#### Produire le livrable :
-
-mvn clean package
+#### Pour contribuer à faire évoluer Linotte :
+`
+git clone https://github.com/cpc6128/LangageLinotte.git
+cd LangageLinotte
+mvn compile -P Run
+`
 
 #### Projet documentation en ligne :
 
