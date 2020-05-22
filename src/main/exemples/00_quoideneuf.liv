@@ -22,7 +22,8 @@ Historique des versions :
 
 *01/07/20 - Linotte 3.0
  -Evolution : Possiblité de ne plus utiliser le verbe Lire
- -Evolution : Casier, ajout fonctions anonymes ( ex : moncasier.taille() )
+ -Evolution : On ne doit plus utiliser le mot clé "début"
+ -Evolution : Casier, ajout de fonctions anonymes ( ex : moncasier.taille() )
  -Evolution  : Ajout de l'exemple TapTempo.liv
  -Correction : Améliorations anomalies syntaxiques ("x de (liste{1})" devient "x de liste{1}" et aussi "affiche (liste.taille()) > 2" devient "affiche liste.taille() > 2")
  
