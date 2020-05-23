@@ -9,7 +9,7 @@ on:
   pull_request:
     branches: [ master ]
 env:
-  LANG: "pt_BR.UTF-8"
+  LANG: "fr_FR.UTF-8"
 
 jobs:
   build:
