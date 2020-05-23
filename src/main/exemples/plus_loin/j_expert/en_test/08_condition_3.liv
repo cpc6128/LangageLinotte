@@ -1,0 +1,22 @@
+code :
+	// Forme avec un bloc
+	si (1 * 1) < (1 + 1)
+		affiche "j'ai dit :"
+		attends 1000 millisecondes
+		affiche "j'ai toujours raison !"
+	ferme
+
+	// On peut également utiliser "sinon" avec un bloc
+	
+	si (1 * 1) != (1 * 1)
+		affiche "j'ai dit :"
+		attends 500 millisecondes
+		affiche "tu as tort !"
+	sinon
+	    si 1==1 affiche "j'ai toujours raison !"
+	ferme
+	
+
+/*
+Cliquez sur le bouton LIRE pour exécuter ce programme
+*/
