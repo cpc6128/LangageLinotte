@@ -39,7 +39,6 @@ public class JtextAreaCompletion extends JTextPaneText {
 		super(doc, highlighter);
 		atelierDocument = doc;
 		this.cahier = cahier;
-		setEditorKit(new ShowParEditorKit());
 		setStyledDocument(doc);
 		this.words = words;
 		InputMap im = getInputMap();

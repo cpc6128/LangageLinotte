@@ -125,10 +125,32 @@ public class Ressources implements RessourceManager {
     }
 
     public static FontIcon getImageTheme(String pnom, int taille) {
-        return getImageTheme(pnom, taille, Color.GRAY.darker());
+        return getImageTheme(pnom, taille, CouleurImage.NORMAL);
     }
 
-    public static FontIcon getImageTheme(String pnom, int taille, Color couleur) {
+    private static Color transformeCouleur(CouleurImage couleurImage) {
+        switch (couleurImage) {
+            case DISABLED:
+                if (Preference.getIntance().themeNoir())
+                    return Color.GRAY.darker();
+                else
+                    return Color.lightGray;
+            case PRESSED:
+                return Color.darkGray;
+            case ACTIF:
+                return Color.RED;
+            case LIRE:
+                return new Color(63, 72, 204);
+            default:
+                if (Preference.getIntance().themeNoir())
+                    return Color.lightGray;
+                else
+                    return Color.GRAY.darker();
+        }
+    }
+
+    public static FontIcon getImageTheme(String pnom, int taille, CouleurImage couleurImage) {
+        Color couleur = transformeCouleur(couleurImage);
         String nom = "AFTER_EFFECTS";
         switch (pnom) {
             case "PLAY":

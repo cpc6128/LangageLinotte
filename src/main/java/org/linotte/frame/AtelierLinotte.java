@@ -1,5 +1,6 @@
 package org.linotte.frame;
 
+import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import console.Jinotte;
 import org.linotte.frame.atelier.Atelier;
@@ -23,7 +24,10 @@ public class AtelierLinotte {
             try {
                 // Mode graphique
                 AtomicReference<SplashWindow> splashWindow1 = new AtomicReference<>();
-                FlatIntelliJLaf.install();
+                if (Preference.getIntance().themeNoir())
+                    FlatDarculaLaf.install();
+                else
+                    FlatIntelliJLaf.install();
                 SwingUtilities.invokeAndWait(() -> {
                     splashWindow1.set(new SplashWindow(new Frame()));
                 });

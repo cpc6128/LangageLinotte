@@ -44,7 +44,7 @@ public class CurrentLineHighlighter implements Highlighter.HighlightPainter, Car
 	private JTextComponent component;
 
 	private Color color;
-	private static final Color couleurSousParagraphe = new Color(206, 204, 247);
+	private static final Color couleurSousParagraphe = Color.darkGray;
 
 	private Rectangle lastView;
 

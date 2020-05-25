@@ -41,7 +41,6 @@ public class Formater {
 		try {
 			Parseur moteur = new Parseur();
 			moteur.parseLivre(sb, atelierOutils);
-			cahier.setGestionFavoris(false);
 			cahier.effacerCahier();
 			cahier.ecrireInsertCachier(atelierOutils.bufferFormatage.toString());
 			cahier.setPositionCahier(0);
@@ -54,7 +53,6 @@ public class Formater {
 			//e.printStackTrace();
 		} finally {
 			cahier.setEditeurUpdate(true);
-			cahier.setGestionFavoris(true);
 		}
 	}
 

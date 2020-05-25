@@ -28,6 +28,7 @@ import org.linotte.frame.coloration.StyleBuilder.STYLE;
 import org.linotte.frame.gui.JTextPaneText;
 import org.linotte.frame.gui.PopupListener;
 import org.linotte.frame.moteur.Formater;
+import org.linotte.moteur.outils.CouleurImage;
 import org.linotte.moteur.outils.FichierOutils;
 import org.linotte.moteur.outils.Preference;
 import org.linotte.moteur.outils.Ressources;
@@ -88,7 +89,6 @@ public class Cahier extends JPanel implements KeyListener, MouseListener {
     private StyleBuffer styleBuffer = null;
     private Onglet onglet;
     private EtatCachier etatCahier = EtatCachier.MODIFIE;
-    private boolean gestionFavoris = true;
     private Stack<Integer> pileHistorique = new Stack<Integer>();
 
     // Historique de navigation dans le fichier
@@ -108,7 +108,10 @@ public class Cahier extends JPanel implements KeyListener, MouseListener {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
         panel.add(getJEditorPaneCahier(), BorderLayout.CENTER);
-        panel.setBackground(new Color(242, 243, 244));
+        if (Preference.getIntance().themeNoir())
+            panel.setBackground(Color.lightGray);
+        else
+            panel.setBackground(new Color(242, 243, 244));
 
         scrollPan = new JScrollPane();
         scrollPan.getVerticalScrollBar().setUnitIncrement(10);
@@ -436,7 +439,6 @@ public class Cahier extends JPanel implements KeyListener, MouseListener {
         FontMetrics fm = textPane.getFontMetrics(textPane.getFont());
         int charWidth = fm.charWidth('w');
         int tabWidth = charWidth * charactersPerTab;
-        ShowParLabelView.decallage = tabWidth;
 
         TabStop[] tabs = new TabStop[20];
 
@@ -508,7 +510,7 @@ public class Cahier extends JPanel implements KeyListener, MouseListener {
             }
             atelier.jButtonRanger.setEnabled(modifie);
             if (modifie) {
-                atelier.jButtonRanger.setIcon(Ressources.getImageTheme("SAVE", 32, Color.RED));
+                atelier.jButtonRanger.setIcon(Ressources.getImageTheme("SAVE", 32, CouleurImage.ACTIF));
             } else {
                 atelier.jButtonRanger.setIcon(Ressources.getImageTheme("SAVE", 32));
             }
@@ -558,7 +560,7 @@ public class Cahier extends JPanel implements KeyListener, MouseListener {
     public void setEtatCahier(EtatCachier etat) {
         atelier.jButtonRanger.setEnabled(etat == EtatCachier.MODIFIE);
         if (etat == EtatCachier.MODIFIE) {
-            atelier.jButtonRanger.setIcon(Ressources.getImageTheme("SAVE", 32, Color.RED));
+            atelier.jButtonRanger.setIcon(Ressources.getImageTheme("SAVE", 32, CouleurImage.ACTIF));
         } else {
             atelier.jButtonRanger.setIcon(Ressources.getImageTheme("SAVE", 32));
         }
@@ -578,10 +580,6 @@ public class Cahier extends JPanel implements KeyListener, MouseListener {
     public void setCouleur(Color couleur, boolean force) {
         if (onglet != null)
             onglet.setCouleur(couleur, force);
-    }
-
-    public void setGestionFavoris(boolean gestionFavoris) {
-        this.gestionFavoris = gestionFavoris;
     }
 
     @Override
@@ -650,14 +648,12 @@ public class Cahier extends JPanel implements KeyListener, MouseListener {
     public void setVisualiserTimbre(boolean visualiserTimbre) {
         this.visualiserTimbre = visualiserTimbre;
         if (visualiserTimbre && !visualiserTimbreVoirCode) {
-            lineRenderer.setDraw(false);
             lineRenderer.setVisible(false);
             remove(scrollPan);
             add(jPanelTimbre, BorderLayout.CENTER);
             jPanelSommaire.setVisible(false);
 
         } else {
-            lineRenderer.setDraw(true);
             lineRenderer.setVisible(true);
             remove(jPanelTimbre);
             add(scrollPan, BorderLayout.CENTER);

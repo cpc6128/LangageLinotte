@@ -2384,7 +2384,7 @@
 											<groupe nom="§" discriminant="ferme" >
 												<choix>
 													<ligne tab="1" id="node_base">
-														<token obligatoire="oui" style="sousparagraphe">ferme</token>
+														<token obligatoire="oui" >ferme</token>
 														<etat nom="§ fin"/>
 														<sousparagraphe etat="fermeture"/>
 													</ligne>
