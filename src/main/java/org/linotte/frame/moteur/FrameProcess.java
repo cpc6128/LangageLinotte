@@ -29,6 +29,7 @@ import org.linotte.frame.atelier.Inspecteur;
 import org.linotte.frame.cahier.Cahier;
 import org.linotte.frame.coloration.ProcessStyle;
 import org.linotte.moteur.exception.*;
+import org.linotte.moteur.outils.CouleurImage;
 import org.linotte.moteur.outils.Preference;
 import org.linotte.moteur.outils.Ressources;
 import org.linotte.moteur.xml.Linotte;
@@ -133,7 +134,7 @@ public class FrameProcess extends Thread {
 		applet.getJButtonLire().setVisible(true);
 		applet.getJButtonStop().setEnabled(true);
 		// stop en rouge :
-		applet.getJButtonStop().setIcon(Ressources.getImageTheme("STOP", 32, Color.RED));
+		applet.getJButtonStop().setIcon(Ressources.getImageTheme("STOP", 32, CouleurImage.ACTIF));
 		applet.getJButtonPause().setVisible(true);
 		applet.getJButtonPause().setEnabled(false);
 		applet.getJButtonTester().setEnabled(false);

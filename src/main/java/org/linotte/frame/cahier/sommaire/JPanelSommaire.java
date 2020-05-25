@@ -202,7 +202,7 @@ public class JPanelSommaire extends JPanel implements TreeSelectionListener {
 				if (noeud.isErreurSyntaxe()) {
 					label.setIcon(icone);
 				}
-				label.setForeground(Color.BLACK);
+				//label.setForeground(Color.BLACK);
 				label.setActif(noeud.isActif());
 				return label;
 			} else {

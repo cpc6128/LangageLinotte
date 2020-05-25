@@ -23,12 +23,9 @@ import org.jdesktop.swingx.JXTaskPane;
 import org.jdesktop.swingx.JXTaskPaneContainer;
 import org.jdesktop.swingx.JXTitledPanel;
 import org.jdesktop.swingx.border.DropShadowBorder;
-import org.jdesktop.swingx.painter.MattePainter;
-import org.jdesktop.swingx.plaf.basic.BasicTaskPaneUI;
 import org.linotte.frame.atelier.Atelier;
 import org.linotte.frame.atelier.AtelierFrame;
 import org.linotte.frame.gui.RequestFocusListener;
-import org.linotte.frame.gui.WindowsMetroTaskPaneUI;
 import org.linotte.frame.latoile.Java6;
 import org.linotte.frame.projet.NavigateurFichier.FileTreeNode;
 import org.linotte.moteur.outils.Ressources;
@@ -57,7 +54,6 @@ public class ExplorateurProjet extends JPanel {
     private static final String HTML4 = "Pas de description";
     private static Writer fw = null;
     private JXTaskPane taskTutorial = new JXTaskPane();
-    private boolean metroStyle = true;
 
     // Cache des extensions :
     private Map<Component, JXTaskPane> extensions = new HashMap<Component, JXTaskPane>();
@@ -68,12 +64,7 @@ public class ExplorateurProjet extends JPanel {
 
     public ExplorateurProjet(FileSystemView view, AtelierFrame atelier, File edt) {
 
-        changeUIdefaults();
-
         container = new JXTaskPaneContainer();
-
-        if (metroStyle)
-            LookAndFeel.uninstallBorder(container);
 
         try {
             container.add(getTaskPaneEspaceDeTravail("Espace de travail", view, (Atelier) atelier, edt));
@@ -310,7 +301,6 @@ public class ExplorateurProjet extends JPanel {
     private JXTaskPane getTaskPaneTutoriel(final FileSystemView view, final Atelier atelier) {
         taskTutorial = new JXTaskPane();
         final File exemples = Ressources.getExemples(Atelier.linotte.getLangage());
-        changeTaskPaneUI(taskTutorial);
         taskTutorial.setTitle("Tutoriel");
         taskTutorial.setIcon(Ressources.getImageTheme("TUTO", 20));
         NavigateurFichier fileTreePanel = new NavigateurFichier(view, exemples, taskTutorial, atelier, false);
@@ -322,7 +312,6 @@ public class ExplorateurProjet extends JPanel {
 
     private JXTaskPane getTaskPaneEspaceDeTravail(String title, final FileSystemView view, final Atelier atelier, final File edt) {
         final JXTaskPane task = new JXTaskPane();
-        changeTaskPaneUI(task);
         task.setTitle(title);
         task.setIcon(Ressources.getImageTheme("EDT", 20));
 
@@ -392,19 +381,8 @@ public class ExplorateurProjet extends JPanel {
         return task;
     }
 
-    private void changeTaskPaneUI(JXTaskPane task) {
-        if (metroStyle) {
-            BasicTaskPaneUI ui = new WindowsMetroTaskPaneUI();
-            task.setUI(ui);
-            task.setSpecial(true);
-            ((JComponent) task.getContentPane()).setBorder(BorderFactory.createEmptyBorder(8, 2, 5, 2));
-        }
-    }
-
-
     private JXTaskPane getTaskPanePlus(final Atelier atelier) {
         JXTaskPane task = new JXTaskPane();
-        changeTaskPaneUI(task);
         task.setTitle("Plus loin...");
         task.setIcon(Ressources.getImageTheme("PLUS", 20));
         //task.setSpecial(true);
@@ -463,20 +441,6 @@ public class ExplorateurProjet extends JPanel {
         });
 
         return task;
-    }
-
-    private void changeUIdefaults() {
-        UIManager.put("TaskPaneContainer.useGradient", Boolean.FALSE);
-        Color brighter = new Color(240, 240, 240);
-        UIManager.put("TaskPaneContainer.background", brighter);
-        UIManager.put("TaskPane.titleBackgroundGradientStart", Color.WHITE);
-        UIManager.put("TaskPane.titleBackgroundGradientEnd", Color.GRAY);
-        UIManager.put("TaskPane.specialTitleBackground", Color.GRAY); // new
-        // Color(63,
-        // 72,
-        // 204)
-        UIManager.put("TaskPane.background", brighter);
-        UIManager.put("TaskPaneContainer.backgroundPainter", new MattePainter(Color.WHITE));
     }
 
 }

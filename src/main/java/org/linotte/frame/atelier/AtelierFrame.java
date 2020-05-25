@@ -30,6 +30,7 @@ import org.linotte.frame.moteur.Debogueur;
 import org.linotte.frame.moteur.FrameProcess;
 import org.linotte.frame.projet.ExplorateurProjet;
 import org.linotte.moteur.exception.StopException;
+import org.linotte.moteur.outils.CouleurImage;
 import org.linotte.moteur.outils.JTextPaneToPdf;
 import org.linotte.moteur.outils.Preference;
 import org.linotte.moteur.outils.Ressources;
@@ -325,9 +326,9 @@ public class AtelierFrame extends JFrame {
                 jButtonLire.setToolTipText("<html><b>Bouton Lire</b><br>" + "<i>Description</i> : Lis le livre présent dans le cahier<br>"
                         + "<i>Action</i> : Cliquer sur le bouton [Lire] ou appuyer sur les boutons Alt+L<br>" + "</html>");
             jButtonLire.setFocusable(false);
-            jButtonLire.setIcon(Ressources.getImageTheme("PLAY", 32, new Color(63, 72, 204)));
-            jButtonLire.setPressedIcon(Ressources.getImageTheme("PLAY", 32, Color.darkGray));
-            jButtonLire.setDisabledIcon(Ressources.getImageTheme("PLAY", 32, Color.lightGray));
+            jButtonLire.setIcon(Ressources.getImageTheme("PLAY", 32, CouleurImage.LIRE));
+            jButtonLire.setPressedIcon(Ressources.getImageTheme("PLAY", 32, CouleurImage.PRESSED));
+            jButtonLire.setDisabledIcon(Ressources.getImageTheme("PLAY", 32, CouleurImage.DISABLED));
             jButtonLire.setName("boutonLire");
             jButtonLire.setMnemonic(KeyEvent.VK_L);
         }
@@ -412,7 +413,7 @@ public class AtelierFrame extends JFrame {
             jButtonPasAPas.setVisible(true);
             //jButtonPasAPas.setIcon(Ressources.getImageTheme("DEBUG", 32, new Color(63, 72, 204)));
             jButtonPasAPas.setIcon(Ressources.getImageTheme("DEBUG", 32));
-            jButtonPasAPas.setDisabledIcon(Ressources.getImageTheme("DEBUG", 32, Color.lightGray));
+            jButtonPasAPas.setDisabledIcon(Ressources.getImageTheme("DEBUG", 32, CouleurImage.DISABLED));
             jButtonPasAPas.setName("boutonPause");
             jButtonPasAPas.setMnemonic(KeyEvent.VK_A);
         }
@@ -428,7 +429,7 @@ public class AtelierFrame extends JFrame {
             jButtonContinuer.setFocusable(false);
             jButtonContinuer.setVisible(false);
             jButtonContinuer.setIcon(Ressources.getImageTheme("NEXT", 32));
-            jButtonContinuer.setDisabledIcon(Ressources.getImageTheme("NEXT", 32, Color.lightGray));
+            jButtonContinuer.setDisabledIcon(Ressources.getImageTheme("NEXT", 32, CouleurImage.DISABLED));
             jButtonContinuer.setName("boutonPause");
             jButtonContinuer.setMnemonic(KeyEvent.VK_C);
             jButtonContinuer.addActionListener(new java.awt.event.ActionListener() {
@@ -457,7 +458,7 @@ public class AtelierFrame extends JFrame {
             jButtonStop.setFocusable(false);
             jButtonStop.setVisible(true);
             jButtonStop.setIcon(Ressources.getImageTheme("STOP", 32));
-            jButtonStop.setDisabledIcon(Ressources.getImageTheme("STOP", 32, Color.lightGray));
+            jButtonStop.setDisabledIcon(Ressources.getImageTheme("STOP", 32, CouleurImage.DISABLED));
             jButtonStop.setMnemonic(KeyEvent.VK_S);
             if (!Preference.getIntance().getBoolean(Preference.P_BULLE_AIDE_INACTIF))
                 jButtonStop.setToolTipText("<html><b>Bouton Stop</b><br>" + "<i>Description</i> : Stop le livre en cours de lecture<br>"
@@ -512,7 +513,7 @@ public class AtelierFrame extends JFrame {
             jButtonRanger.setFocusable(false);
             jButtonRanger.setVisible(true);
             jButtonRanger.setIcon(Ressources.getImageTheme("SAVE", 32));
-            jButtonRanger.setDisabledIcon(Ressources.getImageTheme("SAVE", 32, Color.lightGray));
+            jButtonRanger.setDisabledIcon(Ressources.getImageTheme("SAVE", 32, CouleurImage.DISABLED));
             jButtonRanger.setMnemonic(KeyEvent.VK_R);
             if (!Preference.getIntance().getBoolean(Preference.P_BULLE_AIDE_INACTIF))
                 jButtonRanger.setToolTipText("<html><b>Bouton Ranger</b><br>" + "<i>Description</i> : Sauvegarder votre livre sur le disque<br>"

@@ -21,10 +21,8 @@ package org.linotte.frame.cahier;
 
 import javax.swing.*;
 import javax.swing.text.BadLocationException;
-import javax.swing.text.DefaultEditorKit;
 import javax.swing.text.Document;
 import java.awt.*;
-import java.awt.event.*;
 
 /**
  * A class illustrating running line number count on JTextPane. Nothing is
@@ -40,29 +38,12 @@ import java.awt.event.*;
  * 
  */
 @SuppressWarnings("serial")
-public class LineRenderer extends JPanel implements ActionListener {
+public class LineRenderer extends JPanel{
 
 	private boolean draw = true;
 
-	class PopupListener extends MouseAdapter {
-		public void mousePressed(MouseEvent e) {
-			maybeShowPopup(e);
-		}
-
-		public void mouseReleased(MouseEvent e) {
-			maybeShowPopup(e);
-		}
-
-		private void maybeShowPopup(MouseEvent e) {
-			if (e.isPopupTrigger()) {
-				popup.show(e.getComponent(), e.getX(), e.getY());
-			}
-		}
-	}
-
 	private JTextPane pane;
 	private JScrollPane scrollPane;
-	private JPopupMenu popup;
 	private int y = 0;
 	private Cahier cahier;
 
@@ -74,21 +55,14 @@ public class LineRenderer extends JPanel implements ActionListener {
 		cahier = pcahier;
 		pane = cahier.jEditorPaneCachier;
 		scrollPane = cahier.scrollPan;
-
-
-		popup = new JPopupMenu();
-		// Add listener to components that can bring up popup menus.
-		MouseListener popupListener = new PopupListener();
-		this.addMouseListener(popupListener);
-
 	}
 
 	public void paint(Graphics g) {
 		super.paint(g);
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-		g.setColor(Color.WHITE);
-		g.fillRect(0, 0, getWidth(), getHeight());
+		//g.setColor(Color.WHITE);
+		//g.fillRect(0, 0, getWidth(), getHeight());
 
 		if (draw) {
 
@@ -120,7 +94,7 @@ public class LineRenderer extends JPanel implements ActionListener {
 			}
 
 			for (int line = startline, y = starting_y; line <= endline; line++) {
-				g.setColor(line != ligneCourante ? Color.GRAY : Color.MAGENTA);
+				g.setColor(line != ligneCourante ? Color.GRAY : Color.lightGray);
 				g.drawString(Integer.toString(line), 0, y);
 				Rectangle e;
 				try {
@@ -136,40 +110,4 @@ public class LineRenderer extends JPanel implements ActionListener {
 
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		Point pt;
-		try {
-			// Activer le curseur :
-			pane.grabFocus();
-			pt = new Point(pane.modelToView(pane.getCaretPosition()).x, scrollPane.getViewport().getViewPosition().y + y);
-			int pos = pane.viewToModel(pt);
-			pane.setCaretPosition(pos);
-			getAction(DefaultEditorKit.selectLineAction).actionPerformed(null);
-		} catch (BadLocationException e1) {
-			e1.printStackTrace();
-		}
-	}
-
-	private Action getAction(String name) {
-		Action action = null;
-		Action[] actions = pane.getActions();
-
-		for (int i = 0; i < actions.length; i++) {
-			if (name.equals(actions[i].getValue(Action.NAME).toString())) {
-				action = actions[i];
-				break;
-			}
-		}
-
-		return action;
-	}
-
-	public boolean isDraw() {
-		return draw;
-	}
-
-	public void setDraw(boolean draw) {
-		this.draw = draw;
-	}
 }

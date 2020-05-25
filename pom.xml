@@ -68,6 +68,11 @@
             <artifactId>flatlaf</artifactId>
             <version>0.35</version>
         </dependency>
+        <dependency>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf-swingx</artifactId>
+            <version>0.35</version>
+        </dependency>
         <!-- version pour jdk 8 : -->
         <dependency>
             <groupId>org.kordamp.ikonli</groupId>
