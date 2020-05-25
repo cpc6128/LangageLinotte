@@ -29,5 +29,8 @@ La page officielle du site est http://langagelinotte.free.fr
 
 - code source de la documentation : https://framagit.org/cpc6128/linotte3
 
-
+Thème clair :
 ![Atelier 3.0](http://langagelinotte.free.fr/github/atelier2.png)
+
+Thème sombre :
+![Atelier 3.0](http://langagelinotte.free.fr/github/atelier-dracula.png)
