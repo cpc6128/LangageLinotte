@@ -82,6 +82,7 @@ public class AtelierFrame extends JFrame {
     protected JMenuItem jMenuItemBonifieur = null;
     protected SliderMenuItem jMenuItemDebogueur = null;
     protected JMenuItem jMenuItemSaveWorkSpace = null;
+    protected JMenuItem jMenuItemTheme = null;
     protected JMenuItem jMenuItemFormater = null;
     protected JMenuItem jMenuItemLaToile = null;
     protected TeleType teleType;
@@ -936,6 +937,17 @@ public class AtelierFrame extends JFrame {
         return jMenuItemSaveWorkSpace;
     }
 
+    private JMenuItem getJMenuTheme() {
+        if (jMenuItemTheme == null) {
+            jMenuItemTheme = new JCheckBoxMenuItem();
+            jMenuItemTheme.setText("Thème sombre/clair (relancer l'Atelier)");
+            jMenuItemTheme.setSelected(false);
+            jMenuItemTheme.setMnemonic(KeyEvent.VK_T);
+            jMenuItemTheme.addActionListener(e -> Preference.getIntance().setBoolean(Preference.P_DRACULA, jMenuItemTheme.isSelected()));
+        }
+        return jMenuItemTheme;
+    }
+
     private JMenuItem getJMenuItemBonifieur() {
         if (jMenuItemBonifieur == null) {
             jMenuItemBonifieur = new JCheckBoxMenuItem();
@@ -1073,8 +1085,8 @@ public class AtelierFrame extends JFrame {
         JMenu options = new JMenu("Options");
         getJMenuOutils().add(options);
         options.add(getJMenuSaveWorkSpace());
-
         options.add(getJMenuItemBonifieur());
+        options.add(getJMenuTheme());
         options.add(getJMenuManageurStyle());
 
         options.addSeparator();
