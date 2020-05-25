@@ -33,4 +33,4 @@ Thème clair :
 ![Atelier 3.0](http://langagelinotte.free.fr/github/atelier2.png)
 
 Thème sombre :
-![Atelier 3.0](http://langagelinotte.free.fr/github/atelier-dracula.png)
+![Atelier 3.0](http://langagelinotte.free.fr/github/atelier-dracula2.png)
