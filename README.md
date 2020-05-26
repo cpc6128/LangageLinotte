@@ -10,11 +10,11 @@ Code source officiel du langage Linotte 3.X
 
 Vous voulez contribuer au projet ? N'hésitez pas à venir me rejoindre sur ce depôt.
 
-La page officielle du site est <a href="http://langagelinotte.free.fr">http://langagelinotte.free.fr</a>
+La page officielle du site est <a href="http://langagelinotte.free.fr">langagelinotte.free.fr</a>
 
 #### Pour les utilisateurs, télécharger une version de travail (version non finalisée):
 
-- <a href="https://bitbucket.org/metalm/langagelinotte/downloads/Linotte_3.0-NON-STABLE-2020-05-26-06-43.zip"> Linotte 3.0 bêta </a>
+- <a href="https://bitbucket.org/metalm/langagelinotte/downloads/Linotte_3.0-NON-STABLE-2020-05-26-06-43.zip">Linotte_3.0-NON-STABLE-2020-05-26-06-43.zip</a>
 
 #### Pour contribuer à faire évoluer Linotte :
  `git clone https://github.com/cpc6128/LangageLinotte.git`
