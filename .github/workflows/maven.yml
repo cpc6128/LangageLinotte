@@ -23,6 +23,8 @@ jobs:
           sudo update-locale LANG=fr_FR.UTF-8
           git config --global gui.encoding utf-8
     - uses: actions/checkout@v2
+    - name: list the directory
+      run: echo '! find $GITHUB_WORKSPACE -type f -exec file --mime {} \; | grep -v "charset=binary$" | grep -v "charset=us-ascii$" | grep -v "charset=utf-8$"' | bash
     - name: Set up JDK 1.8
       uses: actions/setup-java@v1
       with:
