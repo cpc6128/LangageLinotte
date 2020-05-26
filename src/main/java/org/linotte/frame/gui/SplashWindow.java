@@ -33,6 +33,7 @@ import java.awt.*;
 @SuppressWarnings("serial")
 public class SplashWindow extends JWindow {
     private static final String nomFichierImage = "splashlinotte.png";
+    private static final String nomFichierImage_sombre = "splashlinotte_dracula.png";
     // thread pour fermer le splash screen
     private final Runnable closerRunner = new Runnable() {
         public void run() {
@@ -47,11 +48,9 @@ public class SplashWindow extends JWindow {
     public SplashWindow(Frame parent) {
         super(parent);
 
-        UIManager.put("ProgressBar.repaintInterval", new Integer(10));
-        UIManager.put("ProgressBar.cycleTime", new Integer(6000));
-
         // crée un label avec notre image
-        JLabel image = new JLabel(Ressources.getImageIcon(nomFichierImage));
+        ImageIcon splash = Preference.getIntance().themeNoir() ? Ressources.getImageIcon(nomFichierImage_sombre) : Ressources.getImageIcon(nomFichierImage);
+        JLabel image = new JLabel(splash);
         // ajoute le label au panel
         getContentPane().add(image, BorderLayout.NORTH);
         pack();

@@ -940,7 +940,7 @@ public class AtelierFrame extends JFrame {
     private JMenuItem getJMenuTheme() {
         if (jMenuItemTheme == null) {
             jMenuItemTheme = new JCheckBoxMenuItem();
-            jMenuItemTheme.setText("Thème sombre/clair (relancer l'Atelier)");
+            jMenuItemTheme.setText("Thème sombre (relancer l'Atelier)");
             jMenuItemTheme.setSelected(false);
             jMenuItemTheme.setMnemonic(KeyEvent.VK_T);
             jMenuItemTheme.addActionListener(e -> Preference.getIntance().setBoolean(Preference.P_DRACULA, jMenuItemTheme.isSelected()));
