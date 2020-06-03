@@ -79,7 +79,6 @@ public class AtelierFrame extends JFrame {
     protected JMenuItem jMenuItemExporter = null;
     protected JMenuItem jMenuItemExporterHTML = null;
     protected JMenuItem jMenuItemExporterRTF = null;
-    protected JMenuItem jMenuItemBonifieur = null;
     protected SliderMenuItem jMenuItemDebogueur = null;
     protected JMenuItem jMenuItemSaveWorkSpace = null;
     protected JMenuItem jMenuItemTheme = null;
@@ -948,20 +947,6 @@ public class AtelierFrame extends JFrame {
         return jMenuItemTheme;
     }
 
-    private JMenuItem getJMenuItemBonifieur() {
-        if (jMenuItemBonifieur == null) {
-            jMenuItemBonifieur = new JCheckBoxMenuItem();
-            jMenuItemBonifieur.setText("Bonifier le cahier");
-            jMenuItemBonifieur.setSelected(true);
-            jMenuItemBonifieur.setMnemonic(java.awt.event.KeyEvent.VK_B);
-            jMenuItemBonifieur.addActionListener(e -> {
-                Preference.getIntance().setBoolean(Preference.P_MODE_BONIFIEUR, jMenuItemBonifieur.isSelected());
-                getCahierCourant().repaint();
-            });
-        }
-        return jMenuItemBonifieur;
-    }
-
     private SliderMenuItem getJMenuDelaisDebogueur() {
         if (jMenuItemDebogueur == null) {
             jMenuItemDebogueur = new SliderMenuItem();
@@ -1085,7 +1070,6 @@ public class AtelierFrame extends JFrame {
         JMenu options = new JMenu("Options");
         getJMenuOutils().add(options);
         options.add(getJMenuSaveWorkSpace());
-        options.add(getJMenuItemBonifieur());
         options.add(getJMenuTheme());
         options.add(getJMenuManageurStyle());
 

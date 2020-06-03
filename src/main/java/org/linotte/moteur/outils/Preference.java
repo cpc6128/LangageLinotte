@@ -56,7 +56,6 @@ public class Preference extends Properties {
     public static final String P_WINDOW_MAX = "WINDOW_MAX";
     public static final String P_MODE_SAVE_WORKSPACE = "SAVE_WORKSPACE";
     public static final String P_BULLE_AIDE_INACTIF = "BULLE_AIDE_INACTIF";
-    public static final String P_MODE_BONIFIEUR = "BONIFIEUR";
     public static final String P_HISTORIQUE = "HISTORIQUE";
     public static final String P_PAS_A_PAS = "PAS_A_PAS";
     public static final String P_TOUCHE_ENTREE = "TOUCHE_ENTREE";
