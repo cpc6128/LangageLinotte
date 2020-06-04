@@ -1,5 +1,6 @@
 /*
 Code source de ce greffon Robonotte destiné à faire découvrir la programmation aux jeunes débutants :
+https://github.com/cpc6128/LangageLinotte/blob/master/src/main/java/org/linotte/greffons/impl/Robonotte.java
 
 Pour lancer ce programme, utilisez le bouton "Lire au ralenti !"
 */

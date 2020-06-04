@@ -61,6 +61,9 @@ public class NLigne extends Noeud {
             parserContext.styles_formules.push(new ArrayList<Object>());
         }
 
+        int copieValeur = parserContext.valeur;
+        boolean copieSaute = parserContext.saute;
+
         parserContext.lexer.setFaireExeptionFinDeLigne(false);
 
         try {
@@ -102,6 +105,12 @@ public class NLigne extends Noeud {
         parserContext.setDerniereErreur(null);
 
         if (!parserContext.lexer.isFinDeLigne()) {
+
+            if (parserContext.mode == MODE.FORMATAGE) {
+                parserContext.valeur = copieValeur;
+                parserContext.saute = copieSaute;
+            }
+
             // Je devrais rencontrer un fin de ligne !
             throw new SyntaxeException(Constantes.FIN_DE_LIGNE_ATTENDUE, parserContext.lexer.getPosition());
         }
