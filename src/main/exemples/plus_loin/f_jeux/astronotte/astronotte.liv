@@ -6,7 +6,7 @@ espèces
 globale
 	chemin est un texte valant ""
 	moteur est un arcade
-	cache est un casier de graphique 
+	cache est un casier de graphique
 	/*Pour limiter le nombre de missiles :*/
 	missiles est un casier de graphique
 	bricks est un casier de graphique
@@ -99,912 +99,906 @@ mouvement :
 		si ((x@vaisseau) + 4) < sourisx
 			si (x@vaisseau) < (taille_h -100), déplace vaisseau vers la droite de 4 + ((sourisx  - (x@vaisseau))  / 50)
 		ferme
-		sinon
-			sinon si ((x@vaisseau) - 4) > sourisx, déplace vaisseau vers la gauche de 4 + (((x@vaisseau)  - sourisx)  / 100)
-		ferme
+		sinon si ((x@vaisseau) - 4) > sourisx, déplace vaisseau vers la gauche de 4 + (((x@vaisseau)  - sourisx)  / 100)
+	ferme
 
-	init :
-		*moi est un arcade
-		*pattern est un graphique
-		a & b & position est un nombre valant 0
-		tant que a < (taille_v)
-			ajoute #pattern dans cache
-			y@(cache{position}) prend a
-			projette cache{position}
-			a prend a + pattern_h
-			incrémente position
-		ferme
-		ajoute pattern dans cache
-		y@pattern prend a
-		projette pattern
-		retourne vrai
+init :
+	*moi est un arcade
+	*pattern est un graphique
+	a & b & position est un nombre valant 0
+	tant que a < (taille_v)
+		ajoute #pattern dans cache
+		y@(cache{position}) prend a
+		projette cache{position}
+		a prend a + pattern_h
+		incrémente position
+	ferme
+	ajoute pattern dans cache
+	y@pattern prend a
+	projette pattern
+	retourne vrai
 
-	start :
-		*moi est un arcade
-		appelle défilement
-		retourne vrai
+start :
+	*moi est un arcade
+	appelle défilement
+	retourne vrai
 
-	défilement :
-		t est un nombre
-		mesure cache dans t
-		tant que vrai
-			pour chaque cache
-				tant que (y@joker) > taille_v
+défilement :
+	t est un nombre
+	mesure cache dans t
+	tant que vrai
+		pour chaque cache
+			tant que (y@joker) > taille_v
 					/*on doit descendre le bloc*/
-					Parcours décaler avec t,joker
-				ferme
-				y@joker prend y@joker + pas
+				Parcours décaler avec t,joker
 			ferme
-			attends délai milliseconde
+			y@joker prend y@joker + pas
 		ferme
+		attends délai milliseconde
+	ferme
 
-	décaler :
-		*boucle est un nombre
-		*g est un graphique
-		pour chaque boucle
-			y@g prend y@g - pattern_v
-		ferme
-		reviens
+décaler :
+	*boucle est un nombre
+	*g est un graphique
+	pour chaque boucle
+		y@g prend y@g - pattern_v
+	ferme
+	reviens
 
-	tirer :
-		*x est un nombre
-		*y est un nombre
-		d est un nombre valant 20
-		t est un nombre
-		bullet est un graphique, image prend chemin + "bullet.gif", position prend 2,  x prend d+ x, y prend y, transparence prend 0
-		bullet2 est un graphique, image prend chemin + "bullet.gif", position prend 2,  x prend d + x + 20, y prend y, transparence prend 0
-		mesure missiles dans t
-		si t < (max missibles*2)
-			ajoute bullet dans missiles
-			ajoute bullet2 dans missiles
-			projette bullet & bullet2
-			tant que (y@bullet) > -20
-				y@bullet prend y@bullet - 5
-				y@bullet2 prend y@bullet2 - 5
-				si (transparence@bullet) < 100
-					transparence@bullet prend transparence@bullet + 2
-					transparence@bullet2 prend transparence@bullet2 + 2
-				ferme
-				attends délai / 4 milliseconde
+tirer :
+	*x est un nombre
+	*y est un nombre
+	d est un nombre valant 20
+	t est un nombre
+	bullet est un graphique, image prend chemin + "bullet.gif", position prend 2,  x prend d+ x, y prend y, transparence prend 0
+	bullet2 est un graphique, image prend chemin + "bullet.gif", position prend 2,  x prend d + x + 20, y prend y, transparence prend 0
+	mesure missiles dans t
+	si t < (max missibles*2)
+		ajoute bullet dans missiles
+		ajoute bullet2 dans missiles
+		projette bullet & bullet2
+		tant que (y@bullet) > -20
+			y@bullet prend y@bullet - 5
+			y@bullet2 prend y@bullet2 - 5
+			si (transparence@bullet) < 100
+				transparence@bullet prend transparence@bullet + 2
+				transparence@bullet2 prend transparence@bullet2 + 2
+			ferme
+			attends délai / 4 milliseconde
 				/*Arkanoid :*/
-				si bricks.taille() != 0
-					parcours vérifier bricks avec bullet
-					parcours vérifier bricks avec bullet2
+			si bricks.taille() != 0
+				parcours vérifier bricks avec bullet
+				parcours vérifier bricks avec bullet2
+			ferme
+		ferme
+		Ôte bullet de missiles
+		Ôte bullet2 de missiles
+	ferme
+	efface bullet
+	annihile bullet
+	efface bullet2
+	annihile bullet2
+	reviens
+
+asteroid :
+	asteroid est un graphique, image prend chemin + "asteroid.gif", position prend 2,  x prend hasard(taille_h), y prend -50
+	pas est un nombre valant hasard (10) - 5
+	vitesse est un nombre valant hasard (10)
+	projette asteroid
+	tant que (y@asteroid) < (taille_v + 30)
+		y@asteroid prend y@asteroid + 5 + vitesse
+		tourne à droite asteroid de pas
+		si asteroid.collision(vaisseau) parcours perdu avec 3
+		pour chaque missiles
+			si (visible@joker) == "oui"
+				si joker.collision(asteroid)
+					appelle boom avec x@joker, y@joker
+					efface joker
 				ferme
 			ferme
-			Ôte bullet de missiles
-			Ôte bullet2 de missiles
 		ferme
-		efface bullet
-		annihile bullet
-		efface bullet2
-		annihile bullet2
-		reviens
+		attends délai / 2 milliseconde
+	ferme
+	efface asteroid
+	annihile asteroid
+	parcours score avec 10
+	reviens
 
-	asteroid :
-		asteroid est un graphique, image prend chemin + "asteroid.gif", position prend 2,  x prend hasard(taille_h), y prend -50
-		pas est un nombre valant hasard (10) - 5
-		vitesse est un nombre valant hasard (10)
-		projette asteroid
-		tant que (y@asteroid) < (taille_v + 30)
-			y@asteroid prend y@asteroid + 5 + vitesse
-			tourne à droite asteroid de pas
-			si asteroid.collision(vaisseau), parcours perdu avec 3
-			pour chaque missiles
-				si (visible@joker) == "oui"
-					si joker.collision(asteroid)
-						appelle boom avec x@joker, y@joker
-						efface joker
-					ferme
+barrage :
+	*p est un nombre
+	barrage est un graphique, image prend chemin + "ligne.gif", position prend 2,  x prend p, y prend -20
+	projette barrage
+	tant que (y@barrage) < (taille_v + 30)
+		y@barrage prend y@barrage + 2.5
+		si barrage.collision(vaisseau) parcours perdu avec 30
+		attends délai / 2 milliseconde
+	ferme
+	efface barrage
+	annihile barrage
+	parcours score avec 40
+	reviens
+
+créer canal :
+	*largeur est un nombre
+	*aléatoire est un nombre
+	sens est un nombre valant hasard (2)
+	pour chaque 20
+		appelle canal avec largeur , aléatoire
+		attends délai * 5 milliseconde
+		si aléatoire
+			si sens == 1
+				si pos_canal <= (taille_h - 520), pos_canal  prend pos_canal  + 20
+				sinon sens prend hasard (2)
+			ferme
+			si sens == 0
+				si pos_canal >= -310 , pos_canal  prend pos_canal  - 20
+				sinon sens prend hasard (2)
+			ferme
+		ferme
+	ferme
+	reviens
+
+canal :
+	*largeur est un nombre
+	*aléatoire est un drapeau
+	canal est un rectangle,  x prend 0, y prend -50, largeur prend largeur + pos_canal, hauteur prend 10, couleur prend "sable", plein prend "oui", transparence prend 80, position prend 3
+	canal2 est un rectangle,  x prend taille_h - largeur + pos_canal, y prend -50, largeur prend largeur - pos_canal, hauteur prend 10, couleur prend "sable", plein prend "oui", transparence prend 80, position prend 3
+	projette canal & canal2
+	tant que (y@canal) < (taille_v + 30)
+		y@canal prend y@canal + vitesse_canal
+		y@canal2 prend y@canal2 + vitesse_canal
+		si canal.collision(vaisseau), parcours perdu avec 2
+		si canal2.collision(vaisseau), parcours perdu avec 2
+		attends délai / 6 milliseconde
+	ferme
+	efface canal
+	annihile canal
+	efface canal2
+	annihile canal2
+	parcours score avec 10
+	reviens
+
+power :
+	power est un graphique, image prend chemin + "power.png", position prend 2,  x prend hasard(taille_h - 100) + 50, y prend -50
+	projette power
+	tant que (y@power) < (taille_v + 30)
+		y@power prend y@power + 2
+		si power.collision(vaisseau)
+			efface power
+			annihile power
+			appelle énergie
+			reviens
+		ferme
+		attends délai / 2 milliseconde
+	ferme
+	reviens
+
+planet :
+	planet est un graphique, image prend chemin + "planet.gif", position prend 2,  x prend 500, y prend -600, transparence prend 80
+	projette planet
+	tant que (y@planet) < (taille_v + 600)
+		y@planet prend y@planet + 1
+		attends délai * 2 milliseconde
+	ferme
+	reviens
+
+mur :
+	mur est un graphique, image prend chemin + "brick.gif", position prend 5,  transparence prend 0
+	i & j & p est un nombre valant 0
+	vide bricks
+	pour i de 0 à 17
+		pour j de 0 à 5
+			ajoute #mur dans bricks
+			déplace bricks{p} vers 40 + i * 40 et 80 + j * 20
+			projette bricks{p}
+			incrémente p
+		ferme
+	ferme
+	pour i de 0 à 100
+		pour chaque bricks, transparence@joker prend i
+		attends 1 millisecondes
+	ferme
+	reviens
+
+monstre 1 :
+	monstre est un graphique, image prend chemin + "monstre.png", position prend 2,  x prend hasard(taille_h), y prend -50
+	vitesse est un nombre valant hasard (3)
+	delta est un nombre valant hasard (100)
+	projette monstre
+	tant que (y@monstre) < (taille_v + 30)
+		y@monstre prend y@monstre + 8 + vitesse
+		x@monstre prend x@monstre + ( cos ((y@monstre) + delta) * 10)
+		si monstre.collision(vaisseau), parcours perdu avec 5
+		pour chaque missiles
+			si (visible@joker) == "oui"
+				si joker.collision(monstre)
+					appelle boom avec x@joker, y@joker
+					efface joker
+					efface monstre
+					annihile monstre
+					parcours score avec 50
+					reviens
 				ferme
 			ferme
-			attends délai / 2 milliseconde
 		ferme
-		efface asteroid
-		annihile asteroid
-		parcours score avec 10
-		reviens
+		attends délai / 2 milliseconde
+	ferme
+	efface monstre
+	annihile monstre
+	parcours score avec -10
+	reviens
 
-	barrage :
-		*p est un nombre
-		barrage est un graphique, image prend chemin + "ligne.gif", position prend 2,  x prend p, y prend -20
-		projette barrage
-		tant que (y@barrage) < (taille_v + 30)
-			y@barrage prend y@barrage + 2.5
-			si barrage.collision(vaisseau), parcours perdu avec 30
-			attends délai / 2 milliseconde
-		ferme
-		efface barrage
-		annihile barrage
-		parcours score avec 40
-		reviens
-
-	créer canal :
-		*largeur est un nombre
-		*aléatoire est un nombre
-		sens est un nombre valant hasard (2)
-		pour chaque 20
-			appelle canal avec largeur , aléatoire
-			attends délai * 5 milliseconde
-			si aléatoire
-				si sens == 1
-					si pos_canal <= (taille_h - 520), pos_canal  prend pos_canal  + 20
-					sinon
-						sinon sens prend hasard (2)
-					ferme
-					si sens == 0
-						si pos_canal >= -310 , pos_canal  prend pos_canal  - 20
-						sinon
-							sinon sens prend hasard (2)
-						ferme
-					ferme
-				ferme
-				reviens
-
-			canal :
-				*largeur est un nombre
-				*aléatoire est un drapeau
-				canal est un rectangle,  x prend 0, y prend -50, largeur prend largeur + pos_canal, hauteur prend 10, couleur prend "sable", plein prend "oui", transparence prend 80, position prend 3
-				canal2 est un rectangle,  x prend taille_h - largeur + pos_canal, y prend -50, largeur prend largeur - pos_canal, hauteur prend 10, couleur prend "sable", plein prend "oui", transparence prend 80, position prend 3
-				projette canal & canal2
-				tant que (y@canal) < (taille_v + 30)
-					y@canal prend y@canal + vitesse_canal
-					y@canal2 prend y@canal2 + vitesse_canal
-					si canal.collision(vaisseau), parcours perdu avec 2
-					si canal2.collision(vaisseau), parcours perdu avec 2
-					attends délai / 6 milliseconde
-				ferme
-				efface canal
-				annihile canal
-				efface canal2
-				annihile canal2
-				parcours score avec 10
-				reviens
-
-			power :
-				power est un graphique, image prend chemin + "power.png", position prend 2,  x prend hasard(taille_h - 100) + 50, y prend -50
-				projette power
-				tant que (y@power) < (taille_v + 30)
-					y@power prend y@power + 2
-					si power.collision(vaisseau)
-						efface power
-						annihile power
-						appelle énergie
-						reviens
-					ferme
-					attends délai / 2 milliseconde
-				ferme
-				reviens
-
-			planet :
-				planet est un graphique, image prend chemin + "planet.gif", position prend 2,  x prend 500, y prend -600, transparence prend 80
-				projette planet
-				tant que (y@planet) < (taille_v + 600)
-					y@planet prend y@planet + 1
-					attends délai * 2 milliseconde
-				ferme
-				reviens
-
-			mur :
-				mur est un graphique, image prend chemin + "brick.gif", position prend 5,  transparence prend 0
-				i & j & p est un nombre valant 0
-				vide bricks
-				pour i de 0 à 17
-					pour j de 0 à 5
-						ajoute #mur dans bricks
-						déplace bricks{p} vers 40 + i * 40 et 80 + j * 20
-						projette bricks{p}
-						incrémente p
-					ferme
-				ferme
-				pour i de 0 à 100
-					pour chaque bricks, transparence@joker prend i
-					attends 1 millisecondes
-				ferme
-				reviens
-
-			monstre 1 :
-				monstre est un graphique, image prend chemin + "monstre.png", position prend 2,  x prend hasard(taille_h), y prend -50
-				vitesse est un nombre valant hasard (3)
-				delta est un nombre valant hasard (100)
-				projette monstre
-				tant que (y@monstre) < (taille_v + 30)
-					y@monstre prend y@monstre + 8 + vitesse
-					x@monstre prend x@monstre + ( cos ((y@monstre) + delta) * 10)
-					si monstre.collision(vaisseau), parcours perdu avec 5
-					pour chaque missiles
-						si (visible@joker) == "oui"
-							si joker.collision(monstre)
-								appelle boom avec x@joker, y@joker
-								efface joker
-								efface monstre
-								annihile monstre
-								parcours score avec 50
-								reviens
-							ferme
-						ferme
-					ferme
-					attends délai / 2 milliseconde
-				ferme
-				efface monstre
-				annihile monstre
-				parcours score avec -10
-				reviens
-
-			vérifier bricks :
-				*m est un graphique
-				pour chaque bricks
-					si (visible@m) == "oui"
-						si (visible@joker) == "oui"
-							si m.collision(joker)
+vérifier bricks :
+	*m est un graphique
+	pour chaque bricks
+		si (visible@m) == "oui"
+			si (visible@joker) == "oui"
+				si m.collision(joker)
 						/*Une erreur peut arriver si deux briques sont supprimées en même temps*/
-								essaie
-									appelle boom avec x@m, y@m
-									transparence@joker prend transparence@joker - 34
-									si (transparence@joker) < 0
-										efface joker
-										ôte joker de bricks
-									ferme
-									efface m
-									parcours score avec 10
-									reviens
-								ferme
-							ferme
+					essaie
+						appelle boom avec x@m, y@m
+						transparence@joker prend transparence@joker - 34
+						si (transparence@joker) < 0
+							efface joker
+							ôte joker de bricks
 						ferme
-					ferme
-				ferme
-				reviens
-
-			bomberman :
-				bomberman est un graphique, image prend chemin + "bomberman.gif", position prend 2,  x prend hasard(taille_h), y prend -50
-				vitesse est un nombre valant hasard (3)
-				projette bomberman
-				tant que (y@bomberman) < (taille_v + 30)
-					y@bomberman prend y@bomberman + 8 + vitesse
-					si (x@vaisseau + 15) < (x@bomberman), x@bomberman prend x@bomberman - 6
-					si (x@vaisseau + 15) > (x@bomberman), x@bomberman prend x@bomberman + 6
-					si bomberman.collision(vaisseau), parcours perdu avec 5
-					pour chaque missiles
-						si (visible@joker) == "oui"
-							si joker.collision(bomberman)
-								appelle boom avec x@joker, y@joker
-								efface joker
-								efface bomberman
-								efface bomberman
-								annihile bomberman
-								parcours score avec 70
-								reviens
-							ferme
-						ferme
-					ferme
-					attends délai / 2 milliseconde
-				ferme
-				efface bomberman
-				annihile bomberman
-				parcours score avec -10
-				reviens
-
-			chasseur :
-				*flag est un drapeau
-				chasseur est un graphique, image prend chemin + "chasseur.png", position prend 5,  x prend -100, y prend 577
-				tmp est un nombre valant 1
-				projette chasseur
-				tant que flag
-					si (x@vaisseau + 15) < (x@chasseur), x@chasseur prend x@chasseur - 10
-					si (x@vaisseau + 15) > (x@chasseur), x@chasseur prend x@chasseur + 10
-					attends délai / 4 milliseconde
-					si (tmp mod 100) == 0, appelle tirer obut  avec x@chasseur, y@chasseur
-					incrémente tmp
-				ferme
-				efface chasseur
-				annihile chasseur
-				reviens
-
-			tirer obut :
-				*x est un nombre
-				*y est un nombre
-				d est un nombre valant 10
-				t est un nombre
-				bullet est un graphique, image prend chemin + "obut.png", position prend 2,  x prend d+ x, y prend y, transparence prend 100
-				projette bullet
-				tant que (y@bullet) > -20
-					y@bullet prend y@bullet - 5
-					attends délai / 4 milliseconde
-					si bullet.collision(vaisseau)
-						appelle boom avec x@bullet, y@bullet
-						parcours perdu avec 40
-						efface bullet
-						annihile bullet
+						efface m
+						parcours score avec 10
 						reviens
 					ferme
 				ferme
-				efface bullet
-				annihile bullet
-				reviens
+			ferme
+		ferme
+	ferme
+	reviens
 
-			clignotement :
-				*message est un texte
-				boucle est un nombre valant 0
-				info est un graffiti, couleur prend "nacarat",  x prend 100 , y prend 110 , texte prend message, taille prend 10, position prend 2
-				projette info
-				tant que boucle < 700
-					boucle prend boucle + 10
-					transparence de info prend abs (cos boucle)  * 100
-					Attends 100 millisecondes
+bomberman :
+	bomberman est un graphique, image prend chemin + "bomberman.gif", position prend 2,  x prend hasard(taille_h), y prend -50
+	vitesse est un nombre valant hasard (3)
+	projette bomberman
+	tant que (y@bomberman) < (taille_v + 30)
+		y@bomberman prend y@bomberman + 8 + vitesse
+		si (x@vaisseau + 15) < (x@bomberman), x@bomberman prend x@bomberman - 6
+		si (x@vaisseau + 15) > (x@bomberman), x@bomberman prend x@bomberman + 6
+		si bomberman.collision(vaisseau), parcours perdu avec 5
+		pour chaque missiles
+			si (visible@joker) == "oui"
+				si joker.collision(bomberman)
+					appelle boom avec x@joker, y@joker
+					efface joker
+					efface bomberman
+					efface bomberman
+					annihile bomberman
+					parcours score avec 70
+					reviens
 				ferme
-				efface info
-				annihile info
-				reviens
+			ferme
+		ferme
+		attends délai / 2 milliseconde
+	ferme
+	efface bomberman
+	annihile bomberman
+	parcours score avec -10
+	reviens
 
-			boom :
-				*x est un nombre
-				*y est un nombre
-				explosion est un graphique, image prend chemin + "explosion.gif", position prend 2,  x prend x, y prend y
-				projette explosion
-				de 100 à 0
-					transparence@explosion prend joker
-					angle@explosion prend angle@explosion + 1
-					attends 1 millisecondes
-				ferme
-				efface explosion
-				annihile explosion
-				reviens
+chasseur :
+	*flag est un drapeau
+	chasseur est un graphique, image prend chemin + "chasseur.png", position prend 5,  x prend -100, y prend 577
+	tmp est un nombre valant 1
+	projette chasseur
+	tant que flag
+		si (x@vaisseau + 15) < (x@chasseur), x@chasseur prend x@chasseur - 10
+		si (x@vaisseau + 15) > (x@chasseur), x@chasseur prend x@chasseur + 10
+		attends délai / 4 milliseconde
+		si (tmp mod 100) == 0, appelle tirer obut  avec x@chasseur, y@chasseur
+		incrémente tmp
+	ferme
+	efface chasseur
+	annihile chasseur
+	reviens
 
-			perdu :
-				*point est un nombre
-				largeur@énergie prend largeur@énergie - point
-				délai feu prend 100
-				si (largeur@énergie) < 0
-					parcours fin
-				ferme
-				reviens
+tirer obut :
+	*x est un nombre
+	*y est un nombre
+	d est un nombre valant 10
+	t est un nombre
+	bullet est un graphique, image prend chemin + "obut.png", position prend 2,  x prend d+ x, y prend y, transparence prend 100
+	projette bullet
+	tant que (y@bullet) > -20
+		y@bullet prend y@bullet - 5
+		attends délai / 4 milliseconde
+		si bullet.collision(vaisseau)
+			appelle boom avec x@bullet, y@bullet
+			parcours perdu avec 40
+			efface bullet
+			annihile bullet
+			reviens
+		ferme
+	ferme
+	efface bullet
+	annihile bullet
+	reviens
 
-			énergie :
-				largeur@énergie prend max énergie
-				reviens
+clignotement :
+	*message est un texte
+	boucle est un nombre valant 0
+	info est un graffiti, couleur prend "nacarat",  x prend 100 , y prend 110 , texte prend message, taille prend 10, position prend 2
+	projette info
+	tant que boucle < 700
+		boucle prend boucle + 10
+		transparence de info prend abs (cos boucle)  * 100
+		Attends 100 millisecondes
+	ferme
+	efface info
+	annihile info
+	reviens
 
-			fin :
-				info est un graffiti, couleur prend "nacarat",  x prend 350 , y prend 350 , texte prend "Game Over", taille prend 10, position prend 2
-				efface vaisseau
-				projette info
-				attends 5 secondes
-				termine
+boom :
+	*x est un nombre
+	*y est un nombre
+	explosion est un graphique, image prend chemin + "explosion.gif", position prend 2,  x prend x, y prend y
+	projette explosion
+	de 100 à 0
+		transparence@explosion prend joker
+		angle@explosion prend angle@explosion + 1
+		attends 1 millisecondes
+	ferme
+	efface explosion
+	annihile explosion
+	reviens
 
-			score :
-				*s est un nombre
-				score prend score + s
-				texte@scoreg prend score
-				reviens
+perdu :
+	*point est un nombre
+				//largeur@énergie prend largeur@énergie - point
+	délai feu prend 100
+	si (largeur@énergie) < 0
+		parcours fin
+	ferme
+	reviens
 
-			moteur palet :
+énergie :
+	largeur@énergie prend max énergie
+	reviens
+
+fin :
+	info est un graffiti, couleur prend "nacarat",  x prend 350 , y prend 350 , texte prend "Game Over", taille prend 10, position prend 2
+	efface vaisseau
+	projette info
+	attends 5 secondes
+	termine
+
+score :
+	*s est un nombre
+	score prend score + s
+	texte@scoreg prend score
+	reviens
+
+moteur palet :
 	/*Moteur du jeu crasy_pong.liv, le retour !*/
-				tant que action_raquette
-					y@raquette2 prend y@palet - 20
-					attends 5 millisecondes
+	tant que action_raquette
+		y@raquette2 prend y@palet - 20
+		attends 5 millisecondes
 			/*Gestion du palet*/
-					si directiony == 1, déplace palet vers le haut de vitesse
-					sinon
-						sinon si directiony== -1, déplace palet vers le bas de vitesse
-						si directionx == 1, déplace palet vers la gauche de pas_palet
-						sinon
-							sinon si directionx == -1, déplace palet vers la droite de pas_palet
+		si directiony == 1, déplace palet vers le haut de vitesse
+		sinon si directiony== -1, déplace palet vers le bas de vitesse
+		si directionx == 1, déplace palet vers la gauche de pas_palet
+		sinon si directionx == -1, déplace palet vers la droite de pas_palet
 			/*Gestion de la direction du palet*/
-							si (y de palet) < 20, directiony prend directiony * -1
-							si (y de palet) > 550, directiony prend directiony * -1
-							si (x de palet) < 55, directionx prend directionx * -1
-							si (x de palet) > fin_mur
-								directionx prend directionx * -1
-								x de palet prend fin_mur
-								si palet.collision(raquette)
-									parcours score avec 100
-								ferme
-								sinon
-									sinon parcours perdu avec 60
-								ferme
-							ferme
+		si (y de palet) < 20, directiony prend directiony * -1
+		si (y de palet) > 550, directiony prend directiony * -1
+		si (x de palet) < 55, directionx prend directionx * -1
+		si (x de palet) > fin_mur
+			directionx prend directionx * -1
+			x de palet prend fin_mur
+			si palet.collision(raquette)
+				parcours score avec 100
+			ferme
+			sinon parcours perdu avec 60
+		ferme
+	ferme
 
-						affichage dégât :
-							tant que vrai
-								attends 10 millisecondes
-								si délai feu > 0
-									visible@feu prend "oui"
-									couleur@raquette prend "rouge"
-									transparence@feu prend hasard(100)
-									délai feu prend délai feu - 10
-								ferme
-								sinon
-									visible@feu prend "non"
-									couleur@raquette prend "menthe à l'eau"
-								ferme
-							ferme
-							Reviens
+affichage dégât :
+	tant que vrai
+		attends 10 millisecondes
+		si délai feu > 0
+			visible@feu prend "oui"
+			couleur@raquette prend "rouge"
+			transparence@feu prend hasard(100)
+			délai feu prend délai feu - 10
+		ferme
+		sinon
+			visible@feu prend "non"
+			couleur@raquette prend "menthe à l'eau"
+		ferme
+	ferme
+	Reviens
 
-						initialisation niveau :
-							visible@raquette prend "non"
-							visible@raquette2 prend "non"
-							visible@palet prend "non"
-							parcours niveau 1
-							parcours niveau 2
-							parcours niveau 3
-							parcours niveau 4
-							parcours niveau 5
-							parcours niveau 6
-							parcours niveau 7
-							parcours niveau 8
-							parcours niveau 9
-							parcours niveau 10
-							parcours niveau THE END
-							reviens
+initialisation niveau :
+	visible@raquette prend "non"
+	visible@raquette2 prend "non"
+	visible@palet prend "non"
+	parcours niveau 1
+	parcours niveau 2
+	parcours niveau 3
+	parcours niveau 4
+	parcours niveau 5
+	parcours niveau 6
+	parcours niveau 7
+	parcours niveau 8
+	parcours niveau 9
+	parcours niveau 10
+	parcours niveau THE END
+	reviens
 
-						niveau 1 :
-							appelle clignotement avec "Niveau 1 : la ceinture d'astéroïdes"
-							attends 3 seconde
-							pour chaque 10
-								attends 2 secondes
-								appelle asteroid
-							ferme
-							attends 2 secondes
-							appelle monstre 1
-							attends 2 secondes
-							appelle monstre 1
-							attends 2 secondes
-							pour chaque 10
-								attends 2 secondes
-								appelle asteroid
-								attends 100 millisecondes
-								appelle asteroid
-							ferme
-							attends 5 secondes
-							pour chaque 10
-								attends 1 secondes
-								appelle asteroid
-								attends 100 millisecondes
-								appelle asteroid
-								attends 100 millisecondes
-								appelle asteroid
-							ferme
-							attends 5 secondes
-							pour chaque 30
-								attends 1 secondes
-								appelle asteroid
-								attends 100 millisecondes
-								appelle monstre 1
-								attends 100 millisecondes
-								appelle monstre 1
-							ferme
-							attends 3 seconde
-							incrémente niveau
-							attends 10 secondes
-							reviens
+niveau 1 :
+	appelle clignotement avec "Niveau 1 : la ceinture d'astéroïdes"
+	attends 3 seconde
+	pour chaque 10
+		attends 2 secondes
+		appelle asteroid
+	ferme
+	attends 2 secondes
+	appelle monstre 1
+	attends 2 secondes
+	appelle monstre 1
+	attends 2 secondes
+	pour chaque 10
+		attends 2 secondes
+		appelle asteroid
+		attends 100 millisecondes
+		appelle asteroid
+	ferme
+	attends 5 secondes
+	pour chaque 10
+		attends 1 secondes
+		appelle asteroid
+		attends 100 millisecondes
+		appelle asteroid
+		attends 100 millisecondes
+		appelle asteroid
+	ferme
+	attends 5 secondes
+	pour chaque 30
+		attends 1 secondes
+		appelle asteroid
+		attends 100 millisecondes
+		appelle monstre 1
+		attends 100 millisecondes
+		appelle monstre 1
+	ferme
+	attends 3 seconde
+	incrémente niveau
+	attends 10 secondes
+	reviens
 
-						niveau 2 :
-							appelle clignotement avec "Niveau 2 : la défense s'organise"
-							attends 3 seconde
-							appelle monstre 1
-							attends 2 secondes
-							appelle monstre 1
-							attends 2 secondes
-							pour chaque 10
-								attends 2 secondes
-								appelle monstre 1
-								attends 100 millisecondes
-								appelle monstre 1
-								attends 100 millisecondes
-								appelle asteroid
-							ferme
-							attends 5 secondes
-							pour chaque 10
-								attends 1 secondes
-								appelle asteroid
-								appelle monstre 1
-								attends 100 millisecondes
-								appelle monstre 1
-								attends 100 millisecondes
-								appelle monstre 1
-							ferme
-							appelle power
-							attends 8 secondes
-							pour chaque 30
-								attends 1 secondes
-								appelle asteroid
-								attends 100 millisecondes
-								appelle asteroid
-								attends 100 millisecondes
-								appelle monstre 1
-								attends 100 millisecondes
-								appelle monstre 1
-								attends 100 millisecondes
-								appelle monstre 1
-							ferme
-							incrémente niveau
-							attends 10 secondes
-							reviens
+niveau 2 :
+	appelle clignotement avec "Niveau 2 : la défense s'organise"
+	attends 3 seconde
+	appelle monstre 1
+	attends 2 secondes
+	appelle monstre 1
+	attends 2 secondes
+	pour chaque 10
+		attends 2 secondes
+		appelle monstre 1
+		attends 100 millisecondes
+		appelle monstre 1
+		attends 100 millisecondes
+		appelle asteroid
+	ferme
+	attends 5 secondes
+	pour chaque 10
+		attends 1 secondes
+		appelle asteroid
+		appelle monstre 1
+		attends 100 millisecondes
+		appelle monstre 1
+		attends 100 millisecondes
+		appelle monstre 1
+	ferme
+	appelle power
+	attends 8 secondes
+	pour chaque 30
+		attends 1 secondes
+		appelle asteroid
+		attends 100 millisecondes
+		appelle asteroid
+		attends 100 millisecondes
+		appelle monstre 1
+		attends 100 millisecondes
+		appelle monstre 1
+		attends 100 millisecondes
+		appelle monstre 1
+	ferme
+	incrémente niveau
+	attends 10 secondes
+	reviens
 
-						niveau 3 :
-							appelle clignotement avec "Niveau 3 : les kamikazes"
-							attends 5 secondes
-							pour chaque 30
-								attends .5 secondes
-								appelle  monstre 1
-								attends 100 millisecondes
-								appelle  monstre 1
-								attends 100 millisecondes
-								appelle monstre 1
-								attends 100 millisecondes
-								appelle monstre 1
-								attends 100 millisecondes
-								appelle monstre 1
-							ferme
-							pour chaque 30
-								attends 1 secondes
-								appelle  monstre 1
-								attends 100 millisecondes
-								appelle  monstre 1
-								attends 100 millisecondes
-								appelle bomberman
-							ferme
-							pour chaque 30
-								attends 1 secondes
-								appelle  monstre 1
-								attends 100 millisecondes
-								appelle  monstre 1
-								attends 100 millisecondes
-								appelle bomberman
-								attends 500 millisecondes
-								appelle bomberman
-							ferme
-							appelle power
-							pour chaque 30
-								attends 1 secondes
-								appelle  monstre 1
-								attends 100 millisecondes
-								appelle  monstre 1
-								attends 100 millisecondes
-								appelle bomberman
-								attends 500 millisecondes
-								appelle bomberman
-								attends 100 millisecondes
-								appelle asteroid
-								attends 100 millisecondes
-								appelle asteroid
-							ferme
-							incrémente niveau
-							attends 10 secondes
-							reviens
+niveau 3 :
+	appelle clignotement avec "Niveau 3 : les kamikazes"
+	attends 5 secondes
+	pour chaque 30
+		attends .5 secondes
+		appelle  monstre 1
+		attends 100 millisecondes
+		appelle  monstre 1
+		attends 100 millisecondes
+		appelle monstre 1
+		attends 100 millisecondes
+		appelle monstre 1
+		attends 100 millisecondes
+		appelle monstre 1
+	ferme
+	pour chaque 30
+		attends 1 secondes
+		appelle  monstre 1
+		attends 100 millisecondes
+		appelle  monstre 1
+		attends 100 millisecondes
+		appelle bomberman
+	ferme
+	pour chaque 30
+		attends 1 secondes
+		appelle  monstre 1
+		attends 100 millisecondes
+		appelle  monstre 1
+		attends 100 millisecondes
+		appelle bomberman
+		attends 500 millisecondes
+		appelle bomberman
+	ferme
+	appelle power
+	pour chaque 30
+		attends 1 secondes
+		appelle  monstre 1
+		attends 100 millisecondes
+		appelle  monstre 1
+		attends 100 millisecondes
+		appelle bomberman
+		attends 500 millisecondes
+		appelle bomberman
+		attends 100 millisecondes
+		appelle asteroid
+		attends 100 millisecondes
+		appelle asteroid
+	ferme
+	incrémente niveau
+	attends 10 secondes
+	reviens
 
-						niveau 4 :
-							appelle clignotement avec "Niveau 4 : Le défis !"
-							attends 5 secondes
-							visible@raquette prend "oui"
-							visible@raquette2 prend "oui"
-							visible@palet prend "oui"
-							action_raquette prend vrai
-							appelle planet
-							appelle moteur palet
-							attends 20 secondes
-							pour chaque 10
-								attends 2 secondes
-								appelle asteroid
-							ferme
-							attends 2 secondes
-							pour chaque 10
-								attends 2 secondes
-								appelle asteroid
-								attends 500 millisecondes
-								appelle asteroid
-							ferme
-							attends 5 secondes
-							pour chaque 10
-								attends 1 secondes
-								appelle asteroid
-								attends 500 millisecondes
-								appelle asteroid
-								attends 500 millisecondes
-								appelle asteroid
-							ferme
-							appelle power
-							attends 5 secondes
-							pour chaque 30
-								attends 1 secondes
-								appelle asteroid
-								attends 500 millisecondes
-								appelle monstre 1
-								attends 500 millisecondes
-								appelle monstre 1
-							ferme
+niveau 4 :
+	appelle clignotement avec "Niveau 4 : Le défis !"
+	attends 5 secondes
+	visible@raquette prend "oui"
+	visible@raquette2 prend "oui"
+	visible@palet prend "oui"
+	action_raquette prend vrai
+	appelle planet
+	appelle moteur palet
+	attends 20 secondes
+	pour chaque 10
+		attends 2 secondes
+		appelle asteroid
+	ferme
+	attends 2 secondes
+	pour chaque 10
+		attends 2 secondes
+		appelle asteroid
+		attends 500 millisecondes
+		appelle asteroid
+	ferme
+	attends 5 secondes
+	pour chaque 10
+		attends 1 secondes
+		appelle asteroid
+		attends 500 millisecondes
+		appelle asteroid
+		attends 500 millisecondes
+		appelle asteroid
+	ferme
+	appelle power
+	attends 5 secondes
+	pour chaque 30
+		attends 1 secondes
+		appelle asteroid
+		attends 500 millisecondes
+		appelle monstre 1
+		attends 500 millisecondes
+		appelle monstre 1
+	ferme
 
 		/*Fin du niveau 4*/
-							visible@raquette prend "non"
-							visible@raquette2 prend "non"
-							visible@palet prend "non"
-							action_raquette prend faux
-							attends 10 secondes
-							reviens
+	visible@raquette prend "non"
+	visible@raquette2 prend "non"
+	visible@palet prend "non"
+	action_raquette prend faux
+	attends 10 secondes
+	reviens
 
-						niveau 5 :
-							appelle clignotement avec "Niveau 5 : Le barrage"
-							appelle power
-							pour chaque 2
-								appelle asteroid
-								appelle barrage avec -50
-								attends 1 secondes
-								appelle asteroid
-								attends 1 secondes
-								appelle asteroid
-								attends 1 secondes
-								appelle asteroid
-								appelle barrage avec 410
-								attends 1 secondes
-								appelle asteroid
-								attends 1 secondes
-								appelle asteroid
-								attends 1 secondes
-								appelle asteroid
-								appelle barrage avec -50
-								attends 1 secondes
-								appelle asteroid
-								attends 1 secondes
-								appelle asteroid
-								attends 1 secondes
-								appelle asteroid
-								appelle barrage avec 410
-								attends 2 secondes
-							ferme
-							pour chaque 3
-								appelle asteroid
-								appelle asteroid
-								appelle monstre 1
-								appelle barrage avec -50
-								attends 2 secondes
-								appelle asteroid
-								appelle asteroid
-								appelle monstre 1
-								appelle barrage avec 410
-								attends 2 secondes
-								appelle asteroid
-								appelle asteroid
-								appelle monstre 1
-								appelle barrage avec -50
-								attends 2 secondes
-								appelle asteroid
-								appelle asteroid
-								appelle monstre 1
-								appelle bomberman
-								appelle barrage avec 410
-								attends 2 secondes
-							ferme
-							pour chaque 4
-								appelle asteroid
-								appelle asteroid
-								appelle monstre 1
-								appelle monstre 1
-								appelle bomberman
-								appelle barrage avec -50
-								attends 2 secondes
-								appelle asteroid
-								appelle asteroid
-								appelle monstre 1
-								appelle monstre 1
-								appelle bomberman
-								appelle barrage avec 410
-								attends 2 secondes
-								appelle asteroid
-								appelle asteroid
-								appelle monstre 1
-								appelle monstre 1
-								appelle bomberman
-								appelle barrage avec -50
-								attends 2 secondes
-								appelle asteroid
-								appelle asteroid
-								appelle monstre 1
-								appelle bomberman
-								appelle barrage avec 410
-								appelle monstre 1
-								appelle bomberman
-								attends 2 secondes
-							ferme
-							pour chaque 2
-								appelle barrage avec -50
-								appelle asteroid
-								appelle monstre 1
-								appelle monstre 1
-								appelle monstre 1
-								appelle monstre 1
-								appelle bomberman
-								attends 2 secondes
-								appelle barrage avec 150
-								appelle asteroid
-								appelle monstre 1
-								appelle monstre 1
-								appelle monstre 1
-								appelle monstre 1
-								appelle bomberman
-								attends 2 secondes
-								appelle barrage avec 350
-								appelle asteroid
-								appelle monstre 1
-								appelle monstre 1
-								appelle monstre 1
-								appelle monstre 1
-								appelle bomberman
-								attends 2 secondes
-								appelle barrage avec 550
-								appelle asteroid
-								appelle monstre 1
-								appelle monstre 1
-								appelle monstre 1
-								appelle monstre 1
-								appelle bomberman
-								attends 2 secondes
-							ferme
-							attends 10 secondes
-							reviens
+niveau 5 :
+	appelle clignotement avec "Niveau 5 : Le barrage"
+	appelle power
+	pour chaque 2
+		appelle asteroid
+		appelle barrage avec -50
+		attends 1 secondes
+		appelle asteroid
+		attends 1 secondes
+		appelle asteroid
+		attends 1 secondes
+		appelle asteroid
+		appelle barrage avec 410
+		attends 1 secondes
+		appelle asteroid
+		attends 1 secondes
+		appelle asteroid
+		attends 1 secondes
+		appelle asteroid
+		appelle barrage avec -50
+		attends 1 secondes
+		appelle asteroid
+		attends 1 secondes
+		appelle asteroid
+		attends 1 secondes
+		appelle asteroid
+		appelle barrage avec 410
+		attends 2 secondes
+	ferme
+	pour chaque 3
+		appelle asteroid
+		appelle asteroid
+		appelle monstre 1
+		appelle barrage avec -50
+		attends 2 secondes
+		appelle asteroid
+		appelle asteroid
+		appelle monstre 1
+		appelle barrage avec 410
+		attends 2 secondes
+		appelle asteroid
+		appelle asteroid
+		appelle monstre 1
+		appelle barrage avec -50
+		attends 2 secondes
+		appelle asteroid
+		appelle asteroid
+		appelle monstre 1
+		appelle bomberman
+		appelle barrage avec 410
+		attends 2 secondes
+	ferme
+	pour chaque 4
+		appelle asteroid
+		appelle asteroid
+		appelle monstre 1
+		appelle monstre 1
+		appelle bomberman
+		appelle barrage avec -50
+		attends 2 secondes
+		appelle asteroid
+		appelle asteroid
+		appelle monstre 1
+		appelle monstre 1
+		appelle bomberman
+		appelle barrage avec 410
+		attends 2 secondes
+		appelle asteroid
+		appelle asteroid
+		appelle monstre 1
+		appelle monstre 1
+		appelle bomberman
+		appelle barrage avec -50
+		attends 2 secondes
+		appelle asteroid
+		appelle asteroid
+		appelle monstre 1
+		appelle bomberman
+		appelle barrage avec 410
+		appelle monstre 1
+		appelle bomberman
+		attends 2 secondes
+	ferme
+	pour chaque 2
+		appelle barrage avec -50
+		appelle asteroid
+		appelle monstre 1
+		appelle monstre 1
+		appelle monstre 1
+		appelle monstre 1
+		appelle bomberman
+		attends 2 secondes
+		appelle barrage avec 150
+		appelle asteroid
+		appelle monstre 1
+		appelle monstre 1
+		appelle monstre 1
+		appelle monstre 1
+		appelle bomberman
+		attends 2 secondes
+		appelle barrage avec 350
+		appelle asteroid
+		appelle monstre 1
+		appelle monstre 1
+		appelle monstre 1
+		appelle monstre 1
+		appelle bomberman
+		attends 2 secondes
+		appelle barrage avec 550
+		appelle asteroid
+		appelle monstre 1
+		appelle monstre 1
+		appelle monstre 1
+		appelle monstre 1
+		appelle bomberman
+		attends 2 secondes
+	ferme
+	attends 10 secondes
+	reviens
 
-						niveau 6 :
-							appelle clignotement avec "Niveau 6 : Le mur d'or"
-							appelle power
-							attends 8 secondes
-							appelle planet
-							appelle mur
-							attends 0.1 seconde
-							tant que bricks.taille != 0
-								attends 800 millisecondes
-								appelle asteroid
-								appelle monstre 1
-								appelle monstre 1
-								appelle asteroid
-							ferme
-							appelle power
-							attends 10 secondes
-							Reviens
+niveau 6 :
+	appelle clignotement avec "Niveau 6 : Le mur d'or"
+	appelle power
+	attends 8 secondes
+	appelle planet
+	appelle mur
+	attends 0.1 seconde
+	tant que bricks.taille() != 0
+		attends 800 millisecondes
+		appelle asteroid
+		appelle monstre 1
+		appelle monstre 1
+		appelle asteroid
+	ferme
+	appelle power
+	attends 10 secondes
+	Reviens
 
-						niveau 7 :
-							espace est un nombre valant 10
-							appelle clignotement avec "Niveau 7 : L'hyper-canal"
-							appelle power
-							attends 5 secondes
-							parcours créer canal avec espace, faux
-							parcours créer canal avec espace, faux
-							parcours créer canal avec espace, faux
-							pour chaque 6
-								espace prend espace + 50
-								vitesse_canal prend vitesse_canal + 0.7
-								parcours créer canal avec espace, faux
-							ferme
-							pour chaque 20
-								espace prend espace + .5
-								vitesse_canal prend vitesse_canal + 0.2
-								appelle monstre 1
-								parcours créer canal avec espace, vrai
-							ferme
-							pour chaque 20
-								vitesse_canal prend vitesse_canal + 0.2
-								espace prend espace + .5
-								appelle monstre 1
-								appelle monstre 1
-								parcours créer canal avec espace, vrai
-							ferme
-							attends 10 secondes
-							Reviens
+niveau 7 :
+	espace est un nombre valant 10
+	appelle clignotement avec "Niveau 7 : L'hyper-canal"
+	appelle power
+	attends 5 secondes
+	parcours créer canal avec espace, faux
+	parcours créer canal avec espace, faux
+	parcours créer canal avec espace, faux
+	pour chaque 6
+		espace prend espace + 50
+		vitesse_canal prend vitesse_canal + 0.7
+		parcours créer canal avec espace, faux
+	ferme
+	pour chaque 20
+		espace prend espace + .5
+		vitesse_canal prend vitesse_canal + 0.2
+		appelle monstre 1
+		parcours créer canal avec espace, vrai
+	ferme
+	pour chaque 20
+		vitesse_canal prend vitesse_canal + 0.2
+		espace prend espace + .5
+		appelle monstre 1
+		appelle monstre 1
+		parcours créer canal avec espace, vrai
+	ferme
+	attends 10 secondes
+	Reviens
 
-						niveau 8 :
-							delta est un nombre valant 300
-							flag est un drapeau valant vrai
-							appelle clignotement avec "Niveau 8 : Le chasseur de prime"
-							appelle power
+niveau 8 :
+	delta est un nombre valant 300
+	flag est un drapeau valant vrai
+	appelle clignotement avec "Niveau 8 : Le chasseur de prime"
+	appelle power
 		/*On monte le vaiseau :*/
-							pour chaque delta
-								déplace vaisseau vers le haut de 1
-								attends 10 milliseconde
-							ferme
-							attends 5 secondes
-							appelle chasseur avec flag
-							pour chaque 20
-								attends 2 secondes
-								appelle asteroid
-							ferme
-							pour chaque 20
-								attends 2 secondes
-								appelle asteroid
-								appelle bomberman
-							ferme
-							pour chaque 20
-								attends .5 seconde
-								appelle asteroid
-								attends .5 seconde
-								appelle asteroid
-								attends .5 seconde
-								appelle asteroid
-							ferme
-							pour chaque 20
-								attends 2 secondes
-								appelle asteroid
-								appelle monstre 1
-							ferme
-							flag prend faux
+	pour chaque delta
+		déplace vaisseau vers le haut de 1
+		attends 10 milliseconde
+	ferme
+	attends 5 secondes
+	appelle chasseur avec flag
+	pour chaque 20
+		attends 2 secondes
+		appelle asteroid
+	ferme
+	pour chaque 20
+		attends 2 secondes
+		appelle asteroid
+		appelle bomberman
+	ferme
+	pour chaque 20
+		attends .5 seconde
+		appelle asteroid
+		attends .5 seconde
+		appelle asteroid
+		attends .5 seconde
+		appelle asteroid
+	ferme
+	pour chaque 20
+		attends 2 secondes
+		appelle asteroid
+		appelle monstre 1
+	ferme
+	flag prend faux
 		/*On descent le vaiseau :*/
-							pour chaque delta
-								déplace vaisseau vers le bas de 1
-								attends 10 milliseconde
-							ferme
-							attends 10 secondes
-							Reviens
+	pour chaque delta
+		déplace vaisseau vers le bas de 1
+		attends 10 milliseconde
+	ferme
+	attends 10 secondes
+	Reviens
 
-						niveau 9 :
-							appelle clignotement avec "Niveau 9 : La détermination"
-							appelle power
-							attends 3 seconde
-							pour chaque 10
-								attends 2 secondes
-								appelle asteroid
-							ferme
-							attends 2 secondes
-							appelle monstre 1
-							attends 2 secondes
-							appelle monstre 1
-							attends 2 secondes
-							pour chaque 10
-								attends 2 secondes
-								appelle asteroid
-								attends 100 millisecondes
-								appelle asteroid
-							ferme
-							attends 5 secondes
-							pour chaque 40
-								attends 100 millisecondes
-								appelle asteroid
-								attends 100 millisecondes
-								appelle monstre 1
-								appelle monstre 1
-								attends 100 millisecondes
-								appelle monstre 1
-								appelle monstre 1
-							ferme
-							attends 3 seconde
-							incrémente niveau
-							attends 10 secondes
-							Reviens
+niveau 9 :
+	appelle clignotement avec "Niveau 9 : La détermination"
+	appelle power
+	attends 3 seconde
+	pour chaque 10
+		attends 2 secondes
+		appelle asteroid
+	ferme
+	attends 2 secondes
+	appelle monstre 1
+	attends 2 secondes
+	appelle monstre 1
+	attends 2 secondes
+	pour chaque 10
+		attends 2 secondes
+		appelle asteroid
+		attends 100 millisecondes
+		appelle asteroid
+	ferme
+	attends 5 secondes
+	pour chaque 40
+		attends 100 millisecondes
+		appelle asteroid
+		attends 100 millisecondes
+		appelle monstre 1
+		appelle monstre 1
+		attends 100 millisecondes
+		appelle monstre 1
+		appelle monstre 1
+	ferme
+	attends 3 seconde
+	incrémente niveau
+	attends 10 secondes
+	Reviens
 
-						niveau 10 :
-							appelle clignotement avec "Niveau 10 : l'apocalypse finale"
-							appelle power
-							attends 5 secondes
-							visible@raquette prend "oui"
-							visible@raquette2 prend "oui"
-							visible@palet prend "oui"
-							action_raquette prend vrai
-							appelle planet
-							appelle moteur palet
-							pour chaque 40
-								appelle asteroid
-								attends 250 millisecondes
-								appelle asteroid
-								attends 250 millisecondes
-								appelle asteroid
-							ferme
-							attends 5 secondes
-							pour chaque 60
-								attends 250 millisecondes
-								appelle asteroid
-								attends 250 millisecondes
-								appelle monstre 1
-								attends 250 millisecondes
-								appelle bomberman
-							ferme
+niveau 10 :
+	appelle clignotement avec "Niveau 10 : l'apocalypse finale"
+	appelle power
+	attends 5 secondes
+	visible@raquette prend "oui"
+	visible@raquette2 prend "oui"
+	visible@palet prend "oui"
+	action_raquette prend vrai
+	appelle planet
+	appelle moteur palet
+	pour chaque 40
+		appelle asteroid
+		attends 250 millisecondes
+		appelle asteroid
+		attends 250 millisecondes
+		appelle asteroid
+	ferme
+	attends 5 secondes
+	pour chaque 60
+		attends 250 millisecondes
+		appelle asteroid
+		attends 250 millisecondes
+		appelle monstre 1
+		attends 250 millisecondes
+		appelle bomberman
+	ferme
 
 		/*Fin du niveau 6*/
-							attends 10 secondes
-							visible@raquette prend "non"
-							visible@raquette2 prend "non"
-							visible@palet prend "non"
-							action_raquette prend faux
-							reviens
+	attends 10 secondes
+	visible@raquette prend "non"
+	visible@raquette2 prend "non"
+	visible@palet prend "non"
+	action_raquette prend faux
+	reviens
 
-						niveau THE END :
-							appelle clignotement avec "Bravo, vous avez réussi à passer la barrière ! "
-							pour chaque taille_v
-								déplace vaisseau vers le haut de 1
-								attends 10 milliseconde
-							ferme
-							reviens
+niveau THE END :
+	appelle clignotement avec "Bravo, vous avez réussi à passer la barrière ! "
+	pour chaque taille_v
+		déplace vaisseau vers le haut de 1
+		attends 10 milliseconde
+	ferme
+	reviens
