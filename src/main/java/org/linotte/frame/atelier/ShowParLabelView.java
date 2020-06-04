@@ -6,6 +6,7 @@ import java.awt.*;
 
 /**
  * http://java-sl.com/showpar.html
+ * Cette classe permet d'afficher les erreurs soulignées
  */
 
 public class ShowParLabelView extends LabelView {
