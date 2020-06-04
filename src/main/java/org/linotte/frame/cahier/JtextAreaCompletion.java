@@ -4,6 +4,7 @@ import org.jdesktop.swingx.JXList;
 import org.jdesktop.swingx.decorator.ColorHighlighter;
 import org.jdesktop.swingx.decorator.HighlightPredicate;
 import org.linotte.frame.atelier.Atelier;
+import org.linotte.frame.atelier.ShowParEditorKit;
 import org.linotte.frame.coloration.AtelierDocument;
 import org.linotte.frame.gui.JTextPaneText;
 import org.linotte.greffons.api.AKMethod;
@@ -39,6 +40,7 @@ public class JtextAreaCompletion extends JTextPaneText {
 		super(doc, highlighter);
 		atelierDocument = doc;
 		this.cahier = cahier;
+		setEditorKit(new ShowParEditorKit());
 		setStyledDocument(doc);
 		this.words = words;
 		InputMap im = getInputMap();
