@@ -40,7 +40,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
-import java.io.Writer;
 import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
@@ -48,15 +47,8 @@ import java.util.Map;
 @SuppressWarnings("serial")
 public class ExplorateurProjet extends JPanel {
 
-    private static final String HTML1 = "<HTML><b>Fonction ";
-    private static final String HTML2 = "<HTML><b>Attribut ";
-    private static final String HTML3 = "</b> <br>";
-    private static final String HTML4 = "Pas de description";
-    private static Writer fw = null;
     private JXTaskPane taskTutorial = new JXTaskPane();
 
-    // Cache des extensions :
-    private Map<Component, JXTaskPane> extensions = new HashMap<Component, JXTaskPane>();
     // Cache des tutoriels
     private Map<Langage, NavigateurFichier> tutoriels = new HashMap<Langage, NavigateurFichier>();
 
@@ -159,8 +151,11 @@ public class ExplorateurProjet extends JPanel {
             {
                 if (!visuel) {
                     box_squelette.setSelected(true);
+                    box_squelette.setEnabled(false);
                     JPanel jPanel = new JPanel();
-                    jPanel.add(new JLabel("Squelette du livre : "));
+                    JLabel lsquelette;
+                    jPanel.add(lsquelette =  new JLabel("Squelette du livre : "));
+                    lsquelette.setEnabled(false);
                     jPanel.add(box_squelette);
                     panel_options.add(jPanel);
                 }

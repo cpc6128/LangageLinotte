@@ -205,18 +205,6 @@ public class LaToileListener extends JPanelLaToile implements KeyListener, Runna
 
 	}
 
-	/**
-	 * @param b
-	 */
-	public void setCheckMove(boolean b) {
-		if (b) {
-			// Pour être sûr :
-			for (int i = 0; i < keys.length; keys[i++] = TOUCHE_NON_ACTIVE) {
-			}
-			this.requestFocus();
-		}
-	}
-
 	private boolean isDown(int key) {
 		int valeur = keys[key & 0xff];
 		boolean retour = valeur != TOUCHE_NON_ACTIVE;
@@ -386,14 +374,6 @@ public class LaToileListener extends JPanelLaToile implements KeyListener, Runna
 		}
 	}
 
-	public void ajouteTouche(String touche) {
-		synchronized (touches) {
-			touches.add(touche);
-		}
-		reveillerMoteur();
-	}
-
-	
 	public boolean resteDesTouches() {
 		synchronized (touches) {
 			/*if (lastTime != 0 && lastTimeVerification == lastTime) {

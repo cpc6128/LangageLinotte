@@ -768,12 +768,6 @@
 			<aide present="" imperatif="ferme" aide="Fermeture un bloc" >Fermer</aide>
 			<aide present="" imperatif="débogue" aide="Lance le débogueur" >Déboguer</aide>
 			<aide present="" imperatif="ferme ?" aide="Fermer un tube (greffon)" >Fermer (tube)</aide>
-			<aide present="" imperatif="ouvre ? avec ? depuis ?" aide="Ouvrir un tube (greffon)" >Ouvrir (tube)</aide>
-			<aide present="" imperatif="charge ? dans ?" aide="Charger un tube (greffon)" >Charger (tube)</aide>
-			<aide present="" imperatif="charge ? dans ? avec ?" aide="Charger un tube avec des paramètres (greffon)" >Charger avec (tube)</aide>
-			<aide present="" imperatif="configure ? avec ?" aide="Configurer un tube (greffon)" >Configurer (tube)</aide>
-			<aide present="" imperatif="décharge ? depuis ?" aide="Décharger un tube (greffon)" >Décharger (tube)</aide>
-			<aide present="" imperatif="décharge ? depuis ? avec ?" aide="Décharger un tube avec des paramètres (greffon)" >Décharger avec (tube)</aide>
 			<aide present="" imperatif="fais réagir ? à ? pour ?" aide="Ajoute un évènement à une espèce graphique" >Faire réagir</aide>
 			<aide present="" imperatif="ne fais plus réagir ? à ?" aide="Supprime un évènement à une espèce graphique">
 				Ne plus faire réagir
@@ -793,19 +787,6 @@
 			</aide>
 			<aide present="" imperatif="recharge ?" aide="Recharge un acteur depuis un fichier">Recharger</aide>
 			<aide present="" imperatif="interromps" aide="Interrompre une boucle">Interrompre</aide>
-			<aide icone="oui" present=""
-				  imperatif="/*:ligne:Spécification : :version::ligne:Auteur : :auteur::ligne:*/:ligne::ligne:bibliothèque:ligne::ligne:espèces:ligne::ligne:globale:ligne::ligne:principale ::ligne::tab://ici les acteurs:ligne::tab://ici les actions:ligne::tab:"
-				  aide="Insérer dans le cahier le squelette complet d'un livre">+Livre
-			</aide>
-			<aide icone="oui" present="" imperatif=":ligne:F ::ligne::tab:"
-				  aide="Insérer dans le cahier le squelette d'une fonction">-Fonction
-			</aide>
-			<aide icone="oui" present="" imperatif="lis:ligne::tab:ferme"
-				  aide="Insérer dans le cahier le squelette d'un bloc">-Bloc
-			</aide>
-			<aide icone="oui" present="" imperatif="Essaie lis:ligne::tab:ferme"
-				  aide="Insérer dans le cahier le squelette d'une bloc de gestion d'erreurs">-Gestion d'erreurs
-			</aide>
 			<condition texte="Si ? > ?">Plus grand que</condition>
 			<condition texte="Si ? &lt; ?">Plus petit que</condition>
 			<condition texte="Si ? = ?">Égal à</condition>
