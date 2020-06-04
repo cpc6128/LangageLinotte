@@ -449,7 +449,7 @@ boom :
 
 perdu :
 	*point est un nombre
-				//largeur@énergie prend largeur@énergie - point
+	largeur@énergie prend largeur@énergie - point
 	délai feu prend 100
 	si (largeur@énergie) < 0
 		parcours fin
