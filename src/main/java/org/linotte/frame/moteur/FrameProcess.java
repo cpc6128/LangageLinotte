@@ -27,7 +27,6 @@ import org.alize.kernel.AKRuntime;
 import org.linotte.frame.atelier.Atelier;
 import org.linotte.frame.atelier.Inspecteur;
 import org.linotte.frame.cahier.Cahier;
-import org.linotte.frame.coloration.ProcessStyle;
 import org.linotte.moteur.exception.*;
 import org.linotte.moteur.outils.CouleurImage;
 import org.linotte.moteur.outils.Preference;
@@ -45,15 +44,11 @@ import org.linotte.moteur.xml.alize.parseur.Parseur;
 import org.linotte.moteur.xml.appels.Appel;
 import org.linotte.moteur.xml.appels.Fonction;
 
-import javax.swing.*;
 import java.awt.*;
-import java.io.*;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
-import java.text.SimpleDateFormat;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.StringReader;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
@@ -75,8 +70,6 @@ public class FrameProcess extends Thread {
 	private boolean test;
 
 	private int delay;
-
-	ProcessStyle processStyle = null;
 
 	private static AKRuntime runtime;
 
@@ -280,16 +273,6 @@ public class FrameProcess extends Thread {
 				applet.ecrireErreurTableau("mail : ronan.mounes@amstrad.eu");*/
 				e.printStackTrace();
 
-				int r = JOptionPane.showConfirmDialog(null,
-						"Bravo ! Vous avez trouvé un bogue dans l'interprète Linotte... ça arrive :-(\n"
-								//+ (memoryLeak ? "La mémoire a été saturée par votre programme !\n" : "")
-								+ "Afin de m'aider à améliorer l'interprète, un message contenant l'erreur va m'être envoyé pour être corrigé.",
-						"Bogue dans l'Atelier Linotte !", JOptionPane.ERROR_MESSAGE, JOptionPane.DEFAULT_OPTION, Ressources.getImageIcon("face-devilish.png"));
-				if (r == 0) {
-					boolean envoye = envoyerErreur(e, cahierCourant.getFichier());
-					JOptionPane.showMessageDialog(null, envoye ? "Merci ! :-)" : "Impossible d'envoyer l'erreur :-(");
-				}
-
 			}
 
 		} finally {
@@ -321,60 +304,6 @@ public class FrameProcess extends Thread {
 			l2.add(Ressources.getImageIcon("linotte_new.png").getImage());
 			applet.setIconImages(l2);
 		}
-	}
-
-	/**
-	 * @param e
-	 * @param file 
-	 * @return
-	 */
-	private boolean envoyerErreur(Throwable e, File file) {
-		try {
-			StringWriter sw = new StringWriter();
-			PrintWriter pw = new PrintWriter(sw);
-			e.printStackTrace(pw);
-			String id = "";
-			id += "; os.name=" + System.getProperty("os.name");
-			id += "; os.version=" + System.getProperty("os.version");
-			id += "; java.vendor=" + System.getProperty("java.vendor");
-			id += "; java.version=" + System.getProperty("java.version");
-			id += "; os.arch=" + System.getProperty("os.arch");
-			id += "; livre=" + file != null ? file.getCanonicalPath() : "-";
-
-			String date = new SimpleDateFormat("yyyy MM dd à HH:mm:ss").format(Calendar.getInstance().getTime());
-			String message = encode(date + " - Linotte " + Version.getVersion() + " " + encode(e.getMessage()));
-			String trace = encode(id + "\n" + sw.toString());
-
-			URLConnection conn = new URL("http://langagelinotte.no-ip.org:8087/stockbogue.liv?message=" + message + "&trace=" + trace).openConnection();
-			conn.connect();
-			InputStream is = conn.getInputStream();
-			final int MAX_LENGTH = 20000;
-			byte[] buf = new byte[MAX_LENGTH];
-			int total = 0;
-			while (total < MAX_LENGTH) {
-				int count = is.read(buf, total, MAX_LENGTH - total);
-				if (count < 0) {
-					break;
-				}
-				total += count;
-			}
-			is.close();
-
-			String xml = new String(buf, 0, total);
-			System.out.println(xml);
-			return xml.startsWith("ok");
-
-		} catch (Exception e1) {
-			e1.printStackTrace();
-			return false;
-		}
-	}
-
-	private String encode(String url) throws UnsupportedEncodingException {
-		if (url != null)
-			return URLEncoder.encode(url, "UTF-8");
-		else
-			return "NPE !";
 	}
 
 	@Override

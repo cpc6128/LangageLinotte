@@ -584,7 +584,10 @@ public class PrototypeGraphique extends org.linotte.moteur.entites.Prototype imp
 					return new Acteur(Role.NOMBRE, new BigDecimal(ConditionAction.collision(acteur, cible) ? 1 : 0));
 
 				} catch (Exception e) {
-					throw new ErreurException(Constantes.PROTOTYPE_METHODE_FONCTIONNELLE_PARAMETRE, nom());
+					e.printStackTrace();
+					//throw new ErreurException(Constantes.PROTOTYPE_METHODE_FONCTIONNELLE_PARAMETRE, nom());
+					// Linotte 3.0 ou java 12 ? java.lang.NullPointerException : at java.desktop/java.awt.geom.Area.intersect(Area.java:293)
+					return new Acteur(Role.NOMBRE,new BigDecimal(0));
 				}
 			}
 

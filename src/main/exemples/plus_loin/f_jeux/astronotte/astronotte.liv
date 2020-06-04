@@ -308,7 +308,7 @@ monstre 1 :
 	tant que (y@monstre) < (taille_v + 30)
 		y@monstre prend y@monstre + 8 + vitesse
 		x@monstre prend x@monstre + ( cos ((y@monstre) + delta) * 10)
-		si monstre.collision(vaisseau), parcours perdu avec 5
+		si monstre.collision(vaisseau) parcours perdu avec 5
 		pour chaque missiles
 			si (visible@joker) == "oui"
 				si joker.collision(monstre)
