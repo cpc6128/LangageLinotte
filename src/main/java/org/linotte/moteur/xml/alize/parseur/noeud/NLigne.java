@@ -107,6 +107,9 @@ public class NLigne extends Noeud {
         if (!parserContext.lexer.isFinDeLigne()) {
 
             if (parserContext.mode == MODE.FORMATAGE) {
+                // on restore ces valeurs.
+                // Par exemple lors de l'utilisation de "sinon", on pase par
+                // NSousParagraphe qui incrémente ces valeurs. Code à revoir un jour...
                 parserContext.valeur = copieValeur;
                 parserContext.saute = copieSaute;
             }

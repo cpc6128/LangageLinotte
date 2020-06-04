@@ -6,6 +6,7 @@ package org.linotte.greffons.externe;
  * @author Ronan Mounès
  * 
  */
+@Deprecated
 public abstract class Tube extends Greffon {
 
 	/**
