@@ -105,7 +105,7 @@ Boucle en ligne :<br/>
 <span class=marge2>affiche " + µ"0022" + "&lt;html>&lt;head>&lt;title>" + µ"0022" + "</span><br/>
 <span class=marge2>affiche " + µ"0022" + "Boucle en ligne !" + µ"0022" + "</span><br/>
 <span class=marge2>affiche " + µ"0022" + "&lt;/title>&lt;/head>&lt;body>" + µ"0022" + "</span><br/>
-<span class=marge2>pour 10, affiche " + µ"0022" + "Je boucle " + µ"0022" + " + joker + " + µ"0022" + " fois !&lt;br>" + µ"0022" + "</span><br/>
+<span class=marge2>pour 10 affiche " + µ"0022" + "Je boucle " + µ"0022" + " + joker + " + µ"0022" + " fois !&lt;br>" + µ"0022" + "</span><br/>
 <span class=marge2>affiche " + µ"0022" + "&lt;/body>&lt;/html>" + µ"0022" + "</span><br/>
   	</code></div><br/>
 Deposez ce livre sous le nom <i>compteur.liv</i> dans le <a href=" + µ"0022" + "#root" + µ"0022" + ">repertoire racine du serveur</a>, 

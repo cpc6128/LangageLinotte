@@ -433,122 +433,121 @@ changer image :
 
 fermer la fenêtre :
 		// Si le client en Smil est démarré :
-	essaie
-		essaie parcours déconnexion
-		termine
+	essaie parcours déconnexion
+	termine
 
-	affichage radio 1 :
-		*l est un liste
-		champ est un texte
-		pour chaque liste.valeurs()
-			champ prend champ + joker + ";
+affichage radio 1 :
+	*l est un liste
+	champ est un texte
+	pour chaque liste.valeurs()
+		champ prend champ + joker + ";
 "
+	ferme
+	texte @ boite_radio prend champ
+	reviens
+
+bouton radio sélectionné 1 :
+	*br est un boutonradio
+	visible@panneau_radio_0 prend "non"
+	visible@panneau_radio_1 prend "oui"
+	visible@panneau_radio_2 prend "non"
+	visible@panneau_radio_3 prend "non"
+	reviens
+
+bouton radio sélectionné 2 :
+	*br est un boutonradio
+	visible@panneau_radio_0 prend "non"
+	visible@panneau_radio_1 prend "non"
+	visible@panneau_radio_2 prend "oui"
+	visible@panneau_radio_3 prend "non"
+	reviens
+
+bouton radio sélectionné 3 :
+	*br est un boutonradio
+	visible@panneau_radio_0 prend "non"
+	visible@panneau_radio_1 prend "non"
+	visible@panneau_radio_2 prend "non"
+	visible@panneau_radio_3 prend "oui"
+	reviens
+
+changer bouton :
+	*cac est un caseàcocher
+	commande est un texte
+	pour chaque éléments
+		si (valeur@joker) == "vrai"
+			commande prend commande + " " + texte@joker
 		ferme
-		texte @ boite_radio prend champ
-		reviens
+	ferme
+	texte@macommande prend commande
+	reviens
 
-	bouton radio sélectionné 1 :
-		*br est un boutonradio
-		visible@panneau_radio_0 prend "non"
-		visible@panneau_radio_1 prend "oui"
-		visible@panneau_radio_2 prend "non"
-		visible@panneau_radio_3 prend "non"
-		reviens
+changer la couleur :
+	*s est un sélecteur
+	couleurfond@panneau_radio_2 prend valeur @ s
+	reviens
 
-	bouton radio sélectionné 2 :
-		*br est un boutonradio
-		visible@panneau_radio_0 prend "non"
-		visible@panneau_radio_1 prend "non"
-		visible@panneau_radio_2 prend "oui"
-		visible@panneau_radio_3 prend "non"
-		reviens
+popup message :
+	*s est un bouton
+	popup.message("C'est simple d'afficher un message !")
+	reviens
 
-	bouton radio sélectionné 3 :
-		*br est un boutonradio
-		visible@panneau_radio_0 prend "non"
-		visible@panneau_radio_1 prend "non"
-		visible@panneau_radio_2 prend "non"
-		visible@panneau_radio_3 prend "oui"
-		reviens
+popup message avec icône :
+	*s est un bouton
+	popup.messageeticône("C'est simple d'afficher un message avec un icône !","medias/rouge.png")
+	reviens
 
-	changer bouton :
-		*cac est un caseàcocher
-		commande est un texte
-		pour chaque éléments
-			si (valeur@joker) == "vrai"
-				commande prend commande + " " + texte@joker
-			ferme
-		ferme
-		texte@macommande prend commande
-		reviens
+popup question :
+	*s est un bouton
+	options est un casier de texte valant "génial", "excellent", "indispensable"
+	texte@champ1 prend popup.question("Penses-tu que Linotte est un langage",options)
+	reviens
 
-	changer la couleur :
-		*s est un sélecteur
-		couleurfond@panneau_radio_2 prend valeur @ s
-		reviens
+popup question avec icône :
+	*s est un bouton
+	options est un casier de texte valant "génial", "excellent", "indispensable"
+	texte@champ2 prend popup.questioneticône("Penses-tu que Linotte est un langage",options,"medias/blanc.png")
+	reviens
 
-	popup message :
-		*s est un bouton
-		popup.message("C'est simple d'afficher un message !")
-		reviens
-
-	popup message avec icône :
-		*s est un bouton
-		popup.messageeticône("C'est simple d'afficher un message avec un icône !","medias/rouge.png")
-		reviens
-
-	popup question :
-		*s est un bouton
-		options est un casier de texte valant "génial", "excellent", "indispensable"
-		texte@champ1 prend popup.question("Penses-tu que Linotte est un langage",options)
-		reviens
-
-	popup question avec icône :
-		*s est un bouton
-		options est un casier de texte valant "génial", "excellent", "indispensable"
-		texte@champ2 prend popup.questioneticône("Penses-tu que Linotte est un langage",options,"medias/blanc.png")
-		reviens
-
-	popup date :
-		*s est un bouton
+popup date :
+	*s est un bouton
 		/*texte@champ3 prend popup.sélectionnerdate()*/
-		reviens
+	reviens
 
-	changer transparence :
-		*slider est un slider
-		form.transparence(valeur@slider)
-		reviens
+changer transparence :
+	*slider est un slider
+	form.transparence(valeur@slider)
+	reviens
 
-	changer bordure :
-		*cac est un caseàcocher
-		si (valeur@cac) == "vrai", form.bordure(vrai)
-		sinon form.bordure(faux)
-		reviens
+changer bordure :
+	*cac est un caseàcocher
+	si (valeur@cac) == "vrai", form.bordure(vrai)
+	sinon form.bordure(faux)
+	reviens
 
-	changer audessus :
-		*cac est un caseàcocher
-		si (valeur@cac) == "vrai", form.audessus(vrai)
-		sinon form.audessus(faux)
-		reviens
+changer audessus :
+	*cac est un caseàcocher
+	si (valeur@cac) == "vrai", form.audessus(vrai)
+	sinon form.audessus(faux)
+	reviens
 
-	à propos :
-		form.àpropos()
-		reviens
+à propos :
+	form.àpropos()
+	reviens
 
-	changer icône :
-		*cac est un menucaseàcocher
-		icône@cac prend ter(((valeur@cac) == "vrai"),"medias/rouge.png","medias/blanc.png")
-		reviens
+changer icône :
+	*cac est un menucaseàcocher
+	icône@cac prend ter(((valeur@cac) == "vrai"),"medias/rouge.png","medias/blanc.png")
+	reviens
 
-	afficher sousformulaire :
-		*s est un bouton
-		visible@sousform prend "oui"
-		reviens
+afficher sousformulaire :
+	*s est un bouton
+	visible@sousform prend "oui"
+	reviens
 
-	cacher sousformulaire :
-		*s est un bouton
-		visible@sousform prend "non"
-		reviens
+cacher sousformulaire :
+	*s est un bouton
+	visible@sousform prend "non"
+	reviens
 
 /*
 		***************************************
@@ -556,251 +555,246 @@ fermer la fenêtre :
 		***************************************
 */
 
-	demarrer im :
-		*s est un bouton
-		visible@l_info_im prend "faux"
-		visible@s prend "faux"
-		~greffon 1 tcpclient 0.2 "http://abaque.googlecode.com/files/TCPLinotte.zgl"
-		essaie
-			client est un tcpclient
+demarrer im :
+	*s est un bouton
+	visible@l_info_im prend "faux"
+	visible@s prend "faux"
+	~greffon 1 tcpclient 0.2 "http://abaque.googlecode.com/files/TCPLinotte.zgl"
+	essaie
+		client est un tcpclient
 			// Ainsi, l'objet client peut être visible depuis un acteur global :
-			attache client à serveur
-		ferme
-		sinon
+		attache client à serveur
+	ferme
+	sinon
 			// Sans les greffons, ça ne peut pas marcher !
-			visible@s prend "oui"
-			visible@l_info_im prend "oui"
-			reviens
-		ferme
-		texte@im_login prend (client@serveur).nommachine()
-		ajoute im_amis & im_boite & im_boite_titre & im_b1 & im_tableau & im_info & im_login & im_e_ip dans panneau_im
-		ajoute im_c_ip & im_e_port & im_c_port & im_connecter & im_scrolleur dans panneau_im
-		ajoute im_liste dans im_scrolleur
-		fais réagir im_boite à "clic souris" pour envoyer message
-		fais réagir im_b1 à "clic souris" pour envoyer message
-		fais réagir im_connecter à "clic souris" pour connexion
-		appelle liste amis
-		appelle connexion
-		tant que vrai
-			temporise
-		ferme
+		visible@s prend "oui"
+		visible@l_info_im prend "oui"
+		reviens
+	ferme
+	texte@im_login prend (client@serveur).nommachine()
+	ajoute im_amis & im_boite & im_boite_titre & im_b1 & im_tableau & im_info & im_login & im_e_ip dans panneau_im
+	ajoute im_c_ip & im_e_port & im_c_port & im_connecter & im_scrolleur dans panneau_im
+	ajoute im_liste dans im_scrolleur
+	fais réagir im_boite à "clic souris" pour envoyer message
+	fais réagir im_b1 à "clic souris" pour envoyer message
+	fais réagir im_connecter à "clic souris" pour connexion
+	appelle liste amis
+	appelle connexion
+	tant que vrai
+		temporise
+	ferme
 
-	attendre message :
-		message est un packet
-		tant que vrai
-			essaie
+attendre message :
+	message est un packet
+	tant que vrai
+		essaie
 				// On attend un message du serveur :
-				message prend (client@serveur).recevoir()
+			message prend (client@serveur).recevoir()
 				// *************
 				// Commande PING
 				// *************
-				si (commande@message)=="ping"
-					parcours pong
-				ferme
+			si (commande@message)=="ping"
+				parcours pong
+			ferme
 				// ****************
 				// Commande VERSION
 				// ****************
-				sinon si (commande@message)=="version"
-					affiche "version du serveur : " + message@message
-				ferme
+			sinon si (commande@message)=="version"
+				affiche "version du serveur : " + message@message
+			ferme
 				// *******************
 				// Commande LISTE AMIS
 				// *******************
-				sinon si (commande@message)=="liste amis"
-					valeurs@im_liste prend message@message
-				ferme
+			sinon si (commande@message)=="liste amis"
+				valeurs@im_liste prend message@message
+			ferme
 				// *******************
 				// Commandes autres...
 				// *******************
-				sinon
-					affiche nom@message + "(" + horodatage@message + ") > " + message@message
-					form.clignoter()
-				ferme
-			ferme
 			sinon
-				affiche "Connexion perdue avec le serveur"
-				parcours changer affichage avec "oui", "non"
-				visible@im_connecter prend "oui"
-				reviens
+				affiche nom@message + "(" + horodatage@message + ") > " + message@message
+				form.clignoter()
 			ferme
-		ferme
-
-	envoyer message :
-		message est un packet
-		// construction du packet à envoyer
-		message@message prend texte@im_boite
-		commande@message prend "parler"
-		nom@message prend texte@im_login
-		parcours horodater de commun avec message
-		// Envoi du packet au serveur
-		(client@serveur).envoyer(message)
-		texte@im_boite prend ""
-		reviens
-
-	connexion :
-		port est un nombre
-		essaie
-			visible@im_connecter prend "non"
-			convertis texte@im_c_port en port
-			(client@serveur).connexion(texte@im_c_ip, port)
-			//affiche "nous sommes connecté au serveur ..."
-			parcours version
-			parcours historique
-			appelle attendre message
-			parcours changer affichage avec "non", "oui"
 		ferme
 		sinon
-			affiche "impossible de se connecter ..."
-			visible@im_connecter prend "oui"
-		ferme
-		reviens
-
-	quitter :
-		message est un packet
-		// construction du packet à envoyer
-		nom@message prend texte@im_login
-		commande@message prend "quitter"
-		affiche "nous quittons le serveur ..."
-		essaie
-			essaie (client@serveur).envoyer(message)
-			termine
-
-		déconnexion :
-			message est un packet
-		// construction du packet à envoyer
-			nom@message prend texte@im_login
-			commande@message prend "quitter"
-			(client@serveur).envoyer(message)
+			affiche "Connexion perdue avec le serveur"
 			parcours changer affichage avec "oui", "non"
 			visible@im_connecter prend "oui"
 			reviens
+		ferme
+	ferme
 
-		changer affichage :
-			*état 1 est un texte
-			*état 2 est un texte
-			visible@im_e_ip prend état 1
-			visible@im_c_ip prend état 1
-			visible@im_e_port prend état 1
-			visible@im_c_port prend état 1
-			visible@im_boite_titre prend état 2
-			visible@im_scrolleur prend état 2
-			visible@im_amis prend état 2
-			visible@im_liste prend état 2
-			reviens
+envoyer message :
+	message est un packet
+		// construction du packet à envoyer
+	message@message prend texte@im_boite
+	commande@message prend "parler"
+	nom@message prend texte@im_login
+	parcours horodater de commun avec message
+		// Envoi du packet au serveur
+	(client@serveur).envoyer(message)
+	texte@im_boite prend ""
+	reviens
 
-		liste amis :
-			message est un packet
-			commande@message prend "liste amis"
-			tant que vrai
+connexion :
+	port est un nombre
+	essaie
+		visible@im_connecter prend "non"
+		convertis texte@im_c_port en port
+		(client@serveur).connexion(texte@im_c_ip, port)
+			//affiche "nous sommes connecté au serveur ..."
+		parcours version
+		parcours historique
+		appelle attendre message
+		parcours changer affichage avec "non", "oui"
+	ferme
+	sinon
+		affiche "impossible de se connecter ..."
+		visible@im_connecter prend "oui"
+	ferme
+	reviens
+
+quitter :
+	message est un packet
+		// construction du packet à envoyer
+	nom@message prend texte@im_login
+	commande@message prend "quitter"
+	affiche "nous quittons le serveur ..."
+	essaie (client@serveur).envoyer(message)
+	termine
+
+déconnexion :
+	message est un packet
+		// construction du packet à envoyer
+	nom@message prend texte@im_login
+	commande@message prend "quitter"
+	(client@serveur).envoyer(message)
+	parcours changer affichage avec "oui", "non"
+	visible@im_connecter prend "oui"
+	reviens
+
+changer affichage :
+	*état 1 est un texte
+	*état 2 est un texte
+	visible@im_e_ip prend état 1
+	visible@im_c_ip prend état 1
+	visible@im_e_port prend état 1
+	visible@im_c_port prend état 1
+	visible@im_boite_titre prend état 2
+	visible@im_scrolleur prend état 2
+	visible@im_amis prend état 2
+	visible@im_liste prend état 2
+	reviens
+
+liste amis :
+	message est un packet
+	commande@message prend "liste amis"
+	tant que vrai
 			// construction du packet à envoyer
-				nom@message prend texte@im_login
-				essaie
-					essaie (client@serveur).envoyer(message)
-					sinon	valeurs@im_liste prend ""
-					attends 3 seconde
-				ferme
+		nom@message prend texte@im_login
+		essaie (client@serveur).envoyer(message)
+		sinon	valeurs@im_liste prend ""
+		attends 3 seconde
+	ferme
 
-			version :
-				message est un packet
-				commande@message prend "version"
+version :
+	message est un packet
+	commande@message prend "version"
 		// construction du packet à envoyer
-				nom@message prend texte@im_login
-				essaie
-					essaie (client@serveur).envoyer(message)
-					reviens
+	nom@message prend texte@im_login
+	essaie (client@serveur).envoyer(message)
+	reviens
 
-				historique :
-					message est un packet
-					commande@message prend "historique"
+historique :
+	message est un packet
+	commande@message prend "historique"
 		// construction du packet à envoyer
-					nom@message prend texte@im_login
-					essaie
-						essaie (client@serveur).envoyer(message)
-						reviens
+	nom@message prend texte@im_login
+	essaie (client@serveur).envoyer(message)
+	reviens
 
-					pong :
-						message est un packet
-						commande@message prend "pong"
+pong :
+	message est un packet
+	commande@message prend "pong"
 		// construction du packet à envoyer
-						nom@message prend texte@im_login
-						essaie
-							essaie (client@serveur).envoyer(message)
-							reviens
+	nom@message prend texte@im_login
+	essaie (client@serveur).envoyer(message)
+	reviens
 
-						horloge :
-							position 1 est un nombre valant 0 + décallage
-							position 2 est un nombre valant 80 + décallage
-							position 3 est un nombre valant 220 + décallage
-							position 4 est un nombre valant 300 + décallage
-							position 5 est un nombre valant 440 + décallage
-							position 6 est un nombre valant 520 + décallage
-							h & m & s est un nombre
-							projette rond1 & rond2 & rond3 & rond4
-							parcours init avec position 1, chiffre1
-							parcours init avec position 2, chiffre2
-							parcours init avec position 3, chiffre3
-							parcours init avec position 4, chiffre4
-							parcours init avec position 5, chiffre5
-							parcours init avec position 6, chiffre6
-							tant que vrai
-								h prend heure
-								m prend minute
-								s prend seconde
-								parcours analyse avec h, chiffre1, chiffre2
-								parcours analyse avec m, chiffre3, chiffre4
-								parcours analyse avec s, chiffre5, chiffre6
-								si (s mod 2) == 0
-									couleur@rond1 & couleur@rond2 & couleur@rond3 & couleur@rond4 prend lumière clair
-								ferme
-								sinon
-									couleur@rond1 & couleur@rond2 & couleur@rond3 & couleur@rond4 prend lumière douce
-								ferme
-								attends 1 seconde
-							ferme
-							termine
+horloge :
+	position 1 est un nombre valant 0 + décallage
+	position 2 est un nombre valant 80 + décallage
+	position 3 est un nombre valant 220 + décallage
+	position 4 est un nombre valant 300 + décallage
+	position 5 est un nombre valant 440 + décallage
+	position 6 est un nombre valant 520 + décallage
+	h & m & s est un nombre
+	projette rond1 & rond2 & rond3 & rond4
+	parcours init avec position 1, chiffre1
+	parcours init avec position 2, chiffre2
+	parcours init avec position 3, chiffre3
+	parcours init avec position 4, chiffre4
+	parcours init avec position 5, chiffre5
+	parcours init avec position 6, chiffre6
+	tant que vrai
+		h prend heure
+		m prend minute
+		s prend seconde
+		parcours analyse avec h, chiffre1, chiffre2
+		parcours analyse avec m, chiffre3, chiffre4
+		parcours analyse avec s, chiffre5, chiffre6
+		si (s mod 2) == 0
+			couleur@rond1 & couleur@rond2 & couleur@rond3 & couleur@rond4 prend lumière clair
+		ferme
+		sinon
+			couleur@rond1 & couleur@rond2 & couleur@rond3 & couleur@rond4 prend lumière douce
+		ferme
+		attends 1 seconde
+	ferme
+	termine
 
-						init :
-							* d est un nombre
-							* c est un casier de polygone
-							parcours affiche avec #élément h, 111 + d, 139, c
-							parcours affiche avec #élément h, 111 + d, 261, c
-							parcours affiche avec #élément h, 111 + d, 383, c
-							parcours affiche avec #élément v, 100 + d, 150, c
-							parcours affiche avec #élément v, 100 + d, 210, c
-							parcours affiche avec #élément v, 100 + d, 272, c
-							parcours affiche avec #élément v, 100 + d, 332, c
-							parcours affiche avec #élément v, 150 + d, 150, c
-							parcours affiche avec #élément v, 150 + d, 210, c
-							parcours affiche avec #élément v, 150 + d, 272, c
-							parcours affiche avec #élément v, 150 + d, 332, c
-							Reviens
+init :
+	* d est un nombre
+	* c est un casier de polygone
+	parcours affiche avec #élément h, 111 + d, 139, c
+	parcours affiche avec #élément h, 111 + d, 261, c
+	parcours affiche avec #élément h, 111 + d, 383, c
+	parcours affiche avec #élément v, 100 + d, 150, c
+	parcours affiche avec #élément v, 100 + d, 210, c
+	parcours affiche avec #élément v, 100 + d, 272, c
+	parcours affiche avec #élément v, 100 + d, 332, c
+	parcours affiche avec #élément v, 150 + d, 150, c
+	parcours affiche avec #élément v, 150 + d, 210, c
+	parcours affiche avec #élément v, 150 + d, 272, c
+	parcours affiche avec #élément v, 150 + d, 332, c
+	Reviens
 
-						analyse :
-							* n est un nombre
-							* c1 est un casier de polygone
-							* c2 est un casier de polygone
-							parcours colorise avec nombres{entier(n/10)}, c1
-							parcours colorise avec nombres{décimal(n/10)*10}, c2
-							Reviens
+analyse :
+	* n est un nombre
+	* c1 est un casier de polygone
+	* c2 est un casier de polygone
+	parcours colorise avec nombres{entier(n/10)}, c1
+	parcours colorise avec nombres{décimal(n/10)*10}, c2
+	Reviens
 
-						affiche :
-							*temporaire est un polygone
-							*x est un nombre
-							*y est un nombre
-							*casier est un casier de polygone
-							x@temporaire prend x
-							y@temporaire prend y
-							projette temporaire
-							ajoute temporaire dans casier
-							reviens
+affiche :
+	*temporaire est un polygone
+	*x est un nombre
+	*y est un nombre
+	*casier est un casier de polygone
+	x@temporaire prend x
+	y@temporaire prend y
+	projette temporaire
+	ajoute temporaire dans casier
+	reviens
 
-						colorise :
-							* modèle est un casier de nombre
-							* chiffre est un casier de polygone
-							position est un nombre valant 0
-							pour chaque modèle
-								si joker == 1, couleur@(chiffre{position}) prend lumière clair
-								sinon couleur@(chiffre{position}) prend lumière douce
-								position prend position + 1
-							ferme
-							reviens
+colorise :
+	* modèle est un casier de nombre
+	* chiffre est un casier de polygone
+	position est un nombre valant 0
+	pour chaque modèle
+		si joker == 1, couleur@(chiffre{position}) prend lumière clair
+		sinon couleur@(chiffre{position}) prend lumière douce
+		position prend position + 1
+	ferme
+	reviens
