@@ -14,7 +14,7 @@ La page officielle du site est <a href="http://langagelinotte.free.fr">langageli
 
 #### Pour les utilisateurs, télécharger une version de travail (version non finalisée):
 
-- <a href="https://bitbucket.org/metalm/langagelinotte/downloads/Linotte_3.0-NON-STABLE-2020-06-04-21-30.zip">Linotte_3.0-NON-STABLE-2020-06-04-21-30.zip</a>
+- <a href="https://bitbucket.org/metalm/langagelinotte/downloads/Linotte_3.0-QUASI-STABLE-2020-06-05-15-13.zip">Linotte_3.0-QUASI-STABLE-2020-06-05-15-13.zip</a>
 
 #### Pour contribuer à faire évoluer Linotte :
  `git clone https://github.com/cpc6128/LangageLinotte.git`
