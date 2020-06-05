@@ -5,7 +5,8 @@
     <groupId>fr.codevallee</groupId>
     <artifactId>langagelinotte</artifactId>
     <packaging>jar</packaging>
-    <version>3.0-NON-STABLE</version>
+    <version>3.0-QUASI-STABLE</version>
+    <!--version>3.0-NON-STABLE</version-->
     <name>linotte</name>
     <url>http://www.codevallee.fr</url>
 
