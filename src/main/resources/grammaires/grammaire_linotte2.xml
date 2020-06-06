@@ -1096,7 +1096,7 @@
 												<choix>
 													<p:build>
 														<ligne tab="1">
-															<token obligatoire="oui">pour</token>
+															<token obligatoire="oui" style="structure" >pour</token>
 															<acteur type="jusquautoken" obligatoire="oui">de</acteur>
 															<acteur type="jusquautoken" obligatoire="oui">à</acteur>
 															<acteur type="jusquautoken" obligatoire="oui">suivant
@@ -1113,7 +1113,7 @@
 											<groupe nom="boucle_suite" discriminant="pour"><!-- 2.7.7 -->
 												<choix>
 													<ligne tab="1">
-														<token obligatoire="oui">pour</token>
+														<token obligatoire="oui" style="structure">pour</token>
 														<acteur type="jusquautoken" obligatoire="oui">de</acteur>
 														<acteur type="jusquautoken" obligatoire="oui">à</acteur>
 														<acteur type="jusquautoken" obligatoire="oui">suivant</acteur>
@@ -1128,7 +1128,7 @@
 												<choix>
 													<p:build>
 														<ligne tab="1">
-															<token obligatoire="oui">pour</token>
+															<token obligatoire="oui" style="structure">pour</token>
 															<acteur type="jusquautoken" obligatoire="oui">de</acteur>
 															<acteur type="jusquautoken" obligatoire="oui">à</acteur>
 															<acteur type="jusquautoken" obligatoire="oui"
@@ -1143,7 +1143,7 @@
 											<groupe nom="boucle_for" discriminant="pour"><!-- 2.7.7 -->
 												<choix>
 													<ligne tab="1">
-														<token obligatoire="oui">pour</token>
+														<token obligatoire="oui" style="structure">pour</token>
 														<acteur type="jusquautoken" obligatoire="oui">de</acteur>
 														<acteur type="jusquautoken" obligatoire="oui">à</acteur>
 														<acteur type="resteligne" obligatoire="oui"/>
@@ -1157,7 +1157,7 @@
 												<choix>
 													<p:build>
 														<ligne tab="1">
-															<token obligatoire="oui" annotation="joker">pour</token>
+															<token obligatoire="oui" annotation="joker" style="structure">pour</token>
 															<token obligatoire="non">chaque</token>
 															<acteur type="jusquautoken" obligatoire="oui"
 																	hack_analyse="suppressionvirgule">,
@@ -1171,7 +1171,7 @@
 											<groupe nom="boucle" discriminant="pour"><!-- 2.7.7 -->
 												<choix>
 													<ligne tab="1">
-														<token obligatoire="oui" annotation="joker">pour</token>
+														<token obligatoire="oui" annotation="joker" style="structure">pour</token>
 														<token obligatoire="non">chaque</token>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat souffleur="non" nom="boucle" hack_bloc="oui"/>
@@ -1314,7 +1314,7 @@
 												<choix>
 													<p:build>
 														<ligne tab="1">
-															<token obligatoire="oui">si</token>
+															<token obligatoire="oui" style="structure">si</token>
 															<acteur type="jusquautoken" obligatoire="oui"
 																	hack_analyse="suppressionvirgule">,
 															</acteur>
@@ -1327,7 +1327,7 @@
 											<groupe nom="test" discriminant="si"><!-- 2.7.7 -->
 												<choix>
 													<ligne tab="1">
-														<token obligatoire="oui">si</token>
+														<token obligatoire="oui" style="structure">si</token>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="condition" param="est égal à vrai" hack_bloc="oui"/>
 														<sousparagraphe etat="ouverture"/>
@@ -1342,7 +1342,7 @@
 											<groupe nom="test" discriminant="sinon"><!-- 2.7.7 -->
 												<choix>
 													<ligne tab="1">
-														<token obligatoire="oui" annotation="sinon_simple">sinon</token>
+														<token obligatoire="oui" annotation="sinon_simple" style="structure">sinon</token>
 														<etat nom="sinon" param="est égal à" hack_bloc="oui"/>
 														<sousparagraphe etat="ouverture"/>
 														<etat nom="§ début"/>
@@ -1353,7 +1353,7 @@
 												<choix>
 													<p:build>
 														<ligne tab="1">
-															<token obligatoire="oui">sinon</token>
+															<token obligatoire="oui" style="structure">sinon</token>
 															<token obligatoire="oui">si</token>
 															<acteur type="jusquautoken" obligatoire="oui"
 																	hack_analyse="suppressionvirgule">,
@@ -1367,7 +1367,7 @@
 											<groupe nom="test" discriminant="sinon" ><!-- 2.7.7 -->
 												<choix>
 													<ligne tab="1">
-														<token obligatoire="oui">sinon</token>
+														<token obligatoire="oui" style="structure">sinon</token>
 														<token obligatoire="oui">si</token>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="sinon" param="est égal à vrai" hack_bloc="oui"/>
@@ -1381,7 +1381,7 @@
 												<choix>
 													<p:build>
 														<ligne tab="1">
-															<token obligatoire="oui" annotation="sinon_simple">sinon</token>
+															<token obligatoire="oui" style="structure" annotation="sinon_simple">sinon</token>
 															<etat nom="sinon" param="est égal à"/>
 															<p:copynode target="node_base"/>
 														</ligne>
@@ -2384,7 +2384,7 @@
 											<groupe nom="§" discriminant="ferme" >
 												<choix>
 													<ligne tab="1" id="node_base">
-														<token obligatoire="oui" >ferme</token>
+														<token obligatoire="oui" style="structure">ferme</token>
 														<etat nom="§ fin"/>
 														<sousparagraphe etat="fermeture"/>
 													</ligne>
