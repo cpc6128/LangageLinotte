@@ -5,7 +5,8 @@
     <groupId>fr.codevallee</groupId>
     <artifactId>langagelinotte</artifactId>
     <packaging>jar</packaging>
-    <version>3.0-QUASI-STABLE</version>
+    <version>3.0</version>
+    <!--version>3.0-QUASI-STABLE</version-->
     <!--version>3.0-NON-STABLE</version-->
     <name>linotte</name>
     <url>http://www.codevallee.fr</url>
@@ -14,7 +15,7 @@
         <repository>
             <id>github</id>
             <name>GitHub OWNER Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/cpc6128/LangageLinotte2</url>
+            <url>https://maven.pkg.github.com/cpc6128/LangageLinotte</url>
         </repository>
     </distributionManagement>
 
@@ -67,12 +68,12 @@
         <dependency>
             <groupId>com.formdev</groupId>
             <artifactId>flatlaf</artifactId>
-            <version>0.35</version>
+            <version>0.36</version>
         </dependency>
         <dependency>
             <groupId>com.formdev</groupId>
             <artifactId>flatlaf-swingx</artifactId>
-            <version>0.35</version>
+            <version>0.36</version>
         </dependency>
         <!-- version pour jdk 8 : -->
         <dependency>

@@ -29,7 +29,6 @@ import org.linotte.frame.gui.RequestFocusListener;
 import org.linotte.frame.latoile.Java6;
 import org.linotte.frame.projet.NavigateurFichier.FileTreeNode;
 import org.linotte.moteur.outils.Ressources;
-import org.linotte.moteur.xml.analyse.multilangage.Langage;
 import org.linotte.web.Run;
 
 import javax.swing.*;
@@ -41,22 +40,13 @@ import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
-import java.util.HashMap;
-import java.util.Map;
 
 @SuppressWarnings("serial")
-public class ExplorateurProjet extends JPanel {
-
-    private JXTaskPane taskTutorial = new JXTaskPane();
-
-    // Cache des tutoriels
-    private Map<Langage, NavigateurFichier> tutoriels = new HashMap<Langage, NavigateurFichier>();
-
-    private JXTaskPaneContainer container;
+public class ExplorateurProjet extends JXTaskPaneContainer {
 
     public ExplorateurProjet(FileSystemView view, AtelierFrame atelier, File edt) {
 
-        container = new JXTaskPaneContainer();
+        JXTaskPaneContainer container = new JXTaskPaneContainer();
 
         try {
             container.add(getTaskPaneEspaceDeTravail("Espace de travail", view, (Atelier) atelier, edt));
@@ -74,16 +64,15 @@ public class ExplorateurProjet extends JPanel {
             e.printStackTrace();
         }
         JScrollPane panelScroll = new JScrollPane(container);
+        add(panelScroll);
 
         GridBagLayout gb = new GridBagLayout();
         GridBagConstraints gbc = new GridBagConstraints();
-        setLayout(gb);
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1;
         gbc.weighty = 1;
         gb.setConstraints(panelScroll, gbc);
-
-        add(panelScroll);
+        setLayout(gb);
 
     }
 
@@ -294,13 +283,13 @@ public class ExplorateurProjet extends JPanel {
     }
 
     private JXTaskPane getTaskPaneTutoriel(final FileSystemView view, final Atelier atelier) {
-        taskTutorial = new JXTaskPane();
+        JXTaskPane taskTutorial = new JXTaskPane();
         final File exemples = Ressources.getExemples(Atelier.linotte.getLangage());
         taskTutorial.setTitle("Tutoriel");
         taskTutorial.setIcon(Ressources.getImageTheme("TUTO", 20));
         NavigateurFichier fileTreePanel = new NavigateurFichier(view, exemples, taskTutorial, atelier, false);
         taskTutorial.add(new JScrollPane(fileTreePanel, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED));
-        tutoriels.put(Atelier.linotte.getLangage(), fileTreePanel);
+        //tutoriels.put(Atelier.linotte.getLangage(), fileTreePanel);
         taskTutorial.setVisible(exemples.exists());
         return taskTutorial;
     }
