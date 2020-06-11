@@ -9,13 +9,13 @@
 Code source officiel du langage Linotte 3.X
 
 Linotte est un langage de programmation. 
-Entièrement en français, il offre un support naturel et pédagogique pour apprendre à programmer. 
+Entièrement en français, il offre un environnement simple, complet et pédagogique pour apprendre à programmer. 
 
 Vous voulez contribuer au projet ? N'hésitez pas à venir me rejoindre sur ce depôt.
 
-La page officielle du site est <a href="http://langagelinotte.free.fr">langagelinotte.free.fr</a>
+Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagelinotte.free.fr</a>
 
-#### Pour les utilisateurs, télécharger la version 3.0 :
+#### Téléchargement de la version 3.0 :
 
 - <a href="https://bitbucket.org/metalm/langagelinotte/downloads/Linotte_3.0-2020-06-10-14-45.zip">Linotte_3.0-2020-06-10-14-45.zip</a>
 
