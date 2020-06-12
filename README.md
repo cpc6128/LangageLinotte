@@ -32,8 +32,4 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
 
 - code source de la documentation : <a href="https://framagit.org/cpc6128/linotte3">framagit.org/cpc6128/linotte3</a>
 
-Thème clair :
-![Atelier 3.0](http://langagelinotte.free.fr/github/atelier2.png)
-
-Thème sombre :
 ![Atelier 3.0](http://langagelinotte.free.fr/github/atelier-dracula2.png)
