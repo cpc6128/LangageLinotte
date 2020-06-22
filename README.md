@@ -24,7 +24,7 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
  
  `cd LangageLinotte`
  
- `mvn compile -P Run`
+ `mvn clean package`
 
 #### Projet documentation en ligne :
 
