@@ -2,12 +2,12 @@
 
 code :
 	efface tableau
-	affiche "Merci d'utiliser Linotte {version} !
+	affiche "Bravo, vous allez programmer avec le langage de programmation Linotte {version} !
 
-La programmation est toujours aussi plaisante avec Linotte... et même plus simple avec cette nouvelle version de L'Atelier !
+La programmation est toujours aussi fascinante en Linotte... et même plus simple avec cette nouvelle version de L'Atelier !
 
 ⚠ Notes importantes pour les programmeurs en Linotte 2.X :
-	✔ Le verbe 'lire ne doit plus être utilisé : il suffit de le supprimer.
+	✔ Le verbe 'lire' ne doit plus être utilisé : il suffit de le supprimer.
 	✔ Le mot de clé 'début' ne doit plus être utilisé : il suffit de le supprimer. 
 	    Il n'y a plus d'obligation à créer des acteurs au début d'une fonction
 	✔ Le test 'si A est en collision avec B' doit être remplacé par 'si A.collision(B)'
@@ -19,6 +19,8 @@ Bonne programmation !
 /*
 Historique des versions :
 -------------------------
+
+*XX/XX/2X - Linotte 3.01
 
 *01/07/20 - Linotte 3.0
  -Evolution : Possiblité de ne plus utiliser le verbe Lire
