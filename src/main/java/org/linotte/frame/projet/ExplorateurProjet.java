@@ -38,7 +38,6 @@ import javax.swing.tree.TreePath;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.File;
-import java.io.IOException;
 import java.net.URI;
 
 @SuppressWarnings("serial")
@@ -344,22 +343,6 @@ public class ExplorateurProjet extends JXTaskPaneContainer {
             }
         });
 
-        task.add(new AbstractAction() {
-            {
-                putValue(Action.NAME, "Explorer l'espace de travail");
-                putValue(Action.SHORT_DESCRIPTION, "Explore l'espace de travail");
-                putValue(Action.SMALL_ICON, Ressources.getImageTheme("EXPLORE", 16));
-            }
-
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    Java6.getDesktop().browse(Ressources.getEDT().toURI());
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-            }
-        });
-
         task.add(new JScrollPane(fileTreePanel, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED));
 
         return task;
@@ -389,23 +372,6 @@ public class ExplorateurProjet extends JXTaskPaneContainer {
 
         task.add(new AbstractAction() {
             {
-                putValue(Action.NAME, "CodeVallée");
-                putValue(Action.SMALL_ICON, Ressources.getImageTheme("LINK", 16));
-            }
-
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    final URI forum = new URI("http://codevallee.fr");
-                    Java6.getDesktop().browse(forum);
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
-            }
-
-        });
-
-        task.add(new AbstractAction() {
-            {
                 putValue(Action.NAME, "Serveur Web");
                 putValue(Action.SMALL_ICON, Ressources.getImageTheme("LINK", 16));
             }
@@ -422,6 +388,23 @@ public class ExplorateurProjet extends JXTaskPaneContainer {
                     e1.printStackTrace();
                 }
             }
+        });
+
+        task.add(new AbstractAction() {
+            {
+                putValue(Action.NAME, "CodeVallée");
+                putValue(Action.SMALL_ICON, Ressources.getImageTheme("COPYRIGHT", 16));
+            }
+
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    final URI forum = new URI("http://codevallee.fr");
+                    Java6.getDesktop().browse(forum);
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+            }
+
         });
 
         return task;

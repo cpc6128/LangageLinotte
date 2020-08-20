@@ -34,7 +34,7 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
 
 #### Mes autres projets :
 
-- corunning.fr (site pour trouver des sportifs) : https://www.corunning.fr
+- corunning.fr (trouver des partenaires sportifs) : https://www.corunning.fr
 
 - WhereIsAlice (casse-tête sur Android) : https://play.google.com/store/apps/details?id=fr.codevallee.whereisalice&hl=fr 
 
