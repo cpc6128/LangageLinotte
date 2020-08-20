@@ -20,8 +20,6 @@
 
 package org.linotte.moteur.xml.actions;
 
-import java.math.BigDecimal;
-
 import org.linotte.moteur.entites.Acteur;
 import org.linotte.moteur.entites.Role;
 import org.linotte.moteur.exception.Constantes;
@@ -33,6 +31,8 @@ import org.linotte.moteur.xml.alize.kernel.RuntimeContext;
 import org.linotte.moteur.xml.alize.kernel.i.IProduitCartesien;
 import org.linotte.moteur.xml.alize.kernel.security.Habilitation;
 import org.linotte.moteur.xml.analyse.ItemXML;
+
+import java.math.BigDecimal;
 
 public class TemporiserAction extends Action implements IProduitCartesien {
 
@@ -67,7 +67,7 @@ public class TemporiserAction extends Action implements IProduitCartesien {
 		if (a != null && !(a.getRole() == Role.NOMBRE))
 			throw new ErreurException(Constantes.SYNTAXE_PARAMETRE_TEMPORISER, a.toString());
 
-		if (!runtimeContext.getLibrairie().getToilePrincipale().getPanelLaToile().resteDesTouches()) {
+        if ((runtimeContext.getLibrairie().getToilePrincipale() == null) || !runtimeContext.getLibrairie().getToilePrincipale().getPanelLaToile().resteDesTouches()) {
 			try {
 				if (a != null) {
 					double valeur = (((BigDecimal) a.getValeur()).doubleValue());

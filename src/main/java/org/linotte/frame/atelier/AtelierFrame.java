@@ -629,7 +629,6 @@ public class AtelierFrame extends JFrame {
             jMenuBar.add(creationSeparator());
             jMenuBar.add(getJMenuEdition());
             jMenuBar.add(getJMenuOutils());
-            jMenuBar.add(creationSeparator());
             jMenuBar.add(getJMenuVerbier());
             jMenuBar.add(getJButtonTimbre());
         }
@@ -1066,7 +1065,6 @@ public class AtelierFrame extends JFrame {
         getJMenuOutils().add(getJMenuFormater());
         getJMenuOutils().add(getJMenuLaToile());
 
-        getJMenuOutils().addSeparator();
         JMenu options = new JMenu("Options");
         getJMenuOutils().add(options);
         options.add(getJMenuSaveWorkSpace());

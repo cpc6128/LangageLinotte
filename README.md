@@ -26,10 +26,16 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
  
  `mvn clean package`
 
-#### Projet documentation en ligne :
+#### ( en projet, besoin d'aide ! ) documentation en ligne :
 
 - documentation en ligne à produire : <a href="https://cpc6128.frama.io/linotte3/fr/">cpc6128.frama.io/linotte3/fr/</a>
 
 - code source de la documentation : <a href="https://framagit.org/cpc6128/linotte3">framagit.org/cpc6128/linotte3</a>
+
+#### Mes autres projets :
+
+- corunning.fr (site pour trouver des sportifs) : https://www.corunning.fr
+
+- WhereIsAlice (casse-tête sur Android) : https://play.google.com/store/apps/details?id=fr.codevallee.whereisalice&hl=fr 
 
 ![Atelier 3.0](http://langagelinotte.free.fr/github/atelier-dracula2.png)

@@ -16,7 +16,7 @@ code :
 	tant que vrai
 		temporise
 		vide touches
-	Ferme
+    ferme
 
 réponse fausse : bouton // Objet qui reçoit l'action. Ici un clic sur le bouton "Noir"
 	texte de l2 prend "Tu es bien trop mauvais pour continuer le test !"
