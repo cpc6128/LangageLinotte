@@ -46,6 +46,7 @@ public class ExplorateurProjet extends JXTaskPaneContainer {
     public ExplorateurProjet(FileSystemView view, AtelierFrame atelier, File edt) {
 
         JXTaskPaneContainer container = new JXTaskPaneContainer();
+        this.setBorder(BorderFactory.createEmptyBorder());
 
         try {
             container.add(getTaskPaneEspaceDeTravail("Espace de travail", view, (Atelier) atelier, edt));
@@ -295,8 +296,9 @@ public class ExplorateurProjet extends JXTaskPaneContainer {
 
     private JXTaskPane getTaskPaneEspaceDeTravail(String title, final FileSystemView view, final Atelier atelier, final File edt) {
         final JXTaskPane task = new JXTaskPane();
-        task.setTitle(title);
-        task.setIcon(Ressources.getImageTheme("EDT", 20));
+        task.setUI(new XFlatTaskOPaneUI());
+        //task.setTitle(title);
+        //task.setIcon(Ressources.getImageTheme("EDT", 20));
 
         final NavigateurFichier fileTreePanel = new NavigateurFichier(view, edt, task, atelier, true);
 
