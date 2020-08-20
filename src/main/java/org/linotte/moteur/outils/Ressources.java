@@ -151,6 +151,7 @@ public class Ressources implements RessourceManager {
 
     public static FontIcon getImageTheme(String pnom, int taille, CouleurImage couleurImage) {
         Color couleur = transformeCouleur(couleurImage);
+        // https://skmedix.github.io/ikonli-java-8/cheat-sheet-runestroicons.html
         String nom = "AFTER_EFFECTS";
         switch (pnom) {
             case "PLAY":
@@ -218,6 +219,9 @@ public class Ressources implements RessourceManager {
                 break;
             case "CODE":
                 nom = "SELECT";
+                break;
+            case "COPYRIGHT":
+                nom = "COPYRIGHT";
                 break;
         }
         FontIcon icon = FontIcon.of(Runestroicons.valueOf(nom));

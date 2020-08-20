@@ -46,6 +46,7 @@ public class NavigateurFichier extends JPanel {
     private Action action_supprimer;
     private Action actionRenommer;
     private Action actionRafraichir;
+    private Action actionOuvrirEDT;
 
     /**
      * Creates the file tree panel.
@@ -125,13 +126,24 @@ public class NavigateurFichier extends JPanel {
 
         m_popup.add(actionRenommer);
         m_popup.addSeparator();
-        actionRafraichir = new AbstractAction("Rafraichir") {
+        actionRafraichir = new AbstractAction("Rafraîchir") {
             public void actionPerformed(ActionEvent e) {
                 rafraichirArbre();
             }
         };
-
         m_popup.add(actionRafraichir);
+
+        actionOuvrirEDT = new AbstractAction("Explorer l'espace de travail\"") {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Java6.getDesktop().browse(Ressources.getEDT().toURI());
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        };
+        m_popup.add(actionOuvrirEDT);
+
         if (popup) {
             tree.add(m_popup);
             tree.addMouseListener(new PopupTrigger());
