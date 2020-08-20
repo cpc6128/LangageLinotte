@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<grammaire compatible="Meta-Linotte 0.2" version="3" langue="français" auteur="Ronan Mounès" creation="février 2006"
-		   modification="avril 2018">
+<grammaire compatible="Meta-Linotte 0.2" version="3.1" langue="français" auteur="Ronan Mounès" creation="février 2006"
+		   modification="juin 2020">
 	<!-- Version release date : September 01, 2006                           -->
 	<!-- Author : Mounès Ronan ronan.mounes@amstrad.eu                       -->
 	<!--                                                                     -->
@@ -383,7 +383,7 @@
 				</choix>
 			</groupe>
 			<groupe nom="les grands rôles">
-				<choix nom="choix des definitions des espèces" multiple="oui">
+				<choix nom="choix des definitions des rôles" multiple="oui">
 					<ligne tab="1" nom="definition d'un acteur espèce">
 						<!-- creation d'une acteur espèce  -->
 						

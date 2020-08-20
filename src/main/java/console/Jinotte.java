@@ -266,7 +266,9 @@ public class Jinotte {
 
 		// Ne pas faire en mode applet :
 		Preference.getIntance().save();
-		System.exit((erreurs > 0) ? 1 : 0);
+		if (erreurs > 0) {
+			System.exit(1);
+		}
 	}
 
 	public void showversion() {
