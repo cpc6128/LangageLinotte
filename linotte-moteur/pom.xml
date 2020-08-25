@@ -19,7 +19,7 @@
         </dependency>
         <dependency>
             <groupId>fr.codevallee</groupId>
-            <artifactId>linotte-lib</artifactId>
+            <artifactId>linotte-ext</artifactId>
             <version>3.1-NON-STABLE</version>
             <scope>compile</scope>
         </dependency>

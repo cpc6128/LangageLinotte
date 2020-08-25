@@ -78,7 +78,7 @@
                             <classPath>
                                 <mainClass>org.linotte.frame.AtelierLinotte</mainClass>
                             </classPath>
-                            <icon>../src/main/resources/linotte_new.ico</icon>
+                            <icon>../linotte-resources/src/main/resources/linotte_new.ico</icon>
                             <jre>
                                 <minVersion>1.8.0</minVersion>
                             </jre>
