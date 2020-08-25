@@ -9,13 +9,15 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <content url="file://$MODULE_DIR$/../src/main/resources">
-      <sourceFolder url="file://$MODULE_DIR$/../src/main/resources" type="java-test-resource" />
+    <content url="file://$MODULE_DIR$/../linotte-resources/src/main/resources">
+      <sourceFolder url="file://$MODULE_DIR$/../linotte-resources/src/main/resources" type="java-test-resource" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="alize" />
     <orderEntry type="module" module-name="linotte-lib" />
+    <orderEntry type="module" module-name="linotte-alize" />
+    <orderEntry type="module" module-name="linotte-ext" />
     <orderEntry type="library" name="Maven: org.swinglabs.swingx:swingx-all:1.6.5-1" level="project" />
     <orderEntry type="library" name="Maven: com.miglayout:miglayout:3.7.4" level="project" />
     <orderEntry type="library" name="Maven: com.itextpdf:itextpdf:5.5.13.1" level="project" />
@@ -27,8 +29,6 @@
     <orderEntry type="library" name="Maven: org.eclipse.jetty.orbit:javax.activation:1.1.0.v201105071233" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty.orbit:javax.annotation:1.1.0.v201108011116" level="project" />
     <orderEntry type="library" name="Maven: javazoom:jlayer:1.0.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.13" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
     <orderEntry type="library" name="Maven: com.formdev:flatlaf:0.40" level="project" />
     <orderEntry type="library" name="Maven: com.formdev:flatlaf-swingx:0.40" level="project" />
     <orderEntry type="library" name="Maven: org.kordamp.ikonli:ikonli-swing:2.6.0" level="project" />

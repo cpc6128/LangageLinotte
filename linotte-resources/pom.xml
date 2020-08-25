@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>resources</artifactId>
+    <artifactId>linotte-resources</artifactId>
 
 
 </project>

@@ -9,7 +9,7 @@
     </formats>
     <fileSets>
         <fileSet>
-            <directory>${project.basedir}/../src/main/exemples</directory>
+            <directory>${project.basedir}/../linotte-resources/src/main/exemples</directory>
             <outputDirectory>/exemples</outputDirectory>
         </fileSet>
     </fileSets>
