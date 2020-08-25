@@ -4,10 +4,18 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>fr.codevallee</groupId>
     <artifactId>langagelinotte</artifactId>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
     <!--version>3.0</version-->
     <!--version>3.0-QUASI-STABLE</version-->
     <version>3.1-NON-STABLE</version>
+
+    <modules>
+        <module>linotte-alize</module>
+        <module>linotte-moteur</module>
+        <module>linotte-lanceur</module>
+        <module>linotte-lib</module>
+    </modules>
+
     <name>linotte</name>
     <url>http://www.codevallee.fr</url>
 
