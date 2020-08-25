@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>langagelinotte</artifactId>
+        <groupId>fr.codevallee</groupId>
+        <version>3.1-NON-STABLE</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>linotte-dist</artifactId>
+    <packaging>pom</packaging>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-exemples</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target/exemples</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/exemples</directory>
+                                    <filtering>false</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>com.akathist.maven.plugins.launch4j</groupId>
+                <artifactId>launch4j-maven-plugin</artifactId>
+                <version>1.7.25</version>
+                <executions>
+                    <execution>
+                        <id>l4j-gui</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>launch4j</goal>
+                        </goals>
+                        <configuration>
+                            <headerType>gui</headerType>
+                            <outfile>Atelier.exe</outfile>
+                            <jar>Atelier.jar</jar>
+                            <errTitle>Atelier</errTitle>
+                            <dontWrapJar>true</dontWrapJar>
+                            <jar>Atelier.jar</jar>
+                            <classPath>
+                                <mainClass>org.linotte.frame.AtelierLinotte</mainClass>
+                            </classPath>
+                            <icon>../src/main/resources/linotte_new.ico</icon>
+                            <jre>
+                                <minVersion>1.8.0</minVersion>
+                            </jre>
+                            <versionInfo>
+                                <fileVersion>3.0.0.0</fileVersion>
+                                <txtFileVersion>Atelier Linotte</txtFileVersion>
+                                <fileDescription>L&apos;Atelier Linotte</fileDescription>
+                                <copyright>Ronan Mounès - CodeVallée</copyright>
+                                <productVersion>3.0.0.0</productVersion>
+                                <txtProductVersion>Atelier Linotte</txtProductVersion>
+                                <productName>L&apos;Atelier Linotte</productName>
+                                <internalName>L&apos;Atelier Linotte</internalName>
+                                <originalFilename>Atelier.exe</originalFilename>
+                            </versionInfo>
+                            <messages>
+                                <startupErr>Avant d'utiliser l&apos;Atelier Linotte, vous devez installer le Java
+                                    Runtime Environment
+                                </startupErr>
+                                <bundledJreErr>Avant d'utiliser l&apos;Atelier Linotte, vous devez installer le Java
+                                    Runtime Environment
+                                </bundledJreErr>
+                                <jreVersionErr>Avant d'utiliser l&apos;Atelier Linotte, vous devez installer le Java
+                                    Runtime Environment
+                                </jreVersionErr>
+                                <launcherErr>Avant d'utiliser l&apos;Atelier Linotte, vous devez installer le Java
+                                    Runtime Environment.
+                                </launcherErr>
+                            </messages>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <id>2</id>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <finalName>Linotte_${project.version}-${timestamp}</finalName>
+                            <descriptors>
+                                <descriptor>src/main/assembly/distribution.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>
