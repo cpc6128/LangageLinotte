@@ -19,7 +19,7 @@
             <outputDirectory>/</outputDirectory>
         </file>
         <file>
-            <source>${project.basedir}/Atelier.exe</source>
+            <source>${project.basedir}/target/Atelier.exe</source>
             <outputDirectory>/</outputDirectory>
         </file>
     </files>
