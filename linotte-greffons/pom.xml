@@ -10,6 +10,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>linotte-greffons</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>fr.codevallee</groupId>
+            <artifactId>linotte-moteur</artifactId>
+            <version>3.1-NON-STABLE</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
 
 </project>

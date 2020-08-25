@@ -315,7 +315,7 @@ public class Ressources implements RessourceManager {
         // http://www.rgagnon.com/howto.html
         try {
             File current = new File(new Ressources().getClass().getProtectionDomain().getCodeSource().getLocation().toURI());
-            System.out.println(current.getName());
+            //System.out.println(current.getName());
             if (current.getName().toLowerCase().endsWith(".jar")) {
                 // Si je suis dans un jar :
                 current = current.getParentFile();
@@ -329,7 +329,7 @@ public class Ressources implements RessourceManager {
                 current = new File(currentTemp, "linotte-resources/src/main");
             }
             File dg = new File(current, dir);
-            System.out.println("Chemin des greffons : " + dg);
+            //System.out.println("Chemin des greffons : " + dg);
             return dg;
         } catch (Exception e) {
             return null;

@@ -17,6 +17,8 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="alize" />
     <orderEntry type="module" module-name="linotte-lib" />
+    <orderEntry type="module" module-name="linotte-alize" />
+    <orderEntry type="module" module-name="linotte-ext" />
     <orderEntry type="module" module-name="linotte-moteur" />
     <orderEntry type="module" module-name="linotte-alize" />
     <orderEntry type="module" module-name="linotte-ext" />
