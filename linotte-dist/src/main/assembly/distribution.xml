@@ -9,17 +9,17 @@
     </formats>
     <fileSets>
         <fileSet>
-            <directory>${project.build.directory}/exemples</directory>
+            <directory>${project.basedir}/../src/main/exemples</directory>
             <outputDirectory>/exemples</outputDirectory>
         </fileSet>
     </fileSets>
     <files>
         <file>
-            <source>${project.build.directory}/Atelier.jar</source>
+            <source>${project.basedir}/../linotte-lanceur/target/Atelier.jar</source>
             <outputDirectory>/</outputDirectory>
         </file>
         <file>
-            <source>${project.build.directory}/Atelier.exe</source>
+            <source>${project.basedir}/Atelier.exe</source>
             <outputDirectory>/</outputDirectory>
         </file>
     </files>
