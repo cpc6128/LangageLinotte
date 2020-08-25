@@ -29,7 +29,7 @@
                             <outputDirectory>${basedir}/target/exemples</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>src/main/exemples</directory>
+                                    <directory>${basedir}/../linotte-resources/src/main/exemples</directory>
                                     <filtering>false</filtering>
                                 </resource>
                             </resources>
