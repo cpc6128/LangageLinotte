@@ -9,12 +9,8 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <content url="file://$MODULE_DIR$/../linotte-resources/src/main/resources">
-      <sourceFolder url="file://$MODULE_DIR$/../linotte-resources/src/main/resources" type="java-test-resource" />
-    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="alize" />
     <orderEntry type="module" module-name="linotte-lib" />
     <orderEntry type="module" module-name="linotte-alize" />
     <orderEntry type="module" module-name="linotte-ext" />
