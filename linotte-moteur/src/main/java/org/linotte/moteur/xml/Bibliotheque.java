@@ -23,30 +23,21 @@ public final class Bibliotheque {
 
         especesGraphiquesInternes(lib, linotte);
 
-        chargerGreffonsExterne();
+        chargerGreffonsExterne(lib, linotte);
 
     }
 
-    private static void chargerGreffonsExterne() throws ClassNotFoundException, InstantiationException, IllegalAccessException, java.lang.reflect.InvocationTargetException, NoSuchMethodException {
+    private static void chargerGreffonsExterne(Librairie<?> lib, Linotte linotte) {
         try {
             Class c = Class.forName("org.linotte.greffons.BibliothequeGreffons");
             Object o = c.getDeclaredConstructor().newInstance();
-            Method m = c.getDeclaredMethod("genererEspecesGraphiquesEtGreffonsInternes", null);
+            Class[] cArg = new Class[2];
+            cArg[0] = Librairie.class;
+            cArg[1] = Linotte.class;
+            Method m = c.getDeclaredMethod("genererEspecesGraphiquesEtGreffonsInternes", cArg);
             m.setAccessible(true);
-            m.invoke(o, null);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (SecurityException e) {
+            m.invoke(o, lib, linotte);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
