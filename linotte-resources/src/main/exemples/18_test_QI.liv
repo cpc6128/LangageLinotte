@@ -13,6 +13,7 @@ code :
 	fais réagir b2 à "clic souris" pour réponse fausse
 	fais réagir b1 à "souris entrante" pour bouger bouton
 	fais réagir b1 à "clic souris" pour bouger bouton
+	fais réagir form à "clic souris" pour fermer fenêtre
 	tant que vrai
 		temporise
 		vide touches
