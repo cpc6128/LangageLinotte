@@ -20,7 +20,6 @@ package console;
  *                                                                     *
  ***********************************************************************/
 
-import org.alize.kernel.AKRuntime;
 import org.alize.security.Habilitation;
 import org.linotte.frame.atelier.FrameIHM;
 import org.linotte.frame.cahier.timbre.entite.Timbre;
@@ -34,6 +33,7 @@ import org.linotte.moteur.exception.RetournerException;
 import org.linotte.moteur.exception.StopException;
 import org.linotte.moteur.outils.FichierOutils;
 import org.linotte.moteur.outils.Preference;
+import org.linotte.moteur.outils.RuntimeConsole;
 import org.linotte.moteur.xml.Linotte;
 import org.linotte.moteur.xml.Version;
 import org.linotte.moteur.xml.actions.AfficherAction;
@@ -54,15 +54,13 @@ import java.io.PushbackInputStream;
 import java.util.List;
 import java.util.*;
 
-public class Jinotte {
+public class Jinotte extends RuntimeConsole {
 
     private static final String[] OPTIONS = {"v", "m", "x", "b", "t", "d", "h", "x", "s", "w", "r", "1"};
 
     private static final List<String> LISTE_OPTIONS = Arrays.asList(OPTIONS);
 
     private Linotte interpreteur;
-
-    public static AKRuntime runtime;
 
     private boolean verbose;
 
@@ -318,18 +316,4 @@ public class Jinotte {
         return interpreteur;
     }
 
-    public AKRuntime getRuntime() {
-        return runtime;
-    }
-
-    public static int retourneLaLigne(List<Integer> numeros, int position) {
-        int ligne = 0;
-        for (int entier : numeros) {
-            ligne++;
-            if (entier > position)
-                break;
-
-        }
-        return ligne;
-    }
 }

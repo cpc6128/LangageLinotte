@@ -19,7 +19,6 @@
     <orderEntry type="module" module-name="linotte-alize" />
     <orderEntry type="module" module-name="linotte-ext" />
     <orderEntry type="library" name="Maven: org.swinglabs.swingx:swingx-all:1.6.5-1" level="project" />
-    <orderEntry type="library" name="Maven: com.miglayout:miglayout:3.7.4" level="project" />
     <orderEntry type="library" name="Maven: com.itextpdf:itextpdf:5.5.13.1" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:javax.servlet-api:4.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty.aggregate:jetty-all-server:8.2.0.v20160908" level="project" />
@@ -28,7 +27,6 @@
     <orderEntry type="library" name="Maven: org.eclipse.jetty.orbit:javax.mail.glassfish:1.4.1.v201005082020" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty.orbit:javax.activation:1.1.0.v201105071233" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty.orbit:javax.annotation:1.1.0.v201108011116" level="project" />
-    <orderEntry type="library" name="Maven: javazoom:jlayer:1.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.formdev:flatlaf:0.40" level="project" />
     <orderEntry type="library" name="Maven: com.formdev:flatlaf-swingx:0.40" level="project" />
     <orderEntry type="library" name="Maven: org.kordamp.ikonli:ikonli-swing:2.6.0" level="project" />
