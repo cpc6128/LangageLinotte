@@ -26,7 +26,9 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
  
  `mvn clean package`
 
-#### ( en projet, besoin d'aide ! ) documentation en ligne :
+#### documentation en ligne :
+
+- c'est en projet, nous avons besoin d'aide ! 
 
 - documentation en ligne à produire : <a href="https://cpc6128.frama.io/linotte3/fr/">cpc6128.frama.io/linotte3/fr/</a>
 
