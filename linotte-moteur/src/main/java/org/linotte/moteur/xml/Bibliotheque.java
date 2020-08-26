@@ -5,6 +5,8 @@ import org.linotte.moteur.entites.*;
 import org.linotte.moteur.exception.ErreurException;
 import org.linotte.moteur.xml.api.Librairie;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.math.BigDecimal;
 
 /**
@@ -21,6 +23,32 @@ public final class Bibliotheque {
 
         especesGraphiquesInternes(lib, linotte);
 
+        chargerGreffonsExterne();
+
+    }
+
+    private static void chargerGreffonsExterne() throws ClassNotFoundException, InstantiationException, IllegalAccessException, java.lang.reflect.InvocationTargetException, NoSuchMethodException {
+        try {
+            Class c = Class.forName("org.linotte.greffons.BibliothequeGreffons");
+            Object o = c.getDeclaredConstructor().newInstance();
+            Method m = c.getDeclaredMethod("genererEspecesGraphiquesEtGreffonsInternes", null);
+            m.setAccessible(true);
+            m.invoke(o, null);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

@@ -20,8 +20,7 @@ public final class BibliothequeGreffons {
     private static final String TEXTE = "texte";
     private static final String NOMBRE = "nombre";
 
-    private BibliothequeGreffons() {
-        throw new SecurityException();
+    public BibliothequeGreffons() {
     }
 
     public static void genererEspecesGraphiquesEtGreffonsInternes(Librairie<?> lib, Linotte linotte) throws Exception {
