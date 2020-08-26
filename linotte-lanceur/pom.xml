@@ -17,11 +17,13 @@
             <artifactId>linotte-moteur</artifactId>
             <version>3.1-NON-STABLE</version>
         </dependency>
+        <!-- sera corrigé quand les greffons ne dépendrons plus du moteur -->
         <dependency>
             <groupId>fr.codevallee</groupId>
             <artifactId>linotte-greffons</artifactId>
             <version>3.1-NON-STABLE</version>
         </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

@@ -23,7 +23,7 @@ public final class BibliothequeGreffons {
     public BibliothequeGreffons() {
     }
 
-    public static void genererEspecesGraphiquesEtGreffonsInternes(Librairie<?> lib, Linotte linotte) throws Exception {
+    public void genererEspecesGraphiquesEtGreffonsInternes(Librairie<?> lib, Linotte linotte) throws Exception {
 
         greffonsFormulaires();
 

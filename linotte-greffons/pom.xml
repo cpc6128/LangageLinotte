@@ -22,6 +22,8 @@
     <build>
         <plugins>
             <plugin>
+                <!-- Pour éviter une dépendance cyclique, on injecte des .class -->
+                <!-- sera corrigé quand les greffons ne dépendrons plus du moteur -->
                 <artifactId>maven-resources-plugin</artifactId>
                 <executions>
                     <execution>
