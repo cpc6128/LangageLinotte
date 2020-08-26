@@ -17,8 +17,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="alize" />
     <orderEntry type="module" module-name="linotte-lib" />
-    <orderEntry type="module" module-name="linotte-alize" />
-    <orderEntry type="module" module-name="linotte-ext" />
     <orderEntry type="module" module-name="linotte-moteur" />
     <orderEntry type="module" module-name="linotte-alize" />
     <orderEntry type="module" module-name="linotte-ext" />
@@ -38,6 +36,7 @@
     <orderEntry type="library" name="Maven: org.kordamp.ikonli:ikonli-swing:2.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.kordamp.ikonli:ikonli-core:2.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.kordamp.ikonli:ikonli-runestroicons-pack:2.6.0" level="project" />
+    <orderEntry type="module" module-name="linotte-greffons" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.13" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
   </component>
