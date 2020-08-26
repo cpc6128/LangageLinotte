@@ -5,9 +5,8 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ master ]
   pull_request:
-    branches: [ master ]
+
 env:
   LANG: "fr_FR.UTF-8"
 
