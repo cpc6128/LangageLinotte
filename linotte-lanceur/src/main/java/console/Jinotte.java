@@ -32,7 +32,6 @@ import org.linotte.moteur.exception.Messages;
 import org.linotte.moteur.exception.RetournerException;
 import org.linotte.moteur.exception.StopException;
 import org.linotte.moteur.outils.FichierOutils;
-import org.linotte.moteur.outils.Preference;
 import org.linotte.moteur.outils.RuntimeConsole;
 import org.linotte.moteur.xml.Linotte;
 import org.linotte.moteur.xml.Version;
@@ -52,6 +51,8 @@ import java.awt.datatransfer.Transferable;
 import java.io.*;
 import java.util.List;
 import java.util.*;
+
+import static org.linotte.moteur.outils.Preference.getIntance;
 
 public class Jinotte extends RuntimeConsole {
 
@@ -197,9 +198,11 @@ public class Jinotte extends RuntimeConsole {
         }
 
         // Ne pas faire en mode applet :
-        Preference.getIntance().save();
+        getIntance().save();
         if (erreurs > 0) {
             System.exit(1);
+        } else {
+            System.exit(0);
         }
     }
 
@@ -280,7 +283,7 @@ public class Jinotte extends RuntimeConsole {
     public void exit() {
         showversion();
         showhelp();
-        System.exit(0);
+
     }
 
 }
