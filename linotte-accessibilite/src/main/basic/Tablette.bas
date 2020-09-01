@@ -2,6 +2,7 @@
 
 dim Fichier_Choisi$
 label Button_Click, Button_Click_Presse_Papier
+
 ' IHM
 application_title "Tablette Linotte"  
 caption 0,"Tablette Linotte"
@@ -10,7 +11,7 @@ button 3
 button 4
 open_dialog 2
 
-' création de l'IHM
+' creation de l'IHM
 ' ===================================
 ' positionnement de l'ALPHA
 top 1,50:left 1,110
