@@ -18,10 +18,7 @@ public class RuntimeConsole {
             ligne++;
             if (entier > position)
                 break;
-
         }
         return ligne;
     }
-
-
 }
