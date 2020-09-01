@@ -1,6 +1,6 @@
 package console;
 
-/***********************************************************************
+/* *********************************************************************
  * Linotte                                                             *
  * Version release date : October 26, 2005                             *
  * Author : Mounes Ronan ronan.mounes@amstrad.eu                       *
@@ -18,7 +18,7 @@ package console;
  *   The GNU GPL license can be found at :                             *
  *           http://www.gnu.org/copyleft/gpl.html                      *
  *                                                                     *
- ***********************************************************************/
+ ********************************************************************* */
 
 import org.alize.security.Habilitation;
 import org.linotte.frame.atelier.FrameIHM;
@@ -55,7 +55,7 @@ import java.util.*;
 
 public class Jinotte extends RuntimeConsole {
 
-    private static final List<String> LISTE_OPTIONS = Arrays.asList(new String[]{"v", "m", "x", "b", "t", "d", "h", "x", "s", "w", "r", "1", "p"});
+    private static final List<String> LISTE_OPTIONS = Arrays.asList("v", "m", "x", "b", "t", "d", "h", "x", "s", "w", "r", "1", "p");
 
     private Linotte interpreteur;
 
@@ -73,16 +73,7 @@ public class Jinotte extends RuntimeConsole {
 
     private String[] parametre;
 
-    public Jinotte() {
-
-    }
-
-    public Jinotte(LaToile ptoile) {
-        // Toile déjà créée
-        toile = ptoile;
-    }
-
-    public static void main(String p[]) {
+    public static void main(String[] p) {
         Jinotte jinotte = new Jinotte();
         jinotte.preparation(p);
         jinotte.lecture();
@@ -145,7 +136,7 @@ public class Jinotte extends RuntimeConsole {
         int erreurs = 0;
         for (; posParametre < parametre.length; posParametre++) {
 
-            List<Integer> numerolignes = new ArrayList<Integer>();
+            List<Integer> numerolignes = new ArrayList<>();
 
             String file = parametre[posParametre];
 
@@ -162,13 +153,14 @@ public class Jinotte extends RuntimeConsole {
                 if (FichierOutils.estCeUnLivreVisuel(pis)) {                                             // *
                     List<Timbre> timbres = FichierOutils.lireLivreGraphique(pis);                        // *
                     TraducteurTimbreEnTexte traducteur = new TraducteurTimbreEnTexte();                  // *
+                    assert timbres != null;
                     flux = new StringBuilder(traducteur.traiter(timbres, interpreteur.getLangage()));    // *
                 } else {                                                                                 // *
                     flux = FichierOutils.lire(fichier, numerolignes);                                    // *
                 }                                                                                        // *
                 // *****************************************************************************************
 
-            } catch (IOException e) {
+            } catch (IOException ignored) {
             }
 
             if (flux == null || flux.length() == 0) {
@@ -188,10 +180,10 @@ public class Jinotte extends RuntimeConsole {
                 String livre = "";
                 try {
                     livre = (String) (clipData.getTransferData(DataFlavor.stringFlavor));
-                } catch (Exception ex) {
+                } catch (Exception ignored) {
                 }
                 // On recupere les numéros de lignes :
-                List<Integer> numerolignes = new ArrayList<Integer>();
+                List<Integer> numerolignes = new ArrayList<>();
                 StringBuilder buffer = FichierOutils.lire(new ByteArrayInputStream(livre.getBytes()), numerolignes);
                 erreurs += lireFlux(numerolignes, buffer, null);
             } catch (Exception e) {
@@ -220,7 +212,7 @@ public class Jinotte extends RuntimeConsole {
             ParserContext atelierOutils = new ParserContext(MODE.GENERATION_RUNTIME);
             atelierOutils.linotte = interpreteur;
             runtime = moteurXML.parseLivre(flux, atelierOutils);
-            List<Habilitation> habilitations = new ArrayList<Habilitation>();
+            List<Habilitation> habilitations = new ArrayList<>();
             // Si applet, on peut accéder au cookie
             if (toile != null && Toile.isApplet())
                 habilitations.add(Habilitation.COOKIES_ACCESS);
@@ -230,9 +222,9 @@ public class Jinotte extends RuntimeConsole {
             } catch (RetournerException e) {
                 try {
                     AfficherAction.afficher(e.getActeur(), interpreteur.getIhm());
-                } catch (Exception e1) {
+                } catch (Exception ignored) {
                 }
-            } catch (StopException s) {
+            } catch (StopException ignored) {
             }
             long time2 = System.currentTimeMillis();
             if (showtime)
@@ -240,14 +232,14 @@ public class Jinotte extends RuntimeConsole {
         } catch (LectureException e) {
             erreurs++;
             if (e.getLivre() != null) {
-                erreur.append("Livre : " + e.getLivre() + "\n");
+                erreur.append("Livre : ").append(e.getLivre()).append("\n");
             }
             erreur.append(Messages.retourneErreur(String.valueOf(e.getErreur())));
             if (e.getException().getToken() != null) {
-                erreur.append(" : " + e.getException().getToken());
+                erreur.append(" : ").append(e.getException().getToken());
             }
             erreur.append(".\n");
-            erreur.append("Ligne : " + retourneLaLigne(numerolignes, e.getPosition()));
+            erreur.append("Ligne : ").append(retourneLaLigne(numerolignes, e.getPosition()));
         } catch (Exception e) {
             if (options.contains("d"))
                 e.printStackTrace();
@@ -289,16 +281,6 @@ public class Jinotte extends RuntimeConsole {
         showversion();
         showhelp();
         System.exit(0);
-    }
-
-    public static Object nouvelleInstance(String classe) {
-        Object o = null;
-        try {
-            o = Class.forName(classe).newInstance();
-        } catch (Exception e) {
-        } catch (NoClassDefFoundError e) {
-        }
-        return o;
     }
 
 }
