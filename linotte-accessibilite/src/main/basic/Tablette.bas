@@ -1,5 +1,5 @@
 ' http://panoramic.1fr1.net/t6456-aide-pour-la-creation-d-un-wrapper-pour-le-langage-linotte
-
+' Auteurs : Jack (panoramic.1fr1.net/u1) , Cpc (github.com/cpc6128/LangageLinotte)
 dim Fichier_Choisi$
 label Button_Click, Button_Click_Presse_Papier
 
