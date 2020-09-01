@@ -50,11 +50,7 @@ Button_Click:
    return
 
 ' ===================================
-
-
 Button_Click_Presse_Papier:
    ' lancement de Linotte
    execute "java|-jar Atelier.jar -xp"
    return
-
-
