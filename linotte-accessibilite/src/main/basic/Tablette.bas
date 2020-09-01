@@ -4,6 +4,7 @@ dim Fichier_Choisi$
 label Button_Click, Button_Click_Presse_Papier
 ' IHM
 application_title "Tablette Linotte"  
+caption 0,"Tablette Linotte"
 alpha 1
 button 3
 button 4
