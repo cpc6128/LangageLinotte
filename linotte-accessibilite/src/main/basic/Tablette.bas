@@ -34,7 +34,7 @@ CAPTION 7, "..."
 FONT_BOLD 7:FONT_SIZE 7,18
 
 ' ===================================
-' positionnement du bouton s�lectionner un fichier
+' positionnement du bouton selectionner un fichier
 TOP 3,100:LEFT 3,80
 ' dimensions du bouton
 WIDTH 3,400:HEIGHT 3,80
