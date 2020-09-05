@@ -1,6 +1,5 @@
 package org.linotte.web.executeur;
 
-import console.Jinotte;
 import org.alize.http.i.Executeur;
 import org.alize.http.i.FichierTraitement;
 import org.alize.http.i.WebTransformateur;
@@ -15,6 +14,7 @@ import org.linotte.moteur.exception.LectureException;
 import org.linotte.moteur.exception.Messages;
 import org.linotte.moteur.exception.StopException;
 import org.linotte.moteur.outils.FichierOutils;
+import org.linotte.moteur.outils.RuntimeConsole;
 import org.linotte.moteur.xml.Linotte;
 import org.linotte.moteur.xml.alize.kernel.ContextHelper;
 import org.linotte.moteur.xml.alize.kernel.RuntimeContext;
@@ -133,7 +133,7 @@ public class ExecuteurLivre implements Executeur {
                 AKPatrol.runtimes.remove(runtime);
 
             } catch (LectureException e) {
-                String message = "Ligne : " + Jinotte.retourneLaLigne(numerolignes, e.getPosition()) + " / "
+                String message = "Ligne : " + RuntimeConsole.retourneLaLigne(numerolignes, e.getPosition()) + " / "
                         + Messages.retourneErreur(String.valueOf(e.getErreur()));
                 if (e.getException().getToken() != null)
                     message += " : " + e.getException().getToken();
@@ -160,7 +160,7 @@ public class ExecuteurLivre implements Executeur {
         try {
             cloner.execute();
         } catch (LectureException e) {
-            String message = "Ligne : " + Jinotte.retourneLaLigne(numerolignes, e.getPosition()) + " / "
+            String message = "Ligne : " + RuntimeConsole.retourneLaLigne(numerolignes, e.getPosition()) + " / "
                     + Messages.retourneErreur(String.valueOf(e.getErreur()));
             if (e.getException().getToken() != null)
                 message += " : " + e.getException().getToken();

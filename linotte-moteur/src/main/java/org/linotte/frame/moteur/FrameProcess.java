@@ -20,7 +20,6 @@
 
 package org.linotte.frame.moteur;
 
-import console.Jinotte;
 import org.alize.kernel.AKException;
 import org.alize.kernel.AKJob;
 import org.alize.kernel.AKRuntime;
@@ -31,6 +30,7 @@ import org.linotte.moteur.exception.*;
 import org.linotte.moteur.outils.CouleurImage;
 import org.linotte.moteur.outils.Preference;
 import org.linotte.moteur.outils.Ressources;
+import org.linotte.moteur.outils.RuntimeConsole;
 import org.linotte.moteur.xml.Linotte;
 import org.linotte.moteur.xml.Version;
 import org.linotte.moteur.xml.actions.AfficherAction;
@@ -111,13 +111,13 @@ public class FrameProcess extends Thread {
 		} else {
 			// on est passé par la ligne de commande :
 			//TODO A déplacer
-			synchronized (Jinotte.runtime.getJob()) {
+			synchronized (RuntimeConsole.runtime.getJob()) {
 				try {
-					Jinotte.runtime.getJob().notifyAll();
+					RuntimeConsole.runtime.getJob().notifyAll();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				Jinotte.runtime.getJob().stop();
+				RuntimeConsole.runtime.getJob().stop();
 			}
 		}
 	}
@@ -169,7 +169,7 @@ public class FrameProcess extends Thread {
 			} catch (IOException ei) {
 				// Tant pis pour le numéro de ligne..
 			}
-			int nbligne = Jinotte.retourneLaLigne(numerolignes, e.getPosition());
+			int nbligne = RuntimeConsole.retourneLaLigne(numerolignes, e.getPosition());
 
 			cahierCourant.setCouleur(null, true);
 			if (Version.isBeta())

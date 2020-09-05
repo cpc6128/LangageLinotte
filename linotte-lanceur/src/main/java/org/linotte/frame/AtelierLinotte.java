@@ -27,16 +27,13 @@ public class AtelierLinotte {
                 if (Preference.getIntance().themeNoir()) {
                     FlatDarculaLaf.install();
                     UIManager.put("TabbedPane.selectedBackground", Color.darkGray.darker());
-                }
-                else {
+                } else {
                     FlatIntelliJLaf.install();
                     UIManager.put("TabbedPane.selectedBackground", Color.lightGray.darker());
                 }
                 //UIManager.put("JComponent.roundRect", true);
                 //UIManager.put("JButton.buttonType", "roundRect");
-                SwingUtilities.invokeAndWait(() -> {
-                    splashWindow1.set(new SplashWindow(new Frame()));
-                });
+                SwingUtilities.invokeAndWait(() -> splashWindow1.set(new SplashWindow(new Frame())));
                 Atelier.initialisationFrameAtelierEtToile();
                 splashWindow1.get().fermer();
             } catch (Throwable e) {

@@ -19,6 +19,10 @@
             <outputDirectory>/</outputDirectory>
         </file>
         <file>
+            <source>${project.basedir}/../linotte-resources/src/main/assets/Tablette.exe</source>
+            <outputDirectory>/</outputDirectory>
+        </file>
+        <file>
             <source>${project.basedir}/target/Atelier.exe</source>
             <outputDirectory>/</outputDirectory>
         </file>
