@@ -35,81 +35,81 @@ FONT_BOLD 7:FONT_SIZE 7,18
 
 ' ===================================
 ' positionnement du bouton s�lectionner un fichier
-top 3,100:left 3,80
+TOP 3,100:LEFT 3,80
 ' dimensions du bouton
-width 3,400:height 3,80            
-caption 3,"SELECTIONNER UN FICHIER"
-font_bold 3:FONT_SIZE 3,18
-on_click 3, Button_Click_Selectionner
+WIDTH 3,400:HEIGHT 3,80
+CAPTION 3,"SELECTIONNER UN FICHIER"
+FONT_BOLD 3:FONT_SIZE 3,18
+ON_CLICK 3, Button_Click_Selectionner
 
 ' ===================================
 ' positionnement du bouton Editer un fichier
-top 4,210:left 4,80
+TOP 4,210:LEFT 4,80
 ' dimensions du bouton
-width 4,400:height 4,80
-caption 4,"EDITER LE FICHIER"
-font_bold 4:FONT_SIZE 4,18
-on_click 4, Button_Click_Editer
+WIDTH 4,400:HEIGHT 4,80
+CAPTION 4,"EDITER LE FICHIER"
+FONT_BOLD 4:FONT_SIZE 4,18
+ON_CLICK 4, Button_Click_Editer
 
 ' ===================================
 ' positionnement du bouton Executer un fichier
-top 5,340:left 5,80
+TOP 5,340:LEFT 5,80
 ' dimensions du bouton
-width 5,400:height 5,80
-caption 5,"EXECUTER LE FICHIER"
-font_bold 5:FONT_SIZE 5,18
-on_click 5, Button_Click_Executer
+WIDTH 5,400:height 5,80
+CAPTION 5,"EXECUTER LE FICHIER"
+FONT_BOLD 5:FONT_SIZE 5,18
+ON_CLICK 5, Button_Click_Executer
 
 ' ===================================
 ' positionnement du bouton Quitter
-top 6,340:left 6,500
+TOP 6,340:LEFT 6,500
 ' dimensions du bouton
-width 6,200:height 6,80
-caption 6,"QUITTER"
-font_bold 6:FONT_SIZE 6,18
-on_click 6, Button_Click_Quitter
+WIDTH 6,200:HEIGHT 6,80
+CAPTION 6,"QUITTER"
+FONT_BOLD 6:FONT_SIZE 6,18
+ON_CLICK 6, Button_Click_Quitter
 
 ' ===================================
 ' Initialisation de l'open dialog 
 DIR_DIALOG 2,DIR_CURRENT$
 
 ' Thread (EDT) en cours pour l'IHM
-end
+END
 
 ' ===================================
 Button_Click_Selectionner:
    Fichier_Choisi$=file_name$(2)
    ' Fichier_Choisi$=file_extract_name$(Fichier_Choisi$)
-    caption 7, file_extract_name$(Fichier_Choisi$)
+    CAPTION 7, file_extract_name$(Fichier_Choisi$)
    ' if (Fichier_Choisi$ <> "_") and (file_extract_extension$(Fichier_Choisi$) = ".liv")
      ' Fichier_Choisi$=file_extract_name$(Fichier_Choisi$)
      ' lancement de Linotte
      ' execute "java|-jar Atelier.jar -x exemples\"+Fichier_Choisi$
    ' end_if
-   return
+   RETURN
 
 ' ===================================
 Button_Click_Presse_Papier:
    ' lancement de Linotte
-   execute "java|-jar Atelier.jar -xp"
-   return
+   EXECUTE "java|-jar Atelier.jar -xp"
+   RETURN
 
 ' ===================================
 Button_Click_Executer:
    ' lancement de Linotte
-   execute "java|-jar Atelier.jar -x "+Fichier_Choisi$
-   return
+   EXECUTE "java|-jar Atelier.jar -x "+Fichier_Choisi$
+   RETURN
 
 ' ===================================
 Button_Click_Editer:
    ' Editer le fichier
-   execute "notepad| "+Fichier_Choisi$
-   return
+   EXECUTE "notepad| "+Fichier_Choisi$
+   RETURN
 
 ' ===================================
 Button_Click_Quitter:
    ' Quitter
-   terminate
+   TERMINATE
 
 
 
