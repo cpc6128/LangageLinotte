@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 public class TestsErreurs extends AbstractSimpleAffichageTest {
 
 	public TestsErreurs() {
-		super(ResourceBundle.getBundle("livres.tests_avec_erreurs"));
+		super(ResourceBundle.getBundle("livres.tests_avec_erreurs",new UTF8Control()));
 	}
 
 	enum LIVRE {

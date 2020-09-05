@@ -1,38 +1,40 @@
 ' http://panoramic.1fr1.net/t6456-aide-pour-la-creation-d-un-wrapper-pour-le-langage-linotte
 ' Auteurs : Jack (panoramic.1fr1.net/u1) , Cpc (github.com/cpc6128/LangageLinotte)
-dim Fichier_Choisi$
-label Button_Click_Selectionner, Button_Click_Editer, Button_Click_Executer , Button_Click_Presse_Papier, Button_Click_Quitter
+DIM Fichier_Choisi$
+LABEL Button_Click_Selectionner, Button_Click_Editer, Button_Click_Executer , Button_Click_Presse_Papier, Button_Click_Quitter
 
 ' IHM
-application_title "Tablette Linotte"  
-caption 0,"Tablette Linotte"
-width 0, 800
-alpha 1
+APPLICATION_TITLE "Tablette Linotte"
+CAPTION 0,"Tablette Linotte"
+WIDTH 0, 800
+
+' Creation des objets :
+ALPHA 1
 ' Selectionner un fichier
-button 3
+BUTTON 3
 ' Editer le fichier
-button 4
-' Exécuter le fichier
-button 5
+BUTTON 4
+' Executer le fichier
+BUTTON 5
 ' quitter
-button 6
+BUTTON 6
 ' Nom du fichier
-alpha 7
-open_dialog 2
+ALPHA 7
+OPEN_DIALOG 2
 
 ' creation de l'IHM
 ' ===================================
 ' positionnement des l'ALPHAs
-top 1,20:left 1,110
-caption 1, "LA TABLETTE LINOTTE"
-font_bold 1:FONT_SIZE 1,18
+TOP 1,20:LEFT 1,110
+CAPTION 1, "LA TABLETTE LINOTTE"
+FONT_BOLD 1:FONT_SIZE 1,18
 ' Nom du fichier
-top 7,100:left 7,500
-caption 7, "..."
-font_bold 7:FONT_SIZE 7,18
+TOP 7,100:LEFT 7,500
+CAPTION 7, "..."
+FONT_BOLD 7:FONT_SIZE 7,18
 
 ' ===================================
-' positionnement du bouton sélectionner un fichier
+' positionnement du bouton sï¿½lectionner un fichier
 top 3,100:left 3,80
 ' dimensions du bouton
 width 3,400:height 3,80            
@@ -66,6 +68,10 @@ width 6,200:height 6,80
 caption 6,"QUITTER"
 font_bold 6:FONT_SIZE 6,18
 on_click 6, Button_Click_Quitter
+
+' ===================================
+' Initialisation de l'open dialog 
+DIR_DIALOG 2,DIR_CURRENT$
 
 ' Thread (EDT) en cours pour l'IHM
 end
@@ -104,5 +110,6 @@ Button_Click_Editer:
 Button_Click_Quitter:
    ' Quitter
    terminate
+
 
 
