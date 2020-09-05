@@ -26,7 +26,9 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
  
  `mvn clean package`
 
-#### ( en projet, besoin d'aide ! ) documentation en ligne :
+#### documentation en ligne :
+
+- c'est en projet, nous avons besoin d'aide ! 
 
 - documentation en ligne à produire : <a href="https://cpc6128.frama.io/linotte3/fr/">cpc6128.frama.io/linotte3/fr/</a>
 
@@ -34,10 +36,10 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
 
 #### Mes autres projets :
 
-- corunning.fr (trouver des partenaires sportifs) : https://www.corunning.fr
+- corunning.fr (trouver des partenaires sportifs) : <a href="https://www.corunning.fr">corunning.fr</a>
 
-- L'Atelier Linotte sur Android (encore en version 2) : https://play.google.com/store/apps/details?id=fr.codevallee.langagelinotte.atelierlinotte
+- L'Atelier Linotte sur Android (encore en version 2) : <a href="https://play.google.com/store/apps/details?id=fr.codevallee.langagelinotte.atelierlinotte">Lien PlayStore</a>
 
-- WhereIsAlice (casse-tête sur Android) : https://play.google.com/store/apps/details?id=fr.codevallee.whereisalice
+- WhereIsAlice (casse-tête sur Android) : <a href="https://play.google.com/store/apps/details?id=fr.codevallee.whereisalice">Lien PlayStore</a>
 
 ![Atelier 3.0](http://langagelinotte.free.fr/github/atelier-dracula2.png)
