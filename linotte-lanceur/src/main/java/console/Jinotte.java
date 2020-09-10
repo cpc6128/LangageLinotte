@@ -56,7 +56,7 @@ import static org.linotte.moteur.outils.Preference.getIntance;
 
 public class Jinotte extends RuntimeConsole {
 
-    private static final List<String> LISTE_OPTIONS = Arrays.asList("v", "m", "x", "b", "t", "d", "h", "x", "s", "w", "r", "1", "p");
+    private static final List<String> LISTE_OPTIONS = Arrays.asList("v", "m", "x", "b", "t", "d", "h", "x", "s", "w", "a", "p");
 
     private Linotte interpreteur;
 
@@ -123,6 +123,9 @@ public class Jinotte extends RuntimeConsole {
             ihm = new FrameIHM((Frame) toile.getParent());
             interpreteur.setIhm(ihm);
             FrameIHM.setPopupMessage(true);
+        }
+
+        if (options.contains("a")) {
         }
 
         if (toile != null) {
@@ -197,6 +200,16 @@ public class Jinotte extends RuntimeConsole {
             System.err.println(erreurs + " erreur" + (erreurs == 1 ? "" : "s") + " !");
         }
 
+        if (options.contains("a")) {
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+            }
+            System.out.println("Programme terminé. Appuyez sur la touche Entrée pour quitter");
+            Scanner in = new Scanner(System.in);
+            String s = in.nextLine();
+        }
+
         // Ne pas faire en mode applet :
         getIntance().save();
         if (erreurs > 0) {
@@ -264,7 +277,7 @@ public class Jinotte extends RuntimeConsole {
         System.out.println("Usage : Jinotte [option]* [chemin_vers_nom_livre.liv]+");
         // System.out.println(" -m Ne pas écrire les acteurs sur disque");
         System.out.println("        -x Autoriser l'affichage de la toile");
-        //System.out.println("        -r Activation du mode Braille (en test)");
+        System.out.println("        -a Activation du mode accessiblité (en test)");
         System.out.println("        -p Lecture du livre depuis le presse-papier");
         System.out.println("        -s Affichage d'un icone dans le sysTray");
         System.out.println("        -w Affiche la fenetre dans la barre des tâches");
