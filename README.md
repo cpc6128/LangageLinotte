@@ -15,9 +15,9 @@ Vous voulez contribuer au projet ? N'hésitez pas à venir me rejoindre sur ce d
 
 Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagelinotte.free.fr</a>
 
-#### Téléchargement de la version 3.0 :
+#### Téléchargement de la dernière version :
 
-- <a href="https://bitbucket.org/metalm/langagelinotte/downloads/Linotte_3.0-2020-06-10-14-45.zip">Linotte_3.0-2020-06-10-14-45.zip</a>
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.1/Linotte_3.1-2020-09-10-14-44.zip">Linotte_3.1-2020-09-10-14-44.zip</a>
 
 #### Pour contribuer à faire évoluer Linotte :
  `git clone https://github.com/cpc6128/LangageLinotte.git`
