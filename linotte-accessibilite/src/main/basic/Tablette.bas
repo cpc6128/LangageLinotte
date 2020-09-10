@@ -1,5 +1,11 @@
 ' http://panoramic.1fr1.net/t6456-aide-pour-la-creation-d-un-wrapper-pour-le-langage-linotte
 ' Auteurs : Jack (panoramic.1fr1.net/u1) , Cpc (github.com/cpc6128/LangageLinotte)
+' Merci a : papydall, Minibug
+
+' Constantes :
+DIM DOUBLE$
+DOUBLE$ = CHR$(34) : ' caractere guillement "
+
 DIM Fichier_Choisi$
 LABEL Button_Click_Selectionner, Button_Click_Editer, Button_Click_Executer , Button_Click_Presse_Papier, Button_Click_Quitter
 
@@ -9,6 +15,9 @@ CAPTION 0,"Tablette Linotte"
 WIDTH 0, 800
 
 ' Creation des objets :
+' *********************
+
+' Titre de l'application
 ALPHA 1
 ' Selectionner un fichier
 BUTTON 3
@@ -41,6 +50,7 @@ WIDTH 3,400:HEIGHT 3,80
 CAPTION 3,"SELECTIONNER UN FICHIER"
 FONT_BOLD 3:FONT_SIZE 3,18
 ON_CLICK 3, Button_Click_Selectionner
+ON_KEY_DOWN 3, Button_Click_Selectionner
 
 ' ===================================
 ' positionnement du bouton Editer un fichier
@@ -84,7 +94,7 @@ Button_Click_Selectionner:
    ' if (Fichier_Choisi$ <> "_") and (file_extract_extension$(Fichier_Choisi$) = ".liv")
      ' Fichier_Choisi$=file_extract_name$(Fichier_Choisi$)
      ' lancement de Linotte
-     ' execute "java|-jar Atelier.jar -x exemples\"+Fichier_Choisi$
+     ' execute "java|-jar Atelier.jar -a exemples\"+Fichier_Choisi$
    ' end_if
    RETURN
 
@@ -97,7 +107,8 @@ Button_Click_Presse_Papier:
 ' ===================================
 Button_Click_Executer:
    ' lancement de Linotte
-   EXECUTE "java|-jar Atelier.jar -x "+Fichier_Choisi$
+   EXECUTE "java|-jar Atelier.jar -a "+ DOUBLE$ + Fichier_Choisi$ + DOUBLE$
+   ' EXECUTE "java|-jar Atelier.jar -x "+ Fichier_Choisi$
    RETURN
 
 ' ===================================
@@ -110,6 +121,7 @@ Button_Click_Editer:
 Button_Click_Quitter:
    ' Quitter
    TERMINATE
+
 
 
 
