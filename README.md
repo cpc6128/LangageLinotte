@@ -30,9 +30,7 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
 
 - c'est en projet, nous avons besoin d'aide ! 
 
-- documentation en ligne à produire : <a href="https://cpc6128.frama.io/linotte3/fr/">cpc6128.frama.io/linotte3/fr/</a>
-
-- code source de la documentation : <a href="https://framagit.org/cpc6128/linotte3">framagit.org/cpc6128/linotte3</a>
+- documentation en ligne à produire : <a href="https://github.com/cpc6128/LangageLinotte/wiki">wiki</a>
 
 #### Mes autres projets :
 
