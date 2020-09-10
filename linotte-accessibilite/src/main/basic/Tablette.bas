@@ -7,7 +7,7 @@ DIM DOUBLE$
 DOUBLE$ = CHR$(34) : ' caractere guillement "
 
 DIM Fichier_Choisi$
-LABEL Button_Click_Selectionner, Button_Click_Editer, Button_Click_Executer , Button_Click_Presse_Papier, Button_Click_Quitter
+LABEL Button_Click_Selectionner, Button_Click_Editer, Button_Click_Executer , Button_Click_Presse_Papier, Button_Click_Quitter, Gestion_Touche
 
 ' IHM
 APPLICATION_TITLE "Tablette Linotte"
@@ -83,6 +83,13 @@ ON_CLICK 6, Button_Click_Quitter
 ' Initialisation de l'open dialog 
 DIR_DIALOG 2,DIR_CURRENT$
 
+' Interception des touches :
+ON_KEY_UP 0, Gestion_Touche
+ON_KEY_UP 3, Gestion_Touche
+ON_KEY_UP 4, Gestion_Touche
+ON_KEY_UP 5, Gestion_Touche
+ON_KEY_UP 6, Gestion_Touche
+
 ' Thread (EDT) en cours pour l'IHM
 END
 
@@ -122,6 +129,11 @@ Button_Click_Quitter:
    ' Quitter
    TERMINATE
 
-
-
+' ===================================
+Gestion_Touche:
+    IF key_up_code=83 THEN GOSUB Button_Click_Selectionner
+    IF key_up_code=69 THEN GOSUB Button_Click_Editer
+    IF key_up_code=88 THEN GOSUB Button_Click_Executer
+    IF key_up_code=81 THEN GOSUB Button_Click_Quitter
+    RETURN
 
