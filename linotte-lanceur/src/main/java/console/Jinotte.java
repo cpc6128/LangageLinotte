@@ -201,9 +201,13 @@ public class Jinotte extends RuntimeConsole {
         }
 
         if (options.contains("a")) {
-        //System.out.println("Programme terminé, touche Entrée pour quitter");
-        Scanner in = new Scanner(System.in);
-        String s = in.nextLine();
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+            }
+            System.out.println("Programme terminé. Appuyez sur la touche Entrée pour quitter");
+            Scanner in = new Scanner(System.in);
+            String s = in.nextLine();
         }
 
         // Ne pas faire en mode applet :

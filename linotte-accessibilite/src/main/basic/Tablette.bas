@@ -1,13 +1,13 @@
 ' http://panoramic.1fr1.net/t6456-aide-pour-la-creation-d-un-wrapper-pour-le-langage-linotte
 ' Auteurs : Jack (panoramic.1fr1.net/u1) , Cpc (github.com/cpc6128/LangageLinotte)
-' Merci a : papydall, Minibug
+' Merci a : papydall, Minibug, Yannick
 
 ' Constantes :
 DIM DOUBLE$
 DOUBLE$ = CHR$(34) : ' caractere guillement "
 
 DIM Fichier_Choisi$
-LABEL Button_Click_Selectionner, Button_Click_Editer, Button_Click_Executer , Button_Click_Presse_Papier, Button_Click_Quitter, Gestion_Touche
+LABEL Button_Click_Selectionner, Button_Click_Editer, Button_Click_Executer , Button_Click_Presse_Papier, Button_Click_Quitter
 
 ' IHM
 APPLICATION_TITLE "Tablette Linotte"
@@ -35,7 +35,7 @@ OPEN_DIALOG 2
 ' ===================================
 ' positionnement des l'ALPHAs
 TOP 1,20:LEFT 1,110
-CAPTION 1, "LA TABLETTE LINOTTE"
+CAPTION 1, "  LA TABLETTE LINOTTE"
 FONT_BOLD 1:FONT_SIZE 1,18
 ' Nom du fichier
 TOP 7,100:LEFT 7,500
@@ -47,7 +47,7 @@ FONT_BOLD 7:FONT_SIZE 7,18
 TOP 3,100:LEFT 3,80
 ' dimensions du bouton
 WIDTH 3,400:HEIGHT 3,80
-CAPTION 3,"SELECTIONNER UN FICHIER"
+CAPTION 3,"&SELECTIONNER UN FICHIER"
 FONT_BOLD 3:FONT_SIZE 3,18
 ON_CLICK 3, Button_Click_Selectionner
 ON_KEY_DOWN 3, Button_Click_Selectionner
@@ -57,7 +57,7 @@ ON_KEY_DOWN 3, Button_Click_Selectionner
 TOP 4,210:LEFT 4,80
 ' dimensions du bouton
 WIDTH 4,400:HEIGHT 4,80
-CAPTION 4,"EDITER LE FICHIER"
+CAPTION 4,"&EDITER LE FICHIER"
 FONT_BOLD 4:FONT_SIZE 4,18
 ON_CLICK 4, Button_Click_Editer
 
@@ -66,7 +66,7 @@ ON_CLICK 4, Button_Click_Editer
 TOP 5,340:LEFT 5,80
 ' dimensions du bouton
 WIDTH 5,400:height 5,80
-CAPTION 5,"EXECUTER LE FICHIER"
+CAPTION 5,"E&XECUTER LE FICHIER"
 FONT_BOLD 5:FONT_SIZE 5,18
 ON_CLICK 5, Button_Click_Executer
 
@@ -75,20 +75,13 @@ ON_CLICK 5, Button_Click_Executer
 TOP 6,340:LEFT 6,500
 ' dimensions du bouton
 WIDTH 6,200:HEIGHT 6,80
-CAPTION 6,"QUITTER"
+CAPTION 6,"&QUITTER"
 FONT_BOLD 6:FONT_SIZE 6,18
 ON_CLICK 6, Button_Click_Quitter
 
 ' ===================================
 ' Initialisation de l'open dialog 
 DIR_DIALOG 2,DIR_CURRENT$
-
-' Interception des touches :
-ON_KEY_UP 0, Gestion_Touche
-ON_KEY_UP 3, Gestion_Touche
-ON_KEY_UP 4, Gestion_Touche
-ON_KEY_UP 5, Gestion_Touche
-ON_KEY_UP 6, Gestion_Touche
 
 ' Thread (EDT) en cours pour l'IHM
 END
@@ -128,12 +121,4 @@ Button_Click_Editer:
 Button_Click_Quitter:
    ' Quitter
    TERMINATE
-
-' ===================================
-Gestion_Touche:
-    IF key_up_code=83 THEN GOSUB Button_Click_Selectionner
-    IF key_up_code=69 THEN GOSUB Button_Click_Editer
-    IF key_up_code=88 THEN GOSUB Button_Click_Executer
-    IF key_up_code=81 THEN GOSUB Button_Click_Quitter
-    RETURN
-
+   
