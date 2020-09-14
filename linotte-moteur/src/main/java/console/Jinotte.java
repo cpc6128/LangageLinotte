@@ -185,13 +185,14 @@ public class Jinotte {
 
             String file = parametre[posParametre];
 
-            if (parametre.length > 1 && verbose)
-                System.out.println("Lecture de : " + file);
-
             StringBuilder flux = null;
             File fichier = null;
 
             fichier = new File(file);
+
+            if (parametre.length > 1 && verbose)
+                System.out.println("Lecture de : " + fichier.getAbsolutePath() + " (" + file + ")");
+
             try {
 
                 // Prise en compte des fichiers graphiques :  **********************************************
