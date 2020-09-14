@@ -66,7 +66,7 @@ ON_CLICK 4, Button_Click_Editer
 TOP 5,340:LEFT 5,80
 ' dimensions du bouton
 WIDTH 5,400:height 5,80
-CAPTION 5,"E&XECUTER LE FICHIER"
+CAPTION 5,"&LIRE LE FICHIER"
 FONT_BOLD 5:FONT_SIZE 5,18
 ON_CLICK 5, Button_Click_Executer
 
@@ -107,7 +107,7 @@ Button_Click_Presse_Papier:
 ' ===================================
 Button_Click_Executer:
    ' lancement de Linotte
-   EXECUTE "java|-jar Atelier.jar -a "+ DOUBLE$ + Fichier_Choisi$ + DOUBLE$
+   EXECUTE "java|-jar Atelier.jar -ab "+ DOUBLE$ + Fichier_Choisi$ + DOUBLE$
    ' EXECUTE "java|-jar Atelier.jar -x "+ Fichier_Choisi$
    RETURN
 
@@ -122,3 +122,4 @@ Button_Click_Quitter:
    ' Quitter
    TERMINATE
    
+
