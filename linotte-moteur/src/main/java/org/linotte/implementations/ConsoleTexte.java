@@ -21,6 +21,7 @@
 package org.linotte.implementations;
 
 import org.linotte.moteur.entites.Role;
+import org.linotte.moteur.outils.RuntimeConsole;
 import org.linotte.moteur.xml.api.IHM;
 
 import java.io.BufferedReader;
@@ -79,7 +80,8 @@ public class ConsoleTexte implements IHM {
     }
 
     public boolean effacer() {
-        return false;
+        RuntimeConsole.clearScreen();
+        return true;
     }
 
     public boolean afficherErreur(String afficher) {

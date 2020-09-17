@@ -56,11 +56,13 @@ import static org.linotte.moteur.outils.Preference.getIntance;
 
 public class Jinotte extends RuntimeConsole {
 
-    private static final List<String> LISTE_OPTIONS = Arrays.asList("v", "m", "x", "b", "t", "d", "h", "x", "s", "w", "a", "p");
+    private static final List<String> LISTE_OPTIONS = Arrays.asList("v", "m", "x", "b", "t", "d", "h", "x", "s", "w", "a", "p", "c");
 
     private Linotte interpreteur;
 
     private boolean verbose;
+
+    private boolean clearScreen;
 
     private boolean showtime, pressePapier;
 
@@ -106,6 +108,7 @@ public class Jinotte extends RuntimeConsole {
 
         verbose = options.contains("b");
         showtime = options.contains("t");
+        clearScreen = options.contains("c");
         pressePapier = options.contains("p");
         ConsoleTexte.setDEBUG(options.contains("d"));
         if (options.contains("v"))
@@ -149,7 +152,7 @@ public class Jinotte extends RuntimeConsole {
 
             StringBuilder flux = null;
             File fichier = new File(file);
-            
+
             if (parametre.length > 1 && verbose)
                 System.out.println("Lecture de : " + fichier.getAbsolutePath() + " (" + file + ")");
 
@@ -223,6 +226,8 @@ public class Jinotte extends RuntimeConsole {
     }
 
     private int lireFlux(List<Integer> numerolignes, StringBuilder flux, File fichier) {
+        if (clearScreen)
+            RuntimeConsole.clearScreen();
         StringBuilder erreur = new StringBuilder();
         int erreurs = 0;
         try {
