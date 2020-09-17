@@ -203,7 +203,7 @@ public class Jinotte extends RuntimeConsole {
             System.err.println(erreurs + " erreur" + (erreurs == 1 ? "" : "s") + " !");
         }
 
-        if (options.contains("a")) {
+        if (accessilite) {
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
