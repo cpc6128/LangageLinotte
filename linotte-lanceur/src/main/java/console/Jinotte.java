@@ -56,13 +56,13 @@ import static org.linotte.moteur.outils.Preference.getIntance;
 
 public class Jinotte extends RuntimeConsole {
 
-    private static final List<String> LISTE_OPTIONS = Arrays.asList("v", "m", "x", "b", "t", "d", "h", "x", "s", "w", "a", "p", "c");
+    private static final List<String> LISTE_OPTIONS = Arrays.asList("v", "m", "x", "b", "t", "d", "h", "x", "s", "w", "a", "p");
 
     private Linotte interpreteur;
 
     private boolean verbose;
 
-    private boolean clearScreen;
+    private boolean accessilite;
 
     private boolean showtime, pressePapier;
 
@@ -108,8 +108,8 @@ public class Jinotte extends RuntimeConsole {
 
         verbose = options.contains("b");
         showtime = options.contains("t");
-        clearScreen = options.contains("c");
         pressePapier = options.contains("p");
+        accessilite = options.contains("a");
         ConsoleTexte.setDEBUG(options.contains("d"));
         if (options.contains("v"))
             showversion();
@@ -117,7 +117,7 @@ public class Jinotte extends RuntimeConsole {
             showhelp();
 
         LibrairieVirtuelleSyntaxeV2 lib = new LibrairieVirtuelleSyntaxeV2();
-        ihm = new ConsoleTexte();
+        ihm = new ConsoleTexte(accessilite);
         interpreteur = new Linotte(lib, ihm, Langage.Linotte2);//options.contains("1"));
 
         if (options.contains("x")) {
@@ -126,9 +126,6 @@ public class Jinotte extends RuntimeConsole {
             ihm = new FrameIHM((Frame) toile.getParent());
             interpreteur.setIhm(ihm);
             FrameIHM.setPopupMessage(true);
-        }
-
-        if (options.contains("a")) {
         }
 
         if (toile != null) {
@@ -226,7 +223,7 @@ public class Jinotte extends RuntimeConsole {
     }
 
     private int lireFlux(List<Integer> numerolignes, StringBuilder flux, File fichier) {
-        if (clearScreen)
+        if (accessilite)
             RuntimeConsole.clearScreen();
         StringBuilder erreur = new StringBuilder();
         int erreurs = 0;

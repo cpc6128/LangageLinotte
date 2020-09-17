@@ -37,6 +37,16 @@ public class ConsoleTexte implements IHM {
 
     static boolean debug = true;
 
+    private boolean accessibilite;
+
+    public ConsoleTexte() {
+        accessibilite = false;
+    }
+
+    public ConsoleTexte(boolean accessibilite) {
+        this.accessibilite = accessibilite;
+    }
+
     public boolean debug(String parametre) {
         if (debug)
             System.err.println(parametre);
@@ -66,6 +76,9 @@ public class ConsoleTexte implements IHM {
                 message = demanderProxy(">");// in.readLine();
         } catch (Exception e) {
             message = "0";
+        }
+        if (accessibilite) {
+            effacer();
         }
         return message;
     }
