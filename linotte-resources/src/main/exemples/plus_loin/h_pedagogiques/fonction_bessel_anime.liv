@@ -10,52 +10,50 @@ globale
 
 principale :
 	boucle est un nombre valant 1
-	début
-		~ angle radian
-		projette fond
-		tant que vrai
-			parcours bessel avec boucle
-			boucle prend boucle + .03
-			attends 40 millisecondes			
-		ferme
+	~ angle radian
+	projette fond
+	tant que vrai
+		parcours bessel avec boucle
+		boucle prend boucle + .03
+		attends 40 millisecondes
+	ferme
 
 Bessel :
 	* r est un nombre
 	n & i & j & k & x & y & δ & d & z est un nombre
 	x2d est un casier de nombres
 	y2d est un casier de nombres
-	début
-		//Rayon. On trace pour x∈[-r , r] et y∈[-r , r]
-		//r prend 20
-		// Nombre de "tranches" - À partir de 200-300, on ne voit plus grand-chose
-		n prend 20
-		// Largeur de chaque tranche.
-		δ prend 2 / (n - 1)
-		// Calcul des points et conversion en 2D
-		i prend 0
-		x prend -1
-		pour j de 0 à n-1
-			y prend -1
-			pour k de 0 à n-1
-				d prend racine(carré x + carré y) * r
-				z prend sin(d)/d
-				ajoute 200 - x*100 + y*100 dans x2d
-				ajoute 150 + x*55 + y*55 - z*100 dans y2d
-				incrémente i
-				y prend y + δ
-			ferme
-			x prend  x + δ
-		ferme
-		// Initialisation de l'affichage
-		// Tracé. On fait des tranches le long de l'axe des abscisses.
-		i prend 0
-		efface toile
-		projette tortue
-		pour j de 0 à n-1
-			posé@tortue prend "non"
-			déplace tortue vers  x2d{i} et y2d{i}
-			posé@tortue prend "oui"
-			pour i de i à i + n-1, déplace tortue vers  x2d{i} et y2d{i}
+	//Rayon. On trace pour x∈[-r , r] et y∈[-r , r]
+	//r prend 20
+	// Nombre de "tranches" - À partir de 200-300, on ne voit plus grand-chose
+	n prend 20
+	// Largeur de chaque tranche.
+	δ prend 2 / (n - 1)
+	// Calcul des points et conversion en 2D
+	i prend 0
+	x prend -1
+	pour j de 0 à n-1
+		y prend -1
+		pour k de 0 à n-1
+			d prend racine(carré x + carré y) * r
+			z prend sin(d)/d
+			ajoute 200 - x*100 + y*100 dans x2d
+			ajoute 150 + x*55 + y*55 - z*100 dans y2d
 			incrémente i
+			y prend y + δ
 		ferme
-		reviens
+		x prend  x + δ
+	ferme
+	// Initialisation de l'affichage
+	// Tracé. On fait des tranches le long de l'axe des abscisses.
+	i prend 0
+	efface toile
+	projette tortue
+	pour j de 0 à n-1
+		posé@tortue prend "non"
+		déplace tortue vers  x2d{i} et y2d{i}
+		posé@tortue prend "oui"
+		pour i de i à i + n-1, déplace tortue vers  x2d{i} et y2d{i}
+		incrémente i
+	ferme
+	reviens

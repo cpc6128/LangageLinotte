@@ -4,11 +4,10 @@ lancer deux dés :
 	k est un nombre
 	dé1 est un nombre
 	dé2 est un nombre
-	début
-		demande n
-		pour k de 1 à n
-			dé1 prend hasard(6) + 1
-			dé2 prend hasard(6) + 1
-			si (dé1+ dé2) = 7 incrémente c
-		ferme
-		affiche c/n
+	demande n
+	pour k de 1 à n
+		dé1 prend hasard(6) + 1
+		dé2 prend hasard(6) + 1
+		si (dé1+ dé2) = 7 incrémente c
+	ferme
+	affiche c/n
