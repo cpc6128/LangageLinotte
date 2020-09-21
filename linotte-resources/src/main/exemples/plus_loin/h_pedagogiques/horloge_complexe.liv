@@ -18,9 +18,9 @@ principale :
 		comtoise.heure(heure)
 		comtoise.minute(minute)
 		comtoise.seconde(seconde)
-		 // Evolution du balancier
+		// Evolution du balancier
 		pour i de 0 à 40 suivant i + 5
-			si sens est vrai
+			si sens 
 				x de balancier vaut 260 + i
 				x2 de tige vaut 260 + i
 			ferme

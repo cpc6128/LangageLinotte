@@ -70,14 +70,21 @@ public final class BibliothequeGreffons {
             attributs.put("état", new Attribut(NOMBRE, "0"));
             attributs.put("port", new Attribut(NOMBRE, "8777"));
             LinotteFacade.creationPrototype(attributs, new PontTube(), "pont");
-        }{
+        }
+        {
             Map<String, Attribut> attributs = new HashMap<String, Attribut>();
             attributs.put("texte", new Attribut(TEXTE, "http://www.codevallee.fr"));
             attributs.put("taille", new Attribut(NOMBRE, "125"));
             attributs.put("x", new Attribut(NOMBRE, "0"));
             attributs.put("y", new Attribut(NOMBRE, "0"));
             LinotteFacade.creationPrototype(attributs, new QRCode(), "qrcode");
-
+        }
+        {
+            Map<String, Attribut> attributs = new HashMap<String, Attribut>();
+            attributs.put("rayon", new Attribut(NOMBRE, "100"));
+            attributs.put("x", new Attribut(NOMBRE, "50"));
+            attributs.put("y", new Attribut(NOMBRE, "50"));
+            LinotteFacade.creationPrototype(attributs, new Horloge(), "horloge");
         }
         {
             Map<String, Attribut> attributs = new HashMap<String, Attribut>();
