@@ -1,0 +1,28 @@
+globale
+	form est un formulaire, titre prend "Cube 3D", largeur prend 300, hauteur prend 300
+	monde est un monde3D, x prend 0, y prend 0,largeur prend 300, hauteur prend 300
+	boite  est un boite3D, dx prend 0.2, dy prend 0.5, dz prend 0.6, couleur prend "sanguine", texture prend "Brique_07.jpg", transparence prend .2
+	boites est un casier de boite3D
+	i est un nombre
+
+principale :
+	ajoute monde dans form
+	ajoute  boite  dans monde
+	boite.translation(0,-10,0)
+	fais réagir form à "clic souris" pour fermer la fenêtre
+	pour i de 0 à 10
+		ajoute #boite dans boites
+		ajoute boites{i} dans monde
+		(boites{i}).translation((-1)*.4*I,-1,-10*(hasard(10)*0.6))
+	ferme
+	ajoute boite dans boites
+	tant que vrai
+		pour chaque boites
+			joker.rotationY(0.02)
+		ferme
+		attends 0.03 seconde
+	ferme
+
+fermer la fenêtre :
+	*f est un formulaire
+	termine
