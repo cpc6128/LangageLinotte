@@ -4,6 +4,8 @@ import org.linotte.greffons.api.Greffon.Attribut;
 import org.linotte.greffons.impl.*;
 import org.linotte.greffons.impl.swing.*;
 import org.linotte.greffons.impl.swing.layout.Grille;
+import org.linotte.greffons.impl.xyz.Monde3D;
+import org.linotte.greffons.impl.xyz.Texte3D;
 import org.linotte.moteur.xml.Linotte;
 import org.linotte.moteur.xml.api.Librairie;
 
@@ -39,7 +41,8 @@ public final class BibliothequeGreffons {
         // Ajout des autres greffons :
         // ***************************
 
-        LinotteFacade.creationPrototype(null, new Majordome(), "majordome");
+
+         LinotteFacade.creationPrototype(null, new Majordome(), "majordome");
         LinotteFacade.creationPrototype(null, new TCPClient(), "tcpclient");
         LinotteFacade.creationPrototype(null, new TCPServeur(), "tcpserveur");
         LinotteFacade.creationPrototype(null, new Clavier(), "clavier");
@@ -79,6 +82,27 @@ public final class BibliothequeGreffons {
             attributs.put("y", new Attribut(NOMBRE, "0"));
             LinotteFacade.creationPrototype(attributs, new QRCode(), "qrcode");
         }
+
+        // 3D
+        {
+            Map<String, Attribut> attributs = new HashMap<String, Attribut>();
+            attributs.put("texte", new Attribut(TEXTE, "oups"));
+            attributs.put("police", new Attribut(TEXTE, "Helvetica"));
+            attributs.put("taille", new Attribut(NOMBRE, "1"));
+            attributs.put("couleur", new Attribut(TEXTE, "rouge"));
+            LinotteFacade.creationPrototype(attributs, new Texte3D(), "texte3d");
+        }
+
+        {
+            Map<String, Attribut> attributs = new HashMap<String, Attribut>();
+            attributs.put("x", new Attribut(NOMBRE, "100"));
+            attributs.put("y", new Attribut(NOMBRE, "100"));
+            attributs.put("largeur", new Attribut(NOMBRE, "300"));
+            attributs.put("hauteur", new Attribut(NOMBRE, "200"));
+            attributs.put("visible", new Attribut(TEXTE, "oui"));
+            LinotteFacade.creationPrototype(attributs, new Monde3D(), "monde3d");
+        }
+
         {
             Map<String, Attribut> attributs = new HashMap<String, Attribut>();
             attributs.put("rayon", new Attribut(NOMBRE, "100"));
