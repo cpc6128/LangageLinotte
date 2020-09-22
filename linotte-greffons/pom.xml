@@ -5,7 +5,7 @@
     <parent>
         <artifactId>langagelinotte</artifactId>
         <groupId>fr.codevallee</groupId>
-        <version>3.1</version>
+        <version>3.2-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -14,7 +14,7 @@
         <dependency>
             <groupId>fr.codevallee</groupId>
             <artifactId>linotte-moteur</artifactId>
-            <version>3.1</version>
+            <version>3.2-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -27,6 +27,39 @@
             <artifactId>jlayer</artifactId>
             <version>1.0.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>core</artifactId>
+            <version>3.4.0</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.jogamp.gluegen</groupId>
+            <artifactId>gluegen-rt-main</artifactId>
+            <version>2.3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jogamp.jogl</groupId>
+            <artifactId>jogl-all-main</artifactId>
+            <version>2.3.2</version>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/com.massisframework.j3d/java3d-core -->
+        <dependency>
+            <groupId>com.massisframework.j3d</groupId>
+            <artifactId>java3d-core</artifactId>
+            <version>1.6.0.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.massisframework.j3d/vecmath -->
+        <dependency>
+            <groupId>com.massisframework.j3d</groupId>
+            <artifactId>vecmath</artifactId>
+            <version>1.6.0.1</version>
+        </dependency>
+
+
 
     </dependencies>
 

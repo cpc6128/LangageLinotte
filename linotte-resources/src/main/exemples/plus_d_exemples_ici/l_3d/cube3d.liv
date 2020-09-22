@@ -1,0 +1,140 @@
+globale
+	delta valant 50
+	tempo valant 0
+	tampon est un texte
+	pas valant 0.13
+	form est un formulaire, titre prend "Cube 3D & Caméra", largeur prend 800, hauteur prend 500
+	label est un étiquette, texte prend "Commandes de la caméra", x prend 600, y prend 20, taille prend 4
+	info est un étiquette, texte prend "<html><font color=red>Les flèches du clavier <br>fonctionnement également !</font></html>", x prend 600, y prend 300 + delta, taille prend 1
+	RX est un bouton, texte prend "Rotation X (s)", x prend 600, y prend 20 + delta, touche prend "s"
+	RY est un bouton, texte prend "Rotation Y (d)", x prend 600, y prend 60 + delta, touche prend "d"
+	RZ est un bouton, texte prend "Rotation Z (f)", x prend 600, y prend 100 + delta, touche prend "f"
+	TX est un bouton, texte prend "Translation X (g)", x prend 600, y prend 140 + delta, touche prend "g"
+	TY est un bouton, texte prend "Translation Y (h)", x prend 600, y prend 180 + delta, touche prend "h"
+	TZ est un bouton, texte prend "Translation Z (j)", x prend 600, y prend 220 + delta, touche prend "j"
+	IRX est un bouton, texte prend "- (x)", x prend 730, y prend 20 + delta, touche prend "x"
+	IRY est un bouton, texte prend "- (c)", x prend 730, y prend 60 + delta, touche prend "c"
+	IRZ est un bouton, texte prend "- (v)", x prend 730, y prend 100 + delta, touche prend "v"
+	ITX est un bouton, texte prend "- (b)", x prend 730, y prend 140 + delta, touche prend "b"
+	ITY est un bouton, texte prend "- (n)", x prend 730, y prend 180 + delta, touche prend "n"
+	ITZ est un bouton, texte prend "- (,)", x prend 730, y prend 220 + delta, touche prend ","
+	// Objets 3D
+	monde est un monde3D, x prend 0, y prend 0, largeur prend 590, hauteur prend 500
+	forme  est un cube3D, rayon prend 0.5, transparence prend .5
+	sphere est un sphere3D, rayon prend 0.3, couleur prend "rouge", transparence prend 0.7, texture prend "earthTexture.jpg"
+	message est un texte3D, texte prend "Vive la 3D avec le langage Linotte !", taille prend -1, couleur prend "sable", police prend "Arial"
+
+principal :
+	ajoute monde & label & info dans form
+	ajoute forme & sphere & message dans monde
+	ajoute RX & RY & RZ dans form
+	ajoute TX & TY & TZ dans form
+	ajoute IRX & IRY & IRZ dans form
+	ajoute ITX & ITY & ITZ dans form
+	fais réagir RX à "clic souris" pour RX
+	fais réagir RY à "clic souris" pour RY
+	fais réagir RZ à "clic souris" pour RZ
+	fais réagir TX à "clic souris" pour TX
+	fais réagir TY à "clic souris" pour TY
+	fais réagir TZ à "clic souris" pour TZ
+	fais réagir IRX à "clic souris" pour IRX
+	fais réagir IRY à "clic souris" pour IRY
+	fais réagir IRZ à "clic souris" pour IRZ
+	fais réagir ITX à "clic souris" pour ITX
+	fais réagir ITY à "clic souris" pour ITY
+	fais réagir ITZ à "clic souris" pour ITZ
+	fais réagir form à "clic souris" pour fermer la fenêtre
+	tant que vrai
+		monde.focus()
+		tampon prend touche
+		forme.rotationx(0.04)
+		forme.rotationy(0.03)
+		forme.rotationz(0.01)
+		message.translation(0,0,-0.01)
+		sphere.translation(0,cos(tempo)/100,0)
+		sphere.rotationy(-0.02)
+		incrémente tempo
+		attends 0.03 seconde
+		si tampon = "a", appelle ITX avec ITX
+		sinon si tampon = "z", appelle TX avec TX
+		sinon si tampon = "haut", appelle ITZ avec ITZ
+		sinon si tampon = "bas", appelle TZ avec TZ
+		sinon si tampon = "gauche", appelle RY avec RY
+		sinon si tampon = "droite", appelle IRY avec IRY
+	ferme
+
+fermer la fenêtre :
+	*f est un formulaire
+	termine
+
+RX :
+	*s est un bouton
+	monde.rotationx(pas)
+	monde.focus()
+	reviens
+
+RY :
+	*s est un bouton
+	monde.rotationy(pas)
+	monde.focus()
+	reviens
+
+RZ :
+	*s est un bouton
+	monde.rotationz(pas)
+	monde.focus()
+	reviens
+
+TX :
+	*s est un bouton
+	monde.translation(pas,0,0)
+	monde.focus()
+	reviens
+
+TY :
+	*s est un bouton
+	monde.translation(0,pas,0)
+	monde.focus()
+	reviens
+
+TZ :
+	*s est un bouton
+	monde.translation(0,0,pas)
+	monde.focus()
+	reviens
+
+IRX :
+	*s est un bouton
+	monde.rotationx(-pas)
+	monde.focus()
+	reviens
+
+IRY :
+	*s est un bouton
+	monde.rotationy(-pas)
+	monde.focus()
+	reviens
+
+IRZ :
+	*s est un bouton
+	monde.rotationz(-pas)
+	monde.focus()
+	reviens
+
+ITX :
+	*s est un bouton
+	monde.translation(-pas,0,0)
+	monde.focus()
+	reviens
+
+ITY :
+	*s est un bouton
+	monde.translation(0,-pas,0)
+	monde.focus()
+	reviens
+
+ITZ :
+	*s est une bouton
+	monde.translation(0,0,-pas)
+	monde.focus()
+	reviens

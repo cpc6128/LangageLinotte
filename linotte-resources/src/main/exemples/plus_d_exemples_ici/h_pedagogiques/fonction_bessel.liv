@@ -1,0 +1,50 @@
+// Source : http://proglab.fr/demo/
+globale
+	fond est une toile, couleur prend "blanc", largeur prend 400, hauteur prend 300
+	tortue est un crayon, couleur prend "noir", pointe prend "non"
+
+// Représentation de la fonction z(x, y) = sin(√(x²+y²)) / √(x²+y²)
+// en perspective isométrique.
+// Vous pouvez modifier les paramètres r et n.
+// Cet algorithme pourrait largement être optimisé.
+
+Bessel :
+	n & i & j & k & r & x & y & δ & d & z est un nombre
+	x2d est un casier de nombres
+	y2d est un casier de nombres
+	~ angle radian
+	//Rayon. On trace pour x∈[-r , r] et y∈[-r , r]
+	r prend 20
+	// Nombre de "tranches" - À partir de 200-300, on ne voit plus grand-chose
+	n prend 150
+	// Largeur de chaque tranche.
+	δ prend 2 / (n - 1)
+	// Calcul des points et conversion en 2D
+	i prend 0
+	x prend -1
+	pour j de 0 à n-1
+		y prend -1
+		pour k de 0 à n-1
+			d prend racine(carré x + carré y) * r
+			z prend sin(d)/d
+			ajoute 200 - x*100 + y*100 dans x2d
+			ajoute 150 + x*55 + y*55 - z*100 dans y2d
+			incrémente i
+			y prend y + δ
+		ferme
+		x prend  x + δ
+	ferme
+	// Initialisation de l'affichage
+	projette fond	
+	// Tracé. On fait des tranches le long de l'axe des abscisses.
+	i prend 0
+	projette tortue
+	pour j de 0 à n-1
+		posé@tortue prend "non"
+		déplace tortue vers  x2d{i} et y2d{i}
+		posé@tortue prend "oui"
+		pour k de 0 à n-1
+			déplace tortue vers  x2d{i} et y2d{i}
+			incrémente i
+		ferme
+	ferme

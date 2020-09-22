@@ -47,7 +47,7 @@ FONT_BOLD 7:FONT_SIZE 7,18
 TOP 3,100:LEFT 3,80
 ' dimensions du bouton
 WIDTH 3,400:HEIGHT 3,80
-CAPTION 3,"&SELECTIONNER UN FICHIER"
+CAPTION 3,"&SELECTIONNER UN LIVRE"
 FONT_BOLD 3:FONT_SIZE 3,18
 ON_CLICK 3, Button_Click_Selectionner
 ON_KEY_DOWN 3, Button_Click_Selectionner
@@ -57,7 +57,7 @@ ON_KEY_DOWN 3, Button_Click_Selectionner
 TOP 4,210:LEFT 4,80
 ' dimensions du bouton
 WIDTH 4,400:HEIGHT 4,80
-CAPTION 4,"&EDITER LE FICHIER"
+CAPTION 4,"&EDITER LE LIVRE"
 FONT_BOLD 4:FONT_SIZE 4,18
 ON_CLICK 4, Button_Click_Editer
 
@@ -66,7 +66,7 @@ ON_CLICK 4, Button_Click_Editer
 TOP 5,340:LEFT 5,80
 ' dimensions du bouton
 WIDTH 5,400:height 5,80
-CAPTION 5,"E&XECUTER LE FICHIER"
+CAPTION 5,"&LIRE LE LIVRE"
 FONT_BOLD 5:FONT_SIZE 5,18
 ON_CLICK 5, Button_Click_Executer
 
@@ -107,7 +107,8 @@ Button_Click_Presse_Papier:
 ' ===================================
 Button_Click_Executer:
    ' lancement de Linotte
-   EXECUTE "java|-jar Atelier.jar -a "+ DOUBLE$ + Fichier_Choisi$ + DOUBLE$
+   EXECUTE_WAIT "chcp| 65001"
+   EXECUTE_WAIT "java|-jar Atelier.jar -a "+ DOUBLE$ + Fichier_Choisi$ + DOUBLE$
    ' EXECUTE "java|-jar Atelier.jar -x "+ Fichier_Choisi$
    RETURN
 
@@ -122,3 +123,6 @@ Button_Click_Quitter:
    ' Quitter
    TERMINATE
    
+
+
+

@@ -5,11 +5,10 @@
 syracuse :
 	durée est un nombre
 	e est un nombre
-	début
-		demande e
-		tant que e != 1
-			durée prend durée + 1
-			si (e mod 2) = 0, e prend e / 2
-			sinon e prend e * 3 + 1
-		ferme
-		affiche durée
+	demande e
+	tant que e != 1
+		durée prend durée + 1
+		si (e mod 2) = 0, e prend e / 2
+		sinon e prend e * 3 + 1
+	ferme
+	affiche durée

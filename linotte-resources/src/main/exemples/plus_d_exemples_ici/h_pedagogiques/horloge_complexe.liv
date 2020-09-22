@@ -10,26 +10,25 @@ principale :
 		couleur vaut "platine", taille vaut 5
 	i est un nombre
 	sens est un drapeau valant vrai
-	début
-		projette comtoise
-		projette coffre
-		projette balancier
-		projette tige
-		tant que vrai
-			comtoise.heure(heure)
-			comtoise.minute(minute)
-			comtoise.seconde(seconde)
-		 // Evolution du balancier
-			pour i de 0 à 40 suivant i + 5
-				si sens est vrai
-					x de balancier vaut 260 + i
-					x2 de tige vaut 260 + i
-				ferme
-				sinon
-					x de balancier vaut 300 - i
-					x2 de tige vaut 300 - i
-				ferme
-				attends 1/8 seconde
+	projette comtoise
+	projette coffre
+	projette balancier
+	projette tige
+	tant que vrai
+		comtoise.heure(heure)
+		comtoise.minute(minute)
+		comtoise.seconde(seconde)
+		// Evolution du balancier
+		pour i de 0 à 40 suivant i + 5
+			si sens 
+				x de balancier vaut 260 + i
+				x2 de tige vaut 260 + i
 			ferme
-			sens vaut non (sens)
+			sinon
+				x de balancier vaut 300 - i
+				x2 de tige vaut 300 - i
+			ferme
+			attends 1/8 seconde
 		ferme
+		sens vaut non (sens)
+	ferme

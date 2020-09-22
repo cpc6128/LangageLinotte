@@ -62,6 +62,8 @@ public class Jinotte extends RuntimeConsole {
 
     private boolean verbose;
 
+    private boolean accessilite;
+
     private boolean showtime, pressePapier;
 
     private IHM ihm = null;
@@ -107,6 +109,7 @@ public class Jinotte extends RuntimeConsole {
         verbose = options.contains("b");
         showtime = options.contains("t");
         pressePapier = options.contains("p");
+        accessilite = options.contains("a");
         ConsoleTexte.setDEBUG(options.contains("d"));
         if (options.contains("v"))
             showversion();
@@ -114,7 +117,7 @@ public class Jinotte extends RuntimeConsole {
             showhelp();
 
         LibrairieVirtuelleSyntaxeV2 lib = new LibrairieVirtuelleSyntaxeV2();
-        ihm = new ConsoleTexte();
+        ihm = new ConsoleTexte(accessilite);
         interpreteur = new Linotte(lib, ihm, Langage.Linotte2);//options.contains("1"));
 
         if (options.contains("x")) {
@@ -123,9 +126,6 @@ public class Jinotte extends RuntimeConsole {
             ihm = new FrameIHM((Frame) toile.getParent());
             interpreteur.setIhm(ihm);
             FrameIHM.setPopupMessage(true);
-        }
-
-        if (options.contains("a")) {
         }
 
         if (toile != null) {
@@ -144,11 +144,14 @@ public class Jinotte extends RuntimeConsole {
 
             String file = parametre[posParametre];
 
-            if (parametre.length > 1 && verbose)
-                System.out.println("Lecture de : " + file);
+            //if (parametre.length > 1 && verbose)
+            //    System.out.println("Lecture de : " + file);
 
             StringBuilder flux = null;
             File fichier = new File(file);
+
+            if (parametre.length > 1 && verbose)
+                System.out.println("Lecture de : " + fichier.getAbsolutePath() + " (" + file + ")");
 
             try {
 
@@ -200,7 +203,7 @@ public class Jinotte extends RuntimeConsole {
             System.err.println(erreurs + " erreur" + (erreurs == 1 ? "" : "s") + " !");
         }
 
-        if (options.contains("a")) {
+        if (accessilite) {
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
@@ -220,6 +223,8 @@ public class Jinotte extends RuntimeConsole {
     }
 
     private int lireFlux(List<Integer> numerolignes, StringBuilder flux, File fichier) {
+        if (accessilite)
+            RuntimeConsole.clearScreen();
         StringBuilder erreur = new StringBuilder();
         int erreurs = 0;
         try {
