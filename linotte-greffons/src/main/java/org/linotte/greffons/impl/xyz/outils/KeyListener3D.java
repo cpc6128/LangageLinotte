@@ -47,11 +47,11 @@ public class KeyListener3D implements KeyListener, Runnable {
 		this.toileListener = toileListener;
 	}
 
-	public static final String TOUCHE_ENTREE = "EntrÃ©e";
+	public static final String TOUCHE_ENTREE = "Entrée";
 
 	public static final String TOUCHE_ESPACE = "Espace";
 
-	public static final String TOUCHE_DEL = "Retour arriÃ¨re";
+	public static final String TOUCHE_DEL = "Retour arrière";
 
 	private long KEY_DELAY = 10;
 
@@ -106,7 +106,7 @@ public class KeyListener3D implements KeyListener, Runnable {
 					v = Integer.valueOf(chars[i]).intValue();
 					b = v > 31 && v < 300;
 					s = b ? String.valueOf(chars[i]) : KeyEvent.getKeyText(i);
-					//toileListener.ajouteTouche(s);
+					toileListener.ajouteTouche(s);
 					reveillerMoteur();
 				}
 			}
