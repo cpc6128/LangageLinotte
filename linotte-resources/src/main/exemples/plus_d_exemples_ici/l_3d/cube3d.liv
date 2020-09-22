@@ -44,7 +44,7 @@ principal :
 	fais réagir ITY à "clic souris" pour ITY
 	fais réagir ITZ à "clic souris" pour ITZ
 	fais réagir form à "clic souris" pour fermer la fenêtre
-	tant que vrai lis
+	tant que vrai
 		monde.focus()
 		tampon prend touche
 		forme.rotationx(0.04)

@@ -64,11 +64,11 @@ public final class BibliothequeGreffons {
         }
         {
             Map<String, Attribut> attributs = new HashMap<String, Attribut>();
-            LinotteFacade.creationPrototype(attributs, new Brouillard3D(), "brouillard3D");
+            LinotteFacade.creationPrototype(attributs, new Brouillard3D(), "brouillard3d");
         }
         {
             Map<String, Attribut> attributs = new HashMap<String, Attribut>();
-            LinotteFacade.creationPrototype(attributs, new Lumiere3D(), "lumiere3D");
+            LinotteFacade.creationPrototype(attributs, new Lumiere3D(), "lumiere3d");
         }
         {
             Map<String, Attribut> attributs = new HashMap<String, Attribut>();
@@ -92,11 +92,11 @@ public final class BibliothequeGreffons {
         }
         {
             Map<String, Attribut> attributs = new HashMap<String, Attribut>();
-            attributs.put("rayon", new Attribut(NOMBRE, "0,5"));
+            attributs.put("rayon", new Attribut(NOMBRE, "0.5"));
             attributs.put("couleur", new Attribut(TEXTE, "marron"));
             attributs.put("transparence", new Attribut(NOMBRE, "1"));
             attributs.put("texture", new Attribut(TEXTE, ""));
-            LinotteFacade.creationPrototype(attributs, new Cone3D(), "cone3D");
+            LinotteFacade.creationPrototype(attributs, new Sphere3D(), "sphere3d");
         }
     }
 
