@@ -7,18 +7,18 @@ import javax.media.j3d.Node;
 
 public abstract class Composant3D extends Composant {
 
-	@Override
-	public void ajouterComposant(Composant composant) throws GreffonException {
+    @Override
+    public void ajouterComposant(Composant composant) throws GreffonException {
 
-	}
+    }
 
-	public abstract Node getComposant3D();
+    public abstract Node getComposant3D();
 
-	public abstract Node getNode();
+    public abstract Node getNode();
 
-	@Override
-	public boolean enregistrerPourDestruction() {
-		return true;
-	}
+    @Override
+    public boolean enregistrerPourDestruction() {
+        return true;
+    }
 
 }
