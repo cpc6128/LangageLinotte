@@ -566,6 +566,13 @@ public class LaToileListener extends JPanelLaToile implements KeyListener, Runna
 		return elementsDragAndDrop;
 	}
 
+	public void ajouteTouche(String touche) {
+		synchronized (touches) {
+			touches.add(touche);
+		}
+		reveillerMoteur();
+	}
+
 	@Override
 	public void effacer() {
 		elementsSourisEntree.clear();
