@@ -30,7 +30,11 @@ public final class BibliothequeGreffons {
 
         greffonsInternesAutres();
 
-        greffons3D();
+        try {
+            greffons3D();
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
 
     }
 
