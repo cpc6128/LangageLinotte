@@ -3,7 +3,7 @@ code :
 	questionne capitale sur "Quelle est la capitale de la France ?"
 	si capitale = "Paris" va vers réponse bonne
 	affiche "Faux ! tu peux recommencer !"
-	va vers principale
+	va vers code
 
 réponse bonne :
 	affiche "Bravo, tu es trop fort !"

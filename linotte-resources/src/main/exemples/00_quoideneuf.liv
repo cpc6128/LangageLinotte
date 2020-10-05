@@ -20,6 +20,9 @@ Bonne programmation !
 Historique des versions :
 -------------------------
 
+*09/10/20 - Linotte 3.3
+ -Evolution : Possibilité de mettre des actions sans fonction
+
 *23/09/20 - Linotte 3.2
  -Correction : Retour des greffons Horloge, QRCode, et 3D
  -Correction : Ajout de la Tablette.exe, outil pour les aveugles ou malvoyants
