@@ -114,65 +114,60 @@ quitter :
 	nom@message prend texte@login
 	commande@message prend "quitter"
 	affiche "nous quittons le serveur ..."
-	essaie
-		essaie client.envoyer(message)
-		termine
+	essaie client.envoyer(message)
+	termine
 
-	déconnexion :
-		message est un packet // packet à envoyer
+déconnexion :
+	message est un packet // packet à envoyer
+	nom@message prend texte@login
+	commande@message prend "quitter"
+	affiche "nous quittons le serveur ..."
+	client.envoyer(message)
+	parcours changer affichage avec "oui", "non"
+	visible@connecter prend "oui"
+	visible@deconnecter prend "non"
+	reviens
+
+changer affichage : état 1 , état 2
+	visible@e_ip prend état 1
+	visible@c_ip prend état 1
+	visible@e_port prend état 1
+	visible@c_port prend état 1
+	visible@boite prend état 2
+	visible@boite_titre prend état 2
+	visible@b1 prend état 2
+	visible@scrolleur prend état 2
+	visible@amis prend état 2
+	visible@liste prend état 2
+	reviens
+
+liste amis :
+	message est un packet // packet à envoyer
+	commande@message prend "liste amis"
+	tant que vrai
 		nom@message prend texte@login
-		commande@message prend "quitter"
-		affiche "nous quittons le serveur ..."
-		client.envoyer(message)
-		parcours changer affichage avec "oui", "non"
-		visible@connecter prend "oui"
-		visible@deconnecter prend "non"
-		reviens
+		essaie client.envoyer(message)
+		sinon	valeurs@liste prend ""
+		attends 3 seconde
+	ferme
 
-	changer affichage : état 1 , état 2
-		visible@e_ip prend état 1
-		visible@c_ip prend état 1
-		visible@e_port prend état 1
-		visible@c_port prend état 1
-		visible@boite prend état 2
-		visible@boite_titre prend état 2
-		visible@b1 prend état 2
-		visible@scrolleur prend état 2
-		visible@amis prend état 2
-		visible@liste prend état 2
-		reviens
+version :
+	message est un packet // packet à envoyer
+	commande@message prend "version"
+	nom@message prend texte@login
+	essaie client.envoyer(message)
+	reviens
 
-	liste amis :
-		message est un packet // packet à envoyer
-		commande@message prend "liste amis"
-		tant que vrai
-			nom@message prend texte@login
-			essaie
-				essaie client.envoyer(message)
-				sinon	valeurs@liste prend ""
-				attends 3 seconde
-			ferme
+historique :
+	message est un packet // packet à envoyer
+	commande@message prend "historique"
+	nom@message prend texte@login
+	essaie client.envoyer(message)
+	reviens
 
-		version :
-			message est un packet // packet à envoyer
-			commande@message prend "version"
-			nom@message prend texte@login
-			essaie
-				essaie client.envoyer(message)
-				reviens
-
-			historique :
-				message est un packet // packet à envoyer
-				commande@message prend "historique"
-				nom@message prend texte@login
-				essaie
-					essaie client.envoyer(message)
-					reviens
-
-				pong :
-					message est un packet // packet à envoyer
-					commande@message prend "pong"
-					nom@message prend texte@login
-					essaie
-						essaie client.envoyer(message)
-						reviens
+pong :
+	message est un packet // packet à envoyer
+	commande@message prend "pong"
+	nom@message prend texte@login
+	essaie client.envoyer(message)
+	reviens
