@@ -1,29 +1,27 @@
 /*
 Dans la section globale, on définit des variables qui seront visibles dans toutes les fonctions
 */
-globale
-	v1 est un rectangle, x prend 50, y prend 35, plein prend "oui", couleur prend "rouge", hauteur prend 7, largeur prend 15
-	v2 est un rectangle, x prend 50, y prend 65, plein prend "oui", couleur prend "vert", hauteur prend 7, largeur prend 15
-	v3 est un rectangle, x prend 50, y prend 95, plein prend "oui", couleur prend "bleu", hauteur prend 7, largeur prend 15
-	arrivée est une ligne, couleur prend "noir", transparence prend 80, x1 prend 560, x2 prend 560, y1 prend 30, y2 prend 120
-	tempo est un nombre valant 20
-	limite est un nombre valant 545
-	classement est un casier de rectangle
-	résultat1 est un graffiti, x prend 210, y prend 175
-	résultat2 est un graffiti, x prend 210, y prend 200
-	résultat3 est un graffiti, x prend 210, y prend 225
+v1 est un rectangle, x prend 50, y prend 35, plein prend "oui", couleur prend "rouge", hauteur prend 7, largeur prend 15
+v2 est un rectangle, x prend 50, y prend 65, plein prend "oui", couleur prend "vert", hauteur prend 7, largeur prend 15
+v3 est un rectangle, x prend 50, y prend 95, plein prend "oui", couleur prend "bleu", hauteur prend 7, largeur prend 15
+arrivée est une ligne, couleur prend "noir", transparence prend 80, x1 prend 560, x2 prend 560, y1 prend 30, y2 prend 120
+tempo est un nombre valant 20
+limite est un nombre valant 545
+classement est un casier de rectangle
+résultat1 est un graffiti, x prend 210, y prend 175
+résultat2 est un graffiti, x prend 210, y prend 200
+résultat3 est un graffiti, x prend 210, y prend 225
 
-code :
-	appelle course avec v1 // Lancement en parallèle de la fonction "course" avec le paramètre v1
-	appelle course avec v2 // Lancement en parallèle de la fonction "course" avec le paramètre v2
-	appelle course avec v3 // Lancement en parallèle de la fonction "course" avec le paramètre v3
-	observe course // On attend la fin de toutes les fonction "course"
-	texte de résultat1 prend "la voiture " + couleur de classement{0} + " est la première !"
-	texte de résultat2 prend "la voiture " + couleur de classement{1} + " est la deuxième !"
-	texte de résultat3 prend "la voiture " + couleur de classement{2} + " est la dernière !"
-	couleur de résultat1 prend couleur de classement{0}
-	couleur de résultat2 prend couleur de classement{1}
-	couleur de résultat3 prend couleur de classement{2}
+appelle course avec v1 // Lancement en parallèle de la fonction "course" avec le paramètre v1
+appelle course avec v2 // Lancement en parallèle de la fonction "course" avec le paramètre v2
+appelle course avec v3 // Lancement en parallèle de la fonction "course" avec le paramètre v3
+observe course // On attend la fin de toutes les fonction "course"
+texte de résultat1 prend "la voiture " + couleur de classement{0} + " est la première !"
+texte de résultat2 prend "la voiture " + couleur de classement{1} + " est la deuxième !"
+texte de résultat3 prend "la voiture " + couleur de classement{2} + " est la dernière !"
+couleur de résultat1 prend couleur de classement{0}
+couleur de résultat2 prend couleur de classement{1}
+couleur de résultat3 prend couleur de classement{2}
 
 course : vehicule
 	tant que (x de vehicule) < limite

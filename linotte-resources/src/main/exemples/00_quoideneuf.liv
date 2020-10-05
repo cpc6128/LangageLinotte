@@ -1,8 +1,8 @@
 // Cliquez sur le bouton 'LIRE' pour exécuter ce programme.
 
-code :
-	efface tableau
-	affiche "Bravo, vous allez programmer avec le langage de programmation Linotte {version} !
+
+efface tableau
+affiche "Bravo, vous allez programmer avec le langage de programmation Linotte {version} !
 
 La programmation est toujours aussi fascinante en Linotte... et même plus simple avec cette nouvelle version de L'Atelier !
 
