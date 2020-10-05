@@ -7,7 +7,6 @@ import org.linotte.greffons.impl.swing.layout.Grille;
 import org.linotte.greffons.impl.xyz.*;
 import org.linotte.moteur.xml.Linotte;
 import org.linotte.moteur.xml.api.Librairie;
-import org.linotte.moteur.xml.Version;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,9 +33,7 @@ public final class BibliothequeGreffons {
         try {
             greffons3D();
         } catch (Throwable e) {
-            if (Version.isBeta()) {
-                e.printStackTrace();
-            }
+            e.printStackTrace();
         }
 
     }
