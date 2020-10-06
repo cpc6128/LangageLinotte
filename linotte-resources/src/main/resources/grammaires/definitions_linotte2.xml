@@ -700,7 +700,7 @@
 		</parametre>
 		<parametre nom="aide">
 			<aide present="" imperatif="? prend ?" aide="Transférer (et évaluer) la valeur de l'acteur dans un autre" >Prendre</aide>
-			<aide present="" imperatif="? vaut ?" aide="Transférer (et évaluer) la valeur de l'acteur dans un autre" >Valoir</aide>
+			<!--aide present="" imperatif="? vaut ?" aide="Transférer (et évaluer) la valeur de l'acteur dans un autre" >Valoir</aide-->
 			<aide present="" imperatif="affiche ?" aide="Afficher la valeur de l'acteur" >Afficher</aide>
 			<aide present="" imperatif="parcours ?" aide="Aller vers une fonction et mémoriser le point de départ" >Parcourir</aide>
 			<aide present="" imperatif="parcours ? avec ?" aide="Aller vers une fonction et mémoriser le point de départ" >Parcourir avec</aide>
@@ -708,7 +708,7 @@
 			<aide present="" imperatif="appelle ?" aide="Exécuter une fonction en tâche de fond" >Appeler</aide>
 			<aide present="" imperatif="appelle ? avec ?" aide="Exécuter une fonction en tâche de fond" >Appeler avec</aide>
 			<aide present="" imperatif="observe ?" aide="Attendre la fin d'une fonction exécutée en tâche de fond" >Observer</aide>
-			<aide present="" imperatif="copie ? dans ?" aide="Transférer la valeur de l'acteur dans un autre" >Copier</aide>
+			<!--aide present="" imperatif="copie ? dans ?" aide="Transférer la valeur de l'acteur dans un autre" >Copier</aide-->
 			<aide present="" imperatif="convertis ? en ?" aide="Convertir et transférer la valeur d'un acteur" >Convertir</aide>
 			<aide present="" imperatif="demande ?" aide="Demander à un utilisateur une valeur" >Demander</aide>
 			<aide present="" imperatif="questionne ? sur ?" aide="Afficher un message et demander à un utilisateur une valeur" >Questionner</aide>
@@ -719,12 +719,12 @@
 			<aide present="" imperatif="fusionne ? dans ?" aide="Fusionne une espèce graphique dans un mégalithe" >Fusionner</aide>
 			<aide present="" imperatif="reviens" aide="Retourner à la dernière ligne mémorisée" >Revenir</aide>
 			<aide present="" imperatif="termine" aide="Arrêter l'exécution du livre" >Terminer</aide>
-			<aide present="" imperatif="soustrais ? dans ?" aide="Soustraire deux acteurs" >Soustraire</aide>
+			<!--aide present="" imperatif="soustrais ? dans ?" aide="Soustraire deux acteurs" >Soustraire</aide-->
 			<aide present="" imperatif="mélange ?" aide="Réarranger aléatoirement une chaîne, casier ou un nombre" >Mélanger</aide>
 			<aide present="" imperatif="retourne ?" aide="Lors d'un appel à une fonction, retourne le résultat" >Retourner</aide>
-			<aide present="" imperatif="multiplie ? par ?" aide="Multiplier deux acteurs" >Multiplier</aide>
+			<!--aide present="" imperatif="multiplie ? par ?" aide="Multiplier deux acteurs" >Multiplier</aide-->
 			<aide present="" imperatif="trie ?" aide="Trier dans l'ordre alphabétique un casier" >Trier</aide>
-			<aide present="" imperatif="divise ? par ?" aide="Diviser deux acteurs" >Diviser</aide>
+			<!--aide present="" imperatif="divise ? par ?" aide="Diviser deux acteurs" >Diviser</aide-->
 			<aide present="" imperatif="attends ? secondes" aide="Suspendre la lecture du livre pendant n secondes" >Attendre (seconde)</aide>
 			<aide present="" imperatif="attends ? millisecondes" aide="Suspendre la lecture du livre pendant n millisecondes" >Attendre (milliseconde)</aide>
 			<aide present="" imperatif="inverse ?" aide="Inverser la valeur de l'acteur" >Inverser</aide>
@@ -767,7 +767,7 @@
 			<aide present="" imperatif="modifie ? par ? dans ? de ?" aide="Modifier les propriétés d'un greffon graphique" >Modifier</aide>
 			<aide present="" imperatif="ferme" aide="Fermeture un bloc" >Fermer</aide>
 			<aide present="" imperatif="débogue" aide="Lance le débogueur" >Déboguer</aide>
-			<aide present="" imperatif="ferme ?" aide="Fermer un tube (greffon)" >Fermer (tube)</aide>
+			<!--aide present="" imperatif="ferme ?" aide="Fermer un tube (greffon)" >Fermer (tube)</aide-->
 			<aide present="" imperatif="fais réagir ? à ? pour ?" aide="Ajoute un évènement à une espèce graphique" >Faire réagir</aide>
 			<aide present="" imperatif="ne fais plus réagir ? à ?" aide="Supprime un évènement à une espèce graphique">
 				Ne plus faire réagir
@@ -780,7 +780,7 @@
 			</aide>
 			<aide present="" imperatif="incrémente ?" aide="Ajouter un à un nombre">Incrémenter</aide>
 			<aide present="" imperatif="décrémente ?" aide="Déduire un d'un nombre">Décrémenter</aide>
-			<aide present="" imperatif="nomme ?" aide="Donner un nom au livre courant">Nommer</aide>
+			<!--aide present="" imperatif="nomme ?" aide="Donner un nom au livre courant">Nommer</aide-->
 			<aide present="" imperatif="montre toile" aide="Affiche la toile">Montrer</aide>
 			<aide present="" imperatif="provoque ?, ?"
 				  aide="Provoque l'arrêt du programme avec un numéro d'erreur et un message">Provoquer

@@ -23,6 +23,10 @@
             <outputDirectory>/</outputDirectory>
         </file>
         <file>
+            <source>${project.basedir}/../linotte-accessibilite/src/main/basic/Tablette.bat</source>
+            <outputDirectory>/</outputDirectory>
+        </file>
+        <file>
             <source>${project.basedir}/target/Atelier.exe</source>
             <outputDirectory>/</outputDirectory>
         </file>
