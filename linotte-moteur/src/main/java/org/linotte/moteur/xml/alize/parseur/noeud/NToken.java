@@ -144,8 +144,8 @@ public class NToken extends NExpression {
 		}
 
 		if (pc.mode == MODE.FORMATAGE) {
-			if (("structure".equals(getAttribut("style")))) {
-				// c
+			if (("globale".equals(getAttribut("formatage")))) {
+				// Dès que l'on voit un token structure, on repasse en mode syntaxe 2 pour le formatage de la partie globale
 				pc.formatageActeursgloblauxLinotte3 = false;
 			}
 		}
