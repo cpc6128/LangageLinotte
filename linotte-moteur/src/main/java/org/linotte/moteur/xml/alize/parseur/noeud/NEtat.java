@@ -59,7 +59,7 @@ import static org.linotte.frame.coloration.StyleItem.STYLE.*;
 
 public class NEtat extends Noeud {
 
-	private static FastEnumMap<STYLE, AttributeSet> styles = new FastEnumMap<StyleItem.STYLE, AttributeSet>(StyleItem.STYLE.class);
+	private static FastEnumMap<STYLE, AttributeSet> styles = new FastEnumMap<>(StyleItem.STYLE.class);
 
 	static {
 		styles.put(ARTICLE, StyleLinotte.style_article);
@@ -136,7 +136,7 @@ public class NEtat extends Noeud {
 		if (pc.mode == MODE.COLORATION) {
 			if (annotations.size() > 0) {
 				if (annotations.contains("prototype")) {
-					pc.types_prototypes.put(valeurs.get(0).toString().toLowerCase(), new ArrayList<String>());
+					pc.types_prototypes.put(valeurs.get(0).toString().toLowerCase(), new ArrayList<>());
 					if (annotations.contains("atributespece")) {
 						int debut = 1;
 						String[] tab_a = new String[valeurs.size() - debut];
@@ -155,7 +155,8 @@ public class NEtat extends Noeud {
 					pc.prototypes.add(new Prototype(valeurs.get(1).toString().toLowerCase(), nom, pc.lexer.getLastPosition()));
 				}
 
-				if (annotations.contains("nomacteur")) {
+				if (annotations.contains("nomacteur") || (annotations.contains("nomacteurfonction") && pc.formatageActeursgloblauxLinotte3)) {
+					// Patch du test pour prendre en compte la syntaxe Linotte 3.3, actions avant les fonctions
 					ItemXML itxml = valeurs.get(0);
 					if (itxml instanceof GroupeItemXML) {
 						ItemXML[] temp = ((GroupeItemXML) itxml).items;
@@ -251,7 +252,7 @@ public class NEtat extends Noeud {
 					}
 				} else {
 					Iterator<?> it = pc.etats.iterator();
-					List<Processus> tabetat = new ArrayList<Processus>();
+					List<Processus> tabetat = new ArrayList<>();
 					while (it.hasNext()) {
 						List<Processus> temp = (List<Processus>) it.next();
 						tabetat.addAll(temp);
@@ -373,7 +374,7 @@ public class NEtat extends Noeud {
 	private void colorierAtelier(ParserContext pc) {
 		// On traite les éléments liés au formule :
 
-		List<StyleMathematiques> tableau = new ArrayList<StyleMathematiques>();
+		List<StyleMathematiques> tableau = new ArrayList<>();
 		Iterator<?> i = pc.styles_formules.iterator();
 		while (i.hasNext()) {
 			List<StyleMathematiques> l = (List<StyleMathematiques>) i.next();
@@ -392,7 +393,7 @@ public class NEtat extends Noeud {
 			}
 		}
 
-		List<StyleItem> Lstyles = new ArrayList<StyleItem>();
+		List<StyleItem> Lstyles = new ArrayList<>();
 		Iterator<?> is = pc.styles.iterator();
 		int style_maximun = -1;
 		while (is.hasNext()) {
@@ -413,9 +414,7 @@ public class NEtat extends Noeud {
 			pc.stylePosition = style_maximun;
 		}
 
-		Iterator<StyleItem> boucle = Lstyles.iterator();
-		while (boucle.hasNext()) {
-			StyleItem item = boucle.next();
+		for (StyleItem item : Lstyles) {
 			AttributeSet simpleAttributeSet = styles.get(item.getType());
 			if (simpleAttributeSet == null) {
 				simpleAttributeSet = StyleLinotte.style_token;

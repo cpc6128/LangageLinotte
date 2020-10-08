@@ -4,8 +4,8 @@ espèces
 	orientation est un nombre
 	espèce palet hérite de cercle et contient fluctuation, orientation
 globale
-	zoom est un nombre valant 2 /*Vous pouvez modifier la taille du jeu */
-	vitesse est un nombre valant 5
+	zoom est un nombre valant 4 /*Vous pouvez modifier la taille du jeu */
+	vitesse est un nombre valant 10
 	briques est un casier de rectangle
 	palet est un palet,  plein prend "oui", rayon prend 5 * zoom, couleur prend "rouge", taille prend 1,
 		y prend 80 * zoom, x prend 100,		angle prend 45, position prend 2, fluctuation prend 45
