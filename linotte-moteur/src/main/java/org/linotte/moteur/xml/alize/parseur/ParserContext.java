@@ -107,6 +107,9 @@ public class ParserContext {
 	public SortedSet<Prototype> prototypes = new TreeSet<Prototype>();
 	public SortedSet<ActeurGlobal> acteursgloblaux = new TreeSet<ActeurGlobal>();
 	public boolean bacteursgloblaux = false;
+
+	public boolean formatageActeursgloblauxLinotte3 = true;
+
 	public String prototype = null;
 	public Stack<Set<Prototype>> constructionPileContexteVariables = new Stack<Set<Prototype>>();
 	// Pour la mise en valeur des paragraphes :
