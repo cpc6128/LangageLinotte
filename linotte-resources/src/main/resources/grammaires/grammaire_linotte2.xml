@@ -22,7 +22,7 @@
 		<groupe nom="référence" obligatoire="non">
 			<ligne tab="0">
 				<groupe nom="entree">
-					<token obligatoire="oui" style="structure">bibliothèque</token>
+					<token obligatoire="oui" style="structure" formatage="globale">bibliothèque</token>
 					<etat souffleur="non" nom="rien"/>
 				</groupe>
 			</ligne>
@@ -39,7 +39,7 @@
 		<groupe nom="tests unitaires" obligatoire="non">
 			<ligne tab="0">
 				<groupe nom="entree">
-					<token obligatoire="oui" style="structure">tests</token>
+					<token obligatoire="oui" style="structure" formatage="globale">tests</token>
 					<etat souffleur="non" nom="rien"/>
 				</groupe>
 			</ligne>
@@ -64,7 +64,7 @@
 		<groupe nom="les espèces" obligatoire="non">
 			<ligne tab="0">
 				<groupe nom="entree">
-					<token obligatoire="oui" style="structure">espèces</token>
+					<token obligatoire="oui" style="structure" formatage="globale">espèces</token>
 					<etat souffleur="non" nom="etat_creation_des_especes" optimisation="non"/>
 				</groupe>
 			</ligne>
@@ -377,7 +377,7 @@
 			<groupe nom="entree">
 				<choix nom="choix des definitions des espèces" >
 					<ligne tab="0">
-						<token obligatoire="oui" style="structure">globale</token>
+						<token obligatoire="oui" style="structure" formatage="globale">globale</token>
 						<etat souffleur="non" nom="etat_creation_des_grands_roles"/>
 					</ligne>
 				</choix>
@@ -1069,7 +1069,7 @@
 												<choix>
 													<p:build>
 														<ligne tab="1">
-															<token obligatoire="oui">de</token>
+															<token obligatoire="oui" style="structure">de</token>
 															<acteur type="jusquautoken" obligatoire="oui">à</acteur>
 															<acteur type="jusquautoken" obligatoire="oui"
 																	hack_analyse="suppressionvirgule">,
@@ -1083,7 +1083,7 @@
 											<groupe nom="boucle_de" discriminant="à"><!-- 2.7.7 -->
 												<choix>
 													<ligne tab="1">
-														<token obligatoire="oui">de</token>
+														<token obligatoire="oui" style="structure">de</token>
 														<acteur type="jusquautoken" obligatoire="oui">à</acteur>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat souffleur="non" nom="boucle" hack_bloc="oui"/>
@@ -1189,7 +1189,7 @@
 												<choix>
 													<p:build>
 														<ligne tab="1">
-															<token obligatoire="oui" annotation="tant">tant</token>
+															<token obligatoire="oui" annotation="tant" style="structure">tant</token>
 															<token obligatoire="oui">que</token>
 															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
 															<token obligatoire="oui">en</token>
@@ -1209,7 +1209,7 @@
 												<choix>
 													<p:build>
 														<ligne tab="1">
-															<token obligatoire="oui" annotation="tant">tant</token>
+															<token obligatoire="oui" annotation="tant" style="structure">tant</token>
 															<token obligatoire="oui">que</token>
 															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
 															<token obligatoire="oui">vide</token>
@@ -1227,7 +1227,7 @@
 												<choix>
 													<p:build>
 														<ligne tab="1">
-															<token obligatoire="oui" annotation="tant">tant</token>
+															<token obligatoire="oui" annotation="tant" style="structure">tant</token>
 															<token obligatoire="oui">que</token>
 															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
 															<token obligatoire="oui">non</token>
@@ -1247,7 +1247,7 @@
 												<choix>
 													<p:build>
 														<ligne tab="1">
-															<token obligatoire="oui" annotation="tant">tant</token>
+															<token obligatoire="oui" annotation="tant" style="structure">tant</token>
 															<token obligatoire="oui">que</token>
 															<acteur type="jusquautoken" obligatoire="oui">contient
 															</acteur>
@@ -1267,7 +1267,7 @@
 												<choix>
 													<p:build>
 														<ligne tab="1">
-															<token obligatoire="oui" annotation="tant">tant</token>
+															<token obligatoire="oui" annotation="tant" style="structure">tant</token>
 															<token obligatoire="oui">que</token>
 															<acteur type="jusquautoken" obligatoire="oui">est</acteur>
 															<acteur type="jusquautoken" obligatoire="oui"
@@ -1283,7 +1283,7 @@
 												<choix>
 													<p:build>
 														<ligne tab="1">
-															<token obligatoire="oui" annotation="tant">tant</token>
+															<token obligatoire="oui" annotation="tant" style="structure">tant</token>
 															<token obligatoire="oui">que</token>
 															<acteur type="jusquautoken" obligatoire="oui"
 																	hack_analyse="suppressionvirgule">,
@@ -1297,7 +1297,7 @@
 											<groupe nom="test" discriminant="tant"><!-- 2.7.7 -->
 												<choix>
 													<ligne tab="1">
-														<token obligatoire="oui" annotation="tant">tant</token>
+														<token obligatoire="oui" annotation="tant" style="structure">tant</token>
 														<token obligatoire="oui">que</token>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="boucle" param="est égal à vrai" hack_bloc="oui"/>

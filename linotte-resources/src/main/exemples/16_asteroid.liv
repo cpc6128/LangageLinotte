@@ -1,14 +1,12 @@
-globale
-	vaisseau est un graphique, image prend "media/space.png", x prend 133, y prend 500
-	screen est une toile
+vaisseau est un graphique, image prend "media/space.png", x prend 133, y prend 500
+screen est une toile
 
-code :
-	appelle mouvement // Mouvement du vaisseau pour suivre la souris
-	appelle attaque // Pour lancer les attaques des monstres !
-	tant que vrai
-		temporise
-		si touche = "clique" appelle tirer avec x de vaisseau, y de vaisseau
-	ferme
+appelle mouvement // Mouvement du vaisseau pour suivre la souris
+appelle attaque // Pour lancer les attaques des monstres !
+tant que vrai
+	temporise
+	si touche = "clique" appelle tirer avec x de vaisseau, y de vaisseau
+ferme
 
 mouvement :
 	tant que vrai

@@ -25,6 +25,8 @@ import org.linotte.frame.coloration.StyleItem.STYLE;
 import org.linotte.moteur.exception.Constantes;
 import org.linotte.moteur.exception.SyntaxeException;
 import org.linotte.moteur.outils.Chaine;
+import org.linotte.moteur.xml.actions.StructureGlobaleAction;
+import org.linotte.moteur.xml.alize.kernel.Action;
 import org.linotte.moteur.xml.alize.parseur.ParserContext;
 import org.linotte.moteur.xml.alize.parseur.ParserContext.MODE;
 import org.linotte.moteur.xml.alize.parseur.a.NExpression;
@@ -139,6 +141,13 @@ public class NToken extends NExpression {
 					((List<StyleItem>) pc.styles.peek()).add(new StyleItem(STYLE.SOUS_PARAGRAPHE, pc.lexer.getLastPosition(), 3));
 			}
 
+		}
+
+		if (pc.mode == MODE.FORMATAGE) {
+			if (("globale".equals(getAttribut("formatage")))) {
+				// Dès que l'on voit un token structure, on repasse en mode syntaxe 2 pour le formatage de la partie globale
+				pc.formatageActeursgloblauxLinotte3 = false;
+			}
 		}
 		return true;
 	}

@@ -171,7 +171,7 @@ public class NLigne extends Noeud {
             pc.saute = false;
         }
 
-        if (pc.linotte.getLangage().isForceParametreEnligne() && i > 0 && pc.nbParagraphes == 0) {
+        if ( i > 0 && pc.nbParagraphes == 0 && pc.formatageActeursgloblauxLinotte3 == true) {
             // Est-ce que je suis hors un paragraphe ??
             i--;
         }

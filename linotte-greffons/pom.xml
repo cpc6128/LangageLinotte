@@ -5,7 +5,7 @@
     <parent>
         <artifactId>langagelinotte</artifactId>
         <groupId>fr.codevallee</groupId>
-        <version>3.2</version>
+        <version>3.3</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -14,7 +14,7 @@
         <dependency>
             <groupId>fr.codevallee</groupId>
             <artifactId>linotte-moteur</artifactId>
-            <version>3.2</version>
+            <version>3.3</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -30,7 +30,7 @@
         <dependency>
             <groupId>com.google.zxing</groupId>
             <artifactId>core</artifactId>
-            <version>3.4.0</version>
+            <version>3.4.1</version>
         </dependency>
 
 

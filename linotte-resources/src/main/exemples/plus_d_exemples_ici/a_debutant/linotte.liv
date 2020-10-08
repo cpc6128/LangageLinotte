@@ -11,7 +11,7 @@ vérification :
 	si valeur = réponse va vers réponse bonne
 	sinon si valeur > réponse affiche "Non non... c'est avant !"
 	sinon affiche "Il est plus jeune ! "
-	va vers principale
+	va vers code
 
 réponse bonne :
 	affiche "Bravo, tu es trés fort ! "

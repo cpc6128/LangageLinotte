@@ -60,114 +60,108 @@ gestion client :
 			si (commande@message) == "historique"
 				si bavard, affiche "Historique demandé"
 				pour chaque historique
-					essaie
-						essaie serveur.envoyer(socket@client, joker)
-					ferme
+					essaie serveur.envoyer(socket@client, joker)
 				ferme
+			ferme
 				// ****************
 				// Commande VERSION
 				// ****************
-				sinon si (commande@message) == "version"
-					message2 est un packet
-					si bavard, affiche "Version demandée"
-					commande@message2 prend "version"
-					message@message2 prend "version " + VERSION_SERVEUR + ", il est " + heure + "h " + minute + "m " + seconde + "s, Linotte " + version + "
+			sinon si (commande@message) == "version"
+				message2 est un packet
+				si bavard, affiche "Version demandée"
+				commande@message2 prend "version"
+				message@message2 prend "version " + VERSION_SERVEUR + ", il est " + heure + "h " + minute + "m " + seconde + "s, Linotte " + version + "
 " + texte@welcome
-					essaie
-						essaie serveur.envoyer(socket@client, message2)
-						sinon
-							affiche "! impossible d'envoyer la version à " + nom@joker
-						ferme
-					ferme
+				essaie serveur.envoyer(socket@client, message2)
+				sinon
+					affiche "! impossible d'envoyer la version à " + nom@joker
+				ferme
+			ferme
 				// *******************
 				// Commande LISTE AMIS
 				// *******************
-					sinon si (commande@message) == "liste amis"
-						amis est un texte
-						message2 est un packet
-						pour chaque clients, amis prend amis + nom@joker + "|"
-						si bavard, affiche "Liste d'amis : " + amis
-						commande@message2 prend "liste amis"
-						message@message2 prend amis
-						essaie
-							essaie serveur.envoyer(socket@client, message2)
-							sinon
-								affiche "! impossible d'envoyer la liste d'amis à " + nom@joker
-							ferme
-						ferme
+			sinon si (commande@message) == "liste amis"
+				amis est un texte
+				message2 est un packet
+				pour chaque clients, amis prend amis + nom@joker + "|"
+				si bavard, affiche "Liste d'amis : " + amis
+				commande@message2 prend "liste amis"
+				message@message2 prend amis
+				essaie serveur.envoyer(socket@client, message2)
+				sinon
+					affiche "! impossible d'envoyer la liste d'amis à " + nom@joker
+				ferme
+			ferme
 				// ****************
 				// Commande PONG
 				// ****************
-						sinon si (commande@message) == "pong"
-							affiche "Ping pong avec " + nom@client + " sur la socket n°" + socket@client
-						ferme				// ****************
+			sinon si (commande@message) == "pong"
+				affiche "Ping pong avec " + nom@client + " sur la socket n°" + socket@client
+			ferme				// ****************
 				// Commande QUITTER
 				// ****************
-						sinon si (commande@message) == "quitter"
-							ôte client de clients
-							serveur.fermer(socket@client)
-							affiche "! Le client " + nom@client + " a quitter le serveur sur la socket n°" + socket@client
-							reviens
-						ferme
+			sinon si (commande@message) == "quitter"
+				ôte client de clients
+				serveur.fermer(socket@client)
+				affiche "! Le client " + nom@client + " a quitter le serveur sur la socket n°" + socket@client
+				reviens
+			ferme
 				// ***************
 				// Commande PARLER
 				// ***************
-						sinon si (commande@message) == "parler"
-							parcours historiser avec message
+			sinon si (commande@message) == "parler"
+				parcours historiser avec message
 					// Propagation de la discution...
-							appelle propager message avec message
-						ferme
-						sinon
-							affiche "! je ne sais pas quoi faire de cette commande " + commande@message
-						ferme
-					ferme
-				ferme
-				sinon
-					affiche "! Le client " + nom@client + " a perdu la connexion sur la socket n°" + socket@client
-					ôte client de clients
-				ferme
+				appelle propager message avec message
+			ferme
+			sinon
+				affiche "! je ne sais pas quoi faire de cette commande " + commande@message
+			ferme
+		ferme
+	ferme
+	sinon
+		affiche "! Le client " + nom@client + " a perdu la connexion sur la socket n°" + socket@client
+		ôte client de clients
+	ferme
 
-			propager message :
-				* message est un packet
-				pour chaque clients
-					si bavard, affiche "> envoyer le message '" + message@message + "' de " + nom@message + " à " + nom@joker
-					essaie
-						essaie serveur.envoyer(socket@joker, message)
-						sinon
-							affiche "! impossible d'envoyer le message à " + nom@joker
-						ferme
-					ferme
+propager message :
+	* message est un packet
+	pour chaque clients
+		si bavard, affiche "> envoyer le message '" + message@message + "' de " + nom@message + " à " + nom@joker
+		essaie serveur.envoyer(socket@joker, message)
+		sinon
+			affiche "! impossible d'envoyer le message à " + nom@joker
+		ferme
+	ferme
 
-				historiser :
-					*message est un packet
-					taille est un nombre
+historiser :
+	*message est un packet
+	taille est un nombre
 		// On veut garder les dix dernières messages en mémoire
-					ajoute message dans historique
-					mesure historique dans taille
-					tant que taille > HISTORIQUE_MAX
-						ôte historique{0} de historique
-						mesure historique dans taille
-					ferme
-					reviens
+	ajoute message dans historique
+	mesure historique dans taille
+	tant que taille > HISTORIQUE_MAX
+		ôte historique{0} de historique
+		mesure historique dans taille
+	ferme
+	reviens
 
-				déconnexion :
-					affiche "! on ferme toutes les sockets ouvertes avec le serveur"
-					pour chaque clients
-						affiche "! on termine la connexion avec " + nom@joker
-						essaie
-							essaie serveur.fermer(socket@joker)
-						ferme
-						affiche "! bye bye !"
-						serveur.arrêter()
-						reviens
+déconnexion :
+	affiche "! on ferme toutes les sockets ouvertes avec le serveur"
+	pour chaque clients
+		affiche "! on termine la connexion avec " + nom@joker
+		essaie serveur.fermer(socket@joker)
+	ferme
+	affiche "! bye bye !"
+	serveur.arrêter()
+	reviens
 
-					ping :
-						*client est un messager
-						message est un packet
-						commande@message prend "ping"
-						essaie
-							essaie serveur.envoyer(socket@client, message)
-							sinon
-								affiche "! impossible d'envoyer un ping sur le socket " + socket@client
-							ferme
-							reviens
+ping :
+	*client est un messager
+	message est un packet
+	commande@message prend "ping"
+	essaie serveur.envoyer(socket@client, message)
+	sinon
+		affiche "! impossible d'envoyer un ping sur le socket " + socket@client
+	ferme
+	reviens

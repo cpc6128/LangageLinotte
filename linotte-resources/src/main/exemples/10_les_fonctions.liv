@@ -1,12 +1,11 @@
-code :
-	prénom est un texte
-	âge est un nombre
-	prénom prend "Nicolas"
-	âge prend 32
-	affiche présentation (âge, prénom, 0)
-	prénom prend "Alice"
-	âge prend 19
-	affiche présentation (âge, prénom, 1)
+prénom est un texte
+âge est un nombre
+prénom prend "Nicolas"
+âge prend 32
+affiche présentation (âge, prénom, 0)
+prénom prend "Alice"
+âge prend 19
+affiche présentation (âge, prénom, 1)
 
 présentation : âge, prénom, genre // On ajoute les paramètres à suite du nom de la fonction
 	information est un texte
