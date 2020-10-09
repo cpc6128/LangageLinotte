@@ -20,7 +20,10 @@ Bonne programmation !
 Historique des versions :
 -------------------------
 
-*09/10/20 - Linotte 3.3
+*09/10/20 - Linotte 3.4
+ -Correction : Programmation visuelle : le verbe 'lire' ne doit plus être afficher.
+
+*08/10/20 - Linotte 3.3
  -Evolution : Possibilité de mettre des actions sans fonction
 
 *23/09/20 - Linotte 3.2
