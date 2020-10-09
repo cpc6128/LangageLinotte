@@ -173,7 +173,7 @@ public final class TraducteurTimbreEnTexte {
     }
 
     private void ajouterPour(Pour timbre, StringBuilder livre, Langage langage) {
-        livre.append("pour " + ajouterActeur(timbre.acteur) + " de " + ajouterActeur(timbre.indexDebut) + " à " + ajouterActeur(timbre.indexFin) + " lis");
+        livre.append("pour " + ajouterActeur(timbre.acteur) + " de " + ajouterActeur(timbre.indexDebut) + " à " + ajouterActeur(timbre.indexFin) + "");
         ajouterRetourChariot(livre, timbre);
         ajouteCommandes(timbre.timbreSuivant, livre, langage);
         livre.append("ferme");
@@ -397,8 +397,8 @@ public final class TraducteurTimbreEnTexte {
     }
 
     private void ajouterDebutProgramme(StringBuilder livre, Langage langage) {
-        livre.append("code :");
-        ajouterRetourChariot(livre, null);
+        //livre.append("code :");
+        //ajouterRetourChariot(livre, null);
     }
 
     private Acteur ajouterEnteteFonction(StringBuilder livre, Fonction fonction, Langage langage) {
