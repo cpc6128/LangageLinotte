@@ -364,7 +364,7 @@ public class ExplorateurProjet extends JXTaskPaneContainer {
 
             public void actionPerformed(ActionEvent e) {
                 try {
-                    final URI forum = new URI("http://langagelinotte.free.fr/wordpress/?page_id=120");
+                    final URI forum = new URI("https://github.com/cpc6128/LangageLinotte/wiki");
                     Java6.getDesktop().browse(forum);
                 } catch (Exception e1) {
                     e1.printStackTrace();
