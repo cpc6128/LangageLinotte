@@ -1,3 +1,3 @@
 [submodule "docs/LangageLinotte.wiki"]
 	path = docs/LangageLinotte.wiki
-	url = git://github.com/cpc6128/LangageLinotte.wiki
+	url = https://github.com/cpc6128/LangageLinotte.wiki.git
