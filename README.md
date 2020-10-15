@@ -6,7 +6,7 @@
 
 # Atelier de programmation pour le Langage Linotte
 
-Code source officiel du langage Linotte 3.X
+Code source officiel du langage Linotte
 
 Linotte est un langage de programmation. 
 Entièrement en français, il offre un environnement simple, complet et pédagogique pour apprendre à programmer. 
