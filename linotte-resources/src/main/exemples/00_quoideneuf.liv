@@ -20,6 +20,9 @@ Bonne programmation !
 Historique des versions :
 -------------------------
 
+*09/11/20 - Linotte 3.5
+ -Correction : Possibilité d'utiliser des espèces dans des sous-paragraphes en début de programme.
+
 *09/10/20 - Linotte 3.4
  -Correction : Programmation visuelle : le verbe 'lire' ne doit plus être afficher.
 
