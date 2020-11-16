@@ -48,15 +48,15 @@ import java.awt.event.*;
 public class Onglet extends JPanel implements MouseListener {
 
 	public enum TypeButton {
-		CLOSED,
-		RUNNING
+		RUNNING,
+		//CLOSED
 	}
 
 	private final JTabbedPane tabbedPan;
 	private final Cahier cahier;
 	private Color backupColor = null;
 	// Doit être accessible depuis la classe @Cahier
-	JButton button;
+	// JButton button;
 	private JButton buttonRunning;
 
 	public Onglet(final Cahier cahierPanel, final JTabbedPane pane) {
@@ -105,28 +105,28 @@ public class Onglet extends JPanel implements MouseListener {
 			int size = 17;
 			type = ptype;
 			setPreferredSize(new Dimension(size, size));
-			if (type == TypeButton.CLOSED) {
-				setToolTipText("Fermer ce livre");
-			} else {
-				setToolTipText("Livre en cours d'exécution...");
-			}
+			//if (type == TypeButton.CLOSED) {
+			//	setToolTipText("Fermer ce livre");
+			//} else {
+				//setToolTipText("Livre en cours d'exécution...");
+			//}
 			// Make the button looks the same for all Laf's
 			setUI(new BasicButtonUI());
 			// Make it transparent
 			setContentAreaFilled(false);
 			// No need to be focusable
 			setFocusable(false);
-			if (type == TypeButton.CLOSED) {
-				setBorder(BorderFactory.createEtchedBorder());
-				setBorderPainted(false);
-				addMouseListener(buttonMouseListener);
-				// Making nice rollover effect
-				// we use the same listener for all buttons
-				setRolloverEnabled(true);
-				// Close the proper tab by clicking the button
-				addActionListener(this);
-
-			}
+//			if (type == TypeButton.CLOSED) {
+//				setBorder(BorderFactory.createEtchedBorder());
+//				setBorderPainted(false);
+//				addMouseListener(buttonMouseListener);
+//				// Making nice rollover effect
+//				// we use the same listener for all buttons
+//				setRolloverEnabled(true);
+//				// Close the proper tab by clicking the button
+//				addActionListener(this);
+//
+//			}
 		}
 
 		public void actionPerformed(ActionEvent e) {
@@ -170,7 +170,7 @@ public class Onglet extends JPanel implements MouseListener {
 			super.paintComponent(g);
 			Graphics2D g2 = (Graphics2D) g.create();
 			// shift the image for pressed buttons
-			if (type == TypeButton.CLOSED) {
+			if (false){//type == TypeButton.CLOSED) {
 				if (getModel().isPressed()) {
 					g2.translate(1, 1);
 				}
@@ -243,7 +243,7 @@ public class Onglet extends JPanel implements MouseListener {
 			SwingUtilities.invokeLater(new Runnable() {
 				public void run() {
 					tabbedPan.setTitleAt(index, cahier.getFichier().getName() + (modifie ? " *" : ""));
-					((Onglet) tabbedPan.getTabComponentAt(index)).button.setToolTipText(cahier.getFichier().getAbsolutePath());
+					//((Onglet) tabbedPan.getTabComponentAt(index)).button.setToolTipText(cahier.getFichier().getAbsolutePath());
 					// tabbedPan.setToolTipTextAt(index,
 					// cahier.getFichier().getAbsolutePath());
 					revalidate();
@@ -260,7 +260,7 @@ public class Onglet extends JPanel implements MouseListener {
 			SwingUtilities.invokeLater(new Runnable() {
 				public void run() {
 					if (tabbedPan.getBackgroundAt(index) != FrameProcess.RUN || force) {
-						button.setVisible(color != FrameProcess.RUN);
+						//button.setVisible(color != FrameProcess.RUN);
 						buttonRunning.setVisible(color == FrameProcess.RUN);
 						if (color != null) {
 							if (backupColor == null)
