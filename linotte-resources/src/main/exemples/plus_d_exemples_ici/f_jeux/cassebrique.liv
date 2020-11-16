@@ -167,206 +167,206 @@ Tourne palet simple :
 		sinon (sens de joueur1) prend 2
 	Ferme
 	sinon
-			Si (sens de joueur1) == 3, sens de joueur1 prend 2
-	sinon si (sens de joueur1) == 2, sens de joueur1 prend 3
-	sinon si (sens de joueur1) == 0, sens de joueur1 prend 1
-	sinon (sens de joueur1) prend 0
-Ferme
-Parcours calculer angle
-Reviens
+		Si (sens de joueur1) == 3, sens de joueur1 prend 2
+		sinon si (sens de joueur1) == 2, sens de joueur1 prend 3
+		sinon si (sens de joueur1) == 0, sens de joueur1 prend 1
+		sinon (sens de joueur1) prend 0
+	Ferme
+	Parcours calculer angle
+	Reviens
 
 Tourne palet :
-*b est un brique
-orientation  est un nombre valant 0
-Recule joueur1 de 1 * zoom
+	*b est un brique
+	orientation  est un nombre valant 0
+	Recule joueur1 de 1 * zoom
 		/*0 = choc horizontal*/
 		/*1 = choc vertical*/
-Si (( y de joueur1) - (rayon de joueur1)) > (y de b + hauteur de b)
-	orientation prend 1
-Ferme
-sinon si (arrondi ((y de joueur1) + (rayon de joueur1))) == (y de b)
-	orientation prend 1
-Ferme
-Si orientation == 1
-	Si (sens de joueur1) == 0, sens de joueur1 prend 3
-	sinon si (sens de joueur1) == 3, sens de joueur1 prend 0
-	sinon si (sens de joueur1) == 2, sens de joueur1 prend 1
-	sinon si (sens de joueur1) == 1, sens de joueur1 prend 2
-Ferme
-sinon
-			Si (sens de joueur1) == 0, sens de joueur1 prend 1
-sinon si (sens de joueur1) == 1, sens de joueur1 prend 0
-sinon si (sens de joueur1) == 2, sens de joueur1 prend 3
-sinon si (sens de joueur1) == 3, sens de joueur1 prend 2
-Ferme
-Parcours calculer angle
-Avance joueur1 de 1 * zoom
-Reviens
+	Si (( y de joueur1) - (rayon de joueur1)) > (y de b + hauteur de b)
+		orientation prend 1
+	Ferme
+	sinon si (arrondi ((y de joueur1) + (rayon de joueur1))) == (y de b)
+		orientation prend 1
+	Ferme
+	Si orientation == 1
+		Si (sens de joueur1) == 0, sens de joueur1 prend 3
+		sinon si (sens de joueur1) == 3, sens de joueur1 prend 0
+		sinon si (sens de joueur1) == 2, sens de joueur1 prend 1
+		sinon si (sens de joueur1) == 1, sens de joueur1 prend 2
+	Ferme
+	sinon
+		Si (sens de joueur1) == 0, sens de joueur1 prend 1
+		sinon si (sens de joueur1) == 1, sens de joueur1 prend 0
+		sinon si (sens de joueur1) == 2, sens de joueur1 prend 3
+		sinon si (sens de joueur1) == 3, sens de joueur1 prend 2
+	Ferme
+	Parcours calculer angle
+	Avance joueur1 de 1 * zoom
+	Reviens
 
 Publicité :
-pub  est un graffiti, texte prend "Niveau " + niveau, x prend 60 * zoom, y prend 80 * zoom,     			transparence prend 20, angle prend 20, taille prend 3 * zoom, position prend 1
-Projette pub
-Tant que gameover == 0
-Tourne à droite pub de 1
-Attends 0.01 seconde
-Ferme
-Reviens
+	pub  est un graffiti, texte prend "Niveau " + niveau, x prend 60 * zoom, y prend 80 * zoom,     			transparence prend 20, angle prend 20, taille prend 3 * zoom, position prend 1
+	Projette pub
+	Tant que gameover == 0
+		Tourne à droite pub de 1
+		Attends 0.01 seconde
+	Ferme
+	Reviens
 
 Game over :
-Parcours pause avec "Perdu !" , 3
-Niveau prend 1
-Vitesse prend 7
-Score prend 0
-Reviens
+	Parcours pause avec "Perdu !" , 3
+	Niveau prend 1
+	Vitesse prend 7
+	Score prend 0
+	Reviens
 
 Bravo :
-Parcours pause avec "Bravo !" , 5
-Niveau prend niveau + 1
-Reviens
+	Parcours pause avec "Bravo !" , 5
+	Niveau prend niveau + 1
+	Reviens
 
 Valeurs initiales :
-x de joueur1 prend 30 * zoom
-y de joueur1 prend 80 * zoom
-angle de joueur1 prend 45
-sens de joueur1 prend 0
-x de raquette prend 10 * zoom
-y de raquette prend 140 * zoom
-Vide briques
-gameover prend 0
-Reviens
+	x de joueur1 prend 30 * zoom
+	y de joueur1 prend 80 * zoom
+	angle de joueur1 prend 45
+	sens de joueur1 prend 0
+	x de raquette prend 10 * zoom
+	y de raquette prend 140 * zoom
+	Vide briques
+	gameover prend 0
+	Reviens
 
 Affichage :
-Si niveau == 1, parcours niveau1
-sinon si niveau == 2, parcours niveau2
-sinon si niveau == 3, parcours niveau3
-sinon si niveau == 4, parcours niveau4
-sinon si niveau == 5, parcours niveau5
-sinon si niveau == 6, parcours niveau6
-sinon si niveau == 7, parcours niveau7
-sinon
-niveau prend 1
-Parcours niveau1
-Si vitesse > 0, vitesse prend vitesse - 1
-Ferme
-Reviens
+	Si niveau == 1, parcours niveau1
+	sinon si niveau == 2, parcours niveau2
+	sinon si niveau == 3, parcours niveau3
+	sinon si niveau == 4, parcours niveau4
+	sinon si niveau == 5, parcours niveau5
+	sinon si niveau == 6, parcours niveau6
+	sinon si niveau == 7, parcours niveau7
+	sinon
+		niveau prend 1
+		Parcours niveau1
+		Si vitesse > 0, vitesse prend vitesse - 1
+	Ferme
+	Reviens
 
 Niveau1 :
-r  est un nombre valant 0
-p est un brique, plein prend "oui", x prend -200, y prend -200, hauteur prend 10 * zoom, largeur prend 20 * zoom, position prend 2
-pouvoir  est un casier de texte valant "" ,"" ,"", ""
-Projette p
-De 0 à 9
-r prend joker
-De 0 à 3
-	Parcours afficher avec #p, r , joker, pouvoir {joker}
-Ferme
-Ferme
-Reviens
+	r  est un nombre valant 0
+	p est un brique, plein prend "oui", x prend -200, y prend -200, hauteur prend 10 * zoom, largeur prend 20 * zoom, position prend 2
+	pouvoir  est un casier de texte valant "" ,"" ,"", ""
+	Projette p
+	De 0 à 9
+		r prend joker
+		De 0 à 3
+			Parcours afficher avec #p, r , joker, pouvoir {joker}
+		Ferme
+	Ferme
+	Reviens
 
 Niveau2 :
-r  est un nombre valant 0
-p est un brique, plein prend "oui", x prend -200, y prend -200, hauteur prend 10 * zoom, largeur prend 20 * zoom, position prend 2
-pouvoir  est un casier de texte valant "" ,"" ,"" ,"" ,  "" , "dur"
-Projette p
-De 0 à 9
-r prend joker
-De 0 à 5
-	Parcours afficher avec #p, r , joker, pouvoir {joker}
-Ferme
-Ferme
-Reviens
+	r  est un nombre valant 0
+	p est un brique, plein prend "oui", x prend -200, y prend -200, hauteur prend 10 * zoom, largeur prend 20 * zoom, position prend 2
+	pouvoir  est un casier de texte valant "" ,"" ,"" ,"" ,  "" , "dur"
+	Projette p
+	De 0 à 9
+		r prend joker
+		De 0 à 5
+			Parcours afficher avec #p, r , joker, pouvoir {joker}
+		Ferme
+	Ferme
+	Reviens
 
 Niveau3 :
-r  est un nombre valant 0
-p est un brique, plein prend "oui", x prend -200, y prend -200, hauteur prend 10 * zoom, largeur prend 20 * zoom, position prend 2
-pouvoir  est un casier de texte valant "" ,"" ,"dur" ,"" ,  "dur" , "dur"
-Projette p
-De 0 à 9
-r prend joker
-De 0 à 5
-	Parcours afficher avec #p, r , joker, pouvoir {joker}
-Ferme
-Ferme
-Reviens
+	r  est un nombre valant 0
+	p est un brique, plein prend "oui", x prend -200, y prend -200, hauteur prend 10 * zoom, largeur prend 20 * zoom, position prend 2
+	pouvoir  est un casier de texte valant "" ,"" ,"dur" ,"" ,  "dur" , "dur"
+	Projette p
+	De 0 à 9
+		r prend joker
+		De 0 à 5
+			Parcours afficher avec #p, r , joker, pouvoir {joker}
+		Ferme
+	Ferme
+	Reviens
 
 Niveau4 :
-c  est un nombre valant 0
-l  est un nombre valant 0
-p est un brique, plein prend "oui", x prend -200, y prend -200, hauteur prend 10 * zoom, largeur prend 20 * zoom, position prend 2
-ligne1  est un casier de texte valant "dur" ,"" ,"" ,"", "" , "", "", "", "", "dur"
-ligne2  est un casier de texte valant "" ,"dur" ,"" ,"", "" , "", "", "", "dur", ""
-ligne3  est un casier de texte valant "" ,"" ,"dur" ,"", "" , "", "", "dur", "", ""
-ligne4  est un casier de texte valant "" ,"" ,"" ,"dur", "" , "", "dur", "", "", ""
-ligne5  est un casier de texte valant "" ,"" ,"" ,"", "dur" , "dur", "", "", "", ""
-lignes  est un casier de casier valant ligne1, ligne2, ligne3, ligne4, ligne5, ligne4, ligne3, ligne2, ligne1
-Projette p
-Pour chaque lignes
-c prend 0
-Pour chaque joker
-	Parcours afficher avec #p, c , l, joker
-	c prend c + 1
-Ferme
-l prend l + 1
-Ferme
-Reviens
+	c  est un nombre valant 0
+	l  est un nombre valant 0
+	p est un brique, plein prend "oui", x prend -200, y prend -200, hauteur prend 10 * zoom, largeur prend 20 * zoom, position prend 2
+	ligne1  est un casier de texte valant "dur" ,"" ,"" ,"", "" , "", "", "", "", "dur"
+	ligne2  est un casier de texte valant "" ,"dur" ,"" ,"", "" , "", "", "", "dur", ""
+	ligne3  est un casier de texte valant "" ,"" ,"dur" ,"", "" , "", "", "dur", "", ""
+	ligne4  est un casier de texte valant "" ,"" ,"" ,"dur", "" , "", "dur", "", "", ""
+	ligne5  est un casier de texte valant "" ,"" ,"" ,"", "dur" , "dur", "", "", "", ""
+	lignes  est un casier de casier valant ligne1, ligne2, ligne3, ligne4, ligne5, ligne4, ligne3, ligne2, ligne1
+	Projette p
+	Pour chaque lignes
+		c prend 0
+		Pour chaque joker
+			Parcours afficher avec #p, c , l, joker
+			c prend c + 1
+		Ferme
+		l prend l + 1
+	Ferme
+	Reviens
 
 Niveau5 :
-c  est un nombre valant 0
-l  est un nombre valant 0
-p est un brique, plein prend "oui", x prend -200, y prend -200, hauteur prend 10 * zoom, largeur prend 20 * zoom, position prend 2
-ligne1  est un casier de texte valant "dur" ,"dur" ,"dur" ,"dur", "dur" , "dur", "dur", "dur", "dur", "dur"
-ligne2  est un casier de texte valant "dur" ,"" ,"" ,"", "" , "", "", "", "", "dur"
-lignes  est un casier de casier valant ligne1, ligne2, ligne2, ligne2, ligne2, ligne2, ligne2, ligne2,ligne2, ligne1,ligne1
-Projette p
-Pour chaque lignes
-c prend 0
-Pour chaque joker
-	si joker != ""
-		Parcours afficher avec #p, c , l, joker
-	ferme
-	c prend c + 1
-Ferme
-l prend l + 1
-Ferme
-Reviens
+	c  est un nombre valant 0
+	l  est un nombre valant 0
+	p est un brique, plein prend "oui", x prend -200, y prend -200, hauteur prend 10 * zoom, largeur prend 20 * zoom, position prend 2
+	ligne1  est un casier de texte valant "dur" ,"dur" ,"dur" ,"dur", "dur" , "dur", "dur", "dur", "dur", "dur"
+	ligne2  est un casier de texte valant "dur" ,"" ,"" ,"", "" , "", "", "", "", "dur"
+	lignes  est un casier de casier valant ligne1, ligne2, ligne2, ligne2, ligne2, ligne2, ligne2, ligne2,ligne2, ligne1,ligne1
+	Projette p
+	Pour chaque lignes
+		c prend 0
+		Pour chaque joker
+			si joker != ""
+				Parcours afficher avec #p, c , l, joker
+			ferme
+			c prend c + 1
+		Ferme
+		l prend l + 1
+	Ferme
+	Reviens
 
 Niveau6 :
-c  est un nombre valant 0
-l  est un nombre valant 0
-p  est un brique, plein prend "oui", x prend -200, y prend -200, hauteur prend 10 * zoom, largeur prend 10 * zoom, position prend 2
-ligne1  est un casier de texte valant "dur" ,"vide" ,"dur" ,"vide", "dur" , "vide", "dur", "vide", "dur", "vide"
-lignes  est un casier de casier valant ligne1, ligne1, ligne1, ligne1, ligne1, ligne1, ligne1, ligne1
-Projette p
-Pour chaque lignes
-c prend 0
-Pour chaque joker
-	si joker != "vide"
-		Parcours afficher avec #p, c , l, joker
-	ferme
-	c prend c + 1
-Ferme
-l prend l + 1
-Ferme
-y de joueur1 prend 90 * zoom
-Reviens
+	c  est un nombre valant 0
+	l  est un nombre valant 0
+	p  est un brique, plein prend "oui", x prend -200, y prend -200, hauteur prend 10 * zoom, largeur prend 10 * zoom, position prend 2
+	ligne1  est un casier de texte valant "dur" ,"vide" ,"dur" ,"vide", "dur" , "vide", "dur", "vide", "dur", "vide"
+	lignes  est un casier de casier valant ligne1, ligne1, ligne1, ligne1, ligne1, ligne1, ligne1, ligne1
+	Projette p
+	Pour chaque lignes
+		c prend 0
+		Pour chaque joker
+			si joker != "vide"
+				Parcours afficher avec #p, c , l, joker
+			ferme
+			c prend c + 1
+		Ferme
+		l prend l + 1
+	Ferme
+	y de joueur1 prend 90 * zoom
+	Reviens
 
 Niveau7 :
-c  est un nombre valant 0
-l  est un nombre valant 0
-p est un brique, plein prend "oui", x prend -200, y prend -200, hauteur prend 5 * zoom, largeur prend 5 * zoom, position prend 2
-ligne1  est un casier de texte valant "vide" ,"vide" ,"vide" ,"vide", "vide" , "vide", "vide", "vide", "vide", "vide"
-ligne2  est un casier de texte valant "vide" ,"vide" ,"dur" ,"vide", "vide" , "vide", "vide", "vide", "dur", "vide"
-lignes  est un casier de casier valant ligne1, ligne1, ligne1, ligne2, ligne1, ligne1, ligne1, ligne1
-Projette p
-Pour chaque lignes
-c prend 0
-Pour chaque joker
-	si joker != "vide"
-		Parcours afficher avec #p, c , l, joker
-	ferme
-	c prend c + 1
-Ferme
-l prend l + 1
-Ferme
-y de joueur1 prend 90 * zoom
-Reviens
+	c  est un nombre valant 0
+	l  est un nombre valant 0
+	p est un brique, plein prend "oui", x prend -200, y prend -200, hauteur prend 5 * zoom, largeur prend 5 * zoom, position prend 2
+	ligne1  est un casier de texte valant "vide" ,"vide" ,"vide" ,"vide", "vide" , "vide", "vide", "vide", "vide", "vide"
+	ligne2  est un casier de texte valant "vide" ,"vide" ,"dur" ,"vide", "vide" , "vide", "vide", "vide", "dur", "vide"
+	lignes  est un casier de casier valant ligne1, ligne1, ligne1, ligne2, ligne1, ligne1, ligne1, ligne1
+	Projette p
+	Pour chaque lignes
+		c prend 0
+		Pour chaque joker
+			si joker != "vide"
+				Parcours afficher avec #p, c , l, joker
+			ferme
+			c prend c + 1
+		Ferme
+		l prend l + 1
+	Ferme
+	y de joueur1 prend 90 * zoom
+	Reviens

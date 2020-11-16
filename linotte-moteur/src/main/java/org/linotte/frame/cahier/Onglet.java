@@ -48,7 +48,8 @@ import java.awt.event.*;
 public class Onglet extends JPanel implements MouseListener {
 
 	public enum TypeButton {
-		CLOSED, RUNNING
+		CLOSED,
+		RUNNING
 	}
 
 	private final JTabbedPane tabbedPan;
@@ -83,10 +84,10 @@ public class Onglet extends JPanel implements MouseListener {
 		// add more space between the label and the button
 		label.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 5));
 		// tab button
-		button = new TabButton(TypeButton.CLOSED);
+		//button = new TabButton(TypeButton.CLOSED);
 		buttonRunning = new TabButton(TypeButton.RUNNING);
 		buttonRunning.setVisible(false);
-		add(button);
+		//add(button);
 		add(buttonRunning);
 		// add more space to the top of the component
 		setBorder(BorderFactory.createEmptyBorder(2, 0, 0, 0));

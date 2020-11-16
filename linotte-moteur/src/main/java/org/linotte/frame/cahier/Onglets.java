@@ -57,6 +57,12 @@ public class Onglets extends JPanel {
                 }
             }
 		});
+		tabbedPane.putClientProperty( "JTabbedPane.tabClosable", true );
+		tabbedPane.putClientProperty( "JTabbedPane.tabCloseCallback",
+				(java.util.function.BiConsumer<JTabbedPane, Integer>) (tabbedPane, tabIndex) -> {
+					// close tab here
+					tabbedPane.removeTabAt( tabIndex );
+				} );
 	}
 
 	public void ajouterCahier(Cahier cahier) {
