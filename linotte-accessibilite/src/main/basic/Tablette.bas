@@ -109,7 +109,7 @@ Button_Click_Executer:
    ' lancement de Linotte
    ' EXECUTE_WAIT "chcp| 65001"
    ' EXECUTE_WAIT "title| lecture"
-   EXECUTE_WAIT "outils/Tablette.bat | "+ DOUBLE$ + Fichier_Choisi$ + DOUBLE$
+   EXECUTE_WAIT "outils\Tablette.bat | "+ DOUBLE$ + Fichier_Choisi$ + DOUBLE$
    ' EXECUTE "java|-jar Atelier.jar -x "+ Fichier_Choisi$
    RETURN
 
@@ -123,9 +123,3 @@ Button_Click_Editer:
 Button_Click_Quitter:
    ' Quitter
    TERMINATE
-   
-
-
-
-
-
