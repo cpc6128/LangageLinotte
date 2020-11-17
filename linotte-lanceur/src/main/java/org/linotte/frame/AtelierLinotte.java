@@ -26,10 +26,10 @@ public class AtelierLinotte {
                 AtomicReference<SplashWindow> splashWindow1 = new AtomicReference<>();
                 if (Preference.getIntance().themeNoir()) {
                     FlatDarculaLaf.install();
-                    UIManager.put("TabbedPane.selectedBackground", Color.darkGray.darker());
+                    //UIManager.put("TabbedPane.selectedBackground", Color.darkGray.darker());
                 } else {
                     FlatIntelliJLaf.install();
-                    UIManager.put("TabbedPane.selectedBackground", Color.lightGray.darker());
+                    //UIManager.put("TabbedPane.selectedBackground", Color.lightGray.darker());
                 }
                 //UIManager.put("JComponent.roundRect", true);
                 //UIManager.put("JButton.buttonType", "roundRect");
