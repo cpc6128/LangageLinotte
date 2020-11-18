@@ -78,7 +78,7 @@ public class EspeceAction extends Action implements IProduitCartesien {
 		boolean creation_dynamique = ChaineOutils.findInArray(annotations, "creation");
 		boolean heritage = ChaineOutils.findInArray(annotations, "héritage");
 		boolean forcerLivre = ChaineOutils.findInArray(annotations, "livre");
-		Fichier lefichier = null;
+		Fichier lefichier;
 
 		if ("creation".equals(param)) {
 			String nom_espece = i1.next().toString().toLowerCase();
@@ -127,17 +127,41 @@ public class EspeceAction extends Action implements IProduitCartesien {
 				nom = test.getValeurBrute();
 
 			// Gestion variables locales :
-			boolean variable_locale = false;
+			boolean variableLocale = false;
+			boolean variableSousParagraphe = false;
+			Paragraphe paragraphe = livre.getParagraphe();
 
 			/**
 			 * Si le context contient l'habilitation pour gérer la mémoire comme une pile  (Linotte 2.0):
 			 */
 			if (runtimeContext.canDo(Habilitation.STACK_MEMORY_MANAGEMENT)) {
 				// Si paragraphe == null, nous sommes dans la section "globale"
-				variable_locale = livre.getParagraphe() != null;
+				// variableLocale = paragraphe != null;
+				if (livre.getKernelStack().size() > 0) {
+					Appel appel = livre.getKernelStack().regarderDernierAppel();
+					variableSousParagraphe = appel instanceof SousParagraphe;
+					variableLocale = (appel instanceof CalqueParagraphe) || variableSousParagraphe;
+				} else {
+					// Variables globales :
+					variableSousParagraphe = variableLocale = false;
+				}
 			}
 
-			Librairie<?> librairie = variable_locale ? null : runtimeContext.getLibrairie();
+			Librairie<?> librairie = null;
+			if (variableLocale) {
+				if (runtimeContext.canDo(Habilitation.STACK_MEMORY_MANAGEMENT)) {
+					if (paragraphe == null && !variableSousParagraphe) {
+						throw new ErreurException(Constantes.ERREUR_ACTEURS_LOCAUX);
+					}
+				} else {
+					if (paragraphe == null) {
+						throw new ErreurException(Constantes.ERREUR_ACTEURS_LOCAUX);
+					}
+				}
+			} else {
+				librairie = runtimeContext.getLibrairie();
+			}
+
 
 			String espece = i1.next().toString().toLowerCase();
 
@@ -151,11 +175,11 @@ public class EspeceAction extends Action implements IProduitCartesien {
 			boolean doublure = nom.startsWith("*");
 			if (doublure) {
 				nom = nom.substring(2);
-				if (livre.getParagraphe() == null) {
+				if (paragraphe == null) {
 					// Pas de double dans la section globale
 					throw new ErreurException(Constantes.ERREUR_DOUBLURE);
 				}
-				int numero = livre.getParagraphe().getPosition(nom);
+				int numero = paragraphe.getPosition(nom);
 				Fonction fonction = livre.getKernelStack().recupereDerniereFonction();
 				// vérifier paragraphe
 				// {
@@ -177,7 +201,7 @@ public class EspeceAction extends Action implements IProduitCartesien {
 					if (i1.hasNext()) {
 						throw new ErreurException(Constantes.ERREUR_DOUBLURE);
 					}
-					livre.getParagraphe().addDoublure(nom.toLowerCase(), acteur);
+					paragraphe.addDoublure(nom.toLowerCase(), acteur);
 					CalqueParagraphe calqueParagraphe = livre.getKernelStack().recupereDernierCalqueParagraphe();
 					calqueParagraphe.addActeurLocalDoublure(Chaine.produire(nom), acteur);
 				} else {
@@ -232,25 +256,27 @@ public class EspeceAction extends Action implements IProduitCartesien {
 					}
 				}
 
-				if (jobContext.isCreationespece() && livre.getParagraphe() == null) {
+				if (jobContext.isCreationespece() && paragraphe == null) {
 					// Linotte 2.1
 					runtimeContext.getLibrairie().addActeurPourEspece(creation);
 				} else {
 
-					if (variable_locale) {
-						if (livre.getParagraphe().getActeur(creation.getNom()) != null) {
-							if (livre.getParagraphe().getActeur(creation.getNom()).isActeurSystem())
+					if (variableLocale) {
+
+
+						/*if (paragraphe.getActeur(creation.getNom()) != null) {
+							if (paragraphe.getActeur(creation.getNom()).isActeurSystem())
 								throw new ErreurException(Constantes.SYNTAXE_ACTEUR_PARTICULIER, creation.getNom().toString());
 							else
 								throw new ErreurException(Constantes.SYNTAXE_ACTEUR_DEJA_PRESENT, creation.getNom().toString());
-						}
+						}*/
 						/**
 						 * Gestion des acteurs locaux à un paragraphe et à un sous-paragraphe.
 						 */
 
 						Appel appel = livre.getKernelStack().regarderDernierAppel();
 						if (appel instanceof CalqueParagraphe) {
-							livre.getParagraphe().addActeur(creation);
+							paragraphe.addActeur(creation);
 							CalqueParagraphe calqueParagraphe = (CalqueParagraphe) appel;
 							calqueParagraphe.addActeurLocal(creation);
 						} else if (appel instanceof SousParagraphe) {
@@ -261,8 +287,7 @@ public class EspeceAction extends Action implements IProduitCartesien {
 							calqueParagraphe.addActeurLocal(creation);
 						}
 					} else {
-
-						if (forcerLivre || livre.getParagraphe() == null || creation_dynamique) {
+						if (forcerLivre || paragraphe == null || creation_dynamique) {
 							if (livre.getActeur(creation.getNom(), job) != null) {
 								if (livre.getActeur(creation.getNom(), job).isActeurSystem())
 									throw new ErreurException(Constantes.SYNTAXE_ACTEUR_PARTICULIER, creation.getNom().toString());
@@ -277,13 +302,13 @@ public class EspeceAction extends Action implements IProduitCartesien {
 								// On ne peut pas créer un acteur dans un paragraphe
 								// déjà existant au niveau du livre !
 								throw new ErreurException(Constantes.SYNTAXE_ACTEUR_DEJA_PRESENT, creation.getNom().toString());
-							} else if (livre.getParagraphe().getActeur(creation.getNom()) != null) {
-								if (livre.getParagraphe().getActeur(creation.getNom()).isActeurSystem())
+							} else if (paragraphe.getActeur(creation.getNom()) != null) {
+								if (paragraphe.getActeur(creation.getNom()).isActeurSystem())
 									throw new ErreurException(Constantes.SYNTAXE_ACTEUR_PARTICULIER, creation.getNom().toString());
 								else
 									throw new ErreurException(Constantes.SYNTAXE_ACTEUR_DEJA_PRESENT, creation.getNom().toString());
 							}
-							livre.getParagraphe().addEspece(creation);
+							paragraphe.addEspece(creation);
 						}
 
 					}
@@ -339,7 +364,7 @@ public class EspeceAction extends Action implements IProduitCartesien {
 						if (toile == null) {
 							throw new ErreurException(Constantes.MODE_CONSOLE);
 						}
-						eg.getToile().getPanelLaToile().addActeursAAfficher((PrototypeGraphique) creation, variable_locale);
+						eg.getToile().getPanelLaToile().addActeursAAfficher((PrototypeGraphique) creation, variableLocale);
 						eg.getToile().getPanelLaToile().setChangement();
 
 						// Pour le webonotte, la toile ne doit jamais être visible !!

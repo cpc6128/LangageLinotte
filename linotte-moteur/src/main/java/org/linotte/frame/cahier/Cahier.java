@@ -732,7 +732,7 @@ public class Cahier extends JPanel implements KeyListener, MouseListener {
 
     class Close extends AbstractAction {
         public void actionPerformed(ActionEvent e) {
-            onglet.button.doClick();
+            //onglet.button.doClick();
         }
     }
 

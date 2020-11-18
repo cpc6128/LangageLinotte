@@ -8,31 +8,29 @@ globale
 
 principale :
 	temp est un texte
-	début
-		Efface toile
-		Projette p
+	Efface toile
+	Projette p
+	De 0 à MAX
+		r prend joker
 		De 0 à MAX
-			r prend joker
-			De 0 à MAX
-				v prend joker
-				Parcours afficher avec #p
-			Ferme
+			v prend joker
+			Parcours afficher avec #p
 		Ferme
-		Mesure points dans taille
-		taille prend taille - 1
-		De 0 à taille
-			temp prend couleur @ (points{joker})
-			couleur @ (points{joker}) prend couleur @ (points{taille - joker})
-			couleur @ (points{taille - joker})  prend temp
-			Attends 2 millisecondes
-		Ferme
-		Termine
+	Ferme
+	Mesure points dans taille
+	taille prend taille - 1
+	De 0 à taille
+		temp prend couleur @ (points{joker})
+		couleur @ (points{joker}) prend couleur @ (points{taille - joker})
+		couleur @ (points{taille - joker})  prend temp
+		Attends 2 millisecondes
+	Ferme
+	Termine
 
 afficher :
 	*p est un point
-	début
-		ajoute p dans points
-		x @ p prend (r * 10) + 30
-		y @ p prend (v * 10) + 30
-		couleur @ p prend (r*5) + " " + (v*5) + " " + (255-(v*5))
-		Reviens
+	ajoute p dans points
+	x @ p prend (r * 10) + 30
+	y @ p prend (v * 10) + 30
+	couleur @ p prend (r*5) + " " + (v*5) + " " + (255-(v*5))
+	Reviens

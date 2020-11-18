@@ -174,7 +174,7 @@ public class ActeurAction extends Action implements IProduitCartesien, ParserHan
 					}
 				}
 			} else {
-				librairie = variableLocale ? null : runtimeContext.getLibrairie();
+				librairie = runtimeContext.getLibrairie();
 				if (itemStatique.creation_dynamique && itemStatique.isActeur()) {
 					Acteur a = extractionDesActeursSansErreur(Constantes.SYNTAXE_ACTEUR_INCONNU, job, valeurs)[0];
 					if (a == null)

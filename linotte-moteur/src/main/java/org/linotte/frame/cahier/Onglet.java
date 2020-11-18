@@ -31,14 +31,13 @@
 
 package org.linotte.frame.cahier;
 
-import org.linotte.frame.atelier.Atelier;
 import org.linotte.frame.cahier.Cahier.EtatCachier;
 import org.linotte.frame.moteur.FrameProcess;
 
 import javax.swing.*;
-import javax.swing.plaf.basic.BasicButtonUI;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
  * Component to be used as tabComponent; Contains a JLabel to show the text and
@@ -47,16 +46,11 @@ import java.awt.event.*;
 @SuppressWarnings("serial")
 public class Onglet extends JPanel implements MouseListener {
 
-	public enum TypeButton {
-		CLOSED, RUNNING
-	}
 
 	private final JTabbedPane tabbedPan;
 	private final Cahier cahier;
 	private Color backupColor = null;
 	// Doit être accessible depuis la classe @Cahier
-	JButton button;
-	private JButton buttonRunning;
 
 	public Onglet(final Cahier cahierPanel, final JTabbedPane pane) {
 		// unset default FlowLayout' gaps
@@ -79,137 +73,7 @@ public class Onglet extends JPanel implements MouseListener {
 		};
 
 		add(label);
-		add(Box.createHorizontalGlue());
-		// add more space between the label and the button
-		label.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 5));
-		// tab button
-		button = new TabButton(TypeButton.CLOSED);
-		buttonRunning = new TabButton(TypeButton.RUNNING);
-		buttonRunning.setVisible(false);
-		add(button);
-		add(buttonRunning);
-		// add more space to the top of the component
-		setBorder(BorderFactory.createEmptyBorder(2, 0, 0, 0));
-
-		// Ajout des évènements :
-		addMouseListener(this);
-
 	}
-
-	private class TabButton extends JButton implements ActionListener {
-
-		private TypeButton type;
-
-		public TabButton(TypeButton ptype) {
-			int size = 17;
-			type = ptype;
-			setPreferredSize(new Dimension(size, size));
-			if (type == TypeButton.CLOSED) {
-				setToolTipText("Fermer ce livre");
-			} else {
-				setToolTipText("Livre en cours d'exécution...");
-			}
-			// Make the button looks the same for all Laf's
-			setUI(new BasicButtonUI());
-			// Make it transparent
-			setContentAreaFilled(false);
-			// No need to be focusable
-			setFocusable(false);
-			if (type == TypeButton.CLOSED) {
-				setBorder(BorderFactory.createEtchedBorder());
-				setBorderPainted(false);
-				addMouseListener(buttonMouseListener);
-				// Making nice rollover effect
-				// we use the same listener for all buttons
-				setRolloverEnabled(true);
-				// Close the proper tab by clicking the button
-				addActionListener(this);
-
-			}
-		}
-
-		public void actionPerformed(ActionEvent e) {
-			int i = tabbedPan.indexOfTabComponent(Onglet.this);
-			if (i != -1) {
-				// Vérification :
-				boolean doit = true;
-				if (cahier.getEtatCahier() == EtatCachier.MODIFIE) {
-					doit = false;
-					int result = JOptionPane.showConfirmDialog(cahier.getAtelier(), "Voulez-vous vraiment fermer ce livre ?",
-							"Un livre n'est pas sauvegardé !", JOptionPane.YES_NO_OPTION);
-					if (result == JOptionPane.YES_OPTION) {
-						doit = true;
-					}
-				}
-				if (doit) {
-					tabbedPan.remove(i);
-					if (tabbedPan.getTabCount() == 0) {
-						SwingUtilities.invokeLater(new Runnable() {
-							public void run() {
-								cahier.getAtelier();
-								Atelier.explorateur.setVisible(true);
-								// atelier.splitPaneSommaire.getRightComponent().setVisible(true);
-								cahier.getAtelier().splitPaneProjet.setDividerLocation(cahier.getAtelier().taille_split_projet);
-							}
-						});
-
-					}
-				}
-			}
-		}
-
-		// we don't want to update UI for this button
-		@Override
-		public void updateUI() {
-		}
-
-		// paint the cross
-		@Override
-		protected void paintComponent(Graphics g) {
-			super.paintComponent(g);
-			Graphics2D g2 = (Graphics2D) g.create();
-			// shift the image for pressed buttons
-			if (type == TypeButton.CLOSED) {
-				if (getModel().isPressed()) {
-					g2.translate(1, 1);
-				}
-				g2.setStroke(new BasicStroke(2));
-				g2.setColor(Color.BLACK);
-				if (getModel().isRollover()) {
-					g2.setColor(Color.MAGENTA);
-				}
-				int delta = 6;
-				g2.drawLine(delta, delta, getWidth() - delta - 1, getHeight() - delta - 1);
-				g2.drawLine(getWidth() - delta - 1, delta, delta, getHeight() - delta - 1);
-			} else {
-				g2.setColor(Color.RED);
-				int delta = 2;
-				g2.fillOval(delta, delta, 10, 10);
-				g2.drawOval(delta - 1, delta - 1, 12, 12);
-			}
-			g2.dispose();
-		}
-	}
-
-	private final static MouseListener buttonMouseListener = new MouseAdapter() {
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			Component component = e.getComponent();
-			if (component instanceof AbstractButton) {
-				AbstractButton button = (AbstractButton) component;
-				button.setBorderPainted(true);
-			}
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			Component component = e.getComponent();
-			if (component instanceof AbstractButton) {
-				AbstractButton button = (AbstractButton) component;
-				button.setBorderPainted(false);
-			}
-		}
-	};
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -239,15 +103,10 @@ public class Onglet extends JPanel implements MouseListener {
 		int i = tabbedPan.indexOfTabComponent(this);
 		if (i != -1 && cahier.getFichier() != null) {
 			final int index = i;
-			SwingUtilities.invokeLater(new Runnable() {
-				public void run() {
-					tabbedPan.setTitleAt(index, cahier.getFichier().getName() + (modifie ? " *" : ""));
-					((Onglet) tabbedPan.getTabComponentAt(index)).button.setToolTipText(cahier.getFichier().getAbsolutePath());
-					// tabbedPan.setToolTipTextAt(index,
-					// cahier.getFichier().getAbsolutePath());
-					revalidate();
-					repaint();
-				}
+			SwingUtilities.invokeLater(() -> {
+				tabbedPan.setTitleAt(index, cahier.getFichier().getName() + (modifie ? " *" : ""));
+				revalidate();
+				repaint();
 			});
 		}
 	}
@@ -256,23 +115,19 @@ public class Onglet extends JPanel implements MouseListener {
 		int i = tabbedPan.indexOfTabComponent(this);
 		if (i != -1 && cahier.getFichier() != null) {
 			final int index = i;
-			SwingUtilities.invokeLater(new Runnable() {
-				public void run() {
-					if (tabbedPan.getBackgroundAt(index) != FrameProcess.RUN || force) {
-						button.setVisible(color != FrameProcess.RUN);
-						buttonRunning.setVisible(color == FrameProcess.RUN);
-						if (color != null) {
-							if (backupColor == null)
-								backupColor = tabbedPan.getBackgroundAt(index);
-							tabbedPan.setBackgroundAt(index, color);
+			SwingUtilities.invokeLater(() -> {
+				if (tabbedPan.getBackgroundAt(index) != FrameProcess.RUN || force) {
+					if (color != null) {
+						if (backupColor == null)
+							backupColor = tabbedPan.getBackgroundAt(index);
+						tabbedPan.setBackgroundAt(index, color);
+						revalidate();
+						repaint();
+					} else {
+						if (backupColor != null) {
+							tabbedPan.setBackgroundAt(index, backupColor);
 							revalidate();
 							repaint();
-						} else {
-							if (backupColor != null) {
-								tabbedPan.setBackgroundAt(index, backupColor);
-								revalidate();
-								repaint();
-							}
 						}
 					}
 				}

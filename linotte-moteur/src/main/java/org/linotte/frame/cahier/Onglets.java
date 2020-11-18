@@ -46,22 +46,27 @@ public class Onglets extends JPanel {
         super(new GridLayout(1, 1));
         add(tabbedPane);
         tabbedPane.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
-        tabbedPane.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                JTabbedPane pane = (JTabbedPane) e.getSource();
-                Cahier cahier = (Cahier) pane.getSelectedComponent();
-                if (cahier != null) {
-                    cahier.getAtelier().setCahierCourant(cahier);
-                    cahier.changeAtelierEtat();
-                }
-            }
+		//tabbedPane.putClientProperty( "JTabbedPane.scrollButtonsPolicy", "asNeeded" );
+		//tabbedPane.putClientProperty( "JTabbedPane.scrollButtonsPlacement", "trailing" );
+        tabbedPane.addChangeListener(e -> {
+			JTabbedPane pane = (JTabbedPane) e.getSource();
+			Cahier cahier = (Cahier) pane.getSelectedComponent();
+			if (cahier != null) {
+				cahier.getAtelier().setCahierCourant(cahier);
+				cahier.changeAtelierEtat();
+			}
 		});
+		tabbedPane.putClientProperty( "JTabbedPane.tabClosable", true );
+		tabbedPane.putClientProperty( "JTabbedPane.tabCloseCallback",
+				(java.util.function.BiConsumer<JTabbedPane, Integer>) (tabbedPane, tabIndex) -> {
+					// close tab here
+					tabbedPane.removeTabAt( tabIndex );
+				} );
 	}
 
 	public void ajouterCahier(Cahier cahier) {
 		tabbedPane.addTab(cahier.getFichier() != null ? cahier.getFichier().getName() : "[nouveau] *", Ressources.getImageIcon("format-justify-left.png"),
-				cahier, "Livre arrêté...");
+				cahier, null);
 		int index = tabbedPane.getTabCount() - 1;
 		tabbedPane.setTabComponentAt(index, new Onglet(cahier, tabbedPane));
 		tabbedPane.setSelectedIndex(index);
