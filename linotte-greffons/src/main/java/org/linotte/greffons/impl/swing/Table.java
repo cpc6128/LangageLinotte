@@ -29,6 +29,7 @@ public class Table extends ComposantDeplacable {
 		setVisible(getAttributeAsString("visible").equals("oui"));
 		model = new JTableModel();
 		table = new JTable(model);
+		super.initaccessibilite(table);
 		scrollPane = new JScrollPane(table);
 		table.setFillsViewportHeight(true);
 		// Position :

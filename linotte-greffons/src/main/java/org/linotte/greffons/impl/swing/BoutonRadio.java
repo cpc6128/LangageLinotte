@@ -35,6 +35,7 @@ public class BoutonRadio extends ComposantDeplacable {
 		String texte = getAttributeAsString("texte");
 		String icone = getAttributeAsString("icône");
 		radionButton = new JRadioButton(texte);
+		super.initaccessibilite(radionButton);
 		radionButton.setActionCommand(texte);
 		chargerImage(icone);
 		// Position :
@@ -95,8 +96,6 @@ public class BoutonRadio extends ComposantDeplacable {
 	}
 
 	/**
-	 * @param hauteur
-	 * @param largeur
 	 * @param source
 	 */
 	private void chargerImage(String source) {

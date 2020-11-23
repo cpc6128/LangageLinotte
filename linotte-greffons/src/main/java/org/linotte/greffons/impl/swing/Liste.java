@@ -30,6 +30,8 @@ public class Liste extends ComposantDeplacable {
 		listModel = new DefaultListModel();
 		setVisible(getAttributeAsString("visible").equals("oui"));
 		list = new JListX(listModel);
+		super.initaccessibilite(list);
+
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		// Position :
 		x = getAttributeAsBigDecimal("x").intValue();

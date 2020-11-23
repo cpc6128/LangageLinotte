@@ -21,6 +21,7 @@ public class Barre extends ComposantDeplacable {
 		}
 		setVisible(getAttributeAsString("visible").equals("oui"));
 		barre = new JToolBar();
+		super.initaccessibilite(barre);
 		// Position :
 		x = getAttributeAsBigDecimal("x").intValue();
 		y = getAttributeAsBigDecimal("y").intValue();
