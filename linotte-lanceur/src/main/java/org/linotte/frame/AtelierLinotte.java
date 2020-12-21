@@ -2,6 +2,7 @@ package org.linotte.frame;
 
 import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatIntelliJLaf;
+import com.formdev.flatlaf.IntelliJTheme;
 import console.Jinotte;
 import org.linotte.frame.atelier.Atelier;
 import org.linotte.frame.gui.SplashWindow;
@@ -33,6 +34,8 @@ public class AtelierLinotte {
                 }
                 //UIManager.put("JComponent.roundRect", true);
                 //UIManager.put("JButton.buttonType", "roundRect");
+                //UIManager.put("JTabbedPane.hideTabAreaWithOneTab", true);
+
                 SwingUtilities.invokeAndWait(() -> splashWindow1.set(new SplashWindow(new Frame())));
                 Atelier.initialisationFrameAtelierEtToile();
                 splashWindow1.get().fermer();
