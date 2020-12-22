@@ -17,7 +17,9 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
 
 #### Téléchargement de la dernière version :
 
-- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.5/Linotte_3.5-2020-11-18-15-10.zip">Linotte_3.5.zip</a>
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.5/Linotte_3.5-2020-11-18-15-10.zip">Linotte_3.5.zip (avec la 3D)</a>
+
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.5/Linotte_3.6-SNAPSHOT-2020-12-22-15-17.zip">Linotte_3.5.zip (sans la 3D)</a>
 
 #### Pour contribuer à faire évoluer Linotte :
  `git clone https://github.com/cpc6128/LangageLinotte.git`
