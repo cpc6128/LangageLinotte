@@ -35,6 +35,7 @@ public class Bouton extends ComposantDeplacable {
 		String touche = getAttributeAsString("touche");
 		String icone = getAttributeAsString("icône");
 		button = new JButton(texte);
+		super.initaccessibilite(button);
 		chargerImage(icone);
 		// Position :
 		x = getAttributeAsBigDecimal("x").intValue();

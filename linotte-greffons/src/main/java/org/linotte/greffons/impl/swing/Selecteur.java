@@ -29,6 +29,7 @@ public class Selecteur extends ComposantDeplacable {
 		listModel = new DefaultComboBoxModel<String>();
 		setVisible(getAttributeAsString("visible").equals("oui"));
 		combobox = new JComboBox<String>(listModel);
+		super.initaccessibilite(combobox);
 		// Position :
 		x = getAttributeAsBigDecimal("x").intValue();
 		y = getAttributeAsBigDecimal("y").intValue();

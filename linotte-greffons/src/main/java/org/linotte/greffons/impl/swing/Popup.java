@@ -27,6 +27,7 @@ public class Popup extends ComposantDeplacable {
 	@Override
 	public void initialisation() throws GreffonException {
 		pane = new JOptionPane();
+		super.initaccessibilite(pane);
 	}
 
 	@Override

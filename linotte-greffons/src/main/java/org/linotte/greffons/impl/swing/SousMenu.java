@@ -32,6 +32,7 @@ public class SousMenu extends ComposantSwing {
 		String texte = getAttributeAsString("texte");
 		String icone = getAttributeAsString("icône");
 		menu = new JMenuItem(texte);
+		super.initaccessibilite(menu);
 		chargerImage(icone);
 		menu.setVisible(isVisible());
 		super.initEvenement();

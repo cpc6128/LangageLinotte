@@ -35,6 +35,7 @@ public class BoiteTexte extends ComposantDeplacable {
 			return;
 		}
 		textPane = new JTextArea();
+		super.initaccessibilite(textPane);
 		textPane.setLineWrap(false);
 		initialize();
 		setVisible(getAttributeAsString("visible").equals("oui"));

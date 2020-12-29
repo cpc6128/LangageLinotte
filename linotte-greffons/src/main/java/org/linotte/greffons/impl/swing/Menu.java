@@ -22,6 +22,8 @@ public class Menu extends ComposantSwing {
 		setVisible(getAttributeAsString("visible").equals("oui"));
 		String texte = getAttributeAsString("texte");
 		menu = new JMenu(texte);
+		super.initaccessibilite(menu);
+		//menu.getAccessibleContext().setAccessibleName(texte);
 		menu.setVisible(isVisible());
 	}
 
