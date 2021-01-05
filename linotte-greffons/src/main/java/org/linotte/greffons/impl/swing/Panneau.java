@@ -25,8 +25,8 @@ public class Panneau extends ComposantDeplacable {
 			return;
 		}
 		setVisible(getAttributeAsString("visible").equals("oui"));
-		panneau = new JPanel();
 		panneau = new JPanel(new MigLayout());
+		super.initaccessibilite(panneau);
 
 		// Position :
 		x = getAttributeAsBigDecimal("x").intValue();

@@ -25,6 +25,10 @@ public abstract class ComposantSwing extends Composant {
 
 	private ComposantSwing composantPere;
 
+	public void initaccessibilite(JComponent xxx) throws GreffonException {
+		Component component = getJComponent();
+		xxx.setFocusable(true);
+	}
 	public void initEvenement() throws GreffonException {
 		clic_souris.clear();
 		souris_entrante.clear();
@@ -33,7 +37,9 @@ public abstract class ComposantSwing extends Composant {
 
 		Component component = getJComponent();
 		removeMouseListener();
-				
+
+		// Action de l'action avec la touche entrée :
+
 		mouseListener = new MouseListener() {
 
 			@Override

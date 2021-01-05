@@ -26,6 +26,7 @@ public class Slider extends ComposantDeplacable {
 		int min, max, valeur;
 		setVisible(getAttributeAsString("visible").equals("oui"));
 		slider = new JSlider();
+		super.initaccessibilite(slider);
 		// Position :
 		x = getAttributeAsBigDecimal("x").intValue();
 		y = getAttributeAsBigDecimal("y").intValue();

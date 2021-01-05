@@ -35,6 +35,7 @@ public class MenuCaseACocher extends ComposantSwing {
 		String texte = getAttributeAsString("texte");
 		String icone = getAttributeAsString("icône");
 		checkBox = new JCheckBoxMenuItem(texte);
+		super.initaccessibilite(checkBox);
 		checkBox.setActionCommand(texte);
 		chargerImage(icone);
 		String couleur = getAttributeAsString("couleurtexte");
@@ -98,8 +99,6 @@ public class MenuCaseACocher extends ComposantSwing {
 	}
 
 	/**
-	 * @param hauteur
-	 * @param largeur
 	 * @param source
 	 */
 	private void chargerImage(String source) {

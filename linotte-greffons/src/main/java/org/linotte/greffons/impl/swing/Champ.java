@@ -30,6 +30,8 @@ public class Champ extends ComposantDeplacable {
 		} else {
 			champ = new JTextField(texte);
 		}
+		super.initaccessibilite(champ);
+
 		champ.setColumns(10);
 		// Droit d'ecriture :
 		champ.setEditable(!"lecture".equals(mode));

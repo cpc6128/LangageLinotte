@@ -35,6 +35,7 @@ public class CaseACocher extends ComposantDeplacable {
 		String texte = getAttributeAsString("texte");
 		String icone = getAttributeAsString("icône");
 		checkBox = new JCheckBox(texte);
+		super.initaccessibilite(checkBox);
 		checkBox.setActionCommand(texte);
 		chargerImage(icone);
 		// Position :

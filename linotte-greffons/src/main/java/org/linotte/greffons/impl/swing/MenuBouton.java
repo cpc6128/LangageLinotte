@@ -25,6 +25,7 @@ public class MenuBouton extends ComposantSwing {
 
 		String texte = getAttributeAsString("texte");
 		button = new JButton(texte);
+		super.initaccessibilite(button);
 
 		initEvenement();
 		button.setVisible(isVisible());
