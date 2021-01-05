@@ -1,26 +1,21 @@
 // Exemple inspiré du manuel utilisateur du CPC 6128 (page 32)
 efface tableau
 affiche dame("")
-affiche "Noire dans le gris du soir, "
+affiche "Noire dans le gris du soir,"
 affiche dame("")
 affiche "Grise dans le noir. 
 "
-affiche "On sonne la cloche,"
-affiche "Dormez, les bons prisonniers, "
-affiche "On sonne la cloche : "
-affiche "Faut que vous dormiez.
-"
 affiche nuage(",")
-affiche "Il fait noir comme dans un four, "
+affiche "Il fait noir comme dans un four,"
 affiche nuage(".")
 affiche "Tiens le petit jour. 
 "
 affiche dame(",")
-affiche "Rose dans les rayons bleus, "
+affiche "Rose dans les rayons bleus,"
 affiche dame(" :")
 affiche "Debout, paresseux. 
 "
-affiche "Paul Verlaine. "
+affiche "Paul Verlaine."
 
 dame : suffix
 	retourne "Dame souris trotte" + suffix
