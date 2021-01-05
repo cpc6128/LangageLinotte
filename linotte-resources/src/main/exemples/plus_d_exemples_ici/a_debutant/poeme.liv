@@ -14,8 +14,8 @@ affiche dame(",")
 affiche "Rose dans les rayons bleus,"
 affiche dame(" :")
 affiche "Debout, paresseux. 
-"
-affiche "Paul Verlaine."
+
+Paul Verlaine."
 
 dame : suffix
 	retourne "Dame souris trotte" + suffix
