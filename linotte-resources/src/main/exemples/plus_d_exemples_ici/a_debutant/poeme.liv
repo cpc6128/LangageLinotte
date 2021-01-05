@@ -1,4 +1,4 @@
-// Exemple inspiré du manuel utilisateur du CPC 6128 (page 32)
+// Exemple inspiré du manuel utilisateur de l'Amstrad CPC 6128 (page 32)
 efface tableau
 affiche dame("")
 affiche "Noire dans le gris du soir,"
