@@ -1,5 +1,4 @@
-globale
-	valeur est un nombre
+valeur est un nombre
 
 code :
 	affiche "En quelle année fut inventé le langage Linotte ?"

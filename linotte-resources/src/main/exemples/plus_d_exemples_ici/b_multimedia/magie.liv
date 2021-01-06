@@ -1,15 +1,15 @@
-code :
-	rond est un cercle, couleur prend "rose", plein prend "oui", ...
+rond est un cercle, couleur prend "rose", plein prend "oui", ...
     			rayon prend 30,  x prend 289, y prend 290
-	groupe est un casier de cercle
-	efface toile
-	projette rond
+groupe est un casier de cercle
+
+efface toile
+projette rond
 	// #acteur est un synonyme de la fonction clone(acteur)
-	ajoute #rond & #rond & #rond dans groupe
-	de 1 à 100
-		déplace groupe{0} vers le haut de 1
-		déplace groupe{1} vers le bas de 1
-		déplace groupe{2} vers la droite de 1
-		déplace rond vers la gauche de 1
-		attends 20 millisecondes
-	ferme
+ajoute #rond & #rond & #rond dans groupe
+de 1 à 100
+	déplace groupe{0} vers le haut de 1
+	déplace groupe{1} vers le bas de 1
+	déplace groupe{2} vers la droite de 1
+	déplace rond vers la gauche de 1
+	attends 20 millisecondes
+ferme

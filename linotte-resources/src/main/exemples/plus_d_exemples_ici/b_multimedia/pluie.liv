@@ -1,18 +1,18 @@
 /*Imaginez entendre le bruit de la pluie....*/
-principale :
-	x est un nombre
-	y est un nombre
-	mer est une toile, couleur prend "bleu de minuit"
-	projette mer
-	efface toile
-	tant que vrai
-		attends 0.01 secondes
-		x prend hasard(ecranv)
-		y prend hasard(ecranh)
-		appelle vague avec x, y
-		attends 0.15 secondes
-		appelle vague avec x, y
-	ferme
+x est un nombre
+y est un nombre
+mer est une toile, couleur prend "bleu de minuit"
+
+projette mer
+efface toile
+tant que vrai
+	attends 0.01 secondes
+	x prend hasard(ecranv)
+	y prend hasard(ecranh)
+	appelle vague avec x, y
+	attends 0.15 secondes
+	appelle vague avec x, y
+ferme
 
 vague  :
 	*x est un nombre

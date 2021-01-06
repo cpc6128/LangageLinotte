@@ -1,6 +1,6 @@
-code :
-	AB est un nombre
-	BC est un nombre
-	AB ?
-	BC ?
-	affiche "Le carré de l'hypoténuse prend : " + (carré AB + carré BC)
+AB est un nombre
+BC est un nombre
+
+AB ?
+BC ?
+affiche "Le carré de l'hypoténuse prend : " + (carré AB + carré BC)
