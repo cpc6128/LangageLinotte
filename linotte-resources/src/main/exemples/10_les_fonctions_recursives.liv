@@ -1,0 +1,5 @@
+// fibo(n) étant la première fonction du programme, Linotte va demander la valeur de n à l'utilisateur
+// Le verbe "retourner" est utilisé lors de la sortie du programme, la valeur "retournée" est affichée dans le tableau
+fibo : n
+	si n < 2 retourne n
+	sinon retourne fibo(n-1) + fibo(n-2)

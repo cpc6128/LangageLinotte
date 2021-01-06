@@ -1,10 +1,8 @@
-globale
-	total est un nombre valant 2
-	liste est un casier de nombre
+total est un nombre valant 2
+liste est un casier de nombre
 
-code :
-	pour chaque total parcours suite
-	pour chaque liste affiche joker
+pour chaque total parcours suite
+pour chaque liste affiche joker
 
 suite :
 	numéro est un nombre

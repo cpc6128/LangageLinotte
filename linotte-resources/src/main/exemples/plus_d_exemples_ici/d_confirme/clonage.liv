@@ -1,13 +1,12 @@
-code :
-	nombre est un nombre
-	liste est un casier de nombres
-	liste avec clone est un casier de nombres
-	pour chaque 3
-		nombre prend nombre + 1
-		ajoute clone(nombre) dans liste avec clone
-		ajoute nombre dans liste
-	ferme
-	affiche "Liste avec les clones :"
-	affiche liste avec clone
-	affiche "Liste sans les clones :"
-	affiche liste
+nombre est un nombre
+liste est un casier de nombres
+liste avec clone est un casier de nombres
+pour chaque 3
+	nombre prend nombre + 1
+	ajoute clone(nombre) dans liste avec clone
+	ajoute nombre dans liste
+ferme
+affiche "Liste avec les clones :"
+affiche liste avec clone
+affiche "Liste sans les clones :"
+affiche liste

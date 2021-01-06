@@ -2,26 +2,26 @@
 Présentation de quelques simplifications syntaxiques (Linotte 2.3).
 Linotte est capable de détecter automatiquement certains rôles.
 */
-code :
-	// Acteurs simples :
-	f valant 123 // f est un nombre valant 123
-	d valant "programmeur" // d est un texte valant "programmeur"
 
-	// Casiers :
-	notes2 est un casier valant 1,2 // notes2 est un casier de nombres valant 1, 2
-	notes3 est un casier valant "a","b" // notes3 est un casier de textes valant "a", "b"
-	notes est un casier valant {1,2},{3,4} // notes est un casier de casiers valant {1,2},{3,4}
-	//notes5 est un casier  // ERREUR ! Linotte ne peut detecter aucun rôle !
+// Acteurs simples :
+f valant 123 // f est un nombre valant 123
+d valant "programmeur" // d est un texte valant "programmeur"
 
-	// Création des casiers encore plus simplement :
-	h valant 1,2,3 // g est un casier de nombres valant 1, 2, 3
-	g valant "Coucou", "Bonjour", "Hello" // g est un casier de textes valant "coucou", "bonjour", "hello"
-	i valant {1,2},{3,4} // i est un casier de casiers valant {1,2},{3,4}
-	j valant {"a","e"},{"c","e"} // j est un casier de casiers valant {"a","e"},{"c","e"}
+// Casiers :
+notes2 est un casier valant 1,2 // notes2 est un casier de nombres valant 1, 2
+notes3 est un casier valant "a","b" // notes3 est un casier de textes valant "a", "b"
+notes est un casier valant {1,2},{3,4} // notes est un casier de casiers valant {1,2},{3,4}
+//notes5 est un casier  // ERREUR ! Linotte ne peut detecter aucun rôle !
 
-	// On peut utiliser ${d} ou plus simplement {d} dans une texte pour afficher la valeur d'un acteur :
-	affiche g{2} + ", {d} !"
-	f += 12 // Evolution 2.7
-	affiche f // Affiche 123 + 12
-	f -= 6 // Evolution 2.7
-	affiche f // Affiche 135 - 6
+// Création des casiers encore plus simplement :
+h valant 1,2,3 // g est un casier de nombres valant 1, 2, 3
+g valant "Coucou", "Bonjour", "Hello" // g est un casier de textes valant "coucou", "bonjour", "hello"
+i valant {1,2},{3,4} // i est un casier de casiers valant {1,2},{3,4}
+j valant {"a","e"},{"c","e"} // j est un casier de casiers valant {"a","e"},{"c","e"}
+
+// On peut utiliser ${d} ou plus simplement {d} dans une texte pour afficher la valeur d'un acteur :
+affiche g{2} + ", {d} !"
+f += 12 // Evolution 2.7
+affiche f // Affiche 123 + 12
+f -= 6 // Evolution 2.7
+affiche f // Affiche 135 - 6

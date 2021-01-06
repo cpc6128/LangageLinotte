@@ -1,9 +1,8 @@
-principale :
-	a est un nombre valant 1.4
-	b est un nombre valant 1.7
-	efface tableau
-	affiche arrondi a
-	affiche arrondi b
-	affiche entier b
-	affiche décimal a
-	affiche décimal b
+a est un nombre valant 1.4
+b est un nombre valant 1.7
+efface tableau
+affiche arrondi a
+affiche arrondi b
+affiche entier b
+affiche décimal a
+affiche décimal b
