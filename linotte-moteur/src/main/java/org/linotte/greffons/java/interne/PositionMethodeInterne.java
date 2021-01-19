@@ -39,7 +39,7 @@ public class PositionMethodeInterne extends MethodeInterneDirecte {
 
     @Override
     public String parametres() {
-        return "( quoi )";
+        return "( à partir de , quoi )";
     }
 
     public String nom() {
