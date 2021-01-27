@@ -1,17 +1,17 @@
 dictionnaire est un casier de textes valant "maison", "chocolat", "orange", "panier", "arbre", "jardin", "oiseau", "hibou"
 pendu est un casier de texte valant "==============",  " ||       / \  ", " ||        |  ", " ||       /|\ "," ||        0  " , " ||/       |  " , " ==========Y= "
-réponse & lettre est un texte
+réponse est un texte
 tentatives est un nombre valant pendu.taille()
 nombre mots est un nombre valant dictionnaire.taille()
-trouvé est un drapeau
 solution est un texte valant dictionnaire {hasard(nombre mots)}
 
 efface tableau
 pour chaque solution.taille() ajoute "-" dans réponse
 tant que (réponse.position(0,"-")) > -1 et tentatives > 0
+	trouvé est un drapeau valant faux
+	lettre est un texte
 	affiche "Une lettre ?"
 	demande lettre
-	trouvé prend faux
 	tant que (solution.position(0,lettre)) >= 0
 		affiche "Bravo !"
 		trouvé prend vrai
@@ -28,7 +28,5 @@ tant que (réponse.position(0,"-")) > -1 et tentatives > 0
 		décrémente tentatives
 	ferme
 ferme
-si tentatives > 0
-	affiche "Gagné !"
-ferme
-sinon affiche "Trop tard ! Nous n'avez pas sauvé le pendu ! Les lettres restants étaient {solution}"
+si tentatives > 0 affiche "Gagné !"
+sinon affiche "Trop tard ! Perdu ! Les lettres restantes sont {solution}"
