@@ -1339,6 +1339,18 @@
 											<!-- * Condition Sinon   * -->
 											<!-- ********************* -->
 											<!-- sinon, action -->
+											<groupe nom="test" discriminant="xsinon"><!-- 4.0 -->
+												<choix>
+													<ligne tab="1">
+														<token obligatoire="oui" annotation="sinon_simple" style="structure">xsinon</token>
+														<etat nom="§ fin"/>
+														<sousparagraphe etat="fermeture"/>
+														<etat nom="sinon" param="est égal à" hack_bloc="oui"/>
+														<sousparagraphe etat="ouverture"/>
+														<etat nom="§ début"/>
+													</ligne>
+												</choix>
+											</groupe>
 											<groupe nom="test" discriminant="sinon"><!-- 2.7.7 -->
 												<choix>
 													<ligne tab="1">
@@ -1368,6 +1380,20 @@
 												<choix>
 													<ligne tab="1">
 														<token obligatoire="oui" style="structure">sinon</token>
+														<token obligatoire="oui">si</token>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="sinon" param="est égal à vrai" hack_bloc="oui"/>
+														<sousparagraphe etat="ouverture"/>
+														<etat nom="§ début"/>
+													</ligne>
+												</choix>
+											</groupe>
+											<groupe nom="test" discriminant="sinon" ><!-- 4.0 -->
+												<choix>
+													<ligne tab="1">
+														<etat nom="§ fin"/>
+														<sousparagraphe etat="fermeture"/>
+														<token obligatoire="oui" style="structure">xsinon</token>
 														<token obligatoire="oui">si</token>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="sinon" param="est égal à vrai" hack_bloc="oui"/>

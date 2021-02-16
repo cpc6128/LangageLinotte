@@ -47,12 +47,12 @@
         <dependency>
             <groupId>com.formdev</groupId>
             <artifactId>flatlaf</artifactId>
-            <version>1.0-rc2</version>
+            <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>com.formdev</groupId>
             <artifactId>flatlaf-swingx</artifactId>
-            <version>1.0-rc2</version>
+            <version>1.0</version>
         </dependency>
         <!-- version pour jdk 8 : -->
         <dependency>
