@@ -1388,7 +1388,7 @@
 													</ligne>
 												</choix>
 											</groupe>
-											<groupe nom="test" discriminant="sinon" ><!-- 4.0 -->
+											<groupe nom="test" discriminant="xsinon" ><!-- 4.0 -->
 												<choix>
 													<ligne tab="1">
 														<etat nom="§ fin"/>

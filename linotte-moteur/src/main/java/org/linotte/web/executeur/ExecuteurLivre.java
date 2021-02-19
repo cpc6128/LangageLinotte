@@ -133,7 +133,7 @@ public class ExecuteurLivre implements Executeur {
                 AKPatrol.runtimes.remove(runtime);
 
             } catch (LectureException e) {
-                String message = "Ligne : " + RuntimeConsole.retourneLaLigne(numerolignes, e.getPosition()) + " / "
+                String message = "Ligne " + RuntimeConsole.retourneLaLigne(numerolignes, e.getPosition()) + " : "
                         + Messages.retourneErreur(String.valueOf(e.getErreur()));
                 if (e.getException().getToken() != null)
                     message += " : " + e.getException().getToken();
@@ -160,7 +160,7 @@ public class ExecuteurLivre implements Executeur {
         try {
             cloner.execute();
         } catch (LectureException e) {
-            String message = "Ligne : " + RuntimeConsole.retourneLaLigne(numerolignes, e.getPosition()) + " / "
+            String message = "Ligne " + RuntimeConsole.retourneLaLigne(numerolignes, e.getPosition()) + " : "
                     + Messages.retourneErreur(String.valueOf(e.getErreur()));
             if (e.getException().getToken() != null)
                 message += " : " + e.getException().getToken();

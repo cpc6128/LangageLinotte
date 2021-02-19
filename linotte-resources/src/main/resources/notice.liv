@@ -1,8 +1,7 @@
-principale :
-	wbt_repertoire est un texte
-	wbt_port est un texte
-		Demande wbt_repertoire
-		Demande wbt_port
+wbt_repertoire est un texte
+wbt_port est un texte
+Demande wbt_repertoire
+Demande wbt_port
 		"
 <!doctype html public '-//w3c//dtd xhtml 1.0 transitional//en' 'http://www.w3.org/tr/xhtml1/dtd/xhtml1-transitional.dtd'>		
 <html>
@@ -150,9 +149,9 @@ durée est un nombre<br/>
 &lt;h1>Suite de Syracuse :&lt;/h1><br/>
 <span class=linotte><span class=token>&lt;%</span> <br/>
 demande action<br/> 
-si action = " + µ"0022" + "resultat" + µ"0022" + " lis<br/> 
+si action = " + µ"0022" + "resultat" + µ"0022" + " <br/>
 <span class=marge>      demande n </span><br/>
-<span class=marge>      tant que n > 1 lis</span><br/>
+<span class=marge>      tant que n > 1 </span><br/>
 <span class=marge2>        durée vaut durée + 1</span><br/>
 <span class=marge2>        si (n mod 2) = 0, n vaut n / 2</span><br/>
 <span class=marge2>        sinon n vaut n * 3 + 1</span><br/>
@@ -164,7 +163,7 @@ si action = " + µ"0022" + "resultat" + µ"0022" + " lis<br/>
     &lt;/form>    <br/>
 <span class=linotte><span class=token>&lt;%</span> <br/>
    ferme <br/>
-   sinon lis <br/>
+   sinon <br/>
 <span class=token>%></span> <br/></span>
     &lt;form action=" + µ"0022" + "syracuse.wliv" + µ"0022" + " method=" + µ"0022" + "post" + µ"0022" + "><br/>
       &lt;input type=" + µ"0022" + "hidden" + µ"0022" + " name=" + µ"0022" + "action" + µ"0022" + " value=" + µ"0022" + "resultat" + µ"0022" + " /><br/>

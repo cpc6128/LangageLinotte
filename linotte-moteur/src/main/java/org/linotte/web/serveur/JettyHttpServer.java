@@ -182,13 +182,13 @@ public class JettyHttpServer implements Serveur {
 						response.append("<html><head><title>Page d'erreur : " + e.toString() + "</title><head><body>");
 						response.append(
 								"<img style='float: left;margin-right: 10px;' src=data:image/png;base64,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 />"
-										+ "<h3 style='margin-bottom: 25px;'>Oups... mais rien de bien méchant !<br ><span style='color:rgb(231, 94, 94);'>"
+										+ "<h3 style='margin-bottom: 25px;color:red'>Oups une erreur... mais rien de bien méchant :<br><br><span style='color:rgb(231, 94, 94);'>"
 										+ e.getMessage() + "</span></h3><code>");
 						afficherErreur(response, e);
 						Throwable t = e;
 						while (t.getCause() != null) {
 							t = t.getCause();
-							response.append("<hr/>");
+							//response.append("<hr/>");
 							afficherErreur(response, t);
 						}
 						response.append("</code><p>Avez-vous lu la notice ? <a href=\"/notice\">http://localhost:" + Run.PORT + "/notice</a></p>");
@@ -224,7 +224,7 @@ public class JettyHttpServer implements Serveur {
 			PrintWriter pw = new PrintWriter(sw);
 			e.printStackTrace(pw);
 			String s = sw.toString().replaceAll("\n", "</br>");
-			response.append(s);
+			//response.append(s);
 		}
 
 	}
