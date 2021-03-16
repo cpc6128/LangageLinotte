@@ -5,9 +5,6 @@
     <groupId>fr.codevallee</groupId>
     <artifactId>langagelinotte</artifactId>
     <packaging>pom</packaging>
-    <!--version>3.0</version-->
-    <!--version>3.0-QUASI-STABLE</version-->
-    <!--version>3.1-NON-STABLE</version-->
     <version>3.8-SNAPSHOT</version>
 
     <modules>
@@ -39,33 +36,5 @@
         <timestamp>${maven.build.timestamp}</timestamp>
         <maven.build.timestamp.format>yyyy-MM-dd-HH-mm</maven.build.timestamp.format>
     </properties>
-
-    <profiles>
-        <profile>
-            <id>java9</id>
-            <!--activation>
-                <jdk>[9,]</jdk>
-            </activation-->
-            <properties>
-                <maven.compiler.source>9</maven.compiler.source>
-                <maven.compiler.target>9</maven.compiler.target>
-            </properties>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <version>3.8.1</version>
-                        <configuration>
-                            <compilerArgs>
-                                <arg>--add-exports</arg>
-                                <arg>java.desktop/sun.swing=ALL-UNNAMED</arg>
-                            </compilerArgs>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 
 </project>
