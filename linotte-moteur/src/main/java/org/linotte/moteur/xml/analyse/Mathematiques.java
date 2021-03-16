@@ -1594,65 +1594,27 @@ public class Mathematiques {
 		Acteur acteur = null;
 
 		RuntimeContext runtimeContext = (RuntimeContext) job.getRuntimeContext();
-		// Si syntaxe Linotte 1.X
-		boolean version1 = !runtimeContext.canDo(Habilitation.STACK_MEMORY_MANAGEMENT);
 
-		if (version1) {
-			// Linotte 1.X
-			CalqueParagraphe calqueParagraphe = livre.getKernelStack().recupereDernierCalqueParagraphe();
-			if (calqueParagraphe != null)
-				acteur = calqueParagraphe.getActeurLocal(n);
+		// Linotte 2.0
+		acteur = livre.getKernelStack().rechercheActeur(n);
+		if (acteur == null) {
+			acteur = livre.getActeur(n, job);
 			if (acteur == null) {
-				if (livre.getParagraphe() != null)
-					acteur = livre.getParagraphe().getActeur(n);
-				if (acteur == null) {
-					acteur = livre.getActeur(n, job);
-					if (acteur == null) {
-						/**
-						 * Pour des raisons de performance, la recherche
-						 * d'acteurs locaux à des sous-paragraphes est placée
-						 * ici :
-						 */
-
-						acteur = livre.getKernelStack().rechercheActeurDansSousParagraphe(n);
-
-						if (acteur == null) {
-							/**
-							 * Si le context contient l'habilitation pour
-							 * accéder aux acteurs sans les avoir préalablement
-							 * déclarés :
-							 */
-							if (runtimeContext.canDo(Habilitation.MEMORY_FULL_ACCESS)) {
-								acteur = (Acteur) runtimeContext.getLibrairie().getActeurs().get(n.toString().toLowerCase());
-								if (acteur != null)
-									runtimeContext.getLibrairie().reCharger(acteur);
-							}
-							if (acteur == null)
-								throw new ErreurException(Constantes.SYNTAXE_ACTEUR_INCONNU, acteur_valide);
-						}
-					}
+				/**
+				 * Si le context contient l'habilitation pour accéder aux
+				 * acteurs sans les avoir préalablement déclarés :
+				 */
+				if (runtimeContext.canDo(Habilitation.MEMORY_FULL_ACCESS)) {
+					acteur = (Acteur) runtimeContext.getLibrairie().getActeurs().get(n.toString().toLowerCase());
+					if (acteur != null)
+						runtimeContext.getLibrairie().reCharger(acteur);
 				}
-			}
-		} else {
-			// Linotte 2.0
-			acteur = livre.getKernelStack().rechercheActeur(n);
-			if (acteur == null) {
-				acteur = livre.getActeur(n, job);
-				if (acteur == null) {
-					/**
-					 * Si le context contient l'habilitation pour accéder aux
-					 * acteurs sans les avoir préalablement déclarés :
-					 */
-					if (runtimeContext.canDo(Habilitation.MEMORY_FULL_ACCESS)) {
-						acteur = (Acteur) runtimeContext.getLibrairie().getActeurs().get(n.toString().toLowerCase());
-						if (acteur != null)
-							runtimeContext.getLibrairie().reCharger(acteur);
-					}
-					if (acteur == null)
-						throw new ErreurException(Constantes.SYNTAXE_ACTEUR_INCONNU, acteur_valide);
-				}
+				acteur = new Acteur(runtimeContext.getLibrairie(), acteur_valide, Role.INCONNU, "", null);
+				if (acteur == null)
+					throw new ErreurException(Constantes.SYNTAXE_ACTEUR_INCONNU, acteur_valide);
 			}
 		}
+
 		if (attribut != null) {
 			if (!(acteur.getRole() == Role.ESPECE)) {
 				throw new ErreurException(Constantes.SYNTAXE_ESPECE_INCONNUE, acteur_valide);
