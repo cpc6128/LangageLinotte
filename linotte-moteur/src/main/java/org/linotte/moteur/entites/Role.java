@@ -39,12 +39,17 @@ public enum Role {
 	NOMBRE,
 
 	/**
-	 * Un tableau
+	 * Un tableau {@link java.util.List}
 	 */
 	CASIER,
 
 	/**
 	 * Un objet
 	 */
-	ESPECE
+	ESPECE,
+
+	/**
+	 *
+	 */
+	INCONNU
 }

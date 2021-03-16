@@ -1,13 +1,13 @@
-code :
-	n1 est un nombre
-	n2 est un nombre
-	n3 est un nombre
-	parcours divise avec 10, 2, n1
-	affiche n1
-	parcours divise avec 45, 5, n2
-	affiche n2
-	parcours divise avec 13, 0, n3
-	affiche n3
+n1 est un nombre
+n2 est un nombre
+n3 est un nombre
+
+parcours divise avec 10, 2, n1
+affiche n1
+parcours divise avec 45, 5, n2
+affiche n2
+parcours divise avec 13, 0, n3
+affiche n3
 
 divise :
 	*a est un nombre

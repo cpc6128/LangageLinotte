@@ -1,24 +1,22 @@
-globale
-	vaisseau est un polygone, couleur prend "rouge", plein prend "oui", x prend 100, y prend 100, dx1 prend 10 ,dy1 prend 30, dx2 prend 0 ,dy2 prend 20, dx3 prend -10 ,dy3 prend 30
-	flotte est un casier de polygone valant vaisseau, #vaisseau, #vaisseau
+vaisseau est un polygone, couleur prend "rouge", plein prend "oui", x prend 100, y prend 100, dx1 prend 10 ,dy1 prend 30, dx2 prend 0 ,dy2 prend 20, dx3 prend -10 ,dy3 prend 30
+flotte est un casier de polygone valant vaisseau, #vaisseau, #vaisseau
+t est un nombre
 
-code :
-	t est un nombre
-	efface toile
+efface toile
+pour chaque flotte
+	t prend t + 20
+	projette joker
+	déplace joker de t et t
+	angle@joker prend 360
+	mélange angle@joker
+ferme
+tant que vrai
 	pour chaque flotte
-		t prend t + 20
-		projette joker
-		déplace joker de t et t
-		angle@joker prend 360
-		mélange angle@joker
+		tourne à gauche joker de 1
+		parcours test avec joker
 	ferme
-	tant que vrai
-		pour chaque flotte
-			tourne à gauche joker de 1
-			parcours test avec joker
-		ferme
-		attends 10 millisecondes
-	ferme
+	attends 10 millisecondes
+ferme
 
 test :
 	*v est un polygone

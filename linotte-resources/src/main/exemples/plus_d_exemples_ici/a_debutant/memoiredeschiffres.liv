@@ -1,11 +1,10 @@
-globale
-	score est un nombre valant 0
-	nombre1 est un nombre
-	nombre2 est un nombre
-	nombre3 est un nombre
-	réponse1 est un nombre
-	réponse2 est un nombre
-	réponse3 est un nombre
+score est un nombre valant 0
+nombre1 est un nombre
+nombre2 est un nombre
+nombre3 est un nombre
+réponse1 est un nombre
+réponse2 est un nombre
+réponse3 est un nombre
 
 code :
 	"Je vais afficher 3 nombres et tu vas devoir les retrouver !" !
@@ -28,7 +27,7 @@ code :
 	si réponse3 != nombre3 va vers réponse fausse
 	score prend score + 1
 	"Bravo !" !
-	va vers principale
+	va vers code
 
 réponse fausse :
 	"La réponse est fausse. Le jeu se termine, ton score est de ${score}" !

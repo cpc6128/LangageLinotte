@@ -1,7 +1,7 @@
-code :
-	capitale est un texte
-	tant que capitale != "Paris"
-		affiche "Quelle est la capitale de la France ?"
-		demande capitale
-	ferme
-	affiche "Bravo, tu es trop fort !"
+capitale est un texte
+
+tant que capitale != "Paris"
+	affiche "Quelle est la capitale de la France ?"
+	demande capitale
+ferme
+affiche "Bravo, tu es trop fort !"

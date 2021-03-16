@@ -1,11 +1,10 @@
-code :
-	tableau est un casier de texte valant "janvier", "février" , "mars", "avril", "mai", "juin", "juillet" ,"août", "septembre", "octobre", "novembre", "décembre"
-	message est un texte
-	concatène "En ", tableau {0}, ", le temps est vraiment froid !" dans message
-	message !
-	concatène "En ", tableau {racine 16}, ", tu peux sortir manger dehors." dans message
-	message !
-	concatène "En ", tableau {5+2*2}, ", les feuilles commencent à tomber." dans message
-	message !
-	concatène "En ", tableau {carré 3 + 2}, ", c'est long d'attendre le 24 au soir ..." dans message
-	message !
+tableau est un casier de texte valant "janvier", "février" , "mars", "avril", "mai", "juin", "juillet" ,"août", "septembre", "octobre", "novembre", "décembre"
+message est un texte
+concatène "En ", tableau {0}, ", le temps est vraiment froid !" dans message
+message !
+concatène "En ", tableau {racine 16}, ", tu peux sortir manger dehors." dans message
+message !
+concatène "En ", tableau {5+2*2}, ", les feuilles commencent à tomber." dans message
+message !
+concatène "En ", tableau {carré 3 + 2}, ", c'est long d'attendre le 24 au soir ..." dans message
+message !

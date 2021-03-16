@@ -1,33 +1,33 @@
-code :
-	ciel est une toile, couleur prend "blanc", pointeur prend "main"
-	c1 est un crayon, couleur prend "brique", x prend 295, y prend 225, taille prend 2, pointe prend "oui", posé prend "oui"
-	efface toile
-	projette ciel
-	projette c1
-	déplace c1 vers la gauche de 50
-	attends 1 seconde
-	déplace c1 vers le bas de 50
-	attends 1 seconde
-	déplace c1 vers la droite de 50
-	attends 1 seconde
-	déplace c1 vers le haut de 50
-	attends 1 seconde
-	couleur @ c1 prend "ardoise"
-	taille @ c1 prend 3
-	déplace c1 de -25 et -25
-	attends 1 seconde
-	déplace c1 de -25 et 25
-	attends 1 seconde
-	posé @ c1 prend "non"
-	déplace c1 de 20 et 50
-	attends 1 seconde
-	couleur @ c1 prend "noir"
-	taille @ c1 prend 1
-	posé @ c1 prend "oui"
-	déplace c1 de 0 et -20
-	attends 1 seconde
-	déplace c1 de 10 et 0
-	attends 1 seconde
-	déplace c1 de 0 et 20
-	attends 1 seconde
-	pointe @ c1 prend "non"
+ciel est une toile, couleur prend "blanc", pointeur prend "main"
+c1 est un crayon, couleur prend "brique", x prend 295, y prend 225, taille prend 2, pointe prend "oui", posé prend "oui"
+
+efface toile
+projette ciel
+projette c1
+déplace c1 vers la gauche de 50
+attends 1 seconde
+déplace c1 vers le bas de 50
+attends 1 seconde
+déplace c1 vers la droite de 50
+attends 1 seconde
+déplace c1 vers le haut de 50
+attends 1 seconde
+couleur @ c1 prend "ardoise"
+taille @ c1 prend 3
+déplace c1 de -25 et -25
+attends 1 seconde
+déplace c1 de -25 et 25
+attends 1 seconde
+posé @ c1 prend "non"
+déplace c1 de 20 et 50
+attends 1 seconde
+couleur @ c1 prend "noir"
+taille @ c1 prend 1
+posé @ c1 prend "oui"
+déplace c1 de 0 et -20
+attends 1 seconde
+déplace c1 de 10 et 0
+attends 1 seconde
+déplace c1 de 0 et 20
+attends 1 seconde
+pointe @ c1 prend "non"

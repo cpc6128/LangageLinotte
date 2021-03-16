@@ -1,5 +1,4 @@
-globale
-	écran est un praxinoscope, x prend 200, y prend 190, ...
+écran est un praxinoscope, x prend 200, y prend 190, ...
 		image0 prend  "images/praxinoscope-0.png", ...
 		image1 prend  "images/praxinoscope-1.png", ...
 		image2 prend  "images/praxinoscope-2.png", ...
@@ -12,18 +11,17 @@ globale
 		image9 prend  "images/praxinoscope-9.png", ...
 		image10 prend  "images/praxinoscope-10.png", ...
 		image11 prend  "images/praxinoscope-11.png"
-	fond est une toile, couleur prend "noir"
-	texte est un graffiti, couleur prend "lapis-lazuli", x prend 250, y prend 510
 
-animation :
-	efface toile
-	projette écran & fond & texte
-	appelle minuteur
+fond est une toile, couleur prend "noir"
+texte est un graffiti, couleur prend "lapis-lazuli", x prend 250, y prend 510
+efface toile
+projette écran & fond & texte
+appelle minuteur
 		/*boucle infinie*/
-	tant que vrai
-		tourne à gauche écran de 1
-		attends 0.1 seconde
-	ferme
+tant que vrai
+	tourne à gauche écran de 1
+	attends 0.1 seconde
+ferme
 
 minuteur :
 	tant que vrai

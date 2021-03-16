@@ -1,2 +1,1 @@
-code :
-	"Pi : " + pi & "e : " + euler !
+affiche "Pi : " + pi & "e : " + euler !

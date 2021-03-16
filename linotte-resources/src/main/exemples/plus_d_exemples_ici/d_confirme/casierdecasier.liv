@@ -1,6 +1,6 @@
-code :
-	/*Utilisation des casiers anonymes*/
-	tab1 est un casier de textes valant "X" , "D" , "G"
-	lettre est un casier de casiers valant tab1, {"B" , "E" , "H"}, {"C" , "F" , "I"}
-	lettre { 0 , 0 } prend "A"
-	pour chaque {0, 1, 2} affiche lettre { joker , 0 }
+/*Utilisation des casiers anonymes*/
+tab1 est un casier de textes valant "X" , "D" , "G"
+lettre est un casier de casiers valant tab1, {"B" , "E" , "H"}, {"C" , "F" , "I"}
+
+lettre { 0 , 0 } prend "A"
+pour chaque {0, 1, 2} affiche lettre { joker , 0 }

@@ -1,0 +1,32 @@
+dictionnaire est un casier de textes valant "maison", "chocolat", "orange", "panier", "arbre", "jardin", "oiseau", "hibou"
+pendu est un casier de texte valant "==============",  " ||       / \  ", " ||        |  ", " ||       /|\ "," ||        0  " , " ||/       |  " , " ==========Y= "
+réponse est un texte
+tentatives est un nombre valant pendu.taille()
+nombre mots est un nombre valant dictionnaire.taille()
+solution est un texte valant dictionnaire {hasard(nombre mots)}
+
+efface tableau
+pour chaque solution.taille() ajoute "-" dans réponse
+tant que (réponse.position(0,"-")) > -1 et tentatives > 0
+	trouvé est un drapeau valant faux
+	lettre est un texte
+	affiche "Une lettre ?"
+	demande lettre
+	tant que (solution.position(0,lettre)) >= 0
+		affiche "Bravo !"
+		trouvé prend vrai
+		position est un nombre valant solution.position(0,lettre)
+		réponse prend réponse.extraire(0,position) + lettre + réponse.extraire( position + 1 , réponse.taille() )
+		solution prend solution.extraire(0,position) + "-" + solution.extraire( position + 1 , solution.taille() )
+		affiche "Pour l'instant, vous avez trouvé : " + réponse
+	ferme
+	si trouvé = faux
+		efface tableau
+		affiche ""
+		de pendu.taille() - 1 à tentatives - 1 affiche pendu{joker} 
+		affiche "Oups, erreur, cette lettre '{lettre}' n'est pas présente dans le mot {réponse} !"
+		décrémente tentatives
+	ferme
+ferme
+si tentatives > 0 affiche "Gagné !"
+sinon affiche "Trop tard ! Perdu ! Les lettres restantes sont {solution}"
