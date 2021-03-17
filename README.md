@@ -17,9 +17,15 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
 
 #### Téléchargement de la dernière version :
 
-- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/3.7/Linotte_3.7-2021-03-16-13-37.zip">Linotte_3.7.zip</a>
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.8/Linotte_3.8-2021-03-17-16-16.zip">Linotte_3.8.zip</a>
 
 - <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.5/Linotte_3.5-2020-11-18-15-10.zip">Linotte_3.5.zip (avec la 3D)</a>
+
+#### documentation en ligne :
+
+- documentation en ligne : <a href="https://github.com/cpc6128/LangageLinotte/wiki">wiki</a>
+
+- c'est en projet, nous avons besoin d'aide ! 
 
 #### Pour contribuer à faire évoluer Linotte :
  `git clone https://github.com/cpc6128/LangageLinotte.git`
@@ -27,14 +33,8 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
  `cd LangageLinotte`
  
  `mvn clean package`
-
-#### documentation en ligne :
-
-- c'est en projet, nous avons besoin d'aide ! 
-
-- documentation en ligne à produire : <a href="https://github.com/cpc6128/LangageLinotte/wiki">wiki</a>
-
-#### Mes autres projets :
+ 
+ #### Mes autres projets :
 
 - corunning.fr (trouver des partenaires sportifs) : <a href="https://www.corunning.fr">corunning.fr</a>
 
