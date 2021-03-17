@@ -5,7 +5,7 @@
     <parent>
         <artifactId>langagelinotte</artifactId>
         <groupId>fr.codevallee</groupId>
-        <version>3.8-SNAPSHOT</version>
+        <version>3.8</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -15,13 +15,13 @@
         <dependency>
             <groupId>fr.codevallee</groupId>
             <artifactId>linotte-moteur</artifactId>
-            <version>3.8-SNAPSHOT</version>
+            <version>3.8</version>
         </dependency>
         <!-- sera corrigé quand les greffons ne dépendrons plus du moteur -->
         <dependency>
             <groupId>fr.codevallee</groupId>
             <artifactId>linotte-greffons</artifactId>
-            <version>3.8-SNAPSHOT</version>
+            <version>3.8</version>
         </dependency>
 
         <dependency>
