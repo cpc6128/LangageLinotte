@@ -20,8 +20,12 @@ Bonne programmation !
 Historique des versions :
 -------------------------
 
+*17/03/21 - Linotte 3.8
+-Correction : Ne se lance pas avec Java 16
+
 *23/01/21 - Linotte 3.7
  -Correction : Mise aux normes 3.X des exemples
+
 *06/01/21 - Linotte 3.6
  -Correction : Suppression de la 3D à cause d'incompatiblité avec certaines JVMs.
 

@@ -25,8 +25,6 @@
 
 package org.linotte.frame.cahier.sommaire;
 
-import sun.swing.DefaultLookup;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.ColorUIResource;
@@ -180,34 +178,34 @@ public class SommaireTreeCellRenderer extends JLabel implements TreeCellRenderer
 		// null. As such, if the value is null, this does not reset the
 		// value.
 		if (!inited || (getLeafIcon() instanceof UIResource)) {
-			setLeafIcon(DefaultLookup.getIcon(this, ui, "Tree.leafIcon"));
+			setLeafIcon(UIManager.getIcon( "Tree.leafIcon"));
 		}
 		if (!inited || (getClosedIcon() instanceof UIResource)) {
-			setClosedIcon(DefaultLookup.getIcon(this, ui, "Tree.closedIcon"));
+			setClosedIcon(UIManager.getIcon("Tree.closedIcon"));
 		}
 		if (!inited || (getOpenIcon() instanceof UIManager)) {
-			setOpenIcon(DefaultLookup.getIcon(this, ui, "Tree.openIcon"));
+			setOpenIcon(UIManager.getIcon("Tree.openIcon"));
 		}
 		if (!inited || (getTextSelectionColor() instanceof UIResource)) {
-			setTextSelectionColor(DefaultLookup.getColor(this, ui, "Tree.selectionForeground"));
+			setTextSelectionColor(UIManager.getColor("Tree.selectionForeground"));
 		}
 		if (!inited || (getTextNonSelectionColor() instanceof UIResource)) {
-			setTextNonSelectionColor(DefaultLookup.getColor(this, ui, "Tree.textForeground"));
+			setTextNonSelectionColor(UIManager.getColor("Tree.textForeground"));
 		}
 		if (!inited || (getBackgroundSelectionColor() instanceof UIResource)) {
-			setBackgroundSelectionColor(DefaultLookup.getColor(this, ui, "Tree.selectionBackground"));
+			setBackgroundSelectionColor(UIManager.getColor("Tree.selectionBackground"));
 		}
 		if (!inited || (getBackgroundNonSelectionColor() instanceof UIResource)) {
-			setBackgroundNonSelectionColor(DefaultLookup.getColor(this, ui, "Tree.textBackground"));
+			setBackgroundNonSelectionColor(UIManager.getColor("Tree.textBackground"));
 		}
 		if (!inited || (getBorderSelectionColor() instanceof UIResource)) {
-			setBorderSelectionColor(DefaultLookup.getColor(this, ui, "Tree.selectionBorderColor"));
+			setBorderSelectionColor(UIManager.getColor( "Tree.selectionBorderColor"));
 		}
-		drawsFocusBorderAroundIcon = DefaultLookup.getBoolean(this, ui, "Tree.drawsFocusBorderAroundIcon", false);
-		drawDashedFocusIndicator = DefaultLookup.getBoolean(this, ui, "Tree.drawDashedFocusIndicator", false);
+		drawsFocusBorderAroundIcon = UIManager.getBoolean("Tree.drawsFocusBorderAroundIcon");
+		drawDashedFocusIndicator = UIManager.getBoolean( "Tree.drawDashedFocusIndicator");
 
-		fillBackground = DefaultLookup.getBoolean(this, ui, "Tree.rendererFillBackground", true);
-		Insets margins = DefaultLookup.getInsets(this, ui, "Tree.rendererMargins");
+		fillBackground = UIManager.getBoolean( "Tree.rendererFillBackground");
+		Insets margins = UIManager.getInsets( "Tree.rendererMargins");
 		if (margins != null) {
 			setBorder(new EmptyBorder(margins.top, margins.left, margins.bottom, margins.right));
 		}
@@ -220,7 +218,7 @@ public class SommaireTreeCellRenderer extends JLabel implements TreeCellRenderer
 	  * represent non-leaf nodes that are expanded.
 	  */
 	public Icon getDefaultOpenIcon() {
-		return DefaultLookup.getIcon(this, ui, "Tree.openIcon");
+		return UIManager.getIcon("Tree.openIcon");
 	}
 
 	/**
@@ -228,7 +226,7 @@ public class SommaireTreeCellRenderer extends JLabel implements TreeCellRenderer
 	  * represent non-leaf nodes that are not expanded.
 	  */
 	public Icon getDefaultClosedIcon() {
-		return DefaultLookup.getIcon(this, ui, "Tree.closedIcon");
+		return UIManager.getIcon("Tree.closedIcon");
 	}
 
 	/**
@@ -236,7 +234,7 @@ public class SommaireTreeCellRenderer extends JLabel implements TreeCellRenderer
 	  * represent leaf nodes.
 	  */
 	public Icon getDefaultLeafIcon() {
-		return DefaultLookup.getIcon(this, ui, "Tree.leafIcon");
+		return UIManager.getIcon("Tree.leafIcon");
 	}
 
 	/**
@@ -417,7 +415,7 @@ public class SommaireTreeCellRenderer extends JLabel implements TreeCellRenderer
 		JTree.DropLocation dropLocation = tree.getDropLocation();
 		if (dropLocation != null && dropLocation.getChildIndex() == -1 && tree.getRowForPath(dropLocation.getPath()) == row) {
 
-			Color col = DefaultLookup.getColor(this, ui, "Tree.dropCellForeground");
+			Color col = UIManager.getColor("Tree.dropCellForeground");
 			if (col != null) {
 				fg = col;
 			} else {
@@ -469,7 +467,7 @@ public class SommaireTreeCellRenderer extends JLabel implements TreeCellRenderer
 		selected = false;
 
 		if (isDropCell) {
-			bColor = DefaultLookup.getColor(this, ui, "Tree.dropCellBackground");
+			bColor = UIManager.getColor( "Tree.dropCellBackground");
 			if (bColor == null) {
 				bColor = getBackgroundSelectionColor();
 			}

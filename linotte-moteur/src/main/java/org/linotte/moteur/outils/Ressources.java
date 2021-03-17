@@ -58,7 +58,7 @@ public class Ressources implements RessourceManager {
 
     private static final String CHEMIN = "/";
     private static final String CHEMIN_GREFFONS = "greffons";
-    private static final String ENTETE_INTERNET = "http://";
+    private static final String ENTETE_INTERNET = "http";
     private static final Ressources instance = new Ressources();
     private static File EDT = null;
     private static URLClassLoader urlLoader = null;
