@@ -171,7 +171,7 @@ public final class LinotteFacade {
 	/**
 	 * Création d'un prototype depuis un greffon
 	 * 
-	 * @param attributs
+	 * @param xattributs
 	 *            Les attributs du prototypes
 	 * @param greffon
 	 *            Greffon
@@ -189,7 +189,7 @@ public final class LinotteFacade {
 			if (g != null) {
 				g.setEspece(type);
 				g.setNom(Character.toUpperCase(type.charAt(0)) + type.substring(1));
-				g.setAuteur("cpc");
+				g.setAuteur("cpc6128");
 				g.setDescription("greffon interne");
 				g.setVersion("1.0");
 				g.setAttributs(xattributs == null ? new HashMap<String, Attribut>() : xattributs);
