@@ -173,7 +173,7 @@ public class LaToileListener extends JPanelLaToile implements KeyListener, Runna
                                 s = LaToileListener.TOUCHE_ENTREE;
                                 break;
                         }
-                        System.out.println(KeyEvent.getKeyText(i));
+                        //System.out.println(KeyEvent.getKeyText(i));
                         if (recepteur == null || !recepteur.evenementTouche(s)) {
                             touches.add(s);
                             reveillerMoteur();
