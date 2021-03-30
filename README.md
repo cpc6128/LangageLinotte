@@ -34,7 +34,7 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
  
  `mvn clean package`
  
- #### Mes autres projets :
+#### Mes autres projets :
 
 - corunning.fr (trouver des partenaires sportifs) : <a href="https://www.corunning.fr">corunning.fr</a>
 
@@ -43,3 +43,8 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
 - WhereIsAlice (casse-tête sur Android) : <a href="https://play.google.com/store/apps/details?id=fr.codevallee.whereisalice">Lien PlayStore</a>
 
 ![Atelier 3.0](http://langagelinotte.free.fr/github/atelier-dracula2.png)
+
+#### Pour les développeurs du langage :
+
+- Pour mac :
+ jpackage --input . --main-jar Atelier.jar  --icon ../../linotte-resources/src/main/resources/linotte_hd.icns --app-version 3.8
