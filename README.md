@@ -48,3 +48,6 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
 
 - Pour mac :
  jpackage --input . --main-jar Atelier.jar  --icon ../../linotte-resources/src/main/resources/linotte_hd.icns --app-version 3.8
+
+- Pour windows :
+ jpackage --type msi --input . --main-jar Atelier.jar --icon ..\..\..\linotte-resources\src\main\resources\linotte_new.ico --app-version 3.8 --win-menu
