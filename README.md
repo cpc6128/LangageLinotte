@@ -15,7 +15,13 @@ Vous voulez contribuer au projet ? N'hésitez pas à venir me rejoindre sur ce d
 
 Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagelinotte.free.fr</a>
 
-#### Téléchargement de la dernière version :
+#### Téléchargement de la dernière version 3.8, avec Java inclus (installation simplifiée) :
+
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.8/AtelierLinotte-3.8.dmg">Pour MacOS</a>
+
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.8/AtelierLinotte-3.8.msi">Pour Windows</a>
+
+#### Téléchargement de la dernière version 3.8, sans Java :
 
 - <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.8/Linotte_3.8-2021-03-17-16-16.zip">Linotte_3.8.zip</a>
 
