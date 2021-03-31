@@ -709,7 +709,7 @@ public class AtelierFrame extends JFrame {
             jMenuVerbier = createJMenuNonOpaque("  Le verbier  ",
                     Ressources.getImageTheme("HELP", 32),
                     Ressources.getImageTheme("HELP", 32));
-            VerticalGridLayout menuGrid = new VerticalGridLayout(0, 4);
+            VerticalGridLayout menuGrid = new VerticalGridLayout(30, 0);
             jMenuVerbier.getPopupMenu().setLayout(menuGrid);
             jMenuVerbier.setActionCommand("Le verbier");
             jMenuVerbier.setVerticalTextPosition(buttonTextHorizontale);
@@ -802,9 +802,7 @@ public class AtelierFrame extends JFrame {
     }
 
     protected JMenu getJMenuCouleurs(int m) {
-        VerticalGridLayout menuGrid = new VerticalGridLayout(0, 2);
         JMenu jMenuCouleurs = new JMenu();
-        jMenuCouleurs.getPopupMenu().setLayout(menuGrid);
         jMenuCouleurs.setActionCommand("Couleurs");
         jMenuCouleurs.setText("Couleurs " + m);
         jMenuCouleurs.setBackground(menuBarColor);

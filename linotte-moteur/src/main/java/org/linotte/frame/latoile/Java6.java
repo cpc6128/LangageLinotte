@@ -2,8 +2,6 @@ package org.linotte.frame.latoile;
 
 import java.awt.*;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.net.URI;
 
 public class Java6 {
@@ -17,27 +15,6 @@ public class Java6 {
 			browse_(uri);
 		} catch (Error e) {
 			e.printStackTrace();
-		}
-	}
-
-	public static void appliquerIcone(Image className)
-	{
-		try {
-			Class util = Class.forName("com.apple.eawt.Application");
-			Method getApplication = util.getMethod("getApplication", new Class[0]);
-			Object application = getApplication.invoke(util);
-			Class params[] = new Class[1];
-			params[0] = Image.class;
-			Method setDockIconImage = util.getMethod("setDockIconImage", params);
-			setDockIconImage.invoke(application, className);
-		} catch (ClassNotFoundException e) {
-			// log exception
-		} catch (NoSuchMethodException e) {
-			// log exception
-		} catch (InvocationTargetException e) {
-			// log exception
-		} catch (IllegalAccessException e) {
-			// log exception
 		}
 	}
 

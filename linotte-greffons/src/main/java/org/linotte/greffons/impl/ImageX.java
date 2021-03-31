@@ -173,6 +173,10 @@ public class ImageX extends Graphique {
 		return false;
 	}
 
+	@Override
+	public void modifier(String value, String attribute, String id) throws GreffonException {
+	}
+
 	@Slot(nom = "négatif")
 	public boolean negatif() throws GreffonException {
 		chargerImage(getAttributeAsString("image"));
