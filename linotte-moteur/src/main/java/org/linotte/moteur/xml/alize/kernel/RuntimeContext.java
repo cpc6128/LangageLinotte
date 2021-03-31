@@ -27,7 +27,6 @@ import org.linotte.frame.cahier.Cahier;
 import org.linotte.frame.latoile.LaToile;
 import org.linotte.frame.outils.ITransparence;
 import org.linotte.greffons.externe.Composant;
-import org.linotte.greffons.externe.Tube;
 import org.linotte.moteur.entites.PrototypeGraphique;
 import org.linotte.moteur.outils.Ressources;
 import org.linotte.moteur.xml.Linotte;
@@ -69,7 +68,6 @@ public class RuntimeContext extends AKRuntimeContextI {
     private IHM ihm = null;
     private File reference;
     private Map<String, List<ThreadLinotte>> threads = new ConcurrentHashMap<String, List<ThreadLinotte>>();
-    private List<Tube> tubes = new ArrayList<Tube>();
     private List<Composant> composants = new ArrayList<Composant>();
     // Evenements à nettoyer :
     private List<PrototypeGraphique> evenements = new CopyOnWriteArrayList<PrototypeGraphique>();
@@ -171,14 +169,7 @@ public class RuntimeContext extends AKRuntimeContextI {
         }
 
         reveille();
-        // On force la fermeture des tubes :
-        for (Tube tube : tubes) {
-            try {
-                tube.fermer();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+
         // On ferme les composants :
         for (Composant composant : composants) {
             try {
@@ -296,8 +287,6 @@ public class RuntimeContext extends AKRuntimeContextI {
         reference = null;
         threads.clear();
         threads = null;
-        tubes.clear();
-        tubes = null;
         composants.clear();
         composants = null;
         evenements.clear();
@@ -326,14 +315,6 @@ public class RuntimeContext extends AKRuntimeContextI {
 
     public void setEvenements(List<PrototypeGraphique> evenements) {
         this.evenements = evenements;
-    }
-
-    public List<Tube> getTubes() {
-        return tubes;
-    }
-
-    public void setTubes(List<Tube> tubes) {
-        this.tubes = tubes;
     }
 
     public Map<String, List<ThreadLinotte>> getThreads() {

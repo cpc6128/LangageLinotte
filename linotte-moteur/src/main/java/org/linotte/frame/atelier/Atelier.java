@@ -26,10 +26,7 @@ import org.linotte.frame.coloration.StyleBuilder;
 import org.linotte.frame.coloration.StyleLinotte;
 import org.linotte.frame.gui.JTextPaneText;
 import org.linotte.frame.gui.PopupListener;
-import org.linotte.frame.latoile.Couleur;
-import org.linotte.frame.latoile.JPanelLaToile;
-import org.linotte.frame.latoile.LaToile;
-import org.linotte.frame.latoile.Toile;
+import org.linotte.frame.latoile.*;
 import org.linotte.frame.moteur.ConsoleProcess;
 import org.linotte.frame.moteur.Formater;
 import org.linotte.frame.moteur.FrameProcess;
@@ -66,6 +63,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.List;
 import java.util.*;
 
@@ -106,12 +104,13 @@ public class Atelier extends AtelierFrame implements WindowListener {
     /**
      * Crée un nouvel atelier Linotte
      *
-     * @param nom Le titre de la fenêtre, usuellement "Atelier Linotte"
      */
     public Atelier() {
         super();
         atelier = this;
     }
+
+
 
     public static void initialisationFrameAtelierEtToile() throws InvocationTargetException, InterruptedException {
         Preference preference = Preference.getIntance();
@@ -143,6 +142,8 @@ public class Atelier extends AtelierFrame implements WindowListener {
         atelier.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         atelier.initialisationComposantsAtelier();
         atelier.setResizable(true);
+
+        Java6.appliquerIcone(Ressources.getImageIcon("linotte_new.png").getImage()); ;
 
         int taille = TAILLE_H + 10;
         int taille2 = taille + LaToile.LARGEUR + 10;

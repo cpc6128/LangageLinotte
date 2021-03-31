@@ -28,17 +28,4 @@ public abstract class Graphique extends Greffon {
 	 */
 	public abstract Shape getShape();
 
-	/**
-	 * n'est plus utilisée
-	 * @param espece
-	 * @param p1
-	 * @param p2
-	 * @param p3
-	 * @throws GreffonException
-	 */
-	@Deprecated
-	public void modifier(String p1, String p2, String p3) throws GreffonException {
-
-	}
-
 }

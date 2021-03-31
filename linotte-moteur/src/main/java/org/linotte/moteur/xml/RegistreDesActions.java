@@ -103,7 +103,6 @@ public class RegistreDesActions {
 			addAction(new ImportLivreAction());
 			addAction(new ParcourirDeAction());
 			addAction(new OterAction());
-			addAction(new ModifierAction());
 			addAction(new RafraichirAction());
 			addAction(new AvancerDeAction());
 			addAction(new TournerADroiteAction());
@@ -111,11 +110,6 @@ public class RegistreDesActions {
 			addAction(new ReculerDeAction());
 			addAction(new AppelerAction());
 			addAction(new ObserverAction());
-			addAction(new OuvrirAction());
-			addAction(new FermerTubeAction());
-			addAction(new ChargerAction());
-			addAction(new DechargerAction());
-			addAction(new ConfigurerAction());
 			addAction(new EvaluerAction());
 			addAction(new FusionnerAction());
 			addAction(new FaireReagirAction());
