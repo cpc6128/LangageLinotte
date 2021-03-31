@@ -15,11 +15,23 @@ Vous voulez contribuer au projet ? N'hésitez pas à venir me rejoindre sur ce d
 
 Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagelinotte.free.fr</a>
 
-#### Téléchargement de la dernière version :
+#### Téléchargement de la dernière version 3.8, avec Java inclus (installation simplifiée) :
 
-- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/3.7/Linotte_3.7-2021-03-16-13-37.zip">Linotte_3.7.zip</a>
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.8/AtelierLinotte-3.8.dmg">Pour MacOS</a>
+
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.8/AtelierLinotte-3.8.msi">Pour Windows</a>
+
+#### Téléchargement de la dernière version 3.8, sans Java :
+
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.8/Linotte_3.8-2021-03-17-16-16.zip">Linotte_3.8.zip</a>
 
 - <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.5/Linotte_3.5-2020-11-18-15-10.zip">Linotte_3.5.zip (avec la 3D)</a>
+
+#### documentation en ligne :
+
+- documentation en ligne : <a href="https://github.com/cpc6128/LangageLinotte/wiki">wiki</a>
+
+- c'est en projet, nous avons besoin d'aide ! 
 
 #### Pour contribuer à faire évoluer Linotte :
  `git clone https://github.com/cpc6128/LangageLinotte.git`
@@ -27,13 +39,7 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
  `cd LangageLinotte`
  
  `mvn clean package`
-
-#### documentation en ligne :
-
-- c'est en projet, nous avons besoin d'aide ! 
-
-- documentation en ligne à produire : <a href="https://github.com/cpc6128/LangageLinotte/wiki">wiki</a>
-
+ 
 #### Mes autres projets :
 
 - corunning.fr (trouver des partenaires sportifs) : <a href="https://www.corunning.fr">corunning.fr</a>
@@ -43,3 +49,11 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
 - WhereIsAlice (casse-tête sur Android) : <a href="https://play.google.com/store/apps/details?id=fr.codevallee.whereisalice">Lien PlayStore</a>
 
 ![Atelier 3.0](http://langagelinotte.free.fr/github/atelier-dracula2.png)
+
+#### Pour les développeurs du langage :
+
+- Pour mac :
+ jpackage --input . --main-jar Atelier.jar  --icon ../../linotte-resources/src/main/resources/linotte_hd.icns --app-version 3.8
+
+- Pour windows :
+ jpackage --type msi --input . --main-jar Atelier.jar --icon ..\..\..\linotte-resources\src\main\resources\linotte_new.ico --app-version 3.8 --win-menu
