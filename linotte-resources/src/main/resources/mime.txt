@@ -1,0 +1,4 @@
+extension=liv
+mime-type=text/linotte
+icon=linotte_new.ico
+description=Programme Linotte
