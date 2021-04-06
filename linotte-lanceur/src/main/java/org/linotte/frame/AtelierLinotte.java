@@ -35,7 +35,7 @@ public class AtelierLinotte {
                 //UIManager.put("JComponent.roundRect", true);
                 //UIManager.put("JButton.buttonType", "roundRect");
                 //UIManager.put("JTabbedPane.hideTabAreaWithOneTab", true);
-                System.setProperty( "flatlaf.useWindowDecorations", "true" );
+                UIManager.put( "TitlePane.menuBarEmbedded", false );
 
                 SwingUtilities.invokeAndWait(() -> splashWindow1.set(new SplashWindow(new Frame())));
                 Atelier.initialisationFrameAtelierEtToile();

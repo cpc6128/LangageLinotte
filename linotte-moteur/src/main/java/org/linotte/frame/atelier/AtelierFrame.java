@@ -91,7 +91,7 @@ public class AtelierFrame extends JFrame {
     protected JFileChooser fileChooser_exporterPNG = null;
     protected JFileChooser fileChooser_exporterHTML = null;
     protected JFileChooser fileChooser_exporterRTF = null;
-    private int taille_split_tableau = 400;
+    private int taille_split_tableau = 300;
     private int taille_split_sommaire = 180;
     private int buttonTextHorizontale = SwingConstants.BOTTOM; // AbstractButton.TOP;
     private int buttonTextVerticale = SwingConstants.CENTER;// AbstractButton.RIGHT;
