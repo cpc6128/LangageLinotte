@@ -1,17 +1,21 @@
 package org.linotte.frame;
 
-import com.formdev.flatlaf.FlatDarculaLaf;
-import com.formdev.flatlaf.FlatIntelliJLaf;
-import com.formdev.flatlaf.IntelliJTheme;
-import console.Jinotte;
+import java.awt.Frame;
+import java.util.concurrent.atomic.AtomicReference;
+
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+
+import org.linotte.frame.atelier.AbaqueAtelier;
 import org.linotte.frame.atelier.Atelier;
 import org.linotte.frame.gui.SplashWindow;
 import org.linotte.frame.outils.Tools;
 import org.linotte.moteur.outils.Preference;
 
-import javax.swing.*;
-import java.awt.*;
-import java.util.concurrent.atomic.AtomicReference;
+import com.formdev.flatlaf.FlatDarculaLaf;
+import com.formdev.flatlaf.FlatIntelliJLaf;
+
+import console.Jinotte;
 
 public class AtelierLinotte {
 
@@ -35,7 +39,9 @@ public class AtelierLinotte {
                 //UIManager.put("JComponent.roundRect", true);
                 //UIManager.put("JButton.buttonType", "roundRect");
                 //UIManager.put("JTabbedPane.hideTabAreaWithOneTab", true);
-                UIManager.put( "TitlePane.menuBarEmbedded", false );
+                if (Preference.getIntance().petitMenu())
+                	AbaqueAtelier.theme.setPetitMenu();
+                UIManager.put( "TitlePane.menuBarEmbedded", AbaqueAtelier.theme.petitmenu );
 
                 SwingUtilities.invokeAndWait(() -> splashWindow1.set(new SplashWindow(new Frame())));
                 Atelier.initialisationFrameAtelierEtToile();

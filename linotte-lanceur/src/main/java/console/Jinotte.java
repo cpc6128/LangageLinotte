@@ -56,7 +56,10 @@ import static org.linotte.moteur.outils.Preference.getIntance;
 
 public class Jinotte extends RuntimeConsole {
 
-    private static final List<String> LISTE_OPTIONS = Arrays.asList("v", "m", "x", "b", "t", "d", "h", "x", "s", "w", "a", "p");
+    private static final List<String> LISTE_OPTIONS = Arrays.asList(
+        "v", "m", "x", "b", "t", "d", "h", "s", "w", "a", "p",
+        "c", "n"
+        );
 
     private Linotte interpreteur;
 
@@ -120,9 +123,9 @@ public class Jinotte extends RuntimeConsole {
         ihm = new ConsoleTexte(accessilite);
         interpreteur = new Linotte(lib, ihm, Langage.Linotte2);//options.contains("1"));
 
-        if (options.contains("x")) {
+        if (!options.contains("c")) {
             // Activation du mode graphique
-            toile = Toile.initToile(interpreteur, false, null, options.contains("s"), options.contains("w"), false, 0, 0);
+            toile = Toile.initToile(interpreteur, false, null, options.contains("s"), !options.contains("n"), false, 0, 0);
             ihm = new FrameIHM((Frame) toile.getParent());
             interpreteur.setIhm(ihm);
             FrameIHM.setPopupMessage(true);
@@ -275,17 +278,19 @@ public class Jinotte extends RuntimeConsole {
     }
 
     public void showversion() {
-        System.out.println("Jinotte * version : " + Version.getVersion());
+        System.out.println("Linotte * version : " + Version.getVersion());
     }
 
     public static void showhelp() {
-        System.out.println("Usage : Jinotte [option]* [chemin_vers_nom_livre.liv]+");
+        System.out.println("Usage : Linotte [option]* [chemin_vers_nom_livre.liv]+");
         // System.out.println(" -m Ne pas écrire les acteurs sur disque");
-        System.out.println("        -x Autoriser l'affichage de la toile");
+        System.out.println("        (ne plus utiliser : -x Autoriser l'affichage de la toile = actif par défaut) ");
+        System.out.println("        -c Ne pas autoriser l'affichage de la toile");
         System.out.println("        -a Activation du mode accessiblité (en test)");
         System.out.println("        -p Lecture du livre depuis le presse-papier");
         System.out.println("        -s Affichage d'un icone dans le sysTray");
-        System.out.println("        -w Affiche la fenetre dans la barre des tâches");
+        System.out.println("        (ne plus utiliser : -w Affiche la fenetre dans la barre des tâches = actif par défaut) ");
+        System.out.println("        -n Ne pas afficher la fenetre dans la barre des tâches");
         System.out.println("        -v Affiche la version du programme");
         System.out.println("        -b Mode bavard");
         System.out.println("        -h Affiche les commandes disponibles");

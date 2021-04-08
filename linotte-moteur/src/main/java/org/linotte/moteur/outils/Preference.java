@@ -60,6 +60,7 @@ public class Preference extends Properties {
     public static final String P_PAS_A_PAS = "PAS_A_PAS";
     public static final String P_TOUCHE_ENTREE = "TOUCHE_ENTREE";
     public static final String P_DRACULA = "DRACULA";
+    public static final String P_PETITMENU = "PETITMENU";
 
     // Webonotte
     public static final String P_WEBONOTTE_PORT = "WEBONOTTE_PORT";
@@ -83,6 +84,10 @@ public class Preference extends Properties {
             e.printStackTrace();
         }
     }
+
+	public boolean petitMenu() {
+        return getBoolean(P_PETITMENU);
+	}
 
     public boolean themeNoir() {
         return getBoolean(P_DRACULA);
