@@ -654,20 +654,22 @@ public class AtelierFrame extends JFrame {
                 jMenuBar.setMinimumSize(new Dimension(hauteurMenu, hauteurMenu));
                 jMenuBar.setPreferredSize(new Dimension(hauteurMenu, hauteurMenu));
             }
-            jMenuBar.add(getJButtonLire());
-            jMenuBar.add(getJButtonPause());
-            jMenuBar.add(getJButtonContinuer());
-            jMenuBar.add(getJButtonTester());
-            jMenuBar.add(getJButtonStop());
-            jMenuBar.add(getJButtonLibrairie());
-            jMenuBar.add(creationSeparator());
-            jMenuBar.add(getJButtonRanger());
-            jMenuBar.add(getJMenuBibliotheque());
-            jMenuBar.add(creationSeparator());
-            jMenuBar.add(getJMenuEdition());
-            jMenuBar.add(getJMenuOutils());
-            jMenuBar.add(getJMenuVerbier());
-            jMenuBar.add(getJButtonTimbre());
+			jMenuBar.add(getJButtonLire());
+			jMenuBar.add(getJButtonPause());
+			jMenuBar.add(getJButtonContinuer());
+			jMenuBar.add(getJButtonTester());
+			jMenuBar.add(getJButtonStop());
+			jMenuBar.add(getJButtonLibrairie());
+			if (!AbaqueAtelier.theme.petitmenu)
+				jMenuBar.add(creationSeparator());
+			jMenuBar.add(getJButtonRanger());
+			jMenuBar.add(getJMenuBibliotheque());
+			if (!AbaqueAtelier.theme.petitmenu)
+				jMenuBar.add(creationSeparator());
+			jMenuBar.add(getJMenuEdition());
+			jMenuBar.add(getJMenuOutils());
+			jMenuBar.add(getJMenuVerbier());
+			jMenuBar.add(getJButtonTimbre());
         }
         return jMenuBar;
     }
@@ -1033,7 +1035,9 @@ public class AtelierFrame extends JFrame {
     }
 
     private JMenu createJMenuNonOpaque(String titre, final Icon iconeClair, final Icon icone) {
-        JMenu jMenu = new JMenuAtelier(titre, iconeClair, icone);
+    	JMenu jMenu;
+		jMenu = AbaqueAtelier.theme.petitmenu ? new JMenuAtelier(titre, null, null)
+				: new JMenuAtelier(titre, iconeClair, icone);
         if ("Windows XP".equals(System.getProperty("os.name"))) {
             jMenu.setBackground(new Color(0, 0, 0, 0)); // XXX Windows XP lnf?
         }
