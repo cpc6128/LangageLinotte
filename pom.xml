@@ -5,7 +5,7 @@
     <groupId>fr.codevallee</groupId>
     <artifactId>langagelinotte</artifactId>
     <packaging>pom</packaging>
-    <version>3.9-SNAPSHOT</version>
+    <version>3.9</version>
 
     <modules>
         <module>linotte-alize</module>
