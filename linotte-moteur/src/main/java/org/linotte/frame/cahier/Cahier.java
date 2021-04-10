@@ -506,13 +506,13 @@ public class Cahier extends JPanel implements KeyListener, MouseListener {
                 atelier.setTitle("(nouveau livre) - " + AtelierFrame.ATELIER_DE_PROGRAMMATION_LINOTTE);
             } else {
                 Preference.getIntance().setProperty(Preference.P_FICHIER, getFichier().getAbsolutePath());
-                atelier.setTitle(getFichier().getAbsolutePath() + " - " + AtelierFrame.ATELIER_DE_PROGRAMMATION_LINOTTE);
+                atelier.setTitle(getFichier().getName() + " - " + getFichier().getAbsolutePath() + " - " + AtelierFrame.ATELIER_DE_PROGRAMMATION_LINOTTE);
             }
             atelier.jButtonRanger.setEnabled(modifie);
             if (modifie) {
-                atelier.jButtonRanger.setIcon(Ressources.getImageTheme("SAVE", 32, CouleurImage.ACTIF));
+                atelier.jButtonRanger.setIcon(Ressources.getImageTheme("SAVE", AbaqueAtelier.theme.icone_taille, CouleurImage.ACTIF));
             } else {
-                atelier.jButtonRanger.setIcon(Ressources.getImageTheme("SAVE", 32));
+                atelier.jButtonRanger.setIcon(Ressources.getImageTheme("SAVE", AbaqueAtelier.theme.icone_taille));
             }
 
             atelier.getJButtonTester().setVisible(tests);
@@ -560,9 +560,9 @@ public class Cahier extends JPanel implements KeyListener, MouseListener {
     public void setEtatCahier(EtatCachier etat) {
         atelier.jButtonRanger.setEnabled(etat == EtatCachier.MODIFIE);
         if (etat == EtatCachier.MODIFIE) {
-            atelier.jButtonRanger.setIcon(Ressources.getImageTheme("SAVE", 32, CouleurImage.ACTIF));
+            atelier.jButtonRanger.setIcon(Ressources.getImageTheme("SAVE", AbaqueAtelier.theme.icone_taille, CouleurImage.ACTIF));
         } else {
-            atelier.jButtonRanger.setIcon(Ressources.getImageTheme("SAVE", 32));
+            atelier.jButtonRanger.setIcon(Ressources.getImageTheme("SAVE", AbaqueAtelier.theme.icone_taille));
         }
         copieLivreDepuisTimbres = null;
         etatCahier = etat;

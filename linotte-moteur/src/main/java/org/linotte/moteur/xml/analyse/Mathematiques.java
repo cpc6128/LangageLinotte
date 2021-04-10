@@ -1609,7 +1609,8 @@ public class Mathematiques {
 					if (acteur != null)
 						runtimeContext.getLibrairie().reCharger(acteur);
 				}
-				acteur = new Acteur(runtimeContext.getLibrairie(), acteur_valide, Role.INCONNU, "", null);
+				// Pour Linotte 4 :
+				// acteur = new Acteur(runtimeContext.getLibrairie(), acteur_valide, Role.INCONNU, "", null);
 				if (acteur == null)
 					throw new ErreurException(Constantes.SYNTAXE_ACTEUR_INCONNU, acteur_valide);
 			}

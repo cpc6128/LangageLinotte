@@ -241,6 +241,7 @@ public class Atelier extends AtelierFrame implements WindowListener {
     private void valeursParDefauts() {
         jMenuItemSaveWorkSpace.setSelected(getPreference(true, Preference.P_MODE_SAVE_WORKSPACE));
         jMenuItemTheme.setSelected(getPreference(false, Preference.P_DRACULA));
+        jMenuItemPetitMenu.setSelected(getPreference(false, Preference.P_PETITMENU));
         jMenuItemDebogueur.setValue(getDelaisPasApas(400));
     }
 

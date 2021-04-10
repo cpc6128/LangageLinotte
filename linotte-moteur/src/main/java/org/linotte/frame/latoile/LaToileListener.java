@@ -149,26 +149,33 @@ public class LaToileListener extends JPanelLaToile implements KeyListener, Runna
                         v = Integer.valueOf(chars[i]).intValue();
                         b = v > 31 && v < 300;
                         s = b ? String.valueOf(chars[i]) : KeyEvent.getKeyText(i);
-                        // Patch pour MacOs X  :
+                        // Patch pour Java 16 et MacOs X  :
                         switch (s) {
+                            case "Right":
                             case "→":
                                 s = "droite";
                                 break;
+                            case "Left":
                             case "←":
                                 s = "gauche";
                                 break;
+                            case "Up":
                             case "↑":
                                 s = "haut";
                                 break;
+                            case "Down":
                             case "↓":
                                 s = "bas";
                                 break;
+                            case "Space":
                             case "␣":
                                 s = LaToileListener.TOUCHE_ESPACE;
                                 break;
+                            case "Backspace":
                             case "⌫":
                                 s = LaToileListener.TOUCHE_DEL;
                                 break;
+                            case "Enter":
                             case "⏎":
                                 s = LaToileListener.TOUCHE_ENTREE;
                                 break;

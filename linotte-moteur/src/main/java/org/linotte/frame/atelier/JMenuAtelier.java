@@ -51,7 +51,8 @@ public class JMenuAtelier extends JMenu {
         super.paintComponent(g);
         Dimension d = this.getPreferredSize();
         int x = Math.max(0, d.width - iconRenderer.getIconWidth() - 3);
-        iconRenderer.paintIcon(this, g, x, 15);
+		if (!AbaqueAtelier.theme.petitmenu)
+			iconRenderer.paintIcon(this, g, x, 15);
     }
 
 }

@@ -20,13 +20,27 @@
 
 package org.linotte.frame.moteur;
 
+import java.awt.Color;
+import java.awt.Image;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import org.alize.kernel.AKException;
 import org.alize.kernel.AKJob;
 import org.alize.kernel.AKRuntime;
+import org.linotte.frame.atelier.AbaqueAtelier;
 import org.linotte.frame.atelier.Atelier;
 import org.linotte.frame.atelier.Inspecteur;
 import org.linotte.frame.cahier.Cahier;
-import org.linotte.moteur.exception.*;
+import org.linotte.moteur.exception.LectureException;
+import org.linotte.moteur.exception.Messages;
+import org.linotte.moteur.exception.RetournerException;
+import org.linotte.moteur.exception.StopException;
+import org.linotte.moteur.exception.SyntaxeException;
 import org.linotte.moteur.outils.CouleurImage;
 import org.linotte.moteur.outils.Preference;
 import org.linotte.moteur.outils.Ressources;
@@ -43,14 +57,6 @@ import org.linotte.moteur.xml.alize.parseur.ParserContext.MODE;
 import org.linotte.moteur.xml.alize.parseur.Parseur;
 import org.linotte.moteur.xml.appels.Appel;
 import org.linotte.moteur.xml.appels.Fonction;
-
-import java.awt.*;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.StringReader;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class FrameProcess extends Thread {
 
@@ -127,7 +133,7 @@ public class FrameProcess extends Thread {
 		applet.getJButtonLire().setVisible(true);
 		applet.getJButtonStop().setEnabled(true);
 		// stop en rouge :
-		applet.getJButtonStop().setIcon(Ressources.getImageTheme("STOP", 32, CouleurImage.ACTIF));
+		applet.getJButtonStop().setIcon(Ressources.getImageTheme("STOP", AbaqueAtelier.theme.icone_taille, CouleurImage.ACTIF));
 		applet.getJButtonPause().setVisible(true);
 		applet.getJButtonPause().setEnabled(false);
 		applet.getJButtonTester().setEnabled(false);
@@ -287,7 +293,7 @@ public class FrameProcess extends Thread {
 			applet.getJButtonLire().setEnabled(true);
 			applet.getJButtonLire().setVisible(true);
 			applet.getJButtonStop().setEnabled(false);
-			applet.getJButtonStop().setIcon(Ressources.getImageTheme("STOP", 32));
+			applet.getJButtonStop().setIcon(Ressources.getImageTheme("STOP", AbaqueAtelier.theme.icone_taille));
 			applet.getJButtonPause().setVisible(true);
 			applet.getJButtonPause().setEnabled(true);
 			applet.getJButtonContinuer().setVisible(false);

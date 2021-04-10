@@ -20,6 +20,50 @@
 
 package org.linotte.frame.atelier;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Rectangle;
+import java.awt.datatransfer.Clipboard;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.Icon;
+import javax.swing.JButton;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JComponent;
+import javax.swing.JEditorPane;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JSplitPane;
+import javax.swing.KeyStroke;
+import javax.swing.SwingUtilities;
+import javax.swing.border.Border;
+import javax.swing.filechooser.FileSystemView;
+import javax.swing.text.DefaultStyledDocument;
+
 import org.linotte.frame.cahier.Cahier;
 import org.linotte.frame.cahier.Onglets;
 import org.linotte.frame.cahier.sommaire.JPanelSommaire;
@@ -36,21 +80,9 @@ import org.linotte.moteur.outils.Preference;
 import org.linotte.moteur.outils.Ressources;
 import org.linotte.moteur.xml.Version;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.filechooser.FileSystemView;
-import javax.swing.text.DefaultStyledDocument;
-import java.awt.*;
-import java.awt.datatransfer.Clipboard;
-import java.awt.event.*;
-import java.awt.image.BufferedImage;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
 public class AtelierFrame extends JFrame {
 
-    public static final String ATELIER_DE_PROGRAMMATION_LINOTTE = "Atelier de programmation Linotte";
+    public static final String ATELIER_DE_PROGRAMMATION_LINOTTE = "Atelier";
     protected static final int TAILLE_H = 800, TAILLE_V = 650;
     public static ExplorateurProjet explorateur;
     protected static Font font;
@@ -82,6 +114,7 @@ public class AtelierFrame extends JFrame {
     protected SliderMenuItem jMenuItemDebogueur = null;
     protected JMenuItem jMenuItemSaveWorkSpace = null;
     protected JMenuItem jMenuItemTheme = null;
+    protected JMenuItem jMenuItemPetitMenu = null;
     protected JMenuItem jMenuItemFormater = null;
     protected JMenuItem jMenuItemLaToile = null;
     protected TeleType teleType;
@@ -91,10 +124,10 @@ public class AtelierFrame extends JFrame {
     protected JFileChooser fileChooser_exporterPNG = null;
     protected JFileChooser fileChooser_exporterHTML = null;
     protected JFileChooser fileChooser_exporterRTF = null;
-    private int taille_split_tableau = 400;
+    private int taille_split_tableau = AbaqueAtelier.theme.taille_split_tableau;
     private int taille_split_sommaire = 180;
-    private int buttonTextHorizontale = SwingConstants.BOTTOM; // AbstractButton.TOP;
-    private int buttonTextVerticale = SwingConstants.CENTER;// AbstractButton.RIGHT;
+    private int buttonTextHorizontale = AbaqueAtelier.theme.buttonTextHorizontale;
+    private int buttonTextVerticale = AbaqueAtelier.theme.buttonTextVerticale;
     private Inspecteur inspecteur;
     private BoiteRecherche findAndReplace;
     private JPanel jPanelAtelier = null;
@@ -326,9 +359,9 @@ public class AtelierFrame extends JFrame {
                 jButtonLire.setToolTipText("<html><b>Bouton Lire</b><br>" + "<i>Description</i> : Lis le livre présent dans le cahier<br>"
                         + "<i>Action</i> : Cliquer sur le bouton [Lire] ou appuyer sur les boutons Alt+L<br>" + "</html>");
             jButtonLire.setFocusable(false);
-            jButtonLire.setIcon(Ressources.getImageTheme("PLAY", 32, CouleurImage.LIRE));
-            jButtonLire.setPressedIcon(Ressources.getImageTheme("PLAY", 32, CouleurImage.PRESSED));
-            jButtonLire.setDisabledIcon(Ressources.getImageTheme("PLAY", 32, CouleurImage.DISABLED));
+            jButtonLire.setIcon(Ressources.getImageTheme("PLAY", AbaqueAtelier.theme.icone_taille, CouleurImage.LIRE));
+            jButtonLire.setPressedIcon(Ressources.getImageTheme("PLAY", AbaqueAtelier.theme.icone_taille, CouleurImage.PRESSED));
+            jButtonLire.setDisabledIcon(Ressources.getImageTheme("PLAY", AbaqueAtelier.theme.icone_taille, CouleurImage.DISABLED));
             jButtonLire.setName("boutonLire");
             jButtonLire.setMnemonic(KeyEvent.VK_L);
         }
@@ -350,7 +383,7 @@ public class AtelierFrame extends JFrame {
                         + "<i>Action</i> : appuyer sur les boutons Alt+D<br>" + "</html>");
             jButtonTimbre.setFocusable(false);
             jButtonTimbre.setVisible(false);
-            jButtonTimbre.setIcon(Ressources.getImageTheme("CODE", 32));
+            jButtonTimbre.setIcon(Ressources.getImageTheme("CODE", AbaqueAtelier.theme.icone_taille));
             jButtonTimbre.setName("boutonTimbre");
             jButtonTimbre.setMnemonic(KeyEvent.VK_C);
             jButtonTimbre.addActionListener(new java.awt.event.ActionListener() {
@@ -395,7 +428,7 @@ public class AtelierFrame extends JFrame {
                 jButtonTester.setToolTipText("<html><b>Bouton Tester</b><br>" + "<i>Description</i> : Teste le livre présent dans le cahier<br>"
                         + "<i>Action</i> : Cliquer sur le bouton [Tester] ou appuyer sur les boutons Alt+T<br>" + "</html>");
             jButtonTester.setFocusable(false);
-            jButtonTester.setIcon(Ressources.getImageTheme("TEST", 32));
+            jButtonTester.setIcon(Ressources.getImageTheme("TEST", AbaqueAtelier.theme.icone_taille));
             jButtonTester.setName("boutonTester");
             jButtonTester.setMnemonic(KeyEvent.VK_T);
         }
@@ -412,8 +445,8 @@ public class AtelierFrame extends JFrame {
             jButtonPasAPas.setFocusable(false);
             jButtonPasAPas.setVisible(true);
             //jButtonPasAPas.setIcon(Ressources.getImageTheme("DEBUG", 32, new Color(63, 72, 204)));
-            jButtonPasAPas.setIcon(Ressources.getImageTheme("DEBUG", 32));
-            jButtonPasAPas.setDisabledIcon(Ressources.getImageTheme("DEBUG", 32, CouleurImage.DISABLED));
+            jButtonPasAPas.setIcon(Ressources.getImageTheme("DEBUG", AbaqueAtelier.theme.icone_taille));
+            jButtonPasAPas.setDisabledIcon(Ressources.getImageTheme("DEBUG", AbaqueAtelier.theme.icone_taille, CouleurImage.DISABLED));
             jButtonPasAPas.setName("boutonPause");
             jButtonPasAPas.setMnemonic(KeyEvent.VK_A);
         }
@@ -428,8 +461,8 @@ public class AtelierFrame extends JFrame {
             jButtonContinuer.setToolTipText("Continuer (Alt+C)");
             jButtonContinuer.setFocusable(false);
             jButtonContinuer.setVisible(false);
-            jButtonContinuer.setIcon(Ressources.getImageTheme("NEXT", 32));
-            jButtonContinuer.setDisabledIcon(Ressources.getImageTheme("NEXT", 32, CouleurImage.DISABLED));
+            jButtonContinuer.setIcon(Ressources.getImageTheme("NEXT", AbaqueAtelier.theme.icone_taille));
+            jButtonContinuer.setDisabledIcon(Ressources.getImageTheme("NEXT", AbaqueAtelier.theme.icone_taille, CouleurImage.DISABLED));
             jButtonContinuer.setName("boutonPause");
             jButtonContinuer.setMnemonic(KeyEvent.VK_C);
             jButtonContinuer.addActionListener(new java.awt.event.ActionListener() {
@@ -457,8 +490,8 @@ public class AtelierFrame extends JFrame {
             jButtonStop.setEnabled(false);
             jButtonStop.setFocusable(false);
             jButtonStop.setVisible(true);
-            jButtonStop.setIcon(Ressources.getImageTheme("STOP", 32));
-            jButtonStop.setDisabledIcon(Ressources.getImageTheme("STOP", 32, CouleurImage.DISABLED));
+            jButtonStop.setIcon(Ressources.getImageTheme("STOP", AbaqueAtelier.theme.icone_taille));
+            jButtonStop.setDisabledIcon(Ressources.getImageTheme("STOP", AbaqueAtelier.theme.icone_taille, CouleurImage.DISABLED));
             jButtonStop.setMnemonic(KeyEvent.VK_S);
             if (!Preference.getIntance().getBoolean(Preference.P_BULLE_AIDE_INACTIF))
                 jButtonStop.setToolTipText("<html><b>Bouton Stop</b><br>" + "<i>Description</i> : Stop le livre en cours de lecture<br>"
@@ -485,7 +518,7 @@ public class AtelierFrame extends JFrame {
             jButtonLibrairie.setHorizontalTextPosition(buttonTextVerticale);
             jButtonLibrairie.setVisible(true);
             jButtonLibrairie.setFocusable(false);
-            jButtonLibrairie.setIcon(Ressources.getImageTheme("MEM", 32));
+            jButtonLibrairie.setIcon(Ressources.getImageTheme("MEM", AbaqueAtelier.theme.icone_taille));
             jButtonLibrairie.setMnemonic(KeyEvent.VK_P);
             jButtonLibrairie.setToolTipText("Inspecteur (Alt+P)");
             if (!Preference.getIntance().getBoolean(Preference.P_BULLE_AIDE_INACTIF))
@@ -512,8 +545,8 @@ public class AtelierFrame extends JFrame {
             jButtonRanger.setEnabled(false);
             jButtonRanger.setFocusable(false);
             jButtonRanger.setVisible(true);
-            jButtonRanger.setIcon(Ressources.getImageTheme("SAVE", 32));
-            jButtonRanger.setDisabledIcon(Ressources.getImageTheme("SAVE", 32, CouleurImage.DISABLED));
+            jButtonRanger.setIcon(Ressources.getImageTheme("SAVE", AbaqueAtelier.theme.icone_taille));
+            jButtonRanger.setDisabledIcon(Ressources.getImageTheme("SAVE", AbaqueAtelier.theme.icone_taille, CouleurImage.DISABLED));
             jButtonRanger.setMnemonic(KeyEvent.VK_R);
             if (!Preference.getIntance().getBoolean(Preference.P_BULLE_AIDE_INACTIF))
                 jButtonRanger.setToolTipText("<html><b>Bouton Ranger</b><br>" + "<i>Description</i> : Sauvegarder votre livre sur le disque<br>"
@@ -604,33 +637,39 @@ public class AtelierFrame extends JFrame {
     private JMenuBar getxJMenuBar() {
         if (jMenuBar == null) {
             jMenuBar = new JMenuBar() {
-                protected void paintComponent(Graphics g) {
-                    super.paintComponent(g);
-                    Color c1 = getBackground();
-                    Color c2 = getBackground().darker();
-                    ((Graphics2D) g).setPaint(new GradientPaint(0, 0, c1, 500, 500, c2, false));
-                    Rectangle r = g.getClipBounds();
-                    g.fillRect(r.x, r.y, r.width, r.height);
-                }
+				protected void paintComponent(Graphics g) {
+					super.paintComponent(g);
+					if (!AbaqueAtelier.theme.petitmenu) {
+						Color c1 = getBackground();
+						Color c2 = getBackground().darker();
+						((Graphics2D) g).setPaint(new GradientPaint(0, 0, c1, 500, 500, c2, false));
+						Rectangle r = g.getClipBounds();
+						g.fillRect(r.x, r.y, r.width, r.height);
+					}
+				}
             };
-            jMenuBar.setOpaque(false);
-            int hauteurMenu = 80;
-            jMenuBar.setMinimumSize(new Dimension(hauteurMenu, hauteurMenu));
-            jMenuBar.setPreferredSize(new Dimension(hauteurMenu, hauteurMenu));
-            jMenuBar.add(getJButtonLire());
-            jMenuBar.add(getJButtonPause());
-            jMenuBar.add(getJButtonContinuer());
-            jMenuBar.add(getJButtonTester());
-            jMenuBar.add(getJButtonStop());
-            jMenuBar.add(getJButtonLibrairie());
-            jMenuBar.add(creationSeparator());
-            jMenuBar.add(getJButtonRanger());
-            jMenuBar.add(getJMenuBibliotheque());
-            jMenuBar.add(creationSeparator());
-            jMenuBar.add(getJMenuEdition());
-            jMenuBar.add(getJMenuOutils());
-            jMenuBar.add(getJMenuVerbier());
-            jMenuBar.add(getJButtonTimbre());
+            if (!AbaqueAtelier.theme.petitmenu) {
+                jMenuBar.setOpaque(false);
+                int hauteurMenu = 80;
+                jMenuBar.setMinimumSize(new Dimension(hauteurMenu, hauteurMenu));
+                jMenuBar.setPreferredSize(new Dimension(hauteurMenu, hauteurMenu));
+            }
+			jMenuBar.add(getJButtonLire());
+			jMenuBar.add(getJButtonPause());
+			jMenuBar.add(getJButtonContinuer());
+			jMenuBar.add(getJButtonTester());
+			jMenuBar.add(getJButtonStop());
+			jMenuBar.add(getJButtonLibrairie());
+			if (!AbaqueAtelier.theme.petitmenu)
+				jMenuBar.add(creationSeparator());
+			jMenuBar.add(getJButtonRanger());
+			jMenuBar.add(getJMenuBibliotheque());
+			if (!AbaqueAtelier.theme.petitmenu)
+				jMenuBar.add(creationSeparator());
+			jMenuBar.add(getJMenuEdition());
+			jMenuBar.add(getJMenuOutils());
+			jMenuBar.add(getJMenuVerbier());
+			jMenuBar.add(getJButtonTimbre());
         }
         return jMenuBar;
     }
@@ -650,8 +689,8 @@ public class AtelierFrame extends JFrame {
         if (jMenuEdition == null) {
 
             jMenuEdition = createJMenuNonOpaque("    Edition    ",
-                    Ressources.getImageTheme("EDIT", 32),
-                    Ressources.getImageTheme("EDIT", 32));
+                    Ressources.getImageTheme("EDIT", AbaqueAtelier.theme.icone_taille),
+                    Ressources.getImageTheme("EDIT", AbaqueAtelier.theme.icone_taille));
             jMenuEdition.setVerticalTextPosition(buttonTextHorizontale);
             jMenuEdition.setHorizontalTextPosition(buttonTextVerticale);
             jMenuEdition.setMnemonic(KeyEvent.VK_E);
@@ -662,8 +701,8 @@ public class AtelierFrame extends JFrame {
     protected JMenu getJMenuOutils() {
         if (jMenuOutils == null) {
             jMenuOutils = createJMenuNonOpaque("    Outils    ",
-                    Ressources.getImageTheme("TOOLS", 32),
-                    Ressources.getImageTheme("TOOLS", 32)
+                    Ressources.getImageTheme("TOOLS", AbaqueAtelier.theme.icone_taille),
+                    Ressources.getImageTheme("TOOLS", AbaqueAtelier.theme.icone_taille)
             );
             jMenuOutils.setVerticalTextPosition(buttonTextHorizontale);
             jMenuOutils.setHorizontalTextPosition(buttonTextVerticale);
@@ -680,8 +719,8 @@ public class AtelierFrame extends JFrame {
     private JMenu getJMenuBibliotheque() {
         if (jMenuBibliotheque == null) {
             jMenuBibliotheque = createJMenuNonOpaque("Bibliothèques",
-                    Ressources.getImageTheme("LIB", 32),
-                    Ressources.getImageTheme("LIB", 32));
+                    Ressources.getImageTheme("LIB", AbaqueAtelier.theme.icone_taille),
+                    Ressources.getImageTheme("LIB", AbaqueAtelier.theme.icone_taille));
             jMenuBibliotheque.setVerticalTextPosition(buttonTextHorizontale);
             jMenuBibliotheque.setHorizontalTextPosition(buttonTextVerticale);
             jMenuBibliotheque.add(getJMenuItemNouveau());
@@ -707,9 +746,9 @@ public class AtelierFrame extends JFrame {
     private JMenu getJMenuVerbier() {
         if (jMenuVerbier == null) {
             jMenuVerbier = createJMenuNonOpaque("  Le verbier  ",
-                    Ressources.getImageTheme("HELP", 32),
-                    Ressources.getImageTheme("HELP", 32));
-            VerticalGridLayout menuGrid = new VerticalGridLayout(30, 0);
+                    Ressources.getImageTheme("HELP", AbaqueAtelier.theme.icone_taille),
+                    Ressources.getImageTheme("HELP", AbaqueAtelier.theme.icone_taille));
+            VerticalGridLayout menuGrid = new VerticalGridLayout(0, 4);
             jMenuVerbier.getPopupMenu().setLayout(menuGrid);
             jMenuVerbier.setActionCommand("Le verbier");
             jMenuVerbier.setVerticalTextPosition(buttonTextHorizontale);
@@ -946,6 +985,17 @@ public class AtelierFrame extends JFrame {
         return jMenuItemTheme;
     }
 
+    private JMenuItem getJMenuPetitMenu() {
+        if (jMenuItemPetitMenu == null) {
+        	jMenuItemPetitMenu = new JCheckBoxMenuItem();
+        	jMenuItemPetitMenu.setText("Petit menu (relancer l'Atelier)");
+        	jMenuItemPetitMenu.setSelected(false);
+        	jMenuItemPetitMenu.setMnemonic(KeyEvent.VK_U);
+        	jMenuItemPetitMenu.addActionListener(e -> Preference.getIntance().setBoolean(Preference.P_PETITMENU, jMenuItemPetitMenu.isSelected()));
+        }
+        return jMenuItemPetitMenu;
+    }
+
     private SliderMenuItem getJMenuDelaisDebogueur() {
         if (jMenuItemDebogueur == null) {
             jMenuItemDebogueur = new SliderMenuItem();
@@ -983,7 +1033,9 @@ public class AtelierFrame extends JFrame {
     }
 
     private JMenu createJMenuNonOpaque(String titre, final Icon iconeClair, final Icon icone) {
-        JMenu jMenu = new JMenuAtelier(titre, iconeClair, icone);
+    	JMenu jMenu;
+		jMenu = AbaqueAtelier.theme.petitmenu ? new JMenuAtelier(titre, null, null)
+				: new JMenuAtelier(titre, iconeClair, icone);
         if ("Windows XP".equals(System.getProperty("os.name"))) {
             jMenu.setBackground(new Color(0, 0, 0, 0)); // XXX Windows XP lnf?
         }
@@ -1069,6 +1121,7 @@ public class AtelierFrame extends JFrame {
         getJMenuOutils().add(options);
         options.add(getJMenuSaveWorkSpace());
         options.add(getJMenuTheme());
+        options.add(getJMenuPetitMenu());
         options.add(getJMenuManageurStyle());
 
         options.addSeparator();

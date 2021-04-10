@@ -1,14 +1,11 @@
 tux est un graphique, image prend "images/tux_graduate.png", x prend 150, y prend 300
 ciel est une toile, couleur prend "rose", image prend "images/dn_house2.png"
 aide est un graffiti, texte prend "Tu peux déplacer Tux avec les flèches !", couleur prend "rouge", x prend 10, y prend 50, taille prend 10
-
 efface toile
 projette ciel
 projette tux
 projette aide
-va vers boucle
-
-boucle :
+tant que vrai
 	action est un texte
 	action prend touche
 	si action = "gauche", déplace tux vers la gauche de 5
@@ -22,4 +19,4 @@ boucle :
 	si (x @ tux) < 5 , x @ tux prend 5
 	si (y @ tux) < 290 , y @ tux prend 290
 	temporise
-	va vers boucle
+ferme

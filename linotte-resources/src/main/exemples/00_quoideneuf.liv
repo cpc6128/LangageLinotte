@@ -20,6 +20,10 @@ Bonne programmation !
 Historique des versions :
 -------------------------
 
+*10/04/21 - Linotte 3.9
+ -Evolution : Suppression de la notion de greffon tube
+ -Evolution : Ajout de l'option petit menu dans l'Atelier
+
 *17/03/21 - Linotte 3.8
 -Correction : Ne se lance pas avec Java 16
 
