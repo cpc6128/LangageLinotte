@@ -1,0 +1,12 @@
+prototype
+	Nom est un texte
+	Prénom est un texte
+	type contact contient nom, prénom
+
+principale :
+	connecteur est un fichier
+	c est un casier de contact
+	ouvre connecteur avec "lecture" depuis "c:/temp/test_tube.txt"
+	décharge c depuis connecteur
+	ferme connecteur
+	affiche c

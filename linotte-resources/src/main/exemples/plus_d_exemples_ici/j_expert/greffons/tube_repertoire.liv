@@ -1,0 +1,16 @@
+globale
+	dictionnaire est un répertoire
+
+principale :
+	âge est un nombre valant 15
+	Charge "Bertrand dupont" dans dictionnaire avec "utilisateur1"
+	Charge âge dans dictionnaire avec "utilisateur1_age"
+	Va vers suite
+
+suite :
+	nb est un nombre
+	texte est un texte
+	Décharge nb depuis dictionnaire avec "utilisateur1_age"
+	nb !
+	Décharge texte depuis dictionnaire avec "utilisateur1"
+	texte !

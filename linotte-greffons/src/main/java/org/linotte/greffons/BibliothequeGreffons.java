@@ -124,20 +124,30 @@ public final class BibliothequeGreffons {
         LinotteFacade.creationPrototype(null, new Metronome(), "métronome");
         LinotteFacade.creationPrototype(null, new Pipette(), "pipette");
         LinotteFacade.creationPrototype(null, new Police(), "police");
+        LinotteFacade.creationPrototype(null, new Queue(), "queue");
         try {
             LinotteFacade.creationPrototype(null, new GreffonRobot(), "robot");
         } catch (Exception e1) {
-            //e1.printStackTrace();
+            e1.printStackTrace();
         }
         LinotteFacade.creationPrototype(null, new Rss(), "rss");
         LinotteFacade.creationPrototype(null, new SQL(), "sql");
         LinotteFacade.creationPrototype(null, new Tweak(), "tweak");
         LinotteFacade.creationPrototype(null, new Webonotte(), "webonotte");
+        LinotteFacade.creationPrototype(null, new RepertoireTube(), "répertoire");
         LinotteFacade.creationPrototype(null, new PressePapier(), "pressepapier");
         LinotteFacade.creationPrototype(null, new Horodatage(), "horodatage");
+        LinotteFacade.creationPrototype(null, new FichierTube(), "fichier");
+        LinotteFacade.creationPrototype(null, new PileTube(), "pile");
         LinotteFacade.creationPrototype(null, new Conduit(), "conduit");
 
-
+        {
+            Map<String, Attribut> attributs = new HashMap<String, Attribut>();
+            attributs.put("adresse", new Attribut(TEXTE, ""));
+            attributs.put("état", new Attribut(NOMBRE, "0"));
+            attributs.put("port", new Attribut(NOMBRE, "8777"));
+            LinotteFacade.creationPrototype(attributs, new PontTube(), "pont");
+        }
         {
             Map<String, Attribut> attributs = new HashMap<String, Attribut>();
             attributs.put("texte", new Attribut(TEXTE, "http://www.codevallee.fr"));
@@ -187,7 +197,7 @@ public final class BibliothequeGreffons {
                 LinotteFacade.creationPrototype(attributs, new Notification(), "notification");
             } catch (Exception e) {
                 // Bloc sous une console Linux
-                //e.printStackTrace();
+                e.printStackTrace();
             }
         }
         {

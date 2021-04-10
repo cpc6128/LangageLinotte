@@ -841,9 +841,7 @@ public class AtelierFrame extends JFrame {
     }
 
     protected JMenu getJMenuCouleurs(int m) {
-        VerticalGridLayout menuGrid = new VerticalGridLayout(0, 2);
         JMenu jMenuCouleurs = new JMenu();
-        jMenuCouleurs.getPopupMenu().setLayout(menuGrid);
         jMenuCouleurs.setActionCommand("Couleurs");
         jMenuCouleurs.setText("Couleurs " + m);
         jMenuCouleurs.setBackground(menuBarColor);
