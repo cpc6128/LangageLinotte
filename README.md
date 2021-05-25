@@ -40,6 +40,8 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
  
  `mvn clean package`
  
+ `java -jar linotte-lanceur/target/Atelier.jar`
+ 
 #### Mes autres projets :
 
 - corunning.fr (trouver des partenaires sportifs) : <a href="https://www.corunning.fr">corunning.fr</a>
