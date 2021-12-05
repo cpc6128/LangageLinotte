@@ -20,6 +20,10 @@ Bonne programmation !
 Historique des versions :
 -------------------------
 
+*24/12/21 - Linotte 3.10
+ -Correction : Regression sur l'utilisation du test contient lors d'un "si"
+ -Evolution : Ajout de l'option petit menu dans l'Atelier
+
 *10/04/21 - Linotte 3.9
  -Evolution : Suppression de la notion de greffon tube
  -Evolution : Ajout de l'option petit menu dans l'Atelier
