@@ -1310,6 +1310,23 @@
 											<!-- * Condition     * -->
 											<!-- ***************** -->
 											<!-- test si nom contient nom2 alors tu vas vers -->
+											<groupe nom="test" discriminant="contient">
+												<choix>
+													<p:build>
+														<ligne tab="1">
+															<token obligatoire="oui" style="structure">si</token>
+															<acteur type="jusquautoken" obligatoire="oui">contient
+															</acteur>
+															<acteur type="jusquautoken" obligatoire="oui"
+																	hack_analyse="suppressionvirgule">,
+															</acteur>
+															<etat nom="condition" param="contient"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+											<!-- test si nom contient nom2 alors tu vas vers -->
 											<groupe nom="test" discriminant="si">
 												<choix>
 													<p:build>
