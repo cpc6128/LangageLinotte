@@ -37,11 +37,11 @@ import java.util.Map;
 public class ActeurParentGraphique extends ActeurParent {
 
     // Optimisation :
-    private static interface Traitement {
+    private interface Traitement {
         void run(PrototypeGraphique eg, Object valeur);
     }
 
-    private static Map<String, Traitement> traitements = new HashMap<String, ActeurParentGraphique.Traitement>();
+    private static final Map<String, Traitement> traitements = new HashMap<>();
 
     private Traitement run1;
     private Traitement run2;
@@ -136,9 +136,9 @@ public class ActeurParentGraphique extends ActeurParent {
         traitements.put("hauteur", (eg, valeur) -> eg.hauteur = ((BigDecimal) valeur).doubleValue());
         traitements.put("largeur", (eg, valeur) -> eg.largeur = ((BigDecimal) valeur).doubleValue());
         traitements.put("image", (eg, valeur) -> eg.image = (String) valeur);
-        traitements.put("pointe", (eg, valeur) -> eg.plein = ((BigDecimal) valeur).intValue() == 1);
-        traitements.put("posé", (eg, valeur) -> eg.plein = ((BigDecimal) valeur).intValue() == 1);
-        traitements.put("collision", (eg, valeur) -> eg.plein = ((BigDecimal) valeur).intValue() == 1);
+        traitements.put("pointe", (eg, valeur) -> eg.pointe = ((BigDecimal) valeur).intValue() == 1);
+        traitements.put("posé", (eg, valeur) -> eg.pose = ((BigDecimal) valeur).intValue() == 1);
+        traitements.put("collision", (eg, valeur) -> eg.collision = ((BigDecimal) valeur).intValue() == 1);
         traitements.put("texte", (eg, valeur) -> eg.texte = (String) valeur);
         traitements.put("police", (eg, valeur) -> eg.police = (String) valeur);
         traitements.put("position", (eg, valeur) -> {
