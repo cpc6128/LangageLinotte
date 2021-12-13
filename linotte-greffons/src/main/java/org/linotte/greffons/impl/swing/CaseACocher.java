@@ -54,8 +54,8 @@ public class CaseACocher extends ComposantDeplacable {
 		} else
 			checkBox.setOpaque(false);
 
-		String valeur = getAttributeAsString("valeur");
-		checkBox.setSelected("vrai".equals(valeur));
+		boolean valeur = getAttributeAsBigDecimal("valeur").intValue()==1;
+		checkBox.setSelected(valeur);
 
 		checkBox.setVisible(isVisible());
 		initEvenement();
@@ -120,8 +120,6 @@ public class CaseACocher extends ComposantDeplacable {
 	}
 
 	/**
-	 * @param hauteur
-	 * @param largeur
 	 * @param source
 	 */
 	private void chargerImage(String source) {

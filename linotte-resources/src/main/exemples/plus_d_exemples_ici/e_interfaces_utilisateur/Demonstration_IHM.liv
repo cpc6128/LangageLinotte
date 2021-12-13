@@ -13,7 +13,7 @@ globale
 	m2 est un menu, texte prend "Sous-Menu"
 	sm1 est un sousmenu, texte prend "A propos", icône prend "medias/internet-group-chat.png"
 	sm2 est un sousmenu, texte prend "Quitter", icône prend "medias/post.png"
-	case_menu est un menucaseàcocher, texte prend "Icône rouge ?", valeur prend "vrai", icône prend "medias/rouge.png"
+	case_menu est un menucaseàcocher, texte prend "Icône rouge ?", valeur prend vrai, icône prend "medias/rouge.png"
 	/*Panneaux des onglets*/
 	panneau_toile est un panneau
 	panneau_toile2 est un panneau
@@ -139,7 +139,7 @@ globale
 	/*fx*/
 	explication_fx est un étiquette, texte prend "Changer la transparence de la fenêtre :", x prend 10, y prend 10
 	slider_fx est un slider, x prend 10, y prend 30, minimum prend 0, maximum prend 100, valeur prend 100
-	case_bordure est un caseàcocher, x prend 10, y prend 70, texte prend "Afficher la bordure de la fenêtre ?", valeur prend "vrai"
+	case_bordure est un caseàcocher, x prend 10, y prend 70, texte prend "Afficher la bordure de la fenêtre ?", valeur prend vrai
 	case_audessus est un caseàcocher, x prend 10, y prend 100, texte prend "Fenêtre toujours au-dessus ?"
 	/*im*/
 	serveur est un serveur
@@ -474,7 +474,7 @@ changer bouton :
 	*cac est un caseàcocher
 	commande est un texte
 	pour chaque éléments
-		si (valeur@joker) == "vrai"
+		si (valeur@joker) == vrai
 			commande prend commande + " " + texte@joker
 		ferme
 	ferme
@@ -520,13 +520,13 @@ changer transparence :
 
 changer bordure :
 	*cac est un caseàcocher
-	si (valeur@cac) == "vrai", form.bordure(vrai)
+	si (valeur@cac) == vrai, form.bordure(vrai)
 	sinon form.bordure(faux)
 	reviens
 
 changer audessus :
 	*cac est un caseàcocher
-	si (valeur@cac) == "vrai", form.audessus(vrai)
+	si (valeur@cac) == vrai, form.audessus(vrai)
 	sinon form.audessus(faux)
 	reviens
 
@@ -536,7 +536,7 @@ changer audessus :
 
 changer icône :
 	*cac est un menucaseàcocher
-	icône@cac prend ter(((valeur@cac) == "vrai"),"medias/rouge.png","medias/blanc.png")
+	icône@cac prend ter(((valeur@cac) == vrai),"medias/rouge.png","medias/blanc.png")
 	reviens
 
 afficher sousformulaire :
@@ -557,8 +557,8 @@ cacher sousformulaire :
 
 demarrer im :
 	*s est un bouton
-	visible@l_info_im prend "faux"
-	visible@s prend "faux"
+	visible@l_info_im prend faux
+	visible@s prend faux
 	~greffon 1 tcpclient 0.2 "http://abaque.googlecode.com/files/TCPLinotte.zgl"
 	essaie
 		client est un tcpclient
