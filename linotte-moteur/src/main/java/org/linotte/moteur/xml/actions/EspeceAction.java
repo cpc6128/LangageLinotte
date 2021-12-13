@@ -74,7 +74,7 @@ public class EspeceAction extends Action implements IProduitCartesien {
                 throw new ErreurException(Constantes.MODE_CONSOLE);
             }
         }
-        Iterator<ItemXML> i1 = new ArrayIterator<ItemXML>(valeurs);
+        Iterator<ItemXML> i1 = new ArrayIterator<>(valeurs);
         boolean fichier = ChaineOutils.findInArray(annotations, "fichier");
         boolean creation_dynamique = ChaineOutils.findInArray(annotations, "creation");
         boolean heritage = ChaineOutils.findInArray(annotations, "héritage");
@@ -184,7 +184,7 @@ public class EspeceAction extends Action implements IProduitCartesien {
                 Fonction fonction = livre.getKernelStack().recupereDerniereFonction();
                 // vérifier paragraphe
                 // {
-                Acteur acteur = null;
+                Acteur acteur;
                 if (fonction != null) {
                     acteur = fonction.getDoublure(numero);
                 } else {
@@ -210,7 +210,7 @@ public class EspeceAction extends Action implements IProduitCartesien {
                 }
             } else {
 
-                Prototype creation = null;
+                Prototype creation;
 
                 // Gestion des fichiers :
                 if (fichier) {
@@ -220,7 +220,7 @@ public class EspeceAction extends Action implements IProduitCartesien {
                     if (valeurObjet instanceof String) {
                         nomFichier = (String) valeurObjet;
                     } else {
-                        nomFichier = String.valueOf((Acteur) valeurObjet);
+                        nomFichier = String.valueOf(valeurObjet);
                     }
                     lefichier = new Fichier(nomFichier);
                     creation = modele.creationEspece(nom, lefichier, null, librairie);
@@ -328,7 +328,7 @@ public class EspeceAction extends Action implements IProduitCartesien {
 
                         // Traitement particulier lié au Webonotte :
                         if (runtimeContext.canDo(Habilitation.TOILE_INVISIBLE)) {
-                            if ("toile".equalsIgnoreCase(eg.getType()) && !(BigDecimal.ZERO == eg.retourneAttribut("principale").getValeur())) {
+                            if ("toile".equalsIgnoreCase(eg.getType()) && !(0 == ((BigDecimal)eg.retourneAttribut("principale").getValeur()).intValue())) {
                                 eg.retourneAttribut("principale").setValeur(BigDecimal.ZERO);
                                 clef_cache_toile = Toile.TOILEWEB;
                             } else {
@@ -341,7 +341,7 @@ public class EspeceAction extends Action implements IProduitCartesien {
 
                         // Gestion du multi-toile Linotte 2.2
                         LaToile toile;
-                        if ("toile".equalsIgnoreCase(eg.getType()) && BigDecimal.ZERO == eg.retourneAttribut("principale").getValeur()) {
+                        if ("toile".equalsIgnoreCase(eg.getType()) && (0 == ((BigDecimal)eg.retourneAttribut("principale").getValeur()).intValue())) {
                             // Dabort vérifier si la toile n'existe pas :
                             if (librairie.existeTElleToile(eg.getNom().toString().toLowerCase())) {
                                 toile = librairie.recupererToile(eg.getNom().toString().toLowerCase());//
