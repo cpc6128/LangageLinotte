@@ -36,7 +36,7 @@ public class Monde3D extends ComposantDeplacable {
             super.initEvenement();
             return;
         }
-        setVisible(getAttributeAsString("visible").equals("oui"));
+        setVisible(getAttributeAsBigDecimal("visible").intValue()==1);
         canvas3d = new Canvas3D(SimpleUniverse.getPreferredConfiguration());
         // Position :
         x = getAttributeAsBigDecimal("x").intValue();

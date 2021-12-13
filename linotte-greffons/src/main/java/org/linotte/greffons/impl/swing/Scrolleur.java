@@ -20,7 +20,7 @@ public class Scrolleur extends ComposantDeplacable {
 			super.initEvenement();
 			return;
 		}
-		setVisible(getAttributeAsString("visible").equals("oui"));
+		setVisible(getAttributeAsBigDecimal("visible").intValue()==1);
 		scrolleur = new JScrollPane();
 
 		// Position :

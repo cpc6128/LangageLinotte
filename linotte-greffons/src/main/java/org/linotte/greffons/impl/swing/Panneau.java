@@ -24,7 +24,7 @@ public class Panneau extends ComposantDeplacable {
 			super.initEvenement();
 			return;
 		}
-		setVisible(getAttributeAsString("visible").equals("oui"));
+		setVisible(getAttributeAsBigDecimal("visible").intValue()==1);
 		panneau = new JPanel(new MigLayout());
 		super.initaccessibilite(panneau);
 
@@ -38,10 +38,10 @@ public class Panneau extends ComposantDeplacable {
 		panneau.setMaximumSize(new Dimension(largeur, hauteur));
 		// Titre et bordure :
 		String titre = getAttributeAsString("titre");
-		String bordure = getAttributeAsString("bordure");
+		boolean bordure = getAttributeAsBigDecimal("bordure").intValue() == 1;
 		if (titre != null && titre.trim().length() > 0) {
 			TitledBorder titleBorder = null;
-			if (bordure != null && bordure.equals("oui")) {
+			if (bordure) {
 				titleBorder = new TitledBorder(BorderFactory.createLineBorder(changerCouleurBordure()), titre, changerPositionTitre(), changerHauteurTitre());
 				titleBorder.setTitleColor(changerCouleurTitre());
 				panneau.setBorder(titleBorder);
@@ -50,7 +50,7 @@ public class Panneau extends ComposantDeplacable {
 				panneau.setBorder(new TitledBorder(null, titre, changerPositionTitre(), changerHauteurTitre()));
 		}
 		else {
-			if (bordure != null && bordure.equals("oui")) 
+			if (bordure )
 				panneau.setBorder(BorderFactory.createLineBorder(changerCouleurBordure()));
 		}
 			

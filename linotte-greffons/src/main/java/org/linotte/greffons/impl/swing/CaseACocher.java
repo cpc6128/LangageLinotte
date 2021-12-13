@@ -31,7 +31,7 @@ public class CaseACocher extends ComposantDeplacable {
 			initEvenement();
 			return;
 		}
-		setVisible(getAttributeAsString("visible").equals("oui"));
+		setVisible(getAttributeAsBigDecimal("visible").intValue()==1);
 		String texte = getAttributeAsString("texte");
 		String icone = getAttributeAsString("icône");
 		checkBox = new JCheckBox(texte);

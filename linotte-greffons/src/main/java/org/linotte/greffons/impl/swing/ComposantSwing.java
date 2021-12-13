@@ -165,7 +165,7 @@ public abstract class ComposantSwing extends Composant {
 	@Override
 	public boolean fireProperty(String clef) throws GreffonException {
 		if (getJComponent() != null && "visible".equals(clef)) {
-			setVisible(((Acteur) getAttribute(clef)).getValeur().equals("oui"));
+			setVisible(getAttributeAsBigDecimal(clef).intValue()==1);
 			Component component = getJComponent();
 			component.setVisible(isVisible());
 			return true;

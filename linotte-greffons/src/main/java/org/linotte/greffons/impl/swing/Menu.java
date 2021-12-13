@@ -19,7 +19,7 @@ public class Menu extends ComposantSwing {
 			return;
 		}
 
-		setVisible(getAttributeAsString("visible").equals("oui"));
+		setVisible(getAttributeAsBigDecimal("visible").intValue()==1);
 		String texte = getAttributeAsString("texte");
 		menu = new JMenu(texte);
 		super.initaccessibilite(menu);

@@ -26,7 +26,7 @@ public class Indicateur extends ComposantDeplacable {
 		if (progressBar != null) {
 			return;
 		}
-		setVisible(getAttributeAsString("visible").equals("oui"));
+		setVisible(getAttributeAsBigDecimal("visible").intValue()==1);
 		progressBar = new JProgressBar();
 		// Position :
 		x = getAttributeAsBigDecimal("x").intValue();

@@ -30,7 +30,7 @@ public class Bouton extends ComposantDeplacable {
 			super.initEvenement();
 			return;
 		}
-		setVisible(getAttributeAsString("visible").equals("oui"));
+		setVisible(getAttributeAsBigDecimal("visible").intValue()==1);
 		String texte = getAttributeAsString("texte");
 		String touche = getAttributeAsString("touche");
 		String icone = getAttributeAsString("icône");
