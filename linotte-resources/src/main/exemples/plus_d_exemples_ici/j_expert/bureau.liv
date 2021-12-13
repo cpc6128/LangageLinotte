@@ -136,7 +136,7 @@ pluie :
 vague  :
 	*x est un nombre
 	*y est un nombre
-	vague est un cercle, x prend x, y prend y, plein prend "non", rayon prend 1, taille prend 2, couleur prend "vert d'eau"
+	vague est un cercle, x prend x, y prend y, plein prend faux, rayon prend 1, taille prend 2, couleur prend "vert d'eau"
 	projette vague
 	pour chaque 50
 		rayon@vague prend joker

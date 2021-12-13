@@ -10,7 +10,7 @@
  */
 globale
 	fond est une toile, couleur prend "noir", largeur prend 500, hauteur prend 500
-	tortue est un crayon, pointe prend "non", couleur prend "papier bulle", taille prend 2
+	tortue est un crayon, pointe prend faux, couleur prend "papier bulle", taille prend 2
 
 Animation :
 	time est un nombre valant 0

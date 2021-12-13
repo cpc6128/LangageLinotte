@@ -52,7 +52,7 @@ tortue :
 	*x2d est un casier de nombres
 	*y2d est un casier de nombres
 	*c est un casier de nombres
-	tortue est un crayon, couleur prend c{i}, pointe prend "non", x prend x2d{i}, y prend y2d{i}
+	tortue est un crayon, couleur prend c{i}, pointe prend faux, x prend x2d{i}, y prend y2d{i}
 	projette tortue
 	pour i de i à i + n-1
 		couleur de tortue prend c{i}
