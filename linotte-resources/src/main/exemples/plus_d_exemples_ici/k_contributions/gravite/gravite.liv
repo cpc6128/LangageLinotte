@@ -10,7 +10,7 @@ globale
 	VITESSE est un nombre valant 100
 	casier_ est un casier de point plus
 	nbr_point est un nombre
-	fond est une toile, /*tampon prend "non",*/ couleur prend "beurre"
+	fond est une toile, /*tampon prend faux,*/ couleur prend "beurre"
 	plus est un point plus , taille prend 10 , gauche prend 0 , bas prend 0 , droite prend 0 , haut prend 0
 	lignesol est une ligne , x1 prend 0 , x2 prend 1000 , y1 prend 500 , y2 prend 500
 	compteur est un nombre

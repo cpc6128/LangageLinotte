@@ -16,7 +16,7 @@ principale :
 	ferme
 
 vague : x, y
-	vague est un cercle, x prend x, y prend y, plein prend "non", rayon prend 1, taille prend 2, couleur prend "bleu marine"
+	vague est un cercle, x prend x, y prend y, plein prend faux, rayon prend 1, taille prend 2, couleur prend "bleu marine"
 	projette vague
 	pour chaque 50
 		rayon@vague prend joker

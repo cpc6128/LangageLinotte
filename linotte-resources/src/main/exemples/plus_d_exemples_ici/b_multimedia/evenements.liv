@@ -58,7 +58,7 @@ clique :
 
 clique droit :
 	*fleur est un fleur
-	visible @ fleur prend "non"
+	visible @ fleur prend faux
 	reviens
 
 double clique :

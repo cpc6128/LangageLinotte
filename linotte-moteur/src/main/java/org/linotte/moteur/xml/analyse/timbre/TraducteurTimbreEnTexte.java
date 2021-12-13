@@ -63,10 +63,10 @@ public final class TraducteurTimbreEnTexte {
 
     private Timbre ajouterCommande(Timbre timbre, StringBuilder livre, Langage langage) {
         if (timbre instanceof Commentaire) {
-            ajouterCommentaire((Commentaire) timbre, livre, langage);
+            ajouterCommentaire((Commentaire) timbre, livre);
             return timbre.timbreSuivant;
         } else if (timbre instanceof Acteur) {
-            ajouterCreationActeur((Acteur) timbre, livre, langage);
+            ajouterCreationActeur((Acteur) timbre, livre);
             return timbre.timbreSuivant;
         } else if (timbre instanceof Condition) {
             ajouterCondition((Condition) timbre, livre, langage);
@@ -83,22 +83,22 @@ public final class TraducteurTimbreEnTexte {
                     ajouterAfficher((Verbe) timbre, livre, langage);
                     break;
                 case DEMANDER:
-                    ajouterDemander((Verbe) timbre, livre, langage);
+                    ajouterDemander((Verbe) timbre, livre);
                     break;
                 case VALOIR:
                     ajouterValoir((Verbe) timbre, livre, langage);
                     break;
                 case EFFACERTABLEAU:
-                    ajouterEffacerTableau((Verbe) timbre, livre, langage);
+                    ajouterEffacerTableau((Verbe) timbre, livre);
                     break;
                 case RETOURNER:
-                    ajouterRetourner((Verbe) timbre, livre, langage);
+                    ajouterRetourner((Verbe) timbre, livre);
                     break;
                 case REVENIR:
-                    ajouterRevenir((Verbe) timbre, livre, langage);
+                    ajouterRevenir((Verbe) timbre, livre);
                     break;
                 case PARCOURIR:
-                    ajouterParcourir((Verbe) timbre, livre, langage);
+                    ajouterParcourir((Verbe) timbre, livre);
                     break;
                 case DEPLACE_DROITE:
                     ajouterDeplaceDroite((Verbe) timbre, livre, langage);
@@ -113,7 +113,7 @@ public final class TraducteurTimbreEnTexte {
                     ajouterDeplaceBas((Verbe) timbre, livre, langage);
                     break;
                 case PROJETTE:
-                    ajouterProjetter((Verbe) timbre, livre, langage);
+                    ajouterProjetter((Verbe) timbre, livre);
                     break;
                 case DEPLACE_AVANT:
                     ajouterDeplaceAvant((Verbe) timbre, livre, langage);
@@ -128,10 +128,10 @@ public final class TraducteurTimbreEnTexte {
                     ajouterTourneGauche((Verbe) timbre, livre, langage);
                     break;
                 case LEVER_CRAYON:
-                    ajouterLeverCrayon((Verbe) timbre, livre, langage);
+                    ajouterLeverCrayon((Verbe) timbre, livre);
                     break;
                 case BAISSER_CRAYON:
-                    ajouterBaisserCrayon((Verbe) timbre, livre, langage);
+                    ajouterBaisserCrayon((Verbe) timbre, livre);
                     break;
                 default:
                     break;
@@ -142,22 +142,22 @@ public final class TraducteurTimbreEnTexte {
     }
 
     @Deprecated
-    private void ajouterBaisserCrayon(Verbe timbre, StringBuilder livre, Langage langage) {
-        livre.append("posé de ").append(ajouterActeur(timbre.parametres[0])).append(" vaut \"oui\"");
+    private void ajouterBaisserCrayon(Verbe timbre, StringBuilder livre) {
+        livre.append("posé de ").append(ajouterActeur(timbre.parametres[0])).append(" vaut vrai");
         ajouterRetourChariot(livre, timbre);
     }
 
-    private void ajouterLeverCrayon(Verbe timbre, StringBuilder livre, Langage langage) {
-        livre.append("posé de ").append(ajouterActeur(timbre.parametres[0])).append(" vaut \"non\"");
+    private void ajouterLeverCrayon(Verbe timbre, StringBuilder livre) {
+        livre.append("posé de ").append(ajouterActeur(timbre.parametres[0])).append(" vaut faux");
         ajouterRetourChariot(livre, timbre);
     }
 
-    private void ajouterRevenir(Verbe timbre, StringBuilder livre, Langage langage) {
+    private void ajouterRevenir(Verbe timbre, StringBuilder livre) {
         livre.append("reviens");
         ajouterRetourChariot(livre, timbre);
     }
 
-    private void ajouterParcourir(Verbe timbre, StringBuilder livre, Langage langage) {
+    private void ajouterParcourir(Verbe timbre, StringBuilder livre) {
         livre.append("parcours ");
         Deposable deposable = timbre.parametres[0];
         if (deposable instanceof PorteurFonction) {
@@ -167,7 +167,7 @@ public final class TraducteurTimbreEnTexte {
         ajouterRetourChariot(livre, timbre);
     }
 
-    private void ajouterCommentaire(Commentaire timbre, StringBuilder livre, Langage langage) {
+    private void ajouterCommentaire(Commentaire timbre, StringBuilder livre) {
         livre.append("// " + timbre.texte);
         ajouterRetourChariot(livre, timbre);
     }
@@ -208,17 +208,17 @@ public final class TraducteurTimbreEnTexte {
         ajouterRetourChariot(livre, timbre);
     }
 
-    private void ajouterEffacerTableau(Verbe timbre, StringBuilder livre, Langage langage) {
+    private void ajouterEffacerTableau(Verbe timbre, StringBuilder livre) {
         livre.append("efface tableau");
         ajouterRetourChariot(livre, timbre);
 
     }
 
-    private void ajouterCreationActeur(Acteur timbre, StringBuilder livre, Langage langage) {
+    private void ajouterCreationActeur(Acteur timbre, StringBuilder livre) {
         livre.append(timbre.texte);
         livre.append(" est un ");
         if (timbre.role == Role.CRAYON) {
-            livre.append("crayon, couleur prend \"noir\", x prend 200, y prend 200, " + "taille prend 1, visible prend \"oui\", pointe prend \"oui\"");
+            livre.append("crayon, couleur prend \"noir\", x prend 200, y prend 200, " + "taille prend 1, visible prend vrai, pointe prend vrai");
         } else {
             livre.append(timbre.role == Role.NOMBRE ? "nombre" : "texte");
             if (timbre.valeur != null) {
@@ -229,17 +229,17 @@ public final class TraducteurTimbreEnTexte {
         ajouterRetourChariot(livre, timbre);
     }
 
-    private void ajouterDemander(Verbe timbre, StringBuilder livre, Langage langage) {
+    private void ajouterDemander(Verbe timbre, StringBuilder livre) {
         livre.append("demande ").append(ajouterActeur(timbre.parametres[0]));
         ajouterRetourChariot(livre, timbre);
     }
 
-    private void ajouterRetourner(Verbe timbre, StringBuilder livre, Langage langage) {
+    private void ajouterRetourner(Verbe timbre, StringBuilder livre) {
         livre.append("retourne ").append(ajouterActeur(timbre.parametres[0]));
         ajouterRetourChariot(livre, timbre);
     }
 
-    private void ajouterProjetter(Verbe timbre, StringBuilder livre, Langage langage) {
+    private void ajouterProjetter(Verbe timbre, StringBuilder livre) {
         livre.append("projette ").append(ajouterActeur(timbre.parametres[0]));
         ajouterRetourChariot(livre, timbre);
     }
