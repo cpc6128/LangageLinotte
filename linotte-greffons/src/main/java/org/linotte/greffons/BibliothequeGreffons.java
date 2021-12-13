@@ -433,7 +433,7 @@ public final class BibliothequeGreffons {
             attributs.put("couleurfond", new Attribut(TEXTE, ""));
             attributs.put("couleurtexte", new Attribut(TEXTE, ""));
             attributs.put("icône", new Attribut(TEXTE, ""));
-            attributs.put("valeur", new Attribut(TEXTE, "faux"));
+            attributs.put("valeur", new Attribut(NOMBRE, "0"));
             LinotteFacade.creationPrototype(attributs, new CaseACocher(), "caseàcocher");
         }
         {
