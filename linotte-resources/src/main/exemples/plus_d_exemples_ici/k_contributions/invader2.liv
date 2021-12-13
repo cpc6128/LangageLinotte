@@ -1,6 +1,6 @@
 // Concours SiteDuZero : http://fr.openclassrooms.com/forum/sujet/atelier-fond-anime-space-invaders?page=2#message-84276241
 space invaders :
-	bloc est un rectangle, largeur prend 10, hauteur prend 10, plein prend "oui"
+	bloc est un rectangle, largeur prend 10, hauteur prend 10, plein prend vrai
 	x & y est un nombre
 	tant que vrai
 		x & y prend hasard(500)

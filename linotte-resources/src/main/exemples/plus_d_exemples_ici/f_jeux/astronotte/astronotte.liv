@@ -21,14 +21,14 @@ globale
 	/*Personnage*/
 	max missibles est un nombre valant 6
 	max énergie est un nombre valant 600
-	énergie est un rectangle,  x prend 100, y prend 30, largeur prend 600, hauteur prend 30, couleur prend "vert turquoise", plein prend "oui", transparence prend 50, position prend 10
+	énergie est un rectangle,  x prend 100, y prend 30, largeur prend 600, hauteur prend 30, couleur prend "vert turquoise", plein prend vrai, transparence prend 50, position prend 10
 	scoreg est un graffiti, couleur prend "tangerine", x prend 15, y prend 660 , texte prend "0", taille prend 10, position prend 3
 	titre est un graffiti, couleur prend "pêche",texte prend "Astronotte écrit en langage Linotte", taille prend 5, position prend 3,  x prend 10, y prend 690
 	titrepower est un graffiti, couleur prend "argent",texte prend "Power", taille prend 3, position prend 3,  x prend 110, y prend 50, position prend 9
-	raquette est un rectangle,  x prend 750, y prend 30, largeur prend 10, hauteur prend 70, couleur prend "menthe à l'eau", plein prend "oui", transparence prend 50, position prend 10, visible prend "non"
-	raquette2 est un rectangle,  x prend 30, y prend 30, largeur prend 10, hauteur prend 70, couleur prend "rouge", plein prend "oui", transparence prend 50, position prend 10, visible prend "non"
-	palet est un cercle,  x prend 600, y prend 300, rayon prend 10, couleur prend "vert", taille prend 1, plein prend "oui", position prend 10, visible prend "non"
-	feu est un rectangle, largeur prend 65, hauteur prend 65, couleur prend "écarlate", plein prend "oui", transparence prend 50, position prend 2
+	raquette est un rectangle,  x prend 750, y prend 30, largeur prend 10, hauteur prend 70, couleur prend "menthe à l'eau", plein prend vrai, transparence prend 50, position prend 10, visible prend faux
+	raquette2 est un rectangle,  x prend 30, y prend 30, largeur prend 10, hauteur prend 70, couleur prend "rouge", plein prend vrai, transparence prend 50, position prend 10, visible prend faux
+	palet est un cercle,  x prend 600, y prend 300, rayon prend 10, couleur prend "vert", taille prend 1, plein prend vrai, position prend 10, visible prend faux
+	feu est un rectangle, largeur prend 65, hauteur prend 65, couleur prend "écarlate", plein prend vrai, transparence prend 50, position prend 2
 	score est un nombre valant 0
 	niveau est un nombre valant 1
 	/*palet*/
@@ -43,15 +43,15 @@ globale
 	pos_canal est un nombre valant 0
 	vitesse_canal est un nombre valant 2.5
 	/*Pour le chargement rapide des images (dans le cas de l'applet):*/
-	xbullet est un graphique, image prend chemin + "bullet.gif", visible prend "oui", transparence prend 0
-	xasteroid est un graphique, image prend chemin + "asteroid.gif", visible prend "oui", transparence prend 0
-	xbarrage est un graphique, image prend chemin + "ligne.gif", visible prend "oui", transparence prend 0
-	xpower est un graphique, image prend chemin + "power.png", visible prend "oui", transparence prend 0
-	xplanet est un graphique, image prend chemin + "planet.gif", visible prend "oui", transparence prend 0
-	xmonstre est un graphique, image prend chemin + "monstre.png", visible prend "oui", transparence prend 0
-	xbomberman est un graphique, image prend chemin + "bomberman.gif", visible prend "oui", transparence prend 0
-	xexplosion est un graphique, image prend chemin + "explosion.gif", visible prend "oui", transparence prend 0
-	xmur est un graphique, image prend chemin + "mur.gif", visible prend "oui", transparence prend 0
+	xbullet est un graphique, image prend chemin + "bullet.gif", visible prend vrai, transparence prend 0
+	xasteroid est un graphique, image prend chemin + "asteroid.gif", visible prend vrai, transparence prend 0
+	xbarrage est un graphique, image prend chemin + "ligne.gif", visible prend vrai, transparence prend 0
+	xpower est un graphique, image prend chemin + "power.png", visible prend vrai, transparence prend 0
+	xplanet est un graphique, image prend chemin + "planet.gif", visible prend vrai, transparence prend 0
+	xmonstre est un graphique, image prend chemin + "monstre.png", visible prend vrai, transparence prend 0
+	xbomberman est un graphique, image prend chemin + "bomberman.gif", visible prend vrai, transparence prend 0
+	xexplosion est un graphique, image prend chemin + "explosion.gif", visible prend vrai, transparence prend 0
+	xmur est un graphique, image prend chemin + "mur.gif", visible prend vrai, transparence prend 0
 	/*presse est un pressepapier*/
 
 principale :
@@ -190,7 +190,7 @@ asteroid :
 		tourne à droite asteroid de pas
 		si asteroid.collision(vaisseau) parcours perdu avec 3
 		pour chaque missiles
-			si (visible@joker) == "oui"
+			si (visible@joker) == vrai
 				si joker.collision(asteroid)
 					appelle boom avec x@joker, y@joker
 					efface joker
@@ -241,8 +241,8 @@ créer canal :
 canal :
 	*largeur est un nombre
 	*aléatoire est un drapeau
-	canal est un rectangle,  x prend 0, y prend -50, largeur prend largeur + pos_canal, hauteur prend 10, couleur prend "sable", plein prend "oui", transparence prend 80, position prend 3
-	canal2 est un rectangle,  x prend taille_h - largeur + pos_canal, y prend -50, largeur prend largeur - pos_canal, hauteur prend 10, couleur prend "sable", plein prend "oui", transparence prend 80, position prend 3
+	canal est un rectangle,  x prend 0, y prend -50, largeur prend largeur + pos_canal, hauteur prend 10, couleur prend "sable", plein prend vrai, transparence prend 80, position prend 3
+	canal2 est un rectangle,  x prend taille_h - largeur + pos_canal, y prend -50, largeur prend largeur - pos_canal, hauteur prend 10, couleur prend "sable", plein prend vrai, transparence prend 80, position prend 3
 	projette canal & canal2
 	tant que (y@canal) < (taille_v + 30)
 		y@canal prend y@canal + vitesse_canal
@@ -310,7 +310,7 @@ monstre 1 :
 		x@monstre prend x@monstre + ( cos ((y@monstre) + delta) * 10)
 		si monstre.collision(vaisseau) parcours perdu avec 5
 		pour chaque missiles
-			si (visible@joker) == "oui"
+			si (visible@joker) == vrai
 				si joker.collision(monstre)
 					appelle boom avec x@joker, y@joker
 					efface joker
@@ -331,8 +331,8 @@ monstre 1 :
 vérifier bricks :
 	*m est un graphique
 	pour chaque bricks
-		si (visible@m) == "oui"
-			si (visible@joker) == "oui"
+		si (visible@m) == vrai
+			si (visible@joker) == vrai
 				si m.collision(joker)
 						/*Une erreur peut arriver si deux briques sont supprimées en même temps*/
 					essaie
@@ -362,7 +362,7 @@ bomberman :
 		si (x@vaisseau + 15) > (x@bomberman), x@bomberman prend x@bomberman + 6
 		si bomberman.collision(vaisseau), parcours perdu avec 5
 		pour chaque missiles
-			si (visible@joker) == "oui"
+			si (visible@joker) == vrai
 				si joker.collision(bomberman)
 					appelle boom avec x@joker, y@joker
 					efface joker
@@ -501,22 +501,22 @@ affichage dégât :
 	tant que vrai
 		attends 10 millisecondes
 		si délai feu > 0
-			visible@feu prend "oui"
+			visible@feu prend vrai
 			couleur@raquette prend "rouge"
 			transparence@feu prend hasard(100)
 			délai feu prend délai feu - 10
 		ferme
 		sinon
-			visible@feu prend "non"
+			visible@feu prend faux
 			couleur@raquette prend "menthe à l'eau"
 		ferme
 	ferme
 	Reviens
 
 initialisation niveau :
-	visible@raquette prend "non"
-	visible@raquette2 prend "non"
-	visible@palet prend "non"
+	visible@raquette prend faux
+	visible@raquette2 prend faux
+	visible@palet prend faux
 	parcours niveau 1
 	parcours niveau 2
 	parcours niveau 3
@@ -669,9 +669,9 @@ niveau 3 :
 niveau 4 :
 	appelle clignotement avec "Niveau 4 : Le défis !"
 	attends 5 secondes
-	visible@raquette prend "oui"
-	visible@raquette2 prend "oui"
-	visible@palet prend "oui"
+	visible@raquette prend vrai
+	visible@raquette2 prend vrai
+	visible@palet prend vrai
 	action_raquette prend vrai
 	appelle planet
 	appelle moteur palet
@@ -708,9 +708,9 @@ niveau 4 :
 	ferme
 
 		/*Fin du niveau 4*/
-	visible@raquette prend "non"
-	visible@raquette2 prend "non"
-	visible@palet prend "non"
+	visible@raquette prend faux
+	visible@raquette2 prend faux
+	visible@palet prend faux
 	action_raquette prend faux
 	attends 10 secondes
 	reviens
@@ -964,9 +964,9 @@ niveau 10 :
 	appelle clignotement avec "Niveau 10 : l'apocalypse finale"
 	appelle power
 	attends 5 secondes
-	visible@raquette prend "oui"
-	visible@raquette2 prend "oui"
-	visible@palet prend "oui"
+	visible@raquette prend vrai
+	visible@raquette2 prend vrai
+	visible@palet prend vrai
 	action_raquette prend vrai
 	appelle planet
 	appelle moteur palet
@@ -989,9 +989,9 @@ niveau 10 :
 
 		/*Fin du niveau 6*/
 	attends 10 secondes
-	visible@raquette prend "non"
-	visible@raquette2 prend "non"
-	visible@palet prend "non"
+	visible@raquette prend faux
+	visible@raquette2 prend faux
+	visible@palet prend faux
 	action_raquette prend faux
 	reviens
 

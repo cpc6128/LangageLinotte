@@ -1,5 +1,5 @@
 ciel est une toile, couleur prend "blanc", pointeur prend "main"
-c1 est un crayon, couleur prend "brique", x prend 295, y prend 225, taille prend 2, pointe prend "oui", posé prend "oui"
+c1 est un crayon, couleur prend "brique", x prend 295, y prend 225, taille prend 2, pointe prend vrai, posé prend vrai
 
 efface toile
 projette ciel
@@ -18,16 +18,16 @@ déplace c1 de -25 et -25
 attends 1 seconde
 déplace c1 de -25 et 25
 attends 1 seconde
-posé @ c1 prend "non"
+posé @ c1 prend faux
 déplace c1 de 20 et 50
 attends 1 seconde
 couleur @ c1 prend "noir"
 taille @ c1 prend 1
-posé @ c1 prend "oui"
+posé @ c1 prend vrai
 déplace c1 de 0 et -20
 attends 1 seconde
 déplace c1 de 10 et 0
 attends 1 seconde
 déplace c1 de 0 et 20
 attends 1 seconde
-pointe @ c1 prend "non"
+pointe @ c1 prend faux

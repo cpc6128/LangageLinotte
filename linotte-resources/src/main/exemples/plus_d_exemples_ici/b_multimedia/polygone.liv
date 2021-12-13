@@ -1,4 +1,4 @@
-vaisseau est un polygone, couleur prend "rouge", plein prend "oui", x prend 100, y prend 100, dx1 prend 10 ,dy1 prend 30, dx2 prend 0 ,dy2 prend 20, dx3 prend -10 ,dy3 prend 30
+vaisseau est un polygone, couleur prend "rouge", plein prend vrai, x prend 100, y prend 100, dx1 prend 10 ,dy1 prend 30, dx2 prend 0 ,dy2 prend 20, dx3 prend -10 ,dy3 prend 30
 flotte est un casier de polygone valant vaisseau, #vaisseau, #vaisseau
 t est un nombre
 

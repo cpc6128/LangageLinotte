@@ -7,7 +7,7 @@ globale
 	rectangles est un casier de rectangle
 
 principale : // pour jouer : glisser la souris dans le sens de l'action ou utiliser les fléches du clavier.
-	doigt est un rectangle, largeur prend lp * 4, hauteur prend lp * 4, plein prend "oui", position prend 10, transparence prend 0
+	doigt est un rectangle, largeur prend lp * 4, hauteur prend lp * 4, plein prend vrai, position prend 10, transparence prend 0
 	position est un nombre
 	t est un texte
 	projette doigt
@@ -25,7 +25,7 @@ principale : // pour jouer : glisser la souris dans le sens de l'action ou utili
 		x est un nombre valant joker
 		pour 4 // y
 			texte est un graffiti, taille prend 10, position prend 2
-			fond est un rectangle, largeur prend lp - 20, hauteur prend lp - 20, plein prend "oui", couleur prend "blanc"
+			fond est un rectangle, largeur prend lp - 20, hauteur prend lp - 20, plein prend vrai, couleur prend "blanc"
 			x de texte prend x * lp + lp/4
 			y de texte prend joker * lp + lp/2
 			x de fond prend x * lp + 10

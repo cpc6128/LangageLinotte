@@ -7,10 +7,10 @@ globale
 	zoom est un nombre valant 4 /*Vous pouvez modifier la taille du jeu */
 	vitesse est un nombre valant 10
 	briques est un casier de rectangle
-	palet est un palet,  plein prend "oui", rayon prend 5 * zoom, couleur prend "rouge", taille prend 1,
+	palet est un palet,  plein prend vrai, rayon prend 5 * zoom, couleur prend "rouge", taille prend 1,
 		y prend 80 * zoom, x prend 100,		angle prend 45, position prend 2, fluctuation prend 45
 	raquette est un rectangle, couleur prend "anthracite", hauteur prend 5 * zoom,
-		largeur prend 26 * zoom, plein prend "oui",  x prend 10 * zoom, 		y prend 140 * zoom
+		largeur prend 26 * zoom, plein prend vrai,  x prend 10 * zoom, 		y prend 140 * zoom
 
 code : /* affichage du jeu et lancement du jeu */
 	fond  est une toile, couleur prend "argile", hauteur prend 150 * zoom, largeur prend 200 * zoom
@@ -74,7 +74,7 @@ affichage matrice : /* Affiche les briques */
 	pour r de 0 à 9
 		de 0 à 6
 			p est un rectangle, couleur prend "prasin", hauteur prend 10*zoom-2,
-				largeur prend 20*zoom-2, x prend r*20*zoom, y prend joker*10*zoom, plein prend "oui"
+				largeur prend 20*zoom-2, x prend r*20*zoom, y prend joker*10*zoom, plein prend vrai
 			ajoute p dans briques
 		ferme
 	ferme
