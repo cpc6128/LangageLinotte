@@ -31,6 +31,8 @@ import org.linotte.moteur.xml.alize.kernel.Job;
 import org.linotte.moteur.xml.alize.kernel.i.IProduitCartesien;
 import org.linotte.moteur.xml.analyse.ItemXML;
 
+import java.math.BigDecimal;
+
 public class StimulerAction extends Action implements IProduitCartesien {
 
 	public StimulerAction() {
@@ -56,7 +58,7 @@ public class StimulerAction extends Action implements IProduitCartesien {
 
 		PrototypeGraphique eg = (PrototypeGraphique) e;
 
-		eg.retourneAttribut("visible").setValeur("oui");
+		eg.retourneAttribut("visible").setValeur(new BigDecimal(1));
 
 		eg.getToile().getPanelLaToile().setRecepteur(eg.getRecepteur());
 

@@ -38,7 +38,7 @@ public class BoiteTexte extends ComposantDeplacable {
 		super.initaccessibilite(textPane);
 		textPane.setLineWrap(false);
 		initialize();
-		setVisible(getAttributeAsString("visible").equals("oui"));
+		setVisible(getAttributeAsBigDecimal("visible").intValue()==1);
 
 		// Dimensions :
 		int hauteur = getAttributeAsBigDecimal("hauteur").intValue();

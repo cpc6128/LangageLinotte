@@ -26,7 +26,7 @@ public class Table extends ComposantDeplacable {
 			super.initEvenement();
 			return;
 		}
-		setVisible(getAttributeAsString("visible").equals("oui"));
+		setVisible(getAttributeAsBigDecimal("visible").intValue()==1);
 		model = new JTableModel();
 		table = new JTable(model);
 		super.initaccessibilite(table);

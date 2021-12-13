@@ -21,7 +21,7 @@ public class Label extends ComposantDeplacable {
 			super.initEvenement();
 			return;
 		}
-		setVisible(getAttributeAsString("visible").equals("oui"));
+		setVisible(getAttributeAsBigDecimal("visible").intValue()==1);
 		String texte = getAttributeAsString("texte");
 		label = new JLabel(texte);
 		super.initaccessibilite(label);

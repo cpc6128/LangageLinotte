@@ -235,7 +235,7 @@ public class JPanelLaToile extends JPanel {
 			if (latoile != null) {
 				try {
 					boolean oldvalue = parent.isUndecorated();
-					boolean newvalue = "non".equalsIgnoreCase((String) latoile.retourneAttribut("bordure").getValeur());
+					boolean newvalue = 0 == ((BigDecimal) latoile.retourneAttribut("bordure").getValeur()).intValue();
 					if (newvalue != oldvalue || (modeTransparence && etatTransparence == MODE_TRANSPARENCE.NON_ACTIVE)) {
 						parent.setUndecorated(newvalue);
 						if (newvalue && modeTransparence) {
@@ -249,7 +249,7 @@ public class JPanelLaToile extends JPanel {
 					setPosition(((BigDecimal) latoile.retourneAttribut("x").getValeur()).intValue(),
 							((BigDecimal) latoile.retourneAttribut("y").getValeur()).intValue());
 					boolean oldvalueTop = parent.isAlwaysOnTop();
-					boolean newvalueTop = "oui".equalsIgnoreCase((String) latoile.retourneAttribut("audessus").getValeur());
+					boolean newvalueTop = 1 == ((BigDecimal) latoile.retourneAttribut("audessus").getValeur()).intValue();
 					if (oldvalueTop != newvalueTop) {
 						parent.setAlwaysOnTop(newvalueTop);
 					}
@@ -266,7 +266,7 @@ public class JPanelLaToile extends JPanel {
 					// Gestion du plein écran :
 					GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 					boolean oldvalueFS = device.getFullScreenWindow() == null ? false : (device.getFullScreenWindow() == parent);
-					boolean newvalueFS = "oui".equalsIgnoreCase((String) latoile.retourneAttribut("pleinécran").getValeur());
+					boolean newvalueFS = 1 == ((BigDecimal) latoile.retourneAttribut("pleinécran").getValeur()).intValue();
 					if (oldvalueFS != newvalueFS) {
 						if (newvalueFS) {
 							if (device.isFullScreenSupported()) {
@@ -372,7 +372,7 @@ public class JPanelLaToile extends JPanel {
 
 	public void setChangement() {
 		try {
-			if (!(latoile != null && latoile.retourneAttribut("tampon").getValeur() != null && latoile.retourneAttribut("tampon").getValeur().equals("non"))) {
+			if (!(latoile != null && latoile.retourneAttribut("tampon").getValeur() != null && ((BigDecimal)latoile.retourneAttribut("tampon").getValeur()).intValue() == 0)) {
 				rafraichissementAvantArret = RAFRAICHISSEMENT_MAX;
 			}
 		} catch (ErreurException e) {
@@ -382,8 +382,8 @@ public class JPanelLaToile extends JPanel {
 	// Réinitialise la valeur à true pour le buffer au lancement d'un livre !
 	public void annulerBuffer() {
 		try {
-			if (latoile != null && latoile.retourneAttribut("tampon").getValeur() != null && latoile.retourneAttribut("tampon").getValeur().equals("non"))
-				latoile.retourneAttribut("tampon").setValeur("oui");
+			if (latoile != null && latoile.retourneAttribut("tampon").getValeur() != null && ((BigDecimal)latoile.retourneAttribut("tampon").getValeur()).intValue() == 0)
+				latoile.retourneAttribut("tampon").setValeur(new BigDecimal(1));
 		} catch (Exception e) {
 		}
 	}
@@ -414,7 +414,7 @@ public class JPanelLaToile extends JPanel {
 			Iterator<PrototypeGraphique> i = acteursAAfficher.iterator();
 			while (i.hasNext()) {
 				PrototypeGraphique eg = i.next();
-				eg.retourneAttribut("visible").setValeur("non");
+				eg.retourneAttribut("visible").setValeur(BigDecimal.ZERO);
 			}
 		} catch (ErreurException e) {
 		}

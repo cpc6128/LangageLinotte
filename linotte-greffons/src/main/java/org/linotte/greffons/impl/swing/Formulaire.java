@@ -61,7 +61,7 @@ public class Formulaire extends ComposantSwing {
 			e.printStackTrace();
 		}
 
-		setVisible(getAttributeAsString("visible").equals("oui"));
+		setVisible(getAttributeAsBigDecimal("visible").intValue()==1);
 		// Dimensions :
 		int hauteur = getAttributeAsBigDecimal("hauteur").intValue();
 		int largeur = getAttributeAsBigDecimal("largeur").intValue();
@@ -188,7 +188,7 @@ public class Formulaire extends ComposantSwing {
 	public boolean fireProperty(String clef) throws GreffonException {
 		// Patch pour cacher la fenêtre si visible est à fause :
 		if (frame != null && "visible".equals(clef)) {
-			setVisible(((Acteur) getAttribute(clef)).getValeur().equals("oui"));
+			setVisible(((Acteur) getAttribute(clef)).getValeur().equals("1"));
 			frame.setVisible(isVisible());
 			return true;
 		}

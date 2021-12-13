@@ -27,7 +27,7 @@ public class Onglet extends ComposantDeplacable {
 			super.initEvenement();
 			return;
 		}
-		setVisible(getAttributeAsString("visible").equals("oui"));
+		setVisible(getAttributeAsBigDecimal("visible").intValue()==1);
 		tabbedPane = new JTabbedPane();
 		super.initaccessibilite(tabbedPane);
 		// Position :

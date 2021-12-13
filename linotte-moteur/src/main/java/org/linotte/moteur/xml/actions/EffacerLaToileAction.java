@@ -31,6 +31,7 @@ import org.linotte.moteur.xml.alize.kernel.Job;
 import org.linotte.moteur.xml.alize.kernel.RuntimeContext;
 import org.linotte.moteur.xml.analyse.ItemXML;
 
+import java.math.BigDecimal;
 import java.util.Iterator;
 import java.util.List;
 
@@ -72,7 +73,7 @@ public class EffacerLaToileAction extends Action {
 			if (eg.getTypeGraphique().equals(PrototypeGraphique.TYPE_GRAPHIQUE.CRAYON)) {
 				eg.setObject(null);
 			}
-			eg.retourneAttribut("visible").setValeur("non");
+			eg.retourneAttribut("visible").setValeur(BigDecimal.ZERO);
 		}
 		toile.getPanelLaToile().setChangement();
 	}

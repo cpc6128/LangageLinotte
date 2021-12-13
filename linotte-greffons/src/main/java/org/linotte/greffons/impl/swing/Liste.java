@@ -28,7 +28,7 @@ public class Liste extends ComposantDeplacable {
 			return;
 		}
 		listModel = new DefaultListModel();
-		setVisible(getAttributeAsString("visible").equals("oui"));
+		setVisible(getAttributeAsBigDecimal("visible").intValue()==1);
 		list = new JListX(listModel);
 		super.initaccessibilite(list);
 
