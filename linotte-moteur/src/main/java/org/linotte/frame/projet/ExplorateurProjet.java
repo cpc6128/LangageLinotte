@@ -37,6 +37,7 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseWheelEvent;
 import java.io.File;
 import java.net.URI;
 
@@ -288,7 +289,23 @@ public class ExplorateurProjet extends JXTaskPaneContainer {
         taskTutorial.setTitle("Tutoriel");
         taskTutorial.setIcon(Ressources.getImageTheme("TUTO", 20));
         NavigateurFichier fileTreePanel = new NavigateurFichier(view, exemples, taskTutorial, atelier, false);
-        taskTutorial.add(new JScrollPane(fileTreePanel, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED));
+
+        // https://stackoverflow.com/questions/12911506/why-jscrollpane-does-not-react-to-mouse-wheel-events
+        JScrollPane scrollPane = new JScrollPane(fileTreePanel, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED) {
+            @Override
+            protected void processMouseWheelEvent(MouseWheelEvent e) {
+                if (!isWheelScrollingEnabled()) {
+                    if (getParent() != null)
+                        getParent().dispatchEvent(
+                                SwingUtilities.convertMouseEvent(this, e, getParent()));
+                    return;
+                }
+                super.processMouseWheelEvent(e);
+            }
+        };
+        scrollPane.setWheelScrollingEnabled(false);
+
+        taskTutorial.add(scrollPane);
         //tutoriels.put(Atelier.linotte.getLangage(), fileTreePanel);
         taskTutorial.setVisible(exemples.exists());
         return taskTutorial;
