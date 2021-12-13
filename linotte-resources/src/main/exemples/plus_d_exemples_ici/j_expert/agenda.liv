@@ -86,7 +86,7 @@ Analyse suppression :
 	Ville@joker !
 	"Vous confimez ? ('oui')" !
 	Confirmation ?
-	Si confirmation != "oui", reviens
+	Si confirmation != vrai, reviens
 	Ôte joker de agenda
 	"Contact supprimé !" !
 	Reviens

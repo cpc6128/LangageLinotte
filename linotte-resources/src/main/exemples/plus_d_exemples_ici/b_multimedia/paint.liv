@@ -1,6 +1,6 @@
 ciel est une toile, couleur prend "blanc"
 c1 est un crayon, couleur prend "bleu", x prend 100, y prend 100, taille prend 2, ...
-    			pointe prend "non", posé prend "non"
+    			pointe prend faux, posé prend faux
 information est un parchemin, texte prend "Voici le premier Paint écrit en Linotte ! 
 Utilisez le bouton gauche de la souris pour activer ou désactiver le crayon.", x prend 100, ...
     			y prend 100, largeur prend 500, taille prend 5
@@ -16,13 +16,13 @@ principale :
 		déplace c1 vers sourisx et sourisy
 		temporise
 		si touche == "clique"
-			si (posé de c1) == "oui"
-				posé de c1 prend "non"
-				pointe de c1 prend "non"
+			si (posé de c1) == vrai
+				posé de c1 prend faux
+				pointe de c1 prend faux
 			ferme
 			sinon
-				posé de c1 prend "oui"
-				pointe de c1 prend "oui"
+				posé de c1 prend vrai
+				pointe de c1 prend vrai
 			ferme
 		ferme
 	ferme

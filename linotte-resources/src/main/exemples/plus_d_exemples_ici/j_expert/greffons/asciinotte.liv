@@ -46,7 +46,7 @@ principale :
 				hauteur@r prend 21
 				largeur@r prend 21
 				couleur@r prend couleur off
-				plein@r prend "oui"
+				plein@r prend vrai
 				position@r prend 1
 				lettre@r prend chr (i  + k*25)
 				projette r & g

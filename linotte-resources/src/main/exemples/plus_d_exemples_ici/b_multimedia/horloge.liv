@@ -1,5 +1,5 @@
 horloge est un graffiti, x prend 5, y prend 20, texte prend "L'horloge digitale", couleur prend "rose"
-toile est une toile, couleur prend "noir", hauteur prend 30 , largeur prend 270, x prend 50, y prend 50, audessus prend "oui", bordure prend "non"
+toile est une toile, couleur prend "noir", hauteur prend 30 , largeur prend 270, x prend 50, y prend 50, audessus prend vrai, bordure prend faux
 
 copie ecranh dans x @ toile
 copie ecranv dans y @ toile

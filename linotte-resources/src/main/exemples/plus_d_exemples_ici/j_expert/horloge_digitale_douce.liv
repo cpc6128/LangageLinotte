@@ -5,19 +5,19 @@ globale
 	décallage est un nombre valant -95
 	deltah est un nombre valant ecranh / 2 - 400
 	deltav est un nombre valant ecranv / 2 - 200
-	élément v est un polygone, couleur = lumière douce, plein = "oui", x = 0, y = 0,     			dx1 = 10 ,dy1 = -10, dx2 = 20 ,dy2 = 0,     			dx3 = 20 ,dy3 = 40, dx4 = 10 ,dy4 = 50,     			dx5 = 0 ,dy5 = 40
-	élément h est un polygone, couleur = lumière douce, plein = "oui", x = 0, y = 0,     			dx1 = 10 ,dy1 = -10, dx2 = 38 ,dy2 = -10,     			dx3 = 48 ,dy3 = 0, dx4 = 38 ,dy4 = 10,     			dx5 = 10 ,dy5 = 10
+	élément v est un polygone, couleur = lumière douce, plein = vrai, x = 0, y = 0,     			dx1 = 10 ,dy1 = -10, dx2 = 20 ,dy2 = 0,     			dx3 = 20 ,dy3 = 40, dx4 = 10 ,dy4 = 50,     			dx5 = 0 ,dy5 = 40
+	élément h est un polygone, couleur = lumière douce, plein = vrai, x = 0, y = 0,     			dx1 = 10 ,dy1 = -10, dx2 = 38 ,dy2 = -10,     			dx3 = 48 ,dy3 = 0, dx4 = 38 ,dy4 = 10,     			dx5 = 10 ,dy5 = 10
 	chiffre1 est un casier de polygone
 	chiffre2 est un casier de polygone
 	chiffre3 est un casier de polygone
 	chiffre4 est un casier de polygone
 	chiffre5 est un casier de polygone
 	chiffre6 est un casier de polygone
-	rond1 est un cercle, couleur = lumière douce,  x = deltav + 285 + décallage, y = deltah + 230, rayon = 20, plein = "oui"
-	rond2 est un cercle, couleur = lumière douce,  x = deltav + 285 + décallage, y = deltah + 290, rayon = 20, plein = "oui"
-	rond3 est un cercle, couleur = lumière douce,  x = deltav + 506 + décallage, y = deltah + 230, rayon = 20, plein = "oui"
-	rond4 est un cercle, couleur = lumière douce,  x = deltav + 506 + décallage, y = deltah + 290, rayon = 20, plein = "oui"
-	vitre est une toile, couleur = "noir", pleinécran prend "oui", bordure = "non", largeur prend ecranv, hauteur prend ecranh, pointeur prend "main"
+	rond1 est un cercle, couleur = lumière douce,  x = deltav + 285 + décallage, y = deltah + 230, rayon = 20, plein = vrai
+	rond2 est un cercle, couleur = lumière douce,  x = deltav + 285 + décallage, y = deltah + 290, rayon = 20, plein = vrai
+	rond3 est un cercle, couleur = lumière douce,  x = deltav + 506 + décallage, y = deltah + 230, rayon = 20, plein = vrai
+	rond4 est un cercle, couleur = lumière douce,  x = deltav + 506 + décallage, y = deltah + 290, rayon = 20, plein = vrai
+	vitre est une toile, couleur = "noir", pleinécran prend vrai, bordure = faux, largeur prend ecranv, hauteur prend ecranh, pointeur prend "main"
 	patron0 est un casier de nombre valant 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1
 	patron1 est un casier de nombre valant 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1
 	patron2 est un casier de nombre valant 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0

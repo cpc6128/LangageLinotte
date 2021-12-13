@@ -7,8 +7,8 @@ globale
 			hauteur prend 600, icône prend "medias/logo.png"
 	présentation est un étiquette, texte prend "Démonstration des composants graphiques en langage Linotte",
 			x prend 180, y prend 5, couleurtexte prend "rouge", couleurfond prend "noir", taille prend 3
-	onglet est un onglet, x prend 25, y prend 30,hauteur prend 500 , largeur prend 720, visible prend "non"
-	indicateur est un indicateur, x prend 180, y prend 100, valeur prend 0, largeur prend 200, hauteur prend 20, visible prend "oui"
+	onglet est un onglet, x prend 25, y prend 30,hauteur prend 500 , largeur prend 720, visible prend faux
+	indicateur est un indicateur, x prend 180, y prend 100, valeur prend 0, largeur prend 200, hauteur prend 20, visible prend vrai
 	m1 est un menu, texte prend "Menu"
 	m2 est un menu, texte prend "Sous-Menu"
 	sm1 est un sousmenu, texte prend "A propos", icône prend "medias/internet-group-chat.png"
@@ -31,26 +31,26 @@ globale
 	zoney est un nombre valant -2
 	zonew est un nombre valant 4
 	zoneh est un nombre valant 4
-	crayon est un crayon, couleur prend "écarlate", pointe prend "non"
+	crayon est un crayon, couleur prend "écarlate", pointe prend faux
 	fond est une toile, hauteur prend 500, largeur prend 720
 	/*onglet toile horloge*/
-	ciel est une toile, hauteur prend 500, largeur prend 720, principale prend "non", couleur prend "charbonneux"
+	ciel est une toile, hauteur prend 500, largeur prend 720, principale prend faux, couleur prend "charbonneux"
 	xtoile2 est un xtoile, x prend 0, y prend 0, toile prend "ciel"
 	lumière douce est un texte valant "oscuro"
 	lumière clair est un texte valant "menthe à l'eau"
 	décallage est un nombre valant -95
-	élément v est un polygone, toile prend "ciel", couleur prend lumière douce, plein prend "oui", x prend 0, y prend 0, dx1 prend 10 ,dy1 prend -10, dx2 prend 20 ,dy2 prend 0,     			dx3 prend 20 ,dy3 prend 40, dx4 prend 10 ,dy4 prend 50,     			dx5 prend 0 ,dy5 prend 40
-	élément h est un polygone, toile prend "ciel", couleur prend lumière douce, plein prend "oui", x prend 0, y prend 0, dx1 prend 10 ,dy1 prend -10, dx2 prend 38 ,dy2 prend -10,     			dx3 prend 48 ,dy3 prend 0, dx4 prend 38 ,dy4 prend 10,     			dx5 prend 10 ,dy5 prend 10
+	élément v est un polygone, toile prend "ciel", couleur prend lumière douce, plein prend vrai, x prend 0, y prend 0, dx1 prend 10 ,dy1 prend -10, dx2 prend 20 ,dy2 prend 0,     			dx3 prend 20 ,dy3 prend 40, dx4 prend 10 ,dy4 prend 50,     			dx5 prend 0 ,dy5 prend 40
+	élément h est un polygone, toile prend "ciel", couleur prend lumière douce, plein prend vrai, x prend 0, y prend 0, dx1 prend 10 ,dy1 prend -10, dx2 prend 38 ,dy2 prend -10,     			dx3 prend 48 ,dy3 prend 0, dx4 prend 38 ,dy4 prend 10,     			dx5 prend 10 ,dy5 prend 10
 	chiffre1 est un casier de polygone
 	chiffre2 est un casier de polygone
 	chiffre3 est un casier de polygone
 	chiffre4 est un casier de polygone
 	chiffre5 est un casier de polygone
 	chiffre6 est un casier de polygone
-	rond1 est un cercle, toile prend "ciel", couleur prend lumière douce,  x prend 285 + décallage, y prend 230, rayon prend 20, plein prend "oui"
-	rond2 est un cercle, toile prend "ciel", toile prend "ciel", couleur prend lumière douce,  x prend 285 + décallage, y prend 290, rayon prend 20, plein prend "oui"
-	rond3 est un cercle, toile prend "ciel", couleur prend lumière douce,  x prend 506 + décallage, y prend 230, rayon prend 20, plein prend "oui"
-	rond4 est un cercle, toile prend "ciel", couleur prend lumière douce,  x prend 506 + décallage, y prend 290, rayon prend 20, plein prend "oui"
+	rond1 est un cercle, toile prend "ciel", couleur prend lumière douce,  x prend 285 + décallage, y prend 230, rayon prend 20, plein prend vrai
+	rond2 est un cercle, toile prend "ciel", toile prend "ciel", couleur prend lumière douce,  x prend 285 + décallage, y prend 290, rayon prend 20, plein prend vrai
+	rond3 est un cercle, toile prend "ciel", couleur prend lumière douce,  x prend 506 + décallage, y prend 230, rayon prend 20, plein prend vrai
+	rond4 est un cercle, toile prend "ciel", couleur prend lumière douce,  x prend 506 + décallage, y prend 290, rayon prend 20, plein prend vrai
 	patron0 est un casier de nombres valant 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1
 	patron1 est un casier de nombres valant 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1
 	patron2 est un casier de nombres valant 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0
@@ -85,13 +85,13 @@ globale
 	l_image est un étiquette, texte prend "Utilisez le slider pour changer l'image", x prend 280, y prend 375
 	/*onglet radio*/
 	panneau_radio_0 est un panneau, x prend 200, y prend 20, couleurfond prend "gris perle", largeur prend 300, 
-			hauteur prend 350, visible prend "oui"
+			hauteur prend 350, visible prend vrai
 	panneau_radio_1 est un panneau, x prend 200, y prend 20, couleurfond prend "bleu fumée", largeur prend 300, 
-			hauteur prend 350, visible prend "non"
+			hauteur prend 350, visible prend faux
 	panneau_radio_2 est un panneau, x prend 200, y prend 20, couleurfond prend "platine", largeur prend 300, 
-			hauteur prend 350, visible prend "non"
+			hauteur prend 350, visible prend faux
 	panneau_radio_3 est un panneau, x prend 200, y prend 20, couleurfond prend "vanille", largeur prend 300, 
-			hauteur prend 350, visible prend "non"
+			hauteur prend 350, visible prend faux
 	liste est un liste, x prend 10, y prend 40
 	valeurs est un casier de texte valant "Pierre", "Paul", "Jacques", "Matthieu", "Jean", "Barnard", "Hugo"
 	boite_radio est un boite, x prend 10, y prend 240, largeur prend 200, hauteur prend 100
@@ -128,7 +128,7 @@ globale
 	champ1 est un champ, x prend 250, y prend 70, mode prend "lecture"
 	champ2 est un champ, x prend 250, y prend 100, mode prend "secret"
 	sousform est un sousformulaire, titre prend "Sousformulaire", largeur prend 400, hauteur prend 300, 
-			icône prend "medias/logo.png", visible prend "non"
+			icône prend "medias/logo.png", visible prend faux
 	l_sousform est un étiquette, texte prend "<html>
 			<h2>Le composant Sousformulaire</h2>
 			Le sousformulaire permet de créer des fenêtres modales.<br> 
@@ -161,20 +161,20 @@ globale
 	b_demarrer_im est un bouton, texte prend "Démarrer la discution", x prend 30, y prend 300
 	im_info est un étiquette, texte prend "Votre identifiant : ", x prend 5, y prend 10
 	im_login est un champ, x prend 150, y prend 5, texte prend "démonstration"
-	im_boite_titre est un étiquette, texte prend "Votre message : ", x prend 5, y prend 40, visible prend "non"//
-	im_boite est un boite,x prend 5, y prend 60, largeur prend 400, hauteur prend 160, visible prend "oui",
+	im_boite_titre est un étiquette, texte prend "Votre message : ", x prend 5, y prend 40, visible prend faux//
+	im_boite est un boite,x prend 5, y prend 60, largeur prend 400, hauteur prend 160, visible prend vrai,
 			 infobulle prend "[Contrôle]+[Entrée] pour envoyer le message"
 	im_b1 est un bouton, texte prend "<html><b><font color=red>Envoyer le message</font></b></html>", x prend 5, y prend 230, 
-				visible prend "oui"//
+				visible prend vrai//
 	im_tableau est un xtableau, x prend 5, y prend 280, largeur prend 700, hauteur prend 140
 	im_e_ip est un étiquette, texte prend "Serveur : ", x prend 5, y prend 455
 	im_c_ip est un champ, x prend 80, y prend 450, texte prend "langagelinotte.no-ip.org"
 	im_e_port est un étiquette, texte prend "Port : ", x prend 280, y prend 455
 	im_c_port est un champ, x prend 330, y prend 450, texte prend "7778", taille prend 5
 	im_connecter est un bouton, texte prend "<html><b><font color=red>Connecter</font></b></html>", x prend 410, y prend 450
-	im_amis est un étiquette, texte prend "Listes des messagers : ", x prend 550, y prend 10, visible prend "non"
-	im_scrolleur est un scrolleur, largeur prend 140, hauteur prend 240, x prend 550, y prend 30, visible prend "non"
-	im_liste est un liste, valeurs prend "", x prend 20, y prend 40, visible prend "non"
+	im_amis est un étiquette, texte prend "Listes des messagers : ", x prend 550, y prend 10, visible prend faux
+	im_scrolleur est un scrolleur, largeur prend 140, hauteur prend 240, x prend 550, y prend 30, visible prend faux
+	im_liste est un liste, valeurs prend "", x prend 20, y prend 40, visible prend faux
 
 genègraphe :
 	colonnes est un casier de texte valant "Prénom", "Nom", "Âge"
@@ -327,8 +327,8 @@ genègraphe :
 	fais réagir b_demarrer_im à "clic souris" pour demarrer im
 		/*********************************/
 		/*Affichage de tous les onglets :*/
-	visible@indicateur prend "non"
-	visible@onglet prend "oui"
+	visible@indicateur prend faux
+	visible@onglet prend vrai
 		/*Boucle infinie :*/
 	tant que vrai
 		temporise
@@ -448,26 +448,26 @@ affichage radio 1 :
 
 bouton radio sélectionné 1 :
 	*br est un boutonradio
-	visible@panneau_radio_0 prend "non"
-	visible@panneau_radio_1 prend "oui"
-	visible@panneau_radio_2 prend "non"
-	visible@panneau_radio_3 prend "non"
+	visible@panneau_radio_0 prend faux
+	visible@panneau_radio_1 prend vrai
+	visible@panneau_radio_2 prend faux
+	visible@panneau_radio_3 prend faux
 	reviens
 
 bouton radio sélectionné 2 :
 	*br est un boutonradio
-	visible@panneau_radio_0 prend "non"
-	visible@panneau_radio_1 prend "non"
-	visible@panneau_radio_2 prend "oui"
-	visible@panneau_radio_3 prend "non"
+	visible@panneau_radio_0 prend faux
+	visible@panneau_radio_1 prend faux
+	visible@panneau_radio_2 prend vrai
+	visible@panneau_radio_3 prend faux
 	reviens
 
 bouton radio sélectionné 3 :
 	*br est un boutonradio
-	visible@panneau_radio_0 prend "non"
-	visible@panneau_radio_1 prend "non"
-	visible@panneau_radio_2 prend "non"
-	visible@panneau_radio_3 prend "oui"
+	visible@panneau_radio_0 prend faux
+	visible@panneau_radio_1 prend faux
+	visible@panneau_radio_2 prend faux
+	visible@panneau_radio_3 prend vrai
 	reviens
 
 changer bouton :
@@ -541,12 +541,12 @@ changer icône :
 
 afficher sousformulaire :
 	*s est un bouton
-	visible@sousform prend "oui"
+	visible@sousform prend vrai
 	reviens
 
 cacher sousformulaire :
 	*s est un bouton
-	visible@sousform prend "non"
+	visible@sousform prend faux
 	reviens
 
 /*
@@ -567,8 +567,8 @@ demarrer im :
 	ferme
 	sinon
 			// Sans les greffons, ça ne peut pas marcher !
-		visible@s prend "oui"
-		visible@l_info_im prend "oui"
+		visible@s prend vrai
+		visible@l_info_im prend vrai
 		reviens
 	ferme
 	texte@im_login prend (client@serveur).nommachine()
@@ -618,8 +618,8 @@ attendre message :
 		ferme
 		sinon
 			affiche "Connexion perdue avec le serveur"
-			parcours changer affichage avec "oui", "non"
-			visible@im_connecter prend "oui"
+			parcours changer affichage avec vrai, faux
+			visible@im_connecter prend vrai
 			reviens
 		ferme
 	ferme
@@ -639,18 +639,18 @@ envoyer message :
 connexion :
 	port est un nombre
 	essaie
-		visible@im_connecter prend "non"
+		visible@im_connecter prend faux
 		convertis texte@im_c_port en port
 		(client@serveur).connexion(texte@im_c_ip, port)
 			//affiche "nous sommes connecté au serveur ..."
 		parcours version
 		parcours historique
 		appelle attendre message
-		parcours changer affichage avec "non", "oui"
+		parcours changer affichage avec faux, vrai
 	ferme
 	sinon
 		affiche "impossible de se connecter ..."
-		visible@im_connecter prend "oui"
+		visible@im_connecter prend vrai
 	ferme
 	reviens
 
@@ -669,8 +669,8 @@ déconnexion :
 	nom@message prend texte@im_login
 	commande@message prend "quitter"
 	(client@serveur).envoyer(message)
-	parcours changer affichage avec "oui", "non"
-	visible@im_connecter prend "oui"
+	parcours changer affichage avec vrai, faux
+	visible@im_connecter prend vrai
 	reviens
 
 changer affichage :

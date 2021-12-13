@@ -6,8 +6,8 @@ espèces
 globale
 	/*Vous pouvez modifier la taille du jeu :*/
 	zoom est un nombre valant 1
-	joueur1 est un palet,  plein prend "oui", rayon prend 5 * zoom, couleur prend "rouge", taille prend 1, y prend 80 * zoom, angle prend 45, position prend 2, attaque prend 45, sens prend 0
-	raquette est un rectangle, couleur prend "anthracite", hauteur prend 5 * zoom, largeur prend 26 * zoom, plein prend "oui",  x prend 10 * zoom, y prend 140 * zoom
+	joueur1 est un palet,  plein prend vrai, rayon prend 5 * zoom, couleur prend "rouge", taille prend 1, y prend 80 * zoom, angle prend 45, position prend 2, attaque prend 45, sens prend 0
+	raquette est un rectangle, couleur prend "anthracite", hauteur prend 5 * zoom, largeur prend 26 * zoom, plein prend vrai,  x prend 10 * zoom, y prend 140 * zoom
 	gameover est un nombre valant 0
 	briques est un casier de brique
 	démonstration est un nombre valant 0
@@ -252,7 +252,7 @@ Affichage :
 
 Niveau1 :
 	r  est un nombre valant 0
-	p est un brique, plein prend "oui", x prend -200, y prend -200, hauteur prend 10 * zoom, largeur prend 20 * zoom, position prend 2
+	p est un brique, plein prend vrai, x prend -200, y prend -200, hauteur prend 10 * zoom, largeur prend 20 * zoom, position prend 2
 	pouvoir  est un casier de texte valant "" ,"" ,"", ""
 	Projette p
 	De 0 à 9
@@ -265,7 +265,7 @@ Niveau1 :
 
 Niveau2 :
 	r  est un nombre valant 0
-	p est un brique, plein prend "oui", x prend -200, y prend -200, hauteur prend 10 * zoom, largeur prend 20 * zoom, position prend 2
+	p est un brique, plein prend vrai, x prend -200, y prend -200, hauteur prend 10 * zoom, largeur prend 20 * zoom, position prend 2
 	pouvoir  est un casier de texte valant "" ,"" ,"" ,"" ,  "" , "dur"
 	Projette p
 	De 0 à 9
@@ -278,7 +278,7 @@ Niveau2 :
 
 Niveau3 :
 	r  est un nombre valant 0
-	p est un brique, plein prend "oui", x prend -200, y prend -200, hauteur prend 10 * zoom, largeur prend 20 * zoom, position prend 2
+	p est un brique, plein prend vrai, x prend -200, y prend -200, hauteur prend 10 * zoom, largeur prend 20 * zoom, position prend 2
 	pouvoir  est un casier de texte valant "" ,"" ,"dur" ,"" ,  "dur" , "dur"
 	Projette p
 	De 0 à 9
@@ -292,7 +292,7 @@ Niveau3 :
 Niveau4 :
 	c  est un nombre valant 0
 	l  est un nombre valant 0
-	p est un brique, plein prend "oui", x prend -200, y prend -200, hauteur prend 10 * zoom, largeur prend 20 * zoom, position prend 2
+	p est un brique, plein prend vrai, x prend -200, y prend -200, hauteur prend 10 * zoom, largeur prend 20 * zoom, position prend 2
 	ligne1  est un casier de texte valant "dur" ,"" ,"" ,"", "" , "", "", "", "", "dur"
 	ligne2  est un casier de texte valant "" ,"dur" ,"" ,"", "" , "", "", "", "dur", ""
 	ligne3  est un casier de texte valant "" ,"" ,"dur" ,"", "" , "", "", "dur", "", ""
@@ -313,7 +313,7 @@ Niveau4 :
 Niveau5 :
 	c  est un nombre valant 0
 	l  est un nombre valant 0
-	p est un brique, plein prend "oui", x prend -200, y prend -200, hauteur prend 10 * zoom, largeur prend 20 * zoom, position prend 2
+	p est un brique, plein prend vrai, x prend -200, y prend -200, hauteur prend 10 * zoom, largeur prend 20 * zoom, position prend 2
 	ligne1  est un casier de texte valant "dur" ,"dur" ,"dur" ,"dur", "dur" , "dur", "dur", "dur", "dur", "dur"
 	ligne2  est un casier de texte valant "dur" ,"" ,"" ,"", "" , "", "", "", "", "dur"
 	lignes  est un casier de casier valant ligne1, ligne2, ligne2, ligne2, ligne2, ligne2, ligne2, ligne2,ligne2, ligne1,ligne1
@@ -333,7 +333,7 @@ Niveau5 :
 Niveau6 :
 	c  est un nombre valant 0
 	l  est un nombre valant 0
-	p  est un brique, plein prend "oui", x prend -200, y prend -200, hauteur prend 10 * zoom, largeur prend 10 * zoom, position prend 2
+	p  est un brique, plein prend vrai, x prend -200, y prend -200, hauteur prend 10 * zoom, largeur prend 10 * zoom, position prend 2
 	ligne1  est un casier de texte valant "dur" ,"vide" ,"dur" ,"vide", "dur" , "vide", "dur", "vide", "dur", "vide"
 	lignes  est un casier de casier valant ligne1, ligne1, ligne1, ligne1, ligne1, ligne1, ligne1, ligne1
 	Projette p
@@ -353,7 +353,7 @@ Niveau6 :
 Niveau7 :
 	c  est un nombre valant 0
 	l  est un nombre valant 0
-	p est un brique, plein prend "oui", x prend -200, y prend -200, hauteur prend 5 * zoom, largeur prend 5 * zoom, position prend 2
+	p est un brique, plein prend vrai, x prend -200, y prend -200, hauteur prend 5 * zoom, largeur prend 5 * zoom, position prend 2
 	ligne1  est un casier de texte valant "vide" ,"vide" ,"vide" ,"vide", "vide" , "vide", "vide", "vide", "vide", "vide"
 	ligne2  est un casier de texte valant "vide" ,"vide" ,"dur" ,"vide", "vide" , "vide", "vide", "vide", "dur", "vide"
 	lignes  est un casier de casier valant ligne1, ligne1, ligne1, ligne2, ligne1, ligne1, ligne1, ligne1
