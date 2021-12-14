@@ -26,9 +26,9 @@ Historique des versions :
 			posé de crayon prend "oui"
 			devient : 
 			posé de crayon prend vrai
-			plein de rectangle prend "oui"
+			plein de rectangle prend "non"
 			devient : 
-			plain de rectangle prend vrai
+			plain de rectangle prend faux
 
 *24/12/21 - Linotte 3.10
  -Correction : Regression sur l'utilisation du test contient lors d'un "si"
