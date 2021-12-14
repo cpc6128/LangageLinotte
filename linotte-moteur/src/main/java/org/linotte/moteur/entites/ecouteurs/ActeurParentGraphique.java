@@ -38,7 +38,7 @@ public class ActeurParentGraphique extends ActeurParent {
 
     // Optimisation :
     private interface Traitement {
-        void run(PrototypeGraphique eg, Object valeur);
+        void run(PrototypeGraphique eg, Object valeur) throws ErreurException;
     }
 
     private static final Map<String, Traitement> traitements = new HashMap<>();
@@ -126,8 +126,22 @@ public class ActeurParentGraphique extends ActeurParent {
         traitements.put("transparence", (eg, valeur) -> eg.transparence = ((BigDecimal) valeur).intValue() / 100f);
         traitements.put("couleur", (eg, valeur) -> eg.couleur = Couleur.retourneCouleur((String) valeur));
         traitements.put("rayon", (eg, valeur) -> eg.rayon = ((BigDecimal) valeur).doubleValue());
-        traitements.put("plein", (eg, valeur) -> eg.plein = ((BigDecimal) valeur).intValue() == 1);
-        traitements.put("visible", (eg, valeur) -> eg.visible = ((BigDecimal) valeur).intValue() == 1);
+        traitements.put("plein", (eg, valeur) -> {
+            try {
+                eg.plein = ((BigDecimal) valeur).intValue() == 1;
+            } catch (ClassCastException c) {
+                throw new ErreurException(Constantes.SYNTAXE_MINI_FORMULE, "La valeur attendue est vrai ou faux");
+            }
+        });
+        traitements.put("visible",
+                (eg, valeur) -> {
+                    try {
+                        eg.visible = ((BigDecimal) valeur).intValue() == 1;
+                    } catch (ClassCastException c) {
+                        throw new ErreurException(Constantes.SYNTAXE_MINI_FORMULE, "la valeur attendue est vrai ou faux");
+                    }
+                }
+        );
         traitements.put("x1", (eg, valeur) -> eg.x1 = ((BigDecimal) valeur).doubleValue());
         traitements.put("y1", (eg, valeur) -> eg.y1 = ((BigDecimal) valeur).doubleValue());
         traitements.put("x2", (eg, valeur) -> eg.x2 = ((BigDecimal) valeur).doubleValue());
@@ -136,9 +150,24 @@ public class ActeurParentGraphique extends ActeurParent {
         traitements.put("hauteur", (eg, valeur) -> eg.hauteur = ((BigDecimal) valeur).doubleValue());
         traitements.put("largeur", (eg, valeur) -> eg.largeur = ((BigDecimal) valeur).doubleValue());
         traitements.put("image", (eg, valeur) -> eg.image = (String) valeur);
-        traitements.put("pointe", (eg, valeur) -> eg.pointe = ((BigDecimal) valeur).intValue() == 1);
-        traitements.put("posé", (eg, valeur) -> eg.pose = ((BigDecimal) valeur).intValue() == 1);
-        traitements.put("collision", (eg, valeur) -> eg.collision = ((BigDecimal) valeur).intValue() == 1);
+        traitements.put("pointe", (eg, valeur) -> {
+            try {
+                eg.pointe = ((BigDecimal) valeur).intValue() == 1;
+            } catch (ClassCastException c) {
+                throw new ErreurException(Constantes.SYNTAXE_MINI_FORMULE, "la valeur attendue est vrai ou faux");
+            }
+        });
+        traitements.put("posé",
+                //TODO Envoyer erreur si "oui" ou "non" par vrai ou faux
+                (eg, valeur) -> eg.pose = ((BigDecimal) valeur).intValue() == 1
+        );
+        traitements.put("collision", (eg, valeur) -> {
+            try {
+                eg.collision = ((BigDecimal) valeur).intValue() == 1;
+            } catch (ClassCastException c) {
+                throw new ErreurException(Constantes.SYNTAXE_MINI_FORMULE, "la valeur attendue est vrai ou faux");
+            }
+        });
         traitements.put("texte", (eg, valeur) -> eg.texte = (String) valeur);
         traitements.put("police", (eg, valeur) -> eg.police = (String) valeur);
         traitements.put("position", (eg, valeur) -> {

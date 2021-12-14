@@ -257,7 +257,7 @@ public final class BibliothequeGreffons {
             attributs.put("positiontitre", new Attribut(TEXTE, "Gauche|Centre|Droite"));
             attributs.put("hauteurtitre", new Attribut(TEXTE, "Dessus haut|Centre haut|Dessous haut|Dessus bas|Centre bas|Dessous bas"));
             attributs.put("couleurtitre", new Attribut(TEXTE, ""));
-            attributs.put("bordure", new Attribut(TEXTE, "oui|non"));
+            attributs.put("bordure", new Attribut(NOMBRE, "1"));
             attributs.put("couleurbordure", new Attribut(TEXTE, ""));
             LinotteFacade.creationPrototype(attributs, new Panneau(), "panneau");
         }
