@@ -21,7 +21,14 @@ Historique des versions :
 -------------------------
 
 *03/01/22 - Linotte 3.11
- -Evolution : Il n'est plus possible d'utiliser "oui" ou "non", il faut remplacer par vrai ou faux (exemple : posé de crayon prend vrai)
+ -Evolution : Il n'est plus possible d'utiliser "oui" ou "non", il faut remplacer par vrai ou faux
+	exemples : 
+			posé de crayon prend "oui"
+			devient : 
+			posé de crayon prend vrai
+			plein de rectangle prend "oui"
+			devient : 
+			plain de rectangle prend vrai
 
 *24/12/21 - Linotte 3.10
  -Correction : Regression sur l'utilisation du test contient lors d'un "si"
