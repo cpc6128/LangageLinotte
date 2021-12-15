@@ -8,22 +8,24 @@
 
 Code source officiel du langage Linotte
 
-Linotte est un langage de programmation. 
-Entièrement en français, il offre un environnement simple, complet et pédagogique pour apprendre à programmer. 
+Linotte est un langage de programmation.
+Entièrement en français, il offre un environnement simple, complet et pédagogique pour apprendre à programmer.
 
 Vous voulez contribuer au projet ? N'hésitez pas à venir me rejoindre sur ce depôt.
 
 Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagelinotte.free.fr</a>
 
-#### Téléchargement de la dernière version 3.9, avec Java inclus (installation simplifiée) :
+#### Téléchargement de la dernière version 3.10, avec Java inclus (installation simplifiée) :
 
-- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.9/AtelierLinotte-3.9.dmg">Pour MacOS</a>
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.10/atelierlinotte_3.10-1_amd64.deb">Pour Ubuntu/Debian</a>
 
-- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.9/AtelierLinotte-3.9.msi">Pour Windows</a>
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.10/AtelierLinotte-3.10.msi">Pour Windows</a>
 
-#### Téléchargement de la dernière version 3.9, sans Java :
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.9/AtelierLinotte-3.9.dmg">Pour MacOS (Linotte 3.9)</a>
 
-- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.9/Linotte_3.9-2021-04-10-16-32.zip">Linotte_3.9.zip</a>
+#### Téléchargement de la dernière version 3.10, sans Java :
+
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.10/Linotte_3.10-2021-12-08-17-45.zip">Linotte_3.10.zip</a>
 
 - <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.5/Linotte_3.5-2020-11-18-15-10.zip">Linotte_3.5.zip (avec la 3D)</a>
 
@@ -31,17 +33,17 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
 
 - documentation en ligne : <a href="https://github.com/cpc6128/LangageLinotte/wiki">wiki</a>
 
-- c'est en projet, nous avons besoin d'aide ! 
+- c'est en projet, nous avons besoin d'aide !
 
 #### Pour contribuer à faire évoluer Linotte :
- `git clone https://github.com/cpc6128/LangageLinotte.git`
- 
- `cd LangageLinotte`
- 
- `mvn clean package`
- 
- `java -jar linotte-lanceur/target/Atelier.jar`
- 
+`git clone https://github.com/cpc6128/LangageLinotte.git`
+
+`cd LangageLinotte`
+
+`mvn clean package`
+
+`java -jar linotte-lanceur/target/Atelier.jar`
+
 #### Mes autres projets :
 
 - corunning.fr (trouver des partenaires sportifs) : <a href="https://www.corunning.fr">corunning.fr</a>
@@ -55,10 +57,10 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
 #### Pour les développeurs du langage :
 
 - Pour mac :
- jpackage --input . --main-jar Atelier.jar  --icon ../../linotte-resources/src/main/resources/linotte_hd.icns --app-version 3.8
+  jpackage --input . --main-jar Atelier.jar  --icon ../../linotte-resources/src/main/resources/linotte_hd.icns --app-version 3.8
 
 - Pour windows :
- jpackage --type msi --input . --main-jar Atelier.jar --icon ..\..\..\linotte-resources\src\main\resources\linotte_new.ico --app-version 3.8 --win-menu --file-associations ..\..\..\linotte-resources\src\main\resources\mime.txt --vendor CodeVallée
+  jpackage --type msi --input . --main-jar Atelier.jar --icon ..\..\..\linotte-resources\src\main\resources\linotte_new.ico --app-version 3.8 --win-menu --file-associations ..\..\..\linotte-resources\src\main\resources\mime.txt --vendor CodeVallée
 
 - Pour ubuntu :
   /usr/lib/jvm/jdk-17/bin/jpackage --input . --main-jar Atelier.jar  --icon ../../../linotte-resources/src/main/resources/linotte_new.png --app-version 3.10
