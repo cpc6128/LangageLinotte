@@ -363,7 +363,7 @@ public class Atelier extends AtelierFrame implements WindowListener {
 
     private void repertoireParDefaut() {
         File exemples = Ressources.getExemples(linotte.getLangage());
-        if (exemples.isDirectory()) {
+        if (exemples != null &&  exemples.isDirectory()) {
         } else {
             exemples = new File("/usr/share/langagelinotte/" + linotte.getLangage().getCheminExemple());
         }
