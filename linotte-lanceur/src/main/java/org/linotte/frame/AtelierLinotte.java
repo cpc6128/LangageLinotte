@@ -30,15 +30,12 @@ public class AtelierLinotte {
                 // Mode graphique
                 AtomicReference<SplashWindow> splashWindow1 = new AtomicReference<>();
                 if (Preference.getIntance().themeNoir()) {
-                    FlatDarculaLaf.install();
+                    FlatDarculaLaf.setup();
                     //UIManager.put("TabbedPane.selectedBackground", Color.darkGray.darker());
                 } else {
-                    FlatIntelliJLaf.install();
+                    FlatIntelliJLaf.setup();
                     //UIManager.put("TabbedPane.selectedBackground", Color.lightGray.darker());
                 }
-                //UIManager.put("JComponent.roundRect", true);
-                //UIManager.put("JButton.buttonType", "roundRect");
-                //UIManager.put("JTabbedPane.hideTabAreaWithOneTab", true);
                 if (Preference.getIntance().petitMenu())
                 	AbaqueAtelier.theme.setPetitMenu();
                 UIManager.put( "TitlePane.menuBarEmbedded", AbaqueAtelier.theme.petitmenu );
