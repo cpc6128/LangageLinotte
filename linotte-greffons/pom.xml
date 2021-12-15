@@ -33,40 +33,6 @@
             <version>3.4.1</version>
         </dependency>
 
-        <!-- Désactivation de la 3D car bogue sur certaines JVM -->
-        <!-- https://github.com/cpc6128/LangageLinotte/issues/13 -->
-
-        <dependency>
-            <groupId>org.jogamp.gluegen</groupId>
-            <artifactId>gluegen-rt-main</artifactId>
-            <version>2.3.2</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jogamp.jogl</groupId>
-            <artifactId>jogl-all-main</artifactId>
-            <version>2.3.2</version>
-            <scope>provided</scope>
-        </dependency>
-
-
-        <!-- https://mvnrepository.com/artifact/com.massisframework.j3d/java3d-core -->
-        <dependency>
-            <groupId>com.massisframework.j3d</groupId>
-            <artifactId>java3d-core</artifactId>
-            <version>1.6.0.1</version>
-            <scope>provided</scope>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.massisframework.j3d/vecmath -->
-        <dependency>
-            <groupId>com.massisframework.j3d</groupId>
-            <artifactId>vecmath</artifactId>
-            <version>1.6.0.1</version>
-            <scope>provided</scope>
-        </dependency>
-
-
-
     </dependencies>
 
     <build>

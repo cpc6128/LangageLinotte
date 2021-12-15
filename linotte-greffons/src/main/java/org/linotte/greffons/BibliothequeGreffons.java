@@ -4,10 +4,8 @@ import org.linotte.greffons.api.Greffon.Attribut;
 import org.linotte.greffons.impl.*;
 import org.linotte.greffons.impl.swing.*;
 import org.linotte.greffons.impl.swing.layout.Grille;
-import org.linotte.greffons.impl.xyz.*;
 import org.linotte.moteur.xml.Linotte;
 import org.linotte.moteur.xml.api.Librairie;
-import org.linotte.moteur.xml.Version;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,81 +29,9 @@ public final class BibliothequeGreffons {
 
         greffonsInternesAutres();
 
-        try {
-            greffons3D();
-        } catch (Throwable e) {
-            if (Version.isBeta()) {
-                e.printStackTrace();
-            }
-        }
-
     }
 
-    private void greffons3D() throws Exception {
-        {
-            Map<String, Attribut> attributs = new HashMap<String, Attribut>();
-            attributs.put("texte", new Attribut(TEXTE, "oups"));
-            attributs.put("police", new Attribut(TEXTE, "Helvetica"));
-            attributs.put("taille", new Attribut(NOMBRE, "1"));
-            attributs.put("couleur", new Attribut(TEXTE, "rouge"));
-            LinotteFacade.creationPrototype(attributs, new Texte3D(), "texte3d");
-        }
-        {
-            Map<String, Attribut> attributs = new HashMap<String, Attribut>();
-            attributs.put("x", new Attribut(NOMBRE, "100"));
-            attributs.put("y", new Attribut(NOMBRE, "100"));
-            attributs.put("largeur", new Attribut(NOMBRE, "300"));
-            attributs.put("hauteur", new Attribut(NOMBRE, "200"));
-            attributs.put("visible", new Attribut(NOMBRE, "1"));
-            LinotteFacade.creationPrototype(attributs, new Monde3D(), "monde3d");
-        }
-        {
-            Map<String, Attribut> attributs = new HashMap<String, Attribut>();
-            attributs.put("dx", new Attribut(NOMBRE, "0.5"));
-            attributs.put("dy", new Attribut(NOMBRE, "0.5"));
-            attributs.put("dz", new Attribut(NOMBRE, "0.5"));
-            attributs.put("couleur", new Attribut(TEXTE, "marron"));
-            attributs.put("transparence", new Attribut(NOMBRE, "1"));
-            attributs.put("texture", new Attribut(TEXTE, ""));
-            LinotteFacade.creationPrototype(attributs, new Boite3D(), "boite3d");
-        }
-        {
-            Map<String, Attribut> attributs = new HashMap<String, Attribut>();
-            LinotteFacade.creationPrototype(attributs, new Brouillard3D(), "brouillard3d");
-        }
-        {
-            Map<String, Attribut> attributs = new HashMap<String, Attribut>();
-            LinotteFacade.creationPrototype(attributs, new Lumiere3D(), "lumiere3d");
-        }
-        {
-            Map<String, Attribut> attributs = new HashMap<String, Attribut>();
-            attributs.put("fichier", new Attribut(TEXTE, ""));
-            LinotteFacade.creationPrototype(attributs, new Chargeur3D(), "chargeur3d");
-        }
-        {
-            Map<String, Attribut> attributs = new HashMap<String, Attribut>();
-            attributs.put("angle", new Attribut(NOMBRE, "0.5"));
-            attributs.put("couleur", new Attribut(TEXTE, "marron"));
-            attributs.put("hauteur", new Attribut(NOMBRE, "200"));
-            attributs.put("transparence", new Attribut(NOMBRE, "1"));
-            attributs.put("texture", new Attribut(TEXTE, ""));
-            LinotteFacade.creationPrototype(attributs, new Cone3D(), "cone3D");
-        }
-        {
-            Map<String, Attribut> attributs = new HashMap<String, Attribut>();
-            attributs.put("rayon", new Attribut(NOMBRE, "300"));
-            attributs.put("transparence", new Attribut(NOMBRE, "1"));
-            LinotteFacade.creationPrototype(attributs, new Cube3D(), "cube3d");
-        }
-        {
-            Map<String, Attribut> attributs = new HashMap<String, Attribut>();
-            attributs.put("rayon", new Attribut(NOMBRE, "0.5"));
-            attributs.put("couleur", new Attribut(TEXTE, "marron"));
-            attributs.put("transparence", new Attribut(NOMBRE, "1"));
-            attributs.put("texture", new Attribut(TEXTE, ""));
-            LinotteFacade.creationPrototype(attributs, new Sphere3D(), "sphere3d");
-        }
-    }
+
 
     /**
      * @throws Exception

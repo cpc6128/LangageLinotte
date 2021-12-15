@@ -48,7 +48,6 @@ import org.linotte.moteur.xml.alize.parseur.XMLIterator;
 import org.linotte.moteur.xml.alize.parseur.a.NExpression;
 import org.linotte.moteur.xml.alize.parseur.a.Noeud;
 import org.linotte.moteur.xml.analyse.multilangage.Langage;
-import org.linotte.web.Run;
 import org.w3c.dom.Element;
 
 import javax.swing.*;
@@ -106,7 +105,6 @@ public class Atelier extends AtelierFrame implements WindowListener {
     /**
      * Crée un nouvel atelier Linotte
      *
-     * @param nom Le titre de la fenêtre, usuellement "Atelier Linotte"
      */
     public Atelier() {
         super();
@@ -565,7 +563,6 @@ public class Atelier extends AtelierFrame implements WindowListener {
             if (null != Preference.getIntance().getProperty(Preference.P_WEBONOTTE_DIR)) {
                 root = Preference.getIntance().getProperty(Preference.P_WEBONOTTE_DIR);
             }
-            Run.runStandEmbededServer("jetty", "Webonotte", linotte.getLibrairie(), port_webonotte, new File(root));
         } catch (Throwable e) {
             if (Version.isBeta())
                 e.printStackTrace();
