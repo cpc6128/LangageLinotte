@@ -29,6 +29,7 @@ Historique des versions :
 			plein de rectangle prend "non"
 			devient : 
 			plain de rectangle prend faux
+ -Correction : Suppression de la 3D et du serveur Webonotte.
 
 *24/12/21 - Linotte 3.10
  -Correction : Regression sur l'utilisation du test contient lors d'un "si"
