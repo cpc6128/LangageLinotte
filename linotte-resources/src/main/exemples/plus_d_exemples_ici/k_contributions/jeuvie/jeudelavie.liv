@@ -34,7 +34,7 @@ simulation :
 			largeur de carre = 9
 			hauteur de carre = 9
 			couleur de carre = "étain oxydé"
-			plein de carre = "oui"
+			plein de carre = vrai
 			projette carre
 			n = n + 10
 			si n > 549

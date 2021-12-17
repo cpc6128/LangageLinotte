@@ -27,7 +27,7 @@ public class SousMenu extends ComposantSwing {
 			menu.setVisible(isVisible());
 			return;
 		}
-		setVisible(getAttributeAsString("visible").equals("oui"));
+		setVisible(getAttributeAsBigDecimal("visible").intValue()==1);
 
 		String texte = getAttributeAsString("texte");
 		String icone = getAttributeAsString("icône");

@@ -130,7 +130,7 @@ affichage niveau :
 	hauteur est un nombre valant niveau{1}
 	hauteur temporaire est un nombre
 	position est un nombre valant 2
-	image fond est un rectangle, couleur prend "noir", plein prend "oui"
+	image fond est un rectangle, couleur prend "noir", plein prend vrai
 	bug est un nombre
 	largeur prend niveau{0}
 		largeur@image fond prend largeur * taille

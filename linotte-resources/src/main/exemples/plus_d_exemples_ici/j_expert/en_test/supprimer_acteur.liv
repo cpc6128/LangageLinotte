@@ -1,5 +1,5 @@
 principal :
-	cercle est un cercle, x prend 100, y prend 100, plein prend "non", rayon prend 1, taille prend 2
+	cercle est un cercle, x prend 100, y prend 100, plein prend faux, rayon prend 1, taille prend 2
 		projette cercle
 		attends 3 secondes
 		Annihile cercle

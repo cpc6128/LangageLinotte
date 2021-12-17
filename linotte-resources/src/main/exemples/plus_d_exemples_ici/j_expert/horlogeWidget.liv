@@ -9,10 +9,10 @@ globale
 	rayon heure est un nombre 
 
 Principal :
-	cadre est un cercle,  x prend 60, y prend 60, couleur prend "lapis-lazuli", plein prend "oui", rayon prend 50, transparence prend 0,position prend 2
-	contour est un cercle,  x prend 60, y prend 60, couleur prend "rose mountbatten", plein prend "non", rayon prend 54-60, transparence prend 70,position prend 1, taille prend 5
-	centre est un cercle,  x prend 60, y prend 60, couleur prend "anthracite", plein prend "oui", rayon prend 5, transparence prend 90,position prend 5
-	fond est une toile, bordure prend "non" ,  audessus prend "oui",x prend ecranh-140, y prend ecranv-160, largeur prend 120, hauteur prend 140 ,	pointeur prend "main"
+	cadre est un cercle,  x prend 60, y prend 60, couleur prend "lapis-lazuli", plein prend vrai, rayon prend 50, transparence prend 0,position prend 2
+	contour est un cercle,  x prend 60, y prend 60, couleur prend "rose mountbatten", plein prend faux, rayon prend 54-60, transparence prend 70,position prend 1, taille prend 5
+	centre est un cercle,  x prend 60, y prend 60, couleur prend "anthracite", plein prend vrai, rayon prend 5, transparence prend 90,position prend 5
+	fond est une toile, bordure prend faux ,  audessus prend vrai,x prend ecranh-140, y prend ecranv-160, largeur prend 120, hauteur prend 140 ,	pointeur prend "main"
 	a_heure est un ligne, transparence prend 90, taille prend 4, couleur prend "chocolat",  x1 prend 60,  y1 prend 60, x2 prend 60, y2 prend 60, position prend 3
 	a_minute est un ligne, transparence prend 90, taille prend 2, couleur prend "rouge ponceau",  x1 prend 60, y1 prend 60, x2 prend 60, y2 prend 60, position prend 3
 	a_seconde est un ligne, transparence prend 90, taille prend 1, couleur prend "gris de lin",  x1 prend 60, y1 prend 60, x2 prend 60, y2 prend 60, position prend 2

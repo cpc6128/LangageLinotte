@@ -2,8 +2,8 @@ espèces
 	copie_x & copie_y est un nombre
 	espèce rectangledng hérite de rectangle et contient copie_x , copie_y
 globale
-	centre est un cercle,  x prend 311, y prend 285, couleur prend "rouge", plein prend "oui", rayon prend 50
-	boule est un rectangledng,  largeur prend 40, hauteur prend 20, couleur prend "noir", plein prend "oui"
+	centre est un cercle,  x prend 311, y prend 285, couleur prend "rouge", plein prend vrai, rayon prend 50
+	boule est un rectangledng,  largeur prend 40, hauteur prend 20, couleur prend "noir", plein prend vrai
 	fond est une toile, couleur prend "blanc"
 
 principale :

@@ -29,7 +29,6 @@ import org.linotte.frame.gui.RequestFocusListener;
 import org.linotte.frame.latoile.Java6;
 import org.linotte.frame.projet.NavigateurFichier.FileTreeNode;
 import org.linotte.moteur.outils.Ressources;
-import org.linotte.web.Run;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
@@ -37,6 +36,7 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseWheelEvent;
 import java.io.File;
 import java.net.URI;
 
@@ -143,7 +143,7 @@ public class ExplorateurProjet extends JXTaskPaneContainer {
                     box_squelette.setEnabled(false);
                     JPanel jPanel = new JPanel();
                     JLabel lsquelette;
-                    jPanel.add(lsquelette =  new JLabel("Squelette du livre : "));
+                    jPanel.add(lsquelette = new JLabel("Squelette du livre : "));
                     lsquelette.setEnabled(false);
                     jPanel.add(box_squelette);
                     panel_options.add(jPanel);
@@ -288,7 +288,23 @@ public class ExplorateurProjet extends JXTaskPaneContainer {
         taskTutorial.setTitle("Tutoriel");
         taskTutorial.setIcon(Ressources.getImageTheme("TUTO", 20));
         NavigateurFichier fileTreePanel = new NavigateurFichier(view, exemples, taskTutorial, atelier, false);
-        taskTutorial.add(new JScrollPane(fileTreePanel, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED));
+
+        // https://stackoverflow.com/questions/12911506/why-jscrollpane-does-not-react-to-mouse-wheel-events
+        JScrollPane scrollPane = new JScrollPane(fileTreePanel, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED) {
+            @Override
+            protected void processMouseWheelEvent(MouseWheelEvent e) {
+                if (!isWheelScrollingEnabled()) {
+                    if (getParent() != null)
+                        getParent().dispatchEvent(
+                                SwingUtilities.convertMouseEvent(this, e, getParent()));
+                    return;
+                }
+                super.processMouseWheelEvent(e);
+            }
+        };
+        scrollPane.setWheelScrollingEnabled(false);
+
+        taskTutorial.add(scrollPane);
         //tutoriels.put(Atelier.linotte.getLangage(), fileTreePanel);
         taskTutorial.setVisible(exemples.exists());
         return taskTutorial;
@@ -366,26 +382,6 @@ public class ExplorateurProjet extends JXTaskPaneContainer {
                 try {
                     final URI forum = new URI("https://github.com/cpc6128/LangageLinotte/wiki");
                     Java6.getDesktop().browse(forum);
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
-            }
-        });
-
-        task.add(new AbstractAction() {
-            {
-                putValue(Action.NAME, "Serveur Web");
-                putValue(Action.SMALL_ICON, Ressources.getImageTheme("LINK", 16));
-            }
-
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    if (Run.PORT > 0) {
-                        final URI forum = new URI("http://localhost:" + Run.PORT + "/notice");
-                        Java6.getDesktop().browse(forum);
-                    } else {
-                        JOptionPane.showMessageDialog(atelier, "Le serveur HTTP n'a pas démarré !");
-                    }
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }

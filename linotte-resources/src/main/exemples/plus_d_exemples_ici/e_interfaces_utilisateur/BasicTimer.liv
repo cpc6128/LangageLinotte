@@ -26,14 +26,14 @@ Minuteur :
 	convertis valeur@s1 en temps
 	temps prend temps * 60
 	/*On cache la fenêtre le temps de l'attente :*/
-	visible@form prend "non"
+	visible@form prend faux
 	/*Minuterie :*/
 	Attends temps secondes
 	/*L'attente est terminée, on prévient avec un son et...*/
 	Joue "http://www.arobase.org/sons/sons/bell.wav"
 	textes {aléatoire(max)} !
 	/*On réaffiche la fenêtre :*/
-	visible@form prend "oui"
+	visible@form prend vrai
 	Reviens
 
 Aléatoire :

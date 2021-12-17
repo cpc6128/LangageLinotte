@@ -49,7 +49,7 @@ public class GestionDesGreffons {
      * @param linotte
      */
     public static void initGreffons(Librairie<?> lib, Linotte linotte) {
-        Acteur visible = new Acteur(null, "visible", Role.TEXTE, "non", null);
+        Acteur visible = new Acteur(null, "visible", Role.NOMBRE, new BigDecimal(0), null);
         Acteur position = new Acteur(null, "position", Role.NOMBRE, new BigDecimal(0), null);
         Acteur attributtoile = new Acteur(null, "toile", Role.TEXTE, null, null);
         final LaToile toile = null;

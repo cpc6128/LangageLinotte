@@ -1,5 +1,5 @@
 globale
-	ver est un crayon, couleur prend "vert mousse", x prend 200, y prend 200, taille prend 5, pointe prend "non", collision prend "oui"
+	ver est un crayon, couleur prend "vert mousse", x prend 200, y prend 200, taille prend 5, pointe prend faux, collision prend vrai
 	lièvre est un point, couleur prend "noir", x prend 200, y prend 200, taille prend 3
 	score est un nombre valant 0
 	message est un graffiti, x prend 20, y prend 60 , taille prend 20, couleur prend "noir", transparence prend 50
@@ -22,7 +22,7 @@ Go :
 	efface aide
 	projette message & ver & lièvre
 	tant que fin != 1
-		posé de ver prend "oui"
+		posé de ver prend vrai
 		ancien x prend x de lièvre
 		ancien y prend y de lièvre
 		si sens == 0, x de lièvre prend x de lièvre + 5
@@ -31,19 +31,19 @@ Go :
 		sinon y de lièvre prend y de lièvre - 5
 		si (x de lièvre) > 590
 			x de lièvre prend 5
-			posé de ver prend "non"
+			posé de ver prend faux
 		ferme
 		sinon si (x de lièvre) < 5
 			x de lièvre prend 590
-			posé  de ver prend "non"
+			posé  de ver prend faux
 		ferme
 		si (y de lièvre) > 580
 			y de lièvre prend 10
-			posé de ver prend "non"
+			posé de ver prend faux
 		ferme
 		sinon si (y de lièvre) < 10
 			y de lièvre prend 580
-			posé  de ver prend "non"
+			posé  de ver prend faux
 		ferme
 		si lièvre.collision(ver)
 			fin prend 1

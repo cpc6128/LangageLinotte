@@ -5,10 +5,10 @@ globale
 	zoneh valant 4
 	fond est une toile, hauteur prend 500, largeur prend 500
 	ligne est un ligne, transparence prend 50, taille prend 1, couleur prend "sable", y1 prend 0, y2 prend 500
-	crayon est un crayon, couleur prend "rouge",pointe prend "non"
+	crayon est un crayon, couleur prend "rouge",pointe prend faux
 
 dessine :
-	verre est un cercle, transparence prend 50, taille prend 10, couleur prend "gris acier", rayon prend 25, plein prend "non"
+	verre est un cercle, transparence prend 50, taille prend 10, couleur prend "gris acier", rayon prend 25, plein prend faux
 	tige est un ligne, transparence prend 50, taille prend 10, couleur prend "queue-de-vache clair", x1 prend -60, x2 prend -25, y1 prend -60, y2 prend -25
 	loupe est un mégalithe, transparence prend 50
 	fusionne verre & tige dans loupe

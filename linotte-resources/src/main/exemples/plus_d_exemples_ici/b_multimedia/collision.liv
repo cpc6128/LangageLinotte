@@ -1,5 +1,5 @@
-centre est un cercle,  x prend 311, y prend 285, couleur prend "rouge", plein prend "oui", rayon prend 50
-boule est un rectangle,  largeur prend 40, hauteur prend 20, couleur prend "noir", plein prend "oui"
+centre est un cercle,  x prend 311, y prend 285, couleur prend "rouge", plein prend vrai, rayon prend 50
+boule est un rectangle,  largeur prend 40, hauteur prend 20, couleur prend "noir", plein prend vrai
 salle est une toile, couleur prend "blanc"
 
 efface toile

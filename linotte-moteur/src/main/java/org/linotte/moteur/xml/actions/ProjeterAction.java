@@ -33,6 +33,8 @@ import org.linotte.moteur.xml.alize.kernel.Job;
 import org.linotte.moteur.xml.alize.kernel.i.IProduitCartesien;
 import org.linotte.moteur.xml.analyse.ItemXML;
 
+import java.math.BigDecimal;
+
 public class ProjeterAction extends Action implements IProduitCartesien {
 
 	public ProjeterAction() {
@@ -67,12 +69,12 @@ public class ProjeterAction extends Action implements IProduitCartesien {
 
 			PrototypeGraphique eg = (PrototypeGraphique) e;
 
-			eg.retourneAttribut("visible").setValeur("oui");
+			eg.retourneAttribut("visible").setValeur(new BigDecimal(1));
 
 			// Si c'est la toile :
 			if (eg.getType().equals("toile")) {
 
-				if ("non".equals(eg.retourneAttribut("principale").getValeur())) {
+				if (BigDecimal.ZERO == eg.retourneAttribut("principale").getValeur()) {
 					// Création d'une nouvelle toile
 				} else {
 					eg.getToile().getPanelLaToile().addActeursAAfficher(eg, false);

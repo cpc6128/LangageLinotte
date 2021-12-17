@@ -15,7 +15,7 @@ commencer :
 	*pas est un nombre
 	projette tortue
 	parcours flocon avec tortue, 200, pas
-	pointe @ tortue prend "non"
+	pointe @ tortue prend faux
 	reviens
 
 flocon :

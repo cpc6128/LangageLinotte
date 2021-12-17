@@ -23,7 +23,7 @@ public class Champ extends ComposantDeplacable {
 			return;
 		}
 		final String mode = getAttributeAsString("mode");
-		setVisible(getAttributeAsString("visible").equals("oui"));
+		setVisible(getAttributeAsBigDecimal("visible").intValue()==1);
 		String texte = getAttributeAsString("texte");
 		if ("secret".equals(mode)) {
 			champ = new JPasswordField(texte);

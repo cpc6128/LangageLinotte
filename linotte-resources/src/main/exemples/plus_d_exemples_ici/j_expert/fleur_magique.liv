@@ -11,7 +11,7 @@
 globale
 	echelle est un nombre valant 700
 	fond est une toile, couleur prend "noir", largeur prend echelle, hauteur prend echelle
-	tortue est un crayon, pointe prend "non", taille prend 1
+	tortue est un crayon, pointe prend faux, taille prend 1
 	cache1 & cache2 & cache3 est un casier de nombres
 
 Animation :

@@ -23,7 +23,7 @@ public class SwingToile extends ComposantDeplacable {
 			super.initEvenement();
 			return;
 		}
-		setVisible(getAttributeAsString("visible").equals("oui"));
+		setVisible(getAttributeAsBigDecimal("visible").intValue()==1);
 		// Position :
 		x = getAttributeAsBigDecimal("x").intValue();
 		y = getAttributeAsBigDecimal("y").intValue();

@@ -8,8 +8,8 @@
 
 Code source officiel du langage Linotte
 
-Linotte est un langage de programmation. 
-Entièrement en français, il offre un environnement simple, complet et pédagogique pour apprendre à programmer. 
+Linotte est un langage de programmation.
+Entièrement en français, il offre un environnement simple, complet et pédagogique pour apprendre à programmer.
 
 Vous voulez contribuer au projet ? N'hésitez pas à venir me rejoindre sur ce depôt.
 
@@ -33,17 +33,17 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
 
 - documentation en ligne : <a href="https://github.com/cpc6128/LangageLinotte/wiki">wiki</a>
 
-- c'est en projet, nous avons besoin d'aide ! 
+- c'est en projet, nous avons besoin d'aide !
 
 #### Pour contribuer à faire évoluer Linotte :
- `git clone https://github.com/cpc6128/LangageLinotte.git`
- 
- `cd LangageLinotte`
- 
- `mvn clean package`
- 
- `java -jar linotte-lanceur/target/Atelier.jar`
- 
+`git clone https://github.com/cpc6128/LangageLinotte.git`
+
+`cd LangageLinotte`
+
+`mvn clean package`
+
+`java -jar linotte-lanceur/target/Atelier.jar`
+
 #### Mes autres projets :
 
 - corunning.fr (trouver des partenaires sportifs) : <a href="https://www.corunning.fr">corunning.fr</a>
@@ -57,10 +57,10 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
 #### Pour les développeurs du langage :
 
 - Pour mac :
- jpackage --input . --main-jar Atelier.jar  --icon ../../linotte-resources/src/main/resources/linotte_hd.icns --app-version 3.8
+  jpackage --input . --main-jar Atelier.jar  --icon ../../linotte-resources/src/main/resources/linotte_hd.icns --app-version 3.8
 
 - Pour windows :
- jpackage --type msi --input . --main-jar Atelier.jar --icon ..\..\..\linotte-resources\src\main\resources\linotte_new.ico --app-version 3.8 --win-menu --file-associations ..\..\..\linotte-resources\src\main\resources\mime.txt --vendor CodeVallée
+  jpackage --type msi --input . --main-jar Atelier.jar --icon ..\..\..\linotte-resources\src\main\resources\linotte_new.ico --app-version 3.8 --win-menu --file-associations ..\..\..\linotte-resources\src\main\resources\mime.txt --vendor CodeVallée
 
 - Pour ubuntu :
   /usr/lib/jvm/jdk-17/bin/jpackage --input . --main-jar Atelier.jar  --icon ../../../linotte-resources/src/main/resources/linotte_new.png --app-version 3.10

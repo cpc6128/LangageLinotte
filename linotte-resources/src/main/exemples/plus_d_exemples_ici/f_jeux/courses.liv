@@ -3,9 +3,9 @@ espèces
 	modèle est un texte
 	espèce voiture hérite de rectangle et contient vitesse, modèle
 globale
-	v1 est un voiture, modèle prend "Renault", x prend 50, y prend 35, plein prend "oui", couleur prend "rouge", hauteur prend 7, largeur prend 15
-	v2 est un voiture, modèle prend "Peugeot", x prend 50, y prend 65, plein prend "oui", couleur prend "vert", hauteur prend 7, largeur prend 15
-	v3 est un voiture, modèle prend "BMW", x prend 50, y prend 95, plein prend "oui", couleur prend "bleu", hauteur prend 7, largeur prend 15
+	v1 est un voiture, modèle prend "Renault", x prend 50, y prend 35, plein prend vrai, couleur prend "rouge", hauteur prend 7, largeur prend 15
+	v2 est un voiture, modèle prend "Peugeot", x prend 50, y prend 65, plein prend vrai, couleur prend "vert", hauteur prend 7, largeur prend 15
+	v3 est un voiture, modèle prend "BMW", x prend 50, y prend 95, plein prend vrai, couleur prend "bleu", hauteur prend 7, largeur prend 15
 	piste est une toile, couleur prend "blanc"
 	arrivée est une ligne, couleur prend "noir", transparence prend 80, x1 prend 560, x2 prend 560, y1 prend 30, y2 prend 120
 	max est un nombre valant 5

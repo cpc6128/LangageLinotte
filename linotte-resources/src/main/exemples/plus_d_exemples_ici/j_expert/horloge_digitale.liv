@@ -3,18 +3,18 @@ globale
 	lumière douce valant "oscuro"
 	lumière clair valant "menthe à l'eau"
 	décallage valant -95
-	élément v est un polygone, couleur prend lumière douce, plein prend "oui", x prend 0, y prend 0, dx1 prend 10 ,dy1 prend -10, dx2 prend 20 ,dy2 prend 0, dx3 prend 20 ,dy3 prend 40, dx4 prend 10 ,dy4 prend 50,  dx5 prend 0 ,dy5 prend 40
-	élément h est un polygone, couleur prend lumière douce, plein prend "oui", x prend 0, y prend 0, dx1 prend 10 ,dy1 prend -10, dx2 prend 38 ,dy2 prend -10, dx3 prend 48 ,dy3 prend 0, dx4 prend 38 ,dy4 prend 10,  dx5 prend 10 ,dy5 prend 10
+	élément v est un polygone, couleur prend lumière douce, plein prend vrai, x prend 0, y prend 0, dx1 prend 10 ,dy1 prend -10, dx2 prend 20 ,dy2 prend 0, dx3 prend 20 ,dy3 prend 40, dx4 prend 10 ,dy4 prend 50,  dx5 prend 0 ,dy5 prend 40
+	élément h est un polygone, couleur prend lumière douce, plein prend vrai, x prend 0, y prend 0, dx1 prend 10 ,dy1 prend -10, dx2 prend 38 ,dy2 prend -10, dx3 prend 48 ,dy3 prend 0, dx4 prend 38 ,dy4 prend 10,  dx5 prend 10 ,dy5 prend 10
 	chiffre1 est un casier de polygone
 	chiffre2 est un casier de polygone
 	chiffre3 est un casier de polygone
 	chiffre4 est un casier de polygone
 	chiffre5 est un casier de polygone
 	chiffre6 est un casier de polygone
-	rond1 est un cercle, couleur prend lumière douce, x prend 285 + décallage, y prend 230, rayon prend 20, plein prend "oui"
-	rond2 est un cercle, couleur prend lumière douce, x prend 285 + décallage, y prend 290, rayon prend 20, plein prend "oui"
-	rond3 est un cercle, couleur prend lumière douce, x prend 506 + décallage, y prend 230, rayon prend 20, plein prend "oui"
-	rond4 est un cercle, couleur prend lumière douce, x prend 506 + décallage, y prend 290, rayon prend 20, plein prend "oui"
+	rond1 est un cercle, couleur prend lumière douce, x prend 285 + décallage, y prend 230, rayon prend 20, plein prend vrai
+	rond2 est un cercle, couleur prend lumière douce, x prend 285 + décallage, y prend 290, rayon prend 20, plein prend vrai
+	rond3 est un cercle, couleur prend lumière douce, x prend 506 + décallage, y prend 230, rayon prend 20, plein prend vrai
+	rond4 est un cercle, couleur prend lumière douce, x prend 506 + décallage, y prend 290, rayon prend 20, plein prend vrai
 	vitre est une toile, couleur prend "noir"
 	patron0 valant 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1
 	patron1 valant 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1

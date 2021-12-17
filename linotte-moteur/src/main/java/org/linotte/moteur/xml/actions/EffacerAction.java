@@ -31,6 +31,8 @@ import org.linotte.moteur.xml.alize.kernel.Job;
 import org.linotte.moteur.xml.alize.kernel.i.IProduitCartesien;
 import org.linotte.moteur.xml.analyse.ItemXML;
 
+import java.math.BigDecimal;
+
 public class EffacerAction extends Action implements IProduitCartesien {
 
 	public EffacerAction() {
@@ -56,7 +58,7 @@ public class EffacerAction extends Action implements IProduitCartesien {
 
 		PrototypeGraphique eg = (PrototypeGraphique) e;
 
-		eg.retourneAttribut("visible").setValeur("non");
+		eg.retourneAttribut("visible").setValeur(BigDecimal.ZERO);
 
 		if (eg.getTypeGraphique().equals(PrototypeGraphique.TYPE_GRAPHIQUE.CRAYON)) {
 			eg.setObject(null);

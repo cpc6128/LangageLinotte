@@ -16,7 +16,7 @@ globale
 	ombre est un ombre, largeur prend largeur_piece, 
 										hauteur prend largeur_piece, 
 										couleur prend "jaune",
-										plein prend "oui", 
+										plein prend vrai,
 										transparence prend 10, 
 										valide prend vrai, 
 										position prend 1
@@ -51,7 +51,7 @@ affichage du support :
 	support est un rectangle,	largeur prend largeur_piece * 8, 
 													hauteur prend largeur_piece * 8, 
 													couleur prend "mastic", 
-													plein prend "oui", 
+													plein prend vrai,
 													position prend 0
 	image est une pièce, image prend "pieces.png", position prend 2
 	position est un nombre
@@ -114,7 +114,7 @@ activer ombre : pièce
 	vérification valant faux
 	différent valant faux
 	projette ombre
-	tant que (visible de ombre) = "oui"
+	tant que (visible de ombre) = vrai
 		temporise
 		vide touches
 		vérification prend faux

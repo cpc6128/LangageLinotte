@@ -106,7 +106,7 @@ public class ScribeRecepteur implements Recepteur {
 
 	public boolean isActif() {
 		try {
-			if (actif && "oui".equalsIgnoreCase((String) especeGraphique.retourneAttribut("visible").getValeur())) {
+			if (actif && 1 == ((BigDecimal) especeGraphique.retourneAttribut("visible").getValeur()).intValue()) {
 				return true;
 			}
 		} catch (ErreurException e) {

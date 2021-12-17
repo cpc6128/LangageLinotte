@@ -21,7 +21,7 @@ public class MenuBouton extends ComposantSwing {
 			return;
 		}
 
-		setVisible(getAttributeAsString("visible").equals("oui"));
+		setVisible(getAttributeAsBigDecimal("visible").intValue()==1);
 
 		String texte = getAttributeAsString("texte");
 		button = new JButton(texte);

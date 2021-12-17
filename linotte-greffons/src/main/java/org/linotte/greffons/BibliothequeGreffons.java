@@ -4,10 +4,8 @@ import org.linotte.greffons.api.Greffon.Attribut;
 import org.linotte.greffons.impl.*;
 import org.linotte.greffons.impl.swing.*;
 import org.linotte.greffons.impl.swing.layout.Grille;
-import org.linotte.greffons.impl.xyz.*;
 import org.linotte.moteur.xml.Linotte;
 import org.linotte.moteur.xml.api.Librairie;
-import org.linotte.moteur.xml.Version;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,81 +29,9 @@ public final class BibliothequeGreffons {
 
         greffonsInternesAutres();
 
-        try {
-            greffons3D();
-        } catch (Throwable e) {
-            if (Version.isBeta()) {
-                e.printStackTrace();
-            }
-        }
-
     }
 
-    private void greffons3D() throws Exception {
-        {
-            Map<String, Attribut> attributs = new HashMap<String, Attribut>();
-            attributs.put("texte", new Attribut(TEXTE, "oups"));
-            attributs.put("police", new Attribut(TEXTE, "Helvetica"));
-            attributs.put("taille", new Attribut(NOMBRE, "1"));
-            attributs.put("couleur", new Attribut(TEXTE, "rouge"));
-            LinotteFacade.creationPrototype(attributs, new Texte3D(), "texte3d");
-        }
-        {
-            Map<String, Attribut> attributs = new HashMap<String, Attribut>();
-            attributs.put("x", new Attribut(NOMBRE, "100"));
-            attributs.put("y", new Attribut(NOMBRE, "100"));
-            attributs.put("largeur", new Attribut(NOMBRE, "300"));
-            attributs.put("hauteur", new Attribut(NOMBRE, "200"));
-            attributs.put("visible", new Attribut(TEXTE, "oui"));
-            LinotteFacade.creationPrototype(attributs, new Monde3D(), "monde3d");
-        }
-        {
-            Map<String, Attribut> attributs = new HashMap<String, Attribut>();
-            attributs.put("dx", new Attribut(NOMBRE, "0.5"));
-            attributs.put("dy", new Attribut(NOMBRE, "0.5"));
-            attributs.put("dz", new Attribut(NOMBRE, "0.5"));
-            attributs.put("couleur", new Attribut(TEXTE, "marron"));
-            attributs.put("transparence", new Attribut(NOMBRE, "1"));
-            attributs.put("texture", new Attribut(TEXTE, ""));
-            LinotteFacade.creationPrototype(attributs, new Boite3D(), "boite3d");
-        }
-        {
-            Map<String, Attribut> attributs = new HashMap<String, Attribut>();
-            LinotteFacade.creationPrototype(attributs, new Brouillard3D(), "brouillard3d");
-        }
-        {
-            Map<String, Attribut> attributs = new HashMap<String, Attribut>();
-            LinotteFacade.creationPrototype(attributs, new Lumiere3D(), "lumiere3d");
-        }
-        {
-            Map<String, Attribut> attributs = new HashMap<String, Attribut>();
-            attributs.put("fichier", new Attribut(TEXTE, ""));
-            LinotteFacade.creationPrototype(attributs, new Chargeur3D(), "chargeur3d");
-        }
-        {
-            Map<String, Attribut> attributs = new HashMap<String, Attribut>();
-            attributs.put("angle", new Attribut(NOMBRE, "0.5"));
-            attributs.put("couleur", new Attribut(TEXTE, "marron"));
-            attributs.put("hauteur", new Attribut(NOMBRE, "200"));
-            attributs.put("transparence", new Attribut(NOMBRE, "1"));
-            attributs.put("texture", new Attribut(TEXTE, ""));
-            LinotteFacade.creationPrototype(attributs, new Cone3D(), "cone3D");
-        }
-        {
-            Map<String, Attribut> attributs = new HashMap<String, Attribut>();
-            attributs.put("rayon", new Attribut(NOMBRE, "300"));
-            attributs.put("transparence", new Attribut(NOMBRE, "1"));
-            LinotteFacade.creationPrototype(attributs, new Cube3D(), "cube3d");
-        }
-        {
-            Map<String, Attribut> attributs = new HashMap<String, Attribut>();
-            attributs.put("rayon", new Attribut(NOMBRE, "0.5"));
-            attributs.put("couleur", new Attribut(TEXTE, "marron"));
-            attributs.put("transparence", new Attribut(NOMBRE, "1"));
-            attributs.put("texture", new Attribut(TEXTE, ""));
-            LinotteFacade.creationPrototype(attributs, new Sphere3D(), "sphere3d");
-        }
-    }
+
 
     /**
      * @throws Exception
@@ -222,7 +148,7 @@ public final class BibliothequeGreffons {
             Map<String, Attribut> attributs = new HashMap<String, Attribut>();
             attributs.put("x", new Attribut(NOMBRE, "100"));
             attributs.put("y", new Attribut(NOMBRE, "100"));
-            attributs.put("visible", new Attribut(TEXTE, "oui"));
+            attributs.put("visible", new Attribut(NOMBRE, "1"));
             attributs.put("toile", new Attribut(TEXTE, ""));
             LinotteFacade.creationPrototype(attributs, new SwingToile(), "xtoile");
         }
@@ -232,7 +158,7 @@ public final class BibliothequeGreffons {
             attributs.put("y", new Attribut(NOMBRE, "100"));
             attributs.put("largeur", new Attribut(NOMBRE, "200"));
             attributs.put("hauteur", new Attribut(NOMBRE, "200"));
-            attributs.put("visible", new Attribut(TEXTE, "oui"));
+            attributs.put("visible", new Attribut(NOMBRE, "1"));
             attributs.put("infobulle", new Attribut(TEXTE, ""));
             LinotteFacade.creationPrototype(attributs, new Tableau(), "xtableau");
         }
@@ -242,7 +168,7 @@ public final class BibliothequeGreffons {
             attributs.put("y", new Attribut(NOMBRE, "100"));
             attributs.put("largeur", new Attribut(NOMBRE, "100"));
             attributs.put("hauteur", new Attribut(NOMBRE, "100"));
-            attributs.put("visible", new Attribut(TEXTE, "oui"));
+            attributs.put("visible", new Attribut(NOMBRE, "1"));
             LinotteFacade.creationPrototype(attributs, new Table(), "table");
         }
         {
@@ -251,13 +177,13 @@ public final class BibliothequeGreffons {
             attributs.put("y", new Attribut(NOMBRE, "100"));
             attributs.put("largeur", new Attribut(NOMBRE, "100"));
             attributs.put("hauteur", new Attribut(NOMBRE, "100"));
-            attributs.put("visible", new Attribut(TEXTE, "oui"));
+            attributs.put("visible", new Attribut(NOMBRE, "1"));
             attributs.put("couleurfond", new Attribut(TEXTE, ""));
             attributs.put("titre", new Attribut(TEXTE, ""));
             attributs.put("positiontitre", new Attribut(TEXTE, "Gauche|Centre|Droite"));
             attributs.put("hauteurtitre", new Attribut(TEXTE, "Dessus haut|Centre haut|Dessous haut|Dessus bas|Centre bas|Dessous bas"));
             attributs.put("couleurtitre", new Attribut(TEXTE, ""));
-            attributs.put("bordure", new Attribut(TEXTE, "oui|non"));
+            attributs.put("bordure", new Attribut(NOMBRE, "1"));
             attributs.put("couleurbordure", new Attribut(TEXTE, ""));
             LinotteFacade.creationPrototype(attributs, new Panneau(), "panneau");
         }
@@ -267,7 +193,7 @@ public final class BibliothequeGreffons {
             attributs.put("y", new Attribut(NOMBRE, "100"));
             attributs.put("largeur", new Attribut(NOMBRE, "100"));
             attributs.put("hauteur", new Attribut(NOMBRE, "100"));
-            attributs.put("visible", new Attribut(TEXTE, "oui"));
+            attributs.put("visible", new Attribut(NOMBRE, "1"));
             LinotteFacade.creationPrototype(attributs, new Onglet(), "onglet");
         }
         {
@@ -276,14 +202,14 @@ public final class BibliothequeGreffons {
             attributs.put("y", new Attribut(NOMBRE, "100"));
             attributs.put("largeur", new Attribut(NOMBRE, "100"));
             attributs.put("hauteur", new Attribut(NOMBRE, "100"));
-            attributs.put("visible", new Attribut(TEXTE, "oui"));
+            attributs.put("visible", new Attribut(NOMBRE, "1"));
             attributs.put("source", new Attribut(TEXTE, ""));
             LinotteFacade.creationPrototype(attributs, new Image(), "ximage");
         }
         {
             Map<String, Attribut> attributs = new HashMap<String, Attribut>();
             attributs.put("texte", new Attribut(TEXTE, ""));
-            attributs.put("visible", new Attribut(TEXTE, "oui"));
+            attributs.put("visible", new Attribut(NOMBRE, "1"));
             attributs.put("infobulle", new Attribut(TEXTE, ""));
             attributs.put("icône", new Attribut(TEXTE, ""));
             LinotteFacade.creationPrototype(attributs, new SousMenu(), "sousmenu");
@@ -295,7 +221,7 @@ public final class BibliothequeGreffons {
             attributs.put("largeur", new Attribut(NOMBRE, "100"));
             attributs.put("hauteur", new Attribut(NOMBRE, "100"));
             attributs.put("titre", new Attribut(TEXTE, "Formulaire"));
-            attributs.put("visible", new Attribut(TEXTE, "oui"));
+            attributs.put("visible", new Attribut(NOMBRE, "1"));
             attributs.put("icône", new Attribut(TEXTE, ""));
             attributs.put("image", new Attribut(TEXTE, ""));
             LinotteFacade.creationPrototype(attributs, new SousFormulaire(), "sousformulaire");
@@ -307,7 +233,7 @@ public final class BibliothequeGreffons {
             attributs.put("maximum", new Attribut(NOMBRE, "50"));
             attributs.put("minimum", new Attribut(NOMBRE, "0"));
             attributs.put("valeur", new Attribut(NOMBRE, "0"));
-            attributs.put("visible", new Attribut(TEXTE, "oui"));
+            attributs.put("visible", new Attribut(NOMBRE, "1"));
             attributs.put("infobulle", new Attribut(TEXTE, ""));
             LinotteFacade.creationPrototype(attributs, new Slider(), "slider");
         }
@@ -317,7 +243,7 @@ public final class BibliothequeGreffons {
             attributs.put("y", new Attribut(NOMBRE, "100"));
             attributs.put("valeur", new Attribut(TEXTE, ""));
             attributs.put("valeurs", new Attribut(TEXTE, "Rouge|Vert|Bleu"));
-            attributs.put("visible", new Attribut(TEXTE, "oui"));
+            attributs.put("visible", new Attribut(NOMBRE, "1"));
             attributs.put("infobulle", new Attribut(TEXTE, ""));
             attributs.put("mode", new Attribut(TEXTE, ""));
             LinotteFacade.creationPrototype(attributs, new Selecteur(), "sélecteur");
@@ -328,7 +254,7 @@ public final class BibliothequeGreffons {
             attributs.put("y", new Attribut(NOMBRE, "100"));
             attributs.put("largeur", new Attribut(NOMBRE, "100"));
             attributs.put("hauteur", new Attribut(NOMBRE, "100"));
-            attributs.put("visible", new Attribut(TEXTE, "oui"));
+            attributs.put("visible", new Attribut(NOMBRE, "1"));
             LinotteFacade.creationPrototype(attributs, new Scrolleur(), "scrolleur");
         }
         {
@@ -338,14 +264,14 @@ public final class BibliothequeGreffons {
         {
             Map<String, Attribut> attributs = new HashMap<String, Attribut>();
             attributs.put("texte", new Attribut(TEXTE, ""));
-            attributs.put("visible", new Attribut(TEXTE, "oui"));
+            attributs.put("visible", new Attribut(NOMBRE, "1"));
             attributs.put("infobulle", new Attribut(TEXTE, ""));
             LinotteFacade.creationPrototype(attributs, new Menu(), "menu");
         }
         {
             Map<String, Attribut> attributs = new HashMap<String, Attribut>();
             attributs.put("texte", new Attribut(TEXTE, "Push !"));
-            attributs.put("visible", new Attribut(TEXTE, "oui"));
+            attributs.put("visible", new Attribut(NOMBRE, "1"));
             attributs.put("couleurfond", new Attribut(TEXTE, ""));
             attributs.put("couleurtexte", new Attribut(TEXTE, ""));
             attributs.put("infobulle", new Attribut(TEXTE, ""));
@@ -356,7 +282,7 @@ public final class BibliothequeGreffons {
         {
             Map<String, Attribut> attributs = new HashMap<String, Attribut>();
             attributs.put("texte", new Attribut(TEXTE, ""));
-            attributs.put("visible", new Attribut(TEXTE, "oui"));
+            attributs.put("visible", new Attribut(NOMBRE, "1"));
             attributs.put("infobulle", new Attribut(TEXTE, ""));
             LinotteFacade.creationPrototype(attributs, new MenuBouton(), "menubouton");
         }
@@ -366,7 +292,7 @@ public final class BibliothequeGreffons {
             attributs.put("y", new Attribut(NOMBRE, "100"));
             attributs.put("valeur", new Attribut(TEXTE, ""));
             attributs.put("valeurs", new Attribut(TEXTE, "Rouge|Vert|Bleu"));
-            attributs.put("visible", new Attribut(TEXTE, "oui"));
+            attributs.put("visible", new Attribut(NOMBRE, "1"));
             attributs.put("infobulle", new Attribut(TEXTE, ""));
             LinotteFacade.creationPrototype(attributs, new Liste(), "liste");
         }
@@ -375,7 +301,7 @@ public final class BibliothequeGreffons {
             attributs.put("x", new Attribut(NOMBRE, "100"));
             attributs.put("y", new Attribut(NOMBRE, "100"));
             attributs.put("texte", new Attribut(TEXTE, ""));
-            attributs.put("visible", new Attribut(TEXTE, "oui"));
+            attributs.put("visible", new Attribut(NOMBRE, "1"));
             attributs.put("infobulle", new Attribut(TEXTE, ""));
             attributs.put("couleurfond", new Attribut(TEXTE, ""));
             attributs.put("couleurtexte", new Attribut(TEXTE, ""));
@@ -391,7 +317,7 @@ public final class BibliothequeGreffons {
             attributs.put("maximum", new Attribut(NOMBRE, "100"));
             attributs.put("minimum", new Attribut(NOMBRE, "0"));
             attributs.put("valeur", new Attribut(NOMBRE, "0"));
-            attributs.put("visible", new Attribut(TEXTE, "oui"));
+            attributs.put("visible", new Attribut(NOMBRE, "1"));
             attributs.put("orientation", new Attribut(TEXTE, "horizontale"));
             attributs.put("infobulle", new Attribut(TEXTE, ""));
             LinotteFacade.creationPrototype(attributs, new Indicateur(), "indicateur");
@@ -407,7 +333,7 @@ public final class BibliothequeGreffons {
             attributs.put("largeur", new Attribut(NOMBRE, "100"));
             attributs.put("hauteur", new Attribut(NOMBRE, "100"));
             attributs.put("titre", new Attribut(TEXTE, "Formulaire"));
-            attributs.put("visible", new Attribut(TEXTE, "oui"));
+            attributs.put("visible", new Attribut(NOMBRE, "1"));
             attributs.put("icône", new Attribut(TEXTE, ""));
             attributs.put("image", new Attribut(TEXTE, ""));
             LinotteFacade.creationPrototype(attributs, new Formulaire(), "formulaire");
@@ -418,7 +344,7 @@ public final class BibliothequeGreffons {
             attributs.put("y", new Attribut(NOMBRE, "0"));
             attributs.put("texte", new Attribut(TEXTE, ""));
             attributs.put("taille", new Attribut(NOMBRE, "15"));
-            attributs.put("visible", new Attribut(TEXTE, "oui"));
+            attributs.put("visible", new Attribut(NOMBRE, "1"));
             attributs.put("infobulle", new Attribut(TEXTE, ""));
             attributs.put("mode", new Attribut(TEXTE, ""));
             LinotteFacade.creationPrototype(attributs, new Champ(), "champ");
@@ -428,12 +354,12 @@ public final class BibliothequeGreffons {
             attributs.put("x", new Attribut(NOMBRE, "100"));
             attributs.put("y", new Attribut(NOMBRE, "100"));
             attributs.put("texte", new Attribut(TEXTE, "Push !"));
-            attributs.put("visible", new Attribut(TEXTE, "oui"));
+            attributs.put("visible", new Attribut(NOMBRE, "1"));
             attributs.put("infobulle", new Attribut(TEXTE, ""));
             attributs.put("couleurfond", new Attribut(TEXTE, ""));
             attributs.put("couleurtexte", new Attribut(TEXTE, ""));
             attributs.put("icône", new Attribut(TEXTE, ""));
-            attributs.put("valeur", new Attribut(TEXTE, "faux"));
+            attributs.put("valeur", new Attribut(NOMBRE, "0"));
             LinotteFacade.creationPrototype(attributs, new CaseACocher(), "caseàcocher");
         }
         {
@@ -441,7 +367,7 @@ public final class BibliothequeGreffons {
             attributs.put("x", new Attribut(NOMBRE, "100"));
             attributs.put("y", new Attribut(NOMBRE, "100"));
             attributs.put("texte", new Attribut(TEXTE, "Push !"));
-            attributs.put("visible", new Attribut(TEXTE, "oui"));
+            attributs.put("visible", new Attribut(NOMBRE, "1"));
             attributs.put("touche", new Attribut(TEXTE, ""));
             attributs.put("couleurfond", new Attribut(TEXTE, ""));
             attributs.put("couleurtexte", new Attribut(TEXTE, ""));
@@ -454,7 +380,7 @@ public final class BibliothequeGreffons {
             attributs.put("x", new Attribut(NOMBRE, "100"));
             attributs.put("y", new Attribut(NOMBRE, "100"));
             attributs.put("texte", new Attribut(TEXTE, "Push !"));
-            attributs.put("visible", new Attribut(TEXTE, "oui"));
+            attributs.put("visible", new Attribut(NOMBRE, "1"));
             attributs.put("couleurfond", new Attribut(TEXTE, ""));
             attributs.put("couleurtexte", new Attribut(TEXTE, ""));
             attributs.put("infobulle", new Attribut(TEXTE, ""));
@@ -468,7 +394,7 @@ public final class BibliothequeGreffons {
             attributs.put("hauteur", new Attribut(NOMBRE, "200"));
             attributs.put("largeur", new Attribut(NOMBRE, "200"));
             attributs.put("texte", new Attribut(TEXTE, ""));
-            attributs.put("visible", new Attribut(TEXTE, "oui"));
+            attributs.put("visible", new Attribut(NOMBRE, "1"));
             attributs.put("infobulle", new Attribut(TEXTE, ""));
             LinotteFacade.creationPrototype(attributs, new BoiteTexte(), "boite");
         }
@@ -478,7 +404,7 @@ public final class BibliothequeGreffons {
             attributs.put("y", new Attribut(NOMBRE, "100"));
             attributs.put("hauteur", new Attribut(NOMBRE, "100"));
             attributs.put("largeur", new Attribut(NOMBRE, "100"));
-            attributs.put("visible", new Attribut(TEXTE, "oui"));
+            attributs.put("visible", new Attribut(NOMBRE, "1"));
             LinotteFacade.creationPrototype(attributs, new Barre(), "barre");
         }
         {

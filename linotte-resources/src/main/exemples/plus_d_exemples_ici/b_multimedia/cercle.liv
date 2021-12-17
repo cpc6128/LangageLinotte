@@ -1,8 +1,8 @@
 /*Auteur : $imon
 http://langagelinotte.free.fr/punbb/viewtopic.php?id=293*/
 
-NOIR_1 est un crayon, couleur prend "noir", x prend 100, y prend 200, taille prend 1, angle prend 0, pointe prend "oui", posé prend "oui"
-NOIR_2 est un crayon, couleur prend "noir", x prend 100, y prend 200, taille prend 1, angle prend 0, pointe prend "oui", posé prend "oui"
+NOIR_1 est un crayon, couleur prend "noir", x prend 100, y prend 200, taille prend 1, angle prend 0, pointe prend vrai, posé prend vrai
+NOIR_2 est un crayon, couleur prend "noir", x prend 100, y prend 200, taille prend 1, angle prend 0, pointe prend vrai, posé prend vrai
 fond est une toile, couleur prend "vert d'eau", hauteur prend 400, largeur prend 400
 new_x & new_y est un nombre
 efface toile

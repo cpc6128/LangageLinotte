@@ -30,7 +30,7 @@ public class Image extends ComposantDeplacable {
 			return;
 		}
 		image = new JLabel();
-		setVisible(getAttributeAsString("visible").equals("oui"));
+		setVisible(getAttributeAsBigDecimal("visible").intValue()==1);
 
 		// Dimensions :
 		hauteur = getAttributeAsBigDecimal("hauteur").intValue();
