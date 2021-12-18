@@ -15,19 +15,17 @@ Vous voulez contribuer au projet ? N'hésitez pas à venir me rejoindre sur ce d
 
 Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagelinotte.free.fr</a>
 
-#### Téléchargement de la dernière version 3.10, avec Java inclus (installation simplifiée) :
+#### Téléchargement de la dernière version 3.11, avec Java 17 inclus (installation simplifiée) :
 
-- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.10/atelierlinotte_3.10-1_amd64.deb">Pour Ubuntu/Debian</a>
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.11/atelierlinotte_3.11-1_amd64.deb">Pour Ubuntu/Debian</a>
 
-- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.10/AtelierLinotte-3.10.msi">Pour Windows</a>
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.11/AtelierLinotte-3.11.msi">Pour Windows</a>
 
-- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.9/AtelierLinotte-3.9.dmg">Pour MacOS (Linotte 3.9)</a>
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.11/AtelierLinotte-3.11.dmg">Pour MacOS</a>
 
-#### Téléchargement de la dernière version 3.10, sans Java :
+#### Téléchargement de la dernière version 3.11, sans Java :
 
-- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.10/Linotte_3.10-2021-12-08-17-45.zip">Linotte_3.10.zip</a>
-
-- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.5/Linotte_3.5-2020-11-18-15-10.zip">Linotte_3.5.zip (avec la 3D)</a>
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.11/Linotte_3.11-2021-12-17-16-32.zip">Linotte_3.11.zip</a>
 
 #### documentation en ligne :
 
