@@ -2,6 +2,11 @@
   <img src="http://langagelinotte.free.fr/github/entete2.png">
 </p>
 
+![GitHub release (release name instead of tag name)](https://img.shields.io/github/v/release/cpc6128/LangageLinotte)
+![GitHub all releases](https://img.shields.io/github/downloads/cpc6128/LangageLinotte/total)
+![Chocolatey Version](https://img.shields.io/chocolatey/v/linotte)
+![GitHub last commit](https://img.shields.io/github/last-commit/cpc6128/LangageLinotte?style=plastic)
+![GitHub issues](https://img.shields.io/github/issues/cpc6128/LangageLinotte)
 ![Java CI with Maven](https://github.com/cpc6128/LangageLinotte/workflows/Java%20CI%20with%20Maven/badge.svg)
 
 # Atelier de programmation pour le Langage Linotte
