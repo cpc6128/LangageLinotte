@@ -57,7 +57,7 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
 
 - WhereIsAlice (casse-tête sur Android) : <a href="https://play.google.com/store/apps/details?id=fr.codevallee.whereisalice">Lien PlayStore</a>
 
-![Atelier 3.0](http://langagelinotte.free.fr/github/atelier-dracula2.png)
+![Atelier 3.0](https://camo.githubusercontent.com/17b8abb2ff608bb6635cdbf49c5a3d529b06a83cc865f46d13352e736176b170/687474703a2f2f6c616e676167656c696e6f7474652e667265652e66722f6769746875622f6174656c6965722d64726163756c61322e706e67)
 
 #### Pour les développeurs du langage :
 
