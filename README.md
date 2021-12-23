@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="http://langagelinotte.free.fr/github/entete2.png">
+  <img src="https://camo.githubusercontent.com/66b8d1c54bd4a1048d14da50e3eecfc19da9d7c9406e38569fb3f4aebcc9fbdf/687474703a2f2f6c616e676167656c696e6f7474652e667265652e66722f6769746875622f656e74657465322e706e67">
 </p>
 
 ![GitHub release (release name instead of tag name)](https://img.shields.io/github/v/release/cpc6128/LangageLinotte?style=flat-square)
