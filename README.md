@@ -24,13 +24,15 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
 
 #### Téléchargement de la dernière version 3.11, avec Java 17 inclus (installation simplifiée) :
 
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.11/AtelierLinotte-3.11.msi">Pour Windows</a>
+
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.11/AtelierLinotte-3.11.dmg">Pour MacOS</a>
+
 - <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.11/atelierlinotte_3.11-1_amd64.deb">Pour Ubuntu/Debian</a>
 
 - <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.11/atelierlinotte_3.11-1_armhf.deb">Pour Raspberry Pi</a>
 
-- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.11/AtelierLinotte-3.11.msi">Pour Windows</a>
-
-- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.11/AtelierLinotte-3.11.dmg">Pour MacOS</a>
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.11/atelierlinotte-3.11-1.x86_64.rpm">Pour Redhat/Fedora</a>
 
 #### Téléchargement de la dernière version 3.11, sans Java :
 
@@ -69,5 +71,5 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
 - Pour windows :
   jpackage --type msi --input . --main-jar Atelier.jar --icon ..\..\..\linotte-resources\src\main\resources\linotte_new.ico --app-version 3.8 --win-menu --file-associations ..\..\..\linotte-resources\src\main\resources\mime.txt --vendor CodeVallée
 
-- Pour ubuntu :
+- Pour Ubuntu ou Fedora :
   /usr/lib/jvm/jdk-17/bin/jpackage --input . --main-jar Atelier.jar  --icon ../../../linotte-resources/src/main/resources/linotte_new.png --app-version 3.10
