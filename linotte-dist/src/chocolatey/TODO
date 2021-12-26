@@ -1,0 +1,8 @@
+* pour construire :
+cpack
+
+* pour tester : il faut être dans le répertoire du fichier linotte.2.6.1.nupkg
+choco install linotte -fidv -s .
+
+* pour supprimer :
+cuninst linotte
