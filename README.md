@@ -7,6 +7,7 @@
 ![GitHub release (latest by date)](https://img.shields.io/github/downloads/cpc6128/LangageLinotte/latest/total?style=flat-square)
 ![GitHub release (latest by date and asset)](https://img.shields.io/github/downloads/cpc6128/LangageLinotte/v3.9/Cours.de.programmation.Linotte.version.3.9.pdf?label=Tutoriel&style=flat-square)
 ![Chocolatey Version](https://img.shields.io/chocolatey/v/linotte?style=flat-square)
+[![linotte](https://snapcraft.io/linotte/badge.svg)](https://snapcraft.io/linotte)
 ![GitHub last commit](https://img.shields.io/github/last-commit/cpc6128/LangageLinotte?style=plastic?style=flat-square)
 ![GitHub issues](https://img.shields.io/github/issues/cpc6128/LangageLinotte?style=flat-square)
 ![Java CI with Maven](https://github.com/cpc6128/LangageLinotte/workflows/Java%20CI%20with%20Maven/badge.svg)
@@ -33,6 +34,10 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
 - <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.11/atelierlinotte_3.11-1_armhf.deb">Pour Raspberry Pi</a>
 
 - <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.11/atelierlinotte-3.11-1.x86_64.rpm">Pour Redhat/Fedora</a>
+
+- choco install linotte
+- 
+- sudo snap install linotte 
 
 #### Téléchargement de la dernière version 3.11, sans Java :
 
