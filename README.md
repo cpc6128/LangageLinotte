@@ -36,7 +36,7 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
 - <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.11/atelierlinotte-3.11-1.x86_64.rpm">Pour Redhat/Fedora</a>
 
 - choco install linotte
-- 
+
 - sudo snap install linotte 
 
 #### Téléchargement de la dernière version 3.11, sans Java :
