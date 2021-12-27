@@ -1,0 +1,33 @@
+name: linotte
+title: Langage Linotte
+version: '3.11.0'
+summary: Linotte est le langage de programmation entièrement en français.
+description: |
+  Inspiré des langages Basic, Logo et Java, Linotte permet d’assimiler rapidement les mécanismes et les logiques de la programmation car il ne requiert aucune notion mathématique ou technique.
+    Linotte helps beginners in computer science to discover imperative and functional programming.
+
+base: core18
+confinement: devmode
+
+apps:
+  linotte:
+    extensions:
+      - gnome-3-28
+    command: $SNAP/usr/lib/jvm/java-17-openjdk-amd64/bin/java -jar $SNAP/linotte-lanceur/Atelier.jar
+    plugs: [ home, network ]
+    environment:
+      JAVA_HOME: $SNAP/usr/lib/jvm/java-17-openjdk-amd64
+parts:
+  linotte:
+    plugin: maven
+    source: https://github.com/cpc6128/LangageLinotte.git
+    source-tag: master
+    source-type: git
+    maven-options:
+      [ -DskipTests=true ]
+    maven-targets:
+      - linotte-dist
+    build-packages:
+      - openjdk-17-jdk
+    stage-packages:
+      - openjdk-17-jre
