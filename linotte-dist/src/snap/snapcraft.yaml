@@ -26,8 +26,15 @@ parts:
     maven-options:
       [ -DskipTests=true ]
     maven-targets:
-      - linotte-dist
+      - linotte-lanceur
     build-packages:
       - openjdk-17-jdk
     stage-packages:
       - openjdk-17-jre
+  exemples:
+    plugin: dump
+    after: [linotte]
+    source-type: local
+    source: /root/parts/linotte/build/linotte-dist/target
+    organize:
+        exemples: linotte-lanceur/exemples
