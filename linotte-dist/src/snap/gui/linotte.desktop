@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=linotte
+Comment=Linotte est le langage de programmation entièrement en français.
+Exec=linotte
+Icon=${SNAP}/meta/gui/linotte.png
+Terminal=false
