@@ -21,7 +21,7 @@ parts:
   linotte:
     plugin: maven
     source: https://github.com/cpc6128/LangageLinotte.git
-    source-tag: master
+    source-tag: v3.11
     source-type: git
     maven-options:
       [ -DskipTests=true ]
