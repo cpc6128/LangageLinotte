@@ -16,8 +16,7 @@
 
 Code source officiel du langage Linotte
 
-Linotte est un langage de programmation.
-Entièrement en français, il offre un environnement simple, complet et pédagogique pour apprendre à programmer.
+Linotte est le langage de programmation entièrement en français. Il offre un environnement simple, complet et pédagogique pour apprendre à programmer.
 
 Vous voulez contribuer au projet ? N'hésitez pas à venir me rejoindre sur ce depôt.
 
@@ -35,9 +34,9 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
 
 - <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.11/atelierlinotte-3.11-1.x86_64.rpm">Pour Redhat/Fedora</a>
 
-- choco install linotte
+- <a href="https://chocolatey.org/packages/linotte">Chocolatey :</a> `choco install linotte`
 
-- sudo snap install linotte 
+- <a href="https://snapcraft.io/linotte">Snap Store :</a> `sudo snap install linotte`
 
 #### Téléchargement de la dernière version 3.11, sans Java :
 
