@@ -10,12 +10,15 @@ icon: snap/gui/linotte.png
 base: core18
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
+
 apps:
   linotte:
     extensions:
       - gnome-3-28
-    command: $SNAP/jdk/bin/java -jar $SNAP/linotte-lanceur/Atelier.jar
-    plugs: [ home, network , desktop, desktop-legacy , unity7 ]
+    command: jdk/bin/java -jar $SNAP/linotte-lanceur/Atelier.jar
+    plugs: [ home, network , desktop, desktop-legacy , x11, audio-playback ]
+    environment:
+      _JAVA_OPTIONS: -Duser.home=$SNAP_USER_DATA
 parts:
   jdk:
     plugin: dump
