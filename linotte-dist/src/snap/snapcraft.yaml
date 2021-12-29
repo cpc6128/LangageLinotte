@@ -8,23 +8,18 @@ description: |
 icon: snap/gui/linotte.png
 
 base: core18
-grade: stable # must be 'stable' to release into candidate/stable channels
-confinement: strict # use 'strict' once you have the right plugs and slots
+grade: stable
+confinement: strict
 
 apps:
   linotte:
     extensions:
       - gnome-3-28
-    command: jdk/bin/java -jar $SNAP/linotte-lanceur/Atelier.jar
-    plugs: [ home, network , desktop, desktop-legacy , x11, audio-playback ]
+    command: usr/lib/jvm/java-17-openjdk-amd64/bin/java -jar $SNAP/linotte-lanceur/Atelier.jar
+    plugs: [ home, network , desktop, desktop-legacy , x11, audio-playback, browser-support ]
     environment:
       _JAVA_OPTIONS: -Duser.home=$SNAP_USER_DATA
 parts:
-  jdk:
-    plugin: dump
-    source: https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.1%2B12/OpenJDK17U-jdk_x64_linux_hotspot_17.0.1_12.tar.gz
-    organize:
-      '*': jdk/
   linotte:
     plugin: maven
     source: https://github.com/cpc6128/LangageLinotte.git
@@ -34,6 +29,8 @@ parts:
       [ -DskipTests=true ]
     maven-targets:
       - linotte-lanceur
+    stage-packages:
+      - openjdk-17-jre
   exemples:
     plugin: dump
     after: [ linotte ]

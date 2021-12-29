@@ -70,10 +70,27 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
 #### Pour les développeurs du langage :
 
 - Pour mac :
-  jpackage --input . --main-jar Atelier.jar  --icon ../../linotte-resources/src/main/resources/linotte_hd.icns --app-version 3.8
+
+  `jpackage --input . --main-jar Atelier.jar  --icon ../../linotte-resources/src/main/resources/linotte_hd.icns --app-version 3.8`
 
 - Pour windows :
-  jpackage --type msi --input . --main-jar Atelier.jar --icon ..\..\..\linotte-resources\src\main\resources\linotte_new.ico --app-version 3.8 --win-menu --file-associations ..\..\..\linotte-resources\src\main\resources\mime.txt --vendor CodeVallée
+
+  `jpackage --type msi --input . --main-jar Atelier.jar --icon ..\..\..\linotte-resources\src\main\resources\linotte_new.ico --app-version 3.8 --win-menu --file-associations ..\..\..\linotte-resources\src\main\resources\mime.txt --vendor CodeVallée`
 
 - Pour Ubuntu ou Fedora :
-  /usr/lib/jvm/jdk-17/bin/jpackage --input . --main-jar Atelier.jar  --icon ../../../linotte-resources/src/main/resources/linotte_new.png --app-version 3.10
+
+  `/usr/lib/jvm/jdk-17/bin/jpackage --input . --main-jar Atelier.jar  --icon ../../../linotte-resources/src/main/resources/linotte_new.png --app-version 3.10`
+
+- Chocolatey :
+
+  `cpack`
+
+- Snapcraft :
+
+  `snapcraft`
+
+  `snap install linotte_3.11.0_amd64.snap --dangerous`
+
+  `snapcraft upload --release=stable linotte_3.11.0_amd64.snap`
+
+  `sudo snap remove linotte`
