@@ -268,7 +268,7 @@ public class Acteur {
 		Acteur temp = new Acteur(role, valeur);
 		temp.setNom(getNom());
 		if (evenement != null) {
-			temp.evenement = new ArrayList<ActeurParent>(evenement.size());
+			temp.evenement = new ArrayList<>(evenement.size());
 			temp.evenement.addAll(evenement);
 		}
 		temp.slots = slots;

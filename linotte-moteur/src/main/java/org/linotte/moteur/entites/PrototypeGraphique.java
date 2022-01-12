@@ -31,6 +31,7 @@ import org.linotte.greffons.externe.Greffon.GreffonException;
 import org.linotte.greffons.java.interne.a.MethodeInterneDirecte;
 import org.linotte.moteur.exception.Constantes;
 import org.linotte.moteur.exception.ErreurException;
+import org.linotte.moteur.outils.Chaine;
 import org.linotte.moteur.xml.actions.ConditionAction;
 import org.linotte.moteur.xml.alize.kernel.Job;
 import org.linotte.moteur.xml.alize.kernel.processus.Processus;
@@ -351,6 +352,12 @@ public class PrototypeGraphique extends org.linotte.moteur.entites.Prototype imp
 	@Override
 	public Prototype clone() {
 		PrototypeGraphique espece = new PrototypeGraphique(toile, null, null, getRole(), getType(), null, typeGraphique);
+		// https://github.com/cpc6128/LangageLinotte/issues/46
+		// Pour éviter d'avoir un nom null
+		if (getNom() != null)
+			espece.setNom(Chaine.produire(getNom().toString() + "#"));
+		else
+			espece.setNom(Chaine.produire("#"));
 		espece.dessinateur = dessinateurs.get(typeGraphique);
 		// Ajout d'un recepteur :
 		if (typeGraphique == TYPE_GRAPHIQUE.SCRIBE) {

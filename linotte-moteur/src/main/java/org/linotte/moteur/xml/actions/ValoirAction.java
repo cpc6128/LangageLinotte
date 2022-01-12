@@ -70,7 +70,7 @@ public class ValoirAction extends Action implements IProduitCartesien {
 							((Casier) acteur1).roleContenant());
 				((Casier) acteur2).toutEffacer();
 				try {
-					((Casier) acteur2).addAll((Casier) ((Casier) acteur1).clone());
+					((Casier) acteur2).addAll((Casier) acteur1.clone());
 				} catch (SyntaxeException e) {
 					e.printStackTrace();
 				}

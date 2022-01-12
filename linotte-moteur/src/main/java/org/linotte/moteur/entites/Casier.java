@@ -26,6 +26,7 @@ import org.linotte.moteur.exception.Constantes;
 import org.linotte.moteur.exception.ErreurException;
 import org.linotte.moteur.exception.RoleException;
 import org.linotte.moteur.exception.SyntaxeException;
+import org.linotte.moteur.outils.Chaine;
 import org.linotte.moteur.xml.api.Librairie;
 
 import java.math.BigDecimal;
@@ -236,7 +237,12 @@ public class Casier extends Acteur {
 	public Acteur clone() {
 		Casier temp = new Casier(librairie, null, getRole(), null);
 		//temp.librairie = null;
-		temp.setNom(null);
+		// https://github.com/cpc6128/LangageLinotte/issues/46
+		// Pour éviter d'avoir un nom null
+		if (getNom() != null)
+			temp.setNom(Chaine.produire(getNom().toString() + "#"));
+		else
+			temp.setNom(Chaine.produire("#"));
 		temp.contenant = contenant;
 		for (Acteur a : liste) {
 			try {

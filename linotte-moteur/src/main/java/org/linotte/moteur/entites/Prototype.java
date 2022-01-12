@@ -29,6 +29,7 @@ import org.linotte.moteur.entites.ecouteurs.ActeurParent;
 import org.linotte.moteur.entites.ecouteurs.ActeurParentGraphique;
 import org.linotte.moteur.entites.ecouteurs.GreffonValeurListenerImpl;
 import org.linotte.moteur.exception.ErreurException;
+import org.linotte.moteur.outils.Chaine;
 import org.linotte.moteur.outils.LinkedHashMap;
 import org.linotte.moteur.outils.Ressources;
 import org.linotte.moteur.xml.api.Librairie;
@@ -189,6 +190,12 @@ public class Prototype extends Acteur {
 	public Prototype clone() {
 		Prototype temp = new Prototype(null, null, getRole(), getType(), retourneFichier());
 		temp.slots = slots;
+		// https://github.com/cpc6128/LangageLinotte/issues/46
+		// Pour éviter d'avoir un nom null
+		if (getNom() != null)
+			temp.setNom(Chaine.produire(getNom().toString() + "#"));
+		else
+			temp.setNom(Chaine.produire("#"));
 		temp.slotsGreffon = slotsGreffon;
 		temp.contratsPrototype = contratsPrototype;
 		temp.greffon = creationGreffon(greffon);
