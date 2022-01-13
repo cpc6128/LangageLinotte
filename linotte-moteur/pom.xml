@@ -17,12 +17,6 @@
             <artifactId>linotte-alize</artifactId>
             <version>3.12-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>fr.codevallee</groupId>
-            <artifactId>linotte-ext</artifactId>
-            <version>3.12-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
 
         <dependency>
             <groupId>org.swinglabs.swingx</groupId>

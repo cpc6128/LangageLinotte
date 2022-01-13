@@ -12,11 +12,9 @@
         <module>linotte-alize</module>
         <module>linotte-moteur</module>
         <module>linotte-lanceur</module>
-        <module>linotte-ext</module>
         <module>linotte-dist</module>
         <module>linotte-resources</module>
         <module>linotte-greffons</module>
-        <module>linotte-accessibilite</module>
     </modules>
 
     <name>linotte</name>
