@@ -5,9 +5,10 @@
     <groupId>fr.codevallee</groupId>
     <artifactId>langagelinotte</artifactId>
     <packaging>pom</packaging>
-    <version>3.11</version>
+    <version>3.12-SNAPSHOT</version>
 
     <modules>
+        <module>linotte-bom</module>
         <module>linotte-alize</module>
         <module>linotte-moteur</module>
         <module>linotte-lanceur</module>
@@ -29,4 +30,15 @@
         <maven.build.timestamp.format>yyyy-MM-dd-HH-mm</maven.build.timestamp.format>
     </properties>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>fr.codevallee</groupId>
+                <artifactId>linotte-bom</artifactId>
+                <version>3.12</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
