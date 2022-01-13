@@ -5,7 +5,7 @@
     <parent>
         <artifactId>langagelinotte</artifactId>
         <groupId>fr.codevallee</groupId>
-        <version>3.11</version>
+        <version>3.12-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -15,45 +15,39 @@
         <dependency>
             <groupId>fr.codevallee</groupId>
             <artifactId>linotte-alize</artifactId>
-            <version>3.11</version>
+            <version>3.12-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>fr.codevallee</groupId>
             <artifactId>linotte-ext</artifactId>
-            <version>3.11</version>
+            <version>3.12-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>org.swinglabs.swingx</groupId>
             <artifactId>swingx-all</artifactId>
-            <version>1.6.5-1</version>
         </dependency>
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>itextpdf</artifactId>
-            <version>5.5.13.2</version>
         </dependency>
         <dependency>
             <groupId>com.formdev</groupId>
             <artifactId>flatlaf</artifactId>
-            <version>1.6.5</version>
         </dependency>
         <dependency>
             <groupId>com.formdev</groupId>
             <artifactId>flatlaf-swingx</artifactId>
-            <version>1.6.5</version>
         </dependency>
         <!-- version pour jdk 8 : -->
         <dependency>
             <groupId>org.kordamp.ikonli</groupId>
             <artifactId>ikonli-swing</artifactId>
-            <version>2.6.0</version>
         </dependency>
         <dependency>
             <groupId>org.kordamp.ikonli</groupId>
             <artifactId>ikonli-runestroicons-pack</artifactId>
-            <version>2.6.0</version>
         </dependency>
     </dependencies>
 

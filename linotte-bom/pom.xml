@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>fr.codevallee</groupId>
+    <artifactId>linotte-bom</artifactId>
+    <version>3.12</version>
+    <packaging>pom</packaging>
+    <name>linotte-bom</name>
+    <description>linotte-bom</description>
+
+    <url>http://langagelinotte.free.fr</url>
+    <organization>
+        <name>CodeVallée</name>
+        <url>http://www.codevallee.fr</url>
+    </organization>
+    <licenses>
+        <license>
+            <name>GNU General Public License (GPL) version 3.0</name>
+            <url>https://www.gnu.org/licenses/gpl-3.0.fr.html</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <id>cpc6128</id>
+            <name>Ronan Mounès</name>
+            <email>ronan.mounes@amstrad.eu</email>
+        </developer>
+    </developers>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.13.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.swinglabs.swingx</groupId>
+                <artifactId>swingx-all</artifactId>
+                <version>1.6.5-1</version>
+            </dependency>
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>itextpdf</artifactId>
+                <version>5.5.13.2</version>
+            </dependency>
+            <dependency>
+                <groupId>com.formdev</groupId>
+                <artifactId>flatlaf</artifactId>
+                <version>2.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.formdev</groupId>
+                <artifactId>flatlaf-swingx</artifactId>
+                <version>2.0</version>
+            </dependency>
+            <!-- version pour jdk 8 : -->
+            <dependency>
+                <groupId>org.kordamp.ikonli</groupId>
+                <artifactId>ikonli-swing</artifactId>
+                <version>2.6.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kordamp.ikonli</groupId>
+                <artifactId>ikonli-runestroicons-pack</artifactId>
+                <version>2.6.0</version>
+            </dependency>
+            <!-- Pour les greffons -->
+            <dependency>
+                <groupId>com.miglayout</groupId>
+                <artifactId>miglayout</artifactId>
+                <version>3.7.4</version>
+            </dependency>
+            <dependency>
+                <groupId>javazoom</groupId>
+                <artifactId>jlayer</artifactId>
+                <version>1.0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.zxing</groupId>
+                <artifactId>core</artifactId>
+                <version>3.4.1</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

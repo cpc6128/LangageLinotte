@@ -5,7 +5,7 @@
     <parent>
         <artifactId>langagelinotte</artifactId>
         <groupId>fr.codevallee</groupId>
-        <version>3.11</version>
+        <version>3.12-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -42,13 +42,14 @@
             -->
             <plugin>
                 <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.0.0</version>
                 <executions>
                     <execution>
                         <phase>initialize</phase>
                         <configuration>
-                            <tasks>
+                            <target>
                                 <mkdir dir="${project.build.directory}"/>
-                            </tasks>
+                            </target>
                         </configuration>
                         <goals>
                             <goal>run</goal>
