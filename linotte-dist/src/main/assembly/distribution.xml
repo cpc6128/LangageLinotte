@@ -23,7 +23,7 @@
             <outputDirectory>/</outputDirectory>
         </file>
         <file>
-            <source>${project.basedir}/../linotte-accessibilite/src/main/basic/Tablette.bat</source>
+            <source>${project.basedir}/../linotte-lanceur/src/main/basic/Tablette.bat</source>
             <outputDirectory>/outils</outputDirectory>
         </file>
         <file>
