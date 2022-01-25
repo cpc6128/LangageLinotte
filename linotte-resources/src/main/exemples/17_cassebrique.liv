@@ -1,81 +1,70 @@
-// Création d'un casse-brique en seulement 80 lignes !
-espèces
-	fluctuation est un nombre
-	orientation est un nombre
-	espèce palet hérite de cercle et contient fluctuation, orientation
-globale
-	zoom est un nombre valant 4 /*Vous pouvez modifier la taille du jeu */
-	vitesse est un nombre valant 10
-	briques est un casier de rectangle
-	palet est un palet,  plein prend vrai, rayon prend 5 * zoom, couleur prend "rouge", taille prend 1,
-		y prend 80 * zoom, x prend 100,		angle prend 45, position prend 2, fluctuation prend 45
-	raquette est un rectangle, couleur prend "anthracite", hauteur prend 5 * zoom,
-		largeur prend 26 * zoom, plein prend vrai,  x prend 10 * zoom, 		y prend 140 * zoom
+palet est un rectangle, largeur vaut 100, hauteur vaut 20, plein vaut vrai, couleur vaut "gris", y vaut 500, x vaut 30
+balle est un cercle, y vaut 200, x vaut 200 , plein vaut vrai, couleur vaut "bleu", rayon vaut 10
+label est un graffiti, y vaut 570, x vaut 10 , texte vaut "Score : 0"
+score est un nombre valant 0
+sens est un nombre valant 2
+// 0 ↖
+// 1 ↗
+// 2 ↘
+// 3 ↙
+briques est un casier de rectangle
 
-code : /* affichage du jeu et lancement du jeu */
-	fond  est une toile, couleur prend "argile", hauteur prend 150 * zoom, largeur prend 200 * zoom
-	parcours affichage matrice
-	appelle moteur palet
-	tant que vrai
-		x est un nombre valant sourisx - 12
-		x de raquette prend ter(x > (175 * zoom), 175 * zoom, ter( x < 0, 0 , x))
-		temporise
-	Ferme
+// Mur de briques :
+r est un nombre
+pour r de 0 à 9
+	brique est un rectangle, largeur vaut 50, hauteur vaut 20, plein vaut vrai, couleur vaut "orange", y vaut 5
+	x de brique prend 5 + 60 * r
+	ajoute brique dans briques
+ferme
+pour r de 0 à 9
+	brique est un rectangle, largeur vaut 50, hauteur vaut 20, plein vaut vrai, couleur vaut "orange", y vaut 30
+	x de brique prend 5 + 60 * r
+	ajoute brique dans briques
+ferme
 
-moteur palet : /*Détermine le chemin que doit suivre le palet en fonction des obstacles*/
-	tant que vrai
-		attends vitesse millisecondes
-		avance palet de 1 * zoom
-		si palet.collision(raquette)
-			fluctuation de palet prend 50-abs( x de palet-(largeur de raquette/2+x de raquette))
-			y de palet prend (y de raquette)-(hauteur de raquette) //le palet colle la raquette !
-			parcours tourne palet simple avec 0
-		ferme
-		sinon si (x de palet) > (200 * zoom - (rayon de palet)) parcours tourne palet simple avec 1
-		sinon si (y de palet) < (5 * zoom) parcours tourne palet simple avec 0
-		sinon si (x de palet) < (5 * zoom) parcours tourne palet simple avec 1
-		sinon si (y de palet) > (140 * zoom) termine // Palet sous la raquette !
-		pour chaque briques /*Gestion des collisions avec les briques*/
-			si palet.collision(joker)
-				ôte joker de briques
-				efface joker
-				parcours tourne palet avec joker
-			ferme
+// Jeu
+tant que vrai
+	x de palet prend sourisx
+	si sens == 2
+		x de balle prend x de balle  + 1
+		y de balle prend y de balle  + 1
+	ferme
+	si sens == 0
+		x de balle prend x de balle  - 1
+		y de balle prend y de balle  - 1
+	ferme
+	si sens == 1
+		x de balle prend x de balle  + 1
+		y de balle prend y de balle  - 1
+	ferme
+	si sens == 3
+		x de balle prend x de balle  - 1
+		y de balle prend y de balle  + 1
+	ferme
+	// est-ce que l'on touche le palet ?
+	si balle.collision(palet) et (sens == 2), sens prend 1
+	si balle.collision(palet) et (sens == 3), sens prend 0
+	// est-ce que l'on touche le haut ?
+	si (y de balle) < 10 et (sens == 0), sens prend 3
+	si (y de balle) < 10 et (sens == 1), sens prend 2
+	// est-ce que l'on touche la gauche ?
+	si (x de balle) < 10 et (sens == 3), sens prend 2
+	si (x de balle) < 10 et (sens == 0), sens prend 1
+	// est-ce que l'on touche la droite ?
+	si (x de balle) > 590 et (sens == 1), sens prend 0
+	si (x de balle) > 590 et (sens == 2), sens prend 3
+	attends 5 millisecondes
+	// On  touche une brique ?
+	pour chaque briques
+		si balle.collision(joker)
+			ôte joker de briques
+			efface joker
+			score prend score + 10
+			texte de label prend "Score : " + score
+			si sens == 0, sens prend 3
+			si sens == 1, sens prend 2
 		ferme
 	ferme
-	reviens
-
-tourne palet simple : orientation /* change l'orientation du palet sur le mur ou la raquette*/
-	/*0 horizontal, 1 vertical*/
-	si orientation = 0, orientation de palet prend {3,2,1,0}{orientation de palet}
-	sinon orientation de palet prend {1,0,3,2}{orientation de palet}
-	parcours calculer angle
-	reviens
-
-tourne palet : b/* change l'orientation du palet lors d'un choc sur une brique*/
-	orientation est un nombre valant 0 /*0 = choc horizontal, 1 = choc vertical*/
-	recule palet de 1 * zoom
-	si (( y de palet) - (rayon de palet)) > (y de b + hauteur de b), orientation prend 1
-	sinon si (arrondi ((y de palet) + (rayon de palet))) == (y de b), orientation prend 1
-	si orientation = 1, orientation de palet prend {3,2,1,0}{orientation de palet}
-	sinon orientation de palet prend {1,0,3,2}{orientation de palet}
-	parcours calculer angle
-	reviens
-
-calculer angle : /* calcule l'angle que doit suivre le palet (en degree) */
-	si (orientation de palet) = 0, angle de palet prend fluctuation de palet
-	sinon si (orientation de palet) = 1, angle de palet prend 180 - (fluctuation de palet)
-	sinon si (orientation de palet) = 2, angle de palet prend 180 + (fluctuation de palet)
-	sinon angle de palet prend 360 - (fluctuation de palet)
-	reviens
-
-affichage matrice : /* Affiche les briques */
-	r est un nombre
-	pour r de 0 à 9
-		de 0 à 6
-			p est un rectangle, couleur prend "prasin", hauteur prend 10*zoom-2,
-				largeur prend 20*zoom-2, x prend r*20*zoom, y prend joker*10*zoom, plein prend vrai
-			ajoute p dans briques
-		ferme
-	ferme
-	reviens
+	// Perdu ?
+	si (y de balle) > 590 termine
+ferme
