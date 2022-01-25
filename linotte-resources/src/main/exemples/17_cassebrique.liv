@@ -1,5 +1,3 @@
-// Atelier n°5 :
-// Le palet rebondit sur les briques, affichage du score
 palet est un rectangle, largeur vaut 100, hauteur vaut 20, plein vaut vrai, couleur vaut "gris", y vaut 500, x vaut 30
 balle est un cercle, y vaut 200, x vaut 200 , plein vaut vrai, couleur vaut "bleu", rayon vaut 10
 label est un graffiti, y vaut 570, x vaut 10 , texte vaut "Score : 0"
