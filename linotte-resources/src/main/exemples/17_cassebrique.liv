@@ -1,3 +1,5 @@
+// Atelier n°5 :
+// Le palet rebondit sur les briques, affichage du score
 palet est un rectangle, largeur vaut 100, hauteur vaut 20, plein vaut vrai, couleur vaut "gris", y vaut 500, x vaut 30
 balle est un cercle, y vaut 200, x vaut 200 , plein vaut vrai, couleur vaut "bleu", rayon vaut 10
 label est un graffiti, y vaut 570, x vaut 10 , texte vaut "Score : 0"
@@ -10,16 +12,14 @@ sens est un nombre valant 2
 briques est un casier de rectangle
 
 // Mur de briques :
-r est un nombre
-pour r de 0 à 9
+n est un nombre
+pour n de 0 à 9
 	brique est un rectangle, largeur vaut 50, hauteur vaut 20, plein vaut vrai, couleur vaut "orange", y vaut 5
-	x de brique prend 5 + 60 * r
+	brique2 est un rectangle, largeur vaut 50, hauteur vaut 20, plein vaut vrai, couleur vaut "orange", y vaut 30
+	x de brique prend 5 + 60 * n
+	x de brique2 prend 5 + 60 * n
 	ajoute brique dans briques
-ferme
-pour r de 0 à 9
-	brique est un rectangle, largeur vaut 50, hauteur vaut 20, plein vaut vrai, couleur vaut "orange", y vaut 30
-	x de brique prend 5 + 60 * r
-	ajoute brique dans briques
+	ajoute brique2 dans briques
 ferme
 
 // Jeu
