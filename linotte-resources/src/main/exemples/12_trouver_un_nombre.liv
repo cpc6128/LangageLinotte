@@ -1,6 +1,6 @@
-secret est un nombre valant hasard(500)
-boucle est un nombre valant 0
-réponse est un nombre valant 0
+secret prend hasard(500)
+boucle prend 0
+réponse prend 0
 affiche "Tu dois trouver un nombre entre 0 et 500."
 tant que réponse != secret
 	boucle prend boucle + 1
