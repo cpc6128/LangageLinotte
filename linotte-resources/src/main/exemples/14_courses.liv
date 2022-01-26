@@ -5,8 +5,8 @@ v1 est un rectangle, x prend 50, y prend 35, plein prend vrai, couleur prend "ro
 v2 est un rectangle, x prend 50, y prend 65, plein prend vrai, couleur prend "vert", hauteur prend 7, largeur prend 15
 v3 est un rectangle, x prend 50, y prend 95, plein prend vrai, couleur prend "bleu", hauteur prend 7, largeur prend 15
 arrivée est une ligne, couleur prend "noir", transparence prend 80, x1 prend 560, x2 prend 560, y1 prend 30, y2 prend 120
-tempo est un nombre valant 20
-limite est un nombre valant 545
+tempo prend 20
+limite prend 545
 classement est un casier de rectangle
 résultat1 est un graffiti, x prend 210, y prend 175
 résultat2 est un graffiti, x prend 210, y prend 200
