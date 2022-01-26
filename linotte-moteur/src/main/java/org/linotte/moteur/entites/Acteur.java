@@ -110,6 +110,14 @@ public class Acteur {
 	}
 
 	/**
+	 * Linotte 4 : forcer le rôle
+	 * @param r
+	 */
+	public void forceRole(Role r) {
+		role = r;
+	}
+
+	/**
 	 * @return La valeur du rôle
 	 * @throws ErreurException
 	 */

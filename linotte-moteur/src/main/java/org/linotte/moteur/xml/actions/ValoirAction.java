@@ -34,50 +34,54 @@ import org.linotte.moteur.xml.analyse.ItemXML;
 
 public class ValoirAction extends Action implements IProduitCartesien {
 
-	public ValoirAction() {
-		super();
-	}
+    public ValoirAction() {
+        super();
+    }
 
-	@Override
-	public String clef() {
-		return "verbe valoir";
-	}
+    @Override
+    public String clef() {
+        return "verbe valoir";
+    }
 
-	@Override
-	public ETAT analyse(String param, Job linotte, ItemXML[] valeurs, String[] annotations) throws Exception {
-		// linotte.debug("on copie == ...");
+    @Override
+    public ETAT analyse(String param, Job linotte, ItemXML[] valeurs, String[] annotations) throws Exception {
+        // linotte.debug("on copie == ...");
 
-		Acteur[] acteurs = extractionDesActeurs(Constantes.SYNTAXE_PARAMETRE_VALOIR, linotte, valeurs);
-		Acteur acteur1 = acteurs[1];
-		Acteur acteur2 = acteurs[0];
+        Acteur[] acteurs = extractionDesActeurs(Constantes.SYNTAXE_PARAMETRE_VALOIR, linotte, valeurs);
+        Acteur acteurCible = acteurs[0];
+        Acteur acteurSource = acteurs[1];
 
-		if (acteur1.getRole() == Role.NOMBRE && acteur2.getRole() == Role.TEXTE) {
-			// On peut copier un nombre dans un texte
-			acteur2.setValeur(acteur1.getValeur().toString());
-		} else if (acteur1.getRole() == Role.ESPECE && acteur2.getRole() == Role.ESPECE
-				&& ((Prototype) acteur1).getType().equals(((Prototype) acteur2).getType())) {
-			Prototype e1 = (Prototype) acteur1;
-			Prototype e2 = (Prototype) acteur2;
-			e2.copier(e1);
-		} else {
+        // Linotte 4 :
+        if (acteurCible.getRole() == Role.INCONNU)
+            acteurCible.forceRole(acteurSource.getRole());
 
-			if (acteur1.getRole() != acteur2.getRole())
-				throw new RoleException(Constantes.SYNTAXE_PARAMETRE_VALOIR, acteur1.toString(), acteur2.getRole(), acteur1.getRole());
+        if (acteurSource.getRole() == Role.NOMBRE && acteurCible.getRole() == Role.TEXTE) {
+            // On peut copier un nombre dans un texte
+            acteurCible.setValeur(acteurSource.getValeur().toString());
+        } else if (acteurSource.getRole() == Role.ESPECE && acteurCible.getRole() == Role.ESPECE
+                && ((Prototype) acteurSource).getType().equals(((Prototype) acteurCible).getType())) {
+            Prototype e1 = (Prototype) acteurSource;
+            Prototype e2 = (Prototype) acteurCible;
+            e2.copier(e1);
+        } else {
 
-			if (acteur1.getRole() == Role.CASIER) {
-				if (!(((Casier) acteur2).roleContenant() == ((Casier) acteur1).roleContenant()))
-					throw new RoleException(Constantes.SYNTAXE_PARAMETRE_VALOIR, acteur1.toString(), ((Casier) acteur2).roleContenant(),
-							((Casier) acteur1).roleContenant());
-				((Casier) acteur2).toutEffacer();
-				try {
-					((Casier) acteur2).addAll((Casier) acteur1.clone());
-				} catch (SyntaxeException e) {
-					e.printStackTrace();
-				}
-			} else
-				acteur2.setValeur(acteur1.getValeur());
-		}
-		return ETAT.PAS_DE_CHANGEMENT;
-	}
+            if (acteurSource.getRole() != acteurCible.getRole())
+                throw new RoleException(Constantes.SYNTAXE_PARAMETRE_VALOIR, acteurSource.toString(), acteurCible.getRole(), acteurSource.getRole());
+
+            if (acteurSource.getRole() == Role.CASIER) {
+                if (!(((Casier) acteurCible).roleContenant() == ((Casier) acteurSource).roleContenant()))
+                    throw new RoleException(Constantes.SYNTAXE_PARAMETRE_VALOIR, acteurSource.toString(), ((Casier) acteurCible).roleContenant(),
+                            ((Casier) acteurSource).roleContenant());
+                ((Casier) acteurCible).toutEffacer();
+                try {
+                    ((Casier) acteurCible).addAll((Casier) acteurSource.clone());
+                } catch (SyntaxeException e) {
+                    e.printStackTrace();
+                }
+            } else
+                acteurCible.setValeur(acteurSource.getValeur());
+        }
+        return ETAT.PAS_DE_CHANGEMENT;
+    }
 
 }
