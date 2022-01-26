@@ -1,5 +1,3 @@
-prénom est un texte
-âge est un nombre
 prénom prend "Nicolas"
 âge prend 32
 affiche présentation (âge, prénom, 0)
