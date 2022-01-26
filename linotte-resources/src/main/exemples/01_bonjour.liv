@@ -1,5 +1,12 @@
 affiche "Bravo Arthur, tu viens de lire ton premier programme Linotte !"
 
+// Je suis un commentaire ! Je suis ignoré par l'interpréteur Linotte !
+
+/*
+Et moi, je suis un commentaire sur plusieurs ...
+... lignes. Pratique pour expliquer le programme ?
+*/
+
 /*
 Cliquez sur le bouton LIRE pour exécuter ce programme
 Puis, continuez à découvrir le langage en suivant le tutoriel à gauche de l'Atelier ⟵

@@ -4,7 +4,6 @@ import org.linotte.frame.latoile.JPanelLaToile;
 import org.linotte.frame.latoile.LaToile;
 import org.linotte.greffons.LinotteFacade;
 import org.linotte.greffons.externe.Greffon;
-import org.linotte.greffons.externe.Greffon.DocumentationHTML;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,13 +29,6 @@ import java.util.List;
  * @author Mounès Ronan
  * 
  */
-@DocumentationHTML("" + "Le <i>PressePapier</i> est une espèce proposant des méthodes pour manipuler le presse papier du système d'exploitation.<br>"
-		+ "<u>Les méthodes fonctionnelles proposées par le prototype PressePapier sont :</u><br>" + "<ul>"
-		+ "<li>acteur<texte> pressepapier.coller() : Récupère le texte présent dans le presse-papier du système</li>"
-		+ "<li>pressepapier.copier(acteur<texte>) : Stocke dans le presse-papier du système d'exploitation la valeur de l'acteur</li>"
-		+ "<li>pressepapier.copierhtml(acteur<texte>) : Stocke dans le presse-papier du système d'exploitation la valeur de l'acteur en HTML</li>"
-		+ "<li>pressepapier.copiertoile() : Stocke dans le presse-papier du système d'exploitation l'image de la toile</li>"
-		+ "<li>pressepapier.copierZoneToile() : doc à faire</li>" + "</ul>")
 public class PressePapier extends Greffon {
 
 	private static Acteur VRAI, FAUX;

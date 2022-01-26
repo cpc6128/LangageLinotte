@@ -176,6 +176,7 @@ public class JPanelLaToile extends JPanel {
 			image = gc.createCompatibleImage(getWidth() + Math.abs(decal_x), getHeight() + Math.abs(decal_y));
 		imageGraphics = image.createGraphics();
 		imageGraphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		imageGraphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_OFF);
 	}
 
 	protected void clearBackground() {
