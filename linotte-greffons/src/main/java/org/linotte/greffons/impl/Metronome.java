@@ -1,27 +1,11 @@
 package org.linotte.greffons.impl;
 
 import org.linotte.greffons.externe.Greffon;
-import org.linotte.greffons.externe.Greffon.DocumentationHTML;
 
 import javax.sound.midi.*;
 import javax.sound.midi.MidiDevice.Info;
 import java.util.*;
 
-@DocumentationHTML(""
-		+ "Le greffon <i>\u266A\u266A\u266A Métronome </i> est une espèce offrant la possibilité d'exploiter les capacités MIDI de votre ordinateur.<br>"
-		+ "<u>Les méthodes fonctionnelles proposées par l'espèce Métronome sont:</u><br>"
-		+ "<ul>"
-		+ "<li>métronome.instruments() : Retourne un casier de textes contenant la liste de tous les intrusments disponibles</li>"
-		+ "<li>métronome.instrument(instrument&lt;texte) : Demande de jouer l'instrument sur le canal courant</li>"
-		+ "<li>métronome.joue(note&lt;nombre>, &lt;nombre>) : Jouer la note (numéro midi) pendant le temps délai.</li>"
-		+ "<li>métronome.pressure(pression&lt;nombre>) : Modification de la pression (entre 0 et 127).</li>"
-		+ "<li>métronome.reverb(reverb&lt;nombre>) : Modification de la réverbération (entre 0 et 127).</li>"
-		+ "<li>métronome.bend(bend&lt;nombre>) : Modification du pitch bend (entre 0 et 16383).</li>"
-		+ "<li>métronome.nombrechannels() : Retourner le nombre de canaux disponibles.</li>"
-		+ "<li>métronome.canal(canal&lt;nombre>) : Changer le canal.</li>"
-		+ "<li>métronome.fermer() : Libérer les ressources MIDI.</li>"
-		+ "</ul>"
-		+ "La liste de notes midi est disponible sur ce site : <a href=http://www.phys.unsw.edu.au/jw/notes.html>http://www.phys.unsw.edu.au/jw/notes.html</a>. Par exemple, do = 60")
 public class Metronome extends Greffon {
 
 	final int REVERB = 91;

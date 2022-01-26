@@ -60,14 +60,6 @@ public abstract class Greffon {
 	 */
 
 	@Retention(RetentionPolicy.RUNTIME)
-	@Target(ElementType.TYPE)
-	public @interface DocumentationHTML {
-
-		String value();
-
-	}
-
-	@Retention(RetentionPolicy.RUNTIME)
 	@Target(ElementType.METHOD)
 	public @interface Slot {
 

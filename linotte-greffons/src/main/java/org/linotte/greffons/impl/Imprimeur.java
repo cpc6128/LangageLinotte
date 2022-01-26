@@ -4,16 +4,12 @@ import org.linotte.frame.latoile.JPanelLaToile;
 import org.linotte.frame.latoile.LaToile;
 import org.linotte.greffons.LinotteFacade;
 import org.linotte.greffons.externe.Greffon;
-import org.linotte.greffons.externe.Greffon.DocumentationHTML;
 
 import java.awt.*;
 import java.awt.print.PageFormat;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 
-@DocumentationHTML("" + "Le greffon <i>Imprimeur</i> est une espèce offrant la possibilité d'imprimer la toile.<br>"
-		+ "<u>Les méthodes fonctionnelles proposées par l'espèce Imprimeur sont:</u><br>" + "<ul>" + "<li>tweak.imprimertoile() : Imprime la toile</li>"
-		+ "</ul>")
 public class Imprimeur extends Greffon {
 
 	@Slot(nom = "imprimertoile")

@@ -1,7 +1,6 @@
 package org.linotte.greffons.impl;
 
 import org.linotte.greffons.externe.Greffon;
-import org.linotte.greffons.externe.Greffon.DocumentationHTML;
 
 import javax.swing.*;
 import java.io.*;
@@ -9,24 +8,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-@DocumentationHTML("" + "Le <i>conduit</i> est une espèce proposant des méthodes pour lire ou écrire dans un fichier.<br>"
-		+ "L'encodage par défaut du conduit est UTF-8.<br>" + "<u>Les méthodes fonctionnelles proposées par l'espèce Conduit sont:</u><br>" + "<ul>"
-		+ "<li>conduit.encodage(encodage&lt;texte>) : définir l'encodage de lecture/ecriture du fichier (à effectuer avant d'ouvrir le conduit)</li>"
-		+ "<li>conduit.fichierexiste(encodage&lt;texte>) : vérifier l'existance du fichier</li>" + "<li>conduit.ferme() : fermer le fichier</li>"
-		+ "<li><b>Pour la lecture</b></li><ul>" + "<li>conduit.ouvrir(chemin&lt;texte>) : ouvrir le fichier en lecture depuis le chemin</li>"
-		+ "<li>conduit.sélectionneretouvrir() : afficher le <i>sélectionneur</i> de fichiers et ouvre le fichier sélectionné en lecture</li>"
-		+ "<li>conduit.nomfichier() : retourne le nom du fichier</li>" + "<li>conduit.chemin() : retourne le chemin du fichier</li>"
-		+ "<li>conduit.répertoire() : retourne vrai si le fichier est un répertoire</li>"
-		+ "<li>conduit.nomfichiercomplet() : retourne le nom du fichier avec son chemin</li>" + "<li>conduit.taille() : retourne la taille du fichier</li>"
-		+ "<li>conduit.lireligne() : retourner une ligne du fichier</li>" + "<li>conduit.lire() : retourner tous les caractères du fichier</li>"
-		+ "<li>conduit.nlire(n&lt;nombre>) : retourner les n caractères suivants du fichier</li>"
-		+ "<li>conduit.clire(caractère&lt;texte>) : retourner les caractères suivants du fichier jusqu'au caractère renseigné</li>" 
-		+ "<li>conduit.clire2(caractère&lt;texte>, caractère2&lt;texte>) : retourner les caractères suivants du fichier jusqu'au premier ou jusqu'au second caractère renseigné</li>" 
-		+ "</ul><li><b>Pour l'écriture</b></li><ul>"
-		+ "<li>conduit.enregistrer(chemin&lt;texte>) : ouvrir le fichier destiné à l'enregistrement</li>"
-		+ "<li>conduit.sélectionneretenregistrer() : afficher le <i>sélectionneur</i> de fichiers et ouvre le fichier sélectionné en écriture</li>"
-		+ "<li>conduit.retourchariot() : retourne le retour chariot du système d'exploitation</li>"
-		+ "<li>conduit.ecrire(chemin&lt;texte>) : écrire la valeur de l'acteur dans le fichier</li>" + "</ul>" + "</ul>")
 public class Conduit extends Greffon {
 
 	public static enum MODE {
