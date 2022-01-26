@@ -1916,7 +1916,7 @@
 											<groupe nom="math ==" discriminant="vaut">
 												<choix>
 													<ligne tab="1" id="node_base">
-														<acteur type="jusquautoken" obligatoire="oui">vaut</acteur>
+														<acteur type="jusquautoken" surligne="non"  annotation="nomacteurfonction" obligatoire="oui">vaut</acteur>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="verbe valoir"/>
 													</ligne>
@@ -1926,7 +1926,7 @@
 											<groupe nom="math ==" discriminant="prend">
 												<choix>
 													<ligne tab="1" id="node_base">
-														<acteur type="jusquautoken" obligatoire="oui">prend</acteur>
+														<acteur type="jusquautoken" surligne="non"  annotation="nomacteurfonction" obligatoire="oui">prend</acteur>
 														<acteur type="resteligne" obligatoire="oui"/>
 														<etat nom="verbe valoir"/>
 													</ligne>
