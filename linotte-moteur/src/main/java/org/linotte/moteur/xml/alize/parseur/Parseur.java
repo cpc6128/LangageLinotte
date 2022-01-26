@@ -47,6 +47,10 @@ public class Parseur {
 
         assert parserContext != null : "L'objet Atelier outils ne doit pas être nul !";
 
+        // https://github.com/cpc6128/LangageLinotte/issues/47
+        if (parserContext.mode == MODE.GENERATION_RUNTIME || parserContext.mode == MODE.COLORATION)
+            flux.append("\ntermine\n");
+
         AKRuntime runtime = null;
         // Noeud racine pour parser un livre :
         NNoeud nodeRacine = parserContext.linotte.getGrammaire().retourneGrammaire();
