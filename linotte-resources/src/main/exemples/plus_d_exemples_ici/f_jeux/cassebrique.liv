@@ -5,7 +5,7 @@ espèces
 	espèce palet hérite de cercle et contient attaque, sens
 globale
 	/*Vous pouvez modifier la taille du jeu :*/
-	zoom est un nombre valant 1
+	zoom est un nombre valant 4
 	joueur1 est un palet,  plein prend vrai, rayon prend 5 * zoom, couleur prend "rouge", taille prend 1, y prend 80 * zoom, angle prend 45, position prend 2, attaque prend 45, sens prend 0
 	raquette est un rectangle, couleur prend "anthracite", hauteur prend 5 * zoom, largeur prend 26 * zoom, plein prend vrai,  x prend 10 * zoom, y prend 140 * zoom
 	gameover est un nombre valant 0
@@ -15,9 +15,7 @@ globale
 	vitesse  est un nombre valant 7
 	score  est un nombre valant 0
 	gscore  est un graffiti, couleur prend "violet",  x prend 10 * zoom, y prend 130 * zoom, texte prend "Linotte BustOut v1.1", taille prend 1 * zoom, transparence prend 40
-
-principale :
-	fond  est une toile, couleur prend "argile", hauteur prend 150 * zoom, largeur prend 200 * zoom, image prend "http://langagelinotte.free.fr/wordpress/bustout.jpg", pointeur prend "croix"
+	fond  est une toile, couleur prend "argile", hauteur prend 150 * zoom, largeur prend 200 * zoom, pointeur prend "croix"
 	x  est un nombre
 	Tant que gameover != -1
 		Efface toile
@@ -35,13 +33,10 @@ principale :
 			sinon si x < 0, x prend 0
 			Si démonstration == 1
 				x de raquette prend x de joueur1 - 13
-				Attends 5 millisecondes
+				Attends 1 millisecondes
 			Ferme
 			sinon
 				x de raquette prend x
-				Temporise
-				Temporise
-				Temporise
 				Temporise 1 secondes
 			Ferme
 		Ferme
