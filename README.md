@@ -22,25 +22,25 @@ Vous voulez contribuer au projet ? N'hésitez pas à venir me rejoindre sur ce d
 
 Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagelinotte.free.fr</a>
 
-#### Téléchargement de la dernière version 3.11, avec Java 17 inclus (installation simplifiée) :
+#### Téléchargement de la dernière version 3.12, avec Java 17 inclus (installation simplifiée) :
 
-- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.11/AtelierLinotte-3.11.msi">Pour Windows</a>
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.12/AtelierLinotte-3.12.msi">Pour Windows</a>
 
-- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.11/AtelierLinotte-3.11.dmg">Pour MacOS</a>
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.12/AtelierLinotte-3.12.dmg">Pour MacOS</a>
 
-- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.11/atelierlinotte_3.11-1_amd64.deb">Pour Ubuntu/Debian</a>
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.12/atelierlinotte_3.12-1_amd64.deb">Pour Ubuntu/Debian</a>
 
 - <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.11/atelierlinotte_3.11-1_armhf.deb">Pour Raspberry Pi</a>
 
-- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.11/atelierlinotte-3.11-1.x86_64.rpm">Pour Redhat/Fedora</a>
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.12/atelierlinotte-3.12-1.x86_64.rpm">Pour Redhat/Fedora</a>
 
 - <a href="https://chocolatey.org/packages/linotte">Chocolatey :</a> `choco install linotte`
 
 - <a href="https://snapcraft.io/linotte">Snap Store :</a> `sudo snap install linotte`
 
-#### Téléchargement de la dernière version 3.11, sans Java :
+#### Téléchargement de la dernière version 3.12, sans Java :
 
-- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.11/Linotte_3.11-2021-12-17-16-32.zip">Linotte_3.11.zip</a>
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.12/Linotte_3.12-2022-01-31-19-35.zip">Linotte_3.12.zip</a>
 
 #### documentation en ligne :
 
