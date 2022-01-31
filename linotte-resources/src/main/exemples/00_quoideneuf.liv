@@ -21,7 +21,7 @@ Historique des versions :
 -------------------------
 
 *02/02/22 - Linotte 3.12
- -Evolution : SImplification de la création des acteurs, on peut écrire directement : prénom prend "Hugo", l'acteur prénom est automatiquement créé 
+ -Evolution : Simplification de la création des acteurs, on peut écrire directement : prénom prend "Hugo", l'acteur prénom est automatiquement créé 
 
 *03/01/22 - Linotte 3.11
  -Evolution : Il n'est plus possible d'utiliser "oui" ou "non", il faut remplacer par vrai ou faux
