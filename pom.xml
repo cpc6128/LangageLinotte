@@ -5,7 +5,7 @@
     <groupId>fr.codevallee</groupId>
     <artifactId>langagelinotte</artifactId>
     <packaging>pom</packaging>
-    <version>3.12-SNAPSHOT</version>
+    <version>3.12</version>
     <name>linotte</name>
 
     <url>http://langagelinotte.free.fr</url>
