@@ -1,3 +1,4 @@
+//  Découpage de cet exemple pour apprendre à programmer en 5 scéances : https://github.com/cpc6128/LangageLinotte/issues?q=+label%3AAtelier+sort%3Acreated-asc+
 palet est un rectangle, largeur vaut 100, hauteur vaut 20, plein vaut vrai, couleur vaut "gris", y vaut 500, x vaut 30
 balle est un cercle, y vaut 200, x vaut 200 , plein vaut vrai, couleur vaut "bleu", rayon vaut 10
 label est un graffiti, y vaut 570, x vaut 10 , texte vaut "Score : 0"
