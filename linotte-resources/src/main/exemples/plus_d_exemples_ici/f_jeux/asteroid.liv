@@ -36,7 +36,7 @@ tirer :
 		y@bullet prend y@bullet - 5
 		attends délai / 4 milliseconde
 	ferme
-	ôte bullet de missiles
+	supprime bullet de missiles
 	efface bullet
 	reviens
 

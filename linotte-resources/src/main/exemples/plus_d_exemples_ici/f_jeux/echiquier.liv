@@ -35,7 +35,7 @@ fixer de pièce :
 		si joker != moi
 			si joker.collision(moi)
 				efface joker
-				ôte joker de pieces
+				supprime joker de pieces
 			ferme
 		ferme
 	ferme

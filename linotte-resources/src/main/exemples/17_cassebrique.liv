@@ -56,7 +56,7 @@ tant que vrai
 	// On  touche une brique ?
 	pour chaque briques
 		si balle.collision(joker)
-			ôte joker de briques
+			supprime joker de briques
 			efface joker
 			score prend score + 10
 			texte de label prend "Score : " + score

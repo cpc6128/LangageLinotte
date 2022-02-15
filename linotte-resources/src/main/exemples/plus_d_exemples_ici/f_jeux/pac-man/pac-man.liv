@@ -572,7 +572,7 @@ Vérifier position :
 		ferme
 		sinon si type = 3
 			niveau courant{tx + largeur * ty} prend 0
-			Ôte niveau courant image{tx + largeur * ty} de boules
+			supprime niveau courant image{tx + largeur * ty} de boules
 			Efface niveau courant image{tx + largeur * ty}
 			appelle pac pac pac
 			parcours incrémentescore avec 10

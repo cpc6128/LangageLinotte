@@ -38,7 +38,7 @@ moteur palet : /*Détermine le chemin que doit suivre le palet en fonction des o
 		sinon si (y de palet) > (140 * zoom) termine // Palet sous la raquette !
 		pour chaque briques /*Gestion des collisions avec les briques*/
 			si palet.collision(joker)
-				ôte joker de briques
+				supprime joker de briques
 				appelle détruire brique avec joker
 				parcours tourne palet avec joker
 			ferme
