@@ -87,6 +87,6 @@ Analyse suppression :
 	"Vous confimez ? ('oui')" !
 	Confirmation ?
 	Si confirmation != vrai, reviens
-	Ôte joker de agenda
+	supprime joker de agenda
 	"Contact supprimé !" !
 	Reviens

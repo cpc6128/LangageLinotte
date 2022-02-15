@@ -25,6 +25,6 @@ principale :
 
 calculerbpm : liste // paramètre liste, contient la liste des tempos
 	retour valant 0
-	si liste.taille() > 5 ôte liste{0} de liste // On supprime le premier élément
+	si liste.taille() > 5 supprime liste{0} de liste // On supprime le premier élément
 	pour liste, retour += joker // Somme des valeurs de la liste
 	retourne arrondi(60000*liste.taille()/retour)

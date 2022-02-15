@@ -120,14 +120,14 @@ moteur palet :
 					Transparence de joker prend transparence de joker - 50
 					Si (transparence de joker) < 10
 						Efface joker
-						Ôte joker de briques
+						supprime joker de briques
 						Score prend score + 20
 					Ferme
 				Ferme
 				sinon
 						/*brique simple*/
 					Efface joker
-					Ôte joker de briques
+					supprime joker de briques
 					Parcours tourne palet avec joker
 					Score prend score + 10
 				Ferme

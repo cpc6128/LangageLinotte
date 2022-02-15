@@ -20,6 +20,9 @@ Bonne programmation !
 Historique des versions :
 -------------------------
 
+*02/02/22 - Linotte 3.14
+ -Evolution : Remplacement du verbe "ôter de" par "supprimer de"
+
 *02/02/22 - Linotte 3.12
  -Evolution : Simplification de la création des acteurs, on peut écrire directement : prénom prend "Hugo", l'acteur prénom est automatiquement créé 
 

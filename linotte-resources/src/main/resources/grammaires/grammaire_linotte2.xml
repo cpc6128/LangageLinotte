@@ -2282,6 +2282,18 @@
 													</ligne>
 												</choix>
 											</groupe>
+											<!-- Depuis 3.14 -->
+											<!-- Verbe Ôter De -->
+											<groupe nom="supprime" discriminant="sup">
+												<choix>
+													<ligne tab="1" id="node_base">
+														<token obligatoire="oui">supprime</token>
+														<acteur type="jusquautoken" obligatoire="oui">de</acteur>
+														<acteur type="resteligne" obligatoire="oui"/>
+														<etat nom="verbe ôter"/>
+													</ligne>
+												</choix>
+											</groupe>
 											<!-- Depuis 0.5.6 -->
 											<groupe nom="modifier" discriminant="modifie">
 												<choix>

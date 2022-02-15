@@ -101,7 +101,7 @@ gestion client :
 				// Commande QUITTER
 				// ****************
 			sinon si (commande@message) == "quitter"
-				ôte client de clients
+				supprime client de clients
 				serveur.fermer(socket@client)
 				affiche "! Le client " + nom@client + " a quitter le serveur sur la socket n°" + socket@client
 				reviens
@@ -121,7 +121,7 @@ gestion client :
 	ferme
 	sinon
 		affiche "! Le client " + nom@client + " a perdu la connexion sur la socket n°" + socket@client
-		ôte client de clients
+		supprime client de clients
 	ferme
 
 propager message :
@@ -141,7 +141,7 @@ historiser :
 	ajoute message dans historique
 	mesure historique dans taille
 	tant que taille > HISTORIQUE_MAX
-		ôte historique{0} de historique
+		supprime historique{0} de historique
 		mesure historique dans taille
 	ferme
 	reviens

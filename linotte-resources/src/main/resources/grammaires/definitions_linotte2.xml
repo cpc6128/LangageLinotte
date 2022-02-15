@@ -641,7 +641,7 @@
 			<message id="89">La sémantique de la phrase contenant le verbe 'convertir' est incorrecte, vérifiez le rôle de l'acteur</message>
 			<message id="90">La sémantique de la phrase contenant le verbe 'explorer' est incorrecte, vérifiez le rôle de l'acteur</message>
 			<message id="91">La sémantique de la phrase contenant le verbe 'prendre' est incorrecte, vérifiez le rôle de l'acteur</message>
-			<message id="92">La sémantique de la phrase contenant le verbe 'ôter' est incorrecte, vérifiez le rôle de l'acteur</message>
+			<message id="92">La sémantique de la phrase contenant le verbe 'supprimer' est incorrecte, vérifiez le rôle de l'acteur</message>
 			<message id="93">La sémantique de la phrase contenant le verbe 'parcourir' est incorrecte, vérifiez le rôle de l'acteur</message>
 			<message id="94">La sémantique de la phrase contenant le verbe 'modifier' est incorrecte, vérifiez le rôle de l'acteur</message>
 			<message id="95">La sémantique de la phrase contenant le verbe 'questionner' est incorrecte, vérifiez le rôle de l'acteur</message>
@@ -759,7 +759,7 @@
 			<aide present="" imperatif="crée ? un casier de texte" aide="Création d'un acteur dynamiquement" >Créer un casier de texte</aide>
 			<aide present="" imperatif="crée ? un casier de casier" aide="Création d'un acteur dynamiquement" >Créer un casier de casier</aide>
 			<aide present="" imperatif="crée ? un casier de ?" aide="Création d'un acteur dynamiquement" >Créer un casier d'espèce</aide>
- -->			<aide present="" imperatif="ôte ? de ?" aide="Supprimer un acteur d'un casier" >Ôter de</aide>
+-->			<aide present="" imperatif="Supprime ? de ?" aide="Supprimer un acteur d'un casier" >Supprimer de</aide>
 			<aide present="" imperatif="avance ? de ?" aide="Avancer un acteur graphique de n pixels en fonction de son angle" >Avancer de</aide>
 			<aide present="" imperatif="recule ? de ?" aide="Reculer un acteur graphique de n pixels en fonction de son angle" >Reculer de</aide>
 			<aide present="" imperatif="tourne à gauche ? de ?" aide="Rotation à gauche d'un acteur graphique de n degrés" >Tourner à gauche</aide>

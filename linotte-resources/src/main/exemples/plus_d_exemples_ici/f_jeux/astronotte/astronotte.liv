@@ -171,8 +171,8 @@ tirer :
 				parcours vérifier bricks avec bullet2
 			ferme
 		ferme
-		Ôte bullet de missiles
-		Ôte bullet2 de missiles
+		supprime bullet de missiles
+		supprime bullet2 de missiles
 	ferme
 	efface bullet
 	annihile bullet
@@ -340,7 +340,7 @@ vérifier bricks :
 						transparence@joker prend transparence@joker - 34
 						si (transparence@joker) < 0
 							efface joker
-							ôte joker de bricks
+							supprime joker de bricks
 						ferme
 						efface m
 						parcours score avec 10
