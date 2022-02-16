@@ -1,16 +1,12 @@
 //  Découpage de cet exemple pour apprendre à programmer en 5 scéances : https://github.com/cpc6128/LangageLinotte/issues?q=+label%3AAtelier+sort%3Acreated-asc+
-palet est un rectangle, largeur vaut 100, hauteur vaut 20, plein vaut vrai, couleur vaut "gris", y vaut 500, x vaut 30
-balle est un cercle, y vaut 200, x vaut 200 , plein vaut vrai, couleur vaut "bleu", rayon vaut 10
+raquette est un rectangle, largeur vaut 100, hauteur vaut 20, plein vaut vrai, couleur vaut "gris", y vaut 500, x vaut 30
+balle est un cercle, y vaut 60, x vaut 200 , plein vaut vrai, couleur vaut "bleu", rayon vaut 10
 label est un graffiti, y vaut 570, x vaut 10 , texte vaut "Score : 0"
 score prend 0
-sens prend 2
-// 0 ↖
-// 1 ↗
-// 2 ↘
-// 3 ↙
+direction prend 2 // 0 ↖    1 ↗    2 ↘     3 ↙
 briques est un casier de rectangle
 
-// Mur de briques :
+// Le mur de briques à casser :
 n est un nombre
 pour n de 0 à 9
 	brique est un rectangle, largeur vaut 50, hauteur vaut 20, plein vaut vrai, couleur vaut "orange", y vaut 5
@@ -21,49 +17,39 @@ pour n de 0 à 9
 	ajoute brique2 dans briques
 ferme
 
-// Jeu
+// Moteur du jeu :
 tant que vrai
-	x de palet prend sourisx
-	si sens == 2
-		x de balle prend x de balle  + 1
-		y de balle prend y de balle  + 1
-	ferme
-	si sens == 0
-		x de balle prend x de balle  - 1
-		y de balle prend y de balle  - 1
-	ferme
-	si sens == 1
-		x de balle prend x de balle  + 1
-		y de balle prend y de balle  - 1
-	ferme
-	si sens == 3
-		x de balle prend x de balle  - 1
-		y de balle prend y de balle  + 1
-	ferme
-	// est-ce que l'on touche le palet ?
-	si balle.collision(palet) et (sens == 2), sens prend 1
-	si balle.collision(palet) et (sens == 3), sens prend 0
+	// On déplace en fonction de la souris de l'utilisateur
+	si sourisx < (x de raquette) déplace raquette vers la gauche de 2
+	si sourisx > (x de raquette) déplace raquette vers la droite de 2
+	// est-ce que l'on touche le raquette ?
+	si balle.collision(raquette) et (direction == 2), direction prend 1
+	si balle.collision(raquette) et (direction == 3), direction prend 0
 	// est-ce que l'on touche le haut ?
-	si (y de balle) < 10 et (sens == 0), sens prend 3
-	si (y de balle) < 10 et (sens == 1), sens prend 2
+	si (y de balle) < 10 et (direction == 0), direction prend 3
+	si (y de balle) < 10 et (direction == 1), direction prend 2
 	// est-ce que l'on touche la gauche ?
-	si (x de balle) < 10 et (sens == 3), sens prend 2
-	si (x de balle) < 10 et (sens == 0), sens prend 1
+	si (x de balle) < 10 et (direction == 3), direction prend 2
+	si (x de balle) < 10 et (direction == 0), direction prend 1
 	// est-ce que l'on touche la droite ?
-	si (x de balle) > 590 et (sens == 1), sens prend 0
-	si (x de balle) > 590 et (sens == 2), sens prend 3
-	attends 5 millisecondes
+	si (x de balle) > 590 et (direction == 1), direction prend 0
+	si (x de balle) > 590 et (direction == 2), direction prend 3
 	// On  touche une brique ?
 	pour chaque briques
 		si balle.collision(joker)
-			supprime joker de briques
 			efface joker
 			score prend score + 10
-			texte de label prend "Score : " + score
-			si sens == 0, sens prend 3
-			si sens == 1, sens prend 2
+			texte de label prend "Score : {score}"
+			si direction == 0, direction prend 3
+			si direction == 1, direction prend 2
 		ferme
 	ferme
-	// Perdu ?
+	// On déplace la balle en fonction de sa direction
+	si direction == 2 déplace balle de 1 et 1
+	si direction == 0 déplace balle de -1 et -1
+	si direction == 1 déplace balle de 1 et -1
+	si direction == 3 déplace balle de -1 et 1
+	// Perdu si la balle touche le bas !
 	si (y de balle) > 590 termine
+	attends 5 millisecondes
 ferme
