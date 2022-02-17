@@ -1,27 +1,19 @@
 //  Découpage de cet exemple pour apprendre à programmer en 5 scéances : https://github.com/cpc6128/LangageLinotte/issues?q=+label%3AAtelier+sort%3Acreated-asc+
 raquette est un rectangle, largeur vaut 100, hauteur vaut 20, plein vaut vrai, couleur vaut "gris", y vaut 500, x vaut 30
-balle est un cercle, y vaut 60, x vaut 200 , plein vaut vrai, couleur vaut "bleu", rayon vaut 10
+balle est un cercle, y vaut 60, x vaut 200 , plein vaut vrai, couleur vaut "rouge", rayon vaut 10
 label est un graffiti, y vaut 570, x vaut 10 , texte vaut "Score : 0"
 score prend 0
 direction prend 2 // 0 ↖    1 ↗    2 ↘     3 ↙
 briques est un casier de rectangle
-
 // Le mur de briques à casser :
-n est un nombre
-pour n de 0 à 9
-	brique est un rectangle, largeur vaut 50, hauteur vaut 20, plein vaut vrai, couleur vaut "orange", y vaut 5
-	brique2 est un rectangle, largeur vaut 50, hauteur vaut 20, plein vaut vrai, couleur vaut "orange", y vaut 30
-	x de brique prend 5 + 60 * n
-	x de brique2 prend 5 + 60 * n
+de 0 à 9
+	brique est un rectangle, y vaut 10, x vaut 5 + 60 * joker, largeur vaut 50, hauteur vaut 20, plein vaut vrai
 	ajoute brique dans briques
-	ajoute brique2 dans briques
 ferme
-
-// Moteur du jeu :
+// Boucle infinie :
 tant que vrai
 	// On déplace en fonction de la souris de l'utilisateur
-	si sourisx < (x de raquette) déplace raquette vers la gauche de 2
-	si sourisx > (x de raquette) déplace raquette vers la droite de 2
+	x de raquette prend sourisx
 	// est-ce que l'on touche le raquette ?
 	si balle.collision(raquette) et (direction == 2), direction prend 1
 	si balle.collision(raquette) et (direction == 3), direction prend 0
@@ -51,5 +43,6 @@ tant que vrai
 	si direction == 3 déplace balle de -1 et 1
 	// Perdu si la balle touche le bas !
 	si (y de balle) > 590 termine
+	// On ralentit le jeu :
 	attends 5 millisecondes
 ferme
