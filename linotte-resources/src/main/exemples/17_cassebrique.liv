@@ -3,7 +3,7 @@ raquette est un rectangle, largeur vaut 100, hauteur vaut 20, plein vaut vrai, c
 balle est un cercle, y vaut 60, x vaut 200 , plein vaut vrai, couleur vaut "rouge", rayon vaut 10
 label est un graffiti, y vaut 570, x vaut 10 , texte vaut "Score : 0"
 score prend 0
-direction prend 45 // 225↖    315↗    45↘     135↙
+direction prend 45 // Angle en dégré : 225↖    315↗    45↘     135↙
 briques est un casier de rectangle
 // Le mur de briques à casser :
 de 0 à 9
