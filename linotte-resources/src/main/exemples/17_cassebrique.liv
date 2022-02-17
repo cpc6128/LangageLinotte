@@ -3,7 +3,7 @@ raquette est un rectangle, largeur vaut 100, hauteur vaut 20, plein vaut vrai, c
 balle est un cercle, y vaut 60, x vaut 200 , plein vaut vrai, couleur vaut "rouge", rayon vaut 10
 label est un graffiti, y vaut 570, x vaut 10 , texte vaut "Score : 0"
 score prend 0
-direction prend 2 // 0 ↖    1 ↗    2 ↘     3 ↙
+direction prend 45 // 225↖    315↗    45↘     135↙
 briques est un casier de rectangle
 // Le mur de briques à casser :
 de 0 à 9
@@ -15,32 +15,30 @@ tant que vrai
 	// On déplace en fonction de la souris de l'utilisateur
 	x de raquette prend sourisx
 	// est-ce que l'on touche le raquette ?
-	si balle.collision(raquette) et (direction == 2), direction prend 1
-	si balle.collision(raquette) et (direction == 3), direction prend 0
+	si balle.collision(raquette) et (direction == 45), direction prend 315
+	si balle.collision(raquette) et (direction == 135), direction prend 225
 	// est-ce que l'on touche le haut ?
-	si (y de balle) < 10 et (direction == 0), direction prend 3
-	si (y de balle) < 10 et (direction == 1), direction prend 2
+	si (y de balle) < 10 et (direction == 225), direction prend 135
+	si (y de balle) < 10 et (direction == 315), direction prend 45
 	// est-ce que l'on touche la gauche ?
-	si (x de balle) < 10 et (direction == 3), direction prend 2
-	si (x de balle) < 10 et (direction == 0), direction prend 1
+	si (x de balle) < 10 et (direction == 225), direction prend 315
+	si (x de balle) < 10 et (direction == 135), direction prend 45
 	// est-ce que l'on touche la droite ?
-	si (x de balle) > 590 et (direction == 1), direction prend 0
-	si (x de balle) > 590 et (direction == 2), direction prend 3
+	si (x de balle) > 590 et (direction == 45), direction prend 135
+	si (x de balle) > 590 et (direction == 315), direction prend 225
 	// On  touche une brique ?
 	pour chaque briques
 		si balle.collision(joker)
 			efface joker
 			score prend score + 10
 			texte de label prend "Score : {score}"
-			si direction == 0, direction prend 3
-			si direction == 1, direction prend 2
+			si direction == 225, direction prend 135
+			si direction == 315, direction prend 45
 		ferme
 	ferme
 	// On déplace la balle en fonction de sa direction
-	si direction == 2 déplace balle de 1 et 1
-	si direction == 0 déplace balle de -1 et -1
-	si direction == 1 déplace balle de 1 et -1
-	si direction == 3 déplace balle de -1 et 1
+	angle de balle prend direction
+	avance balle de 1
 	// Perdu si la balle touche le bas !
 	si (y de balle) > 590 termine
 	// On ralentit le jeu :
