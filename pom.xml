@@ -5,7 +5,7 @@
     <groupId>fr.codevallee</groupId>
     <artifactId>langagelinotte</artifactId>
     <packaging>pom</packaging>
-    <version>3.14-SNAPSHOT</version>
+    <version>3.14</version>
     <name>linotte</name>
 
     <url>http://langagelinotte.free.fr</url>
@@ -56,12 +56,12 @@
             <dependency>
                 <groupId>com.formdev</groupId>
                 <artifactId>flatlaf</artifactId>
-                <version>2.0.1</version>
+                <version>2.4</version>
             </dependency>
             <dependency>
                 <groupId>com.formdev</groupId>
                 <artifactId>flatlaf-swingx</artifactId>
-                <version>2.0.1</version>
+                <version>2.4</version>
             </dependency>
             <!-- version pour jdk 8 : -->
             <dependency>
