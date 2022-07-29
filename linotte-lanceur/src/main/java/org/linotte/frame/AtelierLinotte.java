@@ -37,8 +37,9 @@ public class AtelierLinotte {
                     //UIManager.put("TabbedPane.selectedBackground", Color.lightGray.darker());
                 }
                 if (Preference.getIntance().petitMenu())
-                	AbaqueAtelier.theme.setPetitMenu();
-                UIManager.put( "TitlePane.menuBarEmbedded", AbaqueAtelier.theme.petitmenu );
+                    AbaqueAtelier.theme.setPetitMenu();
+                UIManager.put("TitlePane.menuBarEmbedded", AbaqueAtelier.theme.petitmenu);
+                UIManager.put("TitlePane.showIconBesideTitle", true);
 
                 SwingUtilities.invokeAndWait(() -> splashWindow1.set(new SplashWindow(new Frame())));
                 Atelier.initialisationFrameAtelierEtToile();
