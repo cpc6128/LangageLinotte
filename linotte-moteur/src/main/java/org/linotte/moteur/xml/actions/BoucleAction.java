@@ -21,6 +21,7 @@
 package org.linotte.moteur.xml.actions;
 
 import org.linotte.moteur.entites.Acteur;
+import org.linotte.moteur.entites.Casier;
 import org.linotte.moteur.entites.Role;
 import org.linotte.moteur.exception.Constantes;
 import org.linotte.moteur.exception.ErreurException;
@@ -78,6 +79,15 @@ public class BoucleAction extends Action implements ActionDispatcher {
 			if (!(a1.getRole() == Role.NOMBRE && a2.getRole() == Role.NOMBRE && a3.getRole() == Role.NOMBRE))
 				throw new ErreurException(Constantes.SYNTAXE_BOUCLE);
 			b = new Boucle(job.getCurrentProcessus(), a2, a3, a1, valeurs[3]);
+		} else if (acteurs.length == 2 && ChaineOutils.findInArray(annotations, "pour")) {
+			// Boucle : De ... à
+			Acteur a1 = acteurs[0];
+			Acteur a2 = acteurs[1];
+			// Il faut vérifier les types :
+			if (!(a2.getRole() == Role.CASIER))
+				throw new ErreurException(Constantes.SYNTAXE_BOUCLE);
+			Casier c = (Casier) a2;
+			b = new Boucle(job.getCurrentProcessus(), a1, c);
 		} else {
 			// Boucle : De ... à
 			Acteur a1 = acteurs[0];
