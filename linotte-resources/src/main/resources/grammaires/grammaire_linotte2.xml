@@ -1153,7 +1153,25 @@
 													</ligne>
 												</choix>
 											</groupe>
-											<groupe nom="boucle" discriminant="pour"><!-- 3.14 -->
+
+											<groupe nom="boucle" discriminant="pour" discriminant2="de"><!-- 3.14 boucle for sur une ligne-->
+												<choix>
+													<p:build>
+														<ligne tab="1">
+															<token obligatoire="oui" style="structure">pour</token>
+															<token obligatoire="non">chaque</token>
+															<acteur type="jusquautoken" annotation="pour" obligatoire="oui">de</acteur>
+															<acteur type="jusquautoken" obligatoire="oui"
+																	hack_analyse="suppressionvirgule">,
+															</acteur>
+															<etat souffleur="non" nom="boucle"/>
+															<p:copynode target="node_base"/>
+														</ligne>
+													</p:build>
+												</choix>
+											</groupe>
+
+											<groupe nom="boucle" discriminant="pour" discriminant2="de"><!-- 3.14 boucle for avec un bloc -->
 												<choix>
 													<ligne tab="1">
 														<token obligatoire="oui" annotation="joker" style="structure">pour</token>
@@ -1166,6 +1184,8 @@
 													</ligne>
 												</choix>
 											</groupe>
+
+
 											<groupe nom="boucle" discriminant="pour">
 												<choix>
 													<p:build>
