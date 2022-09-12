@@ -5,6 +5,13 @@ pour boucle de 1 à 10
 	attends 200 millisecondes
 ferme
 affiche "voilà !"
+
+// Depuis la version 3.14 du langage Linotte , on peut utiliser cette forme :
+liste est un casier de texte valant "janvier", "février", "mars", "avril", "juin"
+valeur est un texte
+pour chaque valeur de liste
+    affiche valeur
+ferme
 /*
 Cliquez sur le bouton LIRE pour exécuter ce programme
 */
