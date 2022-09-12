@@ -33,7 +33,7 @@ public class TestsNominaux extends AbstractSimpleAffichageTest {
         BONJOUR, VERSION, MAJORDOME, MAJORDOME_VALEUR, BOULIER, PRENDRE, RUBY, PYTHON, //
         PROTOTYPE_ACTEUR, PROTOTYPE_ACTEUR_REMPLACER, PROTOTYPE_ACTEUR_AUTRES, GREFFON_LINOTTE, //
         PROTOTYPE_ACTEUR_ANONYME, FONCTION_PARAMETRE, PARAGRAPHE_PARAMETRE, ESPECE_CASSE, ESPECE_CASIERS, //
-        SYNTAXE_SIMPLE_ADD_SOUS, CREATION_ACTEUR_SIMPLIFIEE, CREATION_ACTEUR_SIMPLIFIEE_PARAGRAPHE
+        SYNTAXE_SIMPLE_ADD_SOUS, CREATION_ACTEUR_SIMPLIFIEE, CREATION_ACTEUR_SIMPLIFIEE_PARAGRAPHE, BOUCLE_FOR
     }
 
     @Test
@@ -195,5 +195,14 @@ public class TestsNominaux extends AbstractSimpleAffichageTest {
     @Test
     public void creationActeurSimplifieeDansParagraphe() throws Exception {
         assertEquals(executerLivre(LIVRE.CREATION_ACTEUR_SIMPLIFIEE_PARAGRAPHE), sortie(LIVRE.CREATION_ACTEUR_SIMPLIFIEE_PARAGRAPHE));
+    }
+
+    /**
+     * Linotte 3.14
+     * @throws Exception
+     */
+    @Test
+    public void boucleFor() throws Exception {
+        assertEquals(executerLivre(LIVRE.BOUCLE_FOR), sortie(LIVRE.BOUCLE_FOR));
     }
 }
