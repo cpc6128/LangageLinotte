@@ -27,7 +27,7 @@ tant que vrai
 	si (x de balle) > 590 et (direction == 45), direction prend 135
 	si (x de balle) > 590 et (direction == 315), direction prend 225
 	// On  touche une brique ?
-	brique est un rectangle
+	brique est un rectangle, visible vaut faux
 	pour chaque brique de briques
 		si balle.collision(brique)
 			efface brique // On l'efface de l'écran
