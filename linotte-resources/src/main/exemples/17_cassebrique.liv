@@ -27,9 +27,10 @@ tant que vrai
 	si (x de balle) > 590 et (direction == 45), direction prend 135
 	si (x de balle) > 590 et (direction == 315), direction prend 225
 	// On  touche une brique ?
-	pour chaque briques
-		si balle.collision(joker)
-			efface joker
+	brique est un rectangle
+	pour chaque brique de briques
+		si balle.collision(brique)
+			efface brique // On l'efface de l'écran
 			score prend score + 10
 			texte de label prend "Score : {score}"
 			si direction == 225, direction prend 135

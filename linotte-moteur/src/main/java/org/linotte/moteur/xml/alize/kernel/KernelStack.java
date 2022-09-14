@@ -246,6 +246,42 @@ public final class KernelStack {
 	}
 
 	/**
+	 * Cette méthode permet de remplacer un acteur dans la mémoire.
+	 * Utilisez pour la boucle FOR 3.14
+	 * @param acteur
+	 * @param nomActeur
+	 * @return
+	 */
+	public boolean remplacerActeur(final Acteur acteur, Chaine nomActeur) {
+		Appel appel;
+		for (int s = size; s > 0;) {
+			appel = contents[--s];
+			switch (appel.getType()) {
+				case CALQUEPARAGRAPHE:
+					CalqueParagraphe paragraphe = (CalqueParagraphe) appel;
+					if (paragraphe.getActeurLocal(nomActeur) != null) {
+						acteur.setNom(nomActeur);
+						paragraphe.addActeurLocal(acteur);
+						return true;
+					}
+					break;
+				case SOUSPARAGRAPHE:
+					SousParagraphe sousParagraphe = (SousParagraphe) appel;
+					if (sousParagraphe.getActeurLocal(nomActeur) != null) {
+						acteur.setNom(nomActeur);
+						sousParagraphe.addActeurLocal(acteur);
+						return true;
+					}
+					break;
+				case FONCTION:
+					// http://langagelinotte.free.fr/forum/showthread.php?tid=996&pid=6838#pid6838
+					return false;
+			}
+		}
+		return false;
+	}
+
+	/**
 	 * @param degre quelle degré de parenté
 	 * @return
 	 */
