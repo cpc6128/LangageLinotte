@@ -27,6 +27,7 @@ import org.linotte.moteur.exception.Constantes;
 import org.linotte.moteur.exception.ErreurException;
 import org.linotte.moteur.outils.Chaine;
 import org.linotte.moteur.xml.alize.kernel.Job;
+import org.linotte.moteur.xml.alize.kernel.JobContext;
 import org.linotte.moteur.xml.alize.kernel.processus.Processus;
 import org.linotte.moteur.xml.analyse.ItemXML;
 
@@ -125,9 +126,17 @@ public class Boucle implements Appel {
 
                         // Linotte 3.14, boucle for
                         if (joker_for != null)
-                            if (joker_for.getRole() == temp.getRole())
-                                joker_for.setValeur(temp.getValeur());
-                            else
+                            if (joker_for.getRole() == temp.getRole()) {
+                                JobContext jobContext = (JobContext) moteur.getContext();
+                                boolean replaced = jobContext.getLivre().getKernelStack().remplacerActeur(temp, joker_for.getNom());
+                                if (!replaced)
+                                    if (jobContext.getLivre().getActeur(joker_for.getNom(), moteur) != null) {
+                                        temp.setNom(joker_for.getNom());
+                                        jobContext.getLivre().addActeur(temp);
+                                    } else {
+                                        throw new ErreurException(Constantes.SYNTAXE_BOUCLE);
+                                    }
+                            } else
                                 throw new ErreurException(Constantes.SYNTAXE_BOUCLE);
                     }
                 }
