@@ -21,7 +21,7 @@ Historique des versions :
 -------------------------
 
 *01/10/22 - Linotte 3.14
- -Evolution : Ajout de la boucle "for" : exemple 05_boucle_2.liv
+ -Evolution : Ajout de la boucle "for" : exemple 05_boucle_2.liv ou 17_cassebrique.liv
  -Evolution : Remplacement du verbe "ôter de" par "supprimer de"
 
 *02/02/22 - Linotte 3.12
@@ -46,7 +46,7 @@ Historique des versions :
  -Evolution : Ajout de l'option petit menu dans l'Atelier
 
 *17/03/21 - Linotte 3.8
--Correction : Ne se lance pas avec Java 16
+ -Correction : Ne se lance pas avec Java 16
 
 *23/01/21 - Linotte 3.7
  -Correction : Mise aux normes 3.X des exemples
