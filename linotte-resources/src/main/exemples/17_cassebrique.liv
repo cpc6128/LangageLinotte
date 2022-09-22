@@ -5,7 +5,7 @@ label est un graffiti, y vaut 570, x vaut 10 , texte vaut "Score : 0"
 score prend 0
 direction prend 45 // Angle en dégré : 225↖    315↗    45↘     135↙
 briques est un casier de rectangle
-// Le mur de briques à casser :
+// Construction du mur de briques à casser avec la balle :
 de 0 à 9
 	brique est un rectangle, y vaut 10, x vaut 5 + 60 * joker, largeur vaut 50, hauteur vaut 20, plein vaut vrai
 	ajoute brique dans briques
@@ -14,20 +14,20 @@ ferme
 tant que vrai
 	// On déplace la raquette en fonction de la souris de l'utilisateur
 	x de raquette prend sourisx
-	// est-ce que l'on touche le raquette ?
+	// est-ce que l'on touche la raquette ?
 	si balle.collision(raquette) et (direction == 45), direction prend 315
 	si balle.collision(raquette) et (direction == 135), direction prend 225
-	// est-ce que l'on touche le haut ?
+	// est-ce que l'on touche le haut de l'écran ?
 	si (y de balle) < 10 et (direction == 225), direction prend 135
 	si (y de balle) < 10 et (direction == 315), direction prend 45
-	// est-ce que l'on touche la gauche ?
+	// est-ce que l'on touche la gauche de l'écran ?
 	si (x de balle) < 10 et (direction == 225), direction prend 315
 	si (x de balle) < 10 et (direction == 135), direction prend 45
-	// est-ce que l'on touche la droite ?
+	// est-ce que l'on touche la droite de l'écran ?
 	si (x de balle) > 590 et (direction == 45), direction prend 135
 	si (x de balle) > 590 et (direction == 315), direction prend 225
-	// On  touche une brique ?
-	brique est un rectangle, visible vaut faux
+	// est-ce que l'on touche une brique ?
+	brique est un rectangle, visible vaut faux // Cette variable est utilisée juste pour la boucle
 	pour chaque brique de briques
 		si balle.collision(brique)
 			efface brique // On l'efface de l'écran
@@ -39,8 +39,8 @@ tant que vrai
 	ferme
 	// On déplace la balle en fonction de sa direction
 	angle de balle prend direction
-	avance balle de 1
-	// Perdu si la balle touche le bas !
+	avance balle de 1 // Il suffit d'augmenter cette valeur pour accélerer la balle !
+	// Perdu si la balle touche le bas de l'écran !
 	si (y de balle) > 590 termine
 	// On ralentit le jeu :
 	attends 5 millisecondes
