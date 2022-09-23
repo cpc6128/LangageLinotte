@@ -1,6 +1,6 @@
 name: linotte
 title: Langage Linotte
-version: '3.12.0'
+version: '3.14.0'
 summary: Linotte est le langage de programmation entièrement en français.
 description: |
   Inspiré des langages Basic, Logo et Java, Linotte permet d’assimiler rapidement les mécanismes et les logiques de la programmation car il ne requiert aucune notion mathématique ou technique.
@@ -23,7 +23,7 @@ parts:
   linotte:
     plugin: maven
     source: https://github.com/cpc6128/LangageLinotte.git
-    source-tag: v3.12
+    source-tag: v3.14
     source-type: git
     maven-options:
       [ -DskipTests=true ]
@@ -31,6 +31,9 @@ parts:
       - linotte-lanceur
     stage-packages:
       - openjdk-17-jre
+    override-prime: |
+      snapcraftctl prime
+      rm -vf usr/lib/jvm/java-11-openjdk-*/lib/security/blacklisted.certs
   exemples:
     plugin: dump
     after: [ linotte ]
