@@ -22,13 +22,13 @@ Vous voulez contribuer au projet ? N'hésitez pas à venir me rejoindre sur ce d
 
 Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagelinotte.free.fr</a>
 
-#### Téléchargement de la dernière version 3.12, avec Java 17 inclus (installation simplifiée) :
+#### Téléchargement de la dernière version 3.14, avec Java 19 inclus (installation simplifiée) :
 
 - <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.12/AtelierLinotte-3.12.msi">Pour Windows</a>
 
 - <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.12/AtelierLinotte-3.12.dmg">Pour MacOS</a>
 
-- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.12/atelierlinotte_3.12-1_amd64.deb">Pour Ubuntu/Debian</a>
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.14/atelierlinotte_3.14-1_amd64.deb">Pour Ubuntu/Debian</a>
 
 - <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.12/atelierlinotte_3.12-1_armhf.deb">Pour Raspberry Pi</a>
 
@@ -38,9 +38,9 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
 
 - <a href="https://snapcraft.io/linotte">Snap Store :</a> `sudo snap install linotte`
 
-#### Téléchargement de la dernière version 3.12, sans Java :
+#### Téléchargement de la dernière version 3.14, sans Java :
 
-- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.12/Linotte_3.12-2022-01-31-19-35.zip">Linotte_3.12.zip</a>
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.14/Linotte_3.14-2022-09-22-20-02.zip">Linotte_3.14.zip</a>
 
 #### documentation en ligne :
 
