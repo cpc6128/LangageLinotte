@@ -32,7 +32,7 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
 
 - <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.12/atelierlinotte_3.12-1_armhf.deb">Pour Raspberry Pi</a>
 
-- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.12/atelierlinotte-3.12-1.x86_64.rpm">Pour Redhat/Fedora</a>
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.14/atelierlinotte-3.14-1.x86_64.rpm">Pour Redhat/Fedora</a>
 
 - <a href="https://chocolatey.org/packages/linotte">Chocolatey :</a> `choco install linotte`
 
