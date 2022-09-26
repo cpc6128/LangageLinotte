@@ -24,7 +24,7 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
 
 #### Téléchargement de la dernière version 3.14, avec Java 19 inclus (installation simplifiée) :
 
-- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.12/AtelierLinotte-3.12.msi">Pour Windows</a>
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.14/AtelierLinotte-3.14.msi">Pour Windows</a>
 
 - <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.12/AtelierLinotte-3.12.dmg">Pour MacOS</a>
 
@@ -75,7 +75,7 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
 
 - Pour windows :
 
-  `jpackage --type msi --input . --main-jar Atelier.jar --icon ..\..\..\linotte-resources\src\main\resources\linotte_new.ico --app-version 3.8 --win-menu --file-associations ..\..\..\linotte-resources\src\main\resources\mime.txt --vendor CodeVallée`
+  `"C:\Program Files\Java\jdk-19\bin\jpackage" --type msi --input . --main-jar Atelier.jar --icon ..\..\..\linotte-resources\src\main\resources\linotte_new.ico --app-version 3.14 --win-menu --file-associations ..\..\..\linotte-resources\src\main\resources\mime.txt --vendor CodeVallée`
 
 - Pour Ubuntu ou Fedora :
 
