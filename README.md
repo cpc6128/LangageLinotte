@@ -85,6 +85,8 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
 
   `cpack`
 
+  `choco push linotte.3.14.00.nupkg --source https://push.chocolatey.org/`
+
 - Snapcraft :
 
   `snapcraft`
