@@ -6,13 +6,13 @@ $toolsDir = Join-Path $binRoot "linotte"
 $exeDir = Join-Path $toolsDir "Linotte.exe"
 
 $packageName= 'linotte' 
-$url        = 'https://github.com/cpc6128/LangageLinotte/releases/download/v3.12/Linotte_3.12-2022-01-31-19-35.zip'
+$url        = 'https://github.com/cpc6128/LangageLinotte/releases/download/v3.14/Linotte_3.14-2022-09-22-20-02.zip'
 
 $packageArgs = @{
   packageName   = $packageName
   unzipLocation = $toolsDir
   url           = $url
-  checksum      = '694a62a382a140e723fe051b2a02cdfe85ae2407c989b8311309f9a3865a1356'
+  checksum      = '1E5A8E56B883815548FDA2AE35964EBAC608C7615A3C5B931AD0EBDAE736BF1B'
   checksumType  = 'sha256'
 }
 
