@@ -26,7 +26,7 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
 
 - <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.14/AtelierLinotte-3.14.msi">Pour Windows</a>
 
-- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.12/AtelierLinotte-3.12.dmg">Pour MacOS</a>
+- <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.14/AtelierLinotte-3.14.dmg">Pour MacOS</a>
 
 - <a href="https://github.com/cpc6128/LangageLinotte/releases/download/v3.14/atelierlinotte_3.14-1_amd64.deb">Pour Ubuntu/Debian</a>
 
