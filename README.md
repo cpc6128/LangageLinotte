@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://camo.githubusercontent.com/66b8d1c54bd4a1048d14da50e3eecfc19da9d7c9406e38569fb3f4aebcc9fbdf/687474703a2f2f6c616e676167656c696e6f7474652e667265652e66722f6769746875622f656e74657465322e706e67">
+  <img src="http://langagelinotte.free.fr/images/splashlinotte.png">
 </p>
 
 ![GitHub release (release name instead of tag name)](https://img.shields.io/github/v/release/cpc6128/LangageLinotte?style=flat-square)
@@ -65,7 +65,7 @@ Le site officiel du langage est <a href="http://langagelinotte.free.fr">langagel
 
 - WhereIsAlice (casse-tête sur Android) : <a href="https://play.google.com/store/apps/details?id=fr.codevallee.whereisalice">Lien PlayStore</a>
 
-![Atelier 3.0](https://camo.githubusercontent.com/17b8abb2ff608bb6635cdbf49c5a3d529b06a83cc865f46d13352e736176b170/687474703a2f2f6c616e676167656c696e6f7474652e667265652e66722f6769746875622f6174656c6965722d64726163756c61322e706e67)
+![Atelier 3.0](http://langagelinotte.free.fr/github/atelier-dracula2.png)
 
 #### Pour les développeurs du langage :
 
